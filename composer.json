@@ -1,0 +1,24 @@
+{
+    "name": "gegenlicht.net/wordpress-theme",
+    "description": "The WordPress Theme used by the Unikino GEGENLICHT",
+    "type": "wordpress-theme",
+    "license": "EUPL1.2-or-later",
+    "authors": [
+        {
+            "name": "Jan Eike Suchard",
+            "email": "jan@suchard.cloud",
+            "role": "Implementation"
+        },
+        {
+            "name": "Philip Kaufmann",
+            "email": "philip@gegenlicht.net",
+            "role": "Visual Design"
+        },
+        {
+            "name": "Benjamin Witte",
+            "email": "benjamin@gegenlicht.net",
+            "role": "Implementation and Visual Design"
+        }
+    ],
+    "require": {}
+}
