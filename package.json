@@ -1,0 +1,15 @@
+{
+  "name": "wordpress-theme",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">\r <img height=\"150px\" src=\"https://gegenlicht.net/wp-content/uploads/2022/05/cropped-Avatar.png\" alt=\"ggl-avatar\">\r <h1>WordPress Theme</h1>\r <h3>wordpress-theme</h3>\r <p>✨ a wordpress theme enabling custom post types</p>\r <a href=\"LICENSE\">\r <img alt=\"License\" src=\"https://img.shields.io/github/license/unikino-gegenlicht/wordpress-theme?style=for-the-badge\">\r </a>\r <img alt=\"GitHub Issues or Pull Requests\" src=\"https://img.shields.io/github/issues/unikino-gegenlicht/wordpress-theme?style=for-the-badge\">\r </div>",
+  "main": "echo \"Error: this project is not executable\" && exit 1",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Philip Kaufmann, Jan Eike Suchard, Benjamin Witte",
+  "repository": "https://github.com/unikino-gegenlicht/wordpress-theme",
+  "license": "EUPL1.2-or-later",
+  "dependencies": {
+    "bootstrap": "5.3.3"
+  }
+}
