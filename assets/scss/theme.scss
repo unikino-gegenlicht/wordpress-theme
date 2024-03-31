@@ -2,7 +2,7 @@
 
 /* OVERRIDE DEFAULT VARIABLES HERE */
 $primary: #ffdd00;
-$secondary: #000000;
+$body-bg: $primary;
 /* DO NOT OVERRIDE the default variables below this line */
 
 @import "../../node_modules/bootstrap/scss/variables";
@@ -25,3 +25,97 @@ $secondary: #000000;
 @import "../../node_modules/bootstrap/scss/utilities/api";
 
 /* PLACE OTHER CUSTOM SCSS CODE BELOW THIS LINE */
+
+// this line dictates where the asset folder is located relative to the
+// website root
+$themeAssets: '/wp-content/themes/gegenlicht/assets';
+
+@font-face {
+  font-family: 'GEGENLICHT Bold';
+  src: url($themeAssets + '/fonts/gegenlicht-bold.woff') format("woff"), url($themeAssets + '/fonts/gegenlicht-bold.woff') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.ggl-font {
+  font-family: 'GEGENLICHT Bold';
+}
+
+.error404 #header-404 {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)), url($themeAssets + '/img/ggl_404.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.glitter {
+  background-image: url($themeAssets + '/img/gl_glitter.webp');
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+.icon {
+  width: 2em;
+  height: 2em;
+}
+
+.ggl-button {
+  text-align: center;
+  margin: auto;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
+  background-color: $primary;
+  transition: all 0.5s;
+
+  p {
+    font-family: "GEGENLICHT Bold";
+    color: black;
+  }
+
+  &:hover {
+    background-color: black;
+
+    p {
+      padding: 15px;
+      color: $primary;
+    }
+  }
+
+  .inverse {
+    border-color: $primary !important;
+    background-color: black !important;
+
+    p {
+      color: $primary;
+    }
+
+    :hover {
+      background-color: $primary;
+
+      p {
+        color: black;
+      }
+    }
+  }
+
+  .bw {
+    border-color: black;
+    background-color: white;
+
+    p {
+      color: black;
+    }
+
+    :hover {
+      background-color: black;
+      cursor: pointer;
+
+      p {
+        color: white;
+      }
+    }
+  }
+}
+
