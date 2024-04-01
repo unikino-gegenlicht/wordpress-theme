@@ -11,5 +11,8 @@
   "license": "EUPL1.2-or-later",
   "dependencies": {
     "bootstrap": "5.3.3"
+  },
+  "devDependencies": {
+    "sass": "^1.72.0"
   }
 }
