@@ -68,7 +68,7 @@ get_header();
                         </p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 p-2">
-                        <a class="text-secondary text-decoration-none" href="https://gegenlicht.net/facebook/">
+                        <a class="text-secondary text-decoration-none" href="/facebook/">
                             <div class="ggl-button m-3">
                                 <p>
                                     <span class="icon">
@@ -79,7 +79,7 @@ get_header();
                                 </p>
                             </div>
                         </a>
-                        <a class="text-secondary text-decoration-none" href="https://gegenlicht.net/mastodon/">
+                        <a class="text-secondary text-decoration-none" href="/mastodon/">
                             <div class="ggl-button m-3">
                                 <p>
                                     <span class="icon">
@@ -90,7 +90,7 @@ get_header();
                                 </p>
                             </div>
                         </a>
-                        <a class="text-secondary text-decoration-none" href="https://gegenlicht.net/instagram/">
+                        <a class="text-secondary text-decoration-none" href="/instagram/">
                             <div class="ggl-button m-3">
                                 <p>
                                     <span class="icon">
@@ -101,7 +101,7 @@ get_header();
                                 </p>
                             </div>
                         </a>
-                        <a class="text-secondary text-decoration-none" href="https://gegenlicht.net/whatsapp/">
+                        <a class="text-secondary text-decoration-none" href="/whatsapp/">
                             <div class="ggl-button m-3">
                                 <p>
                                     <span class="icon">
