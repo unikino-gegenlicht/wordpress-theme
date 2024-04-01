@@ -1,0 +1,57 @@
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  get-dependencies:
+    name: Collect Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout Repository
+        with:
+          lfs: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts
+      - run: npm ci
+      - run: npm install -g sass minify
+      - run: sass assets/scss/theme.scss assets/css/theme.css
+      - run: minify assets/css/theme.css
+      - uses: actions/upload-artifact@v4
+        name: Create Release Content Artifact
+        with:
+          name: gegenlicht-theme
+          path: |
+            !node_modules/
+            !package.json
+            !pnpm-lock.yaml
+            !.gitignore
+            !.gitattributes
+            !.github
+            !OSSMETADATA
+
+  release-package:
+    name: Create Release Package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs:
+      - get-dependencies
+    steps:
+      - uses: actions/download-artifact@v4
+        name: Download Release Contents
+        with:
+          name: gegenlicht-theme
+          path: gegenlicht
+      - uses: thedoctor0/zip-release@0.7.6
+        name: Create Archive for Release
+        with:
+          type: 'zip'
+          filename: 'gegenlicht-theme-${{github.ref_name}}.zip'
+      - uses: ncipollo/release-action@v1
+        name: Publish Release
+        with:
+          artifacts: 'gegenlicht-theme-${{github.ref_name}}.zip'
+          generateReleaseNotes: true
+
