@@ -1,0 +1,63 @@
+// Copyright (c) 2025 Jan Eike Suchard
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+/*
+Theme Name: GEGENLICHT
+Theme URI: https://github.com/unikino-gegenlicht/wordpress-theme
+Author: Unikino GEGENLICHT
+Author URI: https://github.com/unikino-gegenlicht/wordpress-theme/graphs/contributors
+Description: The default theme for our website
+Tags: entertainment,grid-layout,two-columns,custom-logo,custom-menu,featured-images,footer-widgets,theme-options,translation-ready
+Version: 2
+Requires at least: 6.7
+Tested up to: 6.7
+Requires PHP: 8.4
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: gegenlicht
+*/
+
+$ggl-yellow: #ffdd00;
+$pageWidth: 0.9;
+
+@use "bulma/sass" with (
+    $family-primary: '"Open Sans", sans-serif',
+    $primary: $ggl-yellow,
+    $link: black,
+);
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('assets/fonts/open-sans.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 300-800;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans Italic';
+    src: url('assets/fonts/open-sans-italic.woff2') format('woff2');
+    font-style: italic;
+    font-weight: 300-800;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: 'GEGENLICHT';
+    src: local('GEGENLICHT Bold'), local('GEGENLICHT-Bold'), url('assets/fonts/gegenlicht.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
