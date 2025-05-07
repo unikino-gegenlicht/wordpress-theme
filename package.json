@@ -2,7 +2,8 @@
   "name": "@unikino-gegenlicht/wordpress-theme",
   "version": "1.0.0",
   "scripts": {
-    "build:css": "sass --load-path=node_modules assets/scss/style.scss style.css",
+    "build:css": "sass --load-path=node_modules assets/scss/style.scss style.css && minify style.css > style.min.css",
+    "watch:css": "sass --watch --load-path=node_modules assets/scss/style.scss style.css",
     "minify:css": "minify style.css > style.min.css"
   },
   "author": "Unikino GEGENLICHT",
@@ -14,5 +15,8 @@
   },
   "dependencies": {
     "bulma": "^1.0.3"
+  },
+  "volta": {
+    "node": "22.15.0"
   }
 }
