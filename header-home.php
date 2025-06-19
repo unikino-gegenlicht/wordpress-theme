@@ -27,8 +27,8 @@ $isPlayPause = count($upcoming) == 0;
     <link rel="stylesheet" href="<?= get_stylesheet_directory_uri()?>/style.min.css" as="style">
     <?php endif; ?>
     <link rel="preload" href="<?= get_stylesheet_directory_uri()?>/assets/fonts/gegenlicht.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="<?= get_stylesheet_directory_uri()?>/assets/fonts/open-sans.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="<?= get_stylesheet_directory_uri()?>/assets/fonts/open-sans-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="<?= get_stylesheet_directory_uri()?>/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="<?= get_stylesheet_directory_uri()?>/assets/fonts/inter_italic.woff2" as="font" type="font/woff2" crossorigin>
     <?php
     foreach ($upcoming as $movie) {
 	    post_image_preload_header($movie);
