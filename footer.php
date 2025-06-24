@@ -3,10 +3,10 @@
 /**
  * The footer of all pages
  */
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 ?>
 
-<footer>
+<footer class="footer">
     <section class="hero is-primary">
         <div class="hero-body">
             <p>TEST 123</p>

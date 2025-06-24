@@ -23,7 +23,7 @@ server side as required by WordPress.
 ## Attributions
 
 The visual design of the theme has been done by [Philip Kaufmann] and the
-initial implementation has been done by [Benjamin Witte] (@dasbenjo).
+implementation has been realized by [Jan Eike Suchard] (@dr4hu5-jan).
 
 [Philip Kaufmann]: mailto:philip@gegenlicht.net
-[Benjamin Witte]: mailto:benjamin@gegenlicht.net
+[Jan Eike Suchard]: mailto:jan@gegenlicht.net
