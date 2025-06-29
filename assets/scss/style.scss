@@ -14,77 +14,240 @@ License URI: https://www.gnu.org/licenses/agpl-3.0.txt
 Text Domain: gegenlicht
 */
 
-$ggl-yellow: #ffdd00;
+$ggl-yellow: hsl(52, 100%, 50%);
 $maxWidth: 800px;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
+
 @use "bulma/sass" with (
     $family-primary: '"Inter", sans-serif',
     $primary: $ggl-yellow,
+    $input-shadow: none,
     $link: black,
-    $input-shadow: none
+    $radius: 0,
+    $breakpoints: (
+
+    )
 );
 
 @use 'contact-forms.scss';
+@use 'fonts.scss';
 
-@font-face {
-  font-family: 'Inter';
-  src: local('Inter'), url('assets/fonts/inter.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 300-800;
-  font-stretch: normal;
-  font-display: swap;
+@use "bulma/sass/utilities/mixins";
+@include mixins.tablet {
+  .page-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding-left: 0.75rem !important;
+  }
+  .page-footer {
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding-left: 0.75rem !important;
+    }
+  }
 }
 
-@font-face {
-  font-family: 'Inter Italic';
-  src: local('Inter Italic'), url('assets/fonts/inter_italic.woff2') format('woff2');
-  font-style: italic;
-  font-weight: 300-800;
-  font-stretch: normal;
-  font-display: swap;
+.page-content {
+  padding: 0 0.75rem !important;
 }
 
-@font-face {
-  font-family: 'GEGENLICHT';
-  src: local('GEGENLICHT Bold'), local('GEGENLICHT-Bold'), url('assets/fonts/gegenlicht.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
+.page-footer {
+  margin-bottom: 5rem !important;
 }
 
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url('assets/fonts/material-icons.woff2') format('woff2');
+:root {
+  --bulma-body-background-color: var(--bulma-primary);
+  --bulma-body-color: black;
+  --bulma-navbar-background-color: var(--bulma-body-background-color);
+  --bulma-button-border-width: 0.125rem;
 }
 
+.footer {
+  --bulma-footer-background-color: black !important;
 
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -moz-font-feature-settings: 'liga';
-  -moz-osx-font-smoothing: grayscale;
+  >* {
+    max-width: 800px;
+    margin: 0 auto;
+  }
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bulma-body-background-color: black;
+    --bulma-link-text: var(--bulma-body-color);
+    --bulma-body-color: var(--bulma-primary) !important;
+    --bulma-navbar-tab-active-color: var(--bulma-body-color);
+    --bulma-navbar-background-color: var(--bulma-body-color);
+    --bulma-button-border-width: 0.125rem;
+    --bulma-footer-background-color: var(--bulma-body-background-color) !important;
+
+  }
+
+  #proposed-by {
+    background-color: black !important;
+    color: var(--bulma-primary) !important;
+    padding: 1rem 0 !important;
+
+  }
+}
+
+.title {
+  font-family: 'GEGENLICHT', sans-serif;
+  color: var(--bulma-body-color);
+}
 
 html {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  background-color: var(--bulma-body-background-color);
+}
+
+.movie-list {
+
+  border-top: 1px solid var(--bulma-body-color);
+  border-bottom: 1px solid var(--bulma-body-color);
+
+  > * {
+    border-top: 1px solid var(--bulma-body-color);
+    border-bottom: 1px solid var(--bulma-body-color);
+  }
 
 }
 
-::-webkit-scrollbar {
-  display: none;
+
+.next-movie {
+  margin-bottom: 2rem;
+
+  > * {
+    margin: 0;
+  }
+
+  .next-movie-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .next-movie-title {
+    margin: 0 !important;
+  }
+
+  > a.button {
+    margin: 1rem auto;
+    padding: 0;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  .movie-image {
+    max-height: 45vh;
+    margin: 0 auto;
+  }
+
+}
+
+.movie-image {
+  max-width: 100%;
+  margin: 0 auto;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+hr.separator {
+  border: 1px solid var(--bulma-body-color);
+  margin: 0.75rem auto;
+  padding: 0 !important;
+  background-color: var(--bulma-body-color) !important;
+
+  &.is-primary {
+    border: 1px solid var(--bulma-primary) !important;
+    background-color: var(--bulma-primary) !important;
+  }
+
+  &.is-black {
+    border: 1px solid black !important;
+    background-color: var(--bulma-primary) !important;
+  }
+}
+
+.screening-information {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reservation-button {
+  width: 100%;
+
+  >a.button {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 2px solid black;
+  }
+}
+
+.short-details {
+  > * {
+    &:first-child {
+      margin-left: 0;
+    }
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+}
+
+.member-picture {
+  height: 250px;
+
+  @include mixins.mobile {
+    margin: 0 auto;
+  }
+
+  img {
+    filter: saturate(0%) opacity(66%);
+    object-fit: cover;
+  }
+}
+
+@include mixins.mobile {
+  .proposal-list {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
+
+.footer-links {
+
+  * {
+    color: var(--bulma-primary);
+    text-decoration: underline;
+  }
+
+  *:last-child:after {
+    content: "";
+  }
+
+  *:after {
+    content: "|";
+    margin: 0 1rem;
+  }
+}
+
+#proposed-by {
+  background-color: var(--bulma-primary);
+  color: black;
+  padding: 1rem 0;
+}
+
+* {
+  overflow-wrap: break-word;
 }
