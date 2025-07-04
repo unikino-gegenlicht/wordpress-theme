@@ -33,7 +33,7 @@ jobs:
           rm README.md
           mkdir gegenlicht-theme
           shopt -s extglob
-          mv !(gegenlicht-theme|.git|.github) gegenlicht-theme/
+          mv !(gegenlicht-theme|.git|.github|node_modules) gegenlicht-theme/
           wp i18n make-mo gegenlicht-theme/languages/ gegenlicht-theme/languages/
           zip -r theme.zip gegenlicht-theme/*
 
