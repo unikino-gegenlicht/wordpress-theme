@@ -10,22 +10,27 @@ function enable_theme_supports() {
 
 add_action( 'after_setup_theme', 'enable_theme_supports' );
 
+add_filter( 'locale', function( $locale ) {
+	if ( ! isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
+		return $locale;
+	}
 
-function gegenlicht_customizer( $wp_customize )
-{
-	$wp_customize->remove_section('custom_css');
-	$wp_customize->remove_section('static_front_page');
+	$prefLocales = array_reduce( explode( ',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] ), function ( $res, $el ) {
+		list( $l, $q ) = array_merge( explode( ';q=', $el ), [ 1 ] );
+		$res[ $l ] = (float) $q;
 
-	$wp_customize->add_setting('header_logo', array(
-		'type' => 'theme_mod',
-		'capability' => 'edit_theme_options',
-	));
-	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'header_logo', array(
-		'label' => 'Header Logo',
-		'section' => 'title_tagline',
-	)));
-}
-add_action( 'customize_register', 'gegenlicht_customizer' );
+		return $res;
+	}, [] );
+	arsort( $prefLocales );
+
+	return substr(array_key_first( $prefLocales ), 0, 2);
+});
+
+load_theme_textdomain('gegenlicht', get_template_directory() . '/languages');
+
+require_once 'inc/customizer.php';
+add_action( 'customize_register', 'ggl_add_customizer_options' );
+
 
 
 /**
@@ -100,5 +105,23 @@ add_action( 'wp_enqueue_scripts', function () {
 } );
 
 
+register_nav_menu( "navigation-menu", "Navigation Menu" );
 
-register_nav_menu("navigation-menu", "Navigation Menu");
+
+if (!current_user_can('edit_posts')) {
+
+	show_admin_bar(false);
+
+}
+
+function block_wp_admin() {
+	if ( is_admin() && ! current_user_can( 'edit_posts' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+		nocache_headers();
+		wp_safe_redirect( home_url() );
+		exit;
+	}
+}
+add_action( 'admin_init', 'block_wp_admin' );
+
+require_once 'inc/contact-block.php';
+add_shortcode( 'ggl-contact-block', 'ggl_do_contact_shortcode' );

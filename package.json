@@ -10,11 +10,13 @@
   "license": "GPL-3.0",
   "description": "",
   "devDependencies": {
+    "@creativebulma/bulma-tooltip": "^1.2.0",
     "minify": "^14.0.0",
     "sass": "^1.83.4"
   },
   "dependencies": {
-    "bulma": "^1.0.3"
+    "bulma": "^1.0.3",
+    "bulma-v1-tooltip": "^1.0.2"
   },
   "volta": {
     "node": "22.15.0"

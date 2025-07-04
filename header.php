@@ -7,9 +7,21 @@
  */
 defined( 'ABSPATH' ) || exit;
 
+$langs = array();
+$acceptHeader = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+$acceptedLanguage = explode(',', $acceptHeader)[0];
+
+$outputLanguage = "";
+if (str_starts_with($acceptedLanguage, 'de')) {
+    $outputLanguage = 'de';
+} else if (str_starts_with($acceptedLanguage, 'en')) {
+    $outputLanguage = 'en';
+} else {
+    $outputLanguage = 'en';
+}
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> data-theme="">
+<html lang="<?= $outputLanguage ?>" data-theme="">
 <head>
     <title><?php bloginfo( 'name' ) ?></title>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -28,7 +40,6 @@ defined( 'ABSPATH' ) || exit;
           type="font/woff2" crossorigin>
     <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/assets/fonts/inter_italic.woff2" as="font"
           type="font/woff2" crossorigin>
-    <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/darkmode-toggle.js"></script>
     <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/menu-toggle.js"></script>
 	<?php wp_head(); ?>
 </head>
@@ -76,7 +87,7 @@ defined( 'ABSPATH' ) || exit;
 							$num = $i + 1;
 						}
 						global $wp;
-						$currentPage = $navigationItem->url == home_url( $wp->request );
+						$currentPage = $navigationItem->url == home_url( $wp->request ) || $navigationItem->url == home_url( $wp->request ).'/';
 						?>
                         <!-- <?= $navigationItem->url ?> -->
                         <!-- <?= home_url( $wp->request ) ?> -->
@@ -87,7 +98,7 @@ defined( 'ABSPATH' ) || exit;
 				<?php endif; ?>
                 <hr>
 				<?php if ( is_user_logged_in() ): ?>
-                    <a class="navbar-item" href="<?= wp_logout_url( is_home() ? home_url() : get_page_uri() ) ?>">
+                    <a class="navbar-item" href="<?= wp_logout_url( home_url() ) ?>">
                         <span class="icon-text">
                         <span
                                 class="icon"><span class="material-symbols">logout</span></span>

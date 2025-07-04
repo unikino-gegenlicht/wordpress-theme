@@ -26,32 +26,49 @@ $fullhd-enabled: false;
     $input-shadow: none,
     $link: black,
     $radius: 0,
-    $breakpoints: (
-
-    )
 );
+
 
 @use 'contact-forms.scss';
 @use 'fonts.scss';
 
 @use "bulma/sass/utilities/mixins";
+@forward 'bulma-v1-tooltip/src/sass';
+
+
+
+
 @include mixins.tablet {
   .page-content {
-    max-width: 800px;
-    margin: 20px auto;
+    max-width: $maxWidth;
+    margin: 20px auto 3rem;
     padding-left: 0.75rem !important;
   }
   .page-footer {
     section {
-      max-width: 800px;
+      max-width: $maxWidth;
       margin: 0 auto;
       padding-left: 0.75rem !important;
     }
   }
+
+  .limited-width-block {
+    max-width: $maxWidth;
+    margin: 20px auto;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+.limited-width-block {
+  max-width: $maxWidth;
+  margin: 20px auto;
+  background-clip: content-box;
 }
 
 .page-content {
   padding: 0 0.75rem !important;
+  margin-bottom: 3rem;
 }
 
 .page-footer {
@@ -220,25 +237,30 @@ hr.separator {
 
 @include mixins.mobile {
   .proposal-list {
-    width: 100%;
+    width: 100% !important;
     margin-top: 2rem;
   }
+}
+
+.proposal-list {
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-self: center;
 }
 
 .footer-links {
 
   * {
     color: var(--bulma-primary);
-    text-decoration: underline;
   }
 
-  *:last-child:after {
+  a:last-child:after {
     content: "";
   }
 
-  *:after {
+  a:after {
     content: "|";
-    margin: 0 1rem;
+    margin: 0 0.5rem;
   }
 }
 
@@ -250,4 +272,14 @@ hr.separator {
 
 * {
   overflow-wrap: break-word;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'GEGENLICHT', sans-serif;
+  text-transform: uppercase;
+}
+
+.tag.is-primary {
+  color: var(--bulma-body-color);
+  background-color: var(--bulma-body-background-color) !important;
 }
