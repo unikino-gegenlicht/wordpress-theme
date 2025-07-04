@@ -5,6 +5,8 @@ jobs:
   create-archive:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup PHP
+        uses: actions/setup-node@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -25,6 +27,8 @@ jobs:
       - name: Create Directory Structure and Archive
         shell: bash
         run: |
+          npm install
+          npm run build:css
           rm LICENSE
           rm README.md
           mkdir gegenlicht-theme
