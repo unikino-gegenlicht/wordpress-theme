@@ -98,14 +98,14 @@ if (str_starts_with($acceptedLanguage, 'de')) {
 				<?php endif; ?>
                 <hr>
 				<?php if ( is_user_logged_in() ): ?>
-                    <a class="navbar-item" href="<?= wp_logout_url( home_url() ) ?>">
+                    <a class="navbar-item" href="<?= wp_logout_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
                         <span
                                 class="icon"><span class="material-symbols">logout</span></span>
                         <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Logout', 'gegenlicht' ) ?></span></span>
                     </a>
 				<?php else: ?>
-                    <a class="navbar-item" href="<?= wp_login_url( is_home() ? home_url() : get_page_uri() ) ?>">
+                    <a class="navbar-item" href="<?= wp_login_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
                         <span
                                 class="icon"><span class="material-symbols">login</span></span>
