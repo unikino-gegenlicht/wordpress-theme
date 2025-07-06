@@ -251,8 +251,10 @@ hr.separator {
 
 .links {
 
-  * {
-    color: var(--bulma-primary);
+  &.are-primary {
+    * {
+      color: var(--bulma-primary)
+    }
   }
 
   a:last-child:after {
@@ -283,4 +285,9 @@ h1,h2,h3,h4,h5,h6 {
 .tag.is-primary {
   color: var(--bulma-body-color);
   background-color: var(--bulma-body-background-color) !important;
+}
+
+img,
+figure {
+  pointer-events: none;
 }
