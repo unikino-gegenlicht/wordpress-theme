@@ -230,8 +230,9 @@ hr.separator {
   }
 
   img {
-    filter: saturate(0%) opacity(66%);
+    filter: saturate(0);
     object-fit: cover;
+    mix-blend-mode: multiply;
   }
 }
 
