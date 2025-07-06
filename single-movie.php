@@ -143,10 +143,10 @@ if ( $isSpecialProgram ):
 			?>
         </div>
         <figure class="image is-hidden-tablet is-4by5 movie-image">
-            <img src="<?= $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : '' ?>"/>
+            <img src="<?= $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url($anonymousImage, size: 'full') ?>"/>
         </figure>
         <figure class="image is-hidden-mobile is-16by9 movie-image">
-            <img src="<?= $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : '' ?>"/>
+            <img src="<?= $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url($anonymousImage, size: 'full') ?>"/>
         </figure>
     </header>
     <div class="has-background-white py-4 px-2 my-5 reservation-button">
@@ -226,7 +226,7 @@ if ( $isSpecialProgram ):
             <hr class="separator is-black"/>
             <div class="is-flex is-align-items-top is-flex-wrap-wrap">
                 <figure class="image is-3by4 <?= $selectedByType == "member" ? 'member-picture' : '' ?>">
-                    <img src="<?= get_the_post_thumbnail_url( post: $post_id, size: 'full' ) ?>"/>
+                    <img src="<?= get_the_post_thumbnail_url( post: $post_id, size: 'full' ) ?: wp_get_attachment_image_url( get_theme_mod( 'missing_team_image_replacement' ) ) ?>"/>
                 </figure>
                 <div style="width: 1rem; height: 1rem"></div>
                 <div class="proposal-list">
