@@ -5,7 +5,7 @@ jobs:
   create-archive:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup PHP
+      - name: Setup Node.js
         uses: actions/setup-node@v4
 
       - name: Setup PHP
