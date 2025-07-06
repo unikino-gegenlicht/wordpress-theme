@@ -2,7 +2,7 @@
   "name": "@unikino-gegenlicht/wordpress-theme",
   "version": "1.0.0",
   "scripts": {
-    "build:css": "sass --load-path=node_modules assets/scss/style.scss style.css && minify style.css > style.min.css",
+    "build:css": "sass --load-path=node_modules --quiet-deps assets/scss/style.scss style.css && minify style.css > style.min.css",
     "watch:css": "sass --watch --load-path=node_modules assets/scss/style.scss style.css",
     "minify:css": "minify style.css > style.min.css"
   },
