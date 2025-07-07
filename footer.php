@@ -47,6 +47,9 @@ defined( 'ABSPATH' ) || exit;
            rel="privacy-policy"><?= esc_html__( 'Privacy Policy' ) ?></a>
         <a class="" href=""><?= esc_html__( 'Contact' ) ?></a>
     </div>
+    <div class="mt-4">
+        <img alt="made by humans. not by ai" src="<?= get_stylesheet_directory_uri() ?>/assets/img/no-ai.svg"/>
+    </div>
 </footer>
 <?php wp_footer(); ?>
 </body>
