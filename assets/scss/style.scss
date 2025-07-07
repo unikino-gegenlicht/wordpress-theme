@@ -36,8 +36,6 @@ $fullhd-enabled: false;
 @forward 'bulma-v1-tooltip/src/sass';
 
 
-
-
 @include mixins.tablet {
   .page-content {
     max-width: $maxWidth;
@@ -79,13 +77,17 @@ $fullhd-enabled: false;
   --bulma-body-background-color: var(--bulma-primary);
   --bulma-body-color: black;
   --bulma-navbar-background-color: var(--bulma-body-background-color);
-  --bulma-button-border-width: 0.125rem;
+}
+
+.button.is-outlined {
+  --bulma-button-border-width: 0.2rem !important;
 }
 
 .footer {
   --bulma-footer-background-color: black !important;
+  border-top: var(--bulma-primary) 4px solid !important;
 
-  >* {
+  > * {
     max-width: 800px;
     margin: 0 auto;
   }
@@ -98,7 +100,7 @@ $fullhd-enabled: false;
     --bulma-body-color: var(--bulma-primary) !important;
     --bulma-navbar-tab-active-color: var(--bulma-body-color);
     --bulma-navbar-background-color: var(--bulma-body-color);
-    --bulma-button-border-width: 0.125rem;
+    --bulma-button-border-width: 0.2rem;
     --bulma-footer-background-color: var(--bulma-body-background-color) !important;
 
   }
@@ -107,7 +109,10 @@ $fullhd-enabled: false;
     background-color: black !important;
     color: var(--bulma-primary) !important;
     padding: 1rem 0 !important;
+  }
 
+  .member-picture {
+    background-color: var(--bulma-primary) !important;
   }
 }
 
@@ -163,7 +168,6 @@ html {
   }
 
   .movie-image {
-    max-height: 45vh;
     margin: 0 auto;
   }
 
@@ -204,11 +208,12 @@ hr.separator {
 
 .reservation-button {
   width: 100%;
+  padding: 0.75rem 0 !important;
 
-  >a.button {
-    max-width: 800px;
+  > a.button {
+    max-width: 780px;
     margin: 0 auto;
-    border: 2px solid black;
+    border: 0.2rem solid black;
   }
 }
 
@@ -217,6 +222,7 @@ hr.separator {
     &:first-child {
       margin-left: 0;
     }
+
     margin-left: 0.25rem;
     margin-right: 0.25rem;
   }
@@ -277,7 +283,7 @@ hr.separator {
   overflow-wrap: break-word;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'GEGENLICHT', sans-serif;
   text-transform: uppercase;
 }
