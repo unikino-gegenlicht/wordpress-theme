@@ -230,18 +230,17 @@ if ( $isSpecialProgram ):
                 </figure>
                 <div style="width: 1rem; height: 1rem"></div>
                 <div class="proposal-list">
-                    <!-- TODO: change to also showed in cooperation if not selected by member -->
 					<?php
 					$query = new WP_Query( array(
 						'post_type'      => [ 'movie', 'event' ],
 						'posts_per_page' => 6,
+                        'post__not_in' => [ $post->ID ],
 						'meta_query'     => array(
 							'relation' => 'AND',
 							array(
 								array(
 									'key'   => 'program_type',
 									'value' => 'main',
-
 								),
 								array(
 									'key'     => 'license_type',
@@ -267,9 +266,6 @@ if ( $isSpecialProgram ):
 
 						)
 					) );
-					echo "<!-- ";
-					var_dump( $query );
-					echo "--> ";
 					if ( $query->have_posts() ):
 						while ( $query->have_posts() ) : $query->the_post();
 							?>
