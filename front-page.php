@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $fallbackImage = get_theme_mod( 'anonymous_image' );
-$semesterID = get_theme_mod('displayed_semester');
+$semesterID    = get_theme_mod( 'displayed_semester' );
 
 $next_meta       = [];
 $next_meta[]     = [
@@ -68,7 +68,7 @@ do_action( 'wp_body_open' );
                 <hr class="separator"/>
                 <div class="next-movie-header">
                     <p><?= $i == 0 ? esc_html__( 'Next Screening', 'gegenlicht' ) : esc_html__( 'Afterwards at', 'gegenlicht' ) ?></p>
-                    <p class="is-size-6 m-0 p-0"><?= $i == 0 ? date( "d.m.Y | H:i", (int) rwmb_meta( 'screening_date' ) ) : date( "H:i", (int) rwmb_meta( 'screening_date' )) ?></p>
+                    <p class="is-size-6 m-0 p-0"><?= $i == 0 ? date( "d.m.Y | H:i", (int) rwmb_meta( 'screening_date' ) ) : date( "H:i", (int) rwmb_meta( 'screening_date' ) ) ?></p>
                 </div>
                 <hr class="separator"/>
                 <h2 class="title next-movie-title"><?= $showDetails ? $title : esc_html__( 'An unnamed movie', 'gegenlicht' ) ?></h2>
@@ -101,7 +101,7 @@ do_action( 'wp_body_open' );
 		];
 		$programQuery = array(
 			'post_type'      => [ 'movie', 'event' ],
-			'posts_per_page' => -1,
+			'posts_per_page' => - 1,
 			'meta_query'     => $meta_query,
 			'meta_key'       => 'screening_date',
 			'orderby'        => 'meta_value_num',
@@ -110,48 +110,51 @@ do_action( 'wp_body_open' );
 
 		$query = new WP_Query( $programQuery );
 
-        $monthlyMovies = array();
+		$monthlyMovies = array();
 
-        while ( $query->have_posts()): $query->the_post();
-            $screeningMonth = date('F', (int) rwmb_meta( 'screening_date' ) );
-            $monthlyMovies[$screeningMonth][] = $post;
-        endwhile;
-        ?>
+		while ( $query->have_posts() ): $query->the_post();
+			$screeningMonth                     = date( 'F', (int) rwmb_meta( 'screening_date' ) );
+			$monthlyMovies[ $screeningMonth ][] = $post;
+		endwhile;
+		?>
 
-		<?php if ( !empty($monthlyMovies) ) : ?>
-        <h1 class="title is-uppercase pb-0 mb-0"><?= esc_html__( 'Our Semester Program' ) ?></h1>
-        <hr class="separator" style="margin-bottom: 0.25rem;"/>
-        <div class="is-flex is-justify-content-space-between is-align-items-center is-clickable" onclick="toggleSpecialProgramDisplay()">
-            <div>
-                <p><?= esc_html__( 'Main Program Only', 'gegenlicht' ) ?></p>
-            </div>
-            <span class="icon is-large">
-                <span class="material-symbols" id="programSwitcher" style="font-size: 48px; font-variation-settings: 'wght' 100, 'GRAD' 0, 'opsz' 48;">toggle_off</span>
+		<?php if ( ! empty( $monthlyMovies ) ) : ?>
+            <h1 class="title is-uppercase pb-0 mb-0"><?= esc_html__( 'Our Semester Program' ) ?></h1>
+            <hr class="separator" style="margin-bottom: 0.25rem;"/>
+            <div class="is-flex is-justify-content-space-between is-align-items-center is-clickable"
+                 onclick="toggleSpecialProgramDisplay()">
+                <div>
+                    <p><?= esc_html__( 'Main Program Only', 'gegenlicht' ) ?></p>
+                </div>
+                <span class="icon is-large">
+                <span class="material-symbols" id="programSwitcher"
+                      style="font-size: 48px; font-variation-settings: 'wght' 100, 'GRAD' 0, 'opsz' 48;">toggle_off</span>
             </span>
-        </div>
-        <hr class="separator mb-6" style="margin-top: 0.25rem;"/>
-        <?php foreach ( $monthlyMovies as $month => $posts ) : ?>
-            <div class="movie-list mb-5">
-                <p class="has-background-black has-text-primary font-ggl is-uppercase is-size-5 py-1 pl-1"><?= esc_html__($month, 'gegenlicht') ?></p>
-                <?php foreach ( $posts as $post ) : $post = get_post( $post );
-	                $programType = rwmb_meta( 'program_type' );
-                    $specialProgram = rwmb_meta('special_program');
-	                $showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-	                $title       = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ); ?>
-                    <a data-program-type="<?= $programType ?>" href="<?= get_permalink() ?>">
-                        <div>
-                            <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
-                                        class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
-                            </time>
-                            <p class="is-size-5 has-text-weight-bold is-uppercase"><?= $showDetails ? $title : ($programType == 'special_program' ? get_term($specialProgram)->name : esc_html__( 'An unnamed movie', 'gegenlicht' )) ?></p>
-                        </div>
-                        <span class="icon">
+            </div>
+            <hr class="separator mb-6" style="margin-top: 0.25rem;"/>
+			<?php foreach ( $monthlyMovies as $month => $posts ) : ?>
+                <div class="movie-list mb-5">
+                    <p style="background-color: var(--bulma-body-color); color: var(--bulma-body-background-color)"
+                       class="font-ggl is-uppercase is-size-5 py-1 pl-1"><?= esc_html__( $month, 'gegenlicht' ) ?></p>
+					<?php foreach ( $posts as $post ) : $post = get_post( $post );
+						$programType = rwmb_meta( 'program_type' );
+						$specialProgram = rwmb_meta( 'special_program' );
+						$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
+						$title = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ); ?>
+                        <a data-program-type="<?= $programType ?>" href="<?= get_permalink() ?>">
+                            <div>
+                                <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
+                                            class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
+                                </time>
+                                <p class="is-size-5 has-text-weight-bold is-uppercase"><?= $showDetails ? $title : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?></p>
+                            </div>
+                            <span class="icon">
                         <span class="material-symbols">arrow_forward_ios</span>
                     </span>
-                    </a>
-                <?php endforeach; ?>
-            </div>
-        <?php endforeach; ?>
+                        </a>
+					<?php endforeach; ?>
+                </div>
+			<?php endforeach; ?>
 		<?php endif; ?>
 
     </main>
@@ -163,9 +166,20 @@ do_action( 'wp_body_open' );
             background-color: <?= get_term_meta( $termID, 'background_color', true ) ?>;
             color: <?= get_term_meta( $termID, 'text_color', true ) ?>;
             padding-top: 2rem;
+            padding-bottom: 2rem;
 
             div.page-content {
                 margin: 0 auto !important;
+            }
+
+            .movie-list {
+                border-top: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
+                border-bottom: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
+
+                > * {
+                    border-top: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
+                    border-bottom: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
+                }
             }
 
             > div > hr.separator {
@@ -191,19 +205,55 @@ do_action( 'wp_body_open' );
         }
     </style>
     <article id="special-program_<?= $termID ?>">
-        <div class="page-content">
-            <figure class="figure pb-4" style="text-align: center;">
-                <picture style="object-position: center;">
-                    <source width="500"
+        <div class="page-content mb-3">
+            <a href="<?= get_term_link($termID) ?>">
+            <figure class="figure mb-6" style="text-align: center;">
+                <picture style="object-position: center; object-fit: scale-down;">
+                    <source
                             srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $termID, 'logo_dark', true ), 'full' ) ?>"
                             media="(prefers-color-scheme: dark)"/>
-                    <source width="500"
+                    <source
                             srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $termID, 'logo', true ), 'full' ) ?>"/>
-                    <img src="<?= wp_get_attachment_image_url( get_term_meta( $termID, 'logo', true ), 'full' ) ?>"/>
+                    <img style="max-height: 125px"/>
                 </picture>
             </figure>
-            <hr class="separator"/>
-            <h2 class="is-size-3"><?= get_term( $termID )->name ?></h2>
+            </a>
+            <div class="movie-list">
+			<?php
+
+			$query = new WP_Query( array(
+				'post_type'      => [ 'movie', 'event' ],
+				'posts_per_page' => - 1,
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'semester',
+						'terms'    => $semesterID,
+					),
+					array(
+						'taxonomy' => 'special-program',
+						'terms'    => $termID,
+					)
+				),
+				'meta_key'       => 'screening_date',
+				'orderby'        => 'meta_value_num',
+				'order'          => 'ASC',
+			) );
+
+			while ( $query->have_posts() ) : $query->the_post();
+				?>
+                <a href="<?= get_permalink() ?>">
+                    <div>
+                        <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
+                                    class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
+                        </time>
+                        <p class="is-size-5 has-text-weight-bold is-uppercase"><?= $showDetails ? $title : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?></p>
+                    </div>
+                    <span class="icon">
+                        <span class="material-symbols">arrow_forward_ios</span>
+                    </span>
+                </a>
+			<?php endwhile; ?>
+        </div>
         </div>
     </article>
 <?php endforeach; ?>
