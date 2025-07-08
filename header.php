@@ -39,6 +39,8 @@ $headerImage = get_theme_mod('header_logo');
         <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/style.min.css" as="style">
         <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/style.min.css" as="style">
 	<?php endif; ?>
+    <link rel="preload" href="<?= get_stylesheet_directory_uri()?>/assets/css/simple-icons.css" as="style">
+    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/simple-icons.css" as="style"/>
     <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/assets/fonts/gegenlicht.woff2" as="font"
           type="font/woff2" crossorigin>
     <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/assets/fonts/inter.woff2" as="font"
@@ -102,16 +104,28 @@ $headerImage = get_theme_mod('header_logo');
                                     class="is-size-5 has-text-weight-semibold is-uppercase "><?= $navigationItem->title ?></span></a>
 					<?php endfor; ?>
 				<?php endif; ?>
-                <hr>
+                <hr class="separator is-hidden-desktop">
+	            <?php if (is_user_logged_in() && current_user_can('edit_posts')): ?>
+                    <a class="navbar-item is-tab" href="<?= get_admin_url(scheme: 'https') ?>">
+                        <span class="icon-text has-text-black is-size-5">
+                            <span class="icon">
+                                <span class="si si-wordpress"></span>
+                            </span>
+                            <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop">
+                                <?= esc_html__('To the backend') ?>
+                            </span>
+                        </span>
+                    </a>
+	            <?php endif; ?>
 				<?php if ( is_user_logged_in() ): ?>
-                    <a class="navbar-item" href="<?= wp_logout_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
+                    <a class="navbar-item is-tab" href="<?= wp_logout_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
                         <span
                                 class="icon"><span class="material-symbols">logout</span></span>
                         <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Logout', 'gegenlicht' ) ?></span></span>
                     </a>
 				<?php else: ?>
-                    <a class="navbar-item" href="<?= wp_login_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
+                    <a class="navbar-item is-tab" href="<?= wp_login_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
                         <span
                                 class="icon"><span class="material-symbols">login</span></span>

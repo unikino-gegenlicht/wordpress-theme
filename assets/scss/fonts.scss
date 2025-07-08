@@ -65,3 +65,14 @@
 .is-smallcaps {
   font-variant-caps: small-caps;
 }
+
+@font-face {
+  font-family: 'Simple Icons';
+  src: url(assets/fonts/simple-icons.woff2) format('woff');
+}
+
+.si {
+  font-style: normal;
+  font-family: 'Simple Icons', sans-serif;
+  vertical-align: middle;
+}
