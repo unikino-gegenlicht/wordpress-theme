@@ -108,9 +108,7 @@ add_action( 'wp_enqueue_scripts', function () {
 register_nav_menu( "navigation-menu", "Navigation Menu" );
 
 
-if (!current_user_can('edit_posts')) {
-
-	show_admin_bar(false);
+show_admin_bar(false);
 
 }
 
