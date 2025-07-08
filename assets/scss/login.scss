@@ -1,13 +1,15 @@
-$ggl-yellow: #ffdd00;
-@use "bulma/sass" with (
-    $family-primary: '"Inter", sans-serif',
-    $primary: $ggl-yellow,
-    $input-shadow: none,
-    $link: black,
-    $radius: 0,
-    $title-line-height: 1
+@use "bulma/sass/utilities" with (
+  $family-primary: '"Inter", sans-serif',
+  $primary: #ffdd00,
+  $link: #ffdd00
 );
+@use "bulma/sass/form" with (
+  $input-shadow: none
+);
+
+@use "bulma/sass/base";
 @use "bulma/sass/utilities/mixins";
+@forward "bulma/sass/themes";
 
 @font-face {
   font-family: 'Inter';
