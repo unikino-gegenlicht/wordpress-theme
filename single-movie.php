@@ -7,11 +7,6 @@ get_header();
 do_action( 'wp_body_open' );
 
 
-if ( rwmb_meta( 'license_type' ) == 'none' && ! is_user_logged_in() ) {
-	get_template_part( 'unlicensed-movie' );
-	exit;
-}
-
 $showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
 
 $title = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
@@ -75,7 +70,7 @@ if ( $isSpecialProgram ):
         </div>
         <hr class="separator"/>
         <h1 class="font-ggl is-size-1 is-uppercase ">
-			<?= $showDetails ? $title : esc_html__( 'An unnamed movie', 'gegenlicht' ) ?>
+	        <?= $showDetails ? $title : (rwmb_meta('program_type') == 'special_program' ? trim(get_term(rwmb_meta('special_program'))->name) : esc_html__( 'An unnamed movie', 'gegenlicht' )) ?>
         </h1>
 		<?php if ( $showDetails && $title != rwmb_meta( 'original_title' ) ): ?>
             <p class="font-ggl is-size-4"><?= rwmb_meta( 'original_title' ) ?></p>
@@ -87,7 +82,7 @@ if ( $isSpecialProgram ):
 			<?= rwmb_meta( 'running_time' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
         </p>
         <p>
-			<?= esc_html__( 'by' ) ?> <?= $showDetails ? rwmb_meta( 'director' )->name : preg_replace( '/\w/', '█', rwmb_meta( 'director' )->name ) ?>
+			<?= esc_html__( 'by' ) ?> <?= $showDetails ? rwmb_meta( 'director' )->name : trim(preg_replace( '/\w/', '█', rwmb_meta( 'director' )->name )) ?>
         </p>
         <p>
 			<?php
