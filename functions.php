@@ -110,7 +110,6 @@ register_nav_menu( "navigation-menu", "Navigation Menu" );
 
 show_admin_bar(false);
 
-}
 
 function block_wp_admin() {
 	if ( is_admin() && ! current_user_can( 'edit_posts' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
@@ -123,3 +122,36 @@ add_action( 'admin_init', 'block_wp_admin' );
 
 require_once 'inc/contact-block.php';
 add_shortcode( 'ggl-contact-block', 'ggl_do_contact_shortcode' );
+
+function my_login_logo() { ?>
+	<style type="text/css">
+        #login h1 a {
+            background-image: url(<?= wp_get_attachment_image_url( get_theme_mod( 'header_logo' ) ) ?>);
+            width: 320px;
+            background-size: 320px 65px;
+            background-repeat: no-repeat;
+            padding-bottom: 30px;
+        }
+	</style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+function my_login_logo_url() {
+	return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_stylesheet() {
+    if (defined("WP_DEBUG") && WP_DEBUG):
+	    wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/assets/css/login.css' );
+    else:
+	    wp_enqueue_style( 'custom-login-min', get_stylesheet_directory_uri() . '/assets/css/login.min.css' );
+    endif;
+
+    }
+add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
+
+function custom_login_error_message( $error ) {
+	return esc_html__("Unable to log in. Please check your credentials and try again.", 'gegenlicht');
+}
+add_filter( 'login_errors', 'custom_login_error_message' );
