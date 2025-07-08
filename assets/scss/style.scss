@@ -26,6 +26,7 @@ $fullhd-enabled: false;
     $input-shadow: none,
     $link: black,
     $radius: 0,
+    $title-line-height: 1
 );
 
 
@@ -66,7 +67,6 @@ $fullhd-enabled: false;
 
 .page-content {
   padding: 0 0.75rem !important;
-  margin-bottom: 3rem;
 }
 
 .page-footer {
@@ -86,6 +86,8 @@ $fullhd-enabled: false;
 .footer {
   --bulma-footer-background-color: black !important;
   border-top: var(--bulma-primary) 4px solid !important;
+
+  padding-top: 3rem;
 
   > * {
     max-width: 800px;
@@ -135,6 +137,12 @@ html {
   > * {
     border-top: 1px solid var(--bulma-body-color);
     border-bottom: 1px solid var(--bulma-body-color);
+  }
+
+  > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
 }
@@ -197,6 +205,11 @@ hr.separator {
     border: 1px solid black !important;
     background-color: var(--bulma-primary) !important;
   }
+
+  &.is-text-color {
+    border: 1px solid var(--bulma-text-color) !important;
+    background-color: var(--bulma-body-color) !important;
+  }
 }
 
 .screening-information {
@@ -211,9 +224,26 @@ hr.separator {
   padding: 0.75rem 0 !important;
 
   > a.button {
+
+
+
     max-width: 780px;
+
     margin: 0 auto;
     border: 0.2rem solid black;
+  }
+}
+
+@include mixins.mobile {
+  .reservation-button {
+    width: 100%;
+    padding: 0.75rem 0 !important;
+
+    > a.button {
+      max-width: calc(100vw - 0.75rem) !important;
+      margin: 0 auto;
+      border: 0.2rem solid black;
+    }
   }
 }
 

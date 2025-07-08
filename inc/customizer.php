@@ -16,6 +16,57 @@ function ggl_add_customizer_options($wp_customize): void
 		'section' => 'title_tagline',
 	) ) );
 
+	$wp_customize->add_panel('frontpage', array(
+		'title' => esc_html__('Front Page', 'gegenlicht'),
+		'priority' => 5,
+		'capability' => 'edit_theme_options',
+		'description' => esc_html__('Control the contents shown on the front page. Select a semester to be shown and the special programs displayed', 'gegenlicht'),
+	));
+
+	$wp_customize->add_section('semester', array(
+		'title' => esc_html__('Displayed Semester', 'gegenlicht'),
+		'panel' => 'frontpage',
+		'priority' => 5,
+		'capability' => 'edit_theme_options',
+		'description' => esc_html__('Display the selected semester on the front page', 'gegenlicht'),
+	));
+
+	$wp_customize->add_setting('displayed_semester', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control('displayed_semester', array(
+		'label'   => esc_html__('Displayed Semester', 'gegenlicht'),
+		'panel' => 'frontpage',
+		'section' => 'semester',
+		'description' => esc_html__('This semester and the assigned movies will be displayed on the front page', 'gegenlicht'),
+		'choices'   => _get_semesters(),
+		'type'     => 'select',
+	));
+
+	$wp_customize->add_section('special-programs', array(
+		'title' => esc_html__('Special Programs', 'gegenlicht'),
+		'panel' => 'frontpage',
+		'priority' => 5,
+		'capability' => 'edit_theme_options',
+		'description' => esc_html__('Display the selected special programs on the front page below the semester progrem', 'gegenlicht'),
+	));
+
+	foreach (_get_special_programs() as $id => $name) {
+		$wp_customize->add_setting('displayed_special_programs[' . $id . ']', array(
+			'type' => 'option',
+			'capability' => 'edit_theme_options',
+		));
+
+		$wp_customize->add_control('displayed_special_programs[' . $id . ']', array(
+			'label'   => $name,
+			'section' => 'special-programs',
+			'type'     => 'checkbox',
+		));
+	}
+
+
+
 	$wp_customize->add_section('anonymization', array(
 		'title'    => esc_html__('Anonymization', 'gegenlicht' ),
 		'priority' => 30,
@@ -222,4 +273,34 @@ function ggl_add_customizer_options($wp_customize): void
 
 function is_member_archive() {
 	return is_post_type_archive('team-member');
+}
+
+function _get_semesters(): array {
+	$terms = get_terms(array(
+		'taxonomy' => 'semester',
+		'hide_empty' => false,
+	));
+
+	$output = array();
+
+	foreach ( $terms as $term ) {
+		$output[$term->term_id] = $term->name;
+	}
+
+	return $output;
+}
+
+function _get_special_programs(): array {
+	$terms = get_terms(array(
+		'taxonomy' => 'special-program',
+		'hide_empty' => false,
+	));
+
+	$output = array();
+
+	foreach ( $terms as $term ) {
+		$output[$term->term_id] = $term->name;
+	}
+
+	return $output;
 }

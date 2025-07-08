@@ -19,6 +19,8 @@ if (str_starts_with($acceptedLanguage, 'de')) {
 } else {
     $outputLanguage = 'en';
 }
+
+$headerImage = get_theme_mod('header_logo');
 ?>
 <!DOCTYPE html>
 <html lang="<?= $outputLanguage ?>" data-theme="">
@@ -27,6 +29,9 @@ if (str_starts_with($acceptedLanguage, 'de')) {
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
+    <?php if ($headerImage): ?>
+    <link rel="preload" href="<?= wp_get_attachment_image_url($headerImage, 'full') ?>" as="image"/>
+    <?php endif; ?>
 	<?php if ( defined( 'WP_DEBUG' ) && WP_DEBUG ): ?>
         <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/style.css" as="style">
         <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/style.css" as="style">
@@ -40,7 +45,9 @@ if (str_starts_with($acceptedLanguage, 'de')) {
           type="font/woff2" crossorigin>
     <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/assets/fonts/inter_italic.woff2" as="font"
           type="font/woff2" crossorigin>
+    <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/assets/js/menu-toggle.js" as="script"/>
     <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/menu-toggle.js"></script>
+    <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/program-list-toggle.js"></script>
 	<?php wp_head(); ?>
 </head>
 <body>
@@ -49,12 +56,11 @@ if (str_starts_with($acceptedLanguage, 'de')) {
         <div class="navbar-brand px-2">
             <a class="navbar-item p-0" href="<?= get_home_url( scheme: 'https' ) ?>">
 				<?php
-				if ( get_theme_mod( 'header_logo' ) != false ):
-					$logoId = get_theme_mod( 'header_logo' );
-					$alternativeDescription = get_post_meta( $logoId, '_wp_attachment_image_alt', true );
-					$logoUrl = wp_get_attachment_image_url( $logoId, 'full' )
+				if ( $headerImage != false ):
+					$alternativeDescription = get_post_meta( $headerImage, '_wp_attachment_image_alt', true );
+					$logoUrl = wp_get_attachment_image_url( $headerImage, 'full' )
 					?>
-                    <img style="height: 56px" src="<?= $logoUrl ?>" alt="<?= $alternativeDescription ?>"/>
+                    <img height="56" style="height: 56px" src="<?= $logoUrl ?>" alt="<?= $alternativeDescription ?>"/>
 				<?php else: ?>
                     <p class="title has-text-black">
 						<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
