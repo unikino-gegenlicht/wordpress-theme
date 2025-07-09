@@ -30,7 +30,7 @@ $headerImage = get_theme_mod('header_logo');
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <?php if ($headerImage): ?>
-    <link rel="preload" href="<?= wp_get_attachment_image_url($headerImage, 'full') ?>" as="image"/>
+    <link rel="preload" href="<?= get_theme_mod('header_logo') ?>" as="image"/>
     <?php endif; ?>
 	<?php if ( defined( 'WP_DEBUG' ) && WP_DEBUG ): ?>
         <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/style.css" as="style">
@@ -60,9 +60,8 @@ $headerImage = get_theme_mod('header_logo');
 				<?php
 				if ( $headerImage != false ):
 					$alternativeDescription = get_post_meta( $headerImage, '_wp_attachment_image_alt', true );
-					$logoUrl = wp_get_attachment_image_url( $headerImage, 'full' )
 					?>
-                    <img height="56" style="height: 56px" src="<?= $logoUrl ?>" alt="<?= $alternativeDescription ?>"/>
+                    <img height="56" style="height: 56px" src="<?= $headerImage ?>" alt="<?= $alternativeDescription ?>"/>
 				<?php else: ?>
                     <p class="title has-text-black">
 						<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>

@@ -22,8 +22,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bulma-body-background-color: black;
-    --bulma-link-text: var(--bulma-body-color);
+    --bulma-body-background-color: black !important;
+    --bulma-link-text: var(--bulma-body-color) !important;
     --bulma-body-color: var(--bulma-primary) !important;
   }
 }
@@ -31,7 +31,7 @@
 :root {
   --bulma-body-background-color: var(--bulma-primary);
   --bulma-body-color: black;
-  --bulma-link-text: var(--bulma-body-color);
+  --bulma-link-text: var(--bulma-body-color) !important;
 }
 
 ::-webkit-scrollbar {

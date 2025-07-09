@@ -11,8 +11,17 @@ function ggl_add_customizer_options($wp_customize): void
 		'type'       => 'theme_mod',
 		'capability' => 'edit_theme_options',
 	) );
-	$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'header_logo', array(
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_logo', array(
 		'label'   => 'Header Logo',
+		'section' => 'title_tagline',
+	) ) );
+
+	$wp_customize->add_setting( 'header_logo_dark', array(
+		'type'       => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_logo_dark', array(
+		'label'   => 'Header Logo (Dark Mode)',
 		'section' => 'title_tagline',
 	) ) );
 

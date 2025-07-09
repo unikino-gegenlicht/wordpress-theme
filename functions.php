@@ -10,7 +10,7 @@ function enable_theme_supports() {
 
 add_action( 'after_setup_theme', 'enable_theme_supports' );
 
-add_filter( 'locale', function( $locale ) {
+add_filter( 'locale', function ( $locale ) {
 	if ( ! isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
 		return $locale;
 	}
@@ -23,14 +23,13 @@ add_filter( 'locale', function( $locale ) {
 	}, [] );
 	arsort( $prefLocales );
 
-	return substr(array_key_first( $prefLocales ), 0, 2);
-});
+	return substr( array_key_first( $prefLocales ), 0, 2 );
+} );
 
-load_theme_textdomain('gegenlicht', get_template_directory() . '/languages');
+load_theme_textdomain( 'gegenlicht', get_template_directory() . '/languages' );
 
 require_once 'inc/customizer.php';
 add_action( 'customize_register', 'ggl_add_customizer_options' );
-
 
 
 /**
@@ -108,7 +107,7 @@ add_action( 'wp_enqueue_scripts', function () {
 register_nav_menu( "navigation-menu", "Navigation Menu" );
 
 
-show_admin_bar(false);
+show_admin_bar( false );
 
 
 function block_wp_admin() {
@@ -118,40 +117,56 @@ function block_wp_admin() {
 		exit;
 	}
 }
+
 add_action( 'admin_init', 'block_wp_admin' );
 
 require_once 'inc/contact-block.php';
 add_shortcode( 'ggl-contact-block', 'ggl_do_contact_shortcode' );
 
-function my_login_logo() { ?>
-	<style type="text/css">
+function my_login_logo() {
+	?>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            #login h1 a {
+                background-image: url(<?=  get_theme_mod( 'header_logo_dark' ) ?>) !important;
+                width: 320px;
+                background-size: 320px 65px;
+                background-repeat: no-repeat;
+                padding-bottom: 30px;
+            }
+        }
+
         #login h1 a {
-            background-image: url(<?= wp_get_attachment_image_url( get_theme_mod( 'header_logo' ) ) ?>);
+            background-image: url(<?= get_theme_mod( 'header_logo' ) ?>);
             width: 320px;
             background-size: 320px 65px;
             background-repeat: no-repeat;
             padding-bottom: 30px;
         }
-	</style>
+    </style>
 <?php }
+
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
 function my_login_logo_url() {
 	return home_url();
 }
+
 add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 function my_login_stylesheet() {
-    if (defined("WP_DEBUG") && WP_DEBUG):
-	    wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/assets/css/login.css' );
-    else:
-	    wp_enqueue_style( 'custom-login-min', get_stylesheet_directory_uri() . '/assets/css/login.min.css' );
-    endif;
+	if ( defined( "WP_DEBUG" ) && WP_DEBUG ):
+		wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/assets/css/login.css' );
+	else:
+		wp_enqueue_style( 'custom-login-min', get_stylesheet_directory_uri() . '/assets/css/login.min.css' );
+	endif;
 
-    }
+}
+
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
 function custom_login_error_message( $error ) {
-	return esc_html__("Unable to log in. Please check your credentials and try again.", 'gegenlicht');
+	return esc_html__( "Unable to log in. Please check your credentials and try again.", 'gegenlicht' );
 }
+
 add_filter( 'login_errors', 'custom_login_error_message' );
