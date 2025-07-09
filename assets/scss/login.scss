@@ -52,7 +52,7 @@ body.login div#login {
   max-width: calc(100vw - 0.75rem) !important;
   margin: 0 auto;
   padding: 1rem 0 !important;
-  width: unset !important;
+  width: 100% !important;
 }
 
 @include mixins.tablet {
@@ -92,16 +92,23 @@ body.login div#login form#loginform input {
   border-radius: 0;
 }
 
-#login-message {
+#login-message,
+div.notice {
   background-color: #72aee6 !important;
   color: white !important;
   border: none !important;
+
+  > * {
+    text-align: center !important;
+  }
 }
 
 #login_error {
   background-color: #d63638 !important;
   color: white !important;
   border: none !important;
+  text-align: center !important;
+
 }
 
 strong {
@@ -112,7 +119,8 @@ body.login div#login form#loginform p.forgetmenot {
   display: none;
 }
 
-body.login div#login form#loginform p.submit input#wp-submit {
+body.login div#login form#loginform p.submit input#wp-submit,
+body.login div#login form#registerform p.submit input#wp-submit{
   border-radius: 0;
   background-color: var(--bulma-body-color) !important;
   color: var(--bulma-body-background-color) !important;
@@ -139,4 +147,18 @@ body.login div#login p#nav a {
 
 .language-switcher {
   display: none;
+}
+
+#registerform {
+
+  background-color: var(--bulma-body-background-color) !important;
+  color: var(--bulma-body-color) !important;
+  border: var(--bulma-body-color) 5px solid !important;
+}
+
+#registerform input {
+  border: var(--bulma-body-color) 2px solid !important;
+  background-color: var(--bulma-body-background-color) !important;
+  box-shadow: none !important;
+  border-radius: 0;
 }
