@@ -1,4 +1,7 @@
 <?php
+/**
+ * Template Name: Front Page
+ */
 
 defined( 'ABSPATH' ) || exit;
 

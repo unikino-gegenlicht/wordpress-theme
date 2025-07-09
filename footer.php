@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The footer of all pages
+ * Template Name: Page Footer
  */
 defined( 'ABSPATH' ) || exit;
 ?>

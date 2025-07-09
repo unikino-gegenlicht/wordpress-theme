@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Template Name: Movie Detail Page
+ */
+
 defined( 'ABSPATH' ) || exit;
 
 

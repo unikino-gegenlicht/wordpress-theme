@@ -1,9 +1,6 @@
 <?php
 /**
- * The HTML header for the theme
- *
- * This file renders the HTML header block for the wordpress theme which
- * includes preloading/prefetching stylesheets, common assets and fonts
+ * Template Name: Page Header
  */
 defined( 'ABSPATH' ) || exit;
 
