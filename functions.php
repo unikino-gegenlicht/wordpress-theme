@@ -143,6 +143,13 @@ function my_login_logo() {
             background-repeat: no-repeat;
             padding-bottom: 30px;
         }
+
+        #loginform:after {
+            content: "<?= esc_html__('Members of the Carl von Ossietzky University are able to register for a free account to get more details about the program') ?>";
+            display: block;
+            margin-top: 4rem !important;
+            font-style: italic;
+        }
     </style>
 <?php }
 
@@ -166,7 +173,15 @@ function my_login_stylesheet() {
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
 function custom_login_error_message( $error ) {
-	return esc_html__( "Unable to log in. Please check your credentials and try again.", 'gegenlicht' );
+    if (strpos($error, 'Please enter a username') || strpos($error, 'Please type your email address')) {
+        return esc_html__( 'Username or email address is missing', 'gegenlicht' );
+    }
+    if ((strpos($error, 'The username') && strpos($error, 'is not registered on this site') ) ||  strpos($error, 'Unknown email address') || strpos($error, 'The password you entered for the username')) {
+	    return esc_html__( 'The entered credentials are invalid. Please try again', 'gegenlicht' );
+
+    }
+	return $error;
 }
 
 add_filter( 'login_errors', 'custom_login_error_message' );
+add_filter( 'login_display_language_dropdown', '__return_false' );
