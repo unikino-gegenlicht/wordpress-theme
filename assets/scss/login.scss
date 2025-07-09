@@ -119,8 +119,8 @@ body.login div#login form#loginform p.forgetmenot {
   display: none;
 }
 
-body.login div#login form#loginform p.submit input#wp-submit,
-body.login div#login form#registerform p.submit input#wp-submit{
+input#wp-submit,
+input#wp-submit{
   border-radius: 0;
   background-color: var(--bulma-body-color) !important;
   color: var(--bulma-body-background-color) !important;
@@ -134,8 +134,23 @@ body.login div#login p#nav a {
   color: var(--bulma-body-color) !important;
 }
 
-#loginform > div > div.wp-pwd > button.wp-hide-pw {
+button.wp-hide-pw {
   display: none !important;
+}
+
+#pass-strength-result {
+  &.strong {
+    background-color: var(--bulma-success) !important;
+  }
+  &.short {
+    background-color: var(--bulma-danger) !important;
+  }
+  &.bad {
+    background-color: var(--bulma-danger) !important;
+  }
+  &.good {
+    background-color: var(--bulma-warning) !important;
+  }
 }
 
 #auth-external-service-login > p > a {
@@ -157,6 +172,25 @@ body.login div#login p#nav a {
 }
 
 #registerform input {
+  border: var(--bulma-body-color) 2px solid !important;
+  background-color: var(--bulma-body-background-color) !important;
+  box-shadow: none !important;
+  border-radius: 0;
+}
+
+#resetpassform {
+  border: var(--bulma-body-color) 5px solid !important;
+  background-color: var(--bulma-body-background-color) !important;
+  color: var(--bulma-body-color) !important;
+}
+
+button.wp-generate-pw {
+  background-color: var(--bulma-body-color) !important;
+  color: var(--bulma-body-background-color) !important;
+  border: none;
+}
+
+#pass1 {
   border: var(--bulma-body-color) 2px solid !important;
   background-color: var(--bulma-body-background-color) !important;
   box-shadow: none !important;
