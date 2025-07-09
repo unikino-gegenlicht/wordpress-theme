@@ -36,16 +36,16 @@ defined( 'ABSPATH' ) || exit;
     </address>
     <hr class="separator is-primary"/>
     <div class="has-text-primary my-2">
-        <h5 class="has-text-weight-semibold"><?= esc_html__( 'Youth Protection Officer' ) ?></h5>
+        <h5 class="has-text-weight-semibold"><?= esc_html__( 'Youth Protection Officer', 'gegenlicht' ) ?></h5>
         <a class="has-text-primary"
            href="mailto:<?= get_theme_mod( 'ypo_email' ) ?>"><?= get_theme_mod( 'ypo_name' ) ?></a>
         <p><?= str_replace( "@", " (at) ", get_theme_mod( 'ypo_email' ) ) ?></p>
     </div>
     <div class="is-flex is-align-items-center my-2 has-text-primary links are-primary is-flex-wrap-wrap">
-        <a class="" href=""><?= esc_html__( 'Impress' ) ?></a>
+        <a class="" href=""><?= esc_html__( 'Impress', 'gegenlicht' ) ?></a>
         <a class="" href="<?= get_privacy_policy_url() ?>"
-           rel="privacy-policy"><?= esc_html__( 'Privacy Policy' ) ?></a>
-        <a class="" href=""><?= esc_html__( 'Contact' ) ?></a>
+           rel="privacy-policy"><?= esc_html__( 'Privacy Policy', 'gegenlicht' ) ?></a>
+        <a class="" href=""><?= esc_html__( 'Contact', 'gegenlicht' ) ?></a>
     </div>
     <div class="mt-4">
         <img alt="made by humans. not by ai" src="<?= get_stylesheet_directory_uri() ?>/assets/img/no-ai.svg"/>

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-04T16:46:54+00:00\n"
+"POT-Creation-Date: 2025-07-09T11:10:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -59,27 +59,78 @@ msgstr ""
 msgid "Former Members"
 msgstr ""
 
-#: front-page.php:42
+#. Template Name of the theme
+msgid "Page Footer"
+msgstr ""
+
+#: footer.php:39
+msgid "Youth Protection Officer"
+msgstr ""
+
+#: footer.php:45
+msgid "Impress"
+msgstr ""
+
+#: footer.php:47
+msgid "Privacy Policy"
+msgstr ""
+
+#: footer.php:48
+#: inc/contact-block.php:28
+#: inc/customizer.php:139
+msgid "Contact"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/customizer.php:29
+msgid "Front Page"
+msgstr ""
+
+#: front-page.php:73
 msgid "Next Screening"
 msgstr ""
 
-#: front-page.php:48
-#: front-page.php:79
-#: single-movie.php:78
+#: front-page.php:73
+msgid "Afterwards at"
+msgstr ""
+
+#: front-page.php:77
+#: front-page.php:152
+#: front-page.php:252
+#: single-movie.php:77
 msgid "An unnamed movie"
 msgstr ""
 
-#: header.php:105
+#: front-page.php:89
+msgid "To the movie"
+msgstr ""
+
+#: front-page.php:125
+msgid "Our Semester Program"
+msgstr ""
+
+#: front-page.php:130
+msgid "Main Program Only"
+msgstr ""
+
+#: functions.php:180
+msgid "Username or email address is missing"
+msgstr ""
+
+#: functions.php:183
+msgid "The entered credentials are invalid. Please try again"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Page Header"
+msgstr ""
+
+#: header.php:121
 msgid "Logout"
 msgstr ""
 
-#: header.php:112
+#: header.php:128
 msgid "Login"
-msgstr ""
-
-#: inc/contact-block.php:28
-#: inc/customizer.php:61
-msgid "Contact"
 msgstr ""
 
 #: inc/contact-block.php:33
@@ -90,179 +141,247 @@ msgstr ""
 msgid "or just reach out to us at one of our screenings"
 msgstr ""
 
-#: inc/customizer.php:20
+#: inc/customizer.php:32
+msgid "Control the contents shown on the front page. Select a semester to be shown and the special programs displayed"
+msgstr ""
+
+#: inc/customizer.php:36
+#: inc/customizer.php:48
+msgid "Displayed Semester"
+msgstr ""
+
+#: inc/customizer.php:40
+msgid "Display the selected semester on the front page"
+msgstr ""
+
+#: inc/customizer.php:51
+msgid "This semester and the assigned movies will be displayed on the front page"
+msgstr ""
+
+#: inc/customizer.php:57
+msgid "Special Programs"
+msgstr ""
+
+#: inc/customizer.php:61
+msgid "Display the selected special programs on the front page below the semester progrem"
+msgstr ""
+
+#: inc/customizer.php:80
 msgid "Anonymization"
 msgstr ""
 
-#: inc/customizer.php:23
+#: inc/customizer.php:83
 msgid "Control the anonymization for movies/events that we can't advertise"
 msgstr ""
 
-#: inc/customizer.php:30
+#: inc/customizer.php:90
 msgid "Fallback Image"
 msgstr ""
 
-#: inc/customizer.php:31
+#: inc/customizer.php:91
 msgid "Upload an image for fallback usage which is displayed on a movies detail page in case one hasn't been uploaded or the movie may not be advertised"
 msgstr ""
 
-#: inc/customizer.php:37
-msgid "Contact & Address Information"
+#: inc/customizer.php:99
+msgid "Explanation for Anonymization (English)"
 msgstr ""
 
-#: inc/customizer.php:38
-msgid "In this section you can add and edit the general contact information as well as the address displayed in the footer"
+#: inc/customizer.php:101
+#: inc/customizer.php:109
+msgid "This text will be displayed below the posts anonymous image, if a movie's details may not be displayed"
 msgstr ""
 
-#: inc/customizer.php:44
-#: inc/customizer.php:55
-msgid "Address"
-msgstr ""
-
-#: inc/customizer.php:47
-msgid "In this section you can add and edit the address displayed in the footer"
-msgstr ""
-
-#: inc/customizer.php:64
-msgid "In this section you can add and edit the general contact information"
-msgstr ""
-
-#: inc/customizer.php:68
-msgid "Youth Protection"
-msgstr ""
-
-#: inc/customizer.php:69
-msgid "Information about the Youth Protection Officer"
-msgstr ""
-
-#: inc/customizer.php:79
-msgid "Name"
-msgstr ""
-
-#: inc/customizer.php:88
-msgid "E-Mail Address"
-msgstr ""
-
-#: inc/customizer.php:93
-msgid "Social Medias"
-msgstr ""
-
-#: inc/customizer.php:94
-msgid "You can set the usernames/urls to the commonly used social medias here"
-msgstr ""
-
-#: inc/customizer.php:104
-msgid "Instagram Username"
-msgstr ""
-
-#: inc/customizer.php:113
-msgid "Mastodon URL"
+#: inc/customizer.php:108
+msgid "Explanation for Anonymization (German)"
 msgstr ""
 
 #: inc/customizer.php:115
-msgid "Please use the full url to the profile as Mastodon is decentralized"
+msgid "Contact & Address Information"
 msgstr ""
 
-#: inc/customizer.php:123
-msgid "Letterboxd Username"
+#: inc/customizer.php:116
+msgid "In this section you can add and edit the general contact information as well as the address displayed in the footer"
 msgstr ""
 
+#: inc/customizer.php:122
 #: inc/customizer.php:133
-msgid "E-Mail Address for Contact"
+msgid "Address"
 msgstr ""
 
-#: inc/customizer.php:143
-msgid "Phone Number"
+#: inc/customizer.php:125
+msgid "In this section you can add and edit the address displayed in the footer"
 msgstr ""
 
-#: inc/customizer.php:149
-msgid "Team"
+#: inc/customizer.php:142
+msgid "In this section you can add and edit the general contact information"
 msgstr ""
 
-#: inc/customizer.php:150
-msgid "Customize the options for the members page"
+#: inc/customizer.php:146
+msgid "Youth Protection"
 msgstr ""
 
-#: inc/customizer.php:160
-#: inc/customizer.php:182
-msgid "Introduction Text (English)"
+#: inc/customizer.php:147
+msgid "Information about the Youth Protection Officer"
 msgstr ""
 
-#: inc/customizer.php:163
-#: inc/customizer.php:174
-#: inc/customizer.php:185
-#: inc/customizer.php:196
-#: inc/customizer.php:207
-msgid "To create a new paragraph inside the text, please use a doubled line break. All other linebreaks will be removed"
+#: inc/customizer.php:157
+msgid "Name"
+msgstr ""
+
+#: inc/customizer.php:166
+msgid "E-Mail Address"
 msgstr ""
 
 #: inc/customizer.php:171
-msgid "Introduction Text (German)"
+msgid "Social Medias"
+msgstr ""
+
+#: inc/customizer.php:172
+msgid "You can set the usernames/urls to the commonly used social medias here"
+msgstr ""
+
+#: inc/customizer.php:182
+msgid "Instagram Username"
+msgstr ""
+
+#: inc/customizer.php:191
+msgid "Mastodon URL"
 msgstr ""
 
 #: inc/customizer.php:193
+msgid "Please use the full url to the profile as Mastodon is decentralized"
+msgstr ""
+
+#: inc/customizer.php:201
+msgid "Letterboxd Username"
+msgstr ""
+
+#: inc/customizer.php:211
+msgid "E-Mail Address for Contact"
+msgstr ""
+
+#: inc/customizer.php:221
+msgid "Phone Number"
+msgstr ""
+
+#: inc/customizer.php:227
+msgid "Team"
+msgstr ""
+
+#: inc/customizer.php:228
+msgid "Customize the options for the members page"
+msgstr ""
+
+#: inc/customizer.php:238
+#: inc/customizer.php:260
+msgid "Introduction Text (English)"
+msgstr ""
+
+#: inc/customizer.php:241
+#: inc/customizer.php:252
+#: inc/customizer.php:263
+#: inc/customizer.php:274
+#: inc/customizer.php:285
+msgid "To create a new paragraph inside the text, please use a doubled line break. All other linebreaks will be removed"
+msgstr ""
+
+#: inc/customizer.php:249
+msgid "Introduction Text (German)"
+msgstr ""
+
+#: inc/customizer.php:271
 msgid "Thank You Note (English)"
 msgstr ""
 
-#: inc/customizer.php:204
+#: inc/customizer.php:282
 msgid "Thank You Note (German)"
 msgstr ""
 
-#: inc/customizer.php:216
+#: inc/customizer.php:294
 msgid "This image is used a team member didn't upload an image"
 msgstr ""
 
-#: single-movie.php:50
+#. Template Name of the theme
+msgid "Plain Content Page"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Movie Detail Page"
+msgstr ""
+
+#: single-movie.php:49
 msgid "Screening"
 msgstr ""
 
-#: single-movie.php:65
+#: single-movie.php:64
 msgid "Free Admission"
 msgstr ""
 
-#: single-movie.php:68
+#: single-movie.php:67
 msgid "Donations welcome"
 msgstr ""
 
-#: single-movie.php:71
+#: single-movie.php:70
 msgid "Admission"
 msgstr ""
 
-#: single-movie.php:87
+#: single-movie.php:86
 msgid "Minutes"
 msgstr ""
 
-#: single-movie.php:113
+#: single-movie.php:112
 msgid "Not Rated"
 msgstr ""
 
-#: single-movie.php:116
+#: single-movie.php:115
 msgid "FSK"
 msgstr ""
 
-#: single-movie.php:128
-#: single-movie.php:131
+#: single-movie.php:127
+#: single-movie.php:130
 msgid "Original with"
 msgstr ""
 
-#: single-movie.php:128
-#: single-movie.php:131
-#: single-movie.php:139
+#: single-movie.php:127
+#: single-movie.php:130
+#: single-movie.php:138
 msgid "Subtitles"
 msgstr ""
 
-#: single-movie.php:134
+#: single-movie.php:133
 msgid "Original without Subtitles"
 msgstr ""
 
-#: single-movie.php:134
+#: single-movie.php:133
 msgid "OV"
 msgstr ""
 
-#: single-movie.php:139
+#: single-movie.php:138
 msgid "Audio without Subtitles"
 msgstr ""
 
-#: single-movie.php:139
+#: single-movie.php:138
 msgid "Audio with"
+msgstr ""
+
+#: single-movie.php:182
+#: single-movie.php:228
+msgid "Reserve Now"
+msgstr ""
+
+#: single-movie.php:189
+msgid "Content Notice"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Semester Program Overview"
+msgstr ""
+
+#: taxonomy-semester.php:34
+#: taxonomy-special-program.php:52
+msgid "The program hosted"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Special Program Detail Page"
 msgstr ""

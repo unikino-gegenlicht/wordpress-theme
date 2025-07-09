@@ -147,27 +147,65 @@ if ( $isSpecialProgram ):
         <figure class="image is-hidden-mobile is-16by9 movie-image">
             <img alt="<?= $showDetails ? get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true) : ''?>" src="<?= $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url($anonymousImage, size: 'full') ?>"/>
         </figure>
+        <?php if (!$showDetails && !$isSpecialProgram): ?>
+            <div class="boxed-text mt-3">
+                <?php
+                $introTextRaw = get_theme_mod( 'anonymized_movie_explainer_' . get_locale() );
+                $paragraphs   = preg_split( "/\R\R/", $introTextRaw );
+                foreach ( $paragraphs as $paragraph ) :
+	                ?>
+                    <p>
+		                <?= $paragraph ?>
+                    </p>
+                <?php
+                endforeach;
+                ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($isSpecialProgram): ?>
+            <div class="boxed-text mt-3">
+		        <?php
+		        $paragraphs   = preg_split( "/\R\R/", $specialProgram->description );
+		        foreach ( $paragraphs as $paragraph ) :
+			        ?>
+                    <p>
+				        <?= $paragraph ?>
+                    </p>
+		        <?php
+		        endforeach;
+		        ?>
+            </div>
+        <?php endif; ?>
     </header>
     <div class="has-background-white py-4 px-2 my-5 reservation-button">
         <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" href="">
-            <span class="has-text-weight-bold"><?= esc_html__( 'Reserve Now' ) ?></span>
+            <span class="has-text-weight-bold"><?= esc_html__( 'Reserve Now', 'gegenlicht' ) ?></span>
             <span class="material-symbols ml-1">open_in_new</span>
         </a>
     </div>
     <article class="page-content px-2 mt-4">
+        <?php if (rwmb_meta('show_content_notice')): ?>
+        <div class="content-notice mb-6 p-2">
+            <h2 class="is-size-4"><?= esc_html__("Content Notice", 'gegenlicht') ?></h2>
+            <hr class="separator m-1 is-background-color"/>
+            <p>
+                <?= rwmb_meta('content_notice') ?>
+            </p>
+        </div>
+        <?php endif; ?>
         <h2 class="font-ggl is-size-3 is-uppercase">
 			<?= esc_html__( 'What the movie is about' ) ?>
         </h2>
         <hr class="separator"/>
         <p>
-			<?= rwmb_meta( 'summary' ) ?>
+			<?= $showDetails ? rwmb_meta( 'summary' ) : rwmb_meta('anon_summary') ?>
         </p>
         <h2 class="font-ggl is-size-3 is-uppercase mt-6">
 			<?= esc_html__( "Why it's worth watching" ) ?>
         </h2>
         <hr class="separator"/>
         <p>
-			<?= rwmb_meta( 'worth_to_see' ) ?>
+			<?= $showDetails ? rwmb_meta( 'worth_to_see' ) : rwmb_meta('anon_worth_to_see') ?>
         </p>
 		<?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
             <hr class="separator mt-6"/>
@@ -187,7 +225,7 @@ if ( $isSpecialProgram ):
     </article>
     <div class="has-background-white py-4 px-2 mt-5 reservation-button">
         <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" href="">
-            <span class="has-text-weight-bold"><?= esc_html__( 'Reserve Now' ) ?></span>
+            <span class="has-text-weight-bold"><?= esc_html__( 'Reserve Now', 'gegenlicht' ) ?></span>
             <span class="material-symbols ml-1">open_in_new</span>
         </a>
     </div>

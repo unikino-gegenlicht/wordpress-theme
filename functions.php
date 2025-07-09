@@ -10,16 +10,15 @@ function enable_theme_supports() {
 
 add_action( 'after_setup_theme', 'enable_theme_supports' );
 
-//add_filter( 'locale', 'use_accept_locale' );
-add_filter('pre_determine_locale', 'use_accept_locale');
-function use_accept_locale($locale) {
-    if (is_user_logged_in() && is_admin()) {
-	    return get_user_locale();
-    }
+add_filter( 'locale', 'use_accept_locale' );
+add_filter( 'pre_determine_locale', 'use_accept_locale' );
+function use_accept_locale( $locale ) {
+	if ( is_user_logged_in() && is_admin() ) {
+		return get_user_locale();
+	}
 	if ( ! isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
 		return $locale;
 	}
-
 	$prefLocales = array_reduce( explode( ',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] ), function ( $res, $el ) {
 		list( $l, $q ) = array_merge( explode( ';q=', $el ), [ 1 ] );
 		$res[ $l ] = (float) $q;
@@ -27,7 +26,6 @@ function use_accept_locale($locale) {
 		return $res;
 	}, [] );
 	arsort( $prefLocales );
-
 	return substr( array_key_first( $prefLocales ), 0, 2 );
 }
 
@@ -178,13 +176,14 @@ function my_login_stylesheet() {
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
 function custom_login_error_message( $error ) {
-    if (strpos($error, 'Please enter a username') || strpos($error, 'Please type your email address')) {
-        return esc_html__( 'Username or email address is missing', 'gegenlicht' );
-    }
-    if ((strpos($error, 'The username') && strpos($error, 'is not registered on this site') ) ||  strpos($error, 'Unknown email address') || strpos($error, 'The password you entered for the username')) {
-	    return esc_html__( 'The entered credentials are invalid. Please try again', 'gegenlicht' );
+	if ( strpos( $error, 'Please enter a username' ) || strpos( $error, 'Please type your email address' ) ) {
+		return esc_html__( 'Username or email address is missing', 'gegenlicht' );
+	}
+	if ( ( strpos( $error, 'The username' ) && strpos( $error, 'is not registered on this site' ) ) || strpos( $error, 'Unknown email address' ) || strpos( $error, 'The password you entered for the username' ) ) {
+		return esc_html__( 'The entered credentials are invalid. Please try again', 'gegenlicht' );
 
-    }
+	}
+
 	return $error;
 }
 

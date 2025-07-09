@@ -86,7 +86,7 @@ do_action( 'wp_body_open' );
                 </figure>
                 <hr class="separator"/>
                 <a class="button is-outlined is-black is-fullwidth mt-2" href="<?= get_the_permalink() ?>">
-                    <p class="is-size-4 is-uppercase py-1"><?= esc_html__( 'To the movie' ) ?></p>
+                    <p class="is-size-4 is-uppercase py-1"><?= esc_html__( 'To the movie', 'gegenlicht' ) ?></p>
                 </a>
             </article>
 		<?php endfor;
@@ -122,7 +122,7 @@ do_action( 'wp_body_open' );
 		?>
 
 		<?php if ( ! empty( $monthlyMovies ) ) : ?>
-            <h1 class="title is-uppercase pb-0 mb-0"><?= esc_html__( 'Our Semester Program' ) ?></h1>
+            <h1 class="title is-uppercase pb-0 mb-0"><?= esc_html__( 'Our Semester Program', 'gegenlicht' ) ?></h1>
             <hr class="separator" style="margin-bottom: 0.25rem;"/>
             <div class="is-flex is-justify-content-space-between is-align-items-center is-clickable"
                  onclick="toggleSpecialProgramDisplay()">

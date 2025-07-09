@@ -91,6 +91,24 @@ function ggl_add_customizer_options($wp_customize): void
 		'description' => esc_html__("Upload an image for fallback usage which is displayed on a movies detail page in case one hasn't been uploaded or the movie may not be advertised", 'gegenlicht' ),
 		'section' => 'anonymization',
 	) ) );
+	$wp_customize->add_setting('anonymized_movie_explainer_en', array(
+		'type'       => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control('anonymized_movie_explainer_en', array(
+		'label'   => esc_html__('Explanation for Anonymization (English)', 'gegenlicht'),
+		'section' => 'anonymization',
+		'description' => esc_html__("This text will be displayed below the posts anonymous image, if a movie's details may not be displayed", 'gegenlicht' ),
+	));
+	$wp_customize->add_setting('anonymized_movie_explainer_de', array(
+		'type'       => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control('anonymized_movie_explainer_de', array(
+		'label'   => esc_html__('Explanation for Anonymization (German)', 'gegenlicht'),
+		'description' => esc_html__("This text will be displayed below the posts anonymous image, if a movie's details may not be displayed", 'gegenlicht' ),
+		'section' => 'anonymization',
+	));
 
 
 	$wp_customize->add_panel('contact_info', array(
