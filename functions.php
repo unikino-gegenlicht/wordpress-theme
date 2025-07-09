@@ -10,7 +10,12 @@ function enable_theme_supports() {
 
 add_action( 'after_setup_theme', 'enable_theme_supports' );
 
-add_filter( 'locale', function ( $locale ) {
+//add_filter( 'locale', 'use_accept_locale' );
+add_filter('pre_determine_locale', 'use_accept_locale');
+function use_accept_locale($locale) {
+    if (is_user_logged_in() && is_admin()) {
+	    return get_user_locale();
+    }
 	if ( ! isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
 		return $locale;
 	}
@@ -24,7 +29,7 @@ add_filter( 'locale', function ( $locale ) {
 	arsort( $prefLocales );
 
 	return substr( array_key_first( $prefLocales ), 0, 2 );
-} );
+}
 
 load_theme_textdomain( 'gegenlicht', get_template_directory() . '/languages' );
 
