@@ -136,7 +136,7 @@ do_action( 'wp_body_open' );
             </div>
             <hr class="separator mb-6" style="margin-top: 0.25rem;"/>
 			<?php foreach ( $monthlyMovies as $month => $posts ) : ?>
-                <div class="movie-list mb-5">
+                <div class="movie-list mb-5 is-filterable">
                     <p style="background-color: var(--bulma-body-color); color: var(--bulma-body-background-color)"
                        class="font-ggl is-uppercase is-size-5 py-1 pl-1"><?= esc_html__( $month, 'gegenlicht' ) ?></p>
 					<?php foreach ( $posts as $post ) : $post = get_post( $post );

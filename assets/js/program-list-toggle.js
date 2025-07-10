@@ -14,7 +14,7 @@ function toggleSpecialProgramDisplay() {
         entry.classList.toggle('is-hidden');
     }
 
-    let movieLists = document.getElementsByClassName('movie-list')
+    let movieLists = document.getElementsByClassName('movie-list is-filterable')
     for (let movieList of movieLists) {
         let visibleLinks = 0;
 
