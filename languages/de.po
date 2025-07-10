@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "POT-Creation-Date: 2025-07-04T16:26:53+00:00\n"
-"PO-Revision-Date: 2025-07-09 13:10+0200\n"
+"PO-Revision-Date: 2025-07-10 23:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -367,3 +367,19 @@ msgstr "Unser Semesterprogramm"
 #: single-movie.php:182 single-movie.php:228
 msgid "Reserve Now"
 msgstr "Jetzt Reservieren"
+
+#: single-movie.php:197
+msgid "What the movie is about"
+msgstr "Darum geht es"
+
+#: single-movie.php:204
+msgid "Why it's worth watching"
+msgstr "Darum sehenswert"
+
+#: single-movie.php:260
+msgid "Selected by"
+msgstr "Ausgesucht von"
+
+#: single-movie.php:316
+msgid "No proposals found. Check back later…"
+msgstr "Nichts gefunden. Schau später nochmal vorbei…"

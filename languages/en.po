@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-07-04T16:26:53+00:00\n"
-"PO-Revision-Date: 2025-07-04 18:48+0200\n"
+"PO-Revision-Date: 2025-07-10 23:01+0200\n"
 "Language: en\n"
 "X-Generator: Poedit 3.6\n"
 "X-Domain: gegenlicht\n"
@@ -270,117 +270,133 @@ msgstr "Next Screening"
 
 #. Template Name of the theme
 msgid "Page Footer"
-msgstr ""
+msgstr "Page Footer"
 
 #: footer.php:39
 msgid "Youth Protection Officer"
-msgstr ""
+msgstr "Youth Protection Officer"
 
 #: footer.php:45
 msgid "Impress"
-msgstr ""
+msgstr "Impress"
 
 #: footer.php:47
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Privacy Policy"
 
 #. Template Name of the theme
 #: inc/customizer.php:29
 msgid "Front Page"
-msgstr ""
+msgstr "Front Page"
 
 #: front-page.php:73
 msgid "Afterwards at"
-msgstr ""
+msgstr "Afterwards at"
 
 #: front-page.php:89
 msgid "To the movie"
-msgstr ""
+msgstr "To the movie"
 
 #: front-page.php:130
 msgid "Main Program Only"
-msgstr ""
+msgstr "Main Program Only"
 
 #: functions.php:180
 msgid "Username or email address is missing"
-msgstr ""
+msgstr "Username or email address is missing"
 
 #: functions.php:183
 msgid "The entered credentials are invalid. Please try again"
-msgstr ""
+msgstr "The entered credentials are invalid. Please try again"
 
 #. Template Name of the theme
 msgid "Page Header"
-msgstr ""
+msgstr "Page Header"
 
 #: inc/customizer.php:32
 msgid "Control the contents shown on the front page. Select a semester to be shown and the special programs displayed"
-msgstr ""
+msgstr "Control the contents shown on the front page. Select a semester to be shown and the special programs displayed"
 
 #: inc/customizer.php:36
 #: inc/customizer.php:48
 msgid "Displayed Semester"
-msgstr ""
+msgstr "Displayed Semester"
 
 #: inc/customizer.php:40
 msgid "Display the selected semester on the front page"
-msgstr ""
+msgstr "Display the selected semester on the front page"
 
 #: inc/customizer.php:51
 msgid "This semester and the assigned movies will be displayed on the front page"
-msgstr ""
+msgstr "This semester and the assigned movies will be displayed on the front page"
 
 #: inc/customizer.php:57
 msgid "Special Programs"
-msgstr ""
+msgstr "Special Programs"
 
 #: inc/customizer.php:61
 msgid "Display the selected special programs on the front page below the semester progrem"
-msgstr ""
+msgstr "Display the selected special programs on the front page below the semester progrem"
 
 #: inc/customizer.php:99
 msgid "Explanation for Anonymization (English)"
-msgstr ""
+msgstr "Explanation for Anonymization (English)"
 
 #: inc/customizer.php:101
 #: inc/customizer.php:109
 msgid "This text will be displayed below the posts anonymous image, if a movie's details may not be displayed"
-msgstr ""
+msgstr "This text will be displayed below the posts anonymous image, if a movie's details may not be displayed"
 
 #: inc/customizer.php:108
 msgid "Explanation for Anonymization (German)"
-msgstr ""
+msgstr "Explanation for Anonymization (German)"
 
 #. Template Name of the theme
 msgid "Plain Content Page"
-msgstr ""
+msgstr "Plain Content Page"
 
 #. Template Name of the theme
 msgid "Movie Detail Page"
-msgstr ""
+msgstr "Movie Detail Page"
 
 #: single-movie.php:189
 msgid "Content Notice"
-msgstr ""
+msgstr "Content Notice"
 
 #. Template Name of the theme
 msgid "Semester Program Overview"
-msgstr ""
+msgstr "Semester Program Overview"
 
 #: taxonomy-semester.php:34
 #: taxonomy-special-program.php:52
 msgid "The program hosted"
-msgstr ""
+msgstr "The program hosted"
 
 #. Template Name of the theme
 msgid "Special Program Detail Page"
-msgstr ""
+msgstr "Special Program Detail Page"
 
 #: front-page.php:125
 msgid "Our Semester Program"
-msgstr ""
+msgstr "Our Semester Program"
 
 #: single-movie.php:182
 #: single-movie.php:228
 msgid "Reserve Now"
+msgstr "Reserve Now"
+
+#: single-movie.php:197
+msgid "What the movie is about"
+msgstr "What the movie is about"
+
+#: single-movie.php:204
+msgid "Why it's worth watching"
+msgstr "Why it's worth watching"
+
+#: single-movie.php:260
+msgid "Selected by"
+msgstr "Selected by"
+
+#: single-movie.php:316
+msgid "No proposals found. Check back later…"
 msgstr ""

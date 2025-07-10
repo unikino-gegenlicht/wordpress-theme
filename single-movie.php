@@ -194,14 +194,14 @@ if ( $isSpecialProgram ):
         </div>
         <?php endif; ?>
         <h2 class="font-ggl is-size-3 is-uppercase">
-			<?= esc_html__( 'What the movie is about' ) ?>
+			<?= esc_html__( 'What the movie is about', 'gegenlicht' ) ?>
         </h2>
         <hr class="separator"/>
         <p>
 			<?= $showDetails ? rwmb_meta( 'summary' ) : rwmb_meta('anon_summary') ?>
         </p>
         <h2 class="font-ggl is-size-3 is-uppercase mt-6">
-			<?= esc_html__( "Why it's worth watching" ) ?>
+			<?= esc_html__( "Why it's worth watching", 'gegenlicht' ) ?>
         </h2>
         <hr class="separator"/>
         <p>
@@ -257,7 +257,7 @@ if ( $isSpecialProgram ):
         <div class="page-content">
 
             <p class="font-ggl is-size-3 is-uppercase">
-				<?= esc_html__( 'Selected by' ) ?><br class="is-hidden-tablet"/>
+				<?= esc_html__( 'Selected by', 'gegenlicht' ) ?><br class="is-hidden-tablet"/>
 				<?= $selectedBy ?>
             </p>
             <hr class="separator is-black"/>
@@ -313,7 +313,7 @@ if ( $isSpecialProgram ):
 						wp_reset_postdata();
 					else:
 						?>
-                        <p class="is-align-self-center"><?= esc_html__( 'No proposals found. Check back later…' ) ?></p>
+                        <p class="is-align-self-center"><?= esc_html__( 'No proposals found. Check back later…', 'gegenlicht' ) ?></p>
 					<?php
 					endif; ?>
                 </div>
