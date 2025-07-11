@@ -21,7 +21,7 @@ do_action( 'wp_body_open' );
 			?>
         </div>
     </article>
-<?= do_shortcode( '[ggl-contact-block]' ); ?>
+    <?php get_template_part("partials/contact-block") ?>
     <main class="page-content content">
         <hr class="separator">
         <p class="my-2"><?= esc_html__( 'Our Team', 'gegenlicht' ) ?></p>

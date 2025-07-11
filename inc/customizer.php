@@ -56,9 +56,77 @@ function ggl_add_customizer_options($wp_customize): void
 	$wp_customize->add_section('special-programs', array(
 		'title' => esc_html__('Special Programs', 'gegenlicht'),
 		'panel' => 'frontpage',
-		'priority' => 5,
+		'priority' => 10,
 		'capability' => 'edit_theme_options',
 		'description' => esc_html__('Display the selected special programs on the front page below the semester progrem', 'gegenlicht'),
+	));
+
+	$wp_customize->add_section('frontpage_team', array(
+		'title' => esc_html__('Team Block', 'gegenlicht'),
+		'panel' => 'frontpage',
+		'priority' => 15,
+		'capability' => 'edit_theme_options',
+		'description' => esc_html__('Display the selected team block on the front page', 'gegenlicht'),
+	));
+
+	$wp_customize->add_setting('front_page_team_image', array(
+		'type'       => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'front_page_team_image', array(
+		'label'   => 'Front Page Team Image',
+		'section' => 'frontpage_team',
+		'panel'   => 'frontpage',
+	)));
+
+	$wp_customize->add_section('frontpage_location', array(
+		'title' => esc_html__('Location Block', 'gegenlicht'),
+		'panel' => 'frontpage',
+		'priority' => 15,
+		'capability' => 'edit_theme_options',
+		'description' => esc_html__('Edit the content of the location block', 'gegenlicht'),
+	));
+
+	$wp_customize->add_setting('fp_location_image', array(
+		'type'       => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fp_location_image', array(
+		'label'   => esc_html__('Map Image', 'gegenlicht'),
+		'description' => esc_html__('The selected image will be displayed over a black background. Tip: Try to use transparent images for the best effect', 'gegenlicht'),
+		'section' => 'frontpage_location',
+		'panel'   => 'frontpage',
+	)));
+
+	$wp_customize->add_setting('fp_location_text_en', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control('fp_location_text_en', array(
+		'label'   => esc_html__('Location Description (English)', 'gegenlicht'),
+		'description' => esc_html__('This text will be displayed below the selected map image', 'gegenlicht'),
+		'section' => 'frontpage_location',
+		'type' => 'textarea'
+	));
+	$wp_customize->add_setting('fp_location_text_de', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control('fp_location_text_de', array(
+		'label'   => esc_html__('Location Description (German)', 'gegenlicht'),
+		'description' => esc_html__('This text will be displayed below the selected map image', 'gegenlicht'),
+		'section' => 'frontpage_location',
+		'type' => 'textarea'
+	));
+	$wp_customize->add_setting('location_detail_page', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control('location_detail_page', array(
+		'label'   => esc_html__('Detail Page', 'gegenlicht'),
+		'description' => esc_html__('The selected page should contain a more detailed description about the location of the GEGENLICHT', 'gegenlicht'),
+		'section' => 'frontpage_location',
+		'type' => 'dropdown-pages',
 	));
 
 	foreach (_get_special_programs() as $id => $name) {
@@ -73,6 +141,8 @@ function ggl_add_customizer_options($wp_customize): void
 			'type'     => 'checkbox',
 		));
 	}
+
+
 
 
 

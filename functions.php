@@ -123,8 +123,6 @@ function block_wp_admin() {
 
 add_action( 'admin_init', 'block_wp_admin' );
 
-require_once 'inc/contact-block.php';
-add_shortcode( 'ggl-contact-block', 'ggl_do_contact_shortcode' );
 
 function my_login_logo() {
 	?>

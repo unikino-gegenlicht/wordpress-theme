@@ -75,16 +75,10 @@ do_action( 'wp_body_open' );
                 </div>
                 <hr class="separator"/>
                 <h2 class="title next-movie-title py-4"><?= $showDetails ? $title : esc_html__( 'An unnamed movie', 'gegenlicht' ) ?></h2>
-                <figure class="image is-hidden-tablet is-4by5 movie-image mt-4">
-                    <img fetchpriority="high"
-                         src="<?= $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url( $fallbackImage, 'large' ) ?>"/>
-                </figure>
-                <figure class="image is-hidden-mobile is-16by9 movie-image mt-4">
-                    <img fetchpriority="high"
-                         src="<?= $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url( $fallbackImage, 'large' ) ?>"/>
-                </figure>
+				<?php get_template_part( 'partials/responsive-image', args: [ 'image_url' => $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url( $fallbackImage, 'large' ) ] ) ?>
                 <hr class="separator"/>
-                <a class="button is-outlined is-black is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;" href="<?= get_the_permalink() ?>">
+                <a class="button is-outlined is-black is-size-5 is-fullwidth mt-2"
+                   style="padding: 0.75rem 0 !important;" href="<?= get_the_permalink() ?>">
                     <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the movie', 'gegenlicht' ) ?></p>
                 </a>
             </article>
@@ -121,7 +115,7 @@ do_action( 'wp_body_open' );
 		?>
 
 		<?php if ( ! empty( $monthlyMovies ) ) : ?>
-            <h1 class="title is-uppercase mb-1"><?= esc_html__( 'Our Semester Program', 'gegenlicht' ) ?></h1>
+            <h1 id="program" class="title is-uppercase mb-1"><?= esc_html__( 'Our Semester Program', 'gegenlicht' ) ?></h1>
             <div class="is-flex is-justify-content-space-between is-align-items-center is-clickable"
                  onclick="toggleSpecialProgramDisplay()">
                 <div>
@@ -158,6 +152,10 @@ do_action( 'wp_body_open' );
 			<?php endforeach; ?>
 		<?php endif; ?>
 
+        <a class="button is-outlined is-black is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
+           href="<?= get_post_type_archive_link( 'movie' ) ?>">
+            <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the archive', 'gegenlicht' ) ?></p>
+        </a>
     </main>
 <?php foreach ( get_option( 'displayed_special_programs' ) as $termID => $show ) : if ( ! $show ) {
 	continue;
@@ -265,5 +263,47 @@ do_action( 'wp_body_open' );
         </div>
     </article>
 <?php endforeach; ?>
+    <article class="page-content content" id="team">
+		<?php if ( get_theme_mod( 'front_page_team_image' ) ):
+			get_template_part( 'partials/responsive-image', args: [ 'image_url' => get_theme_mod( 'front_page_team_image' ) ] );
+		endif; ?>
+        <h2><?= esc_html__( 'Who is the GEGENLICHT', 'gegenlicht' ) ?></h2>
+        <div>
+			<?php
+			$introTextRaw = get_theme_mod( 'team_intro_text_' . get_locale() );
+			$paragraphs   = preg_split( "/\R\R/", $introTextRaw );
+			?>
+            <p><?= $paragraphs[0] ?? esc_html__( 'Some content is missing here' ) ?></p>
+        </div>
+        <a class="button is-outlined is-black is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
+           href="<?= get_post_type_archive_link( 'team-member' ) ?>">
+            <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the team', 'gegenlicht' ) ?></p>
+        </a>
+    </article>
+    <article class="has-background-black has-text-primary py-3" id="location">
+        <div class="page-content">
+            <div class="content">
+				<?php if ( get_theme_mod( 'fp_location_image' ) ): ?>
+                    <figure class="image">
+                        <img src="<?= get_theme_mod( 'fp_location_image' ) ?>"/>
+                    </figure>
+				<?php endif; ?>
+                <h2 class="has-text-primary border-is-primary"><?= esc_html__( 'Where is the GEGENLICHT', 'gegenlicht' ) ?></h2>
+                <div>
+					<?php
+					$introTextRaw = get_theme_mod( 'fp_location_text_' . get_locale() );
+					$paragraphs   = preg_split( "/\R\R/", $introTextRaw );
+					foreach ( $paragraphs as $paragraph ):
+						?>
+                        <p><?= $paragraph ?? esc_html__( 'Some content is missing here' ) ?></p>
+					<?php endforeach; ?>
+                </div>
+            </div>
+            <a class="button is-outlined is-primary is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
+               href="<?= get_page_link( get_theme_mod( 'location_detail_page' ) ) ?>">
+                <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'Read more', 'gegenlicht' ) ?></p>
+            </a>
+        </div>
+    </article>
 
 <?php get_footer(); ?>

@@ -143,12 +143,7 @@ if ( $isSpecialProgram ):
 
 			?>
         </div>
-        <figure class="image is-hidden-tablet is-4by5 movie-image">
-            <img alt="<?= $showDetails ? get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true) : ''?>" src="<?= $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url($anonymousImage, size: 'full') ?>"/>
-        </figure>
-        <figure class="image is-hidden-mobile is-16by9 movie-image">
-            <img alt="<?= $showDetails ? get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true) : ''?>" src="<?= $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url($anonymousImage, size: 'full') ?>"/>
-        </figure>
+	    <?php get_template_part('partials/responsive-image', args: ['image_url' => $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url( $anonymousImage, 'large' )]) ?>
         <?php if (!$showDetails && !$isSpecialProgram): ?>
             <div class="boxed-text mt-3">
                 <?php
