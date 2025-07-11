@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "POT-Creation-Date: 2025-07-04T16:26:53+00:00\n"
-"PO-Revision-Date: 2025-07-10 23:02+0200\n"
+"PO-Revision-Date: 2025-07-11 15:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -46,19 +46,19 @@ msgstr "Mach Mit!"
 msgid "Our Team"
 msgstr "Unser Team"
 
-#: archive-team-member.php:30
+#: archive-team-member.php:29
 msgid "Active Members"
 msgstr "Aktive Mitglieder"
 
-#: archive-team-member.php:55
+#: archive-team-member.php:54
 msgid "since"
 msgstr "seit"
 
-#: archive-team-member.php:63
+#: archive-team-member.php:61
 msgid "Former Members"
 msgstr "Ehemalige Mitglieder"
 
-#: front-page.php:77 front-page.php:152 front-page.php:252 single-movie.php:77
+#: front-page.php:77 front-page.php:144 front-page.php:255 single-movie.php:77
 msgid "An unnamed movie"
 msgstr "Ein ungenannter Film"
 
@@ -70,132 +70,132 @@ msgstr "Abmelden"
 msgid "Login"
 msgstr "Anmelden"
 
-#: footer.php:48 inc/contact-block.php:28 inc/customizer.php:139
+#: footer.php:48 inc/customizer.php:209 partials/contact-block.php:28
 msgid "Contact"
 msgstr "Kontakt"
 
-#: inc/contact-block.php:33
+#: partials/contact-block.php:33
 msgid "Telephone"
 msgstr "Telefon"
 
-#: inc/contact-block.php:66
+#: partials/contact-block.php:66
 msgid "or just reach out to us at one of our screenings"
 msgstr "oder sprich uns einfach nach einer unserer Vorstellungen an"
 
-#: inc/customizer.php:80
+#: inc/customizer.php:150
 msgid "Anonymization"
 msgstr "Anonymisierung"
 
-#: inc/customizer.php:83
+#: inc/customizer.php:153
 msgid "Control the anonymization for movies/events that we can't advertise"
 msgstr "Stelle hier die Anonymisierung für Filme und Events ein, die wir nicht bewerben dürfen"
 
-#: inc/customizer.php:90
+#: inc/customizer.php:160
 msgid "Fallback Image"
 msgstr "Standardbild"
 
-#: inc/customizer.php:91
+#: inc/customizer.php:161
 msgid "Upload an image for fallback usage which is displayed on a movies detail page in case one hasn't been uploaded or the movie may not be advertised"
 msgstr "Lade ein Bild hoch welches als standardmäßiges Bild für nicht bewerbbare Filme und Events genutzt wird. Dieses Bild wird auch genutzt, wenn ein Film kein eigenes hochgeladenes Bild hat"
 
-#: inc/customizer.php:115
+#: inc/customizer.php:185
 msgid "Contact & Address Information"
 msgstr "Kontakt- & Adressinformationen"
 
-#: inc/customizer.php:116
+#: inc/customizer.php:186
 msgid "In this section you can add and edit the general contact information as well as the address displayed in the footer"
 msgstr "In diesem Bereich kannst du die angezeigten Kontaktinformationen auf der Seite verändern"
 
-#: inc/customizer.php:122 inc/customizer.php:133
+#: inc/customizer.php:192 inc/customizer.php:203
 msgid "Address"
 msgstr "Adresse"
 
-#: inc/customizer.php:125
+#: inc/customizer.php:195
 msgid "In this section you can add and edit the address displayed in the footer"
 msgstr "Hier kannst du die angezeigte Adresse ändern"
 
-#: inc/customizer.php:142
+#: inc/customizer.php:212
 msgid "In this section you can add and edit the general contact information"
 msgstr "Hier kannst du die angezeigten Kontaktmöglichkeiten bearbeiten"
 
-#: inc/customizer.php:146
+#: inc/customizer.php:216
 msgid "Youth Protection"
 msgstr "Jugendschutz"
 
-#: inc/customizer.php:147
+#: inc/customizer.php:217
 msgid "Information about the Youth Protection Officer"
 msgstr "Informationen zum Jugendschutzbeauftragten"
 
-#: inc/customizer.php:157
+#: inc/customizer.php:227
 msgid "Name"
 msgstr "Name"
 
-#: inc/customizer.php:166
+#: inc/customizer.php:236
 msgid "E-Mail Address"
 msgstr "E-Mail Adresse"
 
-#: inc/customizer.php:171
+#: inc/customizer.php:241
 msgid "Social Medias"
 msgstr "Social Medias"
 
-#: inc/customizer.php:172
+#: inc/customizer.php:242
 msgid "You can set the usernames/urls to the commonly used social medias here"
 msgstr "Hier kannst du die Benutzernamen und URLs zu unseren Social Media Accounts einstellen"
 
-#: inc/customizer.php:182
+#: inc/customizer.php:252
 msgid "Instagram Username"
 msgstr "Instagram Benutzername"
 
-#: inc/customizer.php:191
+#: inc/customizer.php:261
 msgid "Mastodon URL"
 msgstr "Mastodon Profil URL"
 
-#: inc/customizer.php:193
+#: inc/customizer.php:263
 msgid "Please use the full url to the profile as Mastodon is decentralized"
 msgstr "Bitte gebe die vollständige Adresse ein, da Mastodon eine dezentrale Platform ist"
 
-#: inc/customizer.php:201
+#: inc/customizer.php:271
 msgid "Letterboxd Username"
 msgstr "Letterboxd Benutzername"
 
-#: inc/customizer.php:211
+#: inc/customizer.php:281
 msgid "E-Mail Address for Contact"
 msgstr "E-Mail Adresse für Kontaktanfragen"
 
-#: inc/customizer.php:221
+#: inc/customizer.php:291
 msgid "Phone Number"
 msgstr "Telefonnummer"
 
-#: inc/customizer.php:227
+#: inc/customizer.php:297
 msgid "Team"
 msgstr "Team"
 
-#: inc/customizer.php:228
+#: inc/customizer.php:298
 msgid "Customize the options for the members page"
 msgstr "Ändere die Optionen für die Teamseite"
 
-#: inc/customizer.php:238 inc/customizer.php:260
+#: inc/customizer.php:308 inc/customizer.php:330
 msgid "Introduction Text (English)"
 msgstr "Einführungstext (Englisch)"
 
-#: inc/customizer.php:241 inc/customizer.php:252 inc/customizer.php:263
-#: inc/customizer.php:274 inc/customizer.php:285
+#: inc/customizer.php:311 inc/customizer.php:322 inc/customizer.php:333
+#: inc/customizer.php:344 inc/customizer.php:355
 msgid "To create a new paragraph inside the text, please use a doubled line break. All other linebreaks will be removed"
 msgstr "Um einen Absatz auf der Seite zu erstellen benutze bitte einen doppelten Zeilenumbruch. Alle anderen Umbrüche werden entfernt"
 
-#: inc/customizer.php:249
+#: inc/customizer.php:319
 msgid "Introduction Text (German)"
 msgstr "Einführungstext (Deutsch)"
 
-#: inc/customizer.php:271
+#: inc/customizer.php:341
 msgid "Thank You Note (English)"
 msgstr "Danksagung (Englisch)"
 
-#: inc/customizer.php:282
+#: inc/customizer.php:352
 msgid "Thank You Note (German)"
 msgstr "Danksagung (Deutsch)"
 
-#: inc/customizer.php:294
+#: inc/customizer.php:364
 msgid "This image is used a team member didn't upload an image"
 msgstr "Dieses Bild wird benutzt, wenn ein Teammitglied kein Bild zugewiesen hat"
 
@@ -215,39 +215,39 @@ msgstr "Eintritt gegen Spende"
 msgid "Admission"
 msgstr "Eintritt"
 
-#: single-movie.php:86
+#: single-movie.php:87
 msgid "Minutes"
 msgstr "Minuten"
 
-#: single-movie.php:112
+#: single-movie.php:114
 msgid "Not Rated"
 msgstr "Ungeprüft"
 
-#: single-movie.php:115
+#: single-movie.php:117
 msgid "FSK"
 msgstr "FSK"
 
-#: single-movie.php:127 single-movie.php:130
+#: single-movie.php:129 single-movie.php:132
 msgid "Original with"
 msgstr "Original mit"
 
-#: single-movie.php:127 single-movie.php:130 single-movie.php:138
+#: single-movie.php:129 single-movie.php:132 single-movie.php:140
 msgid "Subtitles"
 msgstr "Untertiteln"
 
-#: single-movie.php:133
+#: single-movie.php:135
 msgid "Original without Subtitles"
 msgstr "Original ohne Untertitel"
 
-#: single-movie.php:133
+#: single-movie.php:135
 msgid "OV"
 msgstr "OV"
 
-#: single-movie.php:138
+#: single-movie.php:140
 msgid "Audio without Subtitles"
 msgstr "Ton ohne Untertitel"
 
-#: single-movie.php:138
+#: single-movie.php:140
 msgid "Audio with"
 msgstr "Ton mit"
 
@@ -272,7 +272,6 @@ msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
 #. Template Name of the theme
-#: inc/customizer.php:29
 msgid "Front Page"
 msgstr "Startseite"
 
@@ -280,19 +279,19 @@ msgstr "Startseite"
 msgid "Afterwards at"
 msgstr "Im Anschluss um"
 
-#: front-page.php:89
+#: front-page.php:82
 msgid "To the movie"
 msgstr "Zum Film"
 
-#: front-page.php:130
+#: front-page.php:122
 msgid "Main Program Only"
 msgstr "Nur Hauptprogramm"
 
-#: functions.php:180
+#: functions.php:178
 msgid "Username or email address is missing"
 msgstr "Der Benutzername oder die E-Mail Adresse fehlen"
 
-#: functions.php:183
+#: functions.php:181
 msgid "The entered credentials are invalid. Please try again"
 msgstr "Die eingegebenen Login-Informationen sind ungültig"
 
@@ -324,15 +323,15 @@ msgstr "Sonderprogramme"
 msgid "Display the selected special programs on the front page below the semester progrem"
 msgstr "Zeige die ausgewählten Sonderpgoramme auf der Startseite unter dem Semesterprogramm an"
 
-#: inc/customizer.php:99
+#: inc/customizer.php:169
 msgid "Explanation for Anonymization (English)"
 msgstr "Erklärung für Anonmyisierung (Englisch)"
 
-#: inc/customizer.php:101 inc/customizer.php:109
+#: inc/customizer.php:171 inc/customizer.php:179
 msgid "This text will be displayed below the posts anonymous image, if a movie's details may not be displayed"
 msgstr "Dieser Text wird unter den (anonymen) Filmbildern angezeigt, falls ein Film nicht beworben werden darf"
 
-#: inc/customizer.php:108
+#: inc/customizer.php:178
 msgid "Explanation for Anonymization (German)"
 msgstr "Erklärung für Anonmyisierung (Deutsch)"
 
@@ -344,7 +343,7 @@ msgstr "Inhaltsseite"
 msgid "Movie Detail Page"
 msgstr "Filmdetailseite"
 
-#: single-movie.php:189
+#: single-movie.php:186
 msgid "Content Notice"
 msgstr "Inhaltshinweis"
 
@@ -360,26 +359,94 @@ msgstr "In diesem Sonderprogramm lief bereits"
 msgid "Special Program Detail Page"
 msgstr "Sonderprogramm Detailseite"
 
-#: front-page.php:125
+#: front-page.php:118
 msgid "Our Semester Program"
 msgstr "Unser Semesterprogramm"
 
-#: single-movie.php:182 single-movie.php:228
+#: single-movie.php:179 single-movie.php:218
 msgid "Reserve Now"
 msgstr "Jetzt Reservieren"
 
-#: single-movie.php:197
+#: single-movie.php:193
 msgid "What the movie is about"
 msgstr "Darum geht es"
 
-#: single-movie.php:204
+#: single-movie.php:197
 msgid "Why it's worth watching"
 msgstr "Darum sehenswert"
 
-#: single-movie.php:260
+#: single-movie.php:250
 msgid "Selected by"
 msgstr "Ausgesucht von"
 
-#: single-movie.php:316
+#: single-movie.php:306
 msgid "No proposals found. Check back later…"
 msgstr "Nichts gefunden. Schau später nochmal vorbei…"
+
+#: front-page.php:157
+msgid "To the archive"
+msgstr "Zum Archiv"
+
+#: front-page.php:270
+msgid "Who is the GEGENLICHT"
+msgstr "Wer ist das GEGENLICHT"
+
+#: front-page.php:280
+msgid "To the team"
+msgstr "Zum Team"
+
+#: front-page.php:291
+msgid "Where is the GEGENLICHT"
+msgstr "Wo ist das GEGENLICHT"
+
+#: front-page.php:304
+msgid "Read more"
+msgstr "Mehr lesen"
+
+#: inc/customizer.php:65
+msgid "Team Block"
+msgstr "Teamblock"
+
+#: inc/customizer.php:69
+msgid "Display the selected team block on the front page"
+msgstr "Zeige den ausgewählten Team Block auf der Startseite an"
+
+#: inc/customizer.php:83
+msgid "Location Block"
+msgstr "Ort Block"
+
+#: inc/customizer.php:87
+msgid "Edit the content of the location block"
+msgstr "Bearbeite den Ort Block und seine imhalte"
+
+#: inc/customizer.php:95
+msgid "Map Image"
+msgstr "Bild der Karte"
+
+#: inc/customizer.php:96
+msgid "The selected image will be displayed over a black background. Tip: Try to use transparent images for the best effect"
+msgstr "Das ausgewählte Bild wird auf einem schwarzen Hintergrund angezeigt. Tipp: Versuche ein transparentes Bild zu verwenden"
+
+#: inc/customizer.php:106
+msgid "Location Description (English)"
+msgstr "Beschreibung des Standortes (Englisch)"
+
+#: inc/customizer.php:107 inc/customizer.php:117
+msgid "This text will be displayed below the selected map image"
+msgstr "Dieser Text wird unter der ausgewählten Karte angezeigt"
+
+#: inc/customizer.php:116
+msgid "Location Description (German)"
+msgstr "Beschreibung des Standortes (Deutsch)"
+
+#: inc/customizer.php:126
+msgid "Detail Page"
+msgstr "Detailseite"
+
+#: inc/customizer.php:127
+msgid "The selected page should contain a more detailed description about the location of the GEGENLICHT"
+msgstr "Die ausgewählte Seite sollte eine detaillierte Beschreibung des Standortes des GEGENLICHT enthalten"
+
+#: inc/customizer.php:29
+msgid "Frontpage"
+msgstr "Startseite"

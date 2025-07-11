@@ -26,7 +26,7 @@ function ggl_add_customizer_options($wp_customize): void
 	) ) );
 
 	$wp_customize->add_panel('frontpage', array(
-		'title' => esc_html__('Front Page', 'gegenlicht'),
+		'title' => esc_html__('Frontpage', 'gegenlicht'),
 		'priority' => 5,
 		'capability' => 'edit_theme_options',
 		'description' => esc_html__('Control the contents shown on the front page. Select a semester to be shown and the special programs displayed', 'gegenlicht'),
