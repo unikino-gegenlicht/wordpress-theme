@@ -189,3 +189,7 @@ function custom_login_error_message( $error ) {
 
 add_filter( 'login_errors', 'custom_login_error_message' );
 add_filter( 'login_display_language_dropdown', '__return_false' );
+
+function ggl_cleanup_paragraphs( string $input): string {
+	return preg_replace('/<p[^>]*>(?:\s|&nbsp;)*<\/p>/xu',  '', trim($input));
+}

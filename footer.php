@@ -36,12 +36,12 @@ defined( 'ABSPATH' ) || exit;
     </address>
     <hr class="separator is-primary"/>
     <div class="has-text-primary my-2">
-        <h5 class="has-text-weight-semibold"><?= esc_html__( 'Youth Protection Officer', 'gegenlicht' ) ?></h5>
+        <h5 class="has-text-weight-semibold no-separator"><?= esc_html__( 'Youth Protection Officer', 'gegenlicht' ) ?></h5>
         <a class="has-text-primary"
            href="mailto:<?= get_theme_mod( 'ypo_email' ) ?>"><?= get_theme_mod( 'ypo_name' ) ?></a>
         <p><?= str_replace( "@", " (at) ", get_theme_mod( 'ypo_email' ) ) ?></p>
     </div>
-    <div class="is-flex is-align-items-center my-2 has-text-primary links are-primary is-flex-wrap-wrap">
+    <div class="is-flex is-align-items-center mb-2 mt-5 has-text-primary links are-primary is-flex-wrap-wrap">
         <a class="" href=""><?= esc_html__( 'Impress', 'gegenlicht' ) ?></a>
         <a class="" href="<?= get_privacy_policy_url() ?>"
            rel="privacy-policy"><?= esc_html__( 'Privacy Policy', 'gegenlicht' ) ?></a>

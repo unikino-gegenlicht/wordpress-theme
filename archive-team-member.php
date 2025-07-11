@@ -6,7 +6,7 @@ do_action( 'wp_body_open' );
 ?>
 
     <article class="page-content">
-        <h1 class="is-size-1"><?= esc_html__( 'Join Us!', 'gegenlicht' ) ?></h1>
+        <h1 class="is-size-1 no-separator"><?= esc_html__( 'Join Us!', 'gegenlicht' ) ?></h1>
         <div class="content">
 			<?php
 			$introTextRaw = get_theme_mod( 'team_intro_text_' . get_locale() );
@@ -22,11 +22,10 @@ do_action( 'wp_body_open' );
         </div>
     </article>
 <?= do_shortcode( '[ggl-contact-block]' ); ?>
-    <main class="page-content">
+    <main class="page-content content">
         <hr class="separator">
-        <h3 class=""><?= esc_html__( 'Our Team', 'gegenlicht' ) ?></h3>
+        <p class="my-2"><?= esc_html__( 'Our Team', 'gegenlicht' ) ?></p>
         <hr class="separator">
-
         <h2 class="is-size-3"><?= esc_html__( 'Active Members', 'gegenlicht' ) ?></h2>
         <div class="fixed-grid has-2-cols-mobile has-4-cols-tablet">
             <div class="grid">
@@ -59,7 +58,6 @@ do_action( 'wp_body_open' );
         </div>
 
 		<?php if ( isset($members['former']) && count( $members['former'] ) > 0 )  : ?>
-            <hr class="separator">
             <h2 class="is-size-3"><?= esc_html__( 'Former Members', 'gegenlicht' ) ?></h2>
             <div class="content">
 				<?php

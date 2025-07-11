@@ -74,19 +74,18 @@ do_action( 'wp_body_open' );
                     <p class="is-size-6 m-0 p-0"><?= $i == 0 ? date( "d.m.Y | H:i", (int) rwmb_meta( 'screening_date' ) ) : date( "H:i", (int) rwmb_meta( 'screening_date' ) ) ?></p>
                 </div>
                 <hr class="separator"/>
-                <h2 class="title next-movie-title"><?= $showDetails ? $title : esc_html__( 'An unnamed movie', 'gegenlicht' ) ?></h2>
-                <hr class="separator"/>
-                <figure class="image is-hidden-tablet is-4by5 movie-image">
+                <h2 class="title next-movie-title py-4"><?= $showDetails ? $title : esc_html__( 'An unnamed movie', 'gegenlicht' ) ?></h2>
+                <figure class="image is-hidden-tablet is-4by5 movie-image mt-4">
                     <img fetchpriority="high"
                          src="<?= $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url( $fallbackImage, 'large' ) ?>"/>
                 </figure>
-                <figure class="image is-hidden-mobile is-16by9 movie-image">
+                <figure class="image is-hidden-mobile is-16by9 movie-image mt-4">
                     <img fetchpriority="high"
                          src="<?= $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url( $fallbackImage, 'large' ) ?>"/>
                 </figure>
                 <hr class="separator"/>
-                <a class="button is-outlined is-black is-fullwidth mt-2" href="<?= get_the_permalink() ?>">
-                    <p class="is-size-4 is-uppercase py-1"><?= esc_html__( 'To the movie', 'gegenlicht' ) ?></p>
+                <a class="button is-outlined is-black is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;" href="<?= get_the_permalink() ?>">
+                    <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the movie', 'gegenlicht' ) ?></p>
                 </a>
             </article>
 		<?php endfor;
@@ -122,8 +121,7 @@ do_action( 'wp_body_open' );
 		?>
 
 		<?php if ( ! empty( $monthlyMovies ) ) : ?>
-            <h1 class="title is-uppercase pb-0 mb-0"><?= esc_html__( 'Our Semester Program', 'gegenlicht' ) ?></h1>
-            <hr class="separator" style="margin-bottom: 0.25rem;"/>
+            <h1 class="title is-uppercase mb-1"><?= esc_html__( 'Our Semester Program', 'gegenlicht' ) ?></h1>
             <div class="is-flex is-justify-content-space-between is-align-items-center is-clickable"
                  onclick="toggleSpecialProgramDisplay()">
                 <div>
@@ -176,12 +174,12 @@ do_action( 'wp_body_open' );
             }
 
             .movie-list {
-                border-top: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
-                border-bottom: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
+                border-top: 1px solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
+                border-bottom: 1px solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
 
                 > * {
-                    border-top: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
-                    border-bottom: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
+                    border-top: 1px solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
+                    border-bottom: 1px solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
                 }
             }
 
@@ -200,6 +198,13 @@ do_action( 'wp_body_open' );
                     margin: 0 auto !important;
                 }
 
+                .movie-list {
+                    > * {
+                        border-top: 1px solid<?= get_term_meta( $termID, 'dark_text_color', true ) ?>;
+                        border-bottom: 1px solid<?= get_term_meta( $termID, 'dark_text_color', true ) ?>;
+                    }
+                }
+
                 > div > hr.separator {
                     border: 1px solid <?= get_term_meta( $termID, 'dark_text_color', true ) ?> !important;
                     background-color: <?= get_term_meta( $termID, 'dark_text_color', true ) ?> !important;
@@ -209,54 +214,54 @@ do_action( 'wp_body_open' );
     </style>
     <article id="special-program_<?= $termID ?>">
         <div class="page-content mb-3">
-            <a href="<?= get_term_link($termID) ?>">
-            <figure class="figure mb-6" style="text-align: center;">
-                <picture style="object-position: center; object-fit: scale-down;">
-                    <source
-                            srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $termID, 'logo_dark', true ), 'full' ) ?>"
-                            media="(prefers-color-scheme: dark)"/>
-                    <source
-                            srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $termID, 'logo', true ), 'full' ) ?>"/>
-                    <img style="max-height: 125px"/>
-                </picture>
-            </figure>
+            <a href="<?= get_term_link( $termID ) ?>">
+                <figure class="figure mb-6" style="text-align: center;">
+                    <picture style="object-position: center; object-fit: scale-down;">
+                        <source
+                                srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $termID, 'logo_dark', true ), 'full' ) ?>"
+                                media="(prefers-color-scheme: dark)"/>
+                        <source
+                                srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $termID, 'logo', true ), 'full' ) ?>"/>
+                        <img style="max-height: 125px"/>
+                    </picture>
+                </figure>
             </a>
             <div class="movie-list">
-			<?php
+				<?php
 
-			$query = new WP_Query( array(
-				'post_type'      => [ 'movie', 'event' ],
-				'posts_per_page' => - 1,
-				'tax_query'      => array(
-					array(
-						'taxonomy' => 'semester',
-						'terms'    => $semesterID,
+				$query = new WP_Query( array(
+					'post_type'      => [ 'movie', 'event' ],
+					'posts_per_page' => - 1,
+					'tax_query'      => array(
+						array(
+							'taxonomy' => 'semester',
+							'terms'    => $semesterID,
+						),
+						array(
+							'taxonomy' => 'special-program',
+							'terms'    => $termID,
+						)
 					),
-					array(
-						'taxonomy' => 'special-program',
-						'terms'    => $termID,
-					)
-				),
-				'meta_key'       => 'screening_date',
-				'orderby'        => 'meta_value_num',
-				'order'          => 'ASC',
-			) );
+					'meta_key'       => 'screening_date',
+					'orderby'        => 'meta_value_num',
+					'order'          => 'ASC',
+				) );
 
-			while ( $query->have_posts() ) : $query->the_post();
-				?>
-                <a href="<?= get_permalink() ?>">
-                    <div>
-                        <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
-                                    class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
-                        </time>
-                        <p class="is-size-5 has-text-weight-bold is-uppercase"><?= $showDetails ? $title : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?></p>
-                    </div>
-                    <span class="icon">
+				while ( $query->have_posts() ) : $query->the_post();
+					?>
+                    <a href="<?= get_permalink() ?>">
+                        <div>
+                            <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
+                                        class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
+                            </time>
+                            <p class="is-size-5 has-text-weight-bold is-uppercase"><?= $showDetails ? $title : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?></p>
+                        </div>
+                        <span class="icon">
                         <span class="material-symbols">arrow_forward_ios</span>
                     </span>
-                </a>
-			<?php endwhile; ?>
-        </div>
+                    </a>
+				<?php endwhile; ?>
+            </div>
         </div>
     </article>
 <?php endforeach; ?>

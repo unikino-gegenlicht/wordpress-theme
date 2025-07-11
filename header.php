@@ -132,4 +132,3 @@ $headerImage = get_theme_mod('header_logo');
         </div>
     </nav>
 </header>
-</body>

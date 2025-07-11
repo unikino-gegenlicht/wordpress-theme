@@ -73,13 +73,14 @@ if ( $isSpecialProgram ):
 			?>
         </div>
         <hr class="separator"/>
-        <h1 class="font-ggl is-size-1 is-uppercase ">
+        <h1 class="font-ggl is-size-1 is-uppercase <?= $showDetails ? ($title != rwmb_meta('original_title') ? 'no-separator' : '') : '' ?>">
 	        <?= $showDetails ? $title : (rwmb_meta('program_type') == 'special_program' ? trim(get_term(rwmb_meta('special_program'))->name) : esc_html__( 'An unnamed movie', 'gegenlicht' )) ?>
         </h1>
 		<?php if ( $showDetails && $title != rwmb_meta( 'original_title' ) ): ?>
             <p class="font-ggl is-size-4"><?= rwmb_meta( 'original_title' ) ?></p>
+            <hr class="separator"/>
 		<?php endif; ?>
-        <hr class="separator"/>
+        <div class="mt-2">
         <p>
 			<?= join( '/', rwmb_meta( 'country' ) ) ?> <?= date( 'Y', strtotime( rwmb_meta( 'release_date' ) ) ) ?>
             |
@@ -102,6 +103,7 @@ if ( $isSpecialProgram ):
 			?>
 			<?= esc_html__( 'with' ) ?> <?= join( separator: ' ' . esc_html__( 'and' ) . ' ', array: $actorNames ) ?>
         </p>
+        </div>
         <hr class="separator"/>
         <div class="tags are-medium">
 			<?php
@@ -183,31 +185,24 @@ if ( $isSpecialProgram ):
             <span class="material-symbols ml-1">open_in_new</span>
         </a>
     </div>
-    <article class="page-content px-2 mt-4">
+    <article class="page-content px-2 mt-4 content">
         <?php if (rwmb_meta('show_content_notice')): ?>
         <div class="content-notice mb-6 p-2">
-            <h2 class="is-size-4"><?= esc_html__("Content Notice", 'gegenlicht') ?></h2>
-            <hr class="separator m-1 is-background-color"/>
+            <h2 class="is-size-4 border-is-background-color"><?= esc_html__("Content Notice", 'gegenlicht') ?></h2>
             <p>
-                <?= rwmb_meta('content_notice') ?>
+                <?= ggl_cleanup_paragraphs(rwmb_get_value('content_notice')) ?>
             </p>
         </div>
         <?php endif; ?>
         <h2 class="font-ggl is-size-3 is-uppercase">
 			<?= esc_html__( 'What the movie is about', 'gegenlicht' ) ?>
         </h2>
-        <hr class="separator"/>
-        <p>
-			<?= $showDetails ? rwmb_meta( 'summary' ) : rwmb_meta('anon_summary') ?>
-        </p>
+	    <?= ggl_cleanup_paragraphs($showDetails ? rwmb_get_value( 'summary' ) : rwmb_get_value('anon_summary')) ?>
         <h2 class="font-ggl is-size-3 is-uppercase mt-6">
 			<?= esc_html__( "Why it's worth watching", 'gegenlicht' ) ?>
         </h2>
-        <hr class="separator"/>
-        <p>
-			<?= $showDetails ? rwmb_meta( 'worth_to_see' ) : rwmb_meta('anon_worth_to_see') ?>
-        </p>
-		<?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
+	    <?= ggl_cleanup_paragraphs($showDetails ? rwmb_get_value( 'worth_to_see' ) : rwmb_get_value('anon_worth_to_see')) ?>
+        <?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
             <hr class="separator mt-6"/>
             <h3 class="font-ggl is-size-5 is-uppercase">
 				<?= esc_html__( 'Short Movie' ) ?>

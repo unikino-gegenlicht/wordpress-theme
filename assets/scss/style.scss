@@ -77,6 +77,14 @@ $fullhd-enabled: false;
   --bulma-body-background-color: var(--bulma-primary);
   --bulma-body-color: black;
   --bulma-navbar-background-color: var(--bulma-body-background-color);
+  --bulma-strong-color: var(--bulma-body-color);
+
+  --border-thickness: 2px;
+}
+
+.content {
+  --bulma-content-heading-color: var(--bulma-body-color) !important;
+  --bulma-content-table-head-cell-color: var(--bulma-content-heading-color) !important;
 }
 
 .button.is-outlined {
@@ -104,7 +112,7 @@ $fullhd-enabled: false;
     --bulma-navbar-background-color: var(--bulma-body-color);
     --bulma-button-border-width: 0.2rem;
     --bulma-footer-background-color: var(--bulma-body-background-color) !important;
-
+    --bulma-content-heading-color: var(--bulma-body-color) !important;
   }
 
   #proposed-by {
@@ -131,12 +139,12 @@ html {
 
 .movie-list {
 
-  border-top: 1px solid var(--bulma-body-color);
-  border-bottom: 1px solid var(--bulma-body-color);
+  border-top: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
+  border-bottom: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
 
   > * {
-    border-top: 1px solid var(--bulma-body-color);
-    border-bottom: 1px solid var(--bulma-body-color);
+    border-top: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
+    border-bottom: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
   }
 
   > a {
@@ -191,28 +199,28 @@ html {
 }
 
 hr.separator {
-  border: 1px solid var(--bulma-body-color);
-  margin: 0.75rem auto;
+  border: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
+  margin: 0.5rem auto;
   padding: 0 !important;
   background-color: var(--bulma-body-color) !important;
 
   &.is-primary {
-    border: 1px solid var(--bulma-primary) !important;
+    border: calc(var(--border-thickness)/2) solid var(--bulma-primary) !important;
     background-color: var(--bulma-primary) !important;
   }
 
   &.is-black {
-    border: 1px solid black !important;
+    border: calc(var(--border-thickness)/2) solid black !important;
     background-color: var(--bulma-primary) !important;
   }
 
   &.is-text-color {
-    border: 1px solid var(--bulma-body-color) !important;
+    border: calc(var(--border-thickness)/2) solid var(--bulma-body-color) !important;
     background-color: var(--bulma-body-color) !important;
   }
 
   &.is-background-color {
-    border: 1px solid var(--bulma-body-background-color) !important;
+    border: calc(var(--border-thickness)/2) solid var(--bulma-body-background-color) !important;
     background-color: var(--bulma-body-background-color) !important;
   }
 }
@@ -321,6 +329,27 @@ hr.separator {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'GEGENLICHT', sans-serif;
   text-transform: uppercase;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+
+  &.no-separator {
+    border-bottom: unset;
+    padding-bottom: unset;
+    padding-top: unset;
+  }
+
+  &.border-is-primary {
+    border-bottom: var(--border-thickness) solid var(--bulma-primary) !important;
+  }
+
+  &.border-is-black {
+    border-bottom: var(--border-thickness) solid black !important;
+  }
+
+  &.border-is-background-color {
+    border-bottom: var(--border-thickness) solid var(--bulma-body-background-color) !important;
+  }
 }
 
 .tag.is-primary {
@@ -337,9 +366,15 @@ figure {
 .content-notice {
   background-color: var(--bulma-body-color) !important;
   color: var(--bulma-body-background-color) !important;
+  --bulma-content-heading-color: var(--bulma-body-background-color) !important
 }
 
 .boxed-text {
-  border: 1px solid var(--bulma-body-color);
+  border: var(--border-thickness) solid var(--bulma-body-color);
   padding: 0.5rem;
+}
+
+
+p:empty {
+  display: none;
 }
