@@ -22,6 +22,14 @@ $textColorDark       = get_term_meta( $taxonomy->term_id, 'dark_text_color', tru
         --bulma-body-color: <?= $textColor ?> !important;
     }
 
+    .navbar {
+        background-color: var(--bulma-body-background-color) !important;
+    }
+
+    a.navbar-item {
+        color: var(--bulma-body-color) !important;
+    }
+
     @media (prefers-color-scheme: dark) {
         :root {
             --bulma-body-background-color: <?= $backgroundColorDark ?> !important;
@@ -30,11 +38,11 @@ $textColorDark       = get_term_meta( $taxonomy->term_id, 'dark_text_color', tru
     }
 </style>
 <main class="page-content">
-    <header>
-        <h1 class="is-size-2"><?= $taxonomy->name ?></h1>
-    </header>
-    <hr class="separator"/>
-    <article>
+
+    <article class="content">
+        <header>
+            <h1 class="is-size-2"><?= $taxonomy->name ?></h1>
+        </header>
 		<?php
 		$paragraphs = preg_split( "/\R\R/", $taxonomy->description );
 		foreach ( $paragraphs as $paragraph ) :
@@ -62,7 +70,7 @@ $textColorDark       = get_term_meta( $taxonomy->term_id, 'dark_text_color', tru
 					)
 				)
 			) );
-			while ( $query->have_posts() ) : $query->the_post();?>
+			while ( $query->have_posts() ) : $query->the_post(); ?>
                 <hr class="separator"/>
                 <p class="mt-2 has-text-weight-bold font-ggl is-uppercase is-size-5"><?= $post->post_title ?></p>
 			<?php endwhile; ?>

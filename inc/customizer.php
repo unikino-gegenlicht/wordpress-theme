@@ -11,17 +11,8 @@ function ggl_add_customizer_options($wp_customize): void
 		'type'       => 'theme_mod',
 		'capability' => 'edit_theme_options',
 	) );
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_logo', array(
+	$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'header_logo', array(
 		'label'   => 'Header Logo',
-		'section' => 'title_tagline',
-	) ) );
-
-	$wp_customize->add_setting( 'header_logo_dark', array(
-		'type'       => 'theme_mod',
-		'capability' => 'edit_theme_options',
-	) );
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_logo_dark', array(
-		'label'   => 'Header Logo (Dark Mode)',
 		'section' => 'title_tagline',
 	) ) );
 
@@ -79,6 +70,42 @@ function ggl_add_customizer_options($wp_customize): void
 		'panel'   => 'frontpage',
 	)));
 
+	$wp_customize->add_setting('fp_team_block_color', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'fp_team_block_color', array(
+		'label'   => esc_html__('Background Color', 'gegenlicht'),
+		'section' => 'frontpage_team',
+	)));
+
+	$wp_customize->add_setting('fp_team_text_color', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'fp_team_text_color', array(
+		'label'   => esc_html__('Text Color', 'gegenlicht'),
+		'section' => 'frontpage_team',
+	)));
+
+	$wp_customize->add_setting('fp_team_block_color_dark', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'fp_team_block_color_dark', array(
+		'label'   => esc_html__('Background Color (Dark)', 'gegenlicht'),
+		'section' => 'frontpage_team',
+	)));
+
+	$wp_customize->add_setting('fp_team_text_color_dark', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'fp_team_text_color_dark', array(
+		'label'   => esc_html__('Text Color (Dark)', 'gegenlicht'),
+		'section' => 'frontpage_team',
+	)));
+
 	$wp_customize->add_section('frontpage_location', array(
 		'title' => esc_html__('Location Block', 'gegenlicht'),
 		'panel' => 'frontpage',
@@ -118,6 +145,45 @@ function ggl_add_customizer_options($wp_customize): void
 		'section' => 'frontpage_location',
 		'type' => 'textarea'
 	));
+
+	$wp_customize->add_setting('fp_location_block_color', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control('fp_location_block_color', array(
+		'label'   => esc_html__('Background Color', 'gegenlicht'),
+		'section' => 'frontpage_location',
+		'type' => 'color'
+	));
+
+	$wp_customize->add_setting('fp_location_text_color', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control('fp_location_text_color', array(
+		'label'   => esc_html__('Text Color', 'gegenlicht'),
+		'section' => 'frontpage_location',
+		'type' => 'color'
+	));
+
+	$wp_customize->add_setting('fp_location_block_color_dark', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'fp_location_block_color_dark', array(
+		'label'   => esc_html__('Background Color (Dark)', 'gegenlicht'),
+		'section' => 'frontpage_location',
+	)));
+
+	$wp_customize->add_setting('fp_location_text_color_dark', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+	));
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'fp_location_text_color_dark', array(
+		'label'   => esc_html__('Text Color (Dark)', 'gegenlicht'),
+		'section' => 'frontpage_location',
+	)));
+
 	$wp_customize->add_setting('location_detail_page', array(
 		'type' => 'theme_mod',
 		'capability' => 'edit_theme_options',

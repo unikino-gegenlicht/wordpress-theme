@@ -85,11 +85,12 @@ body.login div#login form#loginform div label {
   font-size: 1rem !important;
 }
 
-body.login div#login form#loginform input {
+body.login input {
   border: var(--bulma-body-color) 2px solid !important;
   background-color: var(--bulma-body-background-color) !important;
   box-shadow: none !important;
   border-radius: 0;
+  color: var(--bulma-body-color) !important;
 }
 
 #login-message,
@@ -122,9 +123,6 @@ body.login div#login form#loginform p.forgetmenot {
 input#wp-submit,
 input#wp-submit{
   border-radius: 0;
-  background-color: var(--bulma-body-color) !important;
-  color: var(--bulma-body-background-color) !important;
-  border: var(--bulma-body-color) 1px solid !important;
   width: 100%;
   font-size: 1rem;
 }
@@ -164,7 +162,9 @@ button.wp-hide-pw {
   display: none;
 }
 
-#registerform {
+#registerform,
+#loginform,
+#lostpasswordform {
 
   background-color: var(--bulma-body-background-color) !important;
   color: var(--bulma-body-color) !important;

@@ -34,6 +34,19 @@ if ( $isSpecialProgram ):
             --bulma-body-color: <?= $textColor ?> !important;
         }
 
+        .navbar {
+            background-color: var(--bulma-body-background-color) !important;
+        }
+
+        a.navbar-item {
+            color: var(--bulma-body-color) !important;
+        }
+
+        object > svg {
+            fill: red;
+        }
+
+
         @media (prefers-color-scheme: dark) {
             :root {
                 --bulma-body-background-color: <?= $backgroundColorDark ?> !important;

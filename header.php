@@ -51,14 +51,18 @@ $headerImage = get_theme_mod('header_logo');
 </head>
 <body>
 <header>
-    <nav class="navbar is-spaced is-primary" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-spaced is-primary mb-5" role="navigation" aria-label="main navigation">
         <div class="navbar-brand px-2">
-            <a class="navbar-item p-0" href="<?= get_home_url( scheme: 'https' ) ?>">
+            <a class="navbar-item p-0 is-tab" href="<?= get_home_url( scheme: 'https' ) ?>" style="border-bottom: none !important;">
 				<?php
 				if ( $headerImage != false ):
 					$alternativeDescription = get_post_meta( $headerImage, '_wp_attachment_image_alt', true );
+
+                    $slement = file_get_contents(get_attached_file($headerImage, true));
+
+                    echo $slement;
 					?>
-                    <img height="56" style="height: 56px" src="<?= $headerImage ?>" alt="<?= $alternativeDescription ?>"/>
+
 				<?php else: ?>
                     <p class="title has-text-black">
 						<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>

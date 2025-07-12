@@ -129,16 +129,12 @@ function my_login_logo() {
     <style>
         @media (prefers-color-scheme: dark) {
             #login h1 a {
-                background-image: url(<?=  get_theme_mod( 'header_logo_dark' ) ?>) !important;
-                width: 320px;
-                background-size: 320px 65px;
-                background-repeat: no-repeat;
-                padding-bottom: 30px;
+                filter: invert(74%) sepia(89%) saturate(508%) hue-rotate(358deg) brightness(102%) contrast(105%);
             }
         }
 
         #login h1 a {
-            background-image: url(<?= get_theme_mod( 'header_logo' ) ?>);
+            background-image: url(<?= wp_get_attachment_url(get_theme_mod( 'header_logo' )) ?>);
             width: 320px;
             background-size: 320px 65px;
             background-repeat: no-repeat;

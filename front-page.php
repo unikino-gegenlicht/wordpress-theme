@@ -62,7 +62,7 @@ if ( $next->have_posts() ) {
 get_header();
 do_action( 'wp_body_open' );
 ?>
-    <main class="pt-2 px-2 mb-6 page-content">
+    <main class="px-2 mb-6 page-content">
 		<?php for ( $i = 0; $i < count( $upcoming ); $i ++ ): $post = get_post( $upcoming[ $i ] );
 			$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
 			$title = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
@@ -77,7 +77,7 @@ do_action( 'wp_body_open' );
                 <h2 class="title next-movie-title py-4"><?= $showDetails ? $title : esc_html__( 'An unnamed movie', 'gegenlicht' ) ?></h2>
 				<?php get_template_part( 'partials/responsive-image', args: [ 'image_url' => $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url( $fallbackImage, 'large' ) ] ) ?>
                 <hr class="separator"/>
-                <a class="button is-outlined is-black is-size-5 is-fullwidth mt-2"
+                <a class="button is-outlined is-size-5 is-fullwidth mt-2"
                    style="padding: 0.75rem 0 !important;" href="<?= get_the_permalink() ?>">
                     <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the movie', 'gegenlicht' ) ?></p>
                 </a>
@@ -115,7 +115,8 @@ do_action( 'wp_body_open' );
 		?>
 
 		<?php if ( ! empty( $monthlyMovies ) ) : ?>
-            <h1 id="program" class="title is-uppercase mb-1"><?= esc_html__( 'Our Semester Program', 'gegenlicht' ) ?></h1>
+            <h1 id="program"
+                class="title is-uppercase mb-1"><?= esc_html__( 'Our Semester Program', 'gegenlicht' ) ?></h1>
             <div class="is-flex is-justify-content-space-between is-align-items-center is-clickable"
                  onclick="toggleSpecialProgramDisplay()">
                 <div>
@@ -163,9 +164,10 @@ do_action( 'wp_body_open' );
     <style>
         #special-program_<?= $termID ?> {
             background-color: <?= get_term_meta( $termID, 'background_color', true ) ?>;
-            color: <?= get_term_meta( $termID, 'text_color', true ) ?>;
+            --bulma-body-color: <?= get_term_meta( $termID, 'text_color', true ) ?>;
             padding-top: 2rem;
             padding-bottom: 2rem;
+            background-clip: padding-box;
 
             div.page-content {
                 margin: 0 auto !important;
@@ -176,8 +178,9 @@ do_action( 'wp_body_open' );
                 border-bottom: 1px solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
 
                 > * {
-                    border-top: 1px solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
-                    border-bottom: 1px solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
+                    border-top: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
+                    border-bottom: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
+                    color:  <?= get_term_meta( $termID, 'text_color', true ) ?>;
                 }
             }
 
@@ -189,17 +192,21 @@ do_action( 'wp_body_open' );
 
         @media (prefers-color-scheme: dark) {
             #special-program_<?= $termID ?> {
-                background-color: <?= get_term_meta( $termID, 'dark_background_color', true ) ?>;
-                color: <?= get_term_meta( $termID, 'dark_text_color', true ) ?>;
+                background-color: <?= get_term_meta( $termID, 'dark_background_color', true ) ?> !important;
+                --bulma-body-color: <?= get_term_meta( $termID, 'dark_text_color', true ) ?> !important;
 
                 div.page-content {
                     margin: 0 auto !important;
                 }
 
+                background-clip: padding-box;
+
+
                 .movie-list {
                     > * {
-                        border-top: 1px solid<?= get_term_meta( $termID, 'dark_text_color', true ) ?>;
-                        border-bottom: 1px solid<?= get_term_meta( $termID, 'dark_text_color', true ) ?>;
+                        border-top: 1px solid <?= get_term_meta( $termID, 'dark_text_color', true ) ?>;
+                        border-bottom: 1px solid <?= get_term_meta( $termID, 'dark_text_color', true ) ?>;
+                        color:  <?= get_term_meta( $termID, 'dark_text_color', true ) ?>;
                     }
                 }
 
@@ -263,24 +270,98 @@ do_action( 'wp_body_open' );
         </div>
     </article>
 <?php endforeach; ?>
-    <article class="page-content content" id="team">
-		<?php if ( get_theme_mod( 'front_page_team_image' ) ):
-			get_template_part( 'partials/responsive-image', args: [ 'image_url' => get_theme_mod( 'front_page_team_image' ) ] );
-		endif; ?>
-        <h2><?= esc_html__( 'Who is the GEGENLICHT', 'gegenlicht' ) ?></h2>
-        <div>
-			<?php
-			$introTextRaw = get_theme_mod( 'team_intro_text_' . get_locale() );
-			$paragraphs   = preg_split( "/\R\R/", $introTextRaw );
-			?>
-            <p><?= $paragraphs[0] ?? esc_html__( 'Some content is missing here' ) ?></p>
+    <style>
+        #team {
+            background-color: <?= get_theme_mod('fp_team_block_color') ?> !important;
+            color: <?= get_theme_mod('fp_team_text_color') ?> !important;
+            background-clip: padding-box;
+
+
+            > * {
+                color: <?= get_theme_mod('fp_team_text_color') ?> !important;
+            }
+
+            .button {
+                border-color: <?= get_theme_mod('fp_team_text_color') ?> !important;
+
+                > * {
+                    color: <?= get_theme_mod('fp_team_text_color') ?> !important;
+                }
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            #team {
+                background-color: <?= get_theme_mod('fp_team_block_color_dark') ?> !important;
+                color: <?= get_theme_mod('fp_team_text_color_dark') ?> !important;
+                background-clip: padding-box;
+
+
+                > * {
+                    color: <?= get_theme_mod('fp_team_text_color_dark') ?> !important;
+                }
+
+                .button {
+                    border-color: <?= get_theme_mod('fp_team_text_color_dark') ?> !important;
+
+                    > * {
+                        color: <?= get_theme_mod('fp_team_text_color_dark') ?> !important;
+                    }
+                }
+            }
+        }
+    </style>
+    <article id="team" class="py-5">
+        <div class="page-content content">
+			<?php if ( get_theme_mod( 'front_page_team_image' ) ):
+				get_template_part( 'partials/responsive-image', args: [ 'image_url' => get_theme_mod( 'front_page_team_image' ) ] );
+			endif; ?>
+            <h2><?= esc_html__( 'Who is the GEGENLICHT', 'gegenlicht' ) ?></h2>
+            <div>
+				<?php
+				$introTextRaw = get_theme_mod( 'team_intro_text_' . get_locale() );
+				$paragraphs   = preg_split( "/\R\R/", $introTextRaw );
+				?>
+                <p><?= $paragraphs[0] ?? esc_html__( 'Some content is missing here' ) ?></p>
+            </div>
+            <a class="button is-outlined is-black is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
+               href="<?= get_post_type_archive_link( 'team-member' ) ?>">
+                <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the team', 'gegenlicht' ) ?></p>
+            </a>
         </div>
-        <a class="button is-outlined is-black is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
-           href="<?= get_post_type_archive_link( 'team-member' ) ?>">
-            <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the team', 'gegenlicht' ) ?></p>
-        </a>
     </article>
-    <article class="has-background-black has-text-primary py-3" id="location">
+    <style>
+        #location {
+            background-color: <?= get_theme_mod('fp_location_block_color') ?> !important;
+            color: <?= get_theme_mod('fp_location_text_color') ?> !important;
+            background-clip: padding-box;
+
+
+            > * {
+                color: <?= get_theme_mod('fp_location_text_color') ?> !important;
+
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            #location {
+                background-color: <?= get_theme_mod('fp_location_block_color_dark') ?> !important;
+                color: <?= get_theme_mod('fp_location_text_color_dark') ?> !important;
+                background-clip: padding-box;
+
+
+                > * {
+                    color: <?= get_theme_mod('fp_location_text_color_dark') ?> !important;
+
+                }
+
+                .button {
+                    border-color: <?= get_theme_mod('fp_location_text_color_dark') ?> !important;
+                }
+            }
+        }
+    </style>
+    <article class="has-text-primary py-5" id="location">
         <div class="page-content">
             <div class="content">
 				<?php if ( get_theme_mod( 'fp_location_image' ) ): ?>
