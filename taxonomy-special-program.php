@@ -71,10 +71,8 @@ $textColorDark       = get_term_meta( $taxonomy->term_id, 'dark_text_color', tru
 				)
 			) );
 			while ( $query->have_posts() ) : $query->the_post(); ?>
-                <hr class="separator"/>
                 <p class="mt-2 has-text-weight-bold font-ggl is-uppercase is-size-5"><?= $post->post_title ?></p>
 			<?php endwhile; ?>
-            <hr class="separator"/>
         </article>
 	<?php endif; ?>
 </main>

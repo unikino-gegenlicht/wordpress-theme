@@ -79,7 +79,7 @@ do_action( 'wp_body_open' );
                 <hr class="separator"/>
                 <a class="button is-outlined is-size-5 is-fullwidth mt-2"
                    style="padding: 0.75rem 0 !important;" href="<?= get_the_permalink() ?>">
-                    <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the movie', 'gegenlicht' ) ?></p>
+                    <p class="has-text-weight-bold is-uppercase"><?= $post->post_type == 'movie' ? esc_html__( 'To the movie', 'gegenlicht' ) : esc_html__( 'To the event', 'gegenlicht' ) ?></p>
                 </a>
             </article>
 		<?php endfor;

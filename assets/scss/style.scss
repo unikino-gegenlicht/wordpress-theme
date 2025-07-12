@@ -108,6 +108,15 @@ nav {
   border-bottom: 2px solid var(--bulma-body-color) !important;
 }
 
+.navbar-end {
+  gap: 0.5rem;
+}
+
+.icon {
+  color: var(--bulma-body-color) !important;
+}
+
+
 .navbar-item > svg {
   max-height: 3rem;
   fill: var(--bulma-body-color) !important;
