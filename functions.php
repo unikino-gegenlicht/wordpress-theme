@@ -10,12 +10,14 @@ function enable_theme_supports() {
 
 add_action( 'after_setup_theme', 'enable_theme_supports' );
 
-//add_filter( 'locale', 'use_accept_locale' );
-//add_filter( 'pre_determine_locale', 'use_accept_locale' );
+
+if (!is_admin()) {
+
+	add_filter( 'locale', 'use_accept_locale' );
+	add_filter( 'pre_determine_locale', 'use_accept_locale' );
+}
+
 function use_accept_locale( $locale ) {
-	if ( is_user_logged_in() && is_admin() ) {
-		return get_user_locale();
-	}
 	if ( ! isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
 		return $locale;
 	}
