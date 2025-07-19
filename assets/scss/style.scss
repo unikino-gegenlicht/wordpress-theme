@@ -459,3 +459,6 @@ p:empty {
     animation-play-state: paused !important;
   }
 }
+* {
+  user-select: none;
+}
