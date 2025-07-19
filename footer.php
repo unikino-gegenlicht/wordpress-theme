@@ -31,6 +31,20 @@ defined( 'ABSPATH' ) || exit;
         </div>
         <hr class="separator is-primary"/>
 	<?php endif; ?>
+    <div class="has-text-primary my-2 is-flex is-align-items-top is-flex-wrap-wrap is-justify-content-space-evenly is-row-gap-2.5">
+        <div class="is-flex-grow-1">
+            <h5 class="has-text-weight-semibold"><?= esc_html__('Postal Address', 'gegenlicht') ?></h5>
+            <address class="has-text-primary" style="user-select: text">
+		        <?= nl2br( get_theme_mod( 'postal_address' ) ) ?>
+            </address>
+        </div>
+        <div class="is-flex-grow-1">
+            <h5 class="has-text-weight-semibold"><?= esc_html__('Visitor Address', 'gegenlicht') ?></h5>
+            <address class="has-text-primary" style="user-select: text">
+			    <?= nl2br( get_theme_mod( 'visitor_address' ) ) ?>
+            </address>
+        </div>
+    </div>
     <address class="has-text-primary my-2">
 		<?= nl2br( get_theme_mod( 'address' ) ) ?>
     </address>
