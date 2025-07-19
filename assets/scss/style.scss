@@ -411,6 +411,7 @@ p:empty {
   border-color: var(--bulma-body-color) !important;
   color: var(--bulma-body-color) !important;
 }
+
 .marquee {
   --height: 2rem;
   --gap: 1rem;
@@ -459,6 +460,11 @@ p:empty {
     animation-play-state: paused !important;
   }
 }
+
 * {
   user-select: none;
+}
+
+address {
+  font-style: normal !important;
 }
