@@ -42,11 +42,6 @@ if ( $isSpecialProgram ):
             color: var(--bulma-body-color) !important;
         }
 
-        object > svg {
-            fill: red;
-        }
-
-
         @media (prefers-color-scheme: dark) {
             :root {
                 --bulma-body-background-color: <?= $backgroundColorDark ?> !important;
@@ -121,13 +116,21 @@ if ( $isSpecialProgram ):
         <div class="tags are-medium">
 			<?php
 			$ageRating = rwmb_meta( 'age_rating' );
+            $descriptors = rwmb_meta('descriptors' );
+
+            $translatedDescriptors = array();
+
+            foreach ( $descriptors as $descriptor ) {
+                $translatedDescriptors[] = ggl_theme_get_translated_age_rating_descriptor( $descriptor );
+            }
+
 			switch ( $ageRating ) {
 				case - 2:
 				case - 1:
-					echo '<span class="tag is-rounded is-primary" style="border: var(--bulma-body-color) solid 1px;">' . esc_html__( 'Not Rated', 'gegenlicht' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right has-tooltip-multiline" data-tooltip="'. join(", ", $translatedDescriptors) .'" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'Not Rated', 'gegenlicht' ) . '</span>';
 					break;
 				default:
-					echo '<span class="tag is-rounded is-primary" style="border: var(--bulma-body-color) solid 1px;">' . esc_html__( 'FSK', 'gegenlicht' ) . ' ' . $ageRating . '</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right has-tooltip-multiline" data-tooltip="'. join(", ", $translatedDescriptors) .'" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'FSK', 'gegenlicht' ) . ' ' . $ageRating . '</span>';
 
 			}
 			?>
@@ -139,13 +142,13 @@ if ( $isSpecialProgram ):
 
 			if ( $audioType == 'original' ):
 				if ( $subtitleLanguage == 'eng' ):
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right" style="border: var(--bulma-body-color) solid 1px;" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OmeU' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OmeU' ) . '</span>';
 				endif;
 				if ( $subtitleLanguage == 'deu' ):
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right" style="border: var(--bulma-body-color) solid 1px;" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OmdU' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OmdU' ) . '</span>';
 				endif;
 				if ( $subtitleLanguage == 'zxx' ):
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right" style="border: var(--bulma-body-color) solid 1px;" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original without Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OV', 'gegenlicht' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original without Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OV', 'gegenlicht' ) . '</span>';
 				endif;
 			endif;
 
