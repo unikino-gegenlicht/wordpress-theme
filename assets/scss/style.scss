@@ -75,12 +75,12 @@ $fullhd-enabled: false;
 }
 
 :root {
+  --border-thickness: 2px;
   --bulma-body-background-color: var(--bulma-primary);
   --bulma-body-color: black;
   --bulma-navbar-background-color: var(--bulma-body-background-color);
   --bulma-strong-color: var(--bulma-body-color);
-
-  --border-thickness: 2px;
+  --button-border-width: var(--border-thickness);
 }
 
 .content {
@@ -89,7 +89,7 @@ $fullhd-enabled: false;
 }
 
 .button.is-outlined {
-  --bulma-button-border-width: 0.2rem !important;
+  --bulma-button-border-width: var(--border-thickness) !important;
 }
 
 .footer {
@@ -105,7 +105,7 @@ $fullhd-enabled: false;
 }
 
 nav {
-  border-bottom: 2px solid var(--bulma-body-color) !important;
+  border-bottom: var(--border-thickness) solid var(--bulma-body-color) !important;
 }
 
 .navbar-end {
@@ -129,7 +129,7 @@ nav {
     --bulma-body-color: var(--bulma-primary) !important;
     --bulma-navbar-tab-active-color: var(--bulma-body-color);
     --bulma-navbar-background-color: var(--bulma-body-color);
-    --bulma-button-border-width: 0.2rem;
+    --bulma-button-border-width: var(--border-thickness);
     --bulma-footer-background-color: var(--bulma-body-background-color) !important;
     --bulma-content-heading-color: var(--bulma-body-color) !important;
   }
@@ -262,7 +262,7 @@ hr.separator {
     max-width: 780px;
 
     margin: 0 auto;
-    border: 0.2rem solid black;
+    border: var(--border-thickness) solid black;
   }
 }
 
@@ -274,7 +274,7 @@ hr.separator {
     > a.button {
       max-width: calc(100vw - 0.75rem) !important;
       margin: 0 auto;
-      border: 0.2rem solid black;
+      border: var(--border-thickness) solid black;
     }
   }
 }
@@ -315,6 +315,7 @@ hr.separator {
   flex-grow: 1;
   flex-shrink: 1;
   align-self: center;
+  width: min-content;
 }
 
 .links {
