@@ -1,20 +1,40 @@
 <?php
 
 defined('ABSPATH') || exit;
+require_once 'customizer/header.php';
+require_once 'customizer/frontpage.php';
+require_once 'customizer/team-block.php';
+require_once 'customizer/team-page.php';
+require_once 'customizer/location-block.php';
+require_once 'customizer/cooperations-block.php';
+require_once 'customizer/cooperations-page.php';
+require_once 'customizer/supporter-page.php';
+use GGL\customizer;
+use function GGL\customizer\custom_controls;
 
-function ggl_add_customizer_options($wp_customize): void
-{
+function configure_customizer( WP_Customize_Manager $wp_customize): void {
+	custom_controls();
+
+	//$wp_customize->get_panel('nav_menus')->priority = 999;
 	$wp_customize->remove_section( 'custom_css' );
-	$wp_customize->remove_section( 'static_front_page' );
 
-	$wp_customize->add_setting( 'header_logo', array(
-		'type'       => 'theme_mod',
-		'capability' => 'edit_theme_options',
-	) );
-	$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'header_logo', array(
-		'label'   => 'Header Logo',
-		'section' => 'title_tagline',
-	) ) );
+
+
+	customizer\title_tagline_section($wp_customize);
+	customizer\customize_frontpage_section($wp_customize);
+	customizer\teamBlock\customize_team($wp_customize);
+	customizer\teamPage\customize_team($wp_customize);
+	customizer\locationBlock\customize_location($wp_customize);
+	customizer\cooperationsBlock\customize($wp_customize);
+	customizer\cooperationsPage\customize($wp_customize);
+	customizer\supporterPage\customize($wp_customize);
+	//ggl_add_customizer_options($wp_customize);
+}
+
+function ggl_add_customizer_options(WP_Customize_Manager $wp_customize): void
+{
+
+
 
 	$wp_customize->add_panel('frontpage', array(
 		'title' => esc_html__('Frontpage', 'gegenlicht'),
@@ -31,18 +51,7 @@ function ggl_add_customizer_options($wp_customize): void
 		'description' => esc_html__('Display the selected semester on the front page', 'gegenlicht'),
 	));
 
-	$wp_customize->add_setting('displayed_semester', array(
-		'type' => 'theme_mod',
-		'capability' => 'edit_theme_options',
-	));
-	$wp_customize->add_control('displayed_semester', array(
-		'label'   => esc_html__('Displayed Semester', 'gegenlicht'),
-		'panel' => 'frontpage',
-		'section' => 'semester',
-		'description' => esc_html__('This semester and the assigned movies will be displayed on the front page', 'gegenlicht'),
-		'choices'   => _get_semesters(),
-		'type'     => 'select',
-	));
+
 
 	$wp_customize->add_section('special-programs', array(
 		'title' => esc_html__('Special Programs', 'gegenlicht'),
@@ -466,4 +475,24 @@ function _get_special_programs(): array {
 	}
 
 	return $output;
+}
+
+function block_team_enabled() {
+	return GGL\customizer\teamBlock\block_team_enabled() && is_front_page();
+}
+
+function block_location_enabled() {
+	return GGL\customizer\locationBlock\block_location_enabled() && is_front_page();
+}
+
+function block_cooperations_enabled() {
+	return GGL\customizer\cooperationsBlock\block_cooperations_enabled() && is_front_page();
+}
+
+function page_cooperations_enabled() {
+	return GGL\customizer\cooperationsPage\page_cooperations_enabled();
+}
+
+function page_supporter_enabled() {
+	return GGL\customizer\supporterPage\page_supporter_enabled();
 }
