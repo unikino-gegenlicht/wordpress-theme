@@ -411,3 +411,51 @@ p:empty {
   border-color: var(--bulma-body-color) !important;
   color: var(--bulma-body-color) !important;
 }
+.marquee {
+  --height: 2rem;
+  --gap: 1rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+  height: var(--height);
+  margin: auto 0;
+}
+
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-evenly;
+  min-width: 100%;
+  gap: var(--gap);
+  animation: scroll 20s linear infinite;
+  &:first-child {
+    padding-left: var(--gap);
+    padding-top: var(--gap);
+    padding-bottom: var(--gap);
+  }
+  &:last-child {
+    padding-top: var(--gap);
+    padding-bottom: var(--gap);
+    padding-right: var(--gap);
+  }
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+
+/* Pause animation when reduced-motion is set */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-content {
+    animation-play-state: paused !important;
+  }
+}
