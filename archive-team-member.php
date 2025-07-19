@@ -6,10 +6,10 @@ do_action( 'wp_body_open' );
 ?>
 
     <article class="page-content">
-        <h1 class="is-size-1 no-separator"><?= esc_html__( 'Join Us!', 'gegenlicht' ) ?></h1>
+        <h1 class="is-size-2 no-separator"><?= esc_html__( 'Join Us!', 'gegenlicht' ) ?></h1>
         <div class="content">
 			<?php
-			$introTextRaw = get_theme_mod( 'team_intro_text_' . get_locale() );
+			$introTextRaw = get_theme_mod( 'team_intro' )[get_locale()];
 			$paragraphs   = preg_split( "/\R\R/", $introTextRaw );
 			foreach ( $paragraphs as $paragraph ) :
 				?>
@@ -47,7 +47,7 @@ do_action( 'wp_body_open' );
 					?>
                     <div class="cell">
                         <figure class="image is-3by4 member-picture">
-                            <img src="<?= $imageUrl ?: wp_get_attachment_image_url( get_theme_mod( 'missing_team_image_replacement' ) ) ?>"/>
+                            <img src="<?= $imageUrl ?: get_theme_mod( 'member_fallback_image' ) ?>"/>
                         </figure>
                         <hr class="separator"/>
                         <h5><?= $member->post_title ?></h5>
@@ -61,7 +61,7 @@ do_action( 'wp_body_open' );
             <h2 class="is-size-3"><?= esc_html__( 'Former Members', 'gegenlicht' ) ?></h2>
             <div class="content">
 				<?php
-				$introTextRaw = get_theme_mod( 'former_members_text_' . get_locale() );
+				$introTextRaw = get_theme_mod( 'team_thanks' )[get_locale()];
 				$paragraphs   = preg_split( "/\R\R/", $introTextRaw );
 				foreach ( $paragraphs as $paragraph ) :
 					?>
@@ -79,7 +79,7 @@ do_action( 'wp_body_open' );
 						?>
                         <div class="cell">
                             <figure class="image is-3by4 member-picture">
-                                <img src="<?= $imageUrl ?: wp_get_attachment_image_url( get_theme_mod( 'missing_team_image_replacement' ) ) ?>"/>
+                                <img src="<?= $imageUrl ?: get_theme_mod( 'member_fallback_image' ) ?>"/>
                             </figure>
                             <hr class="separator"/>
                             <h5><?= $member->post_title ?></h5>
