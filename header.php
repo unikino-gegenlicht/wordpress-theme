@@ -51,9 +51,9 @@ $headerImage = get_theme_mod('header_logo');
 </head>
 <body>
 <header>
-    <nav class="navbar is-spaced is-primary mb-5" role="navigation" aria-label="main navigation">
+    <nav class="navbar px-4 is-primary mb-5" role="navigation" aria-label="main navigation">
         <div class="navbar-brand px-2">
-            <a class="navbar-item p-0 is-tab" href="<?= get_home_url( scheme: 'https' ) ?>" style="border-bottom: none !important;">
+            <a class="navbar-item p-0 my-2 is-tab" href="<?= get_home_url( scheme: 'https' ) ?>" style="border-bottom: none !important;">
 				<?php
 				if ( $headerImage != false ):
 					$alternativeDescription = get_post_meta( $headerImage, '_wp_attachment_image_alt', true );
@@ -81,7 +81,6 @@ $headerImage = get_theme_mod('header_logo');
         </div>
         <div class="navbar-menu" id="menu">
             <div class="navbar-end">
-                <!-- Generated Menu by WordPress -->
 				<?php
 				$navigationItems = wp_get_nav_menu_items( wp_get_nav_menu_name( 'navigation-menu' ) );
 				if ( $navigationItems ):
@@ -97,8 +96,6 @@ $headerImage = get_theme_mod('header_logo');
 						global $wp;
 						$currentPage = $navigationItem->url == home_url( $wp->request ) || $navigationItem->url == home_url( $wp->request ).'/';
 						?>
-                        <!-- <?= $navigationItem->url ?> -->
-                        <!-- <?= home_url( $wp->request ) ?> -->
                         <a class="navbar-item is-size-5 is-tab <?= $currentPage ? 'is-active' : '' ?>"
                            href="<?= $navigationItem->url ?>"><?= $num ?> <span
                                     class="is-size-5 has-text-weight-semibold is-uppercase "><?= $navigationItem->title ?></span></a>
