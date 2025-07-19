@@ -8,6 +8,7 @@ defined( 'ABSPATH' ) || exit;
 $fallbackImage = get_theme_mod( 'anonymous_image' );
 $semesterID    = get_theme_mod( 'displayed_semester' );
 
+
 $next_meta       = [];
 $next_meta[]     = [
 	'key'     => 'screening_date',
@@ -124,7 +125,7 @@ do_action( 'wp_body_open' );
                 </div>
                 <span class="icon is-large">
                 <span class="material-symbols" id="programSwitcher"
-                      style="font-size: 48px; font-variation-settings: 'wght' 100, 'GRAD' 0, 'opsz' 48;">toggle_off</span>
+                      style="font-size: 48px; font-variation-settings: 'wght' 100, 'GRAD' 0, 'opsz' 48; font-weight: 100;">toggle_off</span>
             </span>
             </div>
             <hr class="separator mb-6" style="margin-top: 0.25rem;"/>
@@ -158,13 +159,14 @@ do_action( 'wp_body_open' );
             <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the archive', 'gegenlicht' ) ?></p>
         </a>
     </main>
-<?php foreach ( get_option( 'displayed_special_programs' ) as $termID => $show ) : if ( ! $show ) {
-	continue;
-} ?>
+<?php foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) : $termID = (int) $termID; ?>
     <style>
         #special-program_<?= $termID ?> {
             background-color: <?= get_term_meta( $termID, 'background_color', true ) ?>;
             --bulma-body-color: <?= get_term_meta( $termID, 'text_color', true ) ?>;
+
+            color: var(--bulma-body-color);
+
             padding-top: 2rem;
             padding-bottom: 2rem;
             background-clip: padding-box;
@@ -174,19 +176,14 @@ do_action( 'wp_body_open' );
             }
 
             .movie-list {
-                border-top: 1px solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
-                border-bottom: 1px solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
+                border-top: var(--border-thickness) solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
+                border-bottom: var(--border-thickness) solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
 
                 > * {
-                    border-top: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
-                    border-bottom: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?>;
-                    color:  <?= get_term_meta( $termID, 'text_color', true ) ?>;
+                    border-top: calc(var(--border-thickness) / 2) solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
+                    border-bottom: calc(var(--border-thickness) / 2) solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
+                    color: var(--bulma-body-color);
                 }
-            }
-
-            > div > hr.separator {
-                border: 1px solid <?= get_term_meta( $termID, 'text_color', true ) ?> !important;
-                background-color: <?= get_term_meta( $termID, 'text_color', true ) ?> !important;
             }
         }
 
@@ -204,22 +201,17 @@ do_action( 'wp_body_open' );
 
                 .movie-list {
                     > * {
-                        border-top: 1px solid <?= get_term_meta( $termID, 'dark_text_color', true ) ?>;
-                        border-bottom: 1px solid <?= get_term_meta( $termID, 'dark_text_color', true ) ?>;
-                        color:  <?= get_term_meta( $termID, 'dark_text_color', true ) ?>;
+                        border-top: var(--border-thickness) solid var(--bulma-body-color);
+                        border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+                        color: var(--bulma-body-color);
                     }
-                }
-
-                > div > hr.separator {
-                    border: 1px solid <?= get_term_meta( $termID, 'dark_text_color', true ) ?> !important;
-                    background-color: <?= get_term_meta( $termID, 'dark_text_color', true ) ?> !important;
                 }
             }
         }
     </style>
     <article id="special-program_<?= $termID ?>">
         <div class="page-content mb-3">
-            <a href="<?= get_term_link( $termID ) ?>">
+            <a href="<?= get_term_link( $termID, 'special-program' ) ?>">
                 <figure class="figure mb-6" style="text-align: center;">
                     <picture style="object-position: center; object-fit: scale-down;">
                         <source
@@ -231,26 +223,33 @@ do_action( 'wp_body_open' );
                     </picture>
                 </figure>
             </a>
+            <?php
+
+            $query = new WP_Query( array(
+	            'post_type'      => [ 'movie', 'event' ],
+	            'posts_per_page' => - 1,
+	            'tax_query'      => array(
+		            array(
+			            'taxonomy' => 'semester',
+			            'terms'    => $semesterID,
+		            ),
+		            array(
+			            'taxonomy' => 'special-program',
+			            'terms'    => $termID,
+		            )
+	            ),
+	            'meta_key'       => 'screening_date',
+	            'orderby'        => 'meta_value_num',
+	            'order'          => 'ASC',
+            ) );
+
+            if ($query->have_posts()):
+
+            ?>
             <div class="movie-list">
 				<?php
 
-				$query = new WP_Query( array(
-					'post_type'      => [ 'movie', 'event' ],
-					'posts_per_page' => - 1,
-					'tax_query'      => array(
-						array(
-							'taxonomy' => 'semester',
-							'terms'    => $semesterID,
-						),
-						array(
-							'taxonomy' => 'special-program',
-							'terms'    => $termID,
-						)
-					),
-					'meta_key'       => 'screening_date',
-					'orderby'        => 'meta_value_num',
-					'order'          => 'ASC',
-				) );
+
 
 				while ( $query->have_posts() ) : $query->the_post();
 					?>
@@ -267,9 +266,18 @@ do_action( 'wp_body_open' );
                     </a>
 				<?php endwhile; ?>
             </div>
+            <?php else: ?>
+            <article class="content">
+                <p><?= get_term((int)$termID)->description ?></p>
+                <p class="is-italic has-text-weight-semibold"><?= esc_html__('Sadly, this special program is already over for this semester…', 'gegenlicht') ?></p>
+            </article>
+
+            <?php endif; ?>
         </div>
     </article>
 <?php endforeach; ?>
+
+<?php if ( in_array( 'team', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #team {
             background-color: <?= get_theme_mod('fp_team_block_color') ?> !important;
@@ -313,16 +321,18 @@ do_action( 'wp_body_open' );
     </style>
     <article id="team" class="py-5">
         <div class="page-content content">
-			<?php if ( get_theme_mod( 'front_page_team_image' ) ):
-				get_template_part( 'partials/responsive-image', args: [ 'image_url' => get_theme_mod( 'front_page_team_image' ) ] );
+			<?php if ( get_theme_mod( 'team_image' ) ):
+				get_template_part( 'partials/responsive-image', args: [ 'image_url' => get_theme_mod( 'team_image' ) ] );
 			endif; ?>
             <h2><?= esc_html__( 'Who is the GEGENLICHT', 'gegenlicht' ) ?></h2>
             <div>
 				<?php
-				$introTextRaw = get_theme_mod( 'team_intro_text_' . get_locale() );
-				$paragraphs   = preg_split( "/\R\R/", $introTextRaw );
-				?>
-                <p><?= $paragraphs[0] ?? esc_html__( 'Some content is missing here' ) ?></p>
+				$introTextRaw = get_theme_mod( 'team_block_text' )[ get_locale() ];
+				$paragraphs   = preg_split( "/\R\R/", $introTextRaw, flags: PREG_SPLIT_NO_EMPTY );
+				foreach ( $paragraphs as $paragraph ):
+					?>
+                    <p><?= $paragraph ?? esc_html__( 'Some content is missing here' ) ?></p>
+				<?php endforeach; ?>
             </div>
             <a class="button is-outlined is-black is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
                href="<?= get_post_type_archive_link( 'team-member' ) ?>">
@@ -330,33 +340,49 @@ do_action( 'wp_body_open' );
             </a>
         </div>
     </article>
+<?php endif; ?>
+
+<?php if ( in_array( 'location', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #location {
-            background-color: <?= get_theme_mod('fp_location_block_color') ?> !important;
-            color: <?= get_theme_mod('fp_location_text_color') ?> !important;
+
+            background-color: <?= get_theme_mod('location_background_color')['light'] ?>;
+            color: <?= get_theme_mod('location_text_color')['light'] ?>;
             background-clip: padding-box;
 
 
-            > * {
-                color: <?= get_theme_mod('fp_location_text_color') ?> !important;
+            & > * {
+                color: <?= get_theme_mod('location_text_color')['light'] ?>;
 
+            }
+
+            .button {
+                --bulma-body-color: <?= get_theme_mod('location_text_color')['light'] ?>;
+
+                > * {
+                    color: <?= get_theme_mod('location_text_color')['light'] ?>;
+                }
             }
         }
 
         @media (prefers-color-scheme: dark) {
             #location {
-                background-color: <?= get_theme_mod('fp_location_block_color_dark') ?> !important;
-                color: <?= get_theme_mod('fp_location_text_color_dark') ?> !important;
+                background-color: <?=get_theme_mod('location_background_color')['dark'] ?> !important;
+                color: <?= get_theme_mod('location_text_color')['dark'] ?> !important;
                 background-clip: padding-box;
 
 
                 > * {
-                    color: <?= get_theme_mod('fp_location_text_color_dark') ?> !important;
+                    color: <?= get_theme_mod('location_text_color')['dark'] ?> !important;
 
                 }
 
                 .button {
-                    border-color: <?= get_theme_mod('fp_location_text_color_dark') ?> !important;
+                    --bulma-body-color: <?= get_theme_mod('location_text_color')['dark'] ?> !important;
+
+                    > * {
+                        color: <?= get_theme_mod('location_text_color')['dark'] ?> !important;
+                    }
                 }
             }
         }
@@ -364,16 +390,17 @@ do_action( 'wp_body_open' );
     <article class="has-text-primary py-5" id="location">
         <div class="page-content">
             <div class="content">
-				<?php if ( get_theme_mod( 'fp_location_image' ) ): ?>
-                    <figure class="image">
-                        <img src="<?= get_theme_mod( 'fp_location_image' ) ?>"/>
-                    </figure>
+				<?php if ( get_theme_mod( 'location_map' ) ): ?>
+					<?php get_template_part( 'partials/responsive-image', args: [
+						'image_url'    => get_theme_mod( 'location_map' ),
+						'disable16by9' => true
+					] ) ?>
 				<?php endif; ?>
                 <h2 class="has-text-primary border-is-primary"><?= esc_html__( 'Where is the GEGENLICHT', 'gegenlicht' ) ?></h2>
                 <div>
 					<?php
-					$introTextRaw = get_theme_mod( 'fp_location_text_' . get_locale() );
-					$paragraphs   = preg_split( "/\R\R/", $introTextRaw );
+					$introTextRaw = get_theme_mod( 'location_text' )[ get_locale() ];
+					$paragraphs   = preg_split( "/\R\R/", $introTextRaw, flags: PREG_SPLIT_NO_EMPTY );
 					foreach ( $paragraphs as $paragraph ):
 						?>
                         <p><?= $paragraph ?? esc_html__( 'Some content is missing here' ) ?></p>
@@ -381,10 +408,131 @@ do_action( 'wp_body_open' );
                 </div>
             </div>
             <a class="button is-outlined is-primary is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
-               href="<?= get_page_link( get_theme_mod( 'location_detail_page' ) ) ?>">
+               href="<?= get_page_link( get_theme_mod( 'location_detail_page' ) ?? '#' ) ?>">
                 <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'Read more', 'gegenlicht' ) ?></p>
             </a>
         </div>
     </article>
+<?php endif; ?>
+<?php if ( in_array( 'cooperations', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
+    <style>
+        #cooperations {
+            --bulma-body-background-color: <?= get_theme_mod('cooperations_background_color')['light'] ?>;
+            --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['light'] ?>;
+            background-clip: padding-box;
 
+
+            & > * {
+                color: <?= get_theme_mod('cooperations_text_color')['light'] ?>;
+
+            }
+
+            .button {
+                --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['light'] ?>;
+
+                > * {
+                    color: <?= get_theme_mod('cooperations_text_color')['light'] ?>;
+                }
+            }
+
+            .marquee-content {
+                animation: scroll 40s linear infinite;
+                gap: 2rem;
+            }
+
+            figure {
+
+                align-content: space-around;
+
+                svg {
+                    object-fit: scale-down;
+                    width: 10vw;
+
+                }
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            #cooperations {
+                background-color: <?= get_theme_mod('cooperations_background_color')['dark'] ?> !important;
+                color: <?= get_theme_mod('cooperations_text_color')['dark'] ?> !important;
+
+                background-clip: padding-box;
+
+
+                > * {
+                    color: <?= get_theme_mod('cooperations_text_color')['dark'] ?> !important;
+
+                }
+
+                .button {
+                    --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['dark'] ?> !important;
+
+                    > * {
+                        color: <?= get_theme_mod('cooperations_text_color')['dark'] ?> !important;
+                    }
+                }
+
+            }
+        }
+    </style>
+    <article id="cooperations" class="py-5">
+        <div class="page-content content">
+			<?php
+
+			$externalsQuery = new WP_Query( [
+				'post_type'      => [ 'supporter', 'cooperation-partner' ],
+				'posts_per_page' => 6,
+				'orderby'        => 'rand'
+			] );
+
+			if ( $externalsQuery->have_posts() ) :
+
+				$postImages = array();
+
+				while ( $externalsQuery->have_posts() ) : $externalsQuery->the_post();
+					$postImages[] = get_attached_file( attachment_url_to_postid( get_the_post_thumbnail_url() ), true );
+				endwhile;
+				wp_reset_postdata();
+
+
+				?>
+                <div class="marquee" style="--height: 200px;">
+                    <div class="marquee-content" style="height: 200px;">
+						<?php foreach ( $postImages as $postImage ) : ?>
+                            <figure class="image is-3by4">
+								<?= file_get_contents( $postImage ) ?>
+                            </figure>
+						<?php endforeach; ?>
+                    </div>
+                    <div class="marquee-content" style="height: 200px;">
+						<?php foreach ( $postImages as $postImage ) : ?>
+                            <figure class="image is-3by4">
+								<?= file_get_contents( $postImage ) ?>
+                            </figure>
+						<?php endforeach; ?>
+                    </div>
+                </div>
+			<?php endif; ?>
+            <h2><?= esc_html__( 'Our Cooperation Partners' ) ?></h2>
+            <div>
+				<?php
+				$introTextRaw = get_theme_mod( 'coop_block_text' )[ get_locale() ];
+				$paragraphs   = preg_split( "/\R\R/", $introTextRaw, flags: PREG_SPLIT_NO_EMPTY );
+				foreach ( $paragraphs as $paragraph ):
+					?>
+                    <p><?= $paragraph ?? esc_html__( 'Some content is missing here' ) ?></p>
+				<?php endforeach; ?>
+            </div>
+            <a class="button is-outlined is-primary is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
+               href="<?= get_post_type_archive_link( 'cooperation-partner' ) ?>">
+                <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To our Cooperations', 'gegenlicht' ) ?></p>
+            </a>
+            <a class="button is-outlined is-primary is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
+               href="<?= get_post_type_archive_link( 'supporter' ) ?>">
+                <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'See our Supporterss', 'gegenlicht' ) ?></p>
+            </a>
+        </div>
+    </article>
+<?php endif; ?>
 <?php get_footer(); ?>
