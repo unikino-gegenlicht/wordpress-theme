@@ -1,6 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+
 function enable_theme_supports() {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'title-tag' );
@@ -11,10 +12,15 @@ function enable_theme_supports() {
 add_action( 'after_setup_theme', 'enable_theme_supports' );
 
 
-if (!is_admin()) {
-
-	add_filter( 'locale', 'use_accept_locale' );
-	add_filter( 'pre_determine_locale', 'use_accept_locale' );
+if (!is_admin() || is_customize_preview() ) {
+	if ( ! is_user_logged_in() ) {
+		add_filter( 'locale', 'use_accept_locale' );
+		add_filter( 'pre_determine_locale', 'use_accept_locale' );
+	} else {
+		add_filter( 'locale', function ( $locale ) {
+			return substr(get_user_meta( wp_get_current_user()->ID, 'locale', true ) ?? "en", 0,2);
+		} );
+	}
 }
 
 function use_accept_locale( $locale ) {
@@ -34,7 +40,7 @@ function use_accept_locale( $locale ) {
 load_theme_textdomain( 'gegenlicht', get_template_directory() . '/languages' );
 
 require_once 'inc/customizer.php';
-add_action( 'customize_register', 'ggl_add_customizer_options' );
+add_action( 'customize_register', 'configure_customizer' );
 
 
 /**
@@ -110,6 +116,7 @@ add_action( 'wp_enqueue_scripts', function () {
 
 
 register_nav_menu( "navigation-menu", "Navigation Menu" );
+//register_nav_menu("social-links", "Social Media Links" );
 
 
 show_admin_bar( false );
@@ -188,4 +195,24 @@ add_filter( 'login_display_language_dropdown', '__return_false' );
 
 function ggl_cleanup_paragraphs( string $input): string {
 	return preg_replace('/<p[^>]*>(?:\s|&nbsp;)*<\/p>/xu',  '', trim($input));
+}
+
+function ggl_theme_get_translated_age_rating_descriptor(string $metaKey): string {
+    $descriptors = [
+	    'sexualized_violence' => esc_html__( 'Sexualized Violence', 'ggl-post-types' ),
+	    'violence'            => esc_html__( 'Violence', 'ggl-post-types' ),
+	    'self_harm'           => esc_html__( 'Self Harm', 'ggl-post-types' ),
+	    'drug_usage'          => esc_html__( 'Drug Usage', 'ggl-post-types' ),
+	    'discrimination'      => esc_html__( 'Discrimination', 'ggl-post-types' ),
+	    'sexuality'           => esc_html__( 'Sexuality', 'ggl-post-types' ),
+	    'threat'              => esc_html__( 'Threat', 'ggl-post-types' ),
+	    'injury'              => esc_html__( 'Injury', 'ggl-post-types' ),
+	    'stressful_topics'    => esc_html__( 'Stressful Topics', 'ggl-post-types' ),
+	    'language'            => esc_html__( 'Language', 'ggl-post-types' ),
+	    'nudeness'            => esc_html__( 'Nudeness', 'ggl-post-types' ),
+    ];
+    if ( array_key_exists( $metaKey, $descriptors ) ) {
+        return $descriptors[ $metaKey ];
+    }
+    return $metaKey;
 }
