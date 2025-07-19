@@ -468,3 +468,21 @@ p:empty {
 address {
   font-style: normal !important;
 }
+
+.rules {
+  ul > li {
+    &::marker {
+      display: none;
+    }
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+
+    background-color: var(--bulma-body-color) !important;
+    color: var(--bulma-body-background-color) !important;
+
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+}
