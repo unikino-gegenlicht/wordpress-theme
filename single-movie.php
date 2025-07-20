@@ -240,17 +240,17 @@ if ( $isSpecialProgram ):
 	<?php
 	$selectedBy     = '';
 	$selectedByType = rwmb_meta( 'selected_by' );
-	$post_id        = '';
+	$selectorID        = '';
 	$skipSelectedBy = false;
 	switch ( $selectedByType ) {
 		case 'member':
-			$post_id    = rwmb_meta( 'team_member_id' );
-			$member     = get_post( $post_id );
+			$selectorID = rwmb_meta( 'team_member_id' );
+			$member     = get_post( $selectorID );
 			$selectedBy = $member->post_title;
 			break;
 		case 'cooperation':
-			$post_id    = rwmb_meta( 'cooperation_partner_id' );
-			$partner    = get_post( $post_id );
+			$selectorID = rwmb_meta( 'cooperation_partner_id' );
+			$partner    = get_post( $selectorID );
 			$selectedBy = $partner->post_title;
 			break;
 		default:
@@ -259,72 +259,8 @@ if ( $isSpecialProgram ):
 	}
 
 	if ( ! $skipSelectedBy ):
+        get_template_part("partials/team-proposals", args: ['post-id' => $post->ID, 'proposal-by' => $selectedByType, 'proposer-id' => $selectorID ])
 		?>
-        <div class="page-content">
-
-            <p class="font-ggl is-size-3 is-uppercase">
-				<?= esc_html__( 'Selected by', 'gegenlicht' ) ?><br class="is-hidden-tablet"/>
-				<?= $selectedBy ?>
-            </p>
-            <hr class="separator is-black"/>
-            <div class="is-flex is-align-items-top is-flex-wrap-wrap">
-                <figure class="image is-3by4 <?= $selectedByType == "member" ? 'member-picture' : '' ?>">
-                    <img src="<?= get_the_post_thumbnail_url( post: $post_id, size: 'full' ) ?: wp_get_attachment_image_url( get_theme_mod( 'missing_team_image_replacement' ) ) ?>"/>
-                </figure>
-                <div style="width: 1rem; height: 1rem"></div>
-                <div class="proposal-list">
-					<?php
-					$query = new WP_Query( array(
-						'post_type'      => [ 'movie', 'event' ],
-						'posts_per_page' => 6,
-                        'post__not_in' => [ $post->ID ],
-						'meta_query'     => array(
-							'relation' => 'AND',
-							array(
-								array(
-									'key'   => 'program_type',
-									'value' => 'main',
-								),
-								array(
-									'key'     => 'license_type',
-									'value'   => [
-										'full',
-										is_user_logged_in() ? 'pool' : null,
-										is_user_logged_in() ? 'none' : null,
-									],
-									'compare' => 'IN',
-								),
-								array(
-									'relation' => 'OR',
-									array(
-										'key'   => 'team_member_id',
-										'value' => $post_id,
-									),
-									array(
-										'key'   => 'cooperation_partner_id',
-										'value' => $post_id,
-									)
-								)
-							)
-
-						)
-					) );
-					if ( $query->have_posts() ):
-						while ( $query->have_posts() ) : $query->the_post();
-							?>
-                            <hr class="separator is-black"/>
-                            <p class="mt-2 has-text-weight-bold font-ggl is-uppercase is-size-5"><?= $post->post_title ?></p>
-						<?php endwhile;
-						echo '<hr class="separator is-black"/>';
-						wp_reset_postdata();
-					else:
-						?>
-                        <p class="is-align-self-center"><?= esc_html__( 'No proposals found. Check back later…', 'gegenlicht' ) ?></p>
-					<?php
-					endif; ?>
-                </div>
-            </div>
-        </div>
 	<?php endif; ?>
 </section>
 <?php get_footer(); ?>
