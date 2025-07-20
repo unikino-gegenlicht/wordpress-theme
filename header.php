@@ -96,14 +96,14 @@ $headerImage = get_theme_mod('header_logo');
 						global $wp;
 						$currentPage = $navigationItem->url == home_url( $wp->request ) || $navigationItem->url == home_url( $wp->request ).'/';
 						?>
-                        <a class="navbar-item is-size-5 is-tab <?= $currentPage ? 'is-active' : '' ?>"
-                           href="<?= $navigationItem->url ?>"><?= $num ?> <span
-                                    class="is-size-5 has-text-weight-semibold is-uppercase "><?= $navigationItem->title ?></span></a>
+                        <a class="navbar-item is-size-5 <?= $currentPage ? 'is-active' : '' ?>"
+                           href="<?= $navigationItem->url ?>"><span><?= $num ?>&ensp;<span
+                                    class="is-size-5 has-text-weight-semibold is-uppercase "><?= $navigationItem->title ?></span></span></a>
 					<?php endfor; ?>
 				<?php endif; ?>
                 <hr class="separator is-hidden-desktop">
 	            <?php if (is_user_logged_in() && current_user_can('edit_posts')): ?>
-                    <a class="navbar-item is-tab" href="<?= get_admin_url(scheme: 'https') ?>">
+                    <a class="navbar-item no-hover" href="<?= get_admin_url(scheme: 'https') ?>">
                         <span class="icon-text has-text-black is-size-5">
                             <span class="icon">
                                 <span class="si si-wordpress"></span>
@@ -115,14 +115,14 @@ $headerImage = get_theme_mod('header_logo');
                     </a>
 	            <?php endif; ?>
 				<?php if ( is_user_logged_in() ): ?>
-                    <a class="navbar-item is-tab" href="<?= wp_logout_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
+                    <a class="navbar-item no-hover" href="<?= wp_logout_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
                         <span
                                 class="icon"><span class="material-symbols">logout</span></span>
                         <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Logout', 'gegenlicht' ) ?></span></span>
                     </a>
 				<?php else: ?>
-                    <a class="navbar-item is-tab" href="<?= wp_login_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
+                    <a class="navbar-item no-hover" href="<?= wp_login_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
                         <span
                                 class="icon"><span class="material-symbols">login</span></span>
