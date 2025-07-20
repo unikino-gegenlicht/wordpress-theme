@@ -67,10 +67,10 @@ do_action( 'wp_body_open' );
 
         <article id="<?= basename(get_post_permalink()) ?>" class="content my-6">
             <header>
-                <figure class="image member-picture" style="text-align: center; height: unset !important;">
-                    <img src="<?= get_the_post_thumbnail_url(size: 'full') ?>" style="width: 250px; height: 200px; object-fit: scale-down; margin: 0 auto;"/>
+                <figure class="image supporter-logo">
+                    <img src="<?= get_the_post_thumbnail_url(size: 'full') ?>" decoding="async" loading="lazy"/>
                 </figure>
-                <h2 class="mt-0"><?php the_title() ?></h2>
+                <h2 class="mt-2"><?php the_title() ?></h2>
             </header>
             <?php the_content() ?>
 
