@@ -180,8 +180,7 @@ do_action( 'wp_body_open' );
                 border-bottom: var(--border-thickness) solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
 
                 > * {
-                    border-top: calc(var(--border-thickness) / 2) solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
-                    border-bottom: calc(var(--border-thickness) / 2) solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
+                    border-color: var(--bulma-body-color) !important;
                     color: var(--bulma-body-color);
                 }
             }
@@ -201,8 +200,7 @@ do_action( 'wp_body_open' );
 
                 .movie-list {
                     > * {
-                        border-top: var(--border-thickness) solid var(--bulma-body-color);
-                        border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+                        border-color: var(--bulma-body-color) !important;
                         color: var(--bulma-body-color);
                     }
                 }
@@ -236,11 +234,17 @@ do_action( 'wp_body_open' );
 		            array(
 			            'taxonomy' => 'special-program',
 			            'terms'    => $termID,
-		            )
+		            ),
 	            ),
 	            'meta_key'       => 'screening_date',
 	            'orderby'        => 'meta_value_num',
 	            'order'          => 'ASC',
+                'meta_query'     => array(
+	                [
+		                'key'   => 'program_type',
+		                'value' => 'special',
+	                ]
+                )
             ) );
 
             if ($query->have_posts()):
@@ -268,7 +272,16 @@ do_action( 'wp_body_open' );
             </div>
             <?php else: ?>
             <article class="content">
-                <p><?= get_term((int)$termID)->description ?></p>
+                <?php
+                $paragraphs   = preg_split( "/\R\R/", get_term((int)$termID)->description );
+                foreach ( $paragraphs as $paragraph ) :
+	                ?>
+                    <p>
+		                <?= $paragraph ?>
+                    </p>
+                <?php
+                endforeach;
+                ?>
                 <p class="is-italic has-text-weight-semibold"><?= esc_html__('Sadly, this special program is already over for this semester…', 'gegenlicht') ?></p>
             </article>
 
