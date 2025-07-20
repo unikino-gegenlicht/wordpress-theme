@@ -64,6 +64,22 @@ get_header();
 do_action( 'wp_body_open' );
 ?>
     <main class="px-2 mb-6 page-content">
+        <div class="marquee">
+            <div class="marquee-content">
+                <p>***&emsp;Semesterpause</p>
+                <p>***&emsp;Semesterpause</p>
+                <p>***&emsp;Semesterpause</p>
+                <p>***&emsp;Semesterpause</p>
+                <p>***&emsp;Semesterpause</p>
+            </div>
+            <div class="marquee-content">
+                <p>***&emsp;Semesterpause</p>
+                <p>***&emsp;Semesterpause</p>
+                <p>***&emsp;Semesterpause</p>
+                <p>***&emsp;Semesterpause</p>
+                <p>***&emsp;Semesterpause</p>
+            </div>
+        </div>
 		<?php for ( $i = 0; $i < count( $upcoming ); $i ++ ): $post = get_post( $upcoming[ $i ] );
 			$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
 			$title = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
@@ -159,136 +175,9 @@ do_action( 'wp_body_open' );
             <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the archive', 'gegenlicht' ) ?></p>
         </a>
     </main>
-<?php foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) : $termID = (int) $termID; ?>
-    <style>
-        #special-program_<?= $termID ?> {
-            background-color: <?= get_term_meta( $termID, 'background_color', true ) ?>;
-            --bulma-body-color: <?= get_term_meta( $termID, 'text_color', true ) ?>;
-
-            color: var(--bulma-body-color);
-
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-            background-clip: padding-box;
-
-            div.page-content {
-                margin: 0 auto !important;
-            }
-
-            .movie-list {
-                border-top: var(--border-thickness) solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
-                border-bottom: var(--border-thickness) solid<?= get_term_meta( $termID, 'text_color', true ) ?>;
-
-                > * {
-                    border-color: var(--bulma-body-color) !important;
-                    color: var(--bulma-body-color);
-                }
-            }
-        }
-
-        @media (prefers-color-scheme: dark) {
-            #special-program_<?= $termID ?> {
-                background-color: <?= get_term_meta( $termID, 'dark_background_color', true ) ?> !important;
-                --bulma-body-color: <?= get_term_meta( $termID, 'dark_text_color', true ) ?> !important;
-
-                div.page-content {
-                    margin: 0 auto !important;
-                }
-
-                background-clip: padding-box;
-
-
-                .movie-list {
-                    > * {
-                        border-color: var(--bulma-body-color) !important;
-                        color: var(--bulma-body-color);
-                    }
-                }
-            }
-        }
-    </style>
-    <article id="special-program_<?= $termID ?>">
-        <div class="page-content mb-3">
-            <a href="<?= get_term_link( $termID, 'special-program' ) ?>">
-                <figure class="figure mb-6" style="text-align: center;">
-                    <picture style="object-position: center; object-fit: scale-down;">
-                        <source
-                                srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $termID, 'logo_dark', true ), 'full' ) ?>"
-                                media="(prefers-color-scheme: dark)"/>
-                        <source
-                                srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $termID, 'logo', true ), 'full' ) ?>"/>
-                        <img style="max-height: 125px"/>
-                    </picture>
-                </figure>
-            </a>
-            <?php
-
-            $query = new WP_Query( array(
-	            'post_type'      => [ 'movie', 'event' ],
-	            'posts_per_page' => - 1,
-	            'tax_query'      => array(
-		            array(
-			            'taxonomy' => 'semester',
-			            'terms'    => $semesterID,
-		            ),
-		            array(
-			            'taxonomy' => 'special-program',
-			            'terms'    => $termID,
-		            ),
-	            ),
-	            'meta_key'       => 'screening_date',
-	            'orderby'        => 'meta_value_num',
-	            'order'          => 'ASC',
-                'meta_query'     => array(
-	                [
-		                'key'   => 'program_type',
-		                'value' => 'special',
-	                ]
-                )
-            ) );
-
-            if ($query->have_posts()):
-
-            ?>
-            <div class="movie-list">
-				<?php
-
-
-
-				while ( $query->have_posts() ) : $query->the_post();
-					?>
-                    <a href="<?= get_permalink() ?>">
-                        <div>
-                            <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
-                                        class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
-                            </time>
-                            <p class="is-size-5 has-text-weight-bold is-uppercase"><?= $showDetails ? $title : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?></p>
-                        </div>
-                        <span class="icon">
-                        <span class="material-symbols">arrow_forward_ios</span>
-                    </span>
-                    </a>
-				<?php endwhile; ?>
-            </div>
-            <?php else: ?>
-            <article class="content">
-                <?php
-                $paragraphs   = preg_split( "/\R\R/", get_term((int)$termID)->description );
-                foreach ( $paragraphs as $paragraph ) :
-	                ?>
-                    <p>
-		                <?= $paragraph ?>
-                    </p>
-                <?php
-                endforeach;
-                ?>
-                <p class="is-italic has-text-weight-semibold"><?= esc_html__('Sadly, this special program is already over for this semester…', 'gegenlicht') ?></p>
-            </article>
-
-            <?php endif; ?>
-        </div>
-    </article>
-<?php endforeach; ?>
+<?php foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) : $termID = (int) $termID;
+    get_template_part("partials/special-program", args: ["id" => $termID] );
+endforeach; ?>
 
 <?php if ( in_array( 'team', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
