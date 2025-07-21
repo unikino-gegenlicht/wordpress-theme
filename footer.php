@@ -45,9 +45,6 @@ defined( 'ABSPATH' ) || exit;
             </address>
         </div>
     </div>
-    <address class="has-text-primary my-2">
-		<?= nl2br( get_theme_mod( 'address' ) ) ?>
-    </address>
     <hr class="separator is-primary"/>
     <div class="has-text-primary my-2">
         <h5 class="has-text-weight-semibold no-separator"><?= esc_html__( 'Youth Protection Officer', 'gegenlicht' ) ?></h5>
