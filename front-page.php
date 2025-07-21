@@ -201,7 +201,7 @@ endforeach; ?>
     <article id="team" class="py-5">
         <div class="page-content content">
 			<?php if ( get_theme_mod( 'team_image' ) ):
-				get_template_part( 'partials/responsive-image', args: [ 'image_url' => get_theme_mod( 'team_image' ) ] );
+				get_template_part( 'partials/responsive-image', args: [ 'image_url' => wp_get_attachment_image_url( get_theme_mod( 'team_image' ), 'desktop'), 'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'team_image' ), 'mobile') ] );
 			endif; ?>
             <h2><?= esc_html__( 'Who is the GEGENLICHT', 'gegenlicht' ) ?></h2>
             <div>
@@ -262,8 +262,9 @@ endforeach; ?>
             <div class="">
 				<?php if ( get_theme_mod( 'location_map' ) ): ?>
 					<?php get_template_part( 'partials/responsive-image', args: [
-						'image_url'    => get_theme_mod( 'location_map' ),
-						'disable16by9' => true
+						'image_url'    => wp_get_attachment_image_url(get_theme_mod( 'location_map' ), 'full'),
+						'disable16by9' => true,
+                        'style' => 'object-position: 15%;'
 					] ) ?>
 				<?php endif; ?>
                 <h2><?= esc_html__( 'Where is the GEGENLICHT', 'gegenlicht' ) ?></h2>

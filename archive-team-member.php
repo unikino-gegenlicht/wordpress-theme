@@ -43,11 +43,11 @@ do_action( 'wp_body_open' );
 					endswitch;
 				endwhile;
 
-				foreach ( $members['active'] as $member ) : $imageUrl = get_the_post_thumbnail_url( post: $member, size: 'full' );
+				foreach ( $members['active'] as $member ) : $imageUrl = get_the_post_thumbnail_url( post: $member, size: 'member-crop' );
 					?>
                     <div class="cell">
                         <figure class="image is-3by4 member-picture">
-                            <img src="<?= $imageUrl ?: get_theme_mod( 'member_fallback_image' ) ?>"/>
+                            <img alt="" src="<?= $imageUrl ?: wp_get_attachment_image_url(get_theme_mod( 'member_fallback_image' )) ?>"/>
                         </figure>
                         <hr class="separator"/>
                         <h5><?= $member->post_title ?></h5>
@@ -75,11 +75,11 @@ do_action( 'wp_body_open' );
             <div class="fixed-grid has-2-cols-mobile has-4-cols-tablet">
                 <div class="grid">
 					<?php
-					foreach ( $members['former'] as $member ) : $imageUrl = get_the_post_thumbnail_url( post: $member, size: 'full' );
+					foreach ( $members['former'] as $member ) : $imageUrl = get_the_post_thumbnail_url( post: $member, size: 'member-crop' );
 						?>
                         <div class="cell">
                             <figure class="image is-3by4 member-picture">
-                                <img src="<?= $imageUrl ?: get_theme_mod( 'member_fallback_image' ) ?>"/>
+                                <img alt="" src="<?= $imageUrl ?:  wp_get_attachment_image_url(get_theme_mod( 'member_fallback_image' )) ?>"/>
                             </figure>
                             <hr class="separator"/>
                             <h5><?= $member->post_title ?></h5>

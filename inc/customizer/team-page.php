@@ -33,7 +33,7 @@ function add_fallback_image(\WP_Customize_Manager $wp_customize): void {
 		'capability' => 'edit_theme_options',
 	));
 
-	$control = new \WP_Customize_Image_Control( $wp_customize, 'member_fallback_image', array(
+	$control = new \WP_Customize_Media_Control( $wp_customize, 'member_fallback_image', array(
 		'label' => __( 'Fallback Image', 'ggl' ),
 		'section' => section,
 		'description' => esc_html__('The selected image will be displayed if a team member has no photo set', 'gegenlicht'),

@@ -31,7 +31,7 @@ function add_team_image_setting(\WP_Customize_Manager $wp_customize): void {
 		'capability' => 'edit_theme_options',
 	));
 
-	$control = new \WP_Customize_Image_Control( $wp_customize, 'team_image', array(
+	$control = new \WP_Customize_Media_Control( $wp_customize, 'team_image', array(
 		'label' => __( 'Team Image', 'ggl' ),
 		'section' => section,
 		'description' => esc_html__('The selected image will be displayed on the block introducing the team', 'gegenlicht'),
