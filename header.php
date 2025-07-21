@@ -18,6 +18,8 @@ if (str_starts_with($acceptedLanguage, 'de')) {
 }
 
 $headerImage = get_theme_mod('header_logo');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="<?= $outputLanguage ?>" data-theme="">
@@ -26,34 +28,13 @@ $headerImage = get_theme_mod('header_logo');
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <?php if ($headerImage): ?>
-    <link rel="preload" href="<?= get_theme_mod('header_logo') ?>" as="image"/>
-    <?php endif; ?>
-	<?php if ( defined( 'WP_DEBUG' ) && WP_DEBUG ): ?>
-        <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/style.css" as="style">
-        <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/style.css" as="style">
-	<?php else: ?>
-        <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/style.min.css" as="style">
-        <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/style.min.css" as="style">
-	<?php endif; ?>
-    <link rel="preload" href="<?= get_stylesheet_directory_uri()?>/assets/css/simple-icons.css" as="style">
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/simple-icons.css" as="style"/>
-    <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/assets/fonts/gegenlicht.woff2" as="font"
-          type="font/woff2" crossorigin>
-    <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/assets/fonts/inter.woff2" as="font"
-          type="font/woff2" crossorigin>
-    <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/assets/fonts/inter_italic.woff2" as="font"
-          type="font/woff2" crossorigin>
-    <link rel="preload" href="<?= get_stylesheet_directory_uri() ?>/assets/js/menu-toggle.js" as="script"/>
-    <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/menu-toggle.js"></script>
-    <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/program-list-toggle.js"></script>
 	<?php wp_head(); ?>
 </head>
 <body>
 <header>
-    <nav class="navbar px-4 is-primary mb-5" role="navigation" aria-label="main navigation">
+    <nav class="navbar px-4 mb-5" role="navigation" aria-label="main navigation">
         <div class="navbar-brand px-2">
-            <a class="navbar-item p-0 my-2 is-tab" href="<?= get_home_url( scheme: 'https' ) ?>" style="border-bottom: none !important;">
+            <a class="navbar-item p-0 my-2 is-tab" href="<?= get_home_url( scheme: 'https' ) ?>" style="border-bottom: none !important;" aria-label="Back To Start">
 				<?php
 				if ( $headerImage != false ):
 					$alternativeDescription = get_post_meta( $headerImage, '_wp_attachment_image_alt', true );
@@ -71,7 +52,7 @@ $headerImage = get_theme_mod('header_logo');
             </a>
 
             <a role="button" id="burger" class="navbar-burger" aria-label="menu" aria-expanded="false"
-               style="color:black;"
+               style="color: var(--bulma-body-color);"
                onclick="toggleMenu()">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -97,16 +78,16 @@ $headerImage = get_theme_mod('header_logo');
 						$currentPage = $navigationItem->url == home_url( $wp->request ) || $navigationItem->url == home_url( $wp->request ).'/';
 						?>
                         <a class="navbar-item is-size-5 <?= $currentPage ? 'is-active' : '' ?>"
-                           href="<?= $navigationItem->url ?>"><span><?= $num ?>&ensp;<span
+                           href="<?= $navigationItem->url ?>"><span><?= $num ?>&nbsp;<span
                                     class="is-size-5 has-text-weight-semibold is-uppercase "><?= $navigationItem->title ?></span></span></a>
 					<?php endfor; ?>
 				<?php endif; ?>
                 <hr class="separator is-hidden-desktop">
 	            <?php if (is_user_logged_in() && current_user_can('edit_posts')): ?>
                     <a class="navbar-item no-hover" href="<?= get_admin_url(scheme: 'https') ?>">
-                        <span class="icon-text has-text-black is-size-5">
+                        <span class="icon-text is-size-5">
                             <span class="icon">
-                                <span class="si si-wordpress"></span>
+                                <span class="si is-size-5 si-wordpress"></span>
                             </span>
                             <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop">
                                 <?= esc_html__('To the backend') ?>
