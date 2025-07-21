@@ -9,8 +9,14 @@ $showLetterboxd  = (bool) ( $args['showLetterboxd'] ?? false );
 $phoneNumber        = (string) ( $args['phoneNumber'] ?? get_theme_mod( 'contact_info' )["phoneNumber"] ?? "" );
 $emailAddress       = (string) ( $args['emailAddress'] ?? get_theme_mod( 'contact_info' )["emailAddress"] ?? "" );
 $instagramUsername  = (string) ( $args['instagramUsername'] ?? get_theme_mod( 'social_medias' )["instagram"] ?? "" );
-$mastodonUsername   = (string) ( $args['mastodonURL'] ?? ( ( get_theme_mod( 'social_medias' )["mastodonURL"] ?? null ) != null ? explode( "/", get_theme_mod( 'socialMedias' )["mastodonURL"] )[3] . "@" . explode( "/", get_theme_mod( 'socialMedias' )["mastodonURL"] )[2] : "" ) );
+$mastodonUrl        = (string) ( $args['mastodonUrl'] ?? get_theme_mod( 'social_medias' )["mastodonURL"] ?? "" );
 $letterboxdUsername = (string) ( $args['letterboxdUsername'] ?? get_theme_mod( 'social_medias' )["letterboxd"] ?? "" );
+
+$mastodonUsername = "";
+if (!empty($mastodonUrl)) {
+    $parts = explode( "/", $mastodonUrl );
+    $mastodonUsername = $parts[3] . '@' . $parts[2];
+}
 
 $backgroundColorDark = (string) ( $args['colors']['background']['dark'] ?? get_theme_mod( 'contact_partial' )['background']['dark'] ?? 'black' );
 $backgroundColor     = (string) ( $args['colors']['background']['light'] ?? get_theme_mod( 'contact_partial' )['background']['light'] ?? 'black' );
@@ -57,33 +63,33 @@ $textColor     = (string) ( $args['colors']['text']['light'] ?? get_theme_mod( '
                     <td><?= $phoneNumber ?></td>
                 </tr>
 			<?php endif; ?>
-			<?php if ( $showEmail && !empty($emailAddress) ) : ?>
+			<?php if ( $showEmail && ! empty( $emailAddress ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "e-mail", "gegenlicht" ) ?></td>
                     <td><?= preg_replace( "/@/", " (at) ", $emailAddress ) ?></td>
                 </tr>
 			<?php endif; ?>
-	        <?php if ( $showInstagram && !empty($instagramUsername) ) : ?>
+			<?php if ( $showInstagram && ! empty( $instagramUsername ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "Instagram", "gegenlicht" ) ?></td>
                     <td><?= $instagramUsername ?></td>
                 </tr>
-	        <?php endif; ?>
-	        <?php if ( $showMastodon && !empty($mastodonUsername) ) : ?>
+			<?php endif; ?>
+			<?php if ( $showMastodon && ! empty( $mastodonUsername ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "Mastodon", "gegenlicht" ) ?></td>
                     <td><?= $mastodonUsername ?></td>
                 </tr>
-	        <?php endif; ?>
-	        <?php if ( $showLetterboxd && !empty($letterboxdUsername) ) : ?>
+			<?php endif; ?>
+			<?php if ( $showLetterboxd && ! empty( $letterboxdUsername ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "Letterboxd", "gegenlicht" ) ?></td>
                     <td><?= $letterboxdUsername ?></td>
                 </tr>
-	        <?php endif; ?>
+			<?php endif; ?>
         </table>
         <p class="is-size-5 is-uppercase font-ggl pb-4">
-            <?= esc_html__("Or just chat us up at one of our screenings", "gegenlicht" ) ?>
+			<?= esc_html__( "Or just chat us up at one of our screenings", "gegenlicht" ) ?>
         </p>
     </div>
 </article>
