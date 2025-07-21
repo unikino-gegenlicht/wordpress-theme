@@ -17,9 +17,9 @@ endif;
 ?>
 <figure class="image is-hidden-tablet is-4by5 movie-image mt-4">
     <img alt="<?= $alternativeDescription ?>" fetchpriority="<?= $args['fetch-priority'] ?? 'normal' ?>"
-         src="<?= $mobileImageUrl ?>" style="<?= esc_attr($style) ?>"/>
+         src="<?= $desktopImageUrl ?>" style="<?= esc_attr($style) ?>" loading="<?= $lazyLoad ? 'lazy': 'eager' ?>"/>
 </figure>
 <figure class="image is-hidden-mobile <?= ($args['disable16by9'] ?? false) ? '' : 'is-16by9' ?> movie-image mt-4">
     <img alt="<?= $alternativeDescription ?>" fetchpriority="<?= $args['fetch-priority'] ?? 'normal' ?>"
-         src="<?= $desktopImageUrl ?>" style="<?= esc_attr($style) ?>"/>
+         src="<?= $desktopImageUrl ?>" style="<?= esc_attr($style) ?>" loading="<?= $lazyLoad ? 'lazy': 'eager' ?>"/>
 </figure>
