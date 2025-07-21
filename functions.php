@@ -1,5 +1,6 @@
 <?php
 defined( 'ABSPATH' ) || exit;
+show_admin_bar( false );
 
 
 function enable_theme_supports() {
@@ -12,13 +13,13 @@ function enable_theme_supports() {
 add_action( 'after_setup_theme', 'enable_theme_supports' );
 
 
-if (!is_admin() || is_customize_preview() ) {
+if ( ! is_admin() || is_customize_preview() ) {
 	if ( ! is_user_logged_in() ) {
 		add_filter( 'locale', 'use_accept_locale' );
 		add_filter( 'pre_determine_locale', 'use_accept_locale' );
 	} else {
 		add_filter( 'locale', function ( $locale ) {
-			return substr(get_user_meta( wp_get_current_user()->ID, 'locale', true ) ?? "en", 0,2);
+			return substr( get_user_meta( wp_get_current_user()->ID, 'locale', true ) ?? "en", 0, 2 );
 		} );
 	}
 }
@@ -34,6 +35,7 @@ function use_accept_locale( $locale ) {
 		return $res;
 	}, [] );
 	arsort( $prefLocales );
+
 	return substr( array_key_first( $prefLocales ), 0, 2 );
 }
 
@@ -94,14 +96,6 @@ function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
 	return $urls;
 }
 
-function remove_wp_block_library_css() {
-	wp_dequeue_style( 'wp-block-library' );
-	wp_dequeue_style( 'wp-block-library-theme' );
-	wp_dequeue_style( 'wc-blocks-style' );
-}
-
-add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
-
 remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
 remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
 remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
@@ -111,15 +105,25 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_dequeue_style( 'wp-block-library-css' );
 	wp_dequeue_style( 'wp-block-library' );
 	wp_dequeue_style( 'wp-block-library-theme' );
+	wp_dequeue_style( 'wc-blocks-style' );
 	wp_dequeue_style( 'classic-theme-styles' );
+
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ):
+		wp_enqueue_style( 'main-style', get_stylesheet_directory_uri() . '/style.css', ver: filemtime( get_template_directory() . '/style.css' ) );
+	else:
+		wp_enqueue_style( 'main-style', get_stylesheet_directory_uri() . '/style.min.css', ver: filemtime( get_template_directory() . '/style.css' ) );
+	endif;
+
+    wp_enqueue_style('simple-icons', get_stylesheet_directory_uri() . '/assets/css/simple-icons.css');
 } );
+
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_script('menu-toggle', get_stylesheet_directory_uri() . '/assets/js/menu-toggle.js');
+    wp_enqueue_script('list-toggle', get_stylesheet_directory_uri() . '/assets/js/program-list-toggle.js');
+});
 
 
 register_nav_menu( "navigation-menu", "Navigation Menu" );
-//register_nav_menu("social-links", "Social Media Links" );
-
-
-show_admin_bar( false );
 
 
 function block_wp_admin() {
@@ -193,26 +197,67 @@ function custom_login_error_message( $error ) {
 add_filter( 'login_errors', 'custom_login_error_message' );
 add_filter( 'login_display_language_dropdown', '__return_false' );
 
-function ggl_cleanup_paragraphs( string $input): string {
-	return preg_replace('/<p[^>]*>(?:\s|&nbsp;)*<\/p>/xu',  '', trim($input));
+function ggl_cleanup_paragraphs( string $input ): string {
+	return preg_replace( '/<p[^>]*>(?:\s|&nbsp;)*<\/p>/xu', '', trim( $input ) );
 }
 
-function ggl_theme_get_translated_age_rating_descriptor(string $metaKey): string {
-    $descriptors = [
-	    'sexualized_violence' => esc_html__( 'Sexualized Violence', 'ggl-post-types' ),
-	    'violence'            => esc_html__( 'Violence', 'ggl-post-types' ),
-	    'self_harm'           => esc_html__( 'Self Harm', 'ggl-post-types' ),
-	    'drug_usage'          => esc_html__( 'Drug Usage', 'ggl-post-types' ),
-	    'discrimination'      => esc_html__( 'Discrimination', 'ggl-post-types' ),
-	    'sexuality'           => esc_html__( 'Sexuality', 'ggl-post-types' ),
-	    'threat'              => esc_html__( 'Threat', 'ggl-post-types' ),
-	    'injury'              => esc_html__( 'Injury', 'ggl-post-types' ),
-	    'stressful_topics'    => esc_html__( 'Stressful Topics', 'ggl-post-types' ),
-	    'language'            => esc_html__( 'Language', 'ggl-post-types' ),
-	    'nudeness'            => esc_html__( 'Nudeness', 'ggl-post-types' ),
-    ];
-    if ( array_key_exists( $metaKey, $descriptors ) ) {
-        return $descriptors[ $metaKey ];
-    }
-    return $metaKey;
+function ggl_theme_get_translated_age_rating_descriptor( string $metaKey ): string {
+	$descriptors = [
+		'sexualized_violence' => esc_html__( 'Sexualized Violence', 'ggl-post-types' ),
+		'violence'            => esc_html__( 'Violence', 'ggl-post-types' ),
+		'self_harm'           => esc_html__( 'Self Harm', 'ggl-post-types' ),
+		'drug_usage'          => esc_html__( 'Drug Usage', 'ggl-post-types' ),
+		'discrimination'      => esc_html__( 'Discrimination', 'ggl-post-types' ),
+		'sexuality'           => esc_html__( 'Sexuality', 'ggl-post-types' ),
+		'threat'              => esc_html__( 'Threat', 'ggl-post-types' ),
+		'injury'              => esc_html__( 'Injury', 'ggl-post-types' ),
+		'stressful_topics'    => esc_html__( 'Stressful Topics', 'ggl-post-types' ),
+		'language'            => esc_html__( 'Language', 'ggl-post-types' ),
+		'nudeness'            => esc_html__( 'Nudeness', 'ggl-post-types' ),
+	];
+	if ( array_key_exists( $metaKey, $descriptors ) ) {
+		return $descriptors[ $metaKey ];
+	}
+
+	return $metaKey;
 }
+
+function crunchify_print_scripts_styles() {
+
+	$result            = [];
+	$result['scripts'] = [];
+	$result['styles']  = [];
+
+	// Print all loaded Scripts
+	global $wp_scripts;
+	foreach ( $wp_scripts->queue as $script ) :
+		$result['scripts'][] = $wp_scripts->registered[ $script ]->src . "?ver=" . ( ! $wp_scripts->registered[ $script ]->ver ? wp_get_wp_version() : urlencode($wp_scripts->registered[ $script ]->ver ));
+	endforeach;
+
+	// Print all loaded Styles (CSS)
+	global $wp_styles;
+	foreach ( $wp_styles->queue as $style ) :
+		$result['styles'][] = $wp_styles->registered[ $style ]->src . "?ver=" . ( ! $wp_styles->registered[ $style ]->ver ? wp_get_wp_version() : urlencode($wp_styles->registered[ $style ]->ver ));
+	endforeach;
+
+	return $result;
+}
+
+
+add_filter( 'wp_print_styles', function () {
+	$styles  = crunchify_print_scripts_styles()['styles'] ?? [];
+	$scripts = crunchify_print_scripts_styles()['scripts'] ?? [];
+
+    $links = [];
+
+	foreach ( $styles as $style ) :
+		$links[] = '<' . $style . '>; rel=preload; as=style;';
+	endforeach;
+
+	foreach ( $scripts as $script ) :
+        $links[] = '<' . $script . '>; rel=preload; as=script;';
+	endforeach;
+
+    header('Link: ' . join( ', ', $links ));
+
+} );
