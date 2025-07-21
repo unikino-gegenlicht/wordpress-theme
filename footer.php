@@ -11,20 +11,20 @@ defined( 'ABSPATH' ) || exit;
 		<?= str_replace( ' ', '<br class="is-hidden-tablet"/> ', get_bloginfo( 'name' ) ) ?>
     </p>
     <hr class="separator is-primary"/>
-	<?php if ( get_theme_mod( 'instagram_username' ) || get_theme_mod( 'mastodon_url' ) || get_theme_mod( 'letterboxd_username' ) ): ?>
+	<?php if ( ! empty( get_theme_mod( 'social_medias' ) ?? [] ) ): ?>
         <div class="is-flex is-align-items-center my-2 links are-primary is-flex-wrap-wrap">
-			<?php if ( get_theme_mod( 'instagram_username' ) ): ?>
-                <a href="https://instagram.com/<?= get_theme_mod( 'instagram_username' ) ?>"><span
+			<?php if ( isset( get_theme_mod( 'social_medias' )["instagram"] ) ): ?>
+                <a href="https://instagram.com/<?= get_theme_mod( 'social_medias' )["instagram"] ?>"><span
                             class="icon-text"><span class="is-underlined">Instagram</span><span
                                 class="material-symbols ml-1">open_in_new</span></span> </a>
 			<?php endif; ?>
-			<?php if ( get_theme_mod( 'mastodon_url' ) ): ?>
-                <a href="<?= get_theme_mod( 'mastodon_url' ) ?>"><span class="icon-text"><span
+			<?php if ( isset( get_theme_mod( 'social_medias' )["mastodonUrl"] ) ): ?>
+                <a href="<?= get_theme_mod( 'social_medias' )["mastodonUrl"] ?>"><span class="icon-text"><span
                                 class="is-underlined">Mastodon</span><span
                                 class="material-symbols ml-1">open_in_new</span></span> </a>
 			<?php endif; ?>
-			<?php if ( get_theme_mod( 'letterboxd_username' ) ): ?>
-                <a href="https://letterboxd.com/<?= get_theme_mod( 'letterboxd_username' ) ?>"><span
+			<?php if ( isset ( get_theme_mod( 'social_medias' )["letterboxd"] ) ): ?>
+                <a href="https://letterboxd.com/<?= get_theme_mod( 'social_medias' )["letterboxd"]  ?>"><span
                             class="icon-text"><span class="is-underlined">Letterboxd</span><span
                                 class="material-symbols ml-1">open_in_new</span></span> </a>
 			<?php endif; ?>
@@ -33,15 +33,15 @@ defined( 'ABSPATH' ) || exit;
 	<?php endif; ?>
     <div class="has-text-primary my-2 is-flex is-align-items-top is-flex-wrap-wrap is-justify-content-space-evenly is-row-gap-2.5">
         <div class="is-flex-grow-1">
-            <h5 class="has-text-weight-semibold"><?= esc_html__('Postal Address', 'gegenlicht') ?></h5>
+            <h5 class="has-text-weight-semibold"><?= esc_html__( 'Postal Address', 'gegenlicht' ) ?></h5>
             <address class="has-text-primary" style="user-select: text">
-		        <?= nl2br( get_theme_mod( 'postal_address' ) ) ?>
+				<?= nl2br( get_theme_mod( 'postal_address' ) ) ?>
             </address>
         </div>
         <div class="is-flex-grow-1">
-            <h5 class="has-text-weight-semibold"><?= esc_html__('Visitor Address', 'gegenlicht') ?></h5>
+            <h5 class="has-text-weight-semibold"><?= esc_html__( 'Visitor Address', 'gegenlicht' ) ?></h5>
             <address class="has-text-primary" style="user-select: text">
-			    <?= nl2br( get_theme_mod( 'visitor_address' ) ) ?>
+				<?= nl2br( get_theme_mod( 'visitor_address' ) ) ?>
             </address>
         </div>
     </div>
