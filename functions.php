@@ -114,13 +114,13 @@ add_action( 'wp_enqueue_scripts', function () {
 		wp_enqueue_style( 'main-style', get_stylesheet_directory_uri() . '/style.min.css', ver: filemtime( get_template_directory() . '/style.css' ) );
 	endif;
 
-    wp_enqueue_style('simple-icons', get_stylesheet_directory_uri() . '/assets/css/simple-icons.css');
+	wp_enqueue_style( 'simple-icons', get_stylesheet_directory_uri() . '/assets/css/simple-icons.css' );
 } );
 
-add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_script('menu-toggle', get_stylesheet_directory_uri() . '/assets/js/menu-toggle.js');
-    wp_enqueue_script('list-toggle', get_stylesheet_directory_uri() . '/assets/js/program-list-toggle.js');
-});
+add_action( 'wp_enqueue_scripts', function () {
+	wp_enqueue_script( 'menu-toggle', get_stylesheet_directory_uri() . '/assets/js/menu-toggle.js' );
+	wp_enqueue_script( 'list-toggle', get_stylesheet_directory_uri() . '/assets/js/program-list-toggle.js' );
+} );
 
 
 register_nav_menu( "navigation-menu", "Navigation Menu" );
@@ -231,33 +231,59 @@ function crunchify_print_scripts_styles() {
 	// Print all loaded Scripts
 	global $wp_scripts;
 	foreach ( $wp_scripts->queue as $script ) :
-		$result['scripts'][] = $wp_scripts->registered[ $script ]->src . "?ver=" . ( ! $wp_scripts->registered[ $script ]->ver ? wp_get_wp_version() : urlencode($wp_scripts->registered[ $script ]->ver ));
+		$result['scripts'][] = $wp_scripts->registered[ $script ]->src . "?ver=" . ( ! $wp_scripts->registered[ $script ]->ver ? wp_get_wp_version() : urlencode( $wp_scripts->registered[ $script ]->ver ) );
 	endforeach;
 
 	// Print all loaded Styles (CSS)
 	global $wp_styles;
 	foreach ( $wp_styles->queue as $style ) :
-		$result['styles'][] = $wp_styles->registered[ $style ]->src . "?ver=" . ( ! $wp_styles->registered[ $style ]->ver ? wp_get_wp_version() : urlencode($wp_styles->registered[ $style ]->ver ));
+		$result['styles'][] = $wp_styles->registered[ $style ]->src . "?ver=" . ( ! $wp_styles->registered[ $style ]->ver ? wp_get_wp_version() : urlencode( $wp_styles->registered[ $style ]->ver ) );
 	endforeach;
 
 	return $result;
 }
+
+add_action( 'wp_head', function () {
+	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/gegenlicht.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
+	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/icons.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
+	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/inter.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
+	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/inter_italic.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
+	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/simple-icons.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
+
+} );
 
 
 add_filter( 'wp_print_styles', function () {
 	$styles  = crunchify_print_scripts_styles()['styles'] ?? [];
 	$scripts = crunchify_print_scripts_styles()['scripts'] ?? [];
 
-    $links = [];
+	$links = [];
 
 	foreach ( $styles as $style ) :
-		$links[] = '<' . $style . '>; rel=preload; as=style;';
+		$links[] = '<' . $style . '>; rel=preload; as=style; fetchpriority="high"';
 	endforeach;
 
 	foreach ( $scripts as $script ) :
-        $links[] = '<' . $script . '>; rel=preload; as=script;';
+		$links[] = '<' . $script . '>; rel=preload; as=script;';
 	endforeach;
 
-    header('Link: ' . join( ', ', $links ));
+	header( 'Link: ' . join( ', ', $links ), replace: false );
 
+} );
+
+
+
+add_action( 'pre_get_posts', function ( WP_Query $query ) {
+	if ( ( $query->query_vars['do_preload'] ?? false ) ):
+		$newVars               = $query->query_vars;
+		$newVars['do_preload'] = false;
+		$additionalQuery       = new WP_Query( $newVars );
+		while ( $additionalQuery->have_posts() ) : $additionalQuery->the_post();
+			$url = get_the_post_thumbnail_url( get_post(), 'full' );
+            $reallyPreload = rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in();
+			if ( ! empty( $url ) && $reallyPreload  ):
+				header( 'Link: <' . $url . '>; rel=preload; as=image;', replace: false );
+			endif;
+		endwhile;
+	endif;
 } );

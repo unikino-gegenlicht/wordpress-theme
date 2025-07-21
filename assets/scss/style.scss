@@ -19,7 +19,8 @@ $maxWidth: 800px;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 $contentPadding: 0.75rem;
-
+@use 'contact-forms.scss';
+@use 'fonts.scss';
 
 @use "bulma/sass" with (
     $family-primary: '"Inter", sans-serif',
@@ -32,8 +33,7 @@ $contentPadding: 0.75rem;
 
 @use "sass:string";
 
-@use 'contact-forms.scss';
-@use 'fonts.scss';
+
 
 @use "bulma/sass/utilities/mixins";
 @forward 'bulma-v1-tooltip/src/sass';
@@ -377,7 +377,7 @@ hr.separator {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'GEGENLICHT', sans-serif;
+  font-family: 'GEGENLICHT';
   text-transform: uppercase;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;

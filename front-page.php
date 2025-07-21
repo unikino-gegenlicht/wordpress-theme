@@ -16,6 +16,7 @@ $next_meta[]     = [
 	'compare' => '>=',
 ];
 $next_query_args = array(
+    'do_preload' => true,
 	'post_type'      => [ 'movie', 'event' ],
 	'posts_per_page' => 1,
 	'meta_query'     => $next_meta,
