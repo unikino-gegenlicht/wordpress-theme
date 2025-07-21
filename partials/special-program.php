@@ -10,8 +10,6 @@ $specialProgramID = $args['id'] ?? null;
         color: var(--bulma-body-color);
         border-color: var(--bulma-body-color) !important;
 
-        padding: 2rem 0;
-
         background-clip: padding-box;
 
         .page-content {
@@ -41,15 +39,13 @@ $specialProgramID = $args['id'] ?? null;
         #special-program-<?= $specialProgramID ?> {
             --bulma-body-background-color: <?= get_term_meta($specialProgramID, 'dark_background_color', true) ?? "inherit" ?> !important;
             --bulma-body-color: <?= get_term_meta($specialProgramID, 'dark_text_color', true) ?? "inherit" ?> !important;
-            background-color: var(--bulma-body-background-color) !important;
-            color: var(--bulma-body-color) !important;
         }
     }
 </style>
-<article id="special-program-<?= $specialProgramID ?>">
+<article id="special-program-<?= $specialProgramID ?>" class="py-5">
     <div class="page-content content">
         <header>
-            <a href="<?= get_term_link( $specialProgramID, 'special-program' ) ?>">
+            <a href="<?= get_term_link( $specialProgramID, 'special-program' ) ?>" aria-label="<?= esc_html__('Show details of', 'gegenlicht') . ' '. get_term( $specialProgramID )->name ?>">
                 <figure class="image mb-6">
                     <picture>
                         <source
@@ -108,7 +104,7 @@ $specialProgramID = $args['id'] ?? null;
 			$title       = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
 
 			?>
-            <a href="<?= get_permalink() ?>">
+            <a href="<?= get_permalink() ?>" aria-label="<?= $showDetails ? $title : get_term( $specialProgramID )->name ?>">
                 <div>
                     <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
                                 class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
