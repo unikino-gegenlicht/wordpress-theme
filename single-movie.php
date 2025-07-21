@@ -127,10 +127,10 @@ if ( $isSpecialProgram ):
 			switch ( $ageRating ) {
 				case - 2:
 				case - 1:
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right has-tooltip-multiline" data-tooltip="'. join(", ", $translatedDescriptors) .'" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'Not Rated', 'gegenlicht' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary '. (!empty($translatedDescriptors) ? ('has-tooltip-arrow has-tooltip-right has-tooltip-multiline" data-tooltip="'. join(", ", $translatedDescriptors) .'"') : '' )  .'" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'Not Rated', 'gegenlicht' ) . '</span>';
 					break;
 				default:
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right has-tooltip-multiline" data-tooltip="'. join(", ", $translatedDescriptors) .'" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'FSK', 'gegenlicht' ) . ' ' . $ageRating . '</span>';
+					echo '<span class="tag is-rounded is-primary '. (!empty($translatedDescriptors) ? ('has-tooltip-arrow has-tooltip-right has-tooltip-multiline" data-tooltip="'. join(", ", $translatedDescriptors) .'"') : '')  .'" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'FSK', 'gegenlicht' ) . ' ' . $ageRating . '</span>';
 
 			}
 			?>
