@@ -77,7 +77,7 @@ do_action( 'wp_body_open' );
                 </div>
                 <hr class="separator"/>
                 <h2 class="title next-movie-title py-4"><?= $showDetails ? $title : esc_html__( 'An unnamed movie', 'gegenlicht' ) ?></h2>
-				<?php get_template_part( 'partials/responsive-image', args: [ 'fetch-priority' => 'high', 'image_url' => $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url( $fallbackImage, 'large' ) ] ) ?>
+				<?php get_template_part( 'partials/responsive-image', args: [ 'fetch-priority' => 'high', 'post-id' => $post->ID] ) ?>
                 <hr class="separator"/>
                 <a class="button is-outlined is-size-5 is-fullwidth mt-2"
                    style="padding: 0.75rem 0 !important;" href="<?= get_the_permalink() ?>">
