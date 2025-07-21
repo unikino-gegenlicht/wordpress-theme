@@ -159,7 +159,7 @@ if ( $isSpecialProgram ):
 
 			?>
         </div>
-	    <?php get_template_part('partials/responsive-image', args: ['image_url' => $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url( $anonymousImage, 'large' )]) ?>
+	    <?php get_template_part('partials/responsive-image', args: ['fetch-priority' => 'high','image_url' => $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url( $anonymousImage, 'large' )]) ?>
         <?php if (!$showDetails && !$isSpecialProgram): ?>
             <div class="boxed-text mt-3">
                 <?php
