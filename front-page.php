@@ -64,22 +64,6 @@ get_header();
 do_action( 'wp_body_open' );
 ?>
     <main class="px-2 mb-6 page-content">
-        <div class="marquee">
-            <div class="marquee-content">
-                <p>***&emsp;Semesterpause</p>
-                <p>***&emsp;Semesterpause</p>
-                <p>***&emsp;Semesterpause</p>
-                <p>***&emsp;Semesterpause</p>
-                <p>***&emsp;Semesterpause</p>
-            </div>
-            <div class="marquee-content">
-                <p>***&emsp;Semesterpause</p>
-                <p>***&emsp;Semesterpause</p>
-                <p>***&emsp;Semesterpause</p>
-                <p>***&emsp;Semesterpause</p>
-                <p>***&emsp;Semesterpause</p>
-            </div>
-        </div>
 		<?php for ( $i = 0; $i < count( $upcoming ); $i ++ ): $post = get_post( $upcoming[ $i ] );
 			$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
 			$title = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
@@ -178,46 +162,38 @@ do_action( 'wp_body_open' );
 <?php foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) : $termID = (int) $termID;
     get_template_part("partials/special-program", args: ["id" => $termID] );
 endforeach; ?>
-
+    <div class="page-content">
+        <hr class="separator is-only-darkmode"/>
+    </div>
 <?php if ( in_array( 'team', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #team {
-            background-color: <?= get_theme_mod('fp_team_block_color') ?> !important;
-            color: <?= get_theme_mod('fp_team_text_color') ?> !important;
+            --bulma-body-color: <?= get_theme_mod('teamBlock_text_color')['light'] ?? 'inherit' ?> !important;
+            --bulma-body-background-color: <?= get_theme_mod('teamBlock_background_color')['light'] ?? 'inherit' ?> !important;
+
+            background-color: var(--bulma-body-background-color) !important;
+
+            color: var(--bulma-body-color) !important;
             background-clip: padding-box;
 
 
             > * {
-                color: <?= get_theme_mod('fp_team_text_color') ?> !important;
+                color: var(--bulma-body-color) !important;
             }
 
             .button {
-                border-color: <?= get_theme_mod('fp_team_text_color') ?> !important;
+                border-color: var(--bulma-body-color) !important;
 
                 > * {
-                    color: <?= get_theme_mod('fp_team_text_color') ?> !important;
+                    color: var(--bulma-body-color) !important;
                 }
             }
         }
 
         @media (prefers-color-scheme: dark) {
             #team {
-                background-color: <?= get_theme_mod('fp_team_block_color_dark') ?> !important;
-                color: <?= get_theme_mod('fp_team_text_color_dark') ?> !important;
-                background-clip: padding-box;
-
-
-                > * {
-                    color: <?= get_theme_mod('fp_team_text_color_dark') ?> !important;
-                }
-
-                .button {
-                    border-color: <?= get_theme_mod('fp_team_text_color_dark') ?> !important;
-
-                    > * {
-                        color: <?= get_theme_mod('fp_team_text_color_dark') ?> !important;
-                    }
-                }
+                --bulma-body-color: <?= get_theme_mod('teamBlock_text_color')['dark'] ?? 'inherit' ?> !important;
+                --bulma-body-background-color: <?= get_theme_mod('teamBlock_background_color')['dark'] ?? 'inherit' ?> !important;
             }
         }
     </style>
@@ -236,69 +212,60 @@ endforeach; ?>
                     <p><?= $paragraph ?? esc_html__( 'Some content is missing here' ) ?></p>
 				<?php endforeach; ?>
             </div>
-            <a class="button is-outlined is-black is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
+            <a class="button is-outlined is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
                href="<?= get_post_type_archive_link( 'team-member' ) ?>">
                 <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the team', 'gegenlicht' ) ?></p>
             </a>
         </div>
     </article>
+    <div class="page-content">
+    <hr class="separator is-only-darkmode"/>
+    </div>
 <?php endif; ?>
 
 <?php if ( in_array( 'location', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #location {
 
-            background-color: <?= get_theme_mod('location_background_color')['light'] ?>;
-            color: <?= get_theme_mod('location_text_color')['light'] ?>;
+            --bulma-body-background-color: <?= get_theme_mod('location_background_color')['light'] ?>;
+            --bulma-body-color: <?= get_theme_mod('location_text_color')['light'] ?>;
+
+            color: var(--bulma-body-color) !important;
+            background-color: var(--bulma-body-background-color) !important;
+
             background-clip: padding-box;
 
 
-            & > * {
-                color: <?= get_theme_mod('location_text_color')['light'] ?>;
-
+            > * {
+                color: var(--bulma-body-color) !important;
             }
 
             .button {
-                --bulma-body-color: <?= get_theme_mod('location_text_color')['light'] ?>;
+                border-color: var(--bulma-body-color) !important;
 
                 > * {
-                    color: <?= get_theme_mod('location_text_color')['light'] ?>;
+                    color: var(--bulma-body-color) !important;
                 }
             }
         }
 
         @media (prefers-color-scheme: dark) {
             #location {
-                background-color: <?=get_theme_mod('location_background_color')['dark'] ?> !important;
-                color: <?= get_theme_mod('location_text_color')['dark'] ?> !important;
-                background-clip: padding-box;
-
-
-                > * {
-                    color: <?= get_theme_mod('location_text_color')['dark'] ?> !important;
-
-                }
-
-                .button {
-                    --bulma-body-color: <?= get_theme_mod('location_text_color')['dark'] ?> !important;
-
-                    > * {
-                        color: <?= get_theme_mod('location_text_color')['dark'] ?> !important;
-                    }
-                }
+                --bulma-body-color: <?= get_theme_mod('teamBlock_text_color')['dark'] ?? 'inherit' ?> !important;
+                --bulma-body-background-color: <?= get_theme_mod('teamBlock_background_color')['dark'] ?? 'inherit' ?> !important;
             }
         }
     </style>
-    <article class="has-text-primary py-5" id="location">
-        <div class="page-content">
-            <div class="content">
+    <article id="location" class="py-5">
+        <div class="page-content content">
+            <div class="">
 				<?php if ( get_theme_mod( 'location_map' ) ): ?>
 					<?php get_template_part( 'partials/responsive-image', args: [
 						'image_url'    => get_theme_mod( 'location_map' ),
 						'disable16by9' => true
 					] ) ?>
 				<?php endif; ?>
-                <h2 class="has-text-primary border-is-primary"><?= esc_html__( 'Where is the GEGENLICHT', 'gegenlicht' ) ?></h2>
+                <h2><?= esc_html__( 'Where is the GEGENLICHT', 'gegenlicht' ) ?></h2>
                 <div>
 					<?php
 					$introTextRaw = get_theme_mod( 'location_text' )[ get_locale() ];
@@ -309,9 +276,9 @@ endforeach; ?>
 					<?php endforeach; ?>
                 </div>
             </div>
-            <a class="button is-outlined is-primary is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
-               href="<?= get_page_link( get_theme_mod( 'location_detail_page' ) ?? '#' ) ?>">
-                <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'Read more', 'gegenlicht' ) ?></p>
+            <a class="button is-outlined is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
+               href="<?= get_page_link( get_theme_mod( 'location_detail_page' ) ?? '#' ) ?>" aria-label="<?= esc_html__( 'To our Location', 'gegenlicht' ) ?>">
+                <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To our Location', 'gegenlicht' ) ?></p>
             </a>
         </div>
     </article>
@@ -321,11 +288,16 @@ endforeach; ?>
         #cooperations {
             --bulma-body-background-color: <?= get_theme_mod('cooperations_background_color')['light'] ?>;
             --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['light'] ?>;
+
+
+            color: var(--bulma-body-color) !important;
+            background-color: var(--bulma-body-background-color) !important;
+
             background-clip: padding-box;
 
 
             & > * {
-                color: <?= get_theme_mod('cooperations_text_color')['light'] ?>;
+                color: var(--bulma-body-color) !important;
 
             }
 
@@ -333,12 +305,12 @@ endforeach; ?>
                 --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['light'] ?>;
 
                 > * {
-                    color: <?= get_theme_mod('cooperations_text_color')['light'] ?>;
+                    color: var(--bulma-body-color) !important;
                 }
             }
 
             .marquee-content {
-                animation: scroll 40s linear infinite;
+                animation: scroll 60s linear infinite;
                 gap: 2rem;
             }
 
@@ -348,7 +320,7 @@ endforeach; ?>
 
                 svg {
                     object-fit: scale-down;
-                    width: 10vw;
+                    height: 100px;
 
                 }
             }
@@ -379,7 +351,7 @@ endforeach; ?>
         }
     </style>
     <article id="cooperations" class="py-5">
-        <div class="page-content content">
+        <div class="page-content">
 			<?php
 
 			$externalsQuery = new WP_Query( [
@@ -402,20 +374,21 @@ endforeach; ?>
                 <div class="marquee" style="--height: 200px;">
                     <div class="marquee-content" style="height: 200px;">
 						<?php foreach ( $postImages as $postImage ) : ?>
-                            <figure class="image is-3by4">
+                            <figure>
 								<?= file_get_contents( $postImage ) ?>
                             </figure>
 						<?php endforeach; ?>
                     </div>
                     <div class="marquee-content" style="height: 200px;">
 						<?php foreach ( $postImages as $postImage ) : ?>
-                            <figure class="image is-3by4">
+                            <figure>
 								<?= file_get_contents( $postImage ) ?>
                             </figure>
 						<?php endforeach; ?>
                     </div>
                 </div>
 			<?php endif; ?>
+            <div class="content">
             <h2><?= esc_html__( 'Our Cooperation Partners' ) ?></h2>
             <div>
 				<?php
@@ -427,13 +400,14 @@ endforeach; ?>
 				<?php endforeach; ?>
             </div>
             <a class="button is-outlined is-primary is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
-               href="<?= get_post_type_archive_link( 'cooperation-partner' ) ?>">
+               href="<?= get_post_type_archive_link( 'cooperation-partner' ) ?>" aria-label="<?= esc_html__( 'To our Cooperations', 'gegenlicht' ) ?>">
                 <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To our Cooperations', 'gegenlicht' ) ?></p>
             </a>
             <a class="button is-outlined is-primary is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
-               href="<?= get_post_type_archive_link( 'supporter' ) ?>">
+               href="<?= get_post_type_archive_link( 'supporter' ) ?>" aria-label="<?= esc_html__( 'To our Cooperations', 'gegenlicht' ) ?>">
                 <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'See our Supporterss', 'gegenlicht' ) ?></p>
             </a>
+            </div>
         </div>
     </article>
 <?php endif; ?>
