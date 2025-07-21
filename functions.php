@@ -5,6 +5,12 @@ show_admin_bar( false );
 
 function enable_theme_supports() {
 	add_theme_support( 'post-thumbnails' );
+
+	add_image_size( 'mobile', 800, 1000, crop: true );
+	add_image_size( 'desktop', 800, 450, crop: true );
+	add_image_size( 'member-crop', 450, 600, crop: true );
+
+
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'customize-selective-refresh-widgets' );
 	add_theme_support( 'automatic-feed-links' );
@@ -272,18 +278,20 @@ add_filter( 'wp_print_styles', function () {
 } );
 
 
-
 add_action( 'pre_get_posts', function ( WP_Query $query ) {
 	if ( ( $query->query_vars['do_preload'] ?? false ) ):
 		$newVars               = $query->query_vars;
 		$newVars['do_preload'] = false;
 		$additionalQuery       = new WP_Query( $newVars );
 		while ( $additionalQuery->have_posts() ) : $additionalQuery->the_post();
-			$url = get_the_post_thumbnail_url( get_post(), 'full' );
-            $reallyPreload = rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in();
-			if ( ! empty( $url ) && $reallyPreload  ):
-				header( 'Link: <' . $url . '>; rel=preload; as=image;', replace: false );
+			$mobileUrl     = get_the_post_thumbnail_url( get_post(), 'mobile' );
+			$desktopUrl    = get_the_post_thumbnail_url( get_post(), 'desktop' );
+			$reallyPreload = rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in();
+			if ( ! empty( $mobileUrl ) && ! empty( $desktopUrl ) && $reallyPreload ):
+				header( 'Link: <' . $mobileUrl . '>; rel=preload; as=image;', replace: false );
+				header( 'Link: <' . $desktopUrl . '>; rel=preload; as=image;', replace: false );
 			endif;
 		endwhile;
 	endif;
 } );
+
