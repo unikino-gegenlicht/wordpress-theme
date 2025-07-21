@@ -205,7 +205,7 @@ endforeach; ?>
             <h2><?= esc_html__( 'Who is the GEGENLICHT', 'gegenlicht' ) ?></h2>
             <div>
 				<?php
-				$introTextRaw = get_theme_mod( 'team_block_text' )[ get_locale() ];
+				$introTextRaw = get_theme_mod( 'team_block_text' )[ get_locale() ] ?? "";
 				$paragraphs   = preg_split( "/\R\R/", $introTextRaw, flags: PREG_SPLIT_NO_EMPTY );
 				foreach ( $paragraphs as $paragraph ):
 					?>
@@ -268,7 +268,7 @@ endforeach; ?>
                 <h2><?= esc_html__( 'Where is the GEGENLICHT', 'gegenlicht' ) ?></h2>
                 <div>
 					<?php
-					$introTextRaw = get_theme_mod( 'location_text' )[ get_locale() ];
+					$introTextRaw = get_theme_mod( 'location_text' )[ get_locale() ] ?? "";
 					$paragraphs   = preg_split( "/\R\R/", $introTextRaw, flags: PREG_SPLIT_NO_EMPTY );
 					foreach ( $paragraphs as $paragraph ):
 						?>
@@ -392,7 +392,7 @@ endforeach; ?>
             <h2><?= esc_html__( 'Our Cooperation Partners' ) ?></h2>
             <div>
 				<?php
-				$introTextRaw = get_theme_mod( 'coop_block_text' )[ get_locale() ];
+				$introTextRaw = get_theme_mod( 'coop_block_text' )[ get_locale() ] ?? "";
 				$paragraphs   = preg_split( "/\R\R/", $introTextRaw, flags: PREG_SPLIT_NO_EMPTY );
 				foreach ( $paragraphs as $paragraph ):
 					?>
