@@ -9,6 +9,7 @@ require_once 'customizer/location-block.php';
 require_once 'customizer/cooperations-block.php';
 require_once 'customizer/cooperations-page.php';
 require_once 'customizer/supporter-page.php';
+require_once 'customizer/social-medias.php';
 use GGL\customizer;
 use function GGL\customizer\custom_controls;
 
@@ -28,6 +29,7 @@ function configure_customizer( WP_Customize_Manager $wp_customize): void {
 	customizer\cooperationsBlock\customize($wp_customize);
 	customizer\cooperationsPage\customize($wp_customize);
 	customizer\supporterPage\customize($wp_customize);
+	customizer\socialMedias\customizer($wp_customize);
 	//ggl_add_customizer_options($wp_customize);
 }
 
