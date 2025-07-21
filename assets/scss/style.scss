@@ -18,6 +18,7 @@ $ggl-yellow: hsl(52, 100%, 50%);
 $maxWidth: 800px;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
+$contentPadding: 0.75rem;
 
 
 @use "bulma/sass" with (
@@ -29,6 +30,7 @@ $fullhd-enabled: false;
     $title-line-height: 1
 );
 
+@use "sass:string";
 
 @use 'contact-forms.scss';
 @use 'fonts.scss';
@@ -39,35 +41,33 @@ $fullhd-enabled: false;
 
 @include mixins.tablet {
   .page-content {
-    max-width: $maxWidth;
+    max-width: var(--max-content-width);
     margin: 0 auto;
-    padding-left: 0.75rem !important;
+    padding: 0 var(--content-padding) !important;
   }
   .page-footer {
     section {
-      max-width: $maxWidth;
+      max-width: var(--max-content-width);
       margin: 0 auto;
-      padding-left: 0.75rem !important;
+      padding: 0 var(--content-padding) !important;
     }
   }
 
   .limited-width-block {
-    max-width: $maxWidth;
+    max-width: var(--max-content-width);
     margin: 0 auto;
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
+    padding: 0 var(--content-padding) !important;
   }
 }
 
 .limited-width-block {
-  max-width: $maxWidth;
+  max-width: var(--max-content-width);
   margin: 0 auto;
   background-clip: content-box;
 }
 
 .page-content {
-  padding-left: 0.75rem !important;
-  padding-right: 0.75rem !important;
+  padding: 0 var(--content-padding) !important;
 }
 
 .page-footer {
@@ -81,6 +81,14 @@ $fullhd-enabled: false;
   --bulma-navbar-background-color: var(--bulma-body-background-color);
   --bulma-strong-color: var(--bulma-body-color);
   --button-border-width: var(--border-thickness);
+  --max-content-width: #{$maxWidth};
+  --content-padding: #{$contentPadding};
+
+}
+
+[data-tooltip] {
+  --bulma-tooltip-background-color: var(--bulma-body-color) !important;
+  --bulma-tooltip-color: var(--bulma-body-background-color) !important;
 }
 
 .content {
@@ -128,7 +136,7 @@ nav {
     --bulma-link-text: var(--bulma-body-color);
     --bulma-body-color: var(--bulma-primary) !important;
     --bulma-navbar-tab-active-color: var(--bulma-body-color);
-    --bulma-navbar-background-color: var(--bulma-body-color);
+    --bulma-navbar-background-color: var(--bulma-body-background-color);
     --bulma-button-border-width: var(--border-thickness);
     --bulma-footer-background-color: var(--bulma-body-background-color) !important;
     --bulma-content-heading-color: var(--bulma-body-color) !important;
@@ -257,6 +265,12 @@ hr.separator {
   &.is-background-color {
     border: calc(var(--border-thickness)/2) solid var(--bulma-body-background-color) !important;
     background-color: var(--bulma-body-background-color) !important;
+  }
+}
+
+@media(prefers-color-scheme: light) or (prefers-color-scheme: no-preference) {
+  hr.separator.is-only-darkmode {
+    display: none !important;
   }
 }
 
@@ -527,10 +541,15 @@ figure.supporter-logo {
 .navbar-item.is-active {
   text-decoration: underline;
   text-decoration-thickness: var(--border-thickness) !important;
+  --bulma-navbar-item-background-a: 0 !important;
 }
 
 .navbar-item:hover {
     text-decoration: underline;
   --bulma-navbar-item-background-l-delta: 0% !important;
   --bulma-navbar-item-background-a: unset !important;
+}
+
+.navbar {
+  --bulma-navbar-background-color: var(--bulma-body-background-color) !important;
 }
