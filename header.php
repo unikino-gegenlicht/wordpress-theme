@@ -4,25 +4,12 @@
  */
 defined( 'ABSPATH' ) || exit;
 
-$langs = array();
-$acceptHeader = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-$acceptedLanguage = explode(',', $acceptHeader)[0];
-
-$outputLanguage = "";
-if (str_starts_with($acceptedLanguage, 'de')) {
-    $outputLanguage = 'de';
-} else if (str_starts_with($acceptedLanguage, 'en')) {
-    $outputLanguage = 'en';
-} else {
-    $outputLanguage = 'en';
-}
-
 $headerImage = get_theme_mod('header_logo');
 
 
 ?>
 <!DOCTYPE html>
-<html lang="<?= $outputLanguage ?>" data-theme="">
+<html lang="<?= get_locale() ?>" data-theme="">
 <head>
     <title><?php bloginfo( 'name' ) ?></title>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
