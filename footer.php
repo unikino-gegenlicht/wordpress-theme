@@ -14,17 +14,17 @@ defined( 'ABSPATH' ) || exit;
 	<?php if ( ! empty( get_theme_mod( 'social_medias' ) ?? [] ) ): ?>
         <div class="is-flex is-align-items-center my-2 links are-primary is-flex-wrap-wrap">
 			<?php if ( isset( get_theme_mod( 'social_medias' )["instagram"] ) ): ?>
-                <a href="https://instagram.com/<?= get_theme_mod( 'social_medias' )["instagram"] ?>"><span
+                <a rel="me" aria-label="Instagram Profile" href="https://instagram.com/<?= get_theme_mod( 'social_medias' )["instagram"] ?>"><span
                             class="icon-text"><span class="is-underlined">Instagram</span><span
                                 class="material-symbols ml-1">open_in_new</span></span> </a>
 			<?php endif; ?>
-			<?php if ( isset( get_theme_mod( 'social_medias' )["mastodonUrl"] ) ): ?>
-                <a href="<?= get_theme_mod( 'social_medias' )["mastodonUrl"] ?>"><span class="icon-text"><span
+			<?php if ( isset( get_theme_mod( 'social_medias' )["mastodonURL"] ) ): ?>
+                <a rel="me" aria-label="Mastodon Profile" href="<?= get_theme_mod( 'social_medias' )["mastodonURL"] ?>"><span class="icon-text"><span
                                 class="is-underlined">Mastodon</span><span
                                 class="material-symbols ml-1">open_in_new</span></span> </a>
 			<?php endif; ?>
 			<?php if ( isset ( get_theme_mod( 'social_medias' )["letterboxd"] ) ): ?>
-                <a href="https://letterboxd.com/<?= get_theme_mod( 'social_medias' )["letterboxd"]  ?>"><span
+                <a rel="me" aria-label="Letterboxd Profile" href="https://letterboxd.com/<?= get_theme_mod( 'social_medias' )["letterboxd"]  ?>"><span
                             class="icon-text"><span class="is-underlined">Letterboxd</span><span
                                 class="material-symbols ml-1">open_in_new</span></span> </a>
 			<?php endif; ?>
@@ -48,15 +48,14 @@ defined( 'ABSPATH' ) || exit;
     <hr class="separator is-primary"/>
     <div class="has-text-primary my-2">
         <h5 class="has-text-weight-semibold no-separator"><?= esc_html__( 'Youth Protection Officer', 'gegenlicht' ) ?></h5>
-        <a class="has-text-primary"
-           href="mailto:<?= get_theme_mod( 'ypo_email' ) ?>"><?= get_theme_mod( 'ypo_name' ) ?></a>
+	    <p><?= get_theme_mod( 'ypo_name' ) ?></p>
         <p><?= str_replace( "@", " (at) ", get_theme_mod( 'ypo_email' ) ) ?></p>
     </div>
     <div class="is-flex is-align-items-center mb-2 mt-5 has-text-primary links are-primary is-flex-wrap-wrap">
-        <a class="" href=""><?= esc_html__( 'Impress', 'gegenlicht' ) ?></a>
-        <a class="" href="<?= get_privacy_policy_url() ?>"
+        <a class="" role="link" href=""><?= esc_html__( 'Impress', 'gegenlicht' ) ?></a>
+        <a class="" role="link" href="<?= get_privacy_policy_url() ?>"
            rel="privacy-policy"><?= esc_html__( 'Privacy Policy', 'gegenlicht' ) ?></a>
-        <a class="" href=""><?= esc_html__( 'Contact', 'gegenlicht' ) ?></a>
+        <a class="" role="link" href=""><?= esc_html__( 'Contact', 'gegenlicht' ) ?></a>
     </div>
     <div class="mt-4">
         <img alt="made by humans. not by ai" src="<?= get_stylesheet_directory_uri() ?>/assets/img/no-ai.svg"/>

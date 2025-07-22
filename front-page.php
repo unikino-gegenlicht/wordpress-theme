@@ -16,7 +16,7 @@ $next_meta[]     = [
 	'compare' => '>=',
 ];
 $next_query_args = array(
-    'do_preload' => true,
+	'do_preload'     => true,
 	'post_type'      => [ 'movie', 'event' ],
 	'posts_per_page' => 1,
 	'meta_query'     => $next_meta,
@@ -77,12 +77,15 @@ do_action( 'wp_body_open' );
                 </div>
                 <hr class="separator"/>
                 <h2 class="title next-movie-title py-4"><?= $showDetails ? $title : esc_html__( 'An unnamed movie', 'gegenlicht' ) ?></h2>
-				<?php get_template_part( 'partials/responsive-image', args: [ 'fetch-priority' => 'high', 'post-id' => $post->ID] ) ?>
+				<?php get_template_part( 'partials/responsive-image', args: [
+					'fetch-priority' => 'high',
+					'post-id'        => $post->ID
+				] ) ?>
                 <hr class="separator"/>
-                <a class="button is-outlined is-size-5 is-fullwidth mt-2"
-                   style="padding: 0.75rem 0 !important;" href="<?= get_the_permalink() ?>">
-                    <p class="has-text-weight-bold is-uppercase"><?= $post->post_type == 'movie' ? esc_html__( 'To the movie', 'gegenlicht' ) : esc_html__( 'To the event', 'gegenlicht' ) ?></p>
-                </a>
+				<?php get_template_part( 'partials/button', args: [
+					'href'    => get_the_permalink(),
+					'content' => $post->post_type == 'movie' ? esc_html__( 'To the movie', 'gegenlicht' ) : esc_html__( 'To the event', 'gegenlicht' )
+				] ) ?>
             </article>
 		<?php endfor;
 		wp_reset_postdata(); ?>
@@ -119,12 +122,12 @@ do_action( 'wp_body_open' );
 		<?php if ( ! empty( $monthlyMovies ) ) : ?>
             <h1 id="program"
                 class="title is-uppercase mb-1"><?= esc_html__( 'Our Semester Program', 'gegenlicht' ) ?></h1>
-            <div class="is-flex is-justify-content-space-between is-align-items-center is-clickable"
-                 onclick="toggleSpecialProgramDisplay()">
+            <div class="is-flex is-justify-content-space-between is-align-items-center">
                 <div>
                     <p><?= esc_html__( 'Main Program Only', 'gegenlicht' ) ?></p>
                 </div>
-                <span class="icon is-large">
+                <span class="icon is-large  is-clickable" role="button"
+                      onclick="toggleSpecialProgramDisplay()">
                 <span class="material-symbols" id="programSwitcher"
                       style="font-size: 48px; font-variation-settings: 'wght' 100, 'GRAD' 0, 'opsz' 48; font-weight: 100;">toggle_off</span>
             </span>
@@ -138,13 +141,15 @@ do_action( 'wp_body_open' );
 						$programType = rwmb_meta( 'program_type' );
 						$specialProgram = rwmb_meta( 'special_program' );
 						$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-						$title = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ); ?>
-                        <a data-program-type="<?= $programType ?>" href="<?= get_permalink() ?>">
+						$title = $showDetails ? ( get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ) : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?>
+                        <a role="link"
+                           aria-label="<?= $title ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( "r", rwmb_meta( 'screening_date' ) ) ?>"
+                           data-program-type="<?= $programType ?>" href="<?= get_permalink() ?>">
                             <div>
                                 <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
                                             class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
                                 </time>
-                                <p class="is-size-5 has-text-weight-bold is-uppercase"><?= $showDetails ? $title : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?></p>
+                                <h2 class="is-size-5 has-text-weight-bold is-uppercase no-separator"><?= $title ?></h2>
                             </div>
                             <span class="icon">
                         <span class="material-symbols">arrow_forward_ios</span>
@@ -155,13 +160,13 @@ do_action( 'wp_body_open' );
 			<?php endforeach; ?>
 		<?php endif; ?>
 
-        <a class="button is-outlined is-black is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
-           href="<?= get_post_type_archive_link( 'movie' ) ?>">
-            <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the archive', 'gegenlicht' ) ?></p>
-        </a>
+		<?php get_template_part( 'partials/button', args: [
+			'href'    => get_post_type_archive_link( 'movie' ),
+			'content' => __( 'To the Archive', 'gegenlicht' )
+		] ) ?>
     </main>
 <?php foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) : $termID = (int) $termID;
-    get_template_part("partials/special-program", args: ["id" => $termID] );
+	get_template_part( "partials/special-program", args: [ "id" => $termID ] );
 endforeach; ?>
     <div class="page-content">
         <hr class="separator is-only-darkmode"/>
@@ -201,7 +206,10 @@ endforeach; ?>
     <article id="team" class="py-5">
         <div class="page-content content">
 			<?php if ( get_theme_mod( 'team_image' ) ):
-				get_template_part( 'partials/responsive-image', args: [ 'image_url' => wp_get_attachment_image_url( get_theme_mod( 'team_image' ), 'desktop'), 'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'team_image' ), 'mobile') ] );
+				get_template_part( 'partials/responsive-image', args: [
+					'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'team_image' ), 'desktop' ),
+					'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'team_image' ), 'mobile' )
+				] );
 			endif; ?>
             <h2><?= esc_html__( 'Who is the GEGENLICHT', 'gegenlicht' ) ?></h2>
             <div>
@@ -213,14 +221,14 @@ endforeach; ?>
                     <p><?= $paragraph ?? esc_html__( 'Some content is missing here' ) ?></p>
 				<?php endforeach; ?>
             </div>
-            <a class="button is-outlined is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
-               href="<?= get_post_type_archive_link( 'team-member' ) ?>">
-                <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To the team', 'gegenlicht' ) ?></p>
-            </a>
+			<?php get_template_part( 'partials/button', args: [
+				'href'    => get_post_type_archive_link( 'team-member' ),
+				'content' => __( 'To the team', 'gegenlicht' )
+			] ) ?>
         </div>
     </article>
     <div class="page-content">
-    <hr class="separator is-only-darkmode"/>
+        <hr class="separator is-only-darkmode"/>
     </div>
 <?php endif; ?>
 
@@ -262,9 +270,9 @@ endforeach; ?>
             <div class="">
 				<?php if ( get_theme_mod( 'location_map' ) ): ?>
 					<?php get_template_part( 'partials/responsive-image', args: [
-						'image_url'    => wp_get_attachment_image_url(get_theme_mod( 'location_map' ), 'full'),
+						'image_url'    => wp_get_attachment_image_url( get_theme_mod( 'location_map' ), 'full' ),
 						'disable16by9' => true,
-                        'style' => 'object-position: 15%;'
+						'style'        => 'object-position: 15%;'
 					] ) ?>
 				<?php endif; ?>
                 <h2><?= esc_html__( 'Where is the GEGENLICHT', 'gegenlicht' ) ?></h2>
@@ -278,9 +286,11 @@ endforeach; ?>
 					<?php endforeach; ?>
                 </div>
             </div>
-            <a class="button is-outlined is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
-               href="<?= get_page_link( get_theme_mod( 'location_detail_page' ) ?? '#' ) ?>" aria-label="<?= esc_html__( 'To our Location', 'gegenlicht' ) ?>">
-                <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To our Location', 'gegenlicht' ) ?></p>
+            <a role="button" class="button is-outlined is-size-5 is-fullwidth mt-2 has-text-weight-bold is-uppercase"
+               style="padding: 0.75rem 0 !important;"
+               href="<?= get_page_link( get_theme_mod( 'location_detail_page' ) ?? '#' ) ?>"
+               aria-label="<?= esc_html__( 'To our Location', 'gegenlicht' ) ?>">
+				<?= esc_html__( 'To our Location', 'gegenlicht' ) ?>
             </a>
         </div>
     </article>
@@ -330,25 +340,8 @@ endforeach; ?>
 
         @media (prefers-color-scheme: dark) {
             #cooperations {
-                background-color: <?= get_theme_mod('cooperations_background_color')['dark'] ?> !important;
-                color: <?= get_theme_mod('cooperations_text_color')['dark'] ?> !important;
-
-                background-clip: padding-box;
-
-
-                > * {
-                    color: <?= get_theme_mod('cooperations_text_color')['dark'] ?> !important;
-
-                }
-
-                .button {
-                    --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['dark'] ?> !important;
-
-                    > * {
-                        color: <?= get_theme_mod('cooperations_text_color')['dark'] ?> !important;
-                    }
-                }
-
+                --bulma-body-background-color: <?= get_theme_mod('cooperations_background_color')['dark'] ?>;
+                --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['dark'] ?>;
             }
         }
     </style>
@@ -373,7 +366,9 @@ endforeach; ?>
 
 
 				?>
-                <div class="marquee" style="--height: 200px;">
+                <div role="marquee" aria-live="off"
+                     aria-label="<?= esc_html__( 'Logos of ours Cooperation partners', 'gegenlicht' ) ?>"
+                     class="marquee" style="--height: 200px;">
                     <div class="marquee-content" style="height: 200px;">
 						<?php foreach ( $postImages as $postImage ) : ?>
                             <figure>
@@ -391,24 +386,24 @@ endforeach; ?>
                 </div>
 			<?php endif; ?>
             <div class="content">
-            <h2><?= esc_html__( 'Our Cooperation Partners' ) ?></h2>
-            <div>
-				<?php
-				$introTextRaw = get_theme_mod( 'coop_block_text' )[ get_locale() ] ?? "";
-				$paragraphs   = preg_split( "/\R\R/", $introTextRaw, flags: PREG_SPLIT_NO_EMPTY );
-				foreach ( $paragraphs as $paragraph ):
-					?>
-                    <p><?= $paragraph ?? esc_html__( 'Some content is missing here' ) ?></p>
-				<?php endforeach; ?>
-            </div>
-            <a class="button is-outlined is-primary is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
-               href="<?= get_post_type_archive_link( 'cooperation-partner' ) ?>" aria-label="<?= esc_html__( 'To our Cooperations', 'gegenlicht' ) ?>">
-                <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'To our Cooperations', 'gegenlicht' ) ?></p>
-            </a>
-            <a class="button is-outlined is-primary is-size-5 is-fullwidth mt-2" style="padding: 0.75rem 0 !important;"
-               href="<?= get_post_type_archive_link( 'supporter' ) ?>" aria-label="<?= esc_html__( 'To our Cooperations', 'gegenlicht' ) ?>">
-                <p class="has-text-weight-bold is-uppercase"><?= esc_html__( 'See our Supporterss', 'gegenlicht' ) ?></p>
-            </a>
+                <h2><?= esc_html__( 'Our Cooperation Partners' ) ?></h2>
+                <div>
+					<?php
+					$introTextRaw = get_theme_mod( 'coop_block_text' )[ get_locale() ] ?? "";
+					$paragraphs   = preg_split( "/\R\R/", $introTextRaw, flags: PREG_SPLIT_NO_EMPTY );
+					foreach ( $paragraphs as $paragraph ):
+						?>
+                        <p><?= $paragraph ?? esc_html__( 'Some content is missing here' ) ?></p>
+					<?php endforeach; ?>
+                </div>
+	            <?php get_template_part( 'partials/button', args: [
+		            'href'    => get_post_type_archive_link( 'cooperation-partner' ),
+		            'content' => __( 'Our Cooperation Partners', 'gegenlicht' )
+	            ] ) ?>
+	            <?php get_template_part( 'partials/button', args: [
+		            'href'    => get_post_type_archive_link( 'supporter' ),
+		            'content' => __( 'Our supporters', 'gegenlicht' )
+	            ] ) ?>
             </div>
         </div>
     </article>
