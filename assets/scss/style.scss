@@ -165,6 +165,20 @@ html {
   background-color: var(--bulma-body-background-color);
 }
 
+.archive-list {
+  border-top: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
+  border-bottom: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
+
+  &:first-child {
+    border-top: var(--border-thickness) solid var(--bulma-body-color);
+  }
+
+  > * {
+    border-top: calc(var(--border-thickness) / 2) solid var(--bulma-body-color);
+    border-bottom: calc(var(--border-thickness) / 2) solid var(--bulma-body-color);
+  }
+}
+
 .movie-list {
 
   border-top: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
