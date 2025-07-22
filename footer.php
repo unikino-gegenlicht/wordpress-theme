@@ -48,8 +48,8 @@ defined( 'ABSPATH' ) || exit;
     <hr class="separator is-primary"/>
     <div class="has-text-primary my-2">
         <h5 class="has-text-weight-semibold no-separator"><?= esc_html__( 'Youth Protection Officer', 'gegenlicht' ) ?></h5>
-	    <p><?= get_theme_mod( 'ypo_name' ) ?></p>
-        <p><?= str_replace( "@", " (at) ", get_theme_mod( 'ypo_email' ) ) ?></p>
+	    <p><?= get_theme_mod( 'youth_protection_officer' )['name'] ?? 'MISSING' ?></p>
+        <p><?= str_replace( "@", " (at) ", (get_theme_mod( 'youth_protection_officer' )['email'] ?? "missing@missing") ) ?></p>
     </div>
     <div class="is-flex is-align-items-center mb-2 mt-5 has-text-primary links are-primary is-flex-wrap-wrap">
         <a class="" role="link" href=""><?= esc_html__( 'Impress', 'gegenlicht' ) ?></a>
