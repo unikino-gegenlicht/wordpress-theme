@@ -544,10 +544,12 @@ figure.supporter-logo {
   --bulma-navbar-item-background-a: 0 !important;
 }
 
-.navbar-item:hover {
+.navbar-item:hover,
+.navbar-item:active{
     text-decoration: underline;
   --bulma-navbar-item-background-l-delta: 0% !important;
   --bulma-navbar-item-background-a: unset !important;
+  text-decoration-thickness: var(--border-thickness) !important;
 }
 
 .navbar {
