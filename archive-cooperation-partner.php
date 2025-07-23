@@ -27,7 +27,7 @@ do_action( 'wp_body_open' );
 			?>
             <ul>
 				<?php for ( $i = 0; $i < count( $rules ); $i ++ ) : ?>
-                    <li class="pl-2"><?= $i + 1 ?>.&ensp;<?= esc_html( $rules[ $i ] ) ?></li>
+                    <li class="px-2"><?= $i + 1 ?>.&ensp;<?= esc_html( $rules[ $i ] ) ?></li>
 				<?php endfor; ?>
             </ul>
         </article>
