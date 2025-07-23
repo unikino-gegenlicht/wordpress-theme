@@ -1,7 +1,4 @@
 <?php
-/**
- * Template Name: Special Program Detail Page
- */
 defined( 'ABSPATH' ) || exit;
 
 

@@ -1,7 +1,4 @@
 <?php
-/**
- * Template Name: Semester Program Overview
- */
 
 defined( 'ABSPATH' ) || exit;
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: Button Partial
+ * Button Partial
  *
  * The button partial renders a `<a>` element annotated to be a button with the
  * desired content in it.
