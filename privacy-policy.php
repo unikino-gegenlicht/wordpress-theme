@@ -1,7 +1,4 @@
 <?php
-/**
- * Template Name: Privacy Policy
- */
 
 defined('ABSPATH') || exit;
 get_header();

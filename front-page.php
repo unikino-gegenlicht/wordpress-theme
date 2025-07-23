@@ -1,8 +1,4 @@
 <?php
-/**
- * Template Name: Front Page
- */
-
 defined( 'ABSPATH' ) || exit;
 
 $fallbackImage = get_theme_mod( 'anonymous_image' );

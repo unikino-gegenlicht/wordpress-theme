@@ -1,9 +1,4 @@
 <?php
-
-/**
- * Template Name: Event Detail Page
- */
-
 defined( 'ABSPATH' ) || exit;
 
 

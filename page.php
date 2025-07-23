@@ -1,8 +1,4 @@
 <?php
-/**
- * Template Name: Plain Content Page
- */
-
 defined( 'ABSPATH' ) || exit;
 get_header();
 do_action('wp_body_open');

@@ -1,7 +1,4 @@
 <?php
-/**
- * Template Name: Page Header
- */
 defined( 'ABSPATH' ) || exit;
 
 $headerImage = get_theme_mod('header_logo');
