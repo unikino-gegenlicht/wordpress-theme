@@ -1,8 +1,4 @@
 <?php
-
-/**
- * Template Name: Page Footer
- */
 defined( 'ABSPATH' ) || exit;
 ?>
 
@@ -47,7 +43,7 @@ defined( 'ABSPATH' ) || exit;
     </div>
     <hr class="separator is-primary"/>
     <div class="has-text-primary my-2">
-        <h5 class="has-text-weight-semibold no-separator"><?= esc_html__( 'Youth Protection Officer', 'gegenlicht' ) ?></h5>
+        <h5 class="is-size-6 has-text-weight-semibold no-separator"><?= esc_html__( 'Youth Protection Officer', 'gegenlicht' ) ?></h5>
 	    <p><?= get_theme_mod( 'youth_protection_officer' )['name'] ?? 'MISSING' ?></p>
         <p><?= str_replace( "@", " (at) ", (get_theme_mod( 'youth_protection_officer' )['email'] ?? "missing@missing") ) ?></p>
     </div>
