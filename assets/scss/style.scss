@@ -39,6 +39,32 @@ $contentPadding: 0.75rem;
 @forward 'bulma-v1-tooltip/src/sass';
 
 
+:root {
+  --border-thickness: 2px;
+  --shared-border-thickness: calc(var(--border-thickness) / 2);
+  --bulma-body-background-color: var(--bulma-primary);
+  --bulma-body-color: black;
+  --bulma-navbar-background-color: var(--bulma-body-background-color);
+  --bulma-strong-color: var(--bulma-body-color);
+  --button-border-width: var(--border-thickness);
+  --max-content-width: #{$maxWidth};
+  --content-padding: #{$contentPadding};
+  --bulma-hr-background-color: var(--bulma-body-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bulma-body-background-color: black;
+    --bulma-link-text: var(--bulma-body-color);
+    --bulma-body-color: var(--bulma-primary) !important;
+    --bulma-navbar-tab-active-color: var(--bulma-body-color);
+    --bulma-navbar-background-color: var(--bulma-body-background-color);
+    --bulma-button-border-width: var(--border-thickness);
+    --bulma-footer-background-color: var(--bulma-body-background-color) !important;
+    --bulma-content-heading-color: var(--bulma-body-color) !important;
+  }
+}
+
 @include mixins.tablet {
   .page-content {
     max-width: var(--max-content-width);
@@ -74,17 +100,7 @@ $contentPadding: 0.75rem;
   margin-bottom: 5rem !important;
 }
 
-:root {
-  --border-thickness: 2px;
-  --bulma-body-background-color: var(--bulma-primary);
-  --bulma-body-color: black;
-  --bulma-navbar-background-color: var(--bulma-body-background-color);
-  --bulma-strong-color: var(--bulma-body-color);
-  --button-border-width: var(--border-thickness);
-  --max-content-width: #{$maxWidth};
-  --content-padding: #{$contentPadding};
 
-}
 
 [data-tooltip] {
   --bulma-tooltip-background-color: var(--bulma-body-color) !important;
@@ -166,23 +182,22 @@ html {
 }
 
 .archive-list {
-  border-top: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
-  border-bottom: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
+  border-top: var(--border-thickness) solid var(--bulma-body-color);
+  border-bottom: var(--border-thickness) solid var(--bulma-body-color);
 
   &:first-child {
-    border-top: var(--border-thickness) solid var(--bulma-body-color);
+    border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
   }
 
   > * {
-    border-top: calc(var(--border-thickness) / 2) solid var(--bulma-body-color);
-    border-bottom: calc(var(--border-thickness) / 2) solid var(--bulma-body-color);
+    border-top: var(--border-thickness) solid var(--bulma-body-color);
+    border-bottom: var(--border-thickness) solid var(--bulma-body-color);
   }
 }
 
 .movie-list {
-
-  border-top: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
-  border-bottom: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
+  border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
+  border-bottom: var(--shared-border-thickness) solid var(--bulma-body-color);
 
   &:has(:only-child) {
     border-top: none !important;
@@ -190,17 +205,16 @@ html {
   }
 
 
-
   > * {
-    border-top: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
-    border-bottom: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
+    border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
+    border-bottom: var(--shared-border-thickness) solid var(--bulma-body-color);
 
     &:first-child {
       border-top: var(--border-thickness) solid var(--bulma-body-color);
     }
 
     &:last-child {
-      border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+      border-bottom:  var(--border-thickness) solid var(--bulma-body-color);
     }
   }
 
@@ -256,28 +270,28 @@ html {
 }
 
 hr.separator {
-  border: calc(var(--border-thickness)/2) solid var(--bulma-body-color);
+  border: var(--shared-border-thickness) solid var(--bulma-body-color);
   margin: 0.5rem auto;
   padding: 0 !important;
   background-color: var(--bulma-body-color) !important;
 
   &.is-primary {
-    border: calc(var(--border-thickness)/2) solid var(--bulma-primary) !important;
+    border: var(--shared-border-thickness) solid var(--bulma-primary) !important;
     background-color: var(--bulma-primary) !important;
   }
 
   &.is-black {
-    border: calc(var(--border-thickness)/2) solid black !important;
+    border: var(--shared-border-thickness) solid black !important;
     background-color: var(--bulma-primary) !important;
   }
 
   &.is-text-color {
-    border: calc(var(--border-thickness)/2) solid var(--bulma-body-color) !important;
+    border: var(--shared-border-thickness) solid var(--bulma-body-color) !important;
     background-color: var(--bulma-body-color) !important;
   }
 
   &.is-background-color {
-    border: calc(var(--border-thickness)/2) solid var(--bulma-body-background-color) !important;
+    border: var(--shared-border-thickness) solid var(--bulma-body-background-color) !important;
     background-color: var(--bulma-body-background-color) !important;
   }
 }
@@ -290,9 +304,28 @@ hr.separator {
 
 .screening-information {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  padding: 0.75rem 0;
+
+  &> * {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+
+    border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
+    border-bottom: var(--shared-border-thickness) solid var(--bulma-body-color);
+    width: 100%;
+
+    &:first-child {
+      border-top: var(--border-thickness) solid var(--bulma-body-color);
+    }
+
+    &:last-child {
+      border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+    }
+  }
 }
 
 .reservation-button {
@@ -391,16 +424,24 @@ hr.separator {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'GEGENLICHT';
+
+  --heading-size: 2rem;
+
+  font-family: 'GEGENLICHT', sans-serif;
   text-transform: uppercase;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+  font-size: var(--heading-size) !important;
   border-bottom: var(--border-thickness) solid var(--bulma-body-color);
 
   &.no-separator {
     border-bottom: unset;
     padding-bottom: unset;
     padding-top: unset;
+  }
+
+  &.border-is-text-color {
+    border-bottom: var(--border-thickness) solid var(--bulma-body-color) !important;
   }
 
   &.border-is-primary {
@@ -413,6 +454,16 @@ h1, h2, h3, h4, h5, h6 {
 
   &.border-is-background-color {
     border-bottom: var(--border-thickness) solid var(--bulma-body-background-color) !important;
+  }
+}
+
+.privacy-policy {
+  h1, h2, h3, h4, h5, h6 {
+    border-bottom: unset;
+    padding-bottom: unset;
+    padding-top: unset;
+
+    font-size: 1.25rem !important;
   }
 }
 
