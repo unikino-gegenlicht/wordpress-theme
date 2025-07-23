@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) || exit;
 
 $headerImage = get_theme_mod('header_logo');
 
-
+headers_send(103);
 ?>
 <!DOCTYPE html>
 <html lang="<?= get_locale() ?>" data-theme="">

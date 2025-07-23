@@ -253,9 +253,8 @@ add_action( 'wp_head', function () {
 	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/gegenlicht.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
 	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/icons.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
 	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/inter.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
-	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/inter_italic.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
+	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/inter_italic.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false);
 	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/simple-icons.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
-
 } );
 
 
@@ -274,7 +273,6 @@ add_filter( 'wp_print_styles', function () {
 	endforeach;
 
 	header( 'Link: ' . join( ', ', $links ), replace: false );
-
 } );
 
 
