@@ -17,6 +17,7 @@ $headerImage = get_theme_mod('header_logo');
     <link rel="profile" href="http://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 </head>
+<?php do_action('wp_body_open'); ?>
 <body>
 <header>
     <nav class="navbar px-4 mb-5" role="navigation" aria-label="main navigation">
