@@ -21,7 +21,7 @@ do_action( 'wp_body_open' );
 			?>
         </div>
     </article>
-    <article class="mt-5"
+    <article class="mt-5 pb-5"
              style="--bulma-body-color: var(--bulma-primary); --bulma-body-background-color: black; color: var(--bulma-primary); background-color: black;">
         <div class="page-content pb-5">
 			<?php if ( get_theme_mod( 'association_logo' ) ): ?>
