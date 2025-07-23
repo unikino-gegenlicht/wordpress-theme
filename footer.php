@@ -33,13 +33,13 @@ defined( 'ABSPATH' ) || exit;
 	<?php endif; ?>
     <div class="has-text-primary my-2 is-flex is-align-items-top is-flex-wrap-wrap is-justify-content-space-evenly is-row-gap-2.5">
         <div class="is-flex-grow-1">
-            <h5 class="has-text-weight-semibold"><?= esc_html__( 'Postal Address', 'gegenlicht' ) ?></h5>
+            <h5 class="has-text-weight-semibold is-size-6 is-underlined"><?= esc_html__( 'Postal Address', 'gegenlicht' ) ?></h5>
             <address class="has-text-primary" style="user-select: text">
 				<?= nl2br( get_theme_mod( 'postal_address' ) ) ?>
             </address>
         </div>
         <div class="is-flex-grow-1">
-            <h5 class="has-text-weight-semibold"><?= esc_html__( 'Visitor Address', 'gegenlicht' ) ?></h5>
+            <h5 class="has-text-weight-semibold is-size-6 is-underlined"><?= esc_html__( 'Visitor Address', 'gegenlicht' ) ?></h5>
             <address class="has-text-primary" style="user-select: text">
 				<?= nl2br( get_theme_mod( 'visitor_address' ) ) ?>
             </address>
@@ -58,7 +58,7 @@ defined( 'ABSPATH' ) || exit;
         <a class="" role="link" href=""><?= esc_html__( 'Contact', 'gegenlicht' ) ?></a>
     </div>
     <div class="mt-4">
-        <img alt="made by humans. not by ai" src="<?= get_stylesheet_directory_uri() ?>/assets/img/no-ai.svg"/>
+        <img loading="lazy" width="150" height="39" style="object-fit: scale-down" alt="made by humans. not by ai" src="<?= get_stylesheet_directory_uri() ?>/assets/img/no-ai.svg"/>
     </div>
 </footer>
 <?php wp_footer(); ?>
