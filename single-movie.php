@@ -52,36 +52,35 @@ if ( $isSpecialProgram ):
 <?php endif; ?>
 <main>
     <header class="page-content">
-        <hr class="separator"/>
         <div class="screening-information">
-            <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
-            <p>
-                <time
-                        datetime="<?= date( 'Y-m-d H:i', rwmb_meta( 'screening_date' ) ) ?>">
-					<?= date( 'd.m.Y | H:i', rwmb_meta( 'screening_date' ) ) ?>
-                </time>
-            </p>
-        </div>
-        <hr class="separator"/>
-        <div class="screening-information is-justify-content-right">
-			<?php
-			$admission_type = rwmb_meta( 'admission_type' );
+            <div>
+                <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
+                <p>
+                    <time
+                            datetime="<?= date( 'Y-m-d H:i', rwmb_meta( 'screening_date' ) ) ?>">
+                        <?= date( 'd.m.Y | H:i', rwmb_meta( 'screening_date' ) ) ?>
+                    </time>
+                </p>
+            </div>
+            <div class="is-justify-content-right">
+	            <?php
+	            $admission_type = rwmb_meta( 'admission_type' );
 
-			switch ( $admission_type ) {
-				case 'free':
-					echo "<p>" . esc_html__( 'Free Admission', 'gegenlicht' ) . "</p>";
-					break;
-				case 'donation':
-					echo "<p>" . esc_html__( 'Donations welcome', 'gegenlicht' ) . "</p>";
-				case 'paid':
-					$admissionFee = (float) rwmb_meta( 'admission_fee' );
-					echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, get_locale() == 'en' ? '.' : "," ) . "&euro;</p>";
+	            switch ( $admission_type ) {
+		            case 'free':
+			            echo "<p>" . esc_html__( 'Free Admission', 'gegenlicht' ) . "</p>";
+			            break;
+		            case 'donation':
+			            echo "<p>" . esc_html__( 'Donations welcome', 'gegenlicht' ) . "</p>";
+		            case 'paid':
+			            $admissionFee = (float) rwmb_meta( 'admission_fee' );
+			            echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, get_locale() == 'en' ? '.' : "," ) . "&euro;</p>";
 
-			}
-			?>
+	            }
+	            ?>
+            </div>
         </div>
-        <hr class="separator"/>
-        <h1 class="font-ggl is-size-1 is-uppercase <?= $showDetails ? ($title != rwmb_meta('original_title') ? 'no-separator' : '') : '' ?>">
+        <h1 role="heading" class="<?= $showDetails ? ($title != rwmb_meta('original_title') ? 'no-separator' : '') : '' ?>">
 	        <?= $showDetails ? $title : (rwmb_meta('program_type') == 'special_program' ? trim(get_term(rwmb_meta('special_program'))->name) : esc_html__( 'An unnamed movie', 'gegenlicht' )) ?>
         </h1>
 		<?php if ( $showDetails && $title != rwmb_meta( 'original_title' ) ): ?>
