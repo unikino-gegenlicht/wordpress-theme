@@ -49,8 +49,8 @@ do_action( 'wp_body_open' );
                         <figure class="image is-3by4 member-picture">
                             <img alt="" src="<?= $imageUrl ?: wp_get_attachment_image_url(get_theme_mod( 'member_fallback_image' )) ?>"/>
                         </figure>
-                        <hr class="separator"/>
-                        <h5><?= $member->post_title ?></h5>
+                        <hr class="separator mb-1"/>
+                        <h5 class="is-size-5"><?= $member->post_title ?></h5>
                         <p class="is-italic"> <?= esc_html__( 'since', 'gegenlicht' ) ?> <?= rwmb_meta( 'joined_in', post_id: $member->ID ) ?> </p>
                     </div>
 				<?php endforeach; ?>
@@ -81,8 +81,8 @@ do_action( 'wp_body_open' );
                             <figure class="image is-3by4 member-picture">
                                 <img alt="" src="<?= $imageUrl ?:  wp_get_attachment_image_url(get_theme_mod( 'member_fallback_image' )) ?>"/>
                             </figure>
-                            <hr class="separator"/>
-                            <h5><?= $member->post_title ?></h5>
+                            <hr class="separator mb-1"/>
+                            <h5 class="is-size-5"><?= $member->post_title ?></h5>
                             <p class="is-italic"> <?= rwmb_meta( 'joined_in', post_id: $member->ID ) ?>–<?= rwmb_meta( 'left_in', post_id: $member->ID ) ?> </p>
                         </div>
 					<?php endforeach; ?>

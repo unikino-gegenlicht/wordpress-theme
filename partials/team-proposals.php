@@ -45,9 +45,9 @@ $proposals = new WP_Query( [
 
 <article class="page-content">
     <header>
-        <h3 class="is-size-3">
+        <h3>
 			<?= $proposalBy == 'member' ? esc_html__( 'Selected by', 'gegenlicht' ) : esc_html__( 'Also shown together with', 'gegenlicht' ) ?>
-            &nbsp;<?= get_post( $proposerID )->post_title ?>
+            <?= get_post( $proposerID )->post_title ?>
         </h3>
     </header>
     <div class="is-flex is-align-items-top is-flex-wrap-wrap is-gap-1 mt-3">
