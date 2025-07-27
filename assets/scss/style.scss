@@ -22,14 +22,34 @@ $contentPadding: 0.75rem;
 @use 'contact-forms.scss';
 @use 'fonts.scss';
 
-@use "bulma/sass" with (
+@use "bulma/sass/utilities" with (
     $family-primary: '"Inter", sans-serif',
     $primary: $ggl-yellow,
-    $input-shadow: none,
     $link: black,
     $radius: 0,
-    $title-line-height: 1
 );
+
+@use "bulma/sass/form" with (
+  $input-shadow: none
+);
+
+@forward "bulma/sass/base";
+@forward "bulma/sass/themes";
+@forward "bulma/sass/layout/footer";
+@forward "bulma/sass/components/navbar";
+@forward "bulma/sass/elements/content";
+@forward "bulma/sass/elements/button";
+@forward "bulma/sass/elements/icon";
+@forward "bulma/sass/elements/tag";
+@forward "bulma/sass/elements/image";
+@forward "bulma/sass/helpers/typography";
+@forward "bulma/sass/helpers/aspect-ratio";
+@forward "bulma/sass/helpers/spacing";
+@forward "bulma/sass/helpers/visibility";
+@forward "bulma/sass/helpers/flexbox";
+@forward "bulma/sass/helpers/color";
+@forward "bulma/sass/helpers/gap";
+@forward "bulma/sass/grid";
 
 @use "sass:string";
 
@@ -124,7 +144,7 @@ $contentPadding: 0.75rem;
 
   > * {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 20px auto;
   }
 }
 
