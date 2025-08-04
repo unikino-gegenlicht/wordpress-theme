@@ -53,7 +53,7 @@ $proposals = new WP_Query( [
     <div class="is-flex is-align-items-top is-flex-wrap-wrap is-gap-1 mt-3">
         <figure class="image is-3by4 member-picture">
             <img alt=""
-                 src="<?= get_the_post_thumbnail_url( $proposerID, 'full' ) ?: get_theme_mod( 'member_fallback_image' ) ?>"/>
+                 src="<?= get_the_post_thumbnail_url( $proposerID, 'full' ) ?: wp_get_attachment_image_url(get_theme_mod( 'member_fallback_image' ), 'full') ?>"/>
         </figure>
         <div class="proposal-list">
 			<?php if ( $proposals->have_posts() ) : while ( $proposals->have_posts() ) : $proposals->the_post(); ?>
