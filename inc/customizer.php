@@ -12,6 +12,7 @@ require_once 'customizer/supporter-page.php';
 require_once 'customizer/social-medias.php';
 require_once 'customizer/youth-protection.php';
 require_once 'customizer/movie-archive.php';
+require_once 'customizer/anonymization.php';
 use GGL\customizer;
 use function GGL\customizer\custom_controls;
 
@@ -34,6 +35,7 @@ function configure_customizer( WP_Customize_Manager $wp_customize): void {
 	customizer\socialMedias\customizer($wp_customize);
 	customizer\youthProtection\customizer($wp_customize);
 	customizer\movieArchive\customizer($wp_customize);
+	customizer\anonymization\customizer($wp_customize);
 	//ggl_add_customizer_options($wp_customize);
 }
 
