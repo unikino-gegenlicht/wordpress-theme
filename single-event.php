@@ -47,60 +47,62 @@ if ( $isSpecialProgram ):
 <?php endif; ?>
 <main>
     <header class="page-content">
-        <hr class="separator"/>
-        <div class="screening-information">
-            <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
-            <p>
-                <time
-                        datetime="<?= date( 'Y-m-d H:i', rwmb_meta( 'screening_date' ) ) ?>">
-					<?= date( 'd.m.Y | H:i', rwmb_meta( 'screening_date' ) ) ?>
-                </time>
-            </p>
-        </div>
-        <hr class="separator"/>
-        <div class="screening-information is-justify-content-right">
-			<?php
-			$admission_type = rwmb_meta( 'admission_type' );
+        <div class="screening-information <?= ($showDetails && $title != rwmb_meta( 'original_title' )) ? '' : 'pb-0' ?>">
+            <div>
+                <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
+                <p>
+                    <time
+                            datetime="<?= date( 'Y-m-d H:i', rwmb_meta( 'screening_date' ) ) ?>">
+						<?= date( 'd.m.Y | H:i', rwmb_meta( 'screening_date' ) ) ?>
+                    </time>
+                </p>
+            </div>
+            <div class="is-justify-content-right">
+				<?php
+				$admission_type = rwmb_meta( 'admission_type' );
 
-			switch ( $admission_type ) {
-				case 'free':
-					echo "<p>" . esc_html__( 'Free Admission', 'gegenlicht' ) . "</p>";
-					break;
-				case 'donation':
-					echo "<p>" . esc_html__( 'Donations welcome', 'gegenlicht' ) . "</p>";
-				case 'paid':
-					$admissionFee = (float) rwmb_meta( 'admission_fee' );
-					echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, get_locale() == 'en' ? '.' : "," ) . "&euro;</p>";
+				switch ( $admission_type ) {
+					case 'free':
+						echo "<p>" . esc_html__( 'Free Admission', 'gegenlicht' ) . "</p>";
+						break;
+					case 'donation':
+						echo "<p>" . esc_html__( 'Donations welcome', 'gegenlicht' ) . "</p>";
+					case 'paid':
+						$admissionFee = (float) rwmb_meta( 'admission_fee' );
+						echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, get_locale() == 'en' ? '.' : "," ) . "&euro;</p>";
 
-			}
-			?>
+				}
+				?>
+            </div>
         </div>
-        <hr class="separator"/>
-        <h1 class="font-ggl is-size-1 is-uppercase <?= $showDetails ? ($title != rwmb_meta('original_title') ? 'no-separator' : '') : '' ?>">
-	        <?= $showDetails ? $title : (rwmb_meta('program_type') == 'special_program' ? trim(get_term(rwmb_meta('special_program'))->name) : esc_html__( 'An unnamed Event', 'gegenlicht' )) ?>
+        <h1 role="heading" class="<?= $showDetails ? ($title != rwmb_meta('original_title') ? 'no-separator' : '') : '' ?>">
+			<?= $showDetails ? $title : (rwmb_meta('program_type') == 'special_program' ? trim(get_term(rwmb_meta('special_program'))->name) : esc_html__( 'An unnamed event', 'gegenlicht' )) ?>
         </h1>
 		<?php if ( $showDetails && $title != rwmb_meta( 'original_title' ) ): ?>
             <p class="font-ggl is-size-4"><?= rwmb_meta( 'original_title' ) ?></p>
             <hr class="separator"/>
 		<?php endif; ?>
         <div class="mt-2">
-        <p>
-			ca. <?= rwmb_meta( 'duration' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
-        </p>
+            <p>
+				<?= rwmb_meta( 'duration' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
+            </p>
         </div>
         <hr class="separator"/>
         <div class="tags are-medium">
 			<?php
 			$ageRating = rwmb_meta( 'age_rating' );
+
+			$translatedDescriptors = array();
+
 			switch ( $ageRating ) {
                 case -3:
                     break;
 				case - 2:
 				case - 1:
-					echo '<span class="tag is-rounded is-primary" style="border: var(--bulma-body-color) solid 1px;">' . esc_html__( 'Not Rated', 'gegenlicht' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary '. (!empty($translatedDescriptors) ? ('has-tooltip-arrow has-tooltip-right has-tooltip-multiline" data-tooltip="'. join(", ", $translatedDescriptors) .'"') : '' )  .'" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'Not Rated', 'gegenlicht' ) . '</span>';
 					break;
 				default:
-					echo '<span class="tag is-rounded is-primary" style="border: var(--bulma-body-color) solid 1px;">' . esc_html__( 'FSK', 'gegenlicht' ) . ' ' . $ageRating . '</span>';
+					echo '<span class="tag is-rounded is-primary '. (!empty($translatedDescriptors) ? ('has-tooltip-arrow has-tooltip-right has-tooltip-multiline" data-tooltip="'. join(", ", $translatedDescriptors) .'"') : '')  .'" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'FSK', 'gegenlicht' ) . ' ' . $ageRating . '</span>';
 
 			}
 			?>
@@ -112,15 +114,15 @@ if ( $isSpecialProgram ):
 
 			if ( $audioType == 'original' ):
 				if ( $subtitleLanguage == 'eng' ):
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right" style="border: var(--bulma-body-color) solid 1px;" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OmeU' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OmeU' ) . '</span>';
 				endif;
 				if ( $subtitleLanguage == 'deu' ):
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right" style="border: var(--bulma-body-color) solid 1px;" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OmdU' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OmdU' ) . '</span>';
 				endif;
 				if ( $subtitleLanguage == 'zxx' ):
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right" style="border: var(--bulma-body-color) solid 1px;" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original without Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OV', 'gegenlicht' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original without Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OV', 'gegenlicht' ) . '</span>';
 				endif;
-			endif;
+                endif;
 
 			if ( $audioType == 'synchronization' ):
 				echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right" style="border: var(--bulma-body-color) solid 1px;" data-tooltip="' . $audioLanguage . '. ' . $subtitleLanguage == 'zxx' ? esc_html__( 'Audio without Subtitles', 'gegenlicht' ) : esc_html__( 'Audio with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'Dub' ) . '</span>';
@@ -129,36 +131,21 @@ if ( $isSpecialProgram ):
 
 			?>
         </div>
-	    <?php get_template_part('partials/responsive-image', args: ['image_url' => $showDetails ? get_the_post_thumbnail_url( size: 'full' ) : wp_get_attachment_image_url( $anonymousImage, 'large' )]) ?>
-        <?php if (!$showDetails && !$isSpecialProgram): ?>
+		<?php get_template_part('partials/responsive-image', args: ['fetch-priority' => 'high','image_url' => $showDetails ? get_the_post_thumbnail_url( size: 'full' ) ?: wp_get_attachment_image_url( $anonymousImage, 'large' ) :  wp_get_attachment_image_url( $anonymousImage, 'large' )]) ?>
+		<?php if ($isSpecialProgram): ?>
             <div class="boxed-text mt-3">
-                <?php
-                $introTextRaw = get_theme_mod( 'anonymized_movie_explainer_' . get_locale() );
-                $paragraphs   = preg_split( "/\R\R/", $introTextRaw );
-                foreach ( $paragraphs as $paragraph ) :
-	                ?>
+				<?php
+				$paragraphs   = preg_split( "/\R\R/", $specialProgram->description );
+				foreach ( $paragraphs as $paragraph ) :
+					?>
                     <p>
-		                <?= $paragraph ?>
+						<?= $paragraph ?>
                     </p>
-                <?php
-                endforeach;
-                ?>
+				<?php
+				endforeach;
+				?>
             </div>
-        <?php endif; ?>
-        <?php if ($isSpecialProgram): ?>
-            <div class="boxed-text mt-3">
-		        <?php
-		        $paragraphs   = preg_split( "/\R\R/", $specialProgram->description );
-		        foreach ( $paragraphs as $paragraph ) :
-			        ?>
-                    <p>
-				        <?= $paragraph ?>
-                    </p>
-		        <?php
-		        endforeach;
-		        ?>
-            </div>
-        <?php endif; ?>
+		<?php endif; ?>
     </header>
     <div class="has-background-white py-4 px-2 my-5 reservation-button">
         <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" href="">
@@ -167,23 +154,23 @@ if ( $isSpecialProgram ):
         </a>
     </div>
     <article class="page-content px-2 mt-4 content">
-        <?php if (rwmb_meta('show_content_notice')): ?>
-        <div class="content-notice mb-6 p-2">
-            <h2 class="is-size-4 border-is-background-color"><?= esc_html__("Content Notice", 'gegenlicht') ?></h2>
-            <p>
-                <?= ggl_cleanup_paragraphs(rwmb_get_value('content_notice')) ?>
-            </p>
-        </div>
-        <?php endif; ?>
+		<?php if (rwmb_meta('show_content_notice')): ?>
+            <div class="content-notice mb-6 p-2">
+                <h2 class="is-size-4 border-is-background-color"><?= esc_html__("Content Notice", 'gegenlicht') ?></h2>
+                <p>
+					<?= ggl_cleanup_paragraphs(rwmb_get_value('content_notice')) ?>
+                </p>
+            </div>
+		<?php endif; ?>
         <h2 class="font-ggl is-size-3 is-uppercase">
 			<?= esc_html__( 'What the movie is about', 'gegenlicht' ) ?>
         </h2>
-	    <?= ggl_cleanup_paragraphs($showDetails ? rwmb_get_value( 'summary' ) : rwmb_get_value('anon_summary')) ?>
+		<?= ggl_cleanup_paragraphs($showDetails ? rwmb_get_value( 'summary' ) : rwmb_get_value('anon_summary')) ?>
         <h2 class="font-ggl is-size-3 is-uppercase mt-6">
 			<?= esc_html__( "Why it's worth watching", 'gegenlicht' ) ?>
         </h2>
-	    <?= ggl_cleanup_paragraphs($showDetails ? rwmb_get_value( 'worth_to_see' ) : rwmb_get_value('anon_worth_to_see')) ?>
-        <?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
+		<?= ggl_cleanup_paragraphs($showDetails ? rwmb_get_value( 'worth_to_see' ) : rwmb_get_value('anon_worth_to_see')) ?>
+		<?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
             <hr class="separator mt-6"/>
             <h3 class="font-ggl is-size-5 is-uppercase">
 				<?= esc_html__( 'Short Movie' ) ?>
@@ -210,17 +197,17 @@ if ( $isSpecialProgram ):
 	<?php
 	$selectedBy     = '';
 	$selectedByType = rwmb_meta( 'selected_by' );
-	$post_id        = '';
+	$selectorID        = '';
 	$skipSelectedBy = false;
 	switch ( $selectedByType ) {
 		case 'member':
-			$post_id    = rwmb_meta( 'team_member_id' );
-			$member     = get_post( $post_id );
+			$selectorID = rwmb_meta( 'team_member_id' );
+			$member     = get_post( $selectorID );
 			$selectedBy = $member->post_title;
 			break;
 		case 'cooperation':
-			$post_id    = rwmb_meta( 'cooperation_partner_id' );
-			$partner    = get_post( $post_id );
+			$selectorID = rwmb_meta( 'cooperation_partner_id' );
+			$partner    = get_post( $selectorID );
 			$selectedBy = $partner->post_title;
 			break;
 		default:
@@ -229,72 +216,8 @@ if ( $isSpecialProgram ):
 	}
 
 	if ( ! $skipSelectedBy ):
+		get_template_part("partials/team-proposals", args: ['post-id' => $post->ID, 'proposal-by' => $selectedByType, 'proposer-id' => $selectorID ])
 		?>
-        <div class="page-content">
-
-            <p class="font-ggl is-size-3 is-uppercase">
-				<?= esc_html__( 'Selected by', 'gegenlicht' ) ?><br class="is-hidden-tablet"/>
-				<?= $selectedBy ?>
-            </p>
-            <hr class="separator is-black"/>
-            <div class="is-flex is-align-items-top is-flex-wrap-wrap">
-                <figure class="image is-3by4 <?= $selectedByType == "member" ? 'member-picture' : '' ?>">
-                    <img src="<?= get_the_post_thumbnail_url( post: $post_id, size: 'full' ) ?: wp_get_attachment_image_url( get_theme_mod( 'missing_team_image_replacement' ) ) ?>"/>
-                </figure>
-                <div style="width: 1rem; height: 1rem"></div>
-                <div class="proposal-list">
-					<?php
-					$query = new WP_Query( array(
-						'post_type'      => [ 'movie', 'event' ],
-						'posts_per_page' => 6,
-                        'post__not_in' => [ $post->ID ],
-						'meta_query'     => array(
-							'relation' => 'AND',
-							array(
-								array(
-									'key'   => 'program_type',
-									'value' => 'main',
-								),
-								array(
-									'key'     => 'license_type',
-									'value'   => [
-										'full',
-										is_user_logged_in() ? 'pool' : null,
-										is_user_logged_in() ? 'none' : null,
-									],
-									'compare' => 'IN',
-								),
-								array(
-									'relation' => 'OR',
-									array(
-										'key'   => 'team_member_id',
-										'value' => $post_id,
-									),
-									array(
-										'key'   => 'cooperation_partner_id',
-										'value' => $post_id,
-									)
-								)
-							)
-
-						)
-					) );
-					if ( $query->have_posts() ):
-						while ( $query->have_posts() ) : $query->the_post();
-							?>
-                            <hr class="separator is-black"/>
-                            <p class="mt-2 has-text-weight-bold font-ggl is-uppercase is-size-5"><?= $post->post_title ?></p>
-						<?php endwhile;
-						echo '<hr class="separator is-black"/>';
-						wp_reset_postdata();
-					else:
-						?>
-                        <p class="is-align-self-center"><?= esc_html__( 'No proposals found. Check back later…', 'gegenlicht' ) ?></p>
-					<?php
-					endif; ?>
-                </div>
-            </div>
-        </div>
 	<?php endif; ?>
 </section>
 <?php get_footer(); ?>
