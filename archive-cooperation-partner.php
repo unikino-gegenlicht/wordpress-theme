@@ -45,9 +45,8 @@ do_action( 'wp_body_open' );
 			?>
         </div>
     </article>
-    <!-- TODO: Create contact forms -->
     <div class="has-background-white py-4 px-2 mt-5 reservation-button">
-        <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" href="">
+        <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" target="_blank" href="<?= get_theme_mod('cooperation_contact_page') ?>">
             <span class="has-text-weight-bold"><?= esc_html__( 'Contact Us Now', 'gegenlicht' ) ?></span>
             <span class="material-symbols ml-1">open_in_new</span>
         </a>

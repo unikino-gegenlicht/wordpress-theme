@@ -202,16 +202,16 @@ html {
 }
 
 .archive-list {
-  border-top: var(--border-thickness) solid var(--bulma-body-color);
-  border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+  border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
+  border-bottom: var(--shared-border-thickness) solid var(--bulma-body-color);
 
   &:first-child {
     border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
   }
 
   > * {
-    border-top: var(--border-thickness) solid var(--bulma-body-color);
-    border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+    border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
+    border-bottom: var(--shared-border-thickness) solid var(--bulma-body-color);
   }
 }
 

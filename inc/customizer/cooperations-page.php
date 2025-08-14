@@ -23,6 +23,7 @@ function customize( \WP_Customize_Manager $wp_customize ): void {
 	add_rules( $wp_customize );
 	add_rules_closer( $wp_customize );
 	add_partner_list_text($wp_customize);
+	add_contact_link($wp_customize);
 
 }
 
@@ -136,6 +137,20 @@ function add_partner_list_text( \WP_Customize_Manager $wp_customize ): void {
 		'label'       => __( 'Partner List Text (English)', 'gegenlicht' ),
 		'type'        => 'textarea',
 		'description' => esc_html__( 'To create a new paragraph inside the text, please use a doubled line break. All other linebreaks will be removed', 'gegenlicht' ),
+		'section'     => section,
+	) );
+}
+
+function add_contact_link(\WP_Customize_Manager $wp_customize ): void {
+	$wp_customize->add_setting( 'cooperation_contact_page', array(
+		'type'       => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'default'    => ''
+	) );
+
+	$wp_customize->add_control( 'cooperation_contact_page', array(
+		'label'       => __( 'Link to Cooperation Request Form', 'gegenlicht' ),
+		'type'        => 'url',
 		'section'     => section,
 	) );
 }
