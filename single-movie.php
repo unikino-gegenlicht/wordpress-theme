@@ -89,7 +89,7 @@ if ( $isSpecialProgram ):
 			<?= rwmb_meta( 'running_time' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
         </p>
         <p>
-			<?= esc_html__( 'by' ) ?> <?= $showDetails ? rwmb_meta( 'director' )->name : trim(preg_replace( '/\w/', '█', rwmb_meta( 'director' )->name )) ?>
+			<?= esc_html__( 'by', 'gegenlicht' ) ?> <?= $showDetails ? rwmb_meta( 'director' )->name : trim(preg_replace( '/\w/', '█', rwmb_meta( 'director' )->name )) ?>
         </p>
         <p>
 			<?php
@@ -103,7 +103,7 @@ if ( $isSpecialProgram ):
 				}
 			}
 			?>
-			<?= esc_html__( 'with' ) ?> <?= join( separator: ' ' . esc_html__( 'and' ) . ' ', array: $actorNames ) ?>
+			<?= esc_html__( 'with', 'gegenlicht' ) ?> <?= join( separator: ' ' . esc_html__( 'and', 'gegenlicht' ) . ' ', array: $actorNames ) ?>
         </p>
         </div>
         <hr class="separator"/>
