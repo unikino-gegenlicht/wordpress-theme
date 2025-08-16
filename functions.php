@@ -298,3 +298,7 @@ add_action( 'pre_get_posts', function ( WP_Query $query ) {
 require_once 'shortcodes/button.php';
 
 add_shortcode("ggl_button", 'ggl_button_shortcode');
+
+function is_location_page(): bool {
+	return get_post()->ID == get_theme_mod('location_detail_page');
+}
