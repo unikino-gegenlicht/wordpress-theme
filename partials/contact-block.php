@@ -36,6 +36,8 @@ $textColor     = (string) ( $args['colors']['text']['light'] ?? get_theme_mod( '
         .table {
             --bulma-table-background-color: var(--bulma-body-background-color);
             --bulma-table-color: var(--bulma-body-color);
+            border-collapse: separate;
+            border-spacing: 0.5rem 0;
         }
 
         background-color: var(--bulma-body-background-color);
