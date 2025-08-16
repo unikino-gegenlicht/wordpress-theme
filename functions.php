@@ -294,3 +294,7 @@ add_action( 'pre_get_posts', function ( WP_Query $query ) {
 	endif;
 } );
 
+
+require_once 'shortcodes/button.php';
+
+add_shortcode("ggl_button", 'ggl_button_shortcode');
