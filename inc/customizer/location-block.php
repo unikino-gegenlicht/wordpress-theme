@@ -35,7 +35,6 @@ function add_location_map_setting(\WP_Customize_Manager $wp_customize): void {
 	$control = new \WP_Customize_Media_Control( $wp_customize, 'location_map', array(
 		'label' => __( 'Map', 'ggl' ),
 		'section' => section,
-		'description' => esc_html__('The selected Logo will be displayed in the navigation bar brand section (leftmost ara). It will always be displayed, event on mobile devices', 'gegenlicht'),
 		'mime_type' => 'image/svg+xml',
 	));
 

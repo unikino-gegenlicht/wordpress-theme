@@ -13,6 +13,7 @@ require_once 'customizer/social-medias.php';
 require_once 'customizer/youth-protection.php';
 require_once 'customizer/movie-archive.php';
 require_once 'customizer/anonymization.php';
+require_once 'customizer/location-page.php';
 use GGL\customizer;
 use function GGL\customizer\custom_controls;
 
@@ -29,6 +30,7 @@ function configure_customizer( WP_Customize_Manager $wp_customize): void {
 	customizer\teamBlock\customize_team($wp_customize);
 	customizer\teamPage\customize_team($wp_customize);
 	customizer\locationBlock\customize_location($wp_customize);
+	customizer\locationPage\customize_location_page($wp_customize);
 	customizer\cooperationsBlock\customize($wp_customize);
 	customizer\cooperationsPage\customize($wp_customize);
 	customizer\supporterPage\customize($wp_customize);
