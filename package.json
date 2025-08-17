@@ -1,0 +1,28 @@
+{
+  "name": "@unikino-gegenlicht/wordpress-theme",
+  "version": "1.0.0",
+  "scripts": {
+    "build:css": "sass --load-path=node_modules --quiet-deps assets/scss/style.scss style.css && minify style.css > style.min.css",
+    "build:login-css":  "sass --load-path=node_modules --quiet-deps assets/scss/login.scss assets/css/login.css && minify assets/css/login.css > assets/css/login.min.css",
+    "watch:css": "sass --watch --load-path=node_modules assets/scss/style.scss style.css",
+    "minify:css": "minify style.css > style.min.css",
+    "i18n:update-template": "wp i18n make-pot ./ ./languages/gegenlicht.pot --domain=gegenlicht --merge=./languages/i18n.pot",
+    "i18n:update-translations": "wp i18n update-po ./languages/gegenlicht.pot ./languages/",
+    "i18n:make-mo": "wp i18n make-mo ./languages/ ./languages/"
+  },
+  "author": "Unikino GEGENLICHT",
+  "license": "GPL-3.0",
+  "description": "",
+  "devDependencies": {
+    "@creativebulma/bulma-tooltip": "^1.2.0",
+    "minify": "^14.0.0",
+    "sass": "^1.83.4"
+  },
+  "dependencies": {
+    "bulma": "^1.0.3",
+    "bulma-v1-tooltip": "^1.0.2"
+  },
+  "volta": {
+    "node": "22.15.0"
+  }
+}

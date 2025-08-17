@@ -1,0 +1,198 @@
+@use "bulma/sass/utilities" with (
+  $family-primary: '"Inter", sans-serif',
+  $primary: #ffdd00,
+  $link: #ffdd00
+);
+@use "bulma/sass/form" with (
+  $input-shadow: none
+);
+
+@use "bulma/sass/base";
+@use "bulma/sass/utilities/mixins";
+@forward "bulma/sass/themes";
+
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter'), url('../fonts/inter.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300-800;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bulma-body-background-color: black !important;
+    --bulma-link-text: var(--bulma-body-color) !important;
+    --bulma-body-color: var(--bulma-primary) !important;
+  }
+}
+
+:root {
+  --bulma-body-background-color: var(--bulma-primary);
+  --bulma-body-color: black;
+  --bulma-link-text: var(--bulma-body-color) !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.login {
+  background-color: var(--bulma-body-background-color) !important;
+}
+
+body.login div#login {
+  max-width: calc(100vw - 0.75rem) !important;
+  margin: 0 auto;
+  padding: 1rem 0 !important;
+  width: 100% !important;
+}
+
+@include mixins.tablet {
+  body.login div#login {
+    max-width: 800px !important;
+  }
+}
+
+body.login div#login form#loginform {
+  border: var(--bulma-body-color) 5px solid !important;
+  background-color: var(--bulma-body-background-color) !important;
+
+}
+
+body.login div#login form#loginform p {
+  color: var(--bulma-body-color) !important;
+  font-weight: normal;
+  font-size: 1rem !important;
+}
+
+body.login div#login form#loginform p label {
+  color: var(--bulma-body-color) !important;
+  font-weight: normal;
+  font-size: 1rem !important;
+}
+
+body.login div#login form#loginform div label {
+  color: var(--bulma-body-color) !important;
+  font-weight: normal;
+  font-size: 1rem !important;
+}
+
+body.login input {
+  border: var(--bulma-body-color) 2px solid !important;
+  background-color: var(--bulma-body-background-color) !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  color: var(--bulma-body-color) !important;
+}
+
+#login-message,
+div.notice {
+  background-color: #72aee6 !important;
+  color: white !important;
+  border: none !important;
+
+  > * {
+    text-align: center !important;
+  }
+}
+
+#login_error {
+  background-color: #d63638 !important;
+  color: white !important;
+  border: none !important;
+  text-align: center !important;
+
+}
+
+strong {
+  color: white !important;
+}
+
+body.login div#login form#loginform p.forgetmenot {
+  display: none;
+}
+
+input#wp-submit,
+input#wp-submit{
+  border-radius: 0;
+  width: 100%;
+  font-size: 1rem;
+}
+
+body.login div#login p#backtoblog a,
+body.login div#login p#nav a {
+  color: var(--bulma-body-color) !important;
+}
+
+button.wp-hide-pw {
+  display: none !important;
+}
+
+#pass-strength-result {
+  &.strong {
+    background-color: var(--bulma-success) !important;
+  }
+  &.short {
+    background-color: var(--bulma-danger) !important;
+  }
+  &.bad {
+    background-color: var(--bulma-danger) !important;
+  }
+  &.good {
+    background-color: var(--bulma-warning) !important;
+  }
+}
+
+#auth-external-service-login > p > a {
+  display: flex;
+  justify-content: center !important;
+  background-color: black !important;
+  color: var(--bulma-primary) !important;
+}
+
+.language-switcher {
+  display: none;
+}
+
+#registerform,
+#loginform,
+#lostpasswordform {
+
+  background-color: var(--bulma-body-background-color) !important;
+  color: var(--bulma-body-color) !important;
+  border: var(--bulma-body-color) 5px solid !important;
+}
+
+#registerform input {
+  border: var(--bulma-body-color) 2px solid !important;
+  background-color: var(--bulma-body-background-color) !important;
+  box-shadow: none !important;
+  border-radius: 0;
+}
+
+#resetpassform {
+  border: var(--bulma-body-color) 5px solid !important;
+  background-color: var(--bulma-body-background-color) !important;
+  color: var(--bulma-body-color) !important;
+}
+
+button.wp-generate-pw {
+  background-color: var(--bulma-body-color) !important;
+  color: var(--bulma-body-background-color) !important;
+  border: none;
+}
+
+#pass1 {
+  border: var(--bulma-body-color) 2px solid !important;
+  background-color: var(--bulma-body-background-color) !important;
+  box-shadow: none !important;
+  border-radius: 0;
+}

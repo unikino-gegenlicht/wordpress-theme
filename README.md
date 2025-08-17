@@ -1,11 +1,10 @@
 <div align="center">
-<h1>WordPress Theme</h1>
 <h3>wordpress-theme</h3>
-<p>✨ a wordpress theme enabling custom post types</p>
+<p>🎨 the official wordpress theme for Unikino GEGENLICHT</p>
 <a href="LICENSE">
-<img alt="License" src="https://img.shields.io/github/license/unikino-gegenlicht/wordpress-theme?style=for-the-badge">
+<img alt="License" src="https://flat.badgen.net/github/license/unikino-gegenlicht/wordpress-theme?cache=300&label=License">
 </a>
-<img alt="GitHub Issues or Pull Requests" src="https://img.shields.io/github/issues/unikino-gegenlicht/wordpress-theme?style=for-the-badge">
+<img alt="Current Release Badge" src="https://flat.badgen.net/github/release/unikino-gegenlicht/wordpress-theme/stable?cache=300&label=Latest%20Version">
 </div>
 
 This [WordPress] Theme powers our [official website].
@@ -24,7 +23,7 @@ server side as required by WordPress.
 ## Attributions
 
 The visual design of the theme has been done by [Philip Kaufmann] and the
-initial implementation has been done by [Benjamin Witte] (@dasbenjo).
+implementation has been realized by [Jan Eike Suchard] (@dr4hu5-jan).
 
 [Philip Kaufmann]: mailto:philip@gegenlicht.net
-[Benjamin Witte]: mailto:benjamin@gegenlicht.net
+[Jan Eike Suchard]: mailto:jan@gegenlicht.net
