@@ -6,18 +6,11 @@ do_action( 'wp_body_open' );
 ?>
 
     <article class="page-content">
-        <h1 class="is-size-2 no-separator"><?= esc_html__( 'Join Us!', 'gegenlicht' ) ?></h1>
+        <h1 class="is-size-2 no-separator"><?= get_theme_mod("team_page_title")[get_locale()] ?? "" ?></h1>
         <div class="content">
 			<?php
-			$introTextRaw = get_theme_mod( 'team_intro' )[get_locale()];
-			$paragraphs   = preg_split( "/\R\R/", $introTextRaw );
-			foreach ( $paragraphs as $paragraph ) :
-				?>
-                <p>
-					<?= $paragraph ?>
-                </p>
-			<?php
-			endforeach;
+			$raw = get_theme_mod( 'team_page_text' )[get_locale()];
+			echo apply_filters("the_content", $raw);
 			?>
         </div>
     </article>
@@ -47,7 +40,7 @@ do_action( 'wp_body_open' );
 					?>
                     <div class="cell">
                         <figure class="image is-3by4 member-picture">
-                            <img alt="" src="<?= $imageUrl ?: wp_get_attachment_image_url(get_theme_mod( 'member_fallback_image' )) ?>"/>
+                            <img alt="" src="<?= $imageUrl ?: wp_get_attachment_image_url(get_theme_mod( 'anonymous_team_image' )) ?>"/>
                         </figure>
                         <hr class="separator mb-1"/>
                         <h5 class="is-size-5"><?= $member->post_title ?></h5>
@@ -61,15 +54,8 @@ do_action( 'wp_body_open' );
             <h2 class="is-size-3"><?= esc_html__( 'Former Members', 'gegenlicht' ) ?></h2>
             <div class="content">
 				<?php
-				$introTextRaw = get_theme_mod( 'team_thanks' )[get_locale()];
-				$paragraphs   = preg_split( "/\R\R/", $introTextRaw );
-				foreach ( $paragraphs as $paragraph ) :
-					?>
-                    <p>
-						<?= $paragraph ?>
-                    </p>
-				<?php
-				endforeach;
+				$raw = get_theme_mod( 'team_former_members_text' )[get_locale()];
+				echo apply_filters("the_content", $raw);
 				?>
             </div>
             <div class="fixed-grid has-2-cols-mobile has-4-cols-tablet">
@@ -79,7 +65,7 @@ do_action( 'wp_body_open' );
 						?>
                         <div class="cell">
                             <figure class="image is-3by4 member-picture">
-                                <img alt="" src="<?= $imageUrl ?:  wp_get_attachment_image_url(get_theme_mod( 'member_fallback_image' )) ?>"/>
+                                <img alt="" src="<?= $imageUrl ?:  wp_get_attachment_image_url(get_theme_mod( 'anonymous_team_image' )) ?>"/>
                             </figure>
                             <hr class="separator mb-1"/>
                             <h5 class="is-size-5"><?= $member->post_title ?></h5>
