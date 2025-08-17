@@ -1,9 +1,5 @@
 <?php
 
-namespace GGL\customizer;
-
-use WP_Customize_Control;
-
 function custom_controls() : void {
 	class WP_CheckboxList_Customize_Control extends WP_Customize_Control {
 		public $type = 'multi-select';
