@@ -32,8 +32,8 @@ class AnonymizationCustomizer extends GGLCustomizerBase {
 	private function register_controls(): void {
 		$this->manager->add_control(new WP_Customize_Media_Control($this->manager, "anonymous_image", array(
 			'section' => self::SECTION,
-			'label' => __( 'Anonymous Event Image', 'gegenlicht' ),
-			'description' => __("This image is displayed if a movie doesn't have a advertisement license set in the backend. Additionally, the image might be displayed as fallback image in case a event or movie doesn't have one set", "gegenlicht")
+			'label' => __( 'Anonymous Event/Movie Image', 'gegenlicht' ),
+			'description' => __("This image is displayed if a movie or event doesn't have a advertisement license set in the backend. Additionally, the image might be displayed as fallback image in case a event or movie doesn't have one set", "gegenlicht")
 		)));
 
 		$this->manager->add_control("anonymized_movie_explainer[de]", array(

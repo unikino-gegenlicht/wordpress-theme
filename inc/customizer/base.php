@@ -43,6 +43,6 @@ class GGLCustomizerBase {
 	}
 
 	protected function add_control( string $setting, array $args ): void {
-		$this->manager->add_control( $setting, array_merge( $args, array( "panel" => $this->panel ) ) );
+		$this->manager->add_control( $setting, array_merge( $args, array( "panel" => $this->panel, "section" => $this->section ) ) );
 	}
 }

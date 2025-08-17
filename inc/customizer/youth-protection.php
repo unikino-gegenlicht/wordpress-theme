@@ -1,47 +1,27 @@
 <?php
-/**
- * Youth Protection Customizer
- *
- * This file sets up the customizer section regarding the Youth Protection.
- */
+require_once "base.php";
 
+class YouthProtectionCustomizer extends GGLCustomizerBase {
+	private const SECTION = "youth-protection";
 
-namespace GGL\customizer\youthProtection;
+	function __construct( WP_Customize_Manager $manager, int $priority = 20, array $additionalArgs = [] ) {
+		parent::__construct( $manager, __( 'Youth Protection', 'gegenlicht' ), __( 'Configure the details regarding the youth protection mechanisms used', 'gegenlicht' ), $priority, self::SECTION, additionalArgs: $additionalArgs );
 
-const section = 'youth-protection';
+		$this->add_settings();
+		$this->add_controls();
+	}
 
-function customizer( $wp_customize ): void {
-	$wp_customize->add_section( section, array(
-		'title'    => __( 'Youth Protection', 'ggl' ),
-		'priority' => 20,
-		'description' => __( 'Configure the details regarding the youth protection mechanisms used', 'ggl' ),
-	) );
+	private function add_settings() {
+		$this->add_theme_mod("youth_protection_officer[name]");
+		$this->add_theme_mod("youth_protection_officer[email]");
+	}
 
-	add_contact_details($wp_customize);
-}
-
-
-function add_contact_details( $wp_customize ): void {
-	$wp_customize->add_setting( "youth_protection_officer[name]", array(
-		'sanitize_callback' => 'sanitize_text_field',
-		'default'           => '',
-		'type'              => 'theme_mod',
-	) );
-
-	$wp_customize->add_setting( "youth_protection_officer[email]", array(
-		'sanitize_callback' => 'sanitize_email',
-		'default'           => '',
-		'type'              => 'theme_mod',
-	) );
-
-	$wp_customize->add_control( 'youth_protection_officer[name]', array(
-		'label'   => __( 'Youth Protection Officer', 'gegenlicht' ),
-		'type'    => 'text',
-		'section' => section,
-	));
-	$wp_customize->add_control( 'youth_protection_officer[email]', array(
-		'label'   => __( 'E-Mail Address (Youth Protection Officer)', 'gegenlicht' ),
-		'type'    => 'text',
-		'section' => section,
-	));
+	private function add_controls() {
+		$this->add_control("youth_protection_officer[name]", [
+			"label"       => __( "Name of Youth Protection Officer", "gegenlicht" ),
+		]);
+		$this->add_control("youth_protection_officer[email]", [
+			"label"       => __( "E-Mail Address of Youth Protection Officer", "gegenlicht" ),
+		]);
+	}
 }

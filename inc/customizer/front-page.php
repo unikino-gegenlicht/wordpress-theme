@@ -1,6 +1,6 @@
 <?php
 require_once "base.php";
-require_once "custom_controls.php";
+require_once "controls/custom_controls.php";
 
 class FrontPageCustomizerOverrides extends GGLCustomizerBase {
 	const SECTION = "static_front_page";

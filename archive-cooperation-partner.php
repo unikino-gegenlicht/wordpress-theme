@@ -33,8 +33,8 @@ do_action( 'wp_body_open' );
     </article>
     <div class="has-background-white py-4 px-2 mt-5 reservation-button">
         <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" target="_blank"
-           href="<?= get_theme_mod( 'cooperation_contact_page' ) ?>">
-            <span class="has-text-weight-bold"><?= esc_html__( 'Inquire About A Cooperation Now', 'gegenlicht' ) ?></span>
+           href="<?= get_theme_mod( 'cooperation_form_url' ) ?>">
+            <span class="has-text-weight-bold"><?= get_theme_mod( 'cooperation_form_button_text' )[get_locale()] ??  esc_html__( 'Inquire About A Cooperation Now', 'gegenlicht' ) ?></span>
             <span class="material-symbols ml-1">open_in_new</span>
         </a>
     </div>
