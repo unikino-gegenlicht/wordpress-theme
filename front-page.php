@@ -47,6 +47,12 @@ if ( $next->have_posts() ) {
 				'compare' => 'BETWEEN',
 			]
 		],
+		'tax_query'      => array(
+			array(
+				'taxonomy' => 'semester',
+				'terms'    => $semesterID,
+			)
+		),
 	) );
 	wp_reset_postdata();
 
@@ -57,116 +63,228 @@ if ( $next->have_posts() ) {
 	wp_reset_postdata();
 
 }
+
 get_header();
 do_action( 'wp_body_open' );
 ?>
     <main class="px-2 mb-6 page-content">
-		<?php for ( $i = 0; $i < count( $upcoming ); $i ++ ): $post = get_post( $upcoming[ $i ] );
-			$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-			$title = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
-			?>
-            <article class="next-movie <?= $i == count( $upcoming ) - 1 ? 'pb-6' : '' ?>">
-                <hr class="separator"/>
-                <div class="next-movie-header">
-                    <p><?= $i == 0 ? esc_html__( 'Next Screening', 'gegenlicht' ) : esc_html__( 'Afterwards at', 'gegenlicht' ) ?></p>
-                    <p class="is-size-6 m-0 p-0"><?= $i == 0 ? date( "d.m.Y | H:i", (int) rwmb_meta( 'screening_date' ) ) : date( "H:i", (int) rwmb_meta( 'screening_date' ) ) ?></p>
-                </div>
-                <hr class="separator"/>
-                <h2 class="title next-movie-title py-4"><?= $showDetails ? $title : esc_html__( 'An unnamed movie', 'gegenlicht' ) ?></h2>
-				<?php get_template_part( 'partials/responsive-image', args: [
-					'fetch-priority' => 'high',
-					'post-id'        => $post->ID
-				] ) ?>
-                <hr class="separator"/>
-				<?php get_template_part( 'partials/button', args: [
-					'href'    => get_the_permalink(),
-					'content' => $post->post_type == 'movie' ? esc_html__( 'To the movie', 'gegenlicht' ) : esc_html__( 'To the event', 'gegenlicht' )
-				] ) ?>
-            </article>
-		<?php endfor;
-		wp_reset_postdata(); ?>
-
-		<?php
-
-		$lastDisplayed = end( $upcoming );
-
-		$meta_query   = [];
-		$meta_query[] = [
-			'key'     => 'screening_date',
-			'value'   => (int) rwmb_meta( 'screening_date', post_id: $lastDisplayed->ID ),
-			'compare' => '>',
-		];
-		$programQuery = array(
-			'post_type'      => [ 'movie', 'event' ],
-			'posts_per_page' => - 1,
-			'meta_query'     => $meta_query,
-			'meta_key'       => 'screening_date',
-			'orderby'        => 'meta_value_num',
-			'order'          => 'ASC',
-		);
-
-		$query = new WP_Query( $programQuery );
-
-		$monthlyMovies = array();
-
-		while ( $query->have_posts() ): $query->the_post();
-			$screeningMonth                     = date( 'F', (int) rwmb_meta( 'screening_date' ) );
-			$monthlyMovies[ $screeningMonth ][] = $post;
-		endwhile;
+<?php
+if ( ! empty( $upcoming ) && ! get_theme_mod( "manual_semester_break" ) ):
+	for ( $i = 0; $i < count( $upcoming ); $i ++ ):
+		$post = get_post( $upcoming[ $i ] );
+		$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
+		$title       = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
 		?>
+        <article class="next-movie <?= $i == count( $upcoming ) - 1 ? 'pb-6' : '' ?>">
+            <hr class="separator"/>
+            <div class="next-movie-header">
+                <p><?= $i == 0 ? esc_html__( 'Next Screening', 'gegenlicht' ) : esc_html__( 'Afterwards at', 'gegenlicht' ) ?></p>
+                <p class="is-size-6 m-0 p-0"><?= $i == 0 ? date( "d.m.Y | H:i", (int) rwmb_meta( 'screening_date' ) ) : date( "H:i", (int) rwmb_meta( 'screening_date' ) ) ?></p>
+            </div>
+            <hr class="separator"/>
+            <h2 class="title next-movie-title py-4"><?= $showDetails ? $title : esc_html__( 'An unnamed movie', 'gegenlicht' ) ?></h2>
+			<?php get_template_part( 'partials/responsive-image', args: [
+				'fetch-priority' => 'high',
+				'post-id'        => $post->ID
+			] ) ?>
+            <hr class="separator"/>
+			<?php get_template_part( 'partials/button', args: [
+				'href'    => get_the_permalink(),
+				'content' => $post->post_type == 'movie' ? esc_html__( 'To the movie', 'gegenlicht' ) : esc_html__( 'To the event', 'gegenlicht' )
+			] ) ?>
+        </article>
+	<?php endfor;
+	wp_reset_postdata(); ?>
 
-		<?php if ( ! empty( $monthlyMovies ) ) : ?>
-            <h1 id="program"
-                class="title is-uppercase mb-1"><?= esc_html__( 'Our Semester Program', 'gegenlicht' ) ?></h1>
-            <div class="is-flex is-justify-content-space-between is-align-items-center">
-                <div>
-                    <p><?= esc_html__( 'Main Program Only', 'gegenlicht' ) ?></p>
-                </div>
-                <span class="icon is-large  is-clickable" role="button"
-                      onclick="toggleSpecialProgramDisplay()">
+	<?php
+
+	$lastDisplayed = end( $upcoming );
+
+	$meta_query   = [];
+	$meta_query[] = [
+		'key'     => 'screening_date',
+		'value'   => (int) rwmb_meta( 'screening_date', post_id: $lastDisplayed->ID ),
+		'compare' => '>',
+	];
+	$programQuery = array(
+		'post_type'      => [ 'movie', 'event' ],
+		'posts_per_page' => - 1,
+		'meta_query'     => $meta_query,
+		'meta_key'       => 'screening_date',
+		'orderby'        => 'meta_value_num',
+		'order'          => 'ASC',
+	);
+
+	$query = new WP_Query( $programQuery );
+
+	$monthlyMovies = array();
+
+	while ( $query->have_posts() ): $query->the_post();
+		$screeningMonth                     = date( 'F', (int) rwmb_meta( 'screening_date' ) );
+		$monthlyMovies[ $screeningMonth ][] = $post;
+	endwhile;
+	?>
+
+    <h1 id="program"
+        class="title is-uppercase mb-1"><?= esc_html__( 'Our Semester Program', 'gegenlicht' ) ?></h1>
+
+	<?php if ( ! empty( $monthlyMovies ) ) : ?>
+
+    <div class="is-flex is-justify-content-space-between is-align-items-center">
+        <div>
+            <p><?= esc_html__( 'Main Program Only', 'gegenlicht' ) ?></p>
+        </div>
+        <span class="icon is-large  is-clickable" role="button"
+              onclick="toggleSpecialProgramDisplay()">
                 <span class="material-symbols" id="programSwitcher"
                       style="font-size: 48px; font-variation-settings: 'wght' 100, 'GRAD' 0, 'opsz' 48; font-weight: 100;">toggle_off</span>
             </span>
-            </div>
-            <hr class="separator mb-6" style="margin-top: 0.25rem;"/>
-			<?php foreach ( $monthlyMovies as $month => $posts ) : ?>
-                <div class="movie-list mb-5 is-filterable">
-                    <p style="background-color: var(--bulma-body-color); color: var(--bulma-body-background-color)"
-                       class="font-ggl is-uppercase is-size-5 py-1 pl-1"><?= esc_html__( $month, 'gegenlicht' ) ?></p>
-					<?php foreach ( $posts as $post ) : $post = get_post( $post );
-						$programType = rwmb_meta( 'program_type' );
-						$specialProgram = rwmb_meta( 'special_program' );
-						$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-						$title = $showDetails ? ( get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ) : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?>
-                        <a role="link"
-                           aria-label="<?= $title ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( "r", rwmb_meta( 'screening_date' ) ) ?>"
-                           data-program-type="<?= $programType ?>" href="<?= get_permalink() ?>">
-                            <div>
-                                <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
-                                            class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
-                                </time>
-                                <h2 class="is-size-5 has-text-weight-bold is-uppercase no-separator"><?= $title ?></h2>
-                            </div>
-                            <span class="icon">
+    </div>
+    <hr class="separator mb-6" style="margin-top: 0.25rem;"/>
+	<?php foreach ( $monthlyMovies as $month => $posts ) : ?>
+        <div class="movie-list mb-5 is-filterable">
+            <p style="background-color: var(--bulma-body-color); color: var(--bulma-body-background-color)"
+               class="font-ggl is-uppercase is-size-5 py-1 pl-1"><?= esc_html__( $month, 'gegenlicht' ) ?></p>
+			<?php foreach ( $posts as $post ) : $post = get_post( $post );
+				$programType = rwmb_meta( 'program_type' );
+				$specialProgram = rwmb_meta( 'special_program' );
+				$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
+				$title = $showDetails ? ( get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ) : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?>
+                <a role="link"
+                   aria-label="<?= $title ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( "r", rwmb_meta( 'screening_date' ) ) ?>"
+                   data-program-type="<?= $programType ?>" href="<?= get_permalink() ?>">
+                    <div>
+                        <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
+                                    class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
+                        </time>
+                        <h2 class="is-size-5 has-text-weight-bold is-uppercase no-separator"><?= $title ?></h2>
+                    </div>
+                    <span class="icon">
                         <span class="material-symbols">arrow_forward_ios</span>
                     </span>
-                        </a>
-					<?php endforeach; ?>
-                </div>
+                </a>
 			<?php endforeach; ?>
-		<?php endif; ?>
-
-		<?php get_template_part( 'partials/button', args: [
-			'href'    => get_post_type_archive_link( 'movie' ),
-			'content' => __( 'To the Archive', 'gegenlicht' )
-		] ) ?>
+        </div>
+	<?php endforeach; ?>
+<?php else: ?>
+    <div class="content">
+	    <?= apply_filters( "the_content", get_theme_mod( "semester_break_premonition_text" )[ get_locale() ] ?? "" ) ?>
+    </div>
+<?php endif; ?>
+	<?php get_template_part( 'partials/button', args: [
+	'href'    => get_post_type_archive_link( 'movie' ),
+	'content' => __( 'To the Archive', 'gegenlicht' )
+] ) ?>
     </main>
-<?php foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) : $termID = (int) $termID;
+	<?php foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) : $termID = (int) $termID;
 	get_template_part( "partials/special-program", args: [ "id" => $termID ] );
 endforeach; ?>
     <div class="page-content">
         <hr class="separator is-only-darkmode"/>
     </div>
+<?php else: ?>
+    <div class="marquee">
+        <div class="marquee-content">
+			<?php for ( $i = 0; $i < 4; $i ++ ) {
+				echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . " </p>";
+				echo "<p>***</p>";
+			} ?>
+        </div>
+        <div class="marquee-content">
+			<?php for ( $i = 0; $i < 4; $i ++ ) {
+				echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . "</p>";
+				echo "<p>***</p>";
+
+			} ?>
+        </div>
+    </div>
+    <hr class="separator"/>
+    <h2 class="title next-movie-title py-4"><?= esc_html__( 'Intermission in the Cinema', 'gegenlicht' ) ?></h2>
+	<?php
+	get_template_part( 'partials/responsive-image', args: [
+		'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'desktop' ),
+		'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'mobile' )
+	] );
+	?>
+    <hr class="separator" style="margin-top: 1rem !important;"/>
+    <h3 class="py-2"><?= get_theme_mod( "semester_break_tagline" )[ get_locale() ] ?? "" ?></h3>
+
+	<?php
+
+	$semesterBreakMeta   = [];
+	$semesterBreakMeta[] = [
+		'key'     => 'screening_date',
+		'value'   => time(),
+		'compare' => '>=',
+	];
+	$query_args          = array(
+		'do_preload'     => false,
+		'post_type'      => [ 'movie', 'event' ],
+		'posts_per_page' => 1,
+		'meta_query'     => $semesterBreakMeta,
+		'tax_query'      => array(
+			array(
+				'taxonomy' => 'semester',
+				'field'    => "id",
+				'operator' => "NOT EXISTS"
+			)
+		),
+		'meta_key'       => 'screening_date',
+		'orderby'        => 'meta_value_num',
+		'order'          => 'ASC',
+	);
+
+	$semesterBreakScreenings = new WP_Query( $query_args );
+
+	if ( $semesterBreakScreenings->have_posts() ):
+		?>
+        <div class="content pt-2">
+			<?= apply_filters( "the_content", get_theme_mod( "semester_break_pre_events_text" )[ get_locale() ] ?? "" ) ?>
+        </div>
+        <div class="movie-list mb-5 is-filterable">
+            <p style="background-color: var(--bulma-body-color); color: var(--bulma-body-background-color)"
+               class="font-ggl is-uppercase is-size-5 py-1 pl-1"><?= esc_html__( "Intermission Specials", 'gegenlicht' ) ?></p>
+			<?php while ( $semesterBreakScreenings->have_posts() ) : $semesterBreakScreenings->the_post();
+				$programType    = rwmb_meta( 'program_type' );
+				$specialProgram = rwmb_meta( 'special_program' );
+				$showDetails    = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
+				$title          = $showDetails ? ( get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ) : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?>
+                <a role="link"
+                   aria-label="<?= $title ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( "r", rwmb_meta( 'screening_date' ) ) ?>"
+                   data-program-type="<?= $programType ?>" href="<?= get_permalink() ?>">
+                    <div>
+                        <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
+                                    class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
+                        </time>
+                        <h2 class="is-size-5 has-text-weight-bold is-uppercase no-separator"><?= $title ?></h2>
+                    </div>
+                    <span class="icon">
+                        <span class="material-symbols">arrow_forward_ios</span>
+                    </span>
+                </a>
+			<?php endwhile; ?>
+        </div>
+        <div class="content pt-2">
+			<?= apply_filters( "the_content", get_theme_mod( "semester_break_post_events_text" )[ get_locale() ] ?? "" ) ?>
+			<?= apply_filters( "the_content", get_theme_mod( "semester_break_text" )[ get_locale() ] ?? "" ) ?>
+        </div>
+	<?php else: ?>
+        <div class="content pt-2">
+			<?= apply_filters( "the_content", get_theme_mod( "semester_break_text" )[ get_locale() ] ?? "" ) ?>
+        </div>
+
+	<?php endif; ?>
+    <h3><?= esc_html__( "What we have shown so far", "gegenlicht" ) ?></h3>
+    <div class="content pt-2">
+		<?= apply_filters( "the_content", get_theme_mod( "semester_break_archive_text" )[ get_locale() ] ?? "" ) ?>
+		<?php get_template_part( 'partials/button', args: [
+			'href'    => get_post_type_archive_link( 'movie' ),
+			'content' => __( 'To the Archive', 'gegenlicht' )
+		] ) ?>
+    </div>
+<?php endif; ?>
+    </main>
+
 <?php if ( in_array( 'team', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #team {
@@ -210,12 +328,9 @@ endforeach; ?>
             <h2><?= esc_html__( 'Who is the GEGENLICHT', 'gegenlicht' ) ?></h2>
             <div>
 				<?php
-				$introTextRaw = get_theme_mod( 'team_block_text' )[ get_locale() ] ?? "";
-				$paragraphs   = preg_split( "/\R\R/", $introTextRaw, flags: PREG_SPLIT_NO_EMPTY );
-				foreach ( $paragraphs as $paragraph ):
-					?>
-                    <p><?= $paragraph ?? esc_html__( 'Some content is missing here' ) ?></p>
-				<?php endforeach; ?>
+				$raw = get_theme_mod( 'team_block_text' )[ get_locale() ] ?? "";
+				echo apply_filters( "the_content", $raw );
+				?>
             </div>
 			<?php get_template_part( 'partials/button', args: [
 				'href'    => get_post_type_archive_link( 'team-member' ),
@@ -274,12 +389,9 @@ endforeach; ?>
                 <h2><?= esc_html__( 'Where is the GEGENLICHT', 'gegenlicht' ) ?></h2>
                 <div>
 					<?php
-					$introTextRaw = get_theme_mod( 'location_text' )[ get_locale() ] ?? "";
-					$paragraphs   = preg_split( "/\R\R/", $introTextRaw, flags: PREG_SPLIT_NO_EMPTY );
-					foreach ( $paragraphs as $paragraph ):
-						?>
-                        <p><?= $paragraph ?? esc_html__( 'Some content is missing here' ) ?></p>
-					<?php endforeach; ?>
+					$raw = get_theme_mod( 'location_text' )[ get_locale() ] ?? "";
+					echo apply_filters( "the_content", $raw );
+					?>
                 </div>
             </div>
             <a role="button" class="button is-outlined is-size-5 is-fullwidth mt-2 has-text-weight-bold is-uppercase"
@@ -346,9 +458,8 @@ endforeach; ?>
 			<?php
 
 			$externalsQuery = new WP_Query( [
-				'post_type'      => [ 'supporter', 'cooperation-partner' ],
-				'posts_per_page' => 6,
-				'orderby'        => 'rand'
+				'post_type' => [ 'supporter', 'cooperation-partner' ],
+				'orderby'   => 'rand'
 			] );
 
 			if ( $externalsQuery->have_posts() ) :
@@ -356,7 +467,13 @@ endforeach; ?>
 				$postImages = array();
 
 				while ( $externalsQuery->have_posts() ) : $externalsQuery->the_post();
-					$postImages[] = get_attached_file( attachment_url_to_postid( get_the_post_thumbnail_url() ), true );
+					$fp = get_attached_file( attachment_url_to_postid( get_the_post_thumbnail_url() ), true );
+					if ( mime_content_type( $fp ) == "image/svg+xml" ) {
+						$postImages[] = $fp;
+					}
+					if ( count( $postImages ) >= 6 ) {
+						break;
+					}
 				endwhile;
 				wp_reset_postdata();
 
@@ -367,14 +484,14 @@ endforeach; ?>
                      class="marquee" style="--height: 200px;">
                     <div class="marquee-content" style="height: 200px;">
 						<?php foreach ( $postImages as $postImage ) : ?>
-                            <figure>
+                            <figure style="fill: var(--bulma-body-color) !important;">
 								<?= file_get_contents( $postImage ) ?>
                             </figure>
 						<?php endforeach; ?>
                     </div>
                     <div class="marquee-content" style="height: 200px;">
 						<?php foreach ( $postImages as $postImage ) : ?>
-                            <figure>
+                            <figure style="fill: var(--bulma-body-color) !important;">
 								<?= file_get_contents( $postImage ) ?>
                             </figure>
 						<?php endforeach; ?>
@@ -385,21 +502,18 @@ endforeach; ?>
                 <h2><?= esc_html__( 'Our Cooperation Partners' ) ?></h2>
                 <div>
 					<?php
-					$introTextRaw = get_theme_mod( 'coop_block_text' )[ get_locale() ] ?? "";
-					$paragraphs   = preg_split( "/\R\R/", $introTextRaw, flags: PREG_SPLIT_NO_EMPTY );
-					foreach ( $paragraphs as $paragraph ):
-						?>
-                        <p><?= $paragraph ?? esc_html__( 'Some content is missing here' ) ?></p>
-					<?php endforeach; ?>
+					$raw = get_theme_mod( 'coop_block_text' )[ get_locale() ] ?? "";
+					echo apply_filters( "the_content", $raw );
+					?>
                 </div>
-	            <?php get_template_part( 'partials/button', args: [
-		            'href'    => get_post_type_archive_link( 'cooperation-partner' ),
-		            'content' => __( 'Our Cooperation Partners', 'gegenlicht' )
-	            ] ) ?>
-	            <?php get_template_part( 'partials/button', args: [
-		            'href'    => get_post_type_archive_link( 'supporter' ),
-		            'content' => __( 'Our supporters', 'gegenlicht' )
-	            ] ) ?>
+				<?php get_template_part( 'partials/button', args: [
+					'href'    => get_post_type_archive_link( 'cooperation-partner' ),
+					'content' => __( 'Our Cooperation Partners', 'gegenlicht' )
+				] ) ?>
+				<?php get_template_part( 'partials/button', args: [
+					'href'    => get_post_type_archive_link( 'supporter' ),
+					'content' => __( 'Our supporters', 'gegenlicht' )
+				] ) ?>
             </div>
         </div>
     </article>

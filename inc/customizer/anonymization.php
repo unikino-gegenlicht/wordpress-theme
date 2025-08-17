@@ -1,61 +1,65 @@
 <?php
-/**
- * Anonymization
- *
- * This file sets up the customizer section regarding the anonymization options.
- */
+require_once "base.php";
+class AnonymizationCustomizer extends GGLCustomizerBase {
+
+	/**
+	 * The identifier of the section created by the customizer
+	 */
+	private const SECTION = 'anonymization';
 
 
-namespace GGL\customizer\anonymization;
+	function __construct( WP_Customize_Manager $manager, int $priority = 20 ) {
+		parent::__construct(
+			$manager,
+			__( 'Anonymization', 'gegenlicht' ),
+			__('Configure the anonymization functions of the theme', 'gegenlicht' ),
+			$priority,
+			self::SECTION
+		);
 
-const section = 'anonymization';
+		$this->register_theme_mods();
+		$this->register_controls();
+	}
 
-function customizer( $wp_customize ): void {
-	$wp_customize->add_section( section, array(
-		'title'    => __( 'Anonymization', 'ggl' ),
-		'priority' => 20,
-		'description' => __( 'Configure the details regarding the anonymization of screenings without advertising rights', 'ggl' ),
-	) );
+	private function register_theme_mods(): void {
+		$this->manager->add_setting( "anonymous_image", array(
+			"default"    => '',
+			"type"       => "theme_mod",
+			"capability" => $this->capability,
+		) );
 
-	add_contact_details($wp_customize);
-	add_explainers($wp_customize);
-}
+		$this->manager->add_setting("anonymized_movie_explainer[de]", array(
+			'default' => '',
+			'type'    => 'theme_mod',
+			'capability' => $this->capability,
+		));
 
+		$this->manager->add_setting("anonymized_movie_explainer[en]", array(
+			'default' => '',
+			'type'    => 'theme_mod',
+			'capability' => $this->capability,
+		));
+	}
 
-function add_contact_details( $wp_customize ): void {
-	$wp_customize->add_setting( "anonymous_image", array(
-		'default'           => '',
-		'type'              => 'theme_mod',
-	) );
+	private function register_controls(): void {
+		$this->manager->add_control(new WP_Customize_Media_Control($this->manager, "anonymous_image", array(
+			'section' => self::SECTION,
+			'label' => __( 'Anonymous Image', 'gegenlicht' ),
+			'description' => __("This image is display if a movie doesn't have a advertisement license set in the backend. Additionally, the image might be displayed as fallback image in case a event or movie doesn't have one set", "gegenlicht")
+		)));
 
-	$wp_customize->add_control( new \WP_Customize_Media_Control( $wp_customize, 'anonymous_image', array(
-		'label'   => __( 'Anonymous Cover Image', 'gegenlicht' ),
-		'section' => section,
-	)));
-}
+		$this->manager->add_control("anonymized_movie_explainer[de]", array(
+			'section' => self::SECTION,
+			'label' => __( 'Anonymous Movie Explanation (German)', 'gegenlicht' ),
+			'type'    => 'textarea',
+			'description' => __("This text is displayed below the anonymized movie image explaining why some data is missing on the page.")
+		));
 
-function add_explainers( $wp_customize ): void {
-	$wp_customize->add_setting( "anonymized_movie_explainer[de]", array(
-		'default'           => '',
-		'type'              => 'theme_mod',
-	));
-
-	$wp_customize->add_control('anonymized_movie_explainer[de]', array(
-		'label'   => __( 'Anonymous Movie Explainer (German)', 'gegenlicht' ),
-		'section' => section,
-		'type'    => 'textarea',
-		'description' => esc_html__( 'To create a new paragraph inside the text, please use a doubled line break. All other linebreaks will be removed', 'gegenlicht' ),
-	));
-
-	$wp_customize->add_setting( "anonymized_movie_explainer[en]", array(
-		'default'           => '',
-		'type'              => 'theme_mod',
-	));
-
-	$wp_customize->add_control('anonymized_movie_explainer[en]', array(
-		'label'   => __( 'Anonymous Movie Explainer (English)', 'gegenlicht' ),
-		'section' => section,
-		'type'    => 'textarea',
-		'description' => esc_html__( 'To create a new paragraph inside the text, please use a doubled line break. All other linebreaks will be removed', 'gegenlicht' ),
-	));
+		$this->manager->add_control("anonymized_movie_explainer[en]", array(
+			'section' => self::SECTION,
+			'label' => __( 'Anonymous Movie Explanation (English)', 'gegenlicht' ),
+			'type'    => 'textarea',
+			'description' => __("This text is displayed below the anonymized movie image explaining why some data is missing on the page.")
+		));
+	}
 }

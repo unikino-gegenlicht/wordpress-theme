@@ -14,14 +14,33 @@ require_once 'customizer/youth-protection.php';
 require_once 'customizer/movie-archive.php';
 require_once 'customizer/anonymization.php';
 require_once 'customizer/location-page.php';
+require_once 'customizer/semester-break.php';
 use GGL\customizer;
 use function GGL\customizer\custom_controls;
 
 function configure_customizer( WP_Customize_Manager $wp_customize): void {
 	custom_controls();
 
-	//$wp_customize->get_panel('nav_menus')->priority = 999;
+	$wp_customize->add_panel('blocks', array(
+		'title' => esc_html__('Blocks', 'gegenlicht'),
+		'priority' => 30,
+		'capability' => 'edit_others_posts',
+		'description' => esc_html__('Edit the blocks displayed on the frontpage', 'gegenlicht'),
+	));
+
+	$wp_customize->add_panel('pages', array(
+		'title' => esc_html__('Pages', 'gegenlicht'),
+		'priority' => 30,
+		'capability' => 'edit_others_posts',
+		'description' => esc_html__('Edit the display of some content pages of this theme', 'gegenlicht'),
+	));
+
 	$wp_customize->remove_section( 'custom_css' );
+	new SemesterBreakCustomizer( $wp_customize, priority: 20);
+
+	new AnonymizationCustomizer( $wp_customize, priority: 21);
+	new CooperationAndSupportersFrontpageBlockCustomizer( $wp_customize, additionalArgs: ["panel" =>  "blocks"]);
+	new CooperationPage($wp_customize, additionalArgs: ["panel" =>  "pages"]);
 
 
 
@@ -31,13 +50,10 @@ function configure_customizer( WP_Customize_Manager $wp_customize): void {
 	customizer\teamPage\customize_team($wp_customize);
 	customizer\locationBlock\customize_location($wp_customize);
 	customizer\locationPage\customize_location_page($wp_customize);
-	customizer\cooperationsBlock\customize($wp_customize);
-	customizer\cooperationsPage\customize($wp_customize);
 	customizer\supporterPage\customize($wp_customize);
 	customizer\socialMedias\customizer($wp_customize);
 	customizer\youthProtection\customizer($wp_customize);
 	customizer\movieArchive\customizer($wp_customize);
-	customizer\anonymization\customizer($wp_customize);
 	//ggl_add_customizer_options($wp_customize);
 }
 

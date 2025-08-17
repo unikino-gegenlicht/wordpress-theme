@@ -1,0 +1,49 @@
+/*
+
+Custom controls css file
+
+[Table of Contents]
+
+1. Separator
+2. Description Popup
+3. Regular checkbox
+4. Image Control
+5. Toggle - On/Off switch button
+6. Alpha Color Picker
+7. Easy Google Fonts
+8. Slider
+9. Selection
+10. Multi fields
+11. Input
+12. Box Model
+
+*/
+
+/*************** 10. Multi fields ***************/
+.customize_multi_fields .set{
+    margin-bottom: 5px;
+    padding-right: 15px;
+    position: relative;
+}
+
+.customize_multi_fields input{
+    margin-bottom: 5px!important;
+}
+
+.customize_multi_remove_field{
+    color: red;
+    position: absolute;
+    right: -7px;
+    top: 3px;
+}
+
+.customize_multi_remove_field span{
+    text-decoration: none;
+}
+
+.customize_multi_remove_field:active,
+.customize_multi_remove_field:focus{
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}

@@ -5,6 +5,10 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 do_action( 'wp_body_open' );
 
+$semester = get_the_terms( get_the_ID(), 'semester' );
+var_dump($semester);
+
+
 
 $showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
 
@@ -49,7 +53,7 @@ if ( $isSpecialProgram ):
     <header class="page-content">
         <div class="screening-information <?= ($showDetails && $title != rwmb_meta( 'original_title' )) ? '' : 'pb-0' ?>">
             <div>
-                <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
+                <p><?= esc_html__( 'Event starts', 'gegenlicht' ) ?></p>
                 <p>
                     <time
                             datetime="<?= date( 'Y-m-d H:i', rwmb_meta( 'screening_date' ) ) ?>">
@@ -134,25 +138,18 @@ if ( $isSpecialProgram ):
 		<?php get_template_part('partials/responsive-image', args: ['fetch-priority' => 'high','image_url' => $showDetails ? get_the_post_thumbnail_url( size: 'full' ) ?: wp_get_attachment_image_url( $anonymousImage, 'large' ) :  wp_get_attachment_image_url( $anonymousImage, 'large' )]) ?>
 		<?php if ($isSpecialProgram): ?>
             <div class="boxed-text mt-3">
-				<?php
-				$paragraphs   = preg_split( "/\R\R/", $specialProgram->description );
-				foreach ( $paragraphs as $paragraph ) :
-					?>
-                    <p>
-						<?= $paragraph ?>
-                    </p>
-				<?php
-				endforeach;
-				?>
+				<?= apply_filters("the_content", $specialProgram->description) ?>
             </div>
 		<?php endif; ?>
     </header>
+    <?php if (rwmb_meta("allow_reservations")): ?>
     <div class="has-background-white py-4 px-2 my-5 reservation-button">
-        <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" href="">
+        <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" href="<?= rwmb_meta("reservation_url") ?>">
             <span class="has-text-weight-bold"><?= esc_html__( 'Reserve Now', 'gegenlicht' ) ?></span>
             <span class="material-symbols ml-1">open_in_new</span>
         </a>
     </div>
+    <?php endif; ?>
     <article class="page-content px-2 mt-4 content">
 		<?php if (rwmb_meta('show_content_notice')): ?>
             <div class="content-notice mb-6 p-2">
@@ -163,35 +160,22 @@ if ( $isSpecialProgram ):
             </div>
 		<?php endif; ?>
         <h2 class="font-ggl is-size-3 is-uppercase">
-			<?= esc_html__( 'What the movie is about', 'gegenlicht' ) ?>
+			<?= esc_html__( 'What the event is about', 'gegenlicht' ) ?>
         </h2>
 		<?= ggl_cleanup_paragraphs($showDetails ? rwmb_get_value( 'summary' ) : rwmb_get_value('anon_summary')) ?>
         <h2 class="font-ggl is-size-3 is-uppercase mt-6">
-			<?= esc_html__( "Why it's worth watching", 'gegenlicht' ) ?>
+			<?= esc_html__( "Why it's worth attending", 'gegenlicht' ) ?>
         </h2>
 		<?= ggl_cleanup_paragraphs($showDetails ? rwmb_get_value( 'worth_to_see' ) : rwmb_get_value('anon_worth_to_see')) ?>
-		<?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
-            <hr class="separator mt-6"/>
-            <h3 class="font-ggl is-size-5 is-uppercase">
-				<?= esc_html__( 'Short Movie' ) ?>
-            </h3>
-            <p><?= rwmb_meta( 'short_movie_title' ) ?></p>
-            <div class="is-flex is-align-items-center short-details">
-                <p><?= esc_html__( 'by' ) ?> <?= rwmb_meta( 'short_movie_directed_by' ) ?></p>
-                |
-                <p><?= join( '/', rwmb_meta( 'short_movie_country' ) ) ?> <?= rwmb_meta( 'short_movie_release_year' ) ?></p>
-                |
-                <p><?= rwmb_meta( 'short_movie_running_time' ) ?> <?= esc_html__( 'Minutes' ) ?></p>
-            </div>
-            <hr class="separator"/>
-		<?php endif; ?>
     </article>
-    <div class="has-background-white py-4 px-2 mt-5 reservation-button">
-        <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" href="">
-            <span class="has-text-weight-bold"><?= esc_html__( 'Reserve Now', 'gegenlicht' ) ?></span>
-            <span class="material-symbols ml-1">open_in_new</span>
-        </a>
-    </div>
+	<?php if (rwmb_meta("allow_reservations")): ?>
+        <div class="has-background-white py-4 px-2 my-5 reservation-button">
+            <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" href="<?= rwmb_meta("reservation_url") ?>">
+                <span class="has-text-weight-bold"><?= esc_html__( 'Reserve Now', 'gegenlicht' ) ?></span>
+                <span class="material-symbols ml-1">open_in_new</span>
+            </a>
+        </div>
+	<?php endif; ?>
 </main>
 <section id="proposed-by">
 	<?php

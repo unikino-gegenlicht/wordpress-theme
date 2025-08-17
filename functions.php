@@ -46,7 +46,6 @@ function use_accept_locale( $locale ) {
 }
 
 load_theme_textdomain( 'gegenlicht', get_template_directory() . '/languages' );
-load_theme_textdomain( 'gegenlicht', get_template_directory() . '/languages/i18n' );
 
 require_once 'inc/customizer.php';
 add_action( 'customize_register', 'configure_customizer' );
@@ -205,7 +204,7 @@ add_filter( 'login_errors', 'custom_login_error_message' );
 add_filter( 'login_display_language_dropdown', '__return_false' );
 
 function ggl_cleanup_paragraphs( string $input ): string {
-	return preg_replace( '/<p[^>]*>(?:\s|&nbsp;)*<\/p>/xu', '', trim( $input ) );
+	return apply_filters("the_content", $input);
 }
 
 function ggl_theme_get_translated_age_rating_descriptor( string $metaKey ): string {
