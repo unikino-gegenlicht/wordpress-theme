@@ -381,7 +381,7 @@ endforeach; ?>
             <div class="">
 				<?php if ( get_theme_mod( 'location_block_image' ) ): ?>
 					<?php get_template_part( 'partials/responsive-image', args: [
-						'image_url'    => wp_get_attachment_image_url( get_theme_mod( 'location_map' ), 'full' ),
+						'image_url'    => wp_get_attachment_image_url( get_theme_mod( 'location_block_image' ), 'full' ),
 						'disable16by9' => true,
 						'style'        => 'object-position: 15%;'
 					] ) ?>

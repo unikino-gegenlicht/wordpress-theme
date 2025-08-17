@@ -65,7 +65,7 @@ class SemesterBreakCustomizer extends GGLCustomizerBase {
 
 		$this->add_control( "semester_break_premonition_text[de]", array(
 			"section"     => self::SECTION,
-			"label"       => esc_html__( "Intermission Text (German)", "gegenlicht" ),
+			"label"       => esc_html__( "Intermission Premonition Text (German)", "gegenlicht" ),
 			"description" => esc_html__( "Set the text that will be displayed if the program is about to finish and doesn't have any entries left to display in the monthly lists", "gegenlicht" ),
 			"type"        => "textarea"
 		) );
