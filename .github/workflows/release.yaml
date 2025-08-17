@@ -30,13 +30,12 @@ jobs:
           npm install
           npm run build:css
           npm run build:login-css
+          npm run i18n:make-mo
           rm LICENSE
           rm README.md
           mkdir gegenlicht-theme
           shopt -s extglob
           mv !(gegenlicht-theme|.git|.github|node_modules) gegenlicht-theme/
-          wp i18n make-mo gegenlicht-theme/languages/ gegenlicht-theme/languages/
-          wp i18n make-mo gegenlicht-theme/languages/i18n gegenlicht-theme/languages/i18n
           zip -r theme.zip gegenlicht-theme/*
 
       - name: Create Release Artifact
