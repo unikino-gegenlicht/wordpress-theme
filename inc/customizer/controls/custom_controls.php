@@ -1,9 +1,5 @@
 <?php
 
-namespace GGL\customizer;
-
-use WP_Customize_Control;
-
 function custom_controls() : void {
 	class WP_CheckboxList_Customize_Control extends WP_Customize_Control {
 		public $type = 'multi-select';
@@ -44,8 +40,8 @@ function custom_controls() : void {
 	class MultiInputControl extends WP_Customize_Control{
 		public $type = 'multi_input';
 		public function enqueue(){
-			wp_enqueue_script( 'custom_controls', get_template_directory_uri().'/inc/customizer/controls/js/multi-input.js', array( 'jquery' ),'', true );
-			wp_enqueue_style( 'custom_controls_css', get_template_directory_uri().'/inc/customizer/controls/css/custom-controls.css');
+			wp_enqueue_script( 'custom_controls', get_template_directory_uri() . '/inc/customizer/controls/js/multi-input.js', array( 'jquery' ),'', true );
+			wp_enqueue_style( 'custom_controls_css', get_template_directory_uri() . '/inc/customizer/controls/css/custom-controls.css' );
 		}
 		public function render_content(){
 			?>

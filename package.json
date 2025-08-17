@@ -7,7 +7,8 @@
     "watch:css": "sass --watch --load-path=node_modules assets/scss/style.scss style.css",
     "minify:css": "minify style.css > style.min.css",
     "i18n:update-template": "wp i18n make-pot ./ ./languages/gegenlicht.pot --domain=gegenlicht --merge=./languages/i18n.pot",
-    "i18n:update-translations": "wp i18n update-po ./languages/gegenlicht.pot ./languages/"
+    "i18n:update-translations": "wp i18n update-po ./languages/gegenlicht.pot ./languages/",
+    "i18n:make-mo": "wp i18n make-mo ./languages/ ./languages/"
   },
   "author": "Unikino GEGENLICHT",
   "license": "GPL-3.0",

@@ -14,12 +14,15 @@ class GGLCustomizerBase {
 		$this->capability = $capability;
 		$this->panel      = $additionalArgs["panel"] ?? "";
 
-		$this->manager->add_section( $section, args: array_merge( [
-			'title'       => $title,
-			'description' => $description,
-			'priority'    => $this->priority,
-			'capability'  => $capability,
-		], $additionalArgs ) );
+		if (!($additionalArgs["skipAddSection"] ?? false)) {
+			$this->manager->add_section( $section, args: array_merge( [
+				'title'       => $title,
+				'description' => $description,
+				'priority'    => $this->priority,
+				'capability'  => $capability,
+			], $additionalArgs ) );
+		}
+
 	}
 
 	/**
@@ -40,6 +43,6 @@ class GGLCustomizerBase {
 	}
 
 	protected function add_control( string $setting, array $args ): void {
-		$this->manager->add_control( $setting, array_merge( $args, array( "panel" => $this->panel ) ) );
+		$this->manager->add_control( $setting, array_merge( $args, array( "panel" => $this->panel, "section" => $this->section ) ) );
 	}
 }

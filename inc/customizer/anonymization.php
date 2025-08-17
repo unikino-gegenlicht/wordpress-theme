@@ -22,30 +22,18 @@ class AnonymizationCustomizer extends GGLCustomizerBase {
 	}
 
 	private function register_theme_mods(): void {
-		$this->manager->add_setting( "anonymous_image", array(
-			"default"    => '',
-			"type"       => "theme_mod",
-			"capability" => $this->capability,
-		) );
+		$this->add_theme_mod( "anonymous_image");
+		$this->add_theme_mod( "anonymous_team_image");
 
-		$this->manager->add_setting("anonymized_movie_explainer[de]", array(
-			'default' => '',
-			'type'    => 'theme_mod',
-			'capability' => $this->capability,
-		));
-
-		$this->manager->add_setting("anonymized_movie_explainer[en]", array(
-			'default' => '',
-			'type'    => 'theme_mod',
-			'capability' => $this->capability,
-		));
+		$this->add_theme_mod("anonymized_movie_explainer[de]");
+		$this->add_theme_mod("anonymized_movie_explainer[en]");
 	}
 
 	private function register_controls(): void {
 		$this->manager->add_control(new WP_Customize_Media_Control($this->manager, "anonymous_image", array(
 			'section' => self::SECTION,
-			'label' => __( 'Anonymous Image', 'gegenlicht' ),
-			'description' => __("This image is display if a movie doesn't have a advertisement license set in the backend. Additionally, the image might be displayed as fallback image in case a event or movie doesn't have one set", "gegenlicht")
+			'label' => __( 'Anonymous Event/Movie Image', 'gegenlicht' ),
+			'description' => __("This image is displayed if a movie or event doesn't have a advertisement license set in the backend. Additionally, the image might be displayed as fallback image in case a event or movie doesn't have one set", "gegenlicht")
 		)));
 
 		$this->manager->add_control("anonymized_movie_explainer[de]", array(
@@ -61,5 +49,11 @@ class AnonymizationCustomizer extends GGLCustomizerBase {
 			'type'    => 'textarea',
 			'description' => __("This text is displayed below the anonymized movie image explaining why some data is missing on the page.")
 		));
+
+		$this->manager->add_control(new WP_Customize_Media_Control($this->manager, "anonymous_team_image", array(
+			'section' => self::SECTION,
+			'label' => __( 'Anonymous Team Member Image', 'gegenlicht' ),
+			'description' => __("This image is displayed if a team member doesn't have a picture set for them", "gegenlicht")
+		)));
 	}
 }

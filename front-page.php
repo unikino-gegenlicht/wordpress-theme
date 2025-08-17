@@ -319,13 +319,13 @@ endforeach; ?>
     </style>
     <article id="team" class="py-5">
         <div class="page-content content">
-			<?php if ( get_theme_mod( 'team_image' ) ):
+			<?php if ( get_theme_mod( 'team_block_image' ) ):
 				get_template_part( 'partials/responsive-image', args: [
-					'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'team_image' ), 'desktop' ),
-					'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'team_image' ), 'mobile' )
+					'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'team_block_image' ), 'desktop' ),
+					'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'team_block_image' ), 'mobile' )
 				] );
 			endif; ?>
-            <h2><?= esc_html__( 'Who is the GEGENLICHT', 'gegenlicht' ) ?></h2>
+            <h2><?= get_theme_mod("team_block_title")[get_locale()] ?? "Please set this value!" ?></h2>
             <div>
 				<?php
 				$raw = get_theme_mod( 'team_block_text' )[ get_locale() ] ?? "";
@@ -347,8 +347,8 @@ endforeach; ?>
     <style>
         #location {
 
-            --bulma-body-background-color: <?= get_theme_mod('location_background_color')['light'] ?>;
-            --bulma-body-color: <?= get_theme_mod('location_text_color')['light'] ?>;
+            --bulma-body-background-color: <?= get_theme_mod('location_block_bg_color')['light'] ?>;
+            --bulma-body-color: <?= get_theme_mod('location_block_text_color')['light'] ?>;
 
             color: var(--bulma-body-color) !important;
             background-color: var(--bulma-body-background-color) !important;
@@ -371,25 +371,25 @@ endforeach; ?>
 
         @media (prefers-color-scheme: dark) {
             #location {
-                --bulma-body-color: <?= get_theme_mod('teamBlock_text_color')['dark'] ?? 'inherit' ?> !important;
-                --bulma-body-background-color: <?= get_theme_mod('teamBlock_background_color')['dark'] ?? 'inherit' ?> !important;
+                --bulma-body-color: <?= get_theme_mod('location_block_text_color')['dark'] ?? 'inherit' ?> !important;
+                --bulma-body-background-color: <?= get_theme_mod('location_block_bg_color')['dark'] ?? 'inherit' ?> !important;
             }
         }
     </style>
     <article id="location" class="py-5">
         <div class="page-content content">
             <div class="">
-				<?php if ( get_theme_mod( 'location_map' ) ): ?>
+				<?php if ( get_theme_mod( 'location_block_image' ) ): ?>
 					<?php get_template_part( 'partials/responsive-image', args: [
 						'image_url'    => wp_get_attachment_image_url( get_theme_mod( 'location_map' ), 'full' ),
 						'disable16by9' => true,
 						'style'        => 'object-position: 15%;'
 					] ) ?>
 				<?php endif; ?>
-                <h2><?= esc_html__( 'Where is the GEGENLICHT', 'gegenlicht' ) ?></h2>
+                <h2><?= get_theme_mod("location_block_title")[get_locale()] ?? "Content Not Set" ?></h2>
                 <div>
 					<?php
-					$raw = get_theme_mod( 'location_text' )[ get_locale() ] ?? "";
+					$raw = get_theme_mod( 'location_block_text' )[ get_locale() ] ?? "";
 					echo apply_filters( "the_content", $raw );
 					?>
                 </div>
@@ -467,13 +467,16 @@ endforeach; ?>
 				$postImages = array();
 
 				while ( $externalsQuery->have_posts() ) : $externalsQuery->the_post();
-					$fp = get_attached_file( attachment_url_to_postid( get_the_post_thumbnail_url() ), true );
-					if ( mime_content_type( $fp ) == "image/svg+xml" ) {
-						$postImages[] = $fp;
-					}
-					if ( count( $postImages ) >= 6 ) {
-						break;
-					}
+                    if (!rwmb_meta("supporter_display_first")) {
+	                    $fp = get_attached_file( attachment_url_to_postid( get_the_post_thumbnail_url() ), true );
+	                    if ( mime_content_type( $fp ) == "image/svg+xml" ) {
+		                    $postImages[] = $fp;
+	                    }
+	                    if ( count( $postImages ) >= 6 ) {
+		                    break;
+	                    }
+                    }
+
 				endwhile;
 				wp_reset_postdata();
 
