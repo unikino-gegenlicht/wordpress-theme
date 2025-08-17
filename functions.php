@@ -204,7 +204,7 @@ add_filter( 'login_errors', 'custom_login_error_message' );
 add_filter( 'login_display_language_dropdown', '__return_false' );
 
 function ggl_cleanup_paragraphs( string $input ): string {
-	return apply_filters("the_content", $input);
+	return apply_filters( "the_content", $input );
 }
 
 function ggl_theme_get_translated_age_rating_descriptor( string $metaKey ): string {
@@ -253,7 +253,7 @@ add_action( 'wp_head', function () {
 	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/gegenlicht.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
 	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/icons.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
 	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/inter.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
-	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/inter_italic.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false);
+	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/inter_italic.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
 	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/simple-icons.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
 } );
 
@@ -293,11 +293,23 @@ add_action( 'pre_get_posts', function ( WP_Query $query ) {
 	endif;
 } );
 
+add_action( "pre_get_posts", function ( WP_Query $query ) {
+	if ( ! $query->is_main_query() ) {
+		return;
+	}
+
+	if ( is_post_type_archive( [ "team-member", "cooperation-partner", "supporter" ] ) ) {
+		$query->set( 'posts_per_page', - 1 );
+
+		return;
+	}
+} );
+
 
 require_once 'shortcodes/button.php';
 
-add_shortcode("ggl_button", 'ggl_button_shortcode');
+add_shortcode( "ggl_button", 'ggl_button_shortcode' );
 
 function is_location_page(): bool {
-	return get_post()->ID == get_theme_mod('location_detail_page');
+	return get_post()->ID == get_theme_mod( 'location_detail_page' );
 }
