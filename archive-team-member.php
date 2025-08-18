@@ -14,7 +14,7 @@ do_action( 'wp_body_open' );
 			?>
         </div>
     </article>
-    <?php get_template_part("partials/contact-block", args: ["emailAddress" => "mitmachen@gegenlicht.net"]) ?>
+    <?php get_template_part("partials/contact-block", args: ["emailAddress" => get_theme_mod("email_address")["join"]]) ?>
     <main class="page-content content">
         <hr class="separator">
         <p class="my-2"><?= esc_html__( 'Our Team', 'gegenlicht' ) ?></p>
