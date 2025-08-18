@@ -32,7 +32,9 @@
   --bulma-body-background-color: var(--bulma-primary);
   --bulma-body-color: black;
   --bulma-link-text: var(--bulma-body-color) !important;
-  --bulma-label-color: var(--bulma-body-color) !important;
+  --bulma-label-color: var(--bulma-primary) !important;
+
+  font-feature-settings: "calt" on, "tnum" on, "frac" on, "ss01" on, "ss02" on;
 }
 
 ::-webkit-scrollbar {
@@ -59,6 +61,7 @@ body.login div#login {
 @include mixins.tablet {
   body.login div#login {
     max-width: 800px !important;
+    width: calc(100vw - 0.75rem) !important;
   }
 }
 
