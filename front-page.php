@@ -184,7 +184,7 @@ endforeach; ?>
         <hr class="separator is-only-darkmode"/>
     </div>
 <?php else: ?>
-    <h2 class="title next-movie-title py-4"><?= esc_html__( 'Intermission in the Cinema', 'gegenlicht' ) ?></h2>
+    <h2 class="title next-movie-title pb-5"><?= esc_html__( 'Intermission in the Cinema', 'gegenlicht' ) ?></h2>
 	<?php
 	get_template_part( 'partials/responsive-image', args: [
 		'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'desktop' ),
