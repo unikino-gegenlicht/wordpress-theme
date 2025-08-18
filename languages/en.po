@@ -38,44 +38,39 @@ msgstr "Unikino GEGENLICHT"
 msgid "https://github.com/unikino-gegenlicht/wordpress-theme/graphs/contributors"
 msgstr "https://github.com/unikino-gegenlicht/wordpress-theme/graphs/contributors"
 
-#: archive-team-member.php:9
-msgid "Join Us!"
-msgstr "Join Us!"
-
-#: archive-team-member.php:27
+#: archive-team-member.php:20
 msgid "Our Team"
 msgstr "Our Team"
 
-#: archive-team-member.php:29
+#: archive-team-member.php:22
 msgid "Active Members"
 msgstr "Active Members"
 
-#: archive-team-member.php:54
+#: archive-team-member.php:47
 msgid "since"
 msgstr "since"
 
-#: archive-team-member.php:61
+#: archive-team-member.php:54
 msgid "Former Members"
 msgstr "Former Members"
 
-#: archive-movie.php:86
-#: front-page.php:85
-#: front-page.php:152
-#: front-page.php:251
+#: archive-movie.php:87
+#: front-page.php:86
+#: front-page.php:153
+#: front-page.php:236
 #: single-movie.php:98
 msgid "An unnamed movie"
 msgstr "An unnamed movie"
 
-#: header.php:88
+#: header.php:117
 msgid "Logout"
 msgstr "Logout"
 
-#: header.php:95
+#: header.php:124
 msgid "Login"
 msgstr "Login"
 
-#: footer.php:54
-#: inc/customizer.php:310
+#: footer.php:48
 msgid "Contact"
 msgstr "Contact"
 
@@ -83,145 +78,22 @@ msgstr "Contact"
 msgid "Telephone"
 msgstr "Telephone"
 
-#: inc/customizer.php:251
 #: inc/customizer/anonymization.php:14
 msgid "Anonymization"
 msgstr "Anonymization"
 
-#: inc/customizer.php:254
-msgid "Control the anonymization for movies/events that we can't advertise"
-msgstr "Control the anonymization for movies/events that we can't advertise"
-
-#: inc/customizer.php:261
-msgid "Fallback Image"
-msgstr "Fallback Image"
-
-#: inc/customizer.php:262
-msgid "Upload an image for fallback usage which is displayed on a movies detail page in case one hasn't been uploaded or the movie may not be advertised"
-msgstr "Upload an image for fallback usage which is displayed on a movies detail page in case one hasn't been uploaded or the movie may not be advertised"
-
-#: inc/customizer.php:286
-msgid "Contact & Address Information"
-msgstr "Contact & Address Information"
-
-#: inc/customizer.php:287
-msgid "In this section you can add and edit the general contact information as well as the address displayed in the footer"
-msgstr "In this section you can add and edit the general contact information as well as the address displayed in the footer"
-
-#: inc/customizer.php:293
-#: inc/customizer.php:304
-msgid "Address"
-msgstr "Address"
-
-#: inc/customizer.php:296
-msgid "In this section you can add and edit the address displayed in the footer"
-msgstr "In this section you can add and edit the address displayed in the footer"
-
-#: inc/customizer.php:313
-msgid "In this section you can add and edit the general contact information"
-msgstr "In this section you can add and edit the general contact information"
-
-#: inc/customizer.php:317
+#: inc/customizer/youth-protection.php:8
 msgid "Youth Protection"
 msgstr "Youth Protection"
 
-#: inc/customizer.php:318
-msgid "Information about the Youth Protection Officer"
-msgstr "Information about the Youth Protection Officer"
-
-#: inc/customizer.php:328
-msgid "Name"
-msgstr "Name"
-
-#: inc/customizer.php:337
-msgid "E-Mail Address"
-msgstr "E-Mail Address"
-
-#: inc/customizer.php:342
-#: inc/customizer/social-medias.php:14
-msgid "Social Medias"
-msgstr "Social Medias"
-
-#: inc/customizer.php:343
-msgid "You can set the usernames/urls to the commonly used social medias here"
-msgstr "You can set the usernames/urls to the commonly used social medias here"
-
-#: inc/customizer.php:353
-#: inc/customizer/social-medias.php:33
-msgid "Instagram Username"
-msgstr "Instagram Username"
-
-#: inc/customizer.php:362
+#: inc/customizer/contact-social-medias.php:34
 msgid "Mastodon URL"
 msgstr "Mastodon URL"
 
-#: inc/customizer.php:364
-msgid "Please use the full url to the profile as Mastodon is decentralized"
-msgstr "Please use the full url to the profile as Mastodon is decentralized"
-
-#: inc/customizer.php:372
-#: inc/customizer/social-medias.php:61
-msgid "Letterboxd Username"
-msgstr "Letterboxd Username"
-
-#: inc/customizer.php:382
-msgid "E-Mail Address for Contact"
-msgstr "E-Mail Address for Contact"
-
-#: inc/customizer.php:392
-msgid "Phone Number"
-msgstr "Phone Number"
-
-#: inc/customizer.php:398
+#: inc/customizer/block-team.php:8
+#: inc/customizer/front-page.php:53
 msgid "Team"
 msgstr "Team"
-
-#: inc/customizer.php:399
-msgid "Customize the options for the members page"
-msgstr "Customize the options for the members page"
-
-#: inc/customizer.php:409
-#: inc/customizer.php:431
-msgid "Introduction Text (English)"
-msgstr "Introduction Text (English)"
-
-#: inc/customizer.php:412
-#: inc/customizer.php:423
-#: inc/customizer.php:434
-#: inc/customizer.php:445
-#: inc/customizer.php:456
-#: inc/customizer/location-block.php:68
-#: inc/customizer/location-block.php:81
-#: inc/customizer/supporter-page.php:39
-#: inc/customizer/supporter-page.php:54
-#: inc/customizer/supporter-page.php:89
-#: inc/customizer/supporter-page.php:104
-#: inc/customizer/team-block.php:53
-#: inc/customizer/team-block.php:66
-#: inc/customizer/team-page.php:55
-#: inc/customizer/team-page.php:68
-#: inc/customizer/team-page.php:83
-#: inc/customizer/team-page.php:96
-msgid "To create a new paragraph inside the text, please use a doubled line break. All other linebreaks will be removed"
-msgstr "To create a new paragraph inside the text, please use a doubled line break. All other linebreaks will be removed"
-
-#: inc/customizer.php:420
-msgid "Introduction Text (German)"
-msgstr "Introduction Text (German)"
-
-#: inc/customizer.php:442
-#: inc/customizer/team-page.php:94
-msgid "Thank You Note (English)"
-msgstr "Thank You Note (English)"
-
-#: inc/customizer.php:453
-#: inc/customizer/team-page.php:81
-msgid "Thank You Note (German)"
-msgstr "Thank You Note (German)"
-
-#: inc/customizer.php:465
-msgid "This image is used a team member didn't upload an image"
-msgstr "This image is used a team member didn't upload an image"
 
 #: single-movie.php:70
 msgid "Screening"
@@ -293,75 +165,45 @@ msgstr "Audio without Subtitles"
 msgid "Audio with"
 msgstr "Audio with"
 
-#: front-page.php:81
+#: front-page.php:82
 msgid "Next Screening"
 msgstr "Next Screening"
 
-#: footer.php:46
-#: inc/customizer/youth-protection.php:38
+#: footer.php:40
 msgid "Youth Protection Officer"
 msgstr "Youth Protection Officer"
 
-#: footer.php:51
+#: footer.php:45
 msgid "Impress"
 msgstr "Impress"
 
-#: footer.php:53
+#: footer.php:47
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
-#: front-page.php:81
+#: front-page.php:82
 msgid "Afterwards at"
 msgstr "Afterwards at"
 
-#: front-page.php:93
+#: front-page.php:94
 msgid "To the movie"
 msgstr "To the movie"
 
-#: front-page.php:135
+#: front-page.php:136
 msgid "Main Program Only"
 msgstr "Main Program Only"
 
-#: functions.php:194
+#: functions.php:193
 msgid "Username or email address is missing"
 msgstr "Username or email address is missing"
 
-#: functions.php:197
+#: functions.php:196
 msgid "The entered credentials are invalid. Please try again"
 msgstr "The entered credentials are invalid. Please try again"
 
-#: inc/customizer.php:69
-msgid "Control the contents shown on the front page. Select a semester to be shown and the special programs displayed"
-msgstr "Control the contents shown on the front page. Select a semester to be shown and the special programs displayed"
-
-#: inc/customizer.php:73
+#: inc/customizer/front-page.php:34
 msgid "Displayed Semester"
 msgstr "Displayed Semester"
-
-#: inc/customizer.php:77
-msgid "Display the selected semester on the front page"
-msgstr "Display the selected semester on the front page"
-
-#: inc/customizer.php:83
-msgid "Special Programs"
-msgstr "Special Programs"
-
-#: inc/customizer.php:87
-msgid "Display the selected special programs on the front page below the semester progrem"
-msgstr "Display the selected special programs on the front page below the semester progrem"
-
-#: inc/customizer.php:270
-msgid "Explanation for Anonymization (English)"
-msgstr "Explanation for Anonymization (English)"
-
-#: inc/customizer.php:272
-#: inc/customizer.php:280
-msgid "This text will be displayed below the posts anonymous image, if a movie's details may not be displayed"
-msgstr "This text will be displayed below the posts anonymous image, if a movie's details may not be displayed"
-
-#: inc/customizer.php:279
-msgid "Explanation for Anonymization (German)"
-msgstr "Explanation for Anonymization (German)"
 
 #: single-event.php:156
 #: single-movie.php:202
@@ -373,7 +215,7 @@ msgstr "Content Notice"
 msgid "The program hosted"
 msgstr "The program hosted"
 
-#: front-page.php:129
+#: front-page.php:130
 msgid "Our Semester Program"
 msgstr "Our Semester Program"
 
@@ -400,2586 +242,2429 @@ msgstr "Selected by"
 msgid "No proposals found. Check back later…"
 msgstr "No proposals found. Check back later…"
 
-#: front-page.php:328
-msgid "Who is the GEGENLICHT"
-msgstr "Who is the GEGENLICHT"
-
-#: front-page.php:337
+#: front-page.php:322
 msgid "To the team"
 msgstr "To the team"
 
-#: front-page.php:389
-msgid "Where is the GEGENLICHT"
-msgstr "Where is the GEGENLICHT"
-
-#: inc/customizer.php:91
-#: inc/customizer/frontpage.php:88
-msgid "Team Block"
-msgstr "Team Block"
-
-#: inc/customizer.php:95
-msgid "Display the selected team block on the front page"
-msgstr "Display the selected team block on the front page"
-
-#: inc/customizer.php:145
-#: inc/customizer/frontpage.php:89
-msgid "Location Block"
-msgstr "Location Block"
-
-#: inc/customizer.php:149
-msgid "Edit the content of the location block"
-msgstr "Edit the content of the location block"
-
-#: inc/customizer.php:157
-msgid "Map Image"
-msgstr "Map Image"
-
-#: inc/customizer.php:158
-msgid "The selected image will be displayed over a black background. Tip: Try to use transparent images for the best effect"
-msgstr "The selected image will be displayed over a black background. Tip: Try to use transparent images for the best effect"
-
-#: inc/customizer.php:168
-msgid "Location Description (English)"
-msgstr "Location Description (English)"
-
-#: inc/customizer.php:169
-#: inc/customizer.php:179
-msgid "This text will be displayed below the selected map image"
-msgstr "This text will be displayed below the selected map image"
-
-#: inc/customizer.php:178
-msgid "Location Description (German)"
-msgstr "Location Description (German)"
-
-#: inc/customizer.php:227
-#: inc/customizer/location-block.php:53
+#: inc/customizer/block-location.php:109
 msgid "Detail Page"
 msgstr "Detail Page"
 
-#: inc/customizer.php:228
-msgid "The selected page should contain a more detailed description about the location of the GEGENLICHT"
-msgstr "The selected page should contain a more detailed description about the location of the GEGENLICHT"
-
-#: inc/customizer.php:66
-msgid "Frontpage"
-msgstr ""
 
 msgid "AF"
-msgstr ""
+msgstr "Afghanistan"
 
 msgid "AX"
-msgstr ""
+msgstr "Åland Islands"
 
 msgid "AL"
-msgstr ""
+msgstr "Albania"
 
 msgid "DZ"
-msgstr ""
+msgstr "Algeria"
 
 msgid "AS"
-msgstr ""
+msgstr "American Samoa"
 
 msgid "AD"
-msgstr ""
+msgstr "Andorra"
 
 msgid "AO"
-msgstr ""
+msgstr "Angola"
 
 msgid "AI"
-msgstr ""
+msgstr "Anguilla"
 
 msgid "AQ"
-msgstr ""
+msgstr "Antarctica"
 
 msgid "AG"
-msgstr ""
+msgstr "Antigua and Barbuda"
 
 msgid "AR"
-msgstr ""
+msgstr "Argentina"
 
 msgid "AM"
-msgstr ""
+msgstr "Armenia"
 
 msgid "AW"
-msgstr ""
+msgstr "Aruba"
 
 msgid "AU"
-msgstr ""
+msgstr "Australia"
 
 msgid "AT"
-msgstr ""
+msgstr "Austria"
 
 msgid "AZ"
-msgstr ""
+msgstr "Azerbaijan"
 
 msgid "BS"
-msgstr ""
+msgstr "Bahamas"
 
 msgid "BH"
-msgstr ""
+msgstr "Bahrain"
 
 msgid "BD"
-msgstr ""
+msgstr "Bangladesh"
 
 msgid "BB"
-msgstr ""
+msgstr "Barbados"
 
 msgid "BY"
-msgstr ""
+msgstr "Belarus"
 
 msgid "BE"
-msgstr ""
+msgstr "Belgium"
 
 msgid "BZ"
-msgstr ""
+msgstr "Belize"
 
 msgid "BJ"
-msgstr ""
+msgstr "Benin"
 
 msgid "BM"
-msgstr ""
+msgstr "Bermuda"
 
 msgid "BT"
-msgstr ""
+msgstr "Bhutan"
 
 msgid "BO"
-msgstr ""
+msgstr "Bolivia, Plurinational State of"
 
 msgid "BQ"
-msgstr ""
+msgstr "Bonaire, Sint Eustatius and Saba"
 
 msgid "BA"
-msgstr ""
+msgstr "Bosnia and Herzegovina"
 
 msgid "BW"
-msgstr ""
+msgstr "Botswana"
 
 msgid "BV"
-msgstr ""
+msgstr "Bouvet Island"
 
 msgid "BR"
-msgstr ""
+msgstr "Brazil"
 
 msgid "IO"
-msgstr ""
+msgstr "British Indian Ocean Territory"
 
 msgid "BN"
-msgstr ""
+msgstr "Brunei Darussalam"
 
 msgid "BG"
-msgstr ""
+msgstr "Bulgaria"
 
 msgid "BF"
-msgstr ""
+msgstr "Burkina Faso"
 
 msgid "BI"
-msgstr ""
+msgstr "Burundi"
 
 msgid "KH"
-msgstr ""
+msgstr "Cambodia"
 
 msgid "CM"
-msgstr ""
+msgstr "Cameroon"
 
 msgid "CA"
-msgstr ""
+msgstr "Canada"
 
 msgid "CV"
-msgstr ""
+msgstr "Cape Verde"
 
 msgid "KY"
-msgstr ""
+msgstr "Cayman Islands"
 
 msgid "CF"
-msgstr ""
+msgstr "Central African Republic"
 
 msgid "TD"
-msgstr ""
+msgstr "Chad"
 
 msgid "CL"
-msgstr ""
+msgstr "Chile"
 
 msgid "CN"
-msgstr ""
+msgstr "China"
 
 msgid "CX"
-msgstr ""
+msgstr "Christmas Island"
 
 msgid "CC"
-msgstr ""
+msgstr "Cocos (Keeling) Islands"
 
 msgid "CO"
-msgstr ""
+msgstr "Colombia"
 
 msgid "KM"
-msgstr ""
+msgstr "Comoros"
 
 msgid "CG"
-msgstr ""
+msgstr "Congo"
 
 msgid "CD"
-msgstr ""
+msgstr "Congo, the Democratic Republic of the"
 
 msgid "CK"
-msgstr ""
+msgstr "Cook Islands"
 
 msgid "CR"
-msgstr ""
+msgstr "Costa Rica"
 
 msgid "CI"
-msgstr ""
+msgstr "Côte d'Ivoire"
 
 msgid "HR"
-msgstr ""
+msgstr "Croatia"
 
 msgid "CU"
-msgstr ""
+msgstr "Cuba"
 
 msgid "CW"
-msgstr ""
+msgstr "Curaçao"
 
 msgid "CY"
-msgstr ""
+msgstr "Cyprus"
 
 msgid "CZ"
-msgstr ""
+msgstr "Czech Republic"
 
 msgid "DK"
-msgstr ""
+msgstr "Denmark"
 
 msgid "DJ"
-msgstr ""
+msgstr "Djibouti"
 
 msgid "DM"
-msgstr ""
+msgstr "Dominica"
 
 msgid "DO"
-msgstr ""
+msgstr "Dominican Republic"
 
 msgid "EC"
-msgstr ""
+msgstr "Ecuador"
 
 msgid "EG"
-msgstr ""
+msgstr "Egypt"
 
 msgid "SV"
-msgstr ""
+msgstr "El Salvador"
 
 msgid "GQ"
-msgstr ""
+msgstr "Equatorial Guinea"
 
 msgid "ER"
-msgstr ""
+msgstr "Eritrea"
 
 msgid "EE"
-msgstr ""
+msgstr "Estonia"
 
 msgid "ET"
-msgstr ""
+msgstr "Ethiopia"
 
 msgid "FK"
-msgstr ""
+msgstr "Falkland Islands (Malvinas)"
 
 msgid "FO"
-msgstr ""
+msgstr "Faroe Islands"
 
 msgid "FJ"
-msgstr ""
+msgstr "Fiji"
 
 msgid "FI"
-msgstr ""
+msgstr "Finland"
 
 msgid "FR"
-msgstr ""
+msgstr "France"
 
 msgid "GF"
-msgstr ""
+msgstr "French Guiana"
 
 msgid "PF"
-msgstr ""
+msgstr "French Polynesia"
 
 msgid "TF"
-msgstr ""
+msgstr "French Southern Territories"
 
 msgid "GA"
-msgstr ""
+msgstr "Gabon"
 
 msgid "GM"
-msgstr ""
+msgstr "Gambia"
 
 msgid "GE"
-msgstr ""
+msgstr "Georgia"
 
 msgid "DE"
-msgstr ""
+msgstr "Germany"
 
 msgid "GH"
-msgstr ""
+msgstr "Ghana"
 
 msgid "GI"
-msgstr ""
+msgstr "Gibraltar"
 
 msgid "GR"
-msgstr ""
+msgstr "Greece"
 
 msgid "GL"
-msgstr ""
+msgstr "Greenland"
 
 msgid "GD"
-msgstr ""
+msgstr "Grenada"
 
 msgid "GP"
-msgstr ""
+msgstr "Guadeloupe"
 
 msgid "GU"
-msgstr ""
+msgstr "Guam"
 
 msgid "GT"
-msgstr ""
+msgstr "Guatemala"
 
 msgid "GG"
-msgstr ""
+msgstr "Guernsey"
 
 msgid "GN"
-msgstr ""
+msgstr "Guinea"
 
 msgid "GW"
-msgstr ""
+msgstr "Guinea-Bissau"
 
 msgid "GY"
-msgstr ""
+msgstr "Guyana"
 
 msgid "HT"
-msgstr ""
+msgstr "Haiti"
 
 msgid "HM"
-msgstr ""
+msgstr "Heard Island and McDonald Islands"
 
 msgid "VA"
-msgstr ""
+msgstr "Holy See (Vatican City State)"
 
 msgid "HN"
-msgstr ""
+msgstr "Honduras"
 
 msgid "HK"
-msgstr ""
+msgstr "Hong Kong"
 
 msgid "HU"
-msgstr ""
+msgstr "Hungary"
 
 msgid "IS"
-msgstr ""
+msgstr "Iceland"
 
 msgid "IN"
-msgstr ""
+msgstr "India"
 
 msgid "ID"
-msgstr ""
+msgstr "Indonesia"
 
 msgid "IR"
-msgstr ""
+msgstr "Iran, Islamic Republic of"
 
 msgid "IQ"
-msgstr ""
+msgstr "Iraq"
 
 msgid "IE"
-msgstr ""
+msgstr "Ireland"
 
 msgid "IM"
-msgstr ""
+msgstr "Isle of Man"
 
 msgid "IL"
-msgstr ""
+msgstr "Israel"
 
 msgid "IT"
-msgstr ""
+msgstr "Italy"
 
 msgid "JM"
-msgstr ""
+msgstr "Jamaica"
 
 msgid "JP"
-msgstr ""
+msgstr "Japan"
 
 msgid "JE"
-msgstr ""
+msgstr "Jersey"
 
 msgid "JO"
-msgstr ""
+msgstr "Jordan"
 
 msgid "KZ"
-msgstr ""
+msgstr "Kazakhstan"
 
 msgid "KE"
-msgstr ""
+msgstr "Kenya"
 
 msgid "KI"
-msgstr ""
+msgstr "Kiribati"
 
 msgid "KP"
-msgstr ""
+msgstr "Korea, Democratic People's Republic of"
 
 msgid "KR"
-msgstr ""
+msgstr "Korea, Republic of"
 
 msgid "KW"
-msgstr ""
+msgstr "Kuwait"
 
 msgid "KG"
-msgstr ""
+msgstr "Kyrgyzstan"
 
 msgid "LA"
-msgstr ""
+msgstr "Lao People's Democratic Republic"
 
 msgid "LV"
-msgstr ""
+msgstr "Latvia"
 
 msgid "LB"
-msgstr ""
+msgstr "Lebanon"
 
 msgid "LS"
-msgstr ""
+msgstr "Lesotho"
 
 msgid "LR"
-msgstr ""
+msgstr "Liberia"
 
 msgid "LY"
-msgstr ""
+msgstr "Libya"
 
 msgid "LI"
-msgstr ""
+msgstr "Liechtenstein"
 
 msgid "LT"
-msgstr ""
+msgstr "Lithuania"
 
 msgid "LU"
-msgstr ""
+msgstr "Luxembourg"
 
 msgid "MO"
-msgstr ""
+msgstr "Macao"
 
 msgid "MK"
-msgstr ""
+msgstr "Macedonia, the Former Yugoslav Republic of"
 
 msgid "MG"
-msgstr ""
+msgstr "Madagascar"
 
 msgid "MW"
-msgstr ""
+msgstr "Malawi"
 
 msgid "MY"
-msgstr ""
+msgstr "Malaysia"
 
 msgid "MV"
-msgstr ""
+msgstr "Maldives"
 
 msgid "ML"
-msgstr ""
+msgstr "Mali"
 
 msgid "MT"
-msgstr ""
+msgstr "Malta"
 
 msgid "MH"
-msgstr ""
+msgstr "Marshall Islands"
 
 msgid "MQ"
-msgstr ""
+msgstr "Martinique"
 
 msgid "MR"
-msgstr ""
+msgstr "Mauritania"
 
 msgid "MU"
-msgstr ""
+msgstr "Mauritius"
 
 msgid "YT"
-msgstr ""
+msgstr "Mayotte"
 
 msgid "MX"
-msgstr ""
+msgstr "Mexico"
 
 msgid "FM"
-msgstr ""
+msgstr "Micronesia, Federated States of"
 
 msgid "MD"
-msgstr ""
+msgstr "Moldova, Republic of"
 
 msgid "MC"
-msgstr ""
+msgstr "Monaco"
 
 msgid "MN"
-msgstr ""
+msgstr "Mongolia"
 
 msgid "ME"
-msgstr ""
+msgstr "Montenegro"
 
 msgid "MS"
-msgstr ""
+msgstr "Montserrat"
 
 msgid "MA"
-msgstr ""
+msgstr "Morocco"
 
 msgid "MZ"
-msgstr ""
+msgstr "Mozambique"
 
 msgid "MM"
-msgstr ""
+msgstr "Myanmar"
 
 msgid "NA"
-msgstr ""
+msgstr "Namibia"
 
 msgid "NR"
-msgstr ""
+msgstr "Nauru"
 
 msgid "NP"
-msgstr ""
+msgstr "Nepal"
 
 msgid "NL"
-msgstr ""
+msgstr "Netherlands"
 
 msgid "NC"
-msgstr ""
+msgstr "New Caledonia"
 
 msgid "NZ"
-msgstr ""
+msgstr "New Zealand"
 
 msgid "NI"
-msgstr ""
+msgstr "Nicaragua"
 
 msgid "NE"
-msgstr ""
+msgstr "Niger"
 
 msgid "NG"
-msgstr ""
+msgstr "Nigeria"
 
 msgid "NU"
-msgstr ""
+msgstr "Niue"
 
 msgid "NF"
-msgstr ""
+msgstr "Norfolk Island"
 
 msgid "MP"
-msgstr ""
+msgstr "Northern Mariana Islands"
 
 msgid "NO"
-msgstr ""
+msgstr "Norway"
 
 msgid "OM"
-msgstr ""
+msgstr "Oman"
 
 msgid "PK"
-msgstr ""
+msgstr "Pakistan"
 
 msgid "PW"
-msgstr ""
+msgstr "Palau"
 
 msgid "PS"
-msgstr ""
+msgstr "Palestine, State of"
 
 msgid "PA"
-msgstr ""
+msgstr "Panama"
 
 msgid "PG"
-msgstr ""
+msgstr "Papua New Guinea"
 
 msgid "PY"
-msgstr ""
+msgstr "Paraguay"
 
 msgid "PE"
-msgstr ""
+msgstr "Peru"
 
 msgid "PH"
-msgstr ""
+msgstr "Philippines"
 
 msgid "PN"
-msgstr ""
+msgstr "Pitcairn"
 
 msgid "PL"
-msgstr ""
+msgstr "Poland"
 
 msgid "PT"
-msgstr ""
+msgstr "Portugal"
 
 msgid "PR"
-msgstr ""
+msgstr "Puerto Rico"
 
 msgid "QA"
-msgstr ""
+msgstr "Qatar"
 
 msgid "RE"
-msgstr ""
+msgstr "Réunion"
 
 msgid "RO"
-msgstr ""
+msgstr "Romania"
 
 msgid "RU"
-msgstr ""
+msgstr "Russian Federation"
 
 msgid "RW"
-msgstr ""
+msgstr "Rwanda"
 
 msgid "BL"
-msgstr ""
+msgstr "Saint Barthélemy"
 
 msgid "SH"
-msgstr ""
+msgstr "Saint Helena, Ascension and Tristan da Cunha"
 
 msgid "KN"
-msgstr ""
+msgstr "Saint Kitts and Nevis"
 
 msgid "LC"
-msgstr ""
+msgstr "Saint Lucia"
 
 msgid "MF"
-msgstr ""
+msgstr "Saint Martin (French part)"
 
 msgid "PM"
-msgstr ""
+msgstr "Saint Pierre and Miquelon"
 
 msgid "VC"
-msgstr ""
+msgstr "Saint Vincent and the Grenadines"
 
 msgid "WS"
-msgstr ""
+msgstr "Samoa"
 
 msgid "SM"
-msgstr ""
+msgstr "San Marino"
 
 msgid "ST"
-msgstr ""
+msgstr "Sao Tome and Principe"
 
 msgid "SA"
-msgstr ""
+msgstr "Saudi Arabia"
 
 msgid "SN"
-msgstr ""
+msgstr "Senegal"
 
 msgid "RS"
-msgstr ""
+msgstr "Serbia"
 
 msgid "SC"
-msgstr ""
+msgstr "Seychelles"
 
 msgid "SL"
-msgstr ""
+msgstr "Sierra Leone"
 
 msgid "SG"
-msgstr ""
+msgstr "Singapore"
 
 msgid "SX"
-msgstr ""
+msgstr "Sint Maarten (Dutch part)"
 
 msgid "SK"
-msgstr ""
+msgstr "Slovakia"
 
 msgid "SI"
-msgstr ""
+msgstr "Slovenia"
 
 msgid "SB"
-msgstr ""
+msgstr "Solomon Islands"
 
 msgid "SO"
-msgstr ""
+msgstr "Somalia"
 
 msgid "ZA"
-msgstr ""
+msgstr "South Africa"
 
 msgid "GS"
-msgstr ""
+msgstr "South Georgia and the South Sandwich Islands"
 
 msgid "SS"
-msgstr ""
+msgstr "South Sudan"
 
 msgid "ES"
-msgstr ""
+msgstr "Spain"
 
 msgid "LK"
-msgstr ""
+msgstr "Sri Lanka"
 
 msgid "SD"
-msgstr ""
+msgstr "Sudan"
 
 msgid "SR"
-msgstr ""
+msgstr "Suriname"
 
 msgid "SJ"
-msgstr ""
+msgstr "Svalbard and Jan Mayen"
 
 msgid "SZ"
-msgstr ""
+msgstr "Eswatini"
 
 msgid "SE"
-msgstr ""
+msgstr "Sweden"
 
 msgid "CH"
-msgstr ""
+msgstr "Switzerland"
 
 msgid "SY"
-msgstr ""
+msgstr "Syrian Arab Republic"
 
 msgid "TW"
-msgstr ""
+msgstr "Taiwan, Province of China"
 
 msgid "TJ"
-msgstr ""
+msgstr "Tajikistan"
 
 msgid "TZ"
-msgstr ""
+msgstr "Tanzania, United Republic of"
 
 msgid "TH"
-msgstr ""
+msgstr "Thailand"
 
 msgid "TL"
-msgstr ""
+msgstr "Timor-Leste"
 
 msgid "TG"
-msgstr ""
+msgstr "Togo"
 
 msgid "TK"
-msgstr ""
+msgstr "Tokelau"
 
 msgid "TO"
-msgstr ""
+msgstr "Tonga"
 
 msgid "TT"
-msgstr ""
+msgstr "Trinidad and Tobago"
 
 msgid "TN"
-msgstr ""
+msgstr "Tunisia"
 
 msgid "TR"
-msgstr ""
+msgstr "Turkey"
 
 msgid "TM"
-msgstr ""
+msgstr "Turkmenistan"
 
 msgid "TC"
-msgstr ""
+msgstr "Turks and Caicos Islands"
 
 msgid "TV"
-msgstr ""
+msgstr "Tuvalu"
 
 msgid "UG"
-msgstr ""
+msgstr "Uganda"
 
 msgid "UA"
-msgstr ""
+msgstr "Ukraine"
 
 msgid "AE"
-msgstr ""
+msgstr "United Arab Emirates"
 
 msgid "GB"
-msgstr ""
+msgstr "United Kingdom"
 
 msgid "US"
-msgstr ""
+msgstr "United States"
 
 msgid "UM"
-msgstr ""
+msgstr "United States Minor Outlying Islands"
 
 msgid "UY"
-msgstr ""
+msgstr "Uruguay"
 
 msgid "UZ"
-msgstr ""
+msgstr "Uzbekistan"
 
 msgid "VU"
-msgstr ""
+msgstr "Vanuatu"
 
 msgid "VE"
-msgstr ""
+msgstr "Venezuela, Bolivarian Republic of"
 
 msgid "VN"
-msgstr ""
+msgstr "Viet Nam"
 
 msgid "VG"
-msgstr ""
+msgstr "Virgin Islands, British"
 
 msgid "VI"
-msgstr ""
+msgstr "Virgin Islands, U.S."
 
 msgid "WF"
-msgstr ""
+msgstr "Wallis and Futuna"
 
 msgid "EH"
-msgstr ""
+msgstr "Western Sahara"
 
 msgid "YE"
-msgstr ""
+msgstr "Yemen"
 
 msgid "ZM"
-msgstr ""
+msgstr "Zambia"
 
 msgid "ZW"
-msgstr ""
+msgstr "Zimbabwe"
 
 msgid "aar"
-msgstr ""
+msgstr "Afar"
 
 msgid "abk"
-msgstr ""
+msgstr "Abkhazian"
 
 msgid "ace"
-msgstr ""
+msgstr "Achinese"
 
 msgid "ach"
-msgstr ""
+msgstr "Acoli"
 
 msgid "ada"
-msgstr ""
+msgstr "Adangme"
 
 msgid "ady"
-msgstr ""
+msgstr "Adyghe; Adygei"
 
 msgid "afa"
-msgstr ""
+msgstr "Afro-Asiatic languages"
 
 msgid "afh"
-msgstr ""
+msgstr "Afrihili"
 
 msgid "afr"
-msgstr ""
+msgstr "Afrikaans"
 
 msgid "ain"
-msgstr ""
+msgstr "Ainu"
 
 msgid "aka"
-msgstr ""
+msgstr "Akan"
 
 msgid "akk"
-msgstr ""
+msgstr "Akkadian"
 
 msgid "sqi"
-msgstr ""
+msgstr "Albanian"
 
 msgid "ale"
-msgstr ""
+msgstr "Aleut"
 
 msgid "alg"
-msgstr ""
+msgstr "Algonquian languages"
 
 msgid "alt"
-msgstr ""
+msgstr "Southern Altai"
 
 msgid "amh"
-msgstr ""
+msgstr "Amharic"
 
 msgid "ang"
-msgstr ""
+msgstr "English, Old (ca.450-1100)"
 
 msgid "anp"
-msgstr ""
+msgstr "Angika"
 
 msgid "apa"
-msgstr ""
+msgstr "Apache languages"
 
 msgid "ara"
-msgstr ""
+msgstr "Arabic"
 
 msgid "arc"
-msgstr ""
+msgstr "Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)"
 
 msgid "arg"
-msgstr ""
+msgstr "Aragonese"
 
 msgid "hye"
-msgstr ""
+msgstr "Armenian"
 
 msgid "arn"
-msgstr ""
+msgstr "Mapudungun; Mapuche"
 
 msgid "arp"
-msgstr ""
+msgstr "Arapaho"
 
 msgid "art"
-msgstr ""
+msgstr "Artificial languages"
 
 msgid "arw"
-msgstr ""
+msgstr "Arawak"
 
 msgid "asm"
-msgstr ""
+msgstr "Assamese"
 
 msgid "ast"
-msgstr ""
+msgstr "Asturian; Bable; Leonese; Asturleonese"
 
 msgid "ath"
-msgstr ""
+msgstr "Athapascan languages"
 
 msgid "aus"
-msgstr ""
+msgstr "Australian languages"
 
 msgid "ava"
-msgstr ""
+msgstr "Avaric"
 
 msgid "ave"
-msgstr ""
+msgstr "Avestan"
 
 msgid "awa"
-msgstr ""
+msgstr "Awadhi"
 
 msgid "aym"
-msgstr ""
+msgstr "Aymara"
 
 msgid "aze"
-msgstr ""
+msgstr "Azerbaijani"
 
 msgid "bad"
-msgstr ""
+msgstr "Banda languages"
 
 msgid "bai"
-msgstr ""
+msgstr "Bamileke languages"
 
 msgid "bak"
-msgstr ""
+msgstr "Bashkir"
 
 msgid "bal"
-msgstr ""
+msgstr "Baluchi"
 
 msgid "bam"
-msgstr ""
+msgstr "Bambara"
 
 msgid "ban"
-msgstr ""
+msgstr "Balinese"
 
 msgid "eus"
-msgstr ""
+msgstr "Basque"
 
 msgid "bas"
-msgstr ""
+msgstr "Basa"
 
 msgid "bat"
-msgstr ""
+msgstr "Baltic languages"
 
 msgid "bej"
-msgstr ""
+msgstr "Beja; Bedawiyet"
 
 msgid "bel"
-msgstr ""
+msgstr "Belarusian"
 
 msgid "bem"
-msgstr ""
+msgstr "Bemba"
 
 msgid "ben"
-msgstr ""
+msgstr "Bengali"
 
 msgid "ber"
-msgstr ""
+msgstr "Berber languages"
 
 msgid "bho"
-msgstr ""
+msgstr "Bhojpuri"
 
 msgid "bih"
-msgstr ""
+msgstr "Bihari languages"
 
 msgid "bik"
-msgstr ""
+msgstr "Bikol"
 
 msgid "bin"
-msgstr ""
+msgstr "Bini; Edo"
 
 msgid "bis"
-msgstr ""
+msgstr "Bislama"
 
 msgid "bla"
-msgstr ""
+msgstr "Siksika"
 
 msgid "bnt"
-msgstr ""
+msgstr "Bantu languages"
 
 msgid "bod"
-msgstr ""
+msgstr "Tibetan"
 
 msgid "bos"
-msgstr ""
+msgstr "Bosnian"
 
 msgid "bra"
-msgstr ""
+msgstr "Braj"
 
 msgid "bre"
-msgstr ""
+msgstr "Breton"
 
 msgid "btk"
-msgstr ""
+msgstr "Batak languages"
 
 msgid "bua"
-msgstr ""
+msgstr "Buriat"
 
 msgid "bug"
-msgstr ""
+msgstr "Buginese"
 
 msgid "bul"
-msgstr ""
+msgstr "Bulgarian"
 
 msgid "mya"
-msgstr ""
+msgstr "Burmese"
 
 msgid "byn"
-msgstr ""
+msgstr "Blin; Bilin"
 
 msgid "cad"
-msgstr ""
+msgstr "Caddo"
 
 msgid "cai"
-msgstr ""
+msgstr "Central American Indian languages"
 
 msgid "car"
-msgstr ""
+msgstr "Galibi Carib"
 
 msgid "cat"
-msgstr ""
+msgstr "Catalan; Valencian"
 
 msgid "cau"
-msgstr ""
+msgstr "Caucasian languages"
 
 msgid "ceb"
-msgstr ""
+msgstr "Cebuano"
 
 msgid "cel"
-msgstr ""
+msgstr "Celtic languages"
 
 msgid "ces"
-msgstr ""
+msgstr "Czech"
 
 msgid "cha"
-msgstr ""
+msgstr "Chamorro"
 
 msgid "chb"
-msgstr ""
+msgstr "Chibcha"
 
 msgid "che"
-msgstr ""
+msgstr "Chechen"
 
 msgid "chg"
-msgstr ""
+msgstr "Chagatai"
 
 msgid "zho"
-msgstr ""
+msgstr "Chinese"
 
 msgid "chk"
-msgstr ""
+msgstr "Chuukese"
 
 msgid "chm"
-msgstr ""
+msgstr "Mari"
 
 msgid "chn"
-msgstr ""
+msgstr "Chinook jargon"
 
 msgid "cho"
-msgstr ""
+msgstr "Choctaw"
 
 msgid "chp"
-msgstr ""
+msgstr "Chipewyan; Dene Suline"
 
 msgid "chr"
-msgstr ""
+msgstr "Cherokee"
 
 msgid "chu"
 msgstr ""
+"Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church "
+"Slavonic"
 
 msgid "chv"
-msgstr ""
+msgstr "Chuvash"
 
 msgid "chy"
-msgstr ""
+msgstr "Cheyenne"
 
 msgid "cmc"
-msgstr ""
+msgstr "Chamic languages"
 
 msgid "cop"
-msgstr ""
+msgstr "Coptic"
 
 msgid "cor"
-msgstr ""
+msgstr "Cornish"
 
 msgid "cos"
-msgstr ""
+msgstr "Corsican"
 
 msgid "cpe"
-msgstr ""
+msgstr "Creoles and pidgins, English based"
 
 msgid "cpf"
-msgstr ""
+msgstr "Creoles and pidgins, French-based"
 
 msgid "cpp"
-msgstr ""
+msgstr "Creoles and pidgins, Portuguese-based"
 
 msgid "cre"
-msgstr ""
+msgstr "Cree"
 
 msgid "crh"
-msgstr ""
+msgstr "Crimean Tatar; Crimean Turkish"
 
 msgid "crp"
-msgstr ""
+msgstr "Creoles and pidgins"
 
 msgid "csb"
-msgstr ""
+msgstr "Kashubian"
 
 msgid "cus"
-msgstr ""
+msgstr "Cushitic languages"
 
 msgid "cym"
-msgstr ""
+msgstr "Welsh"
 
 msgid "dak"
-msgstr ""
+msgstr "Dakota"
 
 msgid "dan"
-msgstr ""
+msgstr "Danish"
 
 msgid "dar"
-msgstr ""
+msgstr "Dargwa"
 
 msgid "day"
-msgstr ""
+msgstr "Land Dayak languages"
 
 msgid "del"
-msgstr ""
+msgstr "Delaware"
 
 msgid "den"
-msgstr ""
+msgstr "Slave (Athapascan)"
 
 msgid "deu"
-msgstr ""
+msgstr "German"
 
 msgid "dgr"
-msgstr ""
+msgstr "Dogrib"
 
 msgid "din"
-msgstr ""
+msgstr "Dinka"
 
 msgid "div"
-msgstr ""
+msgstr "Divehi; Dhivehi; Maldivian"
 
 msgid "doi"
-msgstr ""
+msgstr "Dogri"
 
 msgid "dra"
-msgstr ""
+msgstr "Dravidian languages"
 
 msgid "dsb"
-msgstr ""
+msgstr "Lower Sorbian"
 
 msgid "dua"
-msgstr ""
+msgstr "Duala"
 
 msgid "dum"
-msgstr ""
+msgstr "Dutch, Middle (ca.1050-1350)"
 
 msgid "nld"
-msgstr ""
+msgstr "Dutch; Flemish"
 
 msgid "dyu"
-msgstr ""
+msgstr "Dyula"
 
 msgid "dzo"
-msgstr ""
+msgstr "Dzongkha"
 
 msgid "efi"
-msgstr ""
+msgstr "Efik"
 
 msgid "egy"
-msgstr ""
+msgstr "Egyptian (Ancient)"
 
 msgid "eka"
-msgstr ""
+msgstr "Ekajuk"
 
 msgid "ell"
-msgstr ""
+msgstr "Greek, Modern (1453-)"
 
 msgid "elx"
-msgstr ""
+msgstr "Elamite"
 
 msgid "eng"
-msgstr ""
+msgstr "English"
 
 msgid "enm"
-msgstr ""
+msgstr "English, Middle (1100-1500)"
 
 msgid "epo"
-msgstr ""
+msgstr "Esperanto"
 
 msgid "est"
-msgstr ""
+msgstr "Estonian"
 
 msgid "ewe"
-msgstr ""
+msgstr "Ewe"
 
 msgid "ewo"
-msgstr ""
+msgstr "Ewondo"
 
 msgid "fan"
-msgstr ""
+msgstr "Fang"
 
 msgid "fao"
-msgstr ""
+msgstr "Faroese"
 
 msgid "fas"
-msgstr ""
+msgstr "Persian"
 
 msgid "fat"
-msgstr ""
+msgstr "Fanti"
 
 msgid "fij"
-msgstr ""
+msgstr "Fijian"
 
 msgid "fil"
-msgstr ""
+msgstr "Filipino; Pilipino"
 
 msgid "fin"
-msgstr ""
+msgstr "Finnish"
 
 msgid "fiu"
-msgstr ""
+msgstr "Finno-Ugrian languages"
 
 msgid "fon"
-msgstr ""
+msgstr "Fon"
 
 msgid "fra"
-msgstr ""
+msgstr "French"
 
 msgid "frm"
-msgstr ""
+msgstr "French, Middle (ca.1400-1600)"
 
 msgid "fro"
-msgstr ""
+msgstr "French, Old (842-ca.1400)"
 
 msgid "frr"
-msgstr ""
+msgstr "Northern Frisian"
 
 msgid "frs"
-msgstr ""
+msgstr "Eastern Frisian"
 
 msgid "fry"
-msgstr ""
+msgstr "Western Frisian"
 
 msgid "ful"
-msgstr ""
+msgstr "Fulah"
 
 msgid "fur"
-msgstr ""
+msgstr "Friulian"
 
 msgid "gaa"
-msgstr ""
+msgstr "Ga"
 
 msgid "gay"
-msgstr ""
+msgstr "Gayo"
 
 msgid "gba"
-msgstr ""
+msgstr "Gbaya"
 
 msgid "gem"
-msgstr ""
+msgstr "Germanic languages"
 
 msgid "kat"
-msgstr ""
+msgstr "Georgian"
 
 msgid "gez"
-msgstr ""
+msgstr "Geez"
 
 msgid "gil"
-msgstr ""
+msgstr "Gilbertese"
 
 msgid "gla"
-msgstr ""
+msgstr "Gaelic; Scottish Gaelic"
 
 msgid "gle"
-msgstr ""
+msgstr "Irish"
 
 msgid "glg"
-msgstr ""
+msgstr "Galician"
 
 msgid "glv"
-msgstr ""
+msgstr "Manx"
 
 msgid "gmh"
-msgstr ""
+msgstr "German, Middle High (ca.1050-1500)"
 
 msgid "goh"
-msgstr ""
+msgstr "German, Old High (ca.750-1050)"
 
 msgid "gon"
-msgstr ""
+msgstr "Gondi"
 
 msgid "gor"
-msgstr ""
+msgstr "Gorontalo"
 
 msgid "got"
-msgstr ""
+msgstr "Gothic"
 
 msgid "grb"
-msgstr ""
+msgstr "Grebo"
 
 msgid "grc"
-msgstr ""
+msgstr "Greek, Ancient (to 1453)"
 
 msgid "grn"
-msgstr ""
+msgstr "Guarani"
 
 msgid "gsw"
-msgstr ""
+msgstr "Swiss German; Alemannic; Alsatian"
 
 msgid "guj"
-msgstr ""
+msgstr "Gujarati"
 
 msgid "gwi"
-msgstr ""
+msgstr "Gwich'in"
 
 msgid "hai"
-msgstr ""
+msgstr "Haida"
 
 msgid "hat"
-msgstr ""
+msgstr "Haitian; Haitian Creole"
 
 msgid "hau"
-msgstr ""
+msgstr "Hausa"
 
 msgid "haw"
-msgstr ""
+msgstr "Hawaiian"
 
 msgid "heb"
-msgstr ""
+msgstr "Hebrew"
 
 msgid "her"
-msgstr ""
+msgstr "Herero"
 
 msgid "hil"
-msgstr ""
+msgstr "Hiligaynon"
 
 msgid "him"
-msgstr ""
+msgstr "Himachali languages; Western Pahari languages"
 
 msgid "hin"
-msgstr ""
+msgstr "Hindi"
 
 msgid "hit"
-msgstr ""
+msgstr "Hittite"
 
 msgid "hmn"
-msgstr ""
+msgstr "Hmong; Mong"
 
 msgid "hmo"
-msgstr ""
+msgstr "Hiri Motu"
 
 msgid "hrv"
-msgstr ""
+msgstr "Croatian"
 
 msgid "hsb"
-msgstr ""
+msgstr "Upper Sorbian"
 
 msgid "hun"
-msgstr ""
+msgstr "Hungarian"
 
 msgid "hup"
-msgstr ""
+msgstr "Hupa"
 
 msgid "iba"
-msgstr ""
+msgstr "Iban"
 
 msgid "ibo"
-msgstr ""
+msgstr "Igbo"
 
 msgid "isl"
-msgstr ""
+msgstr "Icelandic"
 
 msgid "ido"
-msgstr ""
+msgstr "Ido"
 
 msgid "iii"
-msgstr ""
+msgstr "Sichuan Yi; Nuosu"
 
 msgid "ijo"
-msgstr ""
+msgstr "Ijo languages"
 
 msgid "iku"
-msgstr ""
+msgstr "Inuktitut"
 
 msgid "ile"
-msgstr ""
+msgstr "Interlingue; Occidental"
 
 msgid "ilo"
-msgstr ""
+msgstr "Iloko"
 
 msgid "ina"
-msgstr ""
+msgstr "Interlingua (International Auxiliary Language Association)"
 
 msgid "inc"
-msgstr ""
+msgstr "Indic languages"
 
 msgid "ind"
-msgstr ""
+msgstr "Indonesian"
 
 msgid "ine"
-msgstr ""
+msgstr "Indo-European languages"
 
 msgid "inh"
-msgstr ""
+msgstr "Ingush"
 
 msgid "ipk"
-msgstr ""
+msgstr "Inupiaq"
 
 msgid "ira"
-msgstr ""
+msgstr "Iranian languages"
 
 msgid "iro"
-msgstr ""
+msgstr "Iroquoian languages"
 
 msgid "ita"
-msgstr ""
+msgstr "Italian"
 
 msgid "jav"
-msgstr ""
+msgstr "Javanese"
 
 msgid "jbo"
-msgstr ""
+msgstr "Lojban"
 
 msgid "jpn"
-msgstr ""
+msgstr "Japanese"
 
 msgid "jpr"
-msgstr ""
+msgstr "Judeo-Persian"
 
 msgid "jrb"
-msgstr ""
+msgstr "Judeo-Arabic"
 
 msgid "kaa"
-msgstr ""
+msgstr "Kara-Kalpak"
 
 msgid "kab"
-msgstr ""
+msgstr "Kabyle"
 
 msgid "kac"
-msgstr ""
+msgstr "Kachin; Jingpho"
 
 msgid "kal"
-msgstr ""
+msgstr "Kalaallisut; Greenlandic"
 
 msgid "kam"
-msgstr ""
+msgstr "Kamba"
 
 msgid "kan"
-msgstr ""
+msgstr "Kannada"
 
 msgid "kar"
-msgstr ""
+msgstr "Karen languages"
 
 msgid "kas"
-msgstr ""
+msgstr "Kashmiri"
 
 msgid "kau"
-msgstr ""
+msgstr "Kanuri"
 
 msgid "kaw"
-msgstr ""
+msgstr "Kawi"
 
 msgid "kaz"
-msgstr ""
+msgstr "Kazakh"
 
 msgid "kbd"
-msgstr ""
+msgstr "Kabardian"
 
 msgid "kha"
-msgstr ""
+msgstr "Khasi"
 
 msgid "khi"
-msgstr ""
+msgstr "Khoisan languages"
 
 msgid "khm"
-msgstr ""
+msgstr "Central Khmer"
 
 msgid "kho"
-msgstr ""
+msgstr "Khotanese; Sakan"
 
 msgid "kik"
-msgstr ""
+msgstr "Kikuyu; Gikuyu"
 
 msgid "kin"
-msgstr ""
+msgstr "Kinyarwanda"
 
 msgid "kir"
-msgstr ""
+msgstr "Kirghiz; Kyrgyz"
 
 msgid "kmb"
-msgstr ""
+msgstr "Kimbundu"
 
 msgid "kok"
-msgstr ""
+msgstr "Konkani"
 
 msgid "kom"
-msgstr ""
+msgstr "Komi"
 
 msgid "kon"
-msgstr ""
+msgstr "Kongo"
 
 msgid "kor"
-msgstr ""
+msgstr "Korean"
 
 msgid "kos"
-msgstr ""
+msgstr "Kosraean"
 
 msgid "kpe"
-msgstr ""
+msgstr "Kpelle"
 
 msgid "krc"
-msgstr ""
+msgstr "Karachay-Balkar"
 
 msgid "krl"
-msgstr ""
+msgstr "Karelian"
 
 msgid "kro"
-msgstr ""
+msgstr "Kru languages"
 
 msgid "kru"
-msgstr ""
+msgstr "Kurukh"
 
 msgid "kua"
-msgstr ""
+msgstr "Kuanyama; Kwanyama"
 
 msgid "kum"
-msgstr ""
+msgstr "Kumyk"
 
 msgid "kur"
-msgstr ""
+msgstr "Kurdish"
 
 msgid "kut"
-msgstr ""
+msgstr "Kutenai"
 
 msgid "lad"
-msgstr ""
+msgstr "Ladino"
 
 msgid "lah"
-msgstr ""
+msgstr "Lahnda"
 
 msgid "lam"
-msgstr ""
+msgstr "Lamba"
 
 msgid "lao"
-msgstr ""
+msgstr "Lao"
 
 msgid "lat"
-msgstr ""
+msgstr "Latin"
 
 msgid "lav"
-msgstr ""
+msgstr "Latvian"
 
 msgid "lez"
-msgstr ""
+msgstr "Lezghian"
 
 msgid "lim"
-msgstr ""
+msgstr "Limburgan; Limburger; Limburgish"
 
 msgid "lin"
-msgstr ""
+msgstr "Lingala"
 
 msgid "lit"
-msgstr ""
+msgstr "Lithuanian"
 
 msgid "lol"
-msgstr ""
+msgstr "Mongo"
 
 msgid "loz"
-msgstr ""
+msgstr "Lozi"
 
 msgid "ltz"
-msgstr ""
+msgstr "Luxembourgish; Letzeburgesch"
 
 msgid "lua"
-msgstr ""
+msgstr "Luba-Lulua"
 
 msgid "lub"
-msgstr ""
+msgstr "Luba-Katanga"
 
 msgid "lug"
-msgstr ""
+msgstr "Ganda"
 
 msgid "lui"
-msgstr ""
+msgstr "Luiseno"
 
 msgid "lun"
-msgstr ""
+msgstr "Lunda"
 
 msgid "luo"
-msgstr ""
+msgstr "Luo (Kenya and Tanzania)"
 
 msgid "lus"
-msgstr ""
+msgstr "Lushai"
 
 msgid "mkd"
-msgstr ""
+msgstr "Macedonian"
 
 msgid "mad"
-msgstr ""
+msgstr "Madurese"
 
 msgid "mag"
-msgstr ""
+msgstr "Magahi"
 
 msgid "mah"
-msgstr ""
+msgstr "Marshallese"
 
 msgid "mai"
-msgstr ""
+msgstr "Maithili"
 
 msgid "mak"
-msgstr ""
+msgstr "Makasar"
 
 msgid "mal"
-msgstr ""
+msgstr "Malayalam"
 
 msgid "man"
-msgstr ""
+msgstr "Mandingo"
 
 msgid "mri"
-msgstr ""
+msgstr "Maori"
 
 msgid "map"
-msgstr ""
+msgstr "Austronesian languages"
 
 msgid "mar"
-msgstr ""
+msgstr "Marathi"
 
 msgid "mas"
-msgstr ""
+msgstr "Masai"
 
 msgid "msa"
-msgstr ""
+msgstr "Malay"
 
 msgid "mdf"
-msgstr ""
+msgstr "Moksha"
 
 msgid "mdr"
-msgstr ""
+msgstr "Mandar"
 
 msgid "men"
-msgstr ""
+msgstr "Mende"
 
 msgid "mga"
-msgstr ""
+msgstr "Irish, Middle (900-1200)"
 
 msgid "mic"
-msgstr ""
+msgstr "Mi'kmaq; Micmac"
 
 msgid "min"
-msgstr ""
+msgstr "Minangkabau"
 
 msgid "mis"
-msgstr ""
+msgstr "Uncoded languages"
 
 msgid "mkh"
-msgstr ""
+msgstr "Mon-Khmer languages"
 
 msgid "mlg"
-msgstr ""
+msgstr "Malagasy"
 
 msgid "mlt"
-msgstr ""
+msgstr "Maltese"
 
 msgid "mnc"
-msgstr ""
+msgstr "Manchu"
 
 msgid "mni"
-msgstr ""
+msgstr "Manipuri"
 
 msgid "mno"
-msgstr ""
+msgstr "Manobo languages"
 
 msgid "moh"
-msgstr ""
+msgstr "Mohawk"
 
 msgid "mon"
-msgstr ""
+msgstr "Mongolian"
 
 msgid "mos"
-msgstr ""
+msgstr "Mossi"
 
 msgid "mul"
-msgstr ""
+msgstr "Multiple languages"
 
 msgid "mun"
-msgstr ""
+msgstr "Munda languages"
 
 msgid "mus"
-msgstr ""
+msgstr "Creek"
 
 msgid "mwl"
-msgstr ""
+msgstr "Mirandese"
 
 msgid "mwr"
-msgstr ""
+msgstr "Marwari"
 
 msgid "myn"
-msgstr ""
+msgstr "Mayan languages"
 
 msgid "myv"
-msgstr ""
+msgstr "Erzya"
 
 msgid "nah"
-msgstr ""
+msgstr "Nahuatl languages"
 
 msgid "nai"
-msgstr ""
+msgstr "North American Indian languages"
 
 msgid "nap"
-msgstr ""
+msgstr "Neapolitan"
 
 msgid "nau"
-msgstr ""
+msgstr "Nauru"
 
 msgid "nav"
-msgstr ""
+msgstr "Navajo; Navaho"
 
 msgid "nbl"
-msgstr ""
+msgstr "Ndebele, South; South Ndebele"
 
 msgid "nde"
-msgstr ""
+msgstr "Ndebele, North; North Ndebele"
 
 msgid "ndo"
-msgstr ""
+msgstr "Ndonga"
 
 msgid "nds"
-msgstr ""
+msgstr "Low German; Low Saxon; German, Low; Saxon, Low"
 
 msgid "nep"
-msgstr ""
+msgstr "Nepali"
 
 msgid "new"
-msgstr ""
+msgstr "Nepal Bhasa; Newari"
 
 msgid "nia"
-msgstr ""
+msgstr "Nias"
 
 msgid "nic"
-msgstr ""
+msgstr "Niger-Kordofanian languages"
 
 msgid "niu"
-msgstr ""
+msgstr "Niuean"
 
 msgid "nno"
-msgstr ""
+msgstr "Norwegian Nynorsk; Nynorsk, Norwegian"
 
 msgid "nob"
-msgstr ""
+msgstr "Bokmål, Norwegian; Norwegian Bokmål"
 
 msgid "nog"
-msgstr ""
+msgstr "Nogai"
 
 msgid "non"
-msgstr ""
+msgstr "Norse, Old"
 
 msgid "nor"
-msgstr ""
+msgstr "Norwegian"
 
 msgid "nqo"
-msgstr ""
+msgstr "N'Ko"
 
 msgid "nso"
-msgstr ""
+msgstr "Pedi; Sepedi; Northern Sotho"
 
 msgid "nub"
-msgstr ""
+msgstr "Nubian languages"
 
 msgid "nwc"
-msgstr ""
+msgstr "Classical Newari; Old Newari; Classical Nepal Bhasa"
 
 msgid "nya"
-msgstr ""
+msgstr "Chichewa; Chewa; Nyanja"
 
 msgid "nym"
-msgstr ""
+msgstr "Nyamwezi"
 
 msgid "nyn"
-msgstr ""
+msgstr "Nyankole"
 
 msgid "nyo"
-msgstr ""
+msgstr "Nyoro"
 
 msgid "nzi"
-msgstr ""
+msgstr "Nzima"
 
 msgid "oci"
-msgstr ""
+msgstr "Occitan (post 1500)"
 
 msgid "oji"
-msgstr ""
+msgstr "Ojibwa"
 
 msgid "ori"
-msgstr ""
+msgstr "Oriya"
 
 msgid "orm"
-msgstr ""
+msgstr "Oromo"
 
 msgid "osa"
-msgstr ""
+msgstr "Osage"
 
 msgid "oss"
-msgstr ""
+msgstr "Ossetian; Ossetic"
 
 msgid "ota"
-msgstr ""
+msgstr "Turkish, Ottoman (1500-1928)"
 
 msgid "oto"
-msgstr ""
+msgstr "Otomian languages"
 
 msgid "paa"
-msgstr ""
+msgstr "Papuan languages"
 
 msgid "pag"
-msgstr ""
+msgstr "Pangasinan"
 
 msgid "pal"
-msgstr ""
+msgstr "Pahlavi"
 
 msgid "pam"
-msgstr ""
+msgstr "Pampanga; Kapampangan"
 
 msgid "pan"
-msgstr ""
+msgstr "Panjabi; Punjabi"
 
 msgid "pap"
-msgstr ""
+msgstr "Papiamento"
 
 msgid "pau"
-msgstr ""
+msgstr "Palauan"
 
 msgid "peo"
-msgstr ""
+msgstr "Persian, Old (ca.600-400 B.C.)"
 
 msgid "phi"
-msgstr ""
+msgstr "Philippine languages"
 
 msgid "phn"
-msgstr ""
+msgstr "Phoenician"
 
 msgid "pli"
-msgstr ""
+msgstr "Pali"
 
 msgid "pol"
-msgstr ""
+msgstr "Polish"
 
 msgid "pon"
-msgstr ""
+msgstr "Pohnpeian"
 
 msgid "por"
-msgstr ""
+msgstr "Portuguese"
 
 msgid "pra"
-msgstr ""
+msgstr "Prakrit languages"
 
 msgid "pro"
-msgstr ""
+msgstr "Provençal, Old (to 1500); Occitan, Old (to 1500)"
 
 msgid "pus"
-msgstr ""
+msgstr "Pushto; Pashto"
 
 msgid "que"
-msgstr ""
+msgstr "Quechua"
 
 msgid "raj"
-msgstr ""
+msgstr "Rajasthani"
 
 msgid "rap"
-msgstr ""
+msgstr "Rapanui"
 
 msgid "rar"
-msgstr ""
+msgstr "Rarotongan; Cook Islands Maori"
 
 msgid "roa"
-msgstr ""
+msgstr "Romance languages"
 
 msgid "roh"
-msgstr ""
+msgstr "Romansh"
 
 msgid "rom"
-msgstr ""
+msgstr "Romany"
 
 msgid "ron"
-msgstr ""
+msgstr "Romanian; Moldavian; Moldovan"
 
 msgid "run"
-msgstr ""
+msgstr "Rundi"
 
 msgid "rup"
-msgstr ""
+msgstr "Aromanian; Arumanian; Macedo-Romanian"
 
 msgid "rus"
-msgstr ""
+msgstr "Russian"
 
 msgid "sad"
-msgstr ""
+msgstr "Sandawe"
 
 msgid "sag"
-msgstr ""
+msgstr "Sango"
 
 msgid "sah"
-msgstr ""
+msgstr "Yakut"
 
 msgid "sai"
-msgstr ""
+msgstr "South American Indian languages"
 
 msgid "sal"
-msgstr ""
+msgstr "Salishan languages"
 
 msgid "sam"
-msgstr ""
+msgstr "Samaritan Aramaic"
 
 msgid "san"
-msgstr ""
+msgstr "Sanskrit"
 
 msgid "sas"
-msgstr ""
+msgstr "Sasak"
 
 msgid "sat"
-msgstr ""
+msgstr "Santali"
 
 msgid "scn"
-msgstr ""
+msgstr "Sicilian"
 
 msgid "sco"
-msgstr ""
+msgstr "Scots"
 
 msgid "sel"
-msgstr ""
+msgstr "Selkup"
 
 msgid "sem"
-msgstr ""
+msgstr "Semitic languages"
 
 msgid "sga"
-msgstr ""
+msgstr "Irish, Old (to 900)"
 
 msgid "sgn"
-msgstr ""
+msgstr "Sign Languages"
 
 msgid "shn"
-msgstr ""
+msgstr "Shan"
 
 msgid "sid"
-msgstr ""
+msgstr "Sidamo"
 
 msgid "sin"
-msgstr ""
+msgstr "Sinhala; Sinhalese"
 
 msgid "sio"
-msgstr ""
+msgstr "Siouan languages"
 
 msgid "sit"
-msgstr ""
+msgstr "Sino-Tibetan languages"
 
 msgid "sla"
-msgstr ""
+msgstr "Slavic languages"
 
 msgid "slk"
-msgstr ""
+msgstr "Slovak"
 
 msgid "slv"
-msgstr ""
+msgstr "Slovenian"
 
 msgid "sma"
-msgstr ""
+msgstr "Southern Sami"
 
 msgid "sme"
-msgstr ""
+msgstr "Northern Sami"
 
 msgid "smi"
-msgstr ""
+msgstr "Sami languages"
 
 msgid "smj"
-msgstr ""
+msgstr "Lule Sami"
 
 msgid "smn"
-msgstr ""
+msgstr "Inari Sami"
 
 msgid "smo"
-msgstr ""
+msgstr "Samoan"
 
 msgid "sms"
-msgstr ""
+msgstr "Skolt Sami"
 
 msgid "sna"
-msgstr ""
+msgstr "Shona"
 
 msgid "snd"
-msgstr ""
+msgstr "Sindhi"
 
 msgid "snk"
-msgstr ""
+msgstr "Soninke"
 
 msgid "sog"
-msgstr ""
+msgstr "Sogdian"
 
 msgid "som"
-msgstr ""
+msgstr "Somali"
 
 msgid "son"
-msgstr ""
+msgstr "Songhai languages"
 
 msgid "sot"
-msgstr ""
+msgstr "Sotho, Southern"
 
 msgid "spa"
-msgstr ""
+msgstr "Spanish; Castilian"
 
 msgid "srd"
-msgstr ""
+msgstr "Sardinian"
 
 msgid "srn"
-msgstr ""
+msgstr "Sranan Tongo"
 
 msgid "srp"
-msgstr ""
+msgstr "Serbian"
 
 msgid "srr"
-msgstr ""
+msgstr "Serer"
 
 msgid "ssa"
-msgstr ""
+msgstr "Nilo-Saharan languages"
 
 msgid "ssw"
-msgstr ""
+msgstr "Swati"
 
 msgid "suk"
-msgstr ""
+msgstr "Sukuma"
 
 msgid "sun"
-msgstr ""
+msgstr "Sundanese"
 
 msgid "sus"
-msgstr ""
+msgstr "Susu"
 
 msgid "sux"
-msgstr ""
+msgstr "Sumerian"
 
 msgid "swa"
-msgstr ""
+msgstr "Swahili"
 
 msgid "swe"
-msgstr ""
+msgstr "Swedish"
 
 msgid "syc"
-msgstr ""
+msgstr "Classical Syriac"
 
 msgid "syr"
-msgstr ""
+msgstr "Syriac"
 
 msgid "tah"
-msgstr ""
+msgstr "Tahitian"
 
 msgid "tai"
-msgstr ""
+msgstr "Tai languages"
 
 msgid "tam"
-msgstr ""
+msgstr "Tamil"
 
 msgid "tat"
-msgstr ""
+msgstr "Tatar"
 
 msgid "tel"
-msgstr ""
+msgstr "Telugu"
 
 msgid "tem"
-msgstr ""
+msgstr "Timne"
 
 msgid "ter"
-msgstr ""
+msgstr "Tereno"
 
 msgid "tet"
-msgstr ""
+msgstr "Tetum"
 
 msgid "tgk"
-msgstr ""
+msgstr "Tajik"
 
 msgid "tgl"
-msgstr ""
+msgstr "Tagalog"
 
 msgid "tha"
-msgstr ""
+msgstr "Thai"
 
 msgid "tig"
-msgstr ""
+msgstr "Tigre"
 
 msgid "tir"
-msgstr ""
+msgstr "Tigrinya"
 
 msgid "tiv"
-msgstr ""
+msgstr "Tiv"
 
 msgid "tkl"
-msgstr ""
+msgstr "Tokelau"
 
 msgid "tlh"
-msgstr ""
+msgstr "Klingon; tlhIngan-Hol"
 
 msgid "tli"
-msgstr ""
+msgstr "Tlingit"
 
 msgid "tmh"
-msgstr ""
+msgstr "Tamashek"
 
 msgid "tog"
-msgstr ""
+msgstr "Tonga (Nyasa)"
 
 msgid "ton"
-msgstr ""
+msgstr "Tonga (Tonga Islands)"
 
 msgid "tpi"
-msgstr ""
+msgstr "Tok Pisin"
 
 msgid "tsi"
-msgstr ""
+msgstr "Tsimshian"
 
 msgid "tsn"
-msgstr ""
+msgstr "Tswana"
 
 msgid "tso"
-msgstr ""
+msgstr "Tsonga"
 
 msgid "tuk"
-msgstr ""
+msgstr "Turkmen"
 
 msgid "tum"
-msgstr ""
+msgstr "Tumbuka"
 
 msgid "tup"
-msgstr ""
+msgstr "Tupi languages"
 
 msgid "tur"
-msgstr ""
+msgstr "Turkish"
 
 msgid "tut"
-msgstr ""
+msgstr "Altaic languages"
 
 msgid "tvl"
-msgstr ""
+msgstr "Tuvalu"
 
 msgid "twi"
-msgstr ""
+msgstr "Twi"
 
 msgid "tyv"
-msgstr ""
+msgstr "Tuvinian"
 
 msgid "udm"
-msgstr ""
+msgstr "Udmurt"
 
 msgid "uga"
-msgstr ""
+msgstr "Ugaritic"
 
 msgid "uig"
-msgstr ""
+msgstr "Uighur; Uyghur"
 
 msgid "ukr"
-msgstr ""
+msgstr "Ukrainian"
 
 msgid "umb"
-msgstr ""
+msgstr "Umbundu"
 
 msgid "und"
-msgstr ""
+msgstr "Undetermined"
 
 msgid "urd"
-msgstr ""
+msgstr "Urdu"
 
 msgid "uzb"
-msgstr ""
+msgstr "Uzbek"
 
 msgid "vai"
-msgstr ""
+msgstr "Vai"
 
 msgid "ven"
-msgstr ""
+msgstr "Venda"
 
 msgid "vie"
-msgstr ""
+msgstr "Vietnamese"
 
 msgid "vol"
-msgstr ""
+msgstr "Volapük"
 
 msgid "vot"
-msgstr ""
+msgstr "Votic"
 
 msgid "wak"
-msgstr ""
+msgstr "Wakashan languages"
 
 msgid "wal"
-msgstr ""
+msgstr "Wolaitta; Wolaytta"
 
 msgid "war"
-msgstr ""
+msgstr "Waray"
 
 msgid "was"
-msgstr ""
+msgstr "Washo"
 
 msgid "wen"
-msgstr ""
+msgstr "Sorbian languages"
 
 msgid "wln"
-msgstr ""
+msgstr "Walloon"
 
 msgid "wol"
-msgstr ""
+msgstr "Wolof"
 
 msgid "xal"
-msgstr ""
+msgstr "Kalmyk; Oirat"
 
 msgid "xho"
-msgstr ""
+msgstr "Xhosa"
 
 msgid "yao"
-msgstr ""
+msgstr "Yao"
 
 msgid "yap"
-msgstr ""
+msgstr "Yapese"
 
 msgid "yid"
-msgstr ""
+msgstr "Yiddish"
 
 msgid "yor"
-msgstr ""
+msgstr "Yoruba"
 
 msgid "ypk"
-msgstr ""
+msgstr "Yupik languages"
 
 msgid "zap"
-msgstr ""
+msgstr "Zapotec"
 
 msgid "zbl"
-msgstr ""
+msgstr "Blissymbols; Blissymbolics; Bliss"
 
 msgid "zen"
-msgstr ""
+msgstr "Zenaga"
 
 msgid "zgh"
-msgstr ""
+msgstr "Standard Moroccan Tamazight"
 
 msgid "zha"
-msgstr ""
+msgstr "Zhuang; Chuang"
 
 msgid "znd"
-msgstr ""
+msgstr "Zande languages"
 
 msgid "zul"
-msgstr ""
+msgstr "Zulu"
 
 msgid "zun"
-msgstr ""
+msgstr "Zuni"
 
 msgid "zxx"
-msgstr ""
+msgstr "No linguistic content; Not applicable"
 
 msgid "zza"
-msgstr ""
+msgstr "Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki"
 
 #: archive-cooperation-partner.php:42
 msgid "Our Cooperations"
 msgstr ""
 
-#: archive-supporter.php:10
-msgid "You want to support us?"
-msgstr ""
-
-#: archive-supporter.php:35
-msgid "The Association"
-msgstr ""
-
-#: archive-supporter.php:49
-#: archive-supporter.php:82
+#: archive-supporter.php:56
+#: archive-supporter.php:76
+#: page.php:39
 msgid "To the Website"
 msgstr ""
 
-#: footer.php:32
+#: footer.php:23
+#: inc/customizer/contact-addresses.php:25
+#: inc/customizer/footer.php:39
 msgid "Postal Address"
 msgstr ""
 
-#: footer.php:38
+#: footer.php:31
+#: inc/customizer/contact-addresses.php:21
 msgid "Visitor Address"
 msgstr ""
 
-#: front-page.php:93
+#: front-page.php:94
 msgid "To the event"
 msgstr ""
 
-#: front-page.php:154
-#: front-page.php:253
+#: front-page.php:155
+#: front-page.php:238
 msgid "Screening starts: "
 msgstr ""
 
-#: front-page.php:176
-#: front-page.php:282
+#: front-page.php:177
+#: front-page.php:267
 msgid "To the Archive"
 msgstr ""
 
-#: front-page.php:189
-#: front-page.php:195
+#: header.php:136
+#: header.php:142
 msgid "Semester Break"
 msgstr ""
 
-#: front-page.php:202
+#: front-page.php:187
 msgid "Intermission in the Cinema"
 msgstr ""
 
-#: front-page.php:246
+#: front-page.php:231
 msgid "Intermission Specials"
 msgstr ""
 
-#: front-page.php:277
+#: front-page.php:262
 msgid "What we have shown so far"
 msgstr ""
 
-#: front-page.php:400
-#: front-page.php:401
+#: front-page.php:385
+#: front-page.php:386
 msgid "To our Location"
 msgstr ""
 
-#: front-page.php:483
+#: front-page.php:471
 msgid "Logos of ours Cooperation partners"
 msgstr ""
 
-#: front-page.php:511
+#: front-page.php:499
 msgid "Our Cooperation Partners"
 msgstr ""
 
-#: front-page.php:515
+#: front-page.php:503
 msgid "Our supporters"
 msgstr ""
 
-#: inc/customizer.php:25
+#: inc/customizer.php:35
 msgid "Blocks"
 msgstr ""
 
-#: inc/customizer.php:28
+#: inc/customizer.php:38
 msgid "Edit the blocks displayed on the frontpage"
 msgstr ""
 
-#: inc/customizer.php:32
+#: inc/customizer.php:45
 msgid "Pages"
 msgstr ""
 
-#: inc/customizer.php:35
+#: inc/customizer.php:48
 msgid "Edit the display of some content pages of this theme"
-msgstr ""
-
-#: inc/customizer.php:113
-#: inc/customizer.php:189
-msgid "Background Color"
-msgstr ""
-
-#: inc/customizer.php:122
-#: inc/customizer.php:199
-msgid "Text Color"
-msgstr ""
-
-#: inc/customizer.php:131
-#: inc/customizer.php:209
-msgid "Background Color (Dark)"
-msgstr ""
-
-#: inc/customizer.php:140
-#: inc/customizer.php:218
-msgid "Text Color (Dark)"
 msgstr ""
 
 #: inc/customizer/anonymization.php:15
 msgid "Configure the anonymization functions of the theme"
 msgstr ""
 
-#: inc/customizer/anonymization.php:47
-msgid "Anonymous Image"
-msgstr ""
-
-#: inc/customizer/anonymization.php:48
-msgid "This image is display if a movie doesn't have a advertisement license set in the backend. Additionally, the image might be displayed as fallback image in case a event or movie doesn't have one set"
-msgstr ""
-
-#: inc/customizer/anonymization.php:53
+#: inc/customizer/anonymization.php:41
 msgid "Anonymous Movie Explanation (German)"
 msgstr ""
 
-#: inc/customizer/anonymization.php:60
+#: inc/customizer/anonymization.php:48
 msgid "Anonymous Movie Explanation (English)"
 msgstr ""
 
-#: inc/customizer/cooperations-block.php:10
+#: inc/customizer/block-coops.php:8
+#: inc/customizer/front-page.php:55
 msgid "Cooperation Partners and Supporters"
 msgstr ""
 
-#: inc/customizer/cooperations-block.php:11
+#: inc/customizer/block-coops.php:8
 msgid "Configure the content of the block showcasing our supporters and cooperation partners"
 msgstr ""
 
-#: inc/customizer/cooperations-block.php:35
+#: inc/customizer/archiv.php:37
+#: inc/customizer/block-coops.php:32
+#: inc/customizer/block-location.php:64
+#: inc/customizer/block-team.php:65
+#: inc/customizer/page-supporters.php:38
+#: inc/customizer/page-team.php:40
 msgid "Text (German)"
 msgstr ""
 
-#: inc/customizer/cooperations-block.php:41
+#: inc/customizer/archiv.php:41
+#: inc/customizer/block-coops.php:39
+#: inc/customizer/block-location.php:70
+#: inc/customizer/block-team.php:73
+#: inc/customizer/page-supporters.php:46
+#: inc/customizer/page-team.php:46
 msgid "Text (English)"
 msgstr ""
 
-#: inc/customizer/cooperations-block.php:47
-#: inc/customizer/location-block.php:92
-#: inc/customizer/team-block.php:77
+#: inc/customizer/block-coops.php:46
+#: inc/customizer/block-location.php:76
+#: inc/customizer/block-team.php:81
 msgid "Text Color (Light Mode)"
 msgstr ""
 
-#: inc/customizer/cooperations-block.php:48
-#: inc/customizer/cooperations-block.php:62
+#: inc/customizer/block-coops.php:47
+#: inc/customizer/block-location.php:77
+#: inc/customizer/block-team.php:82
 msgid "The color of the text and partner logos (if possible)"
 msgstr ""
 
-#: inc/customizer/cooperations-block.php:54
-#: inc/customizer/location-block.php:102
-#: inc/customizer/team-block.php:87
+#: inc/customizer/block-coops.php:54
+#: inc/customizer/block-location.php:84
+#: inc/customizer/block-team.php:89
 msgid "Background Color (Light Mode)"
 msgstr ""
 
-#: inc/customizer/cooperations-block.php:55
-#: inc/customizer/cooperations-block.php:69
+#: inc/customizer/block-coops.php:55
+#: inc/customizer/block-location.php:85
+#: inc/customizer/block-team.php:90
 msgid "The background color of the whole block"
 msgstr ""
 
-#: inc/customizer/cooperations-block.php:61
-#: inc/customizer/location-block.php:112
-#: inc/customizer/team-block.php:97
+#: inc/customizer/block-coops.php:62
+#: inc/customizer/block-location.php:92
+#: inc/customizer/block-team.php:97
 msgid "Text Color (Dark Mode)"
 msgstr ""
 
-#: inc/customizer/cooperations-block.php:68
-#: inc/customizer/location-block.php:122
-#: inc/customizer/team-block.php:107
+#: inc/customizer/block-coops.php:70
+#: inc/customizer/block-location.php:100
+#: inc/customizer/block-team.php:105
 msgid "Background Color (Dark Mode)"
 msgstr ""
 
-#: inc/customizer/cooperations-page.php:9
+#: inc/customizer/page-cooperations.php:9
 msgid "Cooperation Page"
 msgstr ""
 
-#: inc/customizer/cooperations-page.php:9
+#: inc/customizer/page-cooperations.php:9
 #: inc/customizer/semester-break.php:8
 msgid "Configure the content of the page showing our cooperation partners and how to to a cooperation with us"
 msgstr ""
 
-#: inc/customizer/cooperations-page.php:44
+#: inc/customizer/archiv.php:30
+#: inc/customizer/page-cooperations.php:46
+#: inc/customizer/page-supporters.php:27
+#: inc/customizer/page-team.php:30
 msgid "Heading (German)"
 msgstr ""
 
-#: inc/customizer/cooperations-page.php:49
+#: inc/customizer/archiv.php:33
+#: inc/customizer/page-cooperations.php:51
+#: inc/customizer/page-supporters.php:32
+#: inc/customizer/page-team.php:35
 msgid "Heading (English)"
 msgstr ""
 
-#: inc/customizer/cooperations-page.php:54
+#: inc/customizer/page-cooperations.php:56
 msgid "Introduction (German)"
 msgstr ""
 
-#: inc/customizer/cooperations-page.php:60
+#: inc/customizer/page-cooperations.php:62
 msgid "Introduction (English)"
 msgstr ""
 
-#: inc/customizer/cooperations-page.php:66
+#: inc/customizer/page-cooperations.php:69
 msgid "Cooperation Rules (German)"
 msgstr ""
 
-#: inc/customizer/cooperations-page.php:67
-#: inc/customizer/cooperations-page.php:74
+#: inc/customizer/page-cooperations.php:70
+#: inc/customizer/page-cooperations.php:78
 msgid "The rules are displayed in the same order as here"
 msgstr ""
 
-#: inc/customizer/cooperations-page.php:73
+#: inc/customizer/page-cooperations.php:77
 msgid "Cooperation Rules (English)"
 msgstr ""
 
-#: inc/customizer/cooperations-page.php:80
-#: inc/customizer/cooperations-page.php:86
+#: inc/customizer/page-cooperations.php:91
 msgid "Partner List Text (English)"
 msgstr ""
 
-#: inc/customizer/frontpage.php:67
-#: inc/customizer/frontpage.php:85
+#: inc/customizer/front-page.php:41
 msgid "Displayed Special Programs"
-msgstr ""
-
-#: inc/customizer/frontpage.php:71
-msgid "Choose the special programs you want to display on the front page. (Use <kbd>Ctrl</kbd> to select multiple entries)"
-msgstr ""
-
-#: inc/customizer/frontpage.php:90
-msgid "Cooperations Block"
-msgstr ""
-
-#: inc/customizer/frontpage.php:93
-msgid "Choose additional blocks shown the front page. (Use <kbd>Ctrl</kbd> to select multiple entries)"
-msgstr ""
-
-#: inc/customizer/functions.php:17
-msgid "The selected attachment does not exist on disk"
-msgstr ""
-
-#: inc/customizer/functions.php:25
-msgid "The selected attachment is not a SVG image"
-msgstr ""
-
-#: inc/customizer/header.php:38
-msgid "The selected Logo will be displayed in the navigation bar brand section (leftmost ara). It will always be displayed, event on mobile devices"
-msgstr ""
-
-#: inc/customizer/location-block.php:14
-msgid "Location (Block)"
-msgstr ""
-
-#: inc/customizer/location-block.php:16
-msgid "Configure the display of location block shown on the fron page"
-msgstr ""
-
-#: inc/customizer/location-block.php:66
-#: inc/customizer/team-block.php:51
-msgid "German Block Text"
-msgstr ""
-
-#: inc/customizer/location-block.php:79
-#: inc/customizer/team-block.php:64
-msgid "English Block Text"
-msgstr ""
-
-#: inc/customizer/location-block.php:94
-#: inc/customizer/location-block.php:114
-#: inc/customizer/team-block.php:79
-#: inc/customizer/team-block.php:99
-msgid "Please ensure that a contrast ratio of at least 7:1 is chosen against the background color"
-msgstr ""
-
-#: inc/customizer/location-block.php:104
-#: inc/customizer/location-block.php:124
-#: inc/customizer/team-block.php:89
-#: inc/customizer/team-block.php:109
-msgid "Please ensure that a contrast ratio of at least 1:7 is chosen against the text color"
-msgstr ""
-
-#: inc/customizer/location-page.php:14
-msgid "Location (Page)"
-msgstr ""
-
-#: inc/customizer/location-page.php:16
-msgid "Configure the display of location page shown"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:15
-msgid "Archive Page"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:17
-msgid "Configure the display of the movie and event archive"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:40
-#: inc/customizer/movie-archive.php:64
-msgid "Page Header (German)"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:45
-msgid "Page Header (English)"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:70
-msgid "Page Content (German)"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:77
-msgid "Page Content (English)"
 msgstr ""
 
 #: inc/customizer/semester-break.php:8
@@ -3015,7 +2700,6 @@ msgstr ""
 msgid "Tagline (English)"
 msgstr ""
 
-#: inc/customizer/semester-break.php:68
 #: inc/customizer/semester-break.php:81
 msgid "Intermission Text (German)"
 msgstr ""
@@ -3072,88 +2756,6 @@ msgstr ""
 
 #: inc/customizer/semester-break.php:130
 msgid "Archive Reference Text (English)"
-msgstr ""
-
-#: inc/customizer/social-medias.php:16
-msgid "Configure the Social Media Accounts displayed on the website"
-msgstr ""
-
-#: inc/customizer/social-medias.php:36
-#: inc/customizer/social-medias.php:64
-msgid "Just put in the username here. The full URL is not required as it is generated during the page rendering"
-msgstr ""
-
-#: inc/customizer/social-medias.php:47
-msgid "Mastodon Profile URL"
-msgstr ""
-
-#: inc/customizer/social-medias.php:50
-msgid "Please put in the full URL to the Mastodon Profile. The generation of the username only displays is done during page rendering"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:15
-msgid "Supporter (Page)"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:17
-msgid "Configure the display of the supporter page"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:38
-msgid "German Text"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:53
-msgid "English Text"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:73
-msgid "The selected Logo will be displayed above all other supporters together with the text entered below"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:88
-msgid "Association Description (German)"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:103
-msgid "Association Description (English)"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:119
-msgid "Association Website Url"
-msgstr ""
-
-#: inc/customizer/team-block.php:14
-msgid "Team (Block)"
-msgstr ""
-
-#: inc/customizer/team-block.php:16
-#: inc/customizer/team-page.php:16
-msgid "Configure the display of the team page and the linked block on the frontpage"
-msgstr ""
-
-#: inc/customizer/team-block.php:37
-msgid "The selected image will be displayed on the block introducing the team"
-msgstr ""
-
-#: inc/customizer/team-page.php:14
-msgid "Team (Page)"
-msgstr ""
-
-#: inc/customizer/team-page.php:39
-msgid "The selected image will be displayed if a team member has no photo set"
-msgstr ""
-
-#: inc/customizer/team-page.php:53
-msgid "German Intro Text"
-msgstr ""
-
-#: inc/customizer/team-page.php:66
-msgid "English Intro Text"
-msgstr ""
-
-#: inc/customizer/youth-protection.php:43
-msgid "E-Mail Address (Youth Protection Officer)"
 msgstr ""
 
 #: partials/contact-block.php:59
@@ -3218,4 +2820,356 @@ msgstr ""
 
 #: archive-cooperation-partner.php:37
 msgid "Inquire About A Cooperation Now"
+msgstr ""
+
+#: inc/customizer.php:58
+msgid "Contact Options"
+msgstr ""
+
+#: inc/customizer.php:61
+msgid "Configure the contact options listed throughout the website"
+msgstr ""
+
+#: inc/customizer/anonymization.php:35
+msgid "Anonymous Event/Movie Image"
+msgstr ""
+
+#: inc/customizer/anonymization.php:36
+msgid "This image is displayed if a movie or event doesn't have a advertisement license set in the backend. Additionally, the image might be displayed as fallback image in case a event or movie doesn't have one set"
+msgstr ""
+
+#: inc/customizer/anonymization.php:55
+msgid "Anonymous Team Member Image"
+msgstr ""
+
+#: inc/customizer/anonymization.php:56
+msgid "This image is displayed if a team member doesn't have a picture set for them"
+msgstr ""
+
+#: inc/customizer/archiv.php:10
+msgid "Archive"
+msgstr ""
+
+#: inc/customizer/archiv.php:11
+msgid "Configure the display of the archive page"
+msgstr ""
+
+#: inc/customizer/block-coops.php:63
+#: inc/customizer/block-location.php:93
+#: inc/customizer/block-team.php:98
+msgid "The color of the text and partner logos (if possible) during dark mode"
+msgstr ""
+
+#: inc/customizer/block-coops.php:71
+#: inc/customizer/block-location.php:101
+#: inc/customizer/block-team.php:106
+msgid "The background color of the whole block during dark mode"
+msgstr ""
+
+#: inc/customizer/block-location.php:8
+#: inc/customizer/front-page.php:54
+msgid "Location"
+msgstr ""
+
+#: inc/customizer/block-location.php:8
+msgid "Configure the content of the block showcasing our location"
+msgstr ""
+
+#: inc/customizer/block-location.php:44
+#: inc/customizer/block-team.php:41
+msgid "Block Header Image"
+msgstr ""
+
+#: inc/customizer/block-location.php:45
+#: inc/customizer/block-team.php:42
+msgid "Upload an image for the block header which will be displayed above the block title"
+msgstr ""
+
+#: inc/customizer/block-location.php:50
+#: inc/customizer/block-team.php:49
+msgid "Title (German)"
+msgstr ""
+
+#: inc/customizer/block-location.php:57
+#: inc/customizer/block-team.php:57
+msgid "Title (English)"
+msgstr ""
+
+#: inc/customizer/block-team.php:8
+msgid "Configure the content of the block introducing our team"
+msgstr ""
+
+#: inc/customizer/contact-addresses.php:8
+msgid "Addresses"
+msgstr ""
+
+#: inc/customizer/contact-addresses.php:8
+msgid "Configure the addresses listed throughout the website"
+msgstr ""
+
+#: inc/customizer/contact-email.php:8
+msgid "E-Mail Addresses"
+msgstr ""
+
+#: inc/customizer/contact-email.php:8
+msgid "Configure the available email options listed throughout the website"
+msgstr ""
+
+#: inc/customizer/contact-email.php:22
+msgid "General"
+msgstr ""
+
+#: inc/customizer/contact-email.php:25
+msgid "Join"
+msgstr ""
+
+#: inc/customizer/contact-email.php:28
+msgid "Technical Contact"
+msgstr ""
+
+#: inc/customizer/contact-social-medias.php:10
+msgid "Social Media"
+msgstr ""
+
+#: inc/customizer/contact-social-medias.php:11
+msgid "Configure the available social media options listed throughout the website"
+msgstr ""
+
+#: inc/customizer/contact-social-medias.php:31
+msgid "Instagram URL"
+msgstr ""
+
+#: inc/customizer/contact-social-medias.php:37
+msgid "Facebook URL"
+msgstr ""
+
+#: inc/customizer/contact-social-medias.php:40
+msgid "Discord Server Invitation URL"
+msgstr ""
+
+#: inc/customizer/contact-social-medias.php:44
+msgid "Letterbox URL"
+msgstr ""
+
+#: inc/customizer/footer.php:9
+msgid "Footer"
+msgstr ""
+
+#: inc/customizer/footer.php:9
+msgid "Configure the content displayed in the footer"
+msgstr ""
+
+#: inc/customizer/footer.php:26
+msgid "Displayed Social Medias"
+msgstr ""
+
+#: inc/customizer/footer.php:27
+msgid "The selected social media pages will be linked in the footer"
+msgstr ""
+
+#: inc/customizer/footer.php:34
+msgid "Displayed Addresses"
+msgstr ""
+
+#: inc/customizer/footer.php:35
+msgid "The selected addresses will be shown in the footer"
+msgstr ""
+
+#: inc/customizer/footer.php:38
+msgid "Visitor's Address"
+msgstr ""
+
+#: inc/customizer/footer.php:44
+msgid "Show Youth Protection Officer Data"
+msgstr ""
+
+#: inc/customizer/footer.php:45
+msgid "It's recommended to keep this enabled to ensure compliance with German Youth Protection Laws"
+msgstr ""
+
+#: inc/customizer/footer.php:50
+msgid "Select Impress Page"
+msgstr ""
+
+#: inc/customizer/footer.php:51
+msgid "Please select the page the impress is setup on"
+msgstr ""
+
+#: inc/customizer/footer.php:56
+msgid "Select Contact Page"
+msgstr ""
+
+#: inc/customizer/footer.php:57
+msgid "Please select the page the contact details are setup on"
+msgstr ""
+
+#: inc/customizer/front-page.php:15
+msgid "Configure the content displayed on the front page"
+msgstr ""
+
+#: inc/customizer/front-page.php:35
+msgid "Only movies and events associated with this semester will be displayed on the front page and be accessible for non-logged in users"
+msgstr ""
+
+#: inc/customizer/front-page.php:49
+msgid "Displayed Blocks"
+msgstr ""
+
+#: inc/customizer/front-page.php:50
+msgid "The selected blocks will be displayed below the special programs. Only if a block is activated here, the customizer for that block will be accessible"
+msgstr ""
+
+#: inc/customizer/navigation.php:9
+msgid "Navigation"
+msgstr ""
+
+#: inc/customizer/navigation.php:9
+msgid "Configure the display of the navigation header"
+msgstr ""
+
+#: inc/customizer/navigation.php:22
+msgid "Navigation Logo"
+msgstr ""
+
+#: inc/customizer/navigation.php:23
+msgid "Select a SVG Image for the navigation brand. Please select a logo which has no color set to it, to allow coloring it in in dark themes and special program pages"
+msgstr ""
+
+#: inc/customizer/page-cooperations.php:84
+msgid "Partner List Text (German)"
+msgstr ""
+
+#: inc/customizer/page-cooperations.php:85
+#: inc/customizer/page-cooperations.php:92
+msgid "This text is displayed just above the entries showcasing our cooperation partners"
+msgstr ""
+
+#: inc/customizer/page-cooperations.php:98
+msgid "Button Label (German)"
+msgstr ""
+
+#: inc/customizer/page-cooperations.php:104
+msgid "Button Label (English)"
+msgstr ""
+
+#: inc/customizer/page-cooperations.php:110
+msgid "URL to Cooperation Request Form"
+msgstr ""
+
+#: inc/customizer/page-location.php:9
+msgid "Location Page"
+msgstr ""
+
+#: inc/customizer/page-location.php:9
+msgid "Configure the content of the page showcasing our location"
+msgstr ""
+
+#: inc/customizer/page-location.php:38
+msgid "Map (Light Mode)"
+msgstr ""
+
+#: inc/customizer/page-location.php:39
+#: inc/customizer/page-location.php:45
+msgid "This map is displayed above the page contents on the location page"
+msgstr ""
+
+#: inc/customizer/page-location.php:44
+msgid "Map (Dark Mode)"
+msgstr ""
+
+#: inc/customizer/page-location.php:51
+msgid "[UNIKUM] Logo"
+msgstr ""
+
+#: inc/customizer/page-location.php:52
+msgid "This logo is displayed on the top of the Unikum block"
+msgstr ""
+
+#: inc/customizer/page-location.php:56
+msgid "[UNIKUM] Block Title (German)"
+msgstr ""
+
+#: inc/customizer/page-location.php:57
+#: inc/customizer/page-location.php:62
+#: inc/customizer/page-location.php:67
+#: inc/customizer/page-location.php:72
+msgid "The title of the Unikum block displayed below the page contents on the location page"
+msgstr ""
+
+#: inc/customizer/page-location.php:61
+msgid "[UNIKUM] Block Title (English)"
+msgstr ""
+
+#: inc/customizer/page-location.php:66
+msgid "[UNIKUM] Block Tagline (German)"
+msgstr ""
+
+#: inc/customizer/page-location.php:71
+msgid "[UNIKUM] Block Tagline (English)"
+msgstr ""
+
+#: inc/customizer/page-location.php:76
+msgid "[UNIKUM] Block Content (German)"
+msgstr ""
+
+#: inc/customizer/page-location.php:77
+#: inc/customizer/page-location.php:83
+msgid "The content of the Unikum block displayed below the page contents on the location page"
+msgstr ""
+
+#: inc/customizer/page-location.php:82
+msgid "[UNIKUM] Block Content (English)"
+msgstr ""
+
+#: inc/customizer/page-location.php:88
+msgid "[UNIKUM] Website URL"
+msgstr ""
+
+#: inc/customizer/page-location.php:89
+msgid "The url pointing to the website of the UNIKUM"
+msgstr ""
+
+#: inc/customizer/page-supporters.php:9
+msgid "Supporter Page"
+msgstr ""
+
+#: inc/customizer/page-supporters.php:9
+msgid "Configure the content of the page showing our loved supporters"
+msgstr ""
+
+#: inc/customizer/page-supporters.php:39
+#: inc/customizer/page-supporters.php:47
+msgid "This text is displayed above the supporter entries"
+msgstr ""
+
+#: inc/customizer/page-team.php:9
+msgid "Team Page"
+msgstr ""
+
+#: inc/customizer/page-team.php:9
+msgid "Configure the content of the page showing our current team and our former members"
+msgstr ""
+
+#: inc/customizer/page-team.php:53
+msgid "Text about former members (German)"
+msgstr ""
+
+#: inc/customizer/page-team.php:59
+msgid "Text about former members (English)"
+msgstr ""
+
+#: inc/customizer/semester-break.php:68
+msgid "Intermission Premonition Text (German)"
+msgstr ""
+
+#: inc/customizer/youth-protection.php:8
+msgid "Configure the details regarding the youth protection mechanisms used"
+msgstr ""
+
+#: inc/customizer/youth-protection.php:21
+msgid "Name of Youth Protection Officer"
+msgstr ""
+
+#: inc/customizer/youth-protection.php:24
+msgid "E-Mail Address of Youth Protection Officer"
 msgstr ""

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "POT-Creation-Date: 2025-07-04T16:26:53+00:00\n"
-"PO-Revision-Date: 2025-08-17 15:07+0200\n"
+"PO-Revision-Date: 2025-08-18 09:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -38,40 +38,36 @@ msgstr "Unikino GEGENLICHT"
 msgid "https://github.com/unikino-gegenlicht/wordpress-theme/graphs/contributors"
 msgstr "https://github.com/unikino-gegenlicht/wordpress-theme/graphs/contributors"
 
-#: archive-team-member.php:9
-msgid "Join Us!"
-msgstr "Mach Mit!"
-
-#: archive-team-member.php:27
+#: archive-team-member.php:20
 msgid "Our Team"
 msgstr "Unser Team"
 
-#: archive-team-member.php:29
+#: archive-team-member.php:22
 msgid "Active Members"
 msgstr "Aktive Mitglieder"
 
-#: archive-team-member.php:54
+#: archive-team-member.php:47
 msgid "since"
 msgstr "seit"
 
-#: archive-team-member.php:61
+#: archive-team-member.php:54
 msgid "Former Members"
 msgstr "Ehemalige Mitglieder"
 
-#: archive-movie.php:86 front-page.php:85 front-page.php:152 front-page.php:251
+#: archive-movie.php:87 front-page.php:86 front-page.php:153 front-page.php:236
 #: single-movie.php:98
 msgid "An unnamed movie"
 msgstr "Ein ungenannter Film"
 
-#: header.php:88
+#: header.php:117
 msgid "Logout"
 msgstr "Abmelden"
 
-#: header.php:95
+#: header.php:124
 msgid "Login"
 msgstr "Anmelden"
 
-#: footer.php:54 inc/customizer.php:310
+#: footer.php:48
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -79,128 +75,21 @@ msgstr "Kontakt"
 msgid "Telephone"
 msgstr "Telefon"
 
-#: inc/customizer.php:251 inc/customizer/anonymization.php:14
+#: inc/customizer/anonymization.php:14
 msgid "Anonymization"
 msgstr "Anonymisierung"
 
-#: inc/customizer.php:254
-msgid "Control the anonymization for movies/events that we can't advertise"
-msgstr "Stelle hier die Anonymisierung für Filme und Events ein, die wir nicht bewerben dürfen"
-
-#: inc/customizer.php:261
-msgid "Fallback Image"
-msgstr "Standardbild"
-
-#: inc/customizer.php:262
-msgid "Upload an image for fallback usage which is displayed on a movies detail page in case one hasn't been uploaded or the movie may not be advertised"
-msgstr "Lade ein Bild hoch welches als standardmäßiges Bild für nicht bewerbbare Filme und Events genutzt wird. Dieses Bild wird auch genutzt, wenn ein Film kein eigenes hochgeladenes Bild hat"
-
-#: inc/customizer.php:286
-msgid "Contact & Address Information"
-msgstr "Kontakt- & Adressinformationen"
-
-#: inc/customizer.php:287
-msgid "In this section you can add and edit the general contact information as well as the address displayed in the footer"
-msgstr "In diesem Bereich kannst du die angezeigten Kontaktinformationen auf der Seite verändern"
-
-#: inc/customizer.php:293 inc/customizer.php:304
-msgid "Address"
-msgstr "Adresse"
-
-#: inc/customizer.php:296
-msgid "In this section you can add and edit the address displayed in the footer"
-msgstr "Hier kannst du die angezeigte Adresse ändern"
-
-#: inc/customizer.php:313
-msgid "In this section you can add and edit the general contact information"
-msgstr "Hier kannst du die angezeigten Kontaktmöglichkeiten bearbeiten"
-
-#: inc/customizer.php:317
+#: inc/customizer/youth-protection.php:8
 msgid "Youth Protection"
 msgstr "Jugendschutz"
 
-#: inc/customizer.php:318
-msgid "Information about the Youth Protection Officer"
-msgstr "Informationen zum Jugendschutzbeauftragten"
-
-#: inc/customizer.php:328
-msgid "Name"
-msgstr "Name"
-
-#: inc/customizer.php:337
-msgid "E-Mail Address"
-msgstr "E-Mail Adresse"
-
-#: inc/customizer.php:342 inc/customizer/social-medias.php:14
-msgid "Social Medias"
-msgstr "Social Medias"
-
-#: inc/customizer.php:343
-msgid "You can set the usernames/urls to the commonly used social medias here"
-msgstr "Hier kannst du die Benutzernamen und URLs zu unseren Social Media Accounts einstellen"
-
-#: inc/customizer.php:353 inc/customizer/social-medias.php:33
-msgid "Instagram Username"
-msgstr "Instagram Benutzername"
-
-#: inc/customizer.php:362
+#: inc/customizer/contact-social-medias.php:34
 msgid "Mastodon URL"
 msgstr "Mastodon Profil URL"
 
-#: inc/customizer.php:364
-msgid "Please use the full url to the profile as Mastodon is decentralized"
-msgstr "Bitte gebe die vollständige Adresse ein, da Mastodon eine dezentrale Platform ist"
-
-#: inc/customizer.php:372 inc/customizer/social-medias.php:61
-msgid "Letterboxd Username"
-msgstr "Letterboxd Benutzername"
-
-#: inc/customizer.php:382
-msgid "E-Mail Address for Contact"
-msgstr "E-Mail Adresse für Kontaktanfragen"
-
-#: inc/customizer.php:392
-msgid "Phone Number"
-msgstr "Telefonnummer"
-
-#: inc/customizer.php:398
+#: inc/customizer/block-team.php:8 inc/customizer/front-page.php:53
 msgid "Team"
 msgstr "Team"
-
-#: inc/customizer.php:399
-msgid "Customize the options for the members page"
-msgstr "Ändere die Optionen für die Teamseite"
-
-#: inc/customizer.php:409 inc/customizer.php:431
-msgid "Introduction Text (English)"
-msgstr "Einführungstext (Englisch)"
-
-#: inc/customizer.php:412 inc/customizer.php:423 inc/customizer.php:434
-#: inc/customizer.php:445 inc/customizer.php:456
-#: inc/customizer/location-block.php:68 inc/customizer/location-block.php:81
-#: inc/customizer/supporter-page.php:39 inc/customizer/supporter-page.php:54
-#: inc/customizer/supporter-page.php:89 inc/customizer/supporter-page.php:104
-#: inc/customizer/team-block.php:53 inc/customizer/team-block.php:66
-#: inc/customizer/team-page.php:55 inc/customizer/team-page.php:68
-#: inc/customizer/team-page.php:83 inc/customizer/team-page.php:96
-msgid "To create a new paragraph inside the text, please use a doubled line break. All other linebreaks will be removed"
-msgstr "Um einen Absatz auf der Seite zu erstellen benutze bitte einen doppelten Zeilenumbruch. Alle anderen Umbrüche werden entfernt"
-
-#: inc/customizer.php:420
-msgid "Introduction Text (German)"
-msgstr "Einführungstext (Deutsch)"
-
-#: inc/customizer.php:442 inc/customizer/team-page.php:94
-msgid "Thank You Note (English)"
-msgstr "Danksagung (Englisch)"
-
-#: inc/customizer.php:453 inc/customizer/team-page.php:81
-msgid "Thank You Note (German)"
-msgstr "Danksagung (Deutsch)"
-
-#: inc/customizer.php:465
-msgid "This image is used a team member didn't upload an image"
-msgstr "Dieses Bild wird benutzt, wenn ein Teammitglied kein Bild zugewiesen hat"
 
 #: single-movie.php:70
 msgid "Screening"
@@ -256,73 +145,45 @@ msgstr "Ton ohne Untertitel"
 msgid "Audio with"
 msgstr "Ton mit"
 
-#: front-page.php:81
+#: front-page.php:82
 msgid "Next Screening"
 msgstr "Nächste Vorstellung"
 
-#: footer.php:46 inc/customizer/youth-protection.php:38
+#: footer.php:40
 msgid "Youth Protection Officer"
 msgstr "Jugendschutzbeauftragter"
 
-#: footer.php:51
+#: footer.php:45
 msgid "Impress"
 msgstr "Impressum"
 
-#: footer.php:53
+#: footer.php:47
 msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
-#: front-page.php:81
+#: front-page.php:82
 msgid "Afterwards at"
 msgstr "Im Anschluss um"
 
-#: front-page.php:93
+#: front-page.php:94
 msgid "To the movie"
 msgstr "Zum Film"
 
-#: front-page.php:135
+#: front-page.php:136
 msgid "Main Program Only"
 msgstr "Nur Hauptprogramm"
 
-#: functions.php:194
+#: functions.php:193
 msgid "Username or email address is missing"
 msgstr "Der Benutzername oder die E-Mail Adresse fehlen"
 
-#: functions.php:197
+#: functions.php:196
 msgid "The entered credentials are invalid. Please try again"
 msgstr "Die eingegebenen Login-Informationen sind ungültig"
 
-#: inc/customizer.php:69
-msgid "Control the contents shown on the front page. Select a semester to be shown and the special programs displayed"
-msgstr "Bearbeite die auf der Startseite angezeigten Inhalte. Wähle ein semester aus und die anzuzeigenden Sonderprogramme"
-
-#: inc/customizer.php:73
+#: inc/customizer/front-page.php:34
 msgid "Displayed Semester"
 msgstr "Angezeigtes Semester"
-
-#: inc/customizer.php:77
-msgid "Display the selected semester on the front page"
-msgstr "Zeige das ausgewählte Semester auf der Startseite an"
-
-#: inc/customizer.php:83
-msgid "Special Programs"
-msgstr "Sonderprogramme"
-
-#: inc/customizer.php:87
-msgid "Display the selected special programs on the front page below the semester progrem"
-msgstr "Zeige die ausgewählten Sonderpgoramme auf der Startseite unter dem Semesterprogramm an"
-
-#: inc/customizer.php:270
-msgid "Explanation for Anonymization (English)"
-msgstr "Erklärung für Anonmyisierung (Englisch)"
-
-#: inc/customizer.php:272 inc/customizer.php:280
-msgid "This text will be displayed below the posts anonymous image, if a movie's details may not be displayed"
-msgstr "Dieser Text wird unter den (anonymen) Filmbildern angezeigt, falls ein Film nicht beworben werden darf"
-
-#: inc/customizer.php:279
-msgid "Explanation for Anonymization (German)"
-msgstr "Erklärung für Anonmyisierung (Deutsch)"
 
 #: single-event.php:156 single-movie.php:202
 msgid "Content Notice"
@@ -332,7 +193,7 @@ msgstr "Inhaltshinweis"
 msgid "The program hosted"
 msgstr "In diesem Sonderprogramm lief bereits"
 
-#: front-page.php:129
+#: front-page.php:130
 msgid "Our Semester Program"
 msgstr "Unser Semesterprogramm"
 
@@ -357,65 +218,13 @@ msgstr "Ausgesucht von"
 msgid "No proposals found. Check back later…"
 msgstr "Nichts gefunden. Schau später nochmal vorbei…"
 
-#: front-page.php:328
-msgid "Who is the GEGENLICHT"
-msgstr "Wer ist das GEGENLICHT"
-
-#: front-page.php:337
+#: front-page.php:322
 msgid "To the team"
 msgstr "Zum Team"
 
-#: front-page.php:389
-msgid "Where is the GEGENLICHT"
-msgstr "Wo ist das GEGENLICHT"
-
-#: inc/customizer.php:91 inc/customizer/frontpage.php:88
-msgid "Team Block"
-msgstr "Teamblock"
-
-#: inc/customizer.php:95
-msgid "Display the selected team block on the front page"
-msgstr "Zeige den ausgewählten Team Block auf der Startseite an"
-
-#: inc/customizer.php:145 inc/customizer/frontpage.php:89
-msgid "Location Block"
-msgstr "Ort Block"
-
-#: inc/customizer.php:149
-msgid "Edit the content of the location block"
-msgstr "Bearbeite den Ort Block und seine imhalte"
-
-#: inc/customizer.php:157
-msgid "Map Image"
-msgstr "Bild der Karte"
-
-#: inc/customizer.php:158
-msgid "The selected image will be displayed over a black background. Tip: Try to use transparent images for the best effect"
-msgstr "Das ausgewählte Bild wird auf einem schwarzen Hintergrund angezeigt. Tipp: Versuche ein transparentes Bild zu verwenden"
-
-#: inc/customizer.php:168
-msgid "Location Description (English)"
-msgstr "Beschreibung des Standortes (Englisch)"
-
-#: inc/customizer.php:169 inc/customizer.php:179
-msgid "This text will be displayed below the selected map image"
-msgstr "Dieser Text wird unter der ausgewählten Karte angezeigt"
-
-#: inc/customizer.php:178
-msgid "Location Description (German)"
-msgstr "Beschreibung des Standortes (Deutsch)"
-
-#: inc/customizer.php:227 inc/customizer/location-block.php:53
+#: inc/customizer/block-location.php:109
 msgid "Detail Page"
 msgstr "Detailseite"
-
-#: inc/customizer.php:228
-msgid "The selected page should contain a more detailed description about the location of the GEGENLICHT"
-msgstr "Die ausgewählte Seite sollte eine detaillierte Beschreibung des Standortes des GEGENLICHT enthalten"
-
-#: inc/customizer.php:66
-msgid "Frontpage"
-msgstr "Startseite"
 
 msgid "AF"
 msgstr "Afghanistan"
@@ -2623,521 +2432,673 @@ msgstr "Zazaki"
 msgid "Our Cooperations"
 msgstr "Unsere Kooperationspartner"
 
-#: archive-supporter.php:10
-msgid "You want to support us?"
-msgstr "Du möchtest uns unterstützen?"
-
-#: archive-supporter.php:35
-msgid "The Association"
-msgstr "Der Verein"
-
-#: archive-supporter.php:49 archive-supporter.php:82
+#: archive-supporter.php:56 archive-supporter.php:76 page.php:39
 msgid "To the Website"
 msgstr "Zur Website"
 
-#: footer.php:32
+#: footer.php:23 inc/customizer/contact-addresses.php:25
+#: inc/customizer/footer.php:39
 msgid "Postal Address"
 msgstr "Postanschrift"
 
-#: footer.php:38
+#: footer.php:31 inc/customizer/contact-addresses.php:21
 msgid "Visitor Address"
 msgstr "Besucher*innenanschrift"
 
-#: front-page.php:93
+#: front-page.php:94
 msgid "To the event"
 msgstr "Zum Event"
 
-#: front-page.php:154 front-page.php:253
+#: front-page.php:155 front-page.php:238
 msgid "Screening starts: "
 msgstr "Vorstellung startet um:"
 
-#: front-page.php:176 front-page.php:282
+#: front-page.php:177 front-page.php:267
 msgid "To the Archive"
 msgstr "Zum Archiv"
 
-#: front-page.php:189 front-page.php:195
+#: header.php:136 header.php:142
 msgid "Semester Break"
 msgstr "Semesterpause"
 
-#: front-page.php:202
+#: front-page.php:187
 msgid "Intermission in the Cinema"
 msgstr "Pause im Kino"
 
-#: front-page.php:246
+#: front-page.php:231
 msgid "Intermission Specials"
 msgstr "Spielpausen-Specials"
 
-#: front-page.php:277
+#: front-page.php:262
 msgid "What we have shown so far"
 msgstr "Was wir bis jetzt alles gezeigt haben"
 
-#: front-page.php:400 front-page.php:401
+#: front-page.php:385 front-page.php:386
 msgid "To our Location"
 msgstr "Zum Ort"
 
-#: front-page.php:483
+#: front-page.php:471
 msgid "Logos of ours Cooperation partners"
 msgstr "Logos unserer Kooperationspartner*innen"
 
-#: front-page.php:511
+#: front-page.php:499
 msgid "Our Cooperation Partners"
 msgstr "An einer Kooperation interessiert?"
 
-#: front-page.php:515
+#: front-page.php:503
 msgid "Our supporters"
 msgstr "Unsere Unterstützer*innen"
 
-#: inc/customizer.php:25
+#: inc/customizer.php:35
 msgid "Blocks"
 msgstr "Blöcke"
 
-#: inc/customizer.php:28
+#: inc/customizer.php:38
 msgid "Edit the blocks displayed on the frontpage"
 msgstr "Bearbeite die Blöcke auf der Startseite"
 
-#: inc/customizer.php:32
+#: inc/customizer.php:45
 msgid "Pages"
 msgstr "Seiten"
 
-#: inc/customizer.php:35
+#: inc/customizer.php:48
 msgid "Edit the display of some content pages of this theme"
 msgstr "Bearbeite die Inhalte und Darstellung von besonderen Seiten"
 
-#: inc/customizer.php:113 inc/customizer.php:189
-msgid "Background Color"
-msgstr "Hintergrundfarbe"
-
-#: inc/customizer.php:122 inc/customizer.php:199
-msgid "Text Color"
-msgstr "Textfarbe"
-
-#: inc/customizer.php:131 inc/customizer.php:209
-msgid "Background Color (Dark)"
-msgstr ""
-
-#: inc/customizer.php:140 inc/customizer.php:218
-msgid "Text Color (Dark)"
-msgstr ""
-
 #: inc/customizer/anonymization.php:15
 msgid "Configure the anonymization functions of the theme"
-msgstr ""
+msgstr "Stelle die Anonymisierungsfunktionen des Themes ein"
 
-#: inc/customizer/anonymization.php:47
-msgid "Anonymous Image"
-msgstr ""
+#: inc/customizer/anonymization.php:41
+msgid "Anonymous Movie Explanation (German)"
+msgstr "Erklärung für anonymisierte Filme (Deutsch)"
 
 #: inc/customizer/anonymization.php:48
-msgid "This image is display if a movie doesn't have a advertisement license set in the backend. Additionally, the image might be displayed as fallback image in case a event or movie doesn't have one set"
-msgstr ""
-
-#: inc/customizer/anonymization.php:53
-msgid "Anonymous Movie Explanation (German)"
-msgstr ""
-
-#: inc/customizer/anonymization.php:60
 msgid "Anonymous Movie Explanation (English)"
-msgstr ""
+msgstr "Erklärung für anonymisierte Filme (Englisch)"
 
-#: inc/customizer/cooperations-block.php:10
+#: inc/customizer/block-coops.php:8 inc/customizer/front-page.php:55
 msgid "Cooperation Partners and Supporters"
-msgstr ""
+msgstr "Kooperationspartner*innen und Unterstützer*innen"
 
-#: inc/customizer/cooperations-block.php:11
+#: inc/customizer/block-coops.php:8
 msgid "Configure the content of the block showcasing our supporters and cooperation partners"
-msgstr ""
+msgstr "Stelle die Inhalte des Blocks ein in dem unsere Kooperationspartner*innen und Unterstützer*innen gezeigt werden"
 
-#: inc/customizer/cooperations-block.php:35
+#: inc/customizer/archiv.php:37 inc/customizer/block-coops.php:32
+#: inc/customizer/block-location.php:64 inc/customizer/block-team.php:65
+#: inc/customizer/page-supporters.php:38 inc/customizer/page-team.php:40
 msgid "Text (German)"
-msgstr ""
+msgstr "Text (Deutsch)"
 
-#: inc/customizer/cooperations-block.php:41
+#: inc/customizer/archiv.php:41 inc/customizer/block-coops.php:39
+#: inc/customizer/block-location.php:70 inc/customizer/block-team.php:73
+#: inc/customizer/page-supporters.php:46 inc/customizer/page-team.php:46
 msgid "Text (English)"
-msgstr ""
+msgstr "Text (Englisch)"
 
-#: inc/customizer/cooperations-block.php:47
-#: inc/customizer/location-block.php:92 inc/customizer/team-block.php:77
+#: inc/customizer/block-coops.php:46 inc/customizer/block-location.php:76
+#: inc/customizer/block-team.php:81
 msgid "Text Color (Light Mode)"
-msgstr ""
+msgstr "Textfarbe (Light Mode)"
 
-#: inc/customizer/cooperations-block.php:48
-#: inc/customizer/cooperations-block.php:62
+#: inc/customizer/block-coops.php:47 inc/customizer/block-location.php:77
+#: inc/customizer/block-team.php:82
 msgid "The color of the text and partner logos (if possible)"
-msgstr ""
+msgstr "Die Farbe des Textes und Logos (falls möglich)"
 
-#: inc/customizer/cooperations-block.php:54
-#: inc/customizer/location-block.php:102 inc/customizer/team-block.php:87
+#: inc/customizer/block-coops.php:54 inc/customizer/block-location.php:84
+#: inc/customizer/block-team.php:89
 msgid "Background Color (Light Mode)"
-msgstr ""
+msgstr "Hintergrundfarbe (Light Mode)"
 
-#: inc/customizer/cooperations-block.php:55
-#: inc/customizer/cooperations-block.php:69
+#: inc/customizer/block-coops.php:55 inc/customizer/block-location.php:85
+#: inc/customizer/block-team.php:90
 msgid "The background color of the whole block"
-msgstr ""
+msgstr "Hintergrundfarbe des gesamten Blocks"
 
-#: inc/customizer/cooperations-block.php:61
-#: inc/customizer/location-block.php:112 inc/customizer/team-block.php:97
+#: inc/customizer/block-coops.php:62 inc/customizer/block-location.php:92
+#: inc/customizer/block-team.php:97
 msgid "Text Color (Dark Mode)"
-msgstr ""
+msgstr "Textfarbe (Dark Mode)"
 
-#: inc/customizer/cooperations-block.php:68
-#: inc/customizer/location-block.php:122 inc/customizer/team-block.php:107
+#: inc/customizer/block-coops.php:70 inc/customizer/block-location.php:100
+#: inc/customizer/block-team.php:105
 msgid "Background Color (Dark Mode)"
-msgstr ""
+msgstr "Hintergrundfarbe (Dark Mode)"
 
-#: inc/customizer/cooperations-page.php:9
+#: inc/customizer/page-cooperations.php:9
 msgid "Cooperation Page"
-msgstr ""
+msgstr "Kooperationen (Seite)"
 
-#: inc/customizer/cooperations-page.php:9 inc/customizer/semester-break.php:8
+#: inc/customizer/page-cooperations.php:9 inc/customizer/semester-break.php:8
 msgid "Configure the content of the page showing our cooperation partners and how to to a cooperation with us"
-msgstr ""
+msgstr "Stelle die Inhalte der Seite für die Kooperationen und Kooperationspartner*innen ein"
 
-#: inc/customizer/cooperations-page.php:44
+#: inc/customizer/archiv.php:30 inc/customizer/page-cooperations.php:46
+#: inc/customizer/page-supporters.php:27 inc/customizer/page-team.php:30
 msgid "Heading (German)"
-msgstr ""
+msgstr "Überschrift (Deutsch)"
 
-#: inc/customizer/cooperations-page.php:49
+#: inc/customizer/archiv.php:33 inc/customizer/page-cooperations.php:51
+#: inc/customizer/page-supporters.php:32 inc/customizer/page-team.php:35
 msgid "Heading (English)"
-msgstr ""
+msgstr "Überschrift (Englisch)"
 
-#: inc/customizer/cooperations-page.php:54
+#: inc/customizer/page-cooperations.php:56
 msgid "Introduction (German)"
-msgstr ""
+msgstr "Einleitung (Deutsch)"
 
-#: inc/customizer/cooperations-page.php:60
+#: inc/customizer/page-cooperations.php:62
 msgid "Introduction (English)"
-msgstr ""
+msgstr "Einleitung (Englisch)"
 
-#: inc/customizer/cooperations-page.php:66
+#: inc/customizer/page-cooperations.php:69
 msgid "Cooperation Rules (German)"
-msgstr ""
+msgstr "Kooperationsregeln (Deutsch)"
 
-#: inc/customizer/cooperations-page.php:67
-#: inc/customizer/cooperations-page.php:74
+#: inc/customizer/page-cooperations.php:70
+#: inc/customizer/page-cooperations.php:78
 msgid "The rules are displayed in the same order as here"
-msgstr ""
+msgstr "Die Regeln werden nach einem Neuladen in der selben Reihenfolge wie eingetragen angezeigt"
 
-#: inc/customizer/cooperations-page.php:73
+#: inc/customizer/page-cooperations.php:77
 msgid "Cooperation Rules (English)"
-msgstr ""
+msgstr "Kooperationsregeln (Englisch)"
 
-#: inc/customizer/cooperations-page.php:80
-#: inc/customizer/cooperations-page.php:86
+#: inc/customizer/page-cooperations.php:91
 msgid "Partner List Text (English)"
-msgstr ""
+msgstr "Partnerübersicht (Englisch)"
 
-#: inc/customizer/frontpage.php:67 inc/customizer/frontpage.php:85
+#: inc/customizer/front-page.php:41
 msgid "Displayed Special Programs"
-msgstr ""
-
-#: inc/customizer/frontpage.php:71
-msgid "Choose the special programs you want to display on the front page. (Use <kbd>Ctrl</kbd> to select multiple entries)"
-msgstr ""
-
-#: inc/customizer/frontpage.php:90
-msgid "Cooperations Block"
-msgstr ""
-
-#: inc/customizer/frontpage.php:93
-msgid "Choose additional blocks shown the front page. (Use <kbd>Ctrl</kbd> to select multiple entries)"
-msgstr ""
-
-#: inc/customizer/functions.php:17
-msgid "The selected attachment does not exist on disk"
-msgstr ""
-
-#: inc/customizer/functions.php:25
-msgid "The selected attachment is not a SVG image"
-msgstr ""
-
-#: inc/customizer/header.php:38
-msgid "The selected Logo will be displayed in the navigation bar brand section (leftmost ara). It will always be displayed, event on mobile devices"
-msgstr ""
-
-#: inc/customizer/location-block.php:14
-msgid "Location (Block)"
-msgstr ""
-
-#: inc/customizer/location-block.php:16
-msgid "Configure the display of location block shown on the fron page"
-msgstr ""
-
-#: inc/customizer/location-block.php:66 inc/customizer/team-block.php:51
-msgid "German Block Text"
-msgstr ""
-
-#: inc/customizer/location-block.php:79 inc/customizer/team-block.php:64
-msgid "English Block Text"
-msgstr ""
-
-#: inc/customizer/location-block.php:94 inc/customizer/location-block.php:114
-#: inc/customizer/team-block.php:79 inc/customizer/team-block.php:99
-msgid "Please ensure that a contrast ratio of at least 7:1 is chosen against the background color"
-msgstr ""
-
-#: inc/customizer/location-block.php:104 inc/customizer/location-block.php:124
-#: inc/customizer/team-block.php:89 inc/customizer/team-block.php:109
-msgid "Please ensure that a contrast ratio of at least 1:7 is chosen against the text color"
-msgstr ""
-
-#: inc/customizer/location-page.php:14
-msgid "Location (Page)"
-msgstr ""
-
-#: inc/customizer/location-page.php:16
-msgid "Configure the display of location page shown"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:15
-msgid "Archive Page"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:17
-msgid "Configure the display of the movie and event archive"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:40 inc/customizer/movie-archive.php:64
-msgid "Page Header (German)"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:45
-msgid "Page Header (English)"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:70
-msgid "Page Content (German)"
-msgstr ""
-
-#: inc/customizer/movie-archive.php:77
-msgid "Page Content (English)"
-msgstr ""
+msgstr "Angezeigte Sonderprogramme"
 
 #: inc/customizer/semester-break.php:8
 msgid "Semester Intermission"
-msgstr ""
+msgstr "Spielpause"
 
 #: inc/customizer/semester-break.php:38
 msgid "Enable Semester Intermission"
-msgstr ""
+msgstr "Spielpause aktivieren"
 
 #: inc/customizer/semester-break.php:39
 msgid "Override the detection algorithm and manually enable a semester break"
-msgstr ""
+msgstr "Überschreibe die automatische Erkennung der Spielpause"
 
 #: inc/customizer/semester-break.php:47
 msgid "Intermission Image"
-msgstr ""
+msgstr "Spielpausenbild"
 
 #: inc/customizer/semester-break.php:48
 msgid "Upload an image which will be displayed during the program intermission between two semesters"
-msgstr ""
+msgstr "Lade ein Bild hoch (oder wähle eins aus) welches auf der Startseite angezeigt wird"
 
 #: inc/customizer/semester-break.php:54
 msgid "Tagline (German)"
-msgstr ""
+msgstr "Tagline (Deutsch)"
 
 #: inc/customizer/semester-break.php:55 inc/customizer/semester-break.php:62
 msgid "Set the tagline displayed below the intermission image if no events during the intermission are taking place"
-msgstr ""
+msgstr "Stelle die Tagline ein, die unter dem Spielpausenbild angezeigt wird, wenn keine weiteren Sondervorstellungen in der Spielpause stattfinden"
 
 #: inc/customizer/semester-break.php:61
 msgid "Tagline (English)"
-msgstr ""
+msgstr "Tagline (Englisch)"
 
-#: inc/customizer/semester-break.php:68 inc/customizer/semester-break.php:81
+#: inc/customizer/semester-break.php:81
 msgid "Intermission Text (German)"
-msgstr ""
+msgstr "Hinweistext Spielpause (Deutsch)"
 
 #: inc/customizer/semester-break.php:69 inc/customizer/semester-break.php:75
 msgid "Set the text that will be displayed if the program is about to finish and doesn't have any entries left to display in the monthly lists"
-msgstr ""
+msgstr "Dieser Text wird als Vorankündigung angezeigt"
 
 #: inc/customizer/semester-break.php:74
 msgid "Intermission Premonition Text (English)"
-msgstr ""
+msgstr "Ankündigungstext der Spielpause (Englisch)"
 
 #: inc/customizer/semester-break.php:82 inc/customizer/semester-break.php:89
 msgid "Set the content of the intermission page"
-msgstr ""
+msgstr "Stelle den Inhalt der Spielpausenseite ein"
 
 #: inc/customizer/semester-break.php:88
 msgid "Intermission Text (English)"
-msgstr ""
+msgstr "Hinweistext Spielpause (Englisch)"
 
 #: inc/customizer/semester-break.php:95
 msgid "Pre-Event List Text (German)"
-msgstr ""
+msgstr "Einleitender Text zu Sonderevents (Deutsch)"
 
 #: inc/customizer/semester-break.php:96 inc/customizer/semester-break.php:103
 #: inc/customizer/semester-break.php:110 inc/customizer/semester-break.php:117
 msgid "Set the content of the intermission page. This text will be displayed if events are happening during the intermission"
-msgstr ""
+msgstr "Stelle den Inhalt der Spielpausenseite ein. Dieser Text wird angezeigt, wenn Sondertermine in der Spielpause stattfinden"
 
 #: inc/customizer/semester-break.php:102
 msgid "Pre-Event List Text (English)"
-msgstr ""
+msgstr "Einleitender Text zu Sonderevents (Englisch)"
 
 #: inc/customizer/semester-break.php:109
 msgid "Post-Event List Text (German)"
-msgstr ""
+msgstr "Nachträglicher Text zu Sonderevents (Deutsch)"
 
 #: inc/customizer/semester-break.php:116
 msgid "Post-Event List Text (English)"
-msgstr ""
+msgstr "Nachträglicher Text zu Sonderevents (Englisch)"
 
 #: inc/customizer/semester-break.php:123
 msgid "Archive Reference Text (German)"
-msgstr ""
+msgstr "Überleitungstext zum Archiv (Deutsch)"
 
 #: inc/customizer/semester-break.php:124 inc/customizer/semester-break.php:131
 msgid "Set the content of the text referring to the archive"
-msgstr ""
+msgstr "Stelle den Text ein, der in das Archiv überleiten soll"
 
 #: inc/customizer/semester-break.php:130
 msgid "Archive Reference Text (English)"
-msgstr ""
-
-#: inc/customizer/social-medias.php:16
-msgid "Configure the Social Media Accounts displayed on the website"
-msgstr ""
-
-#: inc/customizer/social-medias.php:36 inc/customizer/social-medias.php:64
-msgid "Just put in the username here. The full URL is not required as it is generated during the page rendering"
-msgstr ""
-
-#: inc/customizer/social-medias.php:47
-msgid "Mastodon Profile URL"
-msgstr ""
-
-#: inc/customizer/social-medias.php:50
-msgid "Please put in the full URL to the Mastodon Profile. The generation of the username only displays is done during page rendering"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:15
-msgid "Supporter (Page)"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:17
-msgid "Configure the display of the supporter page"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:38
-msgid "German Text"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:53
-msgid "English Text"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:73
-msgid "The selected Logo will be displayed above all other supporters together with the text entered below"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:88
-msgid "Association Description (German)"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:103
-msgid "Association Description (English)"
-msgstr ""
-
-#: inc/customizer/supporter-page.php:119
-msgid "Association Website Url"
-msgstr ""
-
-#: inc/customizer/team-block.php:14
-msgid "Team (Block)"
-msgstr ""
-
-#: inc/customizer/team-block.php:16 inc/customizer/team-page.php:16
-msgid "Configure the display of the team page and the linked block on the frontpage"
-msgstr ""
-
-#: inc/customizer/team-block.php:37
-msgid "The selected image will be displayed on the block introducing the team"
-msgstr ""
-
-#: inc/customizer/team-page.php:14
-msgid "Team (Page)"
-msgstr ""
-
-#: inc/customizer/team-page.php:39
-msgid "The selected image will be displayed if a team member has no photo set"
-msgstr ""
-
-#: inc/customizer/team-page.php:53
-msgid "German Intro Text"
-msgstr ""
-
-#: inc/customizer/team-page.php:66
-msgid "English Intro Text"
-msgstr ""
-
-#: inc/customizer/youth-protection.php:43
-msgid "E-Mail Address (Youth Protection Officer)"
-msgstr ""
+msgstr "Überleitungstext zum Archiv (Englisch)"
 
 #: partials/contact-block.php:59
 msgid "Contact Us"
-msgstr ""
+msgstr "Schreib uns"
 
 #: partials/contact-block.php:70
 msgid "e-mail"
-msgstr ""
+msgstr "email"
 
 #: partials/contact-block.php:76
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: partials/contact-block.php:82
 msgid "Mastodon"
-msgstr ""
+msgstr "Mastodon"
 
 #: partials/contact-block.php:88
 msgid "Letterboxd"
-msgstr ""
+msgstr "Letterboxd"
 
 #: partials/contact-block.php:94
 msgid "Or just chat us up at one of our screenings"
-msgstr ""
+msgstr "Oder sprich uns einfach bei einer unserer Vorstellungen an"
 
 #: partials/special-program.php:48
 msgid "Show details of"
-msgstr ""
+msgstr "Zeige Details über"
 
 #: partials/team-proposals.php:49
 msgid "Also shown together with"
-msgstr ""
+msgstr "Ebenfalls zusammen gezeigt mit"
 
 #: single-event.php:56
 msgid "Event starts"
-msgstr ""
+msgstr "Event startet um"
 
 #: single-event.php:83
 msgid "An unnamed event"
-msgstr ""
+msgstr "Ein ungenanntes Event"
 
 #: single-event.php:163
 msgid "What the event is about"
-msgstr ""
+msgstr "Worum geht es beim Event?"
 
 #: single-event.php:167
 msgid "Why it's worth attending"
-msgstr ""
+msgstr "Darum lohnt es sich mitzumachen"
 
 #: single-movie.php:111
 msgid "by"
-msgstr ""
+msgstr "von"
 
 #: single-movie.php:125
 msgid "with"
-msgstr ""
+msgstr "mit"
 
 #: single-movie.php:125
 msgid "and"
-msgstr ""
+msgstr "und"
 
 #: archive-cooperation-partner.php:37
 msgid "Inquire About A Cooperation Now"
 msgstr "Jetzt eine Kooperationsanfrage einreichen"
+
+#: inc/customizer.php:58
+msgid "Contact Options"
+msgstr "Kontaktmöglichkeiten"
+
+#: inc/customizer.php:61
+msgid "Configure the contact options listed throughout the website"
+msgstr "Konfiguriere die Kontaktmöglichkeiten die auf der Website gelistet werden."
+
+#: inc/customizer/anonymization.php:35
+msgid "Anonymous Event/Movie Image"
+msgstr "Anonymisiertes Event–/Filmbild"
+
+#: inc/customizer/anonymization.php:36
+msgid "This image is displayed if a movie or event doesn't have a advertisement license set in the backend. Additionally, the image might be displayed as fallback image in case a event or movie doesn't have one set"
+msgstr "Dieses Bild wird angezeigt, wenn ein Film oder Event ohne Werberechte eingetragen wurde. Zusätzlich wird dieses Bild verwendet, wenn dem Film oder Event kein Beitragsbild zugewiesen wurde"
+
+#: inc/customizer/anonymization.php:55
+msgid "Anonymous Team Member Image"
+msgstr "Anonymisiertes Teamfoto"
+
+#: inc/customizer/anonymization.php:56
+msgid "This image is displayed if a team member doesn't have a picture set for them"
+msgstr "Dieses Bild wird angezeigt, wenn ein Teammitglied kein Bild gesetzt hat"
+
+#: inc/customizer/archiv.php:10
+msgid "Archive"
+msgstr "Archiv"
+
+#: inc/customizer/archiv.php:11
+msgid "Configure the display of the archive page"
+msgstr "Konfiguriere die Inhalte und Anzeige des Film- und Eventarchivs"
+
+#: inc/customizer/block-coops.php:63 inc/customizer/block-location.php:93
+#: inc/customizer/block-team.php:98
+msgid "The color of the text and partner logos (if possible) during dark mode"
+msgstr "Die Farbe des Textes und der Logos (falls möglich) im Dark Mode"
+
+#: inc/customizer/block-coops.php:71 inc/customizer/block-location.php:101
+#: inc/customizer/block-team.php:106
+msgid "The background color of the whole block during dark mode"
+msgstr "Hintergrundfarbe des gesamten Blocks im Dark Mode"
+
+#: inc/customizer/block-location.php:8 inc/customizer/front-page.php:54
+msgid "Location"
+msgstr "Ort"
+
+#: inc/customizer/block-location.php:8
+msgid "Configure the content of the block showcasing our location"
+msgstr "Konfiguriere die Inhalte des Startseitenblocks über unseren Standort"
+
+#: inc/customizer/block-location.php:44 inc/customizer/block-team.php:41
+msgid "Block Header Image"
+msgstr "Blockheader Bild"
+
+#: inc/customizer/block-location.php:45 inc/customizer/block-team.php:42
+msgid "Upload an image for the block header which will be displayed above the block title"
+msgstr "Lade ein Bild für den Block hoch, welches über der Blocküberschrift angezeigt wird"
+
+#: inc/customizer/block-location.php:50 inc/customizer/block-team.php:49
+msgid "Title (German)"
+msgstr "Titel (Deutsch)"
+
+#: inc/customizer/block-location.php:57 inc/customizer/block-team.php:57
+msgid "Title (English)"
+msgstr "Titel (Englisch)"
+
+#: inc/customizer/block-team.php:8
+msgid "Configure the content of the block introducing our team"
+msgstr "Konfiguriere die Inhalte des Team Blocks auf der Startseite"
+
+#: inc/customizer/contact-addresses.php:8
+msgid "Addresses"
+msgstr "Adressen"
+
+#: inc/customizer/contact-addresses.php:8
+msgid "Configure the addresses listed throughout the website"
+msgstr "Konfiguriere die Anschriften die auf der Website sichtbar sind"
+
+#: inc/customizer/contact-email.php:8
+msgid "E-Mail Addresses"
+msgstr "EMail Adressen"
+
+#: inc/customizer/contact-email.php:8
+msgid "Configure the available email options listed throughout the website"
+msgstr "Konfiguriere die E-Mail Adressen die im Theme angezeigt werden können"
+
+#: inc/customizer/contact-email.php:22
+msgid "General"
+msgstr "Allgemein"
+
+#: inc/customizer/contact-email.php:25
+msgid "Join"
+msgstr "Mach Mit"
+
+#: inc/customizer/contact-email.php:28
+msgid "Technical Contact"
+msgstr "Technischer Ansprechpartner"
+
+#: inc/customizer/contact-social-medias.php:10
+msgid "Social Media"
+msgstr "Social Media"
+
+#: inc/customizer/contact-social-medias.php:11
+msgid "Configure the available social media options listed throughout the website"
+msgstr "Konfiguriere die Social Media Verlinkungen die im Theme angezeigt werden können"
+
+#: inc/customizer/contact-social-medias.php:31
+msgid "Instagram URL"
+msgstr "Instagram URL"
+
+#: inc/customizer/contact-social-medias.php:37
+msgid "Facebook URL"
+msgstr "Facebook URL"
+
+#: inc/customizer/contact-social-medias.php:40
+msgid "Discord Server Invitation URL"
+msgstr "Discord Einladungslink"
+
+#: inc/customizer/contact-social-medias.php:44
+msgid "Letterbox URL"
+msgstr "Letterbox URL"
+
+#: inc/customizer/footer.php:9
+msgid "Footer"
+msgstr "Footer"
+
+#: inc/customizer/footer.php:9
+msgid "Configure the content displayed in the footer"
+msgstr "Konfiguriere die Inhalte des Footers"
+
+#: inc/customizer/footer.php:26
+msgid "Displayed Social Medias"
+msgstr "Angezeigte Social Media Verlinkungen"
+
+#: inc/customizer/footer.php:27
+msgid "The selected social media pages will be linked in the footer"
+msgstr "Die ausgewählten Social Medias werden im Footer verlinkt"
+
+#: inc/customizer/footer.php:34
+msgid "Displayed Addresses"
+msgstr "Angezeigte Anschriften"
+
+#: inc/customizer/footer.php:35
+msgid "The selected addresses will be shown in the footer"
+msgstr "Die ausgewählten Adressen werden im Footer eingeblendet"
+
+#: inc/customizer/footer.php:38
+msgid "Visitor's Address"
+msgstr "Besucher*innen Adresse"
+
+#: inc/customizer/footer.php:44
+msgid "Show Youth Protection Officer Data"
+msgstr "Zeige Kontaktdaten des/der Jugendschutzbeauftragen an"
+
+#: inc/customizer/footer.php:45
+msgid "It's recommended to keep this enabled to ensure compliance with German Youth Protection Laws"
+msgstr "Bitte lasse diesen Haken aktiviert, damit die Website die mit den Jugendschutzgesetzen konform ist"
+
+#: inc/customizer/footer.php:50
+msgid "Select Impress Page"
+msgstr "Impressum auswählen"
+
+#: inc/customizer/footer.php:51
+msgid "Please select the page the impress is setup on"
+msgstr "Bitte wähle die Seite aus, auf der unser Impressum liegt"
+
+#: inc/customizer/footer.php:56
+msgid "Select Contact Page"
+msgstr "Kontaktseite auswählen"
+
+#: inc/customizer/footer.php:57
+msgid "Please select the page the contact details are setup on"
+msgstr "Bitte wähle die Seite aus, auf der unsere Kontaktdaten eingetragen sind"
+
+#: inc/customizer/front-page.php:15
+msgid "Configure the content displayed on the front page"
+msgstr "Konfiguriere die Inhalte der Startseite"
+
+#: inc/customizer/front-page.php:35
+msgid "Only movies and events associated with this semester will be displayed on the front page and be accessible for non-logged in users"
+msgstr "Nur Filme und Events die mit diesem Semester verknüpft sind werden auf der Startseite angezeigt"
+
+#: inc/customizer/front-page.php:49
+msgid "Displayed Blocks"
+msgstr "Angezeigte Blöcke"
+
+#: inc/customizer/front-page.php:50
+msgid "The selected blocks will be displayed below the special programs. Only if a block is activated here, the customizer for that block will be accessible"
+msgstr "Die ausgewählten Blöcke werden unter den Sonderprogrammen angezeigt. Nur wenn ein Block hier aktiviert ist, kann dieser auch im Customizer bearbeitet werden"
+
+#: inc/customizer/navigation.php:9
+msgid "Navigation"
+msgstr "Navigation"
+
+#: inc/customizer/navigation.php:9
+msgid "Configure the display of the navigation header"
+msgstr "Konfiguriere die Inhalte des Headers"
+
+#: inc/customizer/navigation.php:22
+msgid "Navigation Logo"
+msgstr "Navigationslogo"
+
+#: inc/customizer/navigation.php:23
+msgid "Select a SVG Image for the navigation brand. Please select a logo which has no color set to it, to allow coloring it in in dark themes and special program pages"
+msgstr "Bitte wähle eine SVG Grafik aus, die nach Möglichkeit keine feste Farbe gesetzt hat. So kann das Logo im Dark Mode umgefärbt werden."
+
+#: inc/customizer/page-cooperations.php:84
+msgid "Partner List Text (German)"
+msgstr "Kooperationslistentext (Deutsch)"
+
+#: inc/customizer/page-cooperations.php:85
+#: inc/customizer/page-cooperations.php:92
+msgid "This text is displayed just above the entries showcasing our cooperation partners"
+msgstr "Dieser Text wird als Einleitung in die Kooperationspartnerliste verwendet"
+
+#: inc/customizer/page-cooperations.php:98
+msgid "Button Label (German)"
+msgstr "Button Beschriftung (Deutsch)"
+
+#: inc/customizer/page-cooperations.php:104
+msgid "Button Label (English)"
+msgstr "Button Beschriftung (Englisch)"
+
+#: inc/customizer/page-cooperations.php:110
+msgid "URL to Cooperation Request Form"
+msgstr "URL für Anfrageformular"
+
+#: inc/customizer/page-location.php:9
+msgid "Location Page"
+msgstr "Ort (Seite)"
+
+#: inc/customizer/page-location.php:9
+msgid "Configure the content of the page showcasing our location"
+msgstr "Konfiguriere die Inhalte des Seite über unseren Standort"
+
+#: inc/customizer/page-location.php:38
+msgid "Map (Light Mode)"
+msgstr "Karte (Light Mode)"
+
+#: inc/customizer/page-location.php:39 inc/customizer/page-location.php:45
+msgid "This map is displayed above the page contents on the location page"
+msgstr "Die Karte wird über den sonstigen Inhalten auf der Seite über den Ort angezegit"
+
+#: inc/customizer/page-location.php:44
+msgid "Map (Dark Mode)"
+msgstr "Karte (Dark Mode)"
+
+#: inc/customizer/page-location.php:51
+msgid "[UNIKUM] Logo"
+msgstr "[UNIKUM] Logo"
+
+#: inc/customizer/page-location.php:52
+msgid "This logo is displayed on the top of the Unikum block"
+msgstr "Das Logo wird über der Überschrift im Block angezegit"
+
+#: inc/customizer/page-location.php:56
+msgid "[UNIKUM] Block Title (German)"
+msgstr "[UNIKUM] Überschrift im Block (Deutsch)"
+
+#: inc/customizer/page-location.php:57 inc/customizer/page-location.php:62
+#: inc/customizer/page-location.php:67 inc/customizer/page-location.php:72
+msgid "The title of the Unikum block displayed below the page contents on the location page"
+msgstr "Die Überschrift des Blocks über das Unikum"
+
+#: inc/customizer/page-location.php:61
+msgid "[UNIKUM] Block Title (English)"
+msgstr "[UNIKUM] Überschrift im Block (Englisch)"
+
+#: inc/customizer/page-location.php:66
+msgid "[UNIKUM] Block Tagline (German)"
+msgstr "[UNIKUM] Tagline im Block (Deutsch)"
+
+#: inc/customizer/page-location.php:71
+msgid "[UNIKUM] Block Tagline (English)"
+msgstr "[UNIKUM] Tagline im Block (Englisch)"
+
+#: inc/customizer/page-location.php:76
+msgid "[UNIKUM] Block Content (German)"
+msgstr "[UNIKUM] Blockinhalt (Deutsch)"
+
+#: inc/customizer/page-location.php:77 inc/customizer/page-location.php:83
+msgid "The content of the Unikum block displayed below the page contents on the location page"
+msgstr "Inhalt des Blocks über das Unikum"
+
+#: inc/customizer/page-location.php:82
+msgid "[UNIKUM] Block Content (English)"
+msgstr "[UNIKUM] Blockinhalt (Englisch)"
+
+#: inc/customizer/page-location.php:88
+msgid "[UNIKUM] Website URL"
+msgstr "[UNIKUM] Website URL"
+
+#: inc/customizer/page-location.php:89
+msgid "The url pointing to the website of the UNIKUM"
+msgstr "Die URL die zur Website des Unikum führt"
+
+#: inc/customizer/page-supporters.php:9
+msgid "Supporter Page"
+msgstr "Unterstützer*innen (Seite)"
+
+#: inc/customizer/page-supporters.php:9
+msgid "Configure the content of the page showing our loved supporters"
+msgstr "Konfiguriere die Inhalte, die auf der Seite über unsere Kooperationspartner*innen angezeigt werden"
+
+#: inc/customizer/page-supporters.php:39 inc/customizer/page-supporters.php:47
+msgid "This text is displayed above the supporter entries"
+msgstr "Dieser Text wird als Einleitung für die Unterstützer*innen Seite verwendet"
+
+#: inc/customizer/page-team.php:9
+msgid "Team Page"
+msgstr "Teamübersicht (Seite)"
+
+#: inc/customizer/page-team.php:9
+msgid "Configure the content of the page showing our current team and our former members"
+msgstr "Konfiguriere die Inhalte die auf der Teamseite angezegit werden"
+
+#: inc/customizer/page-team.php:53
+msgid "Text about former members (German)"
+msgstr "Text über ehemalige Mitglieder (Deutsch)"
+
+#: inc/customizer/page-team.php:59
+msgid "Text about former members (English)"
+msgstr "Text über ehemalige Mitglieder (Englisch)"
+
+#: inc/customizer/semester-break.php:68
+msgid "Intermission Premonition Text (German)"
+msgstr "Ankündigungstext der Spielpause (Deutsch)"
+
+#: inc/customizer/youth-protection.php:8
+msgid "Configure the details regarding the youth protection mechanisms used"
+msgstr "Konfiguriere die Jugendschutzmechanismen und Ansprechpartner"
+
+#: inc/customizer/youth-protection.php:21
+msgid "Name of Youth Protection Officer"
+msgstr "Name des/der Jugendschutzbeauftragten"
+
+#: inc/customizer/youth-protection.php:24
+msgid "E-Mail Address of Youth Protection Officer"
+msgstr "EMail Adresse des Jugendschutzbeauftragten"
