@@ -36,13 +36,15 @@ class SupporterPageCustomizer extends GGLCustomizerBase {
 			"section" => self::SECTION,
 			"panel" => $this->panel,
 			"label"   => __( 'Text (German)', 'gegenlicht' ),
+			"description" => __("This text is displayed above the supporter entries", "gegenlicht" ),
 			"code_type"    => "text/html"
 		) ));
 
 		$this->manager->add_control( new WP_Customize_Code_Editor_Control($this->manager, "supporter_page_text[en]", array(
 			"section" => self::SECTION,
 			"panel" => $this->panel,
-			"label"   => __( 'Text (German)', 'gegenlicht' ),
+			"label"   => __( 'Text (English)', 'gegenlicht' ),
+			"description" => __("This text is displayed above the supporter entries", "gegenlicht" ),
 			"code_type"    => "text/html"
 		) ));
 

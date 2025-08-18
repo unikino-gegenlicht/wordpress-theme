@@ -81,13 +81,15 @@ class CooperationPageCustomizer extends GGLCustomizerBase {
 
 		$this->add_control( "cooperation_partner_text[de]", array(
 			"section" => self::SECTION,
-			"label"   => __( 'Partner List Text (English)', 'gegenlicht' ),
+			"label"   => __( 'Partner List Text (German)', 'gegenlicht' ),
+			"description" => __('This text is displayed just above the entries showcasing our cooperation partners', 'gegenlicht' ),
 			"type"    => "textarea"
 		) );
 
 		$this->add_control( "cooperation_partner_text[en]", array(
 			"section" => self::SECTION,
 			"label"   => __( 'Partner List Text (English)', 'gegenlicht' ),
+			"description" => __('This text is displayed just above the entries showcasing our cooperation partners', 'gegenlicht' ),
 			"type"    => "textarea"
 		) );
 
