@@ -1,5 +1,5 @@
 @use "bulma/sass/utilities" with (
-  $family-primary: '"Inter", sans-serif',
+  $family-primary: 'Inter',
   $primary: #ffdd00,
   $link: #ffdd00
 );
@@ -13,11 +13,12 @@
 
 @font-face {
   font-family: 'Inter';
-  src: local('Inter'), url('../fonts/inter.woff2') format('woff2');
+  src: url('../fonts/inter.woff2') format('woff2');
   font-style: normal;
-  font-weight: 300-800;
+  font-weight: 300 800;
   font-stretch: normal;
   font-display: swap;
+  font-feature-settings: "calt" on, "tnum" on, "frac" on, "ss01" on, "ss02" on;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,6 +35,8 @@
   --bulma-link-text: var(--bulma-body-color) !important;
   --bulma-label-color: var(--bulma-primary) !important;
 
+}
+* {
   font-feature-settings: "calt" on, "tnum" on, "frac" on, "ss01" on, "ss02" on;
 }
 
