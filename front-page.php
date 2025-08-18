@@ -188,7 +188,9 @@ endforeach; ?>
 	<?php
 	get_template_part( 'partials/responsive-image', args: [
 		'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'desktop' ),
-		'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'mobile' )
+		'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'mobile' ),
+		'fetch-priority' => "high",
+        "loading" => "eager"
 	] );
 	?>
     <hr class="separator" style="margin-top: 1rem !important;"/>
