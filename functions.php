@@ -45,7 +45,7 @@ function use_accept_locale( $locale ) {
 	return substr( array_key_first( $prefLocales ), 0, 2 );
 }
 
-load_theme_textdomain( 'gegenlicht', get_template_directory() . '/languages' );
+load_textdomain( 'gegenlicht', get_template_directory() . '/languages/' . get_locale() . ".mo" );
 
 require_once 'inc/customizer.php';
 add_action( 'customize_register', 'configure_customizer' );
