@@ -24,8 +24,8 @@ do_action( 'wp_body_open' );
             style="--bulma-body-color: var(--bulma-primary); --bulma-body-background-color: black; color: var(--bulma-body-color); background-color: var(--bulma-body-background-color);">
         <div class="page-content">
 			<?php if ( get_theme_mod( "location_unikum_logo" ) ): ?>
-                <figure class="image py-4 supporter-logo">
-                    <img src="<?= wp_get_attachment_image_url( get_theme_mod( "location_unikum_logo" ) ) ?? '' ?>"/>
+                <figure class="image py-4">
+                    <img style="max-height: 250px; object-fit: scale-down" src="<?= wp_get_attachment_image_url( get_theme_mod( "location_unikum_logo" ) ) ?? '' ?>"/>
                 </figure>
 			<?php endif; ?>
             <h2><?= get_theme_mod( "location_unikum_block_title" )[ get_locale() ] ?? "" ?></h2>

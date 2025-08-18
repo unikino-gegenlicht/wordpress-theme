@@ -300,7 +300,8 @@ add_action( "pre_get_posts", function ( WP_Query $query ) {
 
 	if ( is_post_type_archive( [ "team-member", "cooperation-partner", "supporter" ] ) ) {
 		$query->set( 'posts_per_page', - 1 );
-
+        $query->set( 'orderby', 'name' );
+        $query->set( 'order', 'ASC' );
 		return;
 	}
 } );
