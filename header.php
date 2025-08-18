@@ -2,6 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $headerImage = get_theme_mod( 'header_logo' );
+$smallHeaderImage = get_theme_mod( 'small_header_logo' );
 
 headers_send( 103 );
 
@@ -47,7 +48,7 @@ $next = new WP_Query( $next_query_args );
 <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand px-2">
-            <a class="navbar-item p-0 my-2 is-tab" href="<?= get_home_url( scheme: 'https' ) ?>"
+            <a class="navbar-item p-0 my-2 is-tab is-hidden-desktop-only" href="<?= get_home_url( scheme: 'https' ) ?>"
                style="border-bottom: none !important;" aria-label="Back To Start">
 				<?php
 				if ( $headerImage != false ):
@@ -63,6 +64,23 @@ $next = new WP_Query( $next_query_args );
 						<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
                     </p>
 				<?php endif; ?>
+            </a>
+            <a class="navbar-item p-0 my-2 is-tab is-hidden-mobile is-hidden-tablet-only is-hidden-widescreen" href="<?= get_home_url( scheme: 'https' ) ?>"
+               style="border-bottom: none !important;" aria-label="Back To Start">
+		        <?php
+		        if ( $smallHeaderImage != false ):
+			        $alternativeDescription = get_post_meta( $smallHeaderImage, '_wp_attachment_image_alt', true );
+
+			        $slement = file_get_contents( get_attached_file( $smallHeaderImage, true ) );
+
+			        echo $slement;
+			        ?>
+
+		        <?php else: ?>
+                    <p class="title has-text-black">
+				        <?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
+                    </p>
+		        <?php endif; ?>
             </a>
 
             <a role="button" id="burger" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -93,7 +111,7 @@ $next = new WP_Query( $next_query_args );
 						?>
                         <a class="navbar-item is-size-5 px-2 <?= $currentPage ? 'is-active' : '' ?>"
                            href="<?= $navigationItem->url ?>"><span><?= $num ?>&nbsp;<span
-                                        class="is-size-5 has-text-weight-semibold is-uppercase"><?= $navigationItem->title ?></span></span></a>
+                                        class="is-size-5 font-ggl has-text-weight-semibold is-uppercase"><?= $navigationItem->title ?></span></span></a>
 					<?php endfor; ?>
 				<?php endif; ?>
                 <hr class="separator is-hidden-desktop">
@@ -130,18 +148,18 @@ $next = new WP_Query( $next_query_args );
         </div>
     </nav>
 	<?php if ( ! $next->have_posts() || get_theme_mod( "manual_semester_break" ) ): ?>
-        <div class="page-content semester-break">
+        <div class="page-content semester-break mb-5">
             <div class="marquee py-5">
                 <div class="marquee-content">
 					<?php for ( $i = 0; $i < 4; $i ++ ) {
 						echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . " </p>";
-						echo "<p>&#128946;&ensp;&#128946;&ensp;&#128946;</p>";
+						echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
 					} ?>
                 </div>
                 <div class="marquee-content">
 					<?php for ( $i = 0; $i < 4; $i ++ ) {
 						echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . "</p>";
-						echo "<p>&#128946;&ensp;&#128946;&ensp;&#128946;</p>";
+						echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
 					} ?>
                 </div>
             </div>
