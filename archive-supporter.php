@@ -42,8 +42,8 @@ do_action( 'wp_body_open' );
                  style="--bulma-body-color: var(--bulma-primary); --bulma-body-background-color: black; color: var(--bulma-primary); background-color: black;">
                 <article id="<?= basename( get_post_permalink() ) ?>" class="page-content content pb-5">
                     <header>
-                        <figure class="image py-6">
-                            <img src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>" decoding="async"
+                        <figure class="has-text-centered py-6">
+                            <img style="max-height: 250px; object-fit: scale-down" src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>" decoding="async"
                                  loading="lazy"/>
                         </figure>
                         <h2 class="mt-2"><?php the_title() ?></h2>
@@ -64,7 +64,7 @@ do_action( 'wp_body_open' );
             <article id="<?= basename( get_post_permalink() ) ?>" class="page-content content my-6">
                 <header>
                     <figure class="image supporter-logo">
-                        <img src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>" decoding="async" loading="lazy"/>
+                        <img height="150" src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>" decoding="async" loading="lazy"/>
                     </figure>
                     <h2 class="mt-2"><?php the_title() ?></h2>
                 </header>
