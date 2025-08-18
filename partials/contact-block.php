@@ -8,14 +8,14 @@ $showLetterboxd  = (bool) ( $args['showLetterboxd'] ?? false );
 
 $phoneNumber        = (string) ( $args['phoneNumber'] ?? get_theme_mod( 'contact_info' )["phoneNumber"] ?? "" );
 $emailAddress       = (string) ( $args['emailAddress'] ?? get_theme_mod( 'contact_info' )["emailAddress"] ?? "" );
-$instagramUsername  = (string) ( $args['instagramUsername'] ?? get_theme_mod( 'social_medias' )["instagram"] ?? "" );
-$mastodonUrl        = (string) ( $args['mastodonUrl'] ?? get_theme_mod( 'social_medias' )["mastodonURL"] ?? "" );
-$letterboxdUsername = (string) ( $args['letterboxdUsername'] ?? get_theme_mod( 'social_medias' )["letterboxd"] ?? "" );
+$instagramUsername  = (string) str_replace( "https://instagram.com/", "", ( $args['instagramUsername'] ?? get_theme_mod( 'social_medias' )["instagram"] ?? "" ) );
+$mastodonUrl        = (string) ( $args['mastodonUrl'] ?? get_theme_mod( 'social_medias' )["mastodon"] ?? "" );
+$letterboxdUsername = (string) str_replace( "https://letterboxd.com/", "",( $args['letterboxdUsername'] ?? get_theme_mod( 'social_medias' )["letterboxd"] ?? "" ));
 
 $mastodonUsername = "";
-if (!empty($mastodonUrl)) {
-    $parts = explode( "/", $mastodonUrl );
-    $mastodonUsername = $parts[3] . '@' . $parts[2];
+if ( ! empty( $mastodonUrl ) ) {
+	$parts            = explode( "/", $mastodonUrl );
+	$mastodonUsername = $parts[3] . '@' . $parts[2];
 }
 
 $backgroundColorDark = (string) ( $args['colors']['background']['dark'] ?? get_theme_mod( 'contact_partial' )['background']['dark'] ?? 'black' );
