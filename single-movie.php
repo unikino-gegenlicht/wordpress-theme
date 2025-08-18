@@ -85,6 +85,7 @@ if ( $isSpecialProgram ):
 						break;
 					case 'donation':
 						echo "<p>" . esc_html__( 'Donations welcome', 'gegenlicht' ) . "</p>";
+                        break;
 					case 'paid':
 						$admissionFee = (float) rwmb_meta( 'admission_fee' );
 						echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, get_locale() == 'en' ? '.' : "," ) . "&euro;</p>";
