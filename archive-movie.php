@@ -20,12 +20,13 @@ ksort( $map );
 
 <main class="page-content">
     <div class="content">
-        <h1><?= get_theme_mod( 'archive_header' )[ get_locale() ] ?? "AAAAAA" ?></h1>
-		<?= get_theme_mod( 'archive_text' )[ get_locale() ] ?? "" ?>
+        <h1><?= get_theme_mod( 'archive_header' )[ get_locale() ] ?? "" ?></h1>
+		<?= apply_filters( "the_content", get_theme_mod( 'archive_text' )[ get_locale() ] ?? "" ) ?>
     </div>
     <hr class="separator"/>
 	<?php
 	foreach ( $map
+
 	as $timestamp => $semester ) :
 	$manualEntries      = get_term_meta( $semester->term_id, 'semester_shown_movies', true );
 	$add_manual_entries = (bool) get_term_meta( $semester->term_id, 'semester_add_archival_data', true );
@@ -84,7 +85,7 @@ ksort( $map );
 					$specialProgram = rwmb_meta( 'special_program' );
 					$showDetails    = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
 					$title          = $showDetails ? ( get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ) : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?>
-                    <p id="<?= $post->ID?>" aria-label="<?= $title ?>"
+                    <p id="<?= $post->ID ?>" aria-label="<?= $title ?>"
                        class="has-text-weight-bold is-uppercase font-ggl py-1"><?= $title ?></p>
 
 				<?php endwhile; ?>

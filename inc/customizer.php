@@ -19,6 +19,7 @@ require_once 'customizer/anonymization.php';
 require_once 'customizer/semester-break.php';
 require_once 'customizer/footer.php';
 require_once 'customizer/youth-protection.php';
+require_once 'customizer/archiv.php';
 
 function configure_customizer( WP_Customize_Manager $wp_customize ): void {
 	custom_controls();
@@ -64,5 +65,6 @@ function configure_customizer( WP_Customize_Manager $wp_customize ): void {
 	new AddressOptionsCustomizer($wp_customize, 3, ["panel" => "contact-options"]);
 	new YouthProtectionCustomizer( $wp_customize, priority: 28);
 	new FooterCustomizer( $wp_customize, priority: 29);
+	new ArchivePageCustomizer( $wp_customize, priority: 30);
 
 }
