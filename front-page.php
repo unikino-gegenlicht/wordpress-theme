@@ -74,7 +74,9 @@ if ( ! empty( $upcoming ) && ! get_theme_mod( "manual_semester_break" ) ):
 		$post = get_post( $upcoming[ $i ] );
 		setup_postdata( $post );
 		$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-		$title       = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
+		$programType = rwmb_meta( 'program_type' );
+		$specialProgram = rwmb_meta( 'special_program' );
+		$title = $showDetails ? ( get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ) : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) )
 		?>
         <article
                 class="next-movie pt-2 <?= $i == count( $upcoming ) - 1 ? 'pb-6' : '' ?> <?= $i != 0 ? "follow-up" : "" ?>">
@@ -178,7 +180,7 @@ if ( ! empty( $upcoming ) && ! get_theme_mod( "manual_semester_break" ) ):
 ] ) ?>
     </main>
 	<?php foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) : $termID = (int) $termID;
-	get_template_part( "partials/special-program", args: [ "id" => $termID ] );
+	get_template_part( "partials/special-program", args: [ "id" => $termID, "semester" => $semesterID ] );
 endforeach; ?>
     <div class="page-content">
         <hr class="separator is-only-darkmode"/>

@@ -1,5 +1,6 @@
 <?php
 $specialProgramID = $args['id'] ?? null;
+$semesterID = $args['semester'] ?? null;
 ?>
 <style>
     #special-program-<?= $specialProgramID ?> {
@@ -67,7 +68,7 @@ $specialProgramID = $args['id'] ?? null;
 			'tax_query'      => array(
 				array(
 					'taxonomy' => 'semester',
-					'terms'    => get_theme_mod( 'displayed_semester' ),
+					'terms'    => $semesterID,
 				),
 				array(
 					'taxonomy' => 'special-program',

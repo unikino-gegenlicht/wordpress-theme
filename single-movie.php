@@ -1,9 +1,5 @@
 <?php
 defined( 'ABSPATH' ) || exit;
-
-
-
-
 $semester          = get_the_terms( get_the_ID(), 'semester' );
 $currentSemesterID = get_theme_mod( "displayed_semester" );
 
