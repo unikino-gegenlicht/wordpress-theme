@@ -152,6 +152,19 @@ $contentPadding: 0.75rem;
   nav {
     border-bottom: var(--border-thickness) solid var(--bulma-body-color) !important;
   }
+
+  .semester-break {
+    .marquee {
+      border-top: none !important;
+    }
+  }
+}
+
+.semester-break {
+  .marquee {
+    border-top: var(--border-thickness) solid var(--bulma-body-color);
+    border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+  }
 }
 
 @include mixins.desktop {
