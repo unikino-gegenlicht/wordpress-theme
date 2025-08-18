@@ -72,11 +72,12 @@ do_action( 'wp_body_open' );
 if ( ! empty( $upcoming ) && ! get_theme_mod( "manual_semester_break" ) ):
 	for ( $i = 0; $i < count( $upcoming ); $i ++ ):
 		$post = get_post( $upcoming[ $i ] );
+		setup_postdata( $post );
 		$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
 		$title       = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
 		?>
-        <article class="next-movie <?= $i == count( $upcoming ) - 1 ? 'pb-6' : '' ?>">
-            <hr class="separator"/>
+        <article
+                class="next-movie pt-2 <?= $i == count( $upcoming ) - 1 ? 'pb-6' : '' ?> <?= $i != 0 ? "follow-up" : "" ?>">
             <div class="next-movie-header">
                 <p><?= $i == 0 ? esc_html__( 'Next Screening', 'gegenlicht' ) : esc_html__( 'Afterwards at', 'gegenlicht' ) ?></p>
                 <p class="is-size-6 m-0 p-0"><?= $i == 0 ? date( "d.m.Y | H:i", (int) rwmb_meta( 'screening_date' ) ) : date( "H:i", (int) rwmb_meta( 'screening_date' ) ) ?></p>
@@ -168,7 +169,7 @@ if ( ! empty( $upcoming ) && ! get_theme_mod( "manual_semester_break" ) ):
 	<?php endforeach; ?>
 <?php else: ?>
     <div class="content">
-	    <?= apply_filters( "the_content", get_theme_mod( "semester_break_premonition_text" )[ get_locale() ] ?? "" ) ?>
+		<?= apply_filters( "the_content", get_theme_mod( "semester_break_premonition_text" )[ get_locale() ] ?? "" ) ?>
     </div>
 <?php endif; ?>
 	<?php get_template_part( 'partials/button', args: [
@@ -183,22 +184,6 @@ endforeach; ?>
         <hr class="separator is-only-darkmode"/>
     </div>
 <?php else: ?>
-    <div class="marquee">
-        <div class="marquee-content">
-			<?php for ( $i = 0; $i < 4; $i ++ ) {
-				echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . " </p>";
-				echo "<p>***</p>";
-			} ?>
-        </div>
-        <div class="marquee-content">
-			<?php for ( $i = 0; $i < 4; $i ++ ) {
-				echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . "</p>";
-				echo "<p>***</p>";
-
-			} ?>
-        </div>
-    </div>
-    <hr class="separator"/>
     <h2 class="title next-movie-title py-4"><?= esc_html__( 'Intermission in the Cinema', 'gegenlicht' ) ?></h2>
 	<?php
 	get_template_part( 'partials/responsive-image', args: [
@@ -325,7 +310,7 @@ endforeach; ?>
 					'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'team_block_image' ), 'mobile' )
 				] );
 			endif; ?>
-            <h2><?= get_theme_mod("team_block_title")[get_locale()] ?? "Please set this value!" ?></h2>
+            <h2><?= get_theme_mod( "team_block_title" )[ get_locale() ] ?? "Please set this value!" ?></h2>
             <div>
 				<?php
 				$raw = get_theme_mod( 'team_block_text' )[ get_locale() ] ?? "";
@@ -386,7 +371,7 @@ endforeach; ?>
 						'style'        => 'object-position: 15%;'
 					] ) ?>
 				<?php endif; ?>
-                <h2><?= get_theme_mod("location_block_title")[get_locale()] ?? "Content Not Set" ?></h2>
+                <h2><?= get_theme_mod( "location_block_title" )[ get_locale() ] ?? "Content Not Set" ?></h2>
                 <div>
 					<?php
 					$raw = get_theme_mod( 'location_block_text' )[ get_locale() ] ?? "";
@@ -467,15 +452,15 @@ endforeach; ?>
 				$postImages = array();
 
 				while ( $externalsQuery->have_posts() ) : $externalsQuery->the_post();
-                    if (!rwmb_meta("supporter_display_first")) {
-	                    $fp = get_attached_file( attachment_url_to_postid( get_the_post_thumbnail_url() ), true );
-	                    if ( mime_content_type( $fp ) == "image/svg+xml" ) {
-		                    $postImages[] = $fp;
-	                    }
-	                    if ( count( $postImages ) >= 6 ) {
-		                    break;
-	                    }
-                    }
+					if ( ! rwmb_meta( "supporter_display_first" ) ) {
+						$fp = get_attached_file( attachment_url_to_postid( get_the_post_thumbnail_url() ), true );
+						if ( mime_content_type( $fp ) == "image/svg+xml" ) {
+							$postImages[] = $fp;
+						}
+						if ( count( $postImages ) >= 6 ) {
+							break;
+						}
+					}
 
 				endwhile;
 				wp_reset_postdata();

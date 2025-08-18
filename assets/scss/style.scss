@@ -148,8 +148,20 @@ $contentPadding: 0.75rem;
   }
 }
 
-nav {
-  border-bottom: var(--border-thickness) solid var(--bulma-body-color) !important;
+@include mixins.touch {
+  nav {
+    border-bottom: var(--border-thickness) solid var(--bulma-body-color) !important;
+  }
+}
+
+@include mixins.desktop {
+  .next-movie {
+    border-top: var(--border-thickness) solid var(--bulma-body-color) !important;
+  }
+}
+
+.next-movie.follow-up {
+  border-top: var(--border-thickness) solid var(--bulma-body-color) !important;
 }
 
 .navbar-end {

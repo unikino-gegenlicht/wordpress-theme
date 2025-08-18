@@ -4,6 +4,35 @@ defined( 'ABSPATH' ) || exit;
 $headerImage = get_theme_mod('header_logo');
 
 headers_send(103);
+
+
+$fallbackImage = get_theme_mod( 'anonymous_image' );
+$semesterID    = get_theme_mod( 'displayed_semester' );
+
+
+$next_meta       = [];
+$next_meta[]     = [
+	'key'     => 'screening_date',
+	'value'   => time(),
+	'compare' => '>=',
+];
+$next_query_args = array(
+	'do_preload'     => false,
+	'post_type'      => [ 'movie', 'event' ],
+	'posts_per_page' => 1,
+	'meta_query'     => $next_meta,
+	'tax_query'      => array(
+		array(
+			'taxonomy' => 'semester',
+			'terms'    => $semesterID,
+		)
+	),
+	'meta_key'       => 'screening_date',
+	'orderby'        => 'meta_value_num',
+	'order'          => 'ASC',
+);
+
+$next = new WP_Query( $next_query_args );
 ?>
 <!DOCTYPE html>
 <html lang="<?= get_locale() ?>" data-theme="">
@@ -17,7 +46,7 @@ headers_send(103);
 <?php do_action('wp_body_open'); ?>
 <body>
 <header>
-    <nav class="navbar px-4 mb-5" role="navigation" aria-label="main navigation">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand px-2">
             <a class="navbar-item p-0 my-2 is-tab" href="<?= get_home_url( scheme: 'https' ) ?>" style="border-bottom: none !important;" aria-label="Back To Start">
 				<?php
@@ -45,7 +74,7 @@ headers_send(103);
                 <span aria-hidden="true"></span>
             </a>
         </div>
-        <div class="navbar-menu" id="menu">
+        <div class="navbar-menu is-shadowless" id="menu">
             <div class="navbar-end">
 				<?php
 				$navigationItems = wp_get_nav_menu_items( wp_get_nav_menu_name( 'navigation-menu' ) );
@@ -62,9 +91,9 @@ headers_send(103);
 						global $wp;
 						$currentPage = $navigationItem->url == home_url( $wp->request ) || $navigationItem->url == home_url( $wp->request ).'/';
 						?>
-                        <a class="navbar-item is-size-5 <?= $currentPage ? 'is-active' : '' ?>"
+                        <a class="navbar-item is-size-5 px-2 <?= $currentPage ? 'is-active' : '' ?>"
                            href="<?= $navigationItem->url ?>"><span><?= $num ?>&nbsp;<span
-                                    class="is-size-5 has-text-weight-semibold is-uppercase "><?= $navigationItem->title ?></span></span></a>
+                                    class="is-size-5 has-text-weight-semibold is-uppercase"><?= $navigationItem->title ?></span></span></a>
 					<?php endfor; ?>
 				<?php endif; ?>
                 <hr class="separator is-hidden-desktop">
@@ -98,4 +127,25 @@ headers_send(103);
             </div>
         </div>
     </nav>
+    <?php if( !$next->have_posts() || get_theme_mod( "manual_semester_break" )): ?>
+    <div class="page-content">
+
+        <div class="marquee mt-2">
+            <div class="marquee-content">
+			    <?php for ( $i = 0; $i < 4; $i ++ ) {
+				    echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . " </p>";
+				    echo "<p>***</p>";
+			    } ?>
+            </div>
+            <div class="marquee-content">
+			    <?php for ( $i = 0; $i < 4; $i ++ ) {
+				    echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . "</p>";
+				    echo "<p>***</p>";
+
+			    } ?>
+            </div>
+        </div>
+        <hr class="separator"/>
+    </div>
+    <?php endif; ?>
 </header>
