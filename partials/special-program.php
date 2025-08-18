@@ -1,6 +1,6 @@
 <?php
 $specialProgramID = $args['id'] ?? null;
-$semesterID = $args['semester'] ?? null;
+$semesterID       = $args['semester'] ?? null;
 ?>
 <style>
     #special-program-<?= $specialProgramID ?> {
@@ -46,7 +46,8 @@ $semesterID = $args['semester'] ?? null;
 <article id="special-program-<?= $specialProgramID ?>" class="py-5">
     <div class="page-content content">
         <header>
-            <a href="<?= get_term_link( $specialProgramID, 'special-program' ) ?>" aria-label="<?= esc_html__('Show details of', 'gegenlicht') . ' '. get_term( $specialProgramID )->name ?>">
+            <a href="<?= get_term_link( $specialProgramID, 'special-program' ) ?>"
+               aria-label="<?= esc_html__( 'Show details of', 'gegenlicht' ) . ' ' . get_term( $specialProgramID )->name ?>">
                 <figure class="image mb-6">
                     <picture>
                         <source
@@ -66,6 +67,7 @@ $semesterID = $args['semester'] ?? null;
 			'post_type'      => [ 'movie', 'event' ],
 			'posts_per_page' => - 1,
 			'tax_query'      => array(
+				'relation' => "AND",
 				array(
 					'taxonomy' => 'semester',
 					'terms'    => $semesterID,
@@ -81,7 +83,7 @@ $semesterID = $args['semester'] ?? null;
 			'meta_query'     => array(
 				[
 					'key'   => 'program_type',
-					'value' => 'special',
+					'value' => 'special_program',
 				]
 			)
 		) );
@@ -100,21 +102,27 @@ $semesterID = $args['semester'] ?? null;
             <p class="is-italic"><?= esc_html__( 'Sadly, all movies of this special program have been screened for the current semester. Check back next semester.' ) ?></p>
 
 		<?php
-		else: while ( $query->have_posts() ) : $query->the_post();
-			$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-			$title       = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
-
+		else:
 			?>
-            <a href="<?= get_permalink() ?>" aria-label="<?= $showDetails ? $title : get_term( $specialProgramID )->name ?>">
-                <div>
-                    <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
-                                class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
-                    </time>
-                    <p class="is-size-5 has-text-weight-bold is-uppercase"><?= $showDetails ? $title : get_term( $specialProgramID )->name ?></p>
-                </div>
-                <span class="icon">
-                        <span class="material-symbols">arrow_forward_ios</span>
-            </a>
-		<?php endwhile; endif; ?>
+            <div class="movie-list">
+
+				<?php while ( $query->have_posts() ) : $query->the_post();
+					$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
+					$title       = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
+
+					?>
+                    <a href="<?= get_permalink() ?>"
+                       aria-label="<?= $showDetails ? $title : get_term( $specialProgramID )->name ?>">
+                        <div>
+                            <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
+                                        class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
+                            </time>
+                            <p class="is-size-5 has-text-weight-bold is-uppercase"><?= $showDetails ? $title : get_term( $specialProgramID )->name ?></p>
+                        </div>
+                        <span class="icon">
+					<span class="material-symbols">arrow_forward_ios</span></span>
+                    </a>
+				<?php endwhile; ?>        </div>
+		<?php endif; ?>
     </div>
 </article>
