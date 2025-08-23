@@ -216,7 +216,7 @@ $contentPadding: 0.75rem;
 
   .member-picture,
   .supporter-logo {
-    background-color: var(--bulma-primary) !important;
+    filter: invert(74%) sepia(89%) saturate(508%) hue-rotate(358deg) brightness(102%) contrast(105%);
   }
 }
 
