@@ -69,7 +69,7 @@ do_action( 'wp_body_open' );
 ?>
     <main class="px-2 mb-6 page-content">
 <?php
-if ( ! empty( $upcoming ) && ! get_theme_mod( "manual_semester_break" ) ):
+if ( ! empty( $upcoming ) && !GGL_SEMESTER_BREAK ):
 	for ( $i = 0; $i < count( $upcoming ); $i ++ ):
 		$post = get_post( $upcoming[ $i ] );
 		setup_postdata( $post );
