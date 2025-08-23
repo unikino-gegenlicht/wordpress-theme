@@ -42,10 +42,10 @@ defined( 'ABSPATH' ) || exit;
         <p><?= str_replace( "@", " (at) ", ( get_theme_mod( 'youth_protection_officer' )['email'] ?? "missing@missing" ) ) ?></p>
     </div>
     <div class="is-flex is-align-items-center mb-2 mt-5 has-text-primary links are-primary is-flex-wrap-wrap">
-        <a class="" role="link" href=""><?= esc_html__( 'Impress', 'gegenlicht' ) ?></a>
+        <a class="" role="link" href="<?= get_home_url(path: get_page_uri(get_theme_mod('impress_page'))) ?>"><?= esc_html__( 'Impress', 'gegenlicht' ) ?></a>
         <a class="" role="link" href="<?= get_privacy_policy_url() ?>"
            rel="privacy-policy"><?= esc_html__( 'Privacy Policy', 'gegenlicht' ) ?></a>
-        <a class="" role="link" href=""><?= esc_html__( 'Contact', 'gegenlicht' ) ?></a>
+        <a class="" role="link" href="<?= get_home_url(path: get_page_uri(get_theme_mod('contact_page') ?? -1) ?? "") ?>"><?= esc_html__( 'Contact', 'gegenlicht' ) ?></a>
     </div>
     <div class="mt-4">
         <img loading="lazy" width="150" height="39" style="object-fit: scale-down" alt="made by humans. not by ai"
