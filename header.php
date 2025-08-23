@@ -114,7 +114,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
 <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand px-2">
-            <a class="navbar-item p-0 my-2 is-tab is-hidden-desktop-only" href="<?= get_home_url( scheme: 'https' ) ?>"
+            <a class="navbar-item m-0 p-0 my-2 is-flex is-tab is-hidden-desktop-only" href="<?= get_home_url( scheme: 'https' ) ?>"
                style="border-bottom: none !important;" aria-label="Back To Start">
 				<?php
 				if ( $headerImage != false ):
