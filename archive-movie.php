@@ -1,6 +1,6 @@
 <?php
 defined( 'ABSPATH' ) || exit;
-get_header();
+get_header(args: ["title" => __("Archive")]);
 
 $semesters = get_terms( array(
 	'taxonomy'   => 'semester',
