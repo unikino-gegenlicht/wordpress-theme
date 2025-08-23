@@ -37,49 +37,78 @@ $next = new WP_Query( $next_query_args );
 
 define( "GGL_SEMESTER_BREAK", $next->have_posts() || get_theme_mod( "manual_semester_break" ) );
 
-if ( $args != null && $args["title"] != "" ):
-	$pageTitle = join( GGL_TITLE_SEPARATOR, [
-		$args["title"],
-		get_bloginfo( "name" )
-	] );
-else:
-	$pageTitle = is_front_page() ? get_bloginfo( "name" ) . " – " . get_bloginfo( "description" ) : join( " | ", [
-		get_the_title(),
-		get_bloginfo( "name" )
-	] );
+/**
+ * Configure the page title used in the HTML <head> element
+ */
+$args               = $args ?? [ "hideBreakBanner" => false ];
+$hideBreakBanner    = ( $args['hideBreakBanner'] ?? false ) == true;
+$manualPartialTitle = trim( $args["title"] ?? "" );
+$blogName           = get_bloginfo( "name" );
 
-	if ( is_singular( [ "movie", "event" ] ) ) {
-		$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
 
-		$partialTitle = get_locale() == "de" ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
-		if ( ! $showDetails ) {
-			$partialTitle = __( 'An unnamed movie', 'gegenlicht' );
-		}
+if ( $manualPartialTitle ) {
+	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ $manualPartialTitle, $blogName ] ) );
+}
 
-		$isInSpecialProgram = rwmb_meta( 'program_type' ) == 'special_program';
-		if ( $isInSpecialProgram && ! $showDetails ) {
-			$specialProgramID = rwmb_meta( 'special_program' );
-			$specialProgram   = get_term( $specialProgramID, 'special-program' );
-			$partialTitle     = $specialProgram->name;
-		}
+if ( is_singular( [ "movie", "event" ] ) && ! defined( "GGL_PAGE_TITLE" ) ) {
+	$showDetails      = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
+	$title            = get_locale() == "de" ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
+	$inSpecialProgram = rwmb_meta( 'program_type' ) == 'special_program';
 
-		$pageTitle = join( GGL_TITLE_SEPARATOR, [ $partialTitle, get_bloginfo( "name" ) ] );
+	if ( ! $showDetails && $inSpecialProgram ) {
+		$specialProgramID = rwmb_meta( 'special_program' );
+		$specialProgram   = get_term( $specialProgramID, 'special-program' );
+		$title            = $specialProgram->name;
 	}
 
-	if ( is_archive() ) {
-		$pageTitle = join( GGL_TITLE_SEPARATOR, [ post_type_archive_title( display: false ), get_bloginfo( "name" ) ] );
+	if ( ! $showDetails ) {
+		$title = __( "An unnamed movie", "gegenlicht" );
 	}
-endif;
+	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ $title, $blogName ] ) );
+}
+
+if ( is_archive() && ! defined( "GGL_PAGE_TITLE" ) ) {
+	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
+		post_type_archive_title( display: false ),
+		get_bloginfo( "name" )
+	] ) );
+}
+
+if ( is_privacy_policy() && ! defined( "GGL_PAGE_TITLE" ) ) {
+	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
+		__( "Privacy Policy", "gegenlicht" ),
+		get_bloginfo( "name" )
+	] ) );
+}
+
+if ( is_location_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
+	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
+		__( "Location", "gegenlicht" ),
+		get_bloginfo( "name" )
+	] ) );
+}
+
+if ( ! defined( "GGL_PAGE_TITLE" ) ) {
+	if ( is_front_page() ) {
+		define( "GGL_PAGE_TITLE", get_bloginfo( "name" ) . " – " . get_bloginfo( "description" ) );
+	} else {
+		define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
+			get_the_title(),
+			get_bloginfo( "name" )
+		] ) );
+	}
+}
+
 ?>
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="<?= substr( get_locale(), 0, 2 ) ?>" data-theme="">
-<head>
-    <title><?= esc_html( $pageTitle ) ?></title>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
-    <link rel="profile" href="http://gmpg.org/xfn/11">
-	<?php wp_head(); ?>
-</head>
+    <head>
+        <title><?= esc_html( GGL_PAGE_TITLE ) ?></title>
+        <meta charset="<?php bloginfo( 'charset' ); ?>">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
+        <link rel="profile" href="http://gmpg.org/xfn/11">
+		<?php wp_head(); ?>
+    </head>
 <?php do_action( 'wp_body_open' ); ?>
 <body>
 <header>
@@ -133,25 +162,7 @@ endif;
         <div class="navbar-menu is-shadowless" id="menu">
             <div class="navbar-end">
 				<?php
-				$navigationItems = wp_get_nav_menu_items( wp_get_nav_menu_name( 'navigation-menu' ) );
-				if ( $navigationItems ):
-					for ( $i = 0; $i < count( $navigationItems ); $i ++ ):
-						$navigationItem = $navigationItems[ $i ];
-
-						$num = '';
-						if ( ( $i + 1 ) < 9 ) {
-							$num = '0' . $i + 1;
-						} else {
-							$num = $i + 1;
-						}
-						global $wp;
-						$currentPage = $navigationItem->url == home_url( $wp->request ) || $navigationItem->url == home_url( $wp->request ) . '/';
-						?>
-                        <a class="navbar-item is-size-5 px-2 <?= $currentPage ? 'is-active' : '' ?>"
-                           href="<?= $navigationItem->url ?>"><span><?= $num ?>&nbsp;<span
-                                        class="is-size-5 font-ggl has-text-weight-semibold is-uppercase"><?= $navigationItem->title ?></span></span></a>
-					<?php endfor; ?>
-				<?php endif; ?>
+				get_template_part( "partials/header-menu" ) ?>
                 <hr class="separator is-hidden-desktop">
 				<?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ): ?>
                     <a class="navbar-item no-hover" href="<?= get_admin_url( scheme: 'https' ) ?>">
@@ -185,7 +196,7 @@ endif;
             </div>
         </div>
     </nav>
-	<?php if ( GGL_SEMESTER_BREAK ): ?>
+	<?php if ( GGL_SEMESTER_BREAK && !$hideBreakBanner ): ?>
         <div class="page-content semester-break mb-5">
             <div class="marquee py-5">
                 <div class="marquee-content">

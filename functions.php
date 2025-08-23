@@ -306,9 +306,19 @@ add_action( "pre_get_posts", function ( WP_Query $query ) {
 
 
 require_once 'shortcodes/button.php';
+require_once 'shortcodes/inverted-block.php';
 
 add_shortcode( "ggl_button", 'ggl_button_shortcode' );
+add_shortcode( "ggl_inverted_block", 'ggl_inverted_block_shortcode' );
 
 function is_location_page(): bool {
 	return get_post()->ID == get_theme_mod( 'location_detail_page' );
+}
+
+function is_impress_page(): bool {
+	return get_post()->ID == get_theme_mod( 'impress_page' );
+}
+
+function is_contact_page(): bool {
+	return get_post()->ID == get_theme_mod( 'contact_page' );
 }
