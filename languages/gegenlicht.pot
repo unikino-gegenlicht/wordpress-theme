@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-18T06:35:01+00:00\n"
+"POT-Creation-Date: 2025-08-23T15:36:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -2250,16 +2250,18 @@ msgid "Our Cooperations"
 msgstr ""
 
 #: archive-movie.php:87
-#: front-page.php:86
-#: front-page.php:153
-#: front-page.php:236
-#: single-movie.php:98
+#: front-page.php:79
+#: front-page.php:88
+#: front-page.php:155
+#: front-page.php:240
+#: header.php:65
+#: single-movie.php:95
 msgid "An unnamed movie"
 msgstr ""
 
-#: archive-supporter.php:56
-#: archive-supporter.php:76
-#: page.php:39
+#: archive-supporter.php:45
+#: archive-supporter.php:65
+#: templates/page-location.php:32
 msgid "To the Website"
 msgstr ""
 
@@ -2295,10 +2297,13 @@ msgid "Youth Protection Officer"
 msgstr ""
 
 #: footer.php:45
+#: templates/page-impress.php:3
 msgid "Impress"
 msgstr ""
 
 #: footer.php:47
+#: header.php:79
+#: privacy-policy.php:8
 msgid "Privacy Policy"
 msgstr ""
 
@@ -2306,91 +2311,98 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: front-page.php:82
+#: front-page.php:84
 msgid "Next Screening"
 msgstr ""
 
-#: front-page.php:82
+#: front-page.php:84
 msgid "Afterwards at"
 msgstr ""
 
-#: front-page.php:94
+#: front-page.php:96
 msgid "To the movie"
 msgstr ""
 
-#: front-page.php:94
+#: front-page.php:96
 msgid "To the event"
 msgstr ""
 
-#: front-page.php:130
+#: front-page.php:132
 msgid "Our Semester Program"
 msgstr ""
 
-#: front-page.php:136
+#: front-page.php:138
 msgid "Main Program Only"
 msgstr ""
 
-#: front-page.php:155
-#: front-page.php:238
+#: front-page.php:157
+#: front-page.php:242
 msgid "Screening starts: "
 msgstr ""
 
-#: front-page.php:177
-#: front-page.php:267
+#: front-page.php:179
+#: front-page.php:271
 msgid "To the Archive"
 msgstr ""
 
-#: front-page.php:187
+#: front-page.php:189
 msgid "Intermission in the Cinema"
 msgstr ""
 
-#: front-page.php:231
+#: front-page.php:235
 msgid "Intermission Specials"
 msgstr ""
 
-#: front-page.php:262
+#: front-page.php:266
 msgid "What we have shown so far"
 msgstr ""
 
-#: front-page.php:322
+#: front-page.php:326
 msgid "To the team"
 msgstr ""
 
-#: front-page.php:385
-#: front-page.php:386
+#: front-page.php:389
+#: front-page.php:390
 msgid "To our Location"
 msgstr ""
 
-#: front-page.php:471
+#: front-page.php:475
 msgid "Logos of ours Cooperation partners"
 msgstr ""
 
-#: front-page.php:499
+#: front-page.php:503
 msgid "Our Cooperation Partners"
 msgstr ""
 
-#: front-page.php:503
+#: front-page.php:507
 msgid "Our supporters"
 msgstr ""
 
-#: functions.php:193
+#: functions.php:191
 msgid "Username or email address is missing"
 msgstr ""
 
-#: functions.php:196
+#: functions.php:194
 msgid "The entered credentials are invalid. Please try again"
 msgstr ""
 
-#: header.php:117
+#: header.php:86
+#: inc/customizer/block-location.php:8
+#: inc/customizer/front-page.php:54
+#: partials/header-menu.php:17
+msgid "Location"
+msgstr ""
+
+#: header.php:185
 msgid "Logout"
 msgstr ""
 
-#: header.php:124
+#: header.php:193
 msgid "Login"
 msgstr ""
 
-#: header.php:136
-#: header.php:142
+#: header.php:204
+#: header.php:210
 msgid "Semester Break"
 msgstr ""
 
@@ -2451,6 +2463,7 @@ msgid "This image is displayed if a team member doesn't have a picture set for t
 msgstr ""
 
 #: inc/customizer/archiv.php:10
+#: partials/header-menu.php:21
 msgid "Archive"
 msgstr ""
 
@@ -2548,11 +2561,6 @@ msgid "The background color of the whole block during dark mode"
 msgstr ""
 
 #: inc/customizer/block-location.php:8
-#: inc/customizer/front-page.php:54
-msgid "Location"
-msgstr ""
-
-#: inc/customizer/block-location.php:8
 msgid "Configure the content of the block showcasing our location"
 msgstr ""
 
@@ -2582,6 +2590,7 @@ msgstr ""
 
 #: inc/customizer/block-team.php:8
 #: inc/customizer/front-page.php:53
+#: partials/header-menu.php:25
 msgid "Team"
 msgstr ""
 
@@ -2729,12 +2738,17 @@ msgstr ""
 msgid "Configure the display of the navigation header"
 msgstr ""
 
-#: inc/customizer/navigation.php:22
+#: inc/customizer/navigation.php:23
 msgid "Navigation Logo"
 msgstr ""
 
-#: inc/customizer/navigation.php:23
+#: inc/customizer/navigation.php:24
+#: inc/customizer/navigation.php:30
 msgid "Select a SVG Image for the navigation brand. Please select a logo which has no color set to it, to allow coloring it in in dark themes and special program pages"
+msgstr ""
+
+#: inc/customizer/navigation.php:29
+msgid "Navigation Logo (Small)"
 msgstr ""
 
 #: inc/customizer/page-cooperations.php:9
@@ -3033,8 +3047,24 @@ msgstr ""
 msgid "Or just chat us up at one of our screenings"
 msgstr ""
 
-#: partials/special-program.php:48
+#: partials/header-menu.php:13
+msgid "Program"
+msgstr ""
+
+#: partials/header-menu.php:29
+msgid "Cooperation"
+msgstr ""
+
+#: partials/header-menu.php:33
+msgid "Supporters"
+msgstr ""
+
+#: partials/special-program.php:50
 msgid "Show details of"
+msgstr ""
+
+#: partials/special-program.php:95
+msgid "Sadly, all movies of this special program have been screened for the current semester. Check back next semester."
 msgstr ""
 
 #: partials/team-proposals.php:49
@@ -3054,116 +3084,116 @@ msgid "Event starts"
 msgstr ""
 
 #: single-event.php:70
-#: single-movie.php:84
+#: single-movie.php:80
 msgid "Free Admission"
 msgstr ""
 
 #: single-event.php:73
-#: single-movie.php:87
+#: single-movie.php:83
 msgid "Donations welcome"
 msgstr ""
 
-#: single-event.php:76
-#: single-movie.php:90
+#: single-event.php:77
+#: single-movie.php:87
 msgid "Admission"
 msgstr ""
 
-#: single-event.php:83
+#: single-event.php:84
 msgid "An unnamed event"
 msgstr ""
 
-#: single-event.php:91
-#: single-movie.php:108
+#: single-event.php:92
+#: single-movie.php:105
 msgid "Minutes"
 msgstr ""
 
-#: single-event.php:106
-#: single-movie.php:143
+#: single-event.php:107
+#: single-movie.php:140
 msgid "Not Rated"
 msgstr ""
 
-#: single-event.php:109
-#: single-movie.php:146
+#: single-event.php:110
+#: single-movie.php:143
 msgid "FSK"
 msgstr ""
 
-#: single-event.php:121
-#: single-event.php:124
+#: single-event.php:122
+#: single-event.php:125
+#: single-movie.php:155
 #: single-movie.php:158
-#: single-movie.php:161
 msgid "Original with"
 msgstr ""
 
-#: single-event.php:121
-#: single-event.php:124
-#: single-event.php:132
+#: single-event.php:122
+#: single-event.php:125
+#: single-event.php:133
+#: single-movie.php:155
 #: single-movie.php:158
-#: single-movie.php:161
-#: single-movie.php:169
+#: single-movie.php:166
 msgid "Subtitles"
 msgstr ""
 
-#: single-event.php:127
-#: single-movie.php:164
+#: single-event.php:128
+#: single-movie.php:161
 msgid "Original without Subtitles"
 msgstr ""
 
-#: single-event.php:127
-#: single-movie.php:164
+#: single-event.php:128
+#: single-movie.php:161
 msgid "OV"
 msgstr ""
 
-#: single-event.php:132
-#: single-movie.php:169
+#: single-event.php:133
+#: single-movie.php:166
 msgid "Audio without Subtitles"
 msgstr ""
 
-#: single-event.php:132
-#: single-movie.php:169
+#: single-event.php:133
+#: single-movie.php:166
 msgid "Audio with"
 msgstr ""
 
-#: single-event.php:148
-#: single-event.php:174
-#: single-movie.php:194
-#: single-movie.php:236
+#: single-event.php:149
+#: single-event.php:175
+#: single-movie.php:191
+#: single-movie.php:233
 msgid "Reserve Now"
 msgstr ""
 
-#: single-event.php:156
-#: single-movie.php:202
+#: single-event.php:157
+#: single-movie.php:199
 msgid "Content Notice"
 msgstr ""
 
-#: single-event.php:163
+#: single-event.php:164
 msgid "What the event is about"
 msgstr ""
 
-#: single-event.php:167
+#: single-event.php:168
 msgid "Why it's worth attending"
 msgstr ""
 
-#: single-movie.php:70
+#: single-movie.php:66
 msgid "Screening"
 msgstr ""
 
-#: single-movie.php:111
+#: single-movie.php:108
 msgid "by"
 msgstr ""
 
-#: single-movie.php:125
+#: single-movie.php:122
 msgid "with"
 msgstr ""
 
-#: single-movie.php:125
+#: single-movie.php:122
 msgid "and"
 msgstr ""
 
-#: single-movie.php:209
+#: single-movie.php:206
 msgid "What the movie is about"
 msgstr ""
 
-#: single-movie.php:213
+#: single-movie.php:210
 msgid "Why it's worth watching"
 msgstr ""
 
