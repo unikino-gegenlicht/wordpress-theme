@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-$headerImage = get_theme_mod( 'header_logo' );
+$headerImage      = get_theme_mod( 'header_logo' );
 $smallHeaderImage = get_theme_mod( 'small_header_logo' );
 
 headers_send( 103 );
@@ -34,10 +34,47 @@ $next_query_args = array(
 );
 
 $next = new WP_Query( $next_query_args );
+
+define( "GGL_SEMESTER_BREAK", $next->have_posts() || get_theme_mod( "manual_semester_break" ) );
+
+if ( $args != null && $args["title"] != "" ):
+	$pageTitle = join( GGL_TITLE_SEPARATOR, [
+		$args["title"],
+		get_bloginfo( "name" )
+	] );
+else:
+	$pageTitle = is_front_page() ? get_bloginfo( "name" ) . " – " . get_bloginfo( "description" ) : join( " | ", [
+		get_the_title(),
+		get_bloginfo( "name" )
+	] );
+
+	if ( is_singular( [ "movie", "event" ] ) ) {
+		$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
+
+		$partialTitle = get_locale() == "de" ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
+		if ( ! $showDetails ) {
+			$partialTitle = __( 'An unnamed movie', 'gegenlicht' );
+		}
+
+		$isInSpecialProgram = rwmb_meta( 'program_type' ) == 'special_program';
+		if ( $isInSpecialProgram && ! $showDetails ) {
+			$specialProgramID = rwmb_meta( 'special_program' );
+			$specialProgram   = get_term( $specialProgramID, 'special-program' );
+			$partialTitle     = $specialProgram->name;
+		}
+
+		$pageTitle = join( GGL_TITLE_SEPARATOR, [ $partialTitle, get_bloginfo( "name" ) ] );
+	}
+
+	if ( is_archive() ) {
+		$pageTitle = join( GGL_TITLE_SEPARATOR, [ post_type_archive_title( display: false ), get_bloginfo( "name" ) ] );
+	}
+endif;
 ?>
 <!DOCTYPE html>
-<html lang="<?= substr(get_locale(), 0, 2) ?>" data-theme="">
+<html lang="<?= substr( get_locale(), 0, 2 ) ?>" data-theme="">
 <head>
+    <title><?= esc_html( $pageTitle ) ?></title>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
@@ -65,22 +102,23 @@ $next = new WP_Query( $next_query_args );
                     </p>
 				<?php endif; ?>
             </a>
-            <a class="navbar-item p-0 my-2 is-tab is-hidden-mobile is-hidden-tablet-only is-hidden-widescreen" href="<?= get_home_url( scheme: 'https' ) ?>"
+            <a class="navbar-item p-0 my-2 is-tab is-hidden-mobile is-hidden-tablet-only is-hidden-widescreen"
+               href="<?= get_home_url( scheme: 'https' ) ?>"
                style="border-bottom: none !important;" aria-label="Back To Start">
-		        <?php
-		        if ( $smallHeaderImage != false ):
-			        $alternativeDescription = get_post_meta( $smallHeaderImage, '_wp_attachment_image_alt', true );
+				<?php
+				if ( $smallHeaderImage ):
+					$alternativeDescription = get_post_meta( $smallHeaderImage, '_wp_attachment_image_alt', true );
 
-			        $slement = file_get_contents( get_attached_file( $smallHeaderImage, true ) );
+					$slement = file_get_contents( get_attached_file( $smallHeaderImage, true ) );
 
-			        echo $slement;
-			        ?>
+					echo $slement;
+					?>
 
-		        <?php else: ?>
+				<?php else: ?>
                     <p class="title has-text-black">
-				        <?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
+						<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
                     </p>
-		        <?php endif; ?>
+				<?php endif; ?>
             </a>
 
             <a role="button" id="burger" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -147,7 +185,7 @@ $next = new WP_Query( $next_query_args );
             </div>
         </div>
     </nav>
-	<?php if ( ! $next->have_posts() || get_theme_mod( "manual_semester_break" ) ): ?>
+	<?php if ( GGL_SEMESTER_BREAK ): ?>
         <div class="page-content semester-break mb-5">
             <div class="marquee py-5">
                 <div class="marquee-content">

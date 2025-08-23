@@ -1,5 +1,6 @@
 <?php
 defined( 'ABSPATH' ) || exit;
+require_once 'constants.php';
 show_admin_bar( false );
 
 
@@ -10,10 +11,7 @@ function enable_theme_supports() {
 	add_image_size( 'desktop', 800, 450, crop: true );
 	add_image_size( 'member-crop', 450, 600, crop: true );
 
-
-	add_theme_support( 'title-tag' );
-	add_theme_support( 'customize-selective-refresh-widgets' );
-	add_theme_support( 'automatic-feed-links' );
+    add_theme_support( 'automatic-feed-links' );
 }
 
 add_action( 'after_setup_theme', 'enable_theme_supports' );
