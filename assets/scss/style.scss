@@ -54,7 +54,6 @@ $contentPadding: 0.75rem;
 @use "sass:string";
 
 
-
 @use "bulma/sass/utilities/mixins";
 @forward 'bulma-v1-tooltip/src/sass';
 
@@ -70,7 +69,6 @@ $contentPadding: 0.75rem;
   --max-content-width: #{$maxWidth};
   --content-padding: #{$contentPadding};
   --bulma-hr-background-color: var(--bulma-body-color);
-
   font-feature-settings: "calt" on, "tnum" on, "frac" on, "ss01" on, "ss02" on;
 }
 
@@ -121,7 +119,6 @@ $contentPadding: 0.75rem;
 .page-footer {
   margin-bottom: 5rem !important;
 }
-
 
 
 [data-tooltip] {
@@ -264,7 +261,7 @@ html {
     }
 
     &:last-child {
-      border-bottom:  var(--border-thickness) solid var(--bulma-body-color);
+      border-bottom: var(--border-thickness) solid var(--bulma-body-color);
     }
   }
 
@@ -359,7 +356,7 @@ hr.separator {
   align-items: center;
   padding: 0.75rem 0;
 
-  &> * {
+  & > * {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0;
@@ -383,7 +380,6 @@ hr.separator {
   padding: 0.75rem 0 !important;
 
   > a.button {
-
 
 
     max-width: 780px;
@@ -565,8 +561,11 @@ p:empty {
   margin: 0 auto !important;
   padding: 0 1rem !important;
   overflow-x: scroll !important;
+
   .navbar-item {
     color: var(--bulma-body-color) !important;
+    display: block;
+    margin: auto;
   }
 }
 
@@ -594,11 +593,13 @@ p:empty {
   min-width: 100%;
   gap: var(--gap);
   animation: scroll 20s linear infinite;
+
   &:first-child {
     padding-left: var(--gap);
     padding-top: var(--gap);
     padding-bottom: var(--gap);
   }
+
   &:last-child {
     padding-top: var(--gap);
     padding-bottom: var(--gap);
@@ -637,6 +638,7 @@ address {
     &::marker {
       display: none;
     }
+
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 
@@ -675,13 +677,14 @@ figure.supporter-logo {
   text-decoration: underline;
   text-decoration-thickness: var(--border-thickness) !important;
   --bulma-navbar-item-background-a: 0 !important;
+  text-decoration-skip-ink: none;
 }
 
 .navbar-item:hover,
 .navbar-item:active,
 .navbar-item:focus,
-.navbar-item:focus-within{
-    text-decoration: underline;
+.navbar-item:focus-within {
+  text-decoration: underline;
   --bulma-navbar-item-background-l-delta: 0% !important;
   --bulma-navbar-item-background-a: unset !important;
   text-decoration-thickness: var(--border-thickness) !important;
