@@ -90,16 +90,9 @@ $semesterID       = $args['semester'] ?? null;
 		?>
 
 		<?php if ( ! $query->have_posts() ) :
-			$paragraphs = preg_split( "/\R\R/", get_term( (int) $specialProgramID )->description );
-			foreach ( $paragraphs as $paragraph ) :
-				?>
-                <p>
-					<?= $paragraph ?>
-                </p>
-			<?php
-			endforeach;
+			echo apply_filters("the_content", get_term( (int) $specialProgramID )->description)
 			?>
-            <p class="is-italic"><?= esc_html__( 'Sadly, all movies of this special program have been screened for the current semester. Check back next semester.' ) ?></p>
+            <p class="is-italic"><?= esc_html__( 'Sadly, all movies of this special program have been screened for the current semester. Check back next semester.', "gegenlicht" ) ?></p>
 
 		<?php
 		else:
