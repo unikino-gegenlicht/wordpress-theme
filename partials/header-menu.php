@@ -4,7 +4,7 @@ for ( $i = 0; $i < count( $navItems ); $i ++ ) {
 	$item = $navItems[ $i ];
 
 	global $wp;
-	$isActivePage = $item->url === home_url( $wp->request );
+	$isActivePage = $item->url === (home_url( $wp->request) . '/') || $item->url === (home_url( $wp->request));
 	$page         = get_page_by_path( $item->url );
 
 	$title = $item->title;
