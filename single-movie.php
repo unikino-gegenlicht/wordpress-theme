@@ -137,10 +137,10 @@ if ( $isSpecialProgram ):
 			switch ( $ageRating ) {
 				case - 2:
 				case - 1:
-					echo '<span class="tag is-rounded is-primary ' . ( ! empty( $translatedDescriptors ) ? ( 'has-tooltip-arrow has-tooltip-right has-tooltip-multiline" data-tooltip="' . join( ", ", $translatedDescriptors ) . '"' ) : '' ) . '" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'Not Rated', 'gegenlicht' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary ' . ( ! empty( $translatedDescriptors ) ? ( 'has-tooltip-arrow has-tooltip-bottom has-tooltip-text-left" data-tooltip="' . join( PHP_EOL, $translatedDescriptors ) . '"' ) : '' ) . '" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'Not Rated', 'gegenlicht' ) . '</span>';
 					break;
 				default:
-					echo '<span class="tag is-rounded is-primary ' . ( ! empty( $translatedDescriptors ) ? ( 'has-tooltip-arrow has-tooltip-right has-tooltip-multiline" data-tooltip="' . join( ", ", $translatedDescriptors ) . '"' ) : '' ) . '" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'FSK', 'gegenlicht' ) . ' ' . $ageRating . '</span>';
+					echo '<span class="tag is-rounded is-primary ' . ( ! empty( $translatedDescriptors ) ? ( 'has-tooltip-arrow has-tooltip-bottom has-tooltip-text-left" data-tooltip="' . join( PHP_EOL, $translatedDescriptors ) . '"' ) : '' ) . '" style="border: var(--bulma-body-color) solid var(--border-thickness);">FSK ' . $ageRating . '</span>';
 
 			}
 			?>
@@ -152,18 +152,22 @@ if ( $isSpecialProgram ):
 
 			if ( $audioType == 'original' ):
 				if ( $subtitleLanguage == 'eng' ):
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OmeU' ) . '</span>';
-				endif;
-				if ( $subtitleLanguage == 'deu' ):
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OmdU' ) . '</span>';
-				endif;
-				if ( $subtitleLanguage == 'zxx' ):
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . $audioLanguage . '. ' . esc_html__( 'Original without Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'OV', 'gegenlicht' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht") . '">OmeU</span>';
+                elseif ( $subtitleLanguage == 'deu' ):
+	                echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht") . '">OmdU</span>';
+                elseif ( $subtitleLanguage == 'zxx' ):
+	                echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__("None", "gegenlicht") . '">'. esc_html__("OV w/o Subs", "gegenlicht") .'</span>';
+				else:
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht"). '">'. esc_html__("OV w/o Subs", "gegenlicht") .'</span>';
 				endif;
 			endif;
 
 			if ( $audioType == 'synchronization' ):
-				echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-right" style="border: var(--bulma-body-color) solid 1px;" data-tooltip="' . $audioLanguage . '. ' . $subtitleLanguage == 'zxx' ? esc_html__( 'Audio without Subtitles', 'gegenlicht' ) : esc_html__( 'Audio with', 'gegenlicht' ) . ' ' . $subtitleLanguage . '. ' . esc_html__( 'Subtitles', 'gegenlicht' ) . '">' . esc_html__( 'Dub' ) . '</span>';
+				if ( $subtitleLanguage == 'zxx' ):
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Synchronization', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__("None", "gegenlicht") . '">'. esc_html__("Dub w/o Subs", "gegenlicht") .'</span>';
+				else:
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Synchronization', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht"). '">'. esc_html__("Dub w/ Subs", "gegenlicht") .'</span>';
+				endif;
 			endif;
 
 
