@@ -9,7 +9,7 @@ do_action( 'wp_body_open' );
         <h1 class="is-size-2 no-separator"><?= get_theme_mod("team_page_title")[get_locale()] ?? "" ?></h1>
         <div class="content">
 			<?php
-			$raw = get_theme_mod( 'team_page_text' )[get_locale()];
+			$raw = get_theme_mod( 'team_page_text' )[get_locale()] ?? "";
 			echo apply_filters("the_content", $raw);
 			?>
         </div>
@@ -54,7 +54,7 @@ do_action( 'wp_body_open' );
             <h2 class="is-size-3"><?= esc_html__( 'Former Members', 'gegenlicht' ) ?></h2>
             <div class="content">
 				<?php
-				$raw = get_theme_mod( 'team_former_members_text' )[get_locale()];
+				$raw = get_theme_mod( 'team_former_members_text' )[get_locale()] ?? "";
 				echo apply_filters("the_content", $raw);
 				?>
             </div>
