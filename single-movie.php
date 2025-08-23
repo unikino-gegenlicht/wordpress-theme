@@ -12,17 +12,17 @@ foreach ( $semester as $key => $term ) {
 	}
 }
 
-if (!$showPage && !is_user_logged_in()):
-    wp_redirect( home_url(), status: 308 );
-    return;
+if ( ! $showPage && ! is_user_logged_in() ):
+	wp_redirect( home_url(), status: 308 );
+
+	return;
 endif;
 
+
 get_header();
-do_action( 'wp_body_open' );
 
 $showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-
-$title = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
+$title       = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
 
 $anonymousImage = get_theme_mod( 'anonymous_image' );
 
@@ -81,7 +81,7 @@ if ( $isSpecialProgram ):
 						break;
 					case 'donation':
 						echo "<p>" . esc_html__( 'Donations welcome', 'gegenlicht' ) . "</p>";
-                        break;
+						break;
 					case 'paid':
 						$admissionFee = (float) rwmb_meta( 'admission_fee' );
 						echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, get_locale() == 'en' ? '.' : "," ) . "&euro;</p>";
