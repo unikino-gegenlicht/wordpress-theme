@@ -507,13 +507,27 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.privacy-policy {
+.privacy-policy,
+.impress {
   h1, h2, h3, h4, h5, h6 {
     border-bottom: unset;
     padding-bottom: unset;
     padding-top: unset;
+    color: inherit !important;
+  }
 
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  h3 {
     font-size: 1.25rem !important;
+  }
+  h4 {
+    font-size: var(--bulma-body-size) !important;
+    text-decoration: underline;
   }
 }
 
