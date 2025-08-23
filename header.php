@@ -10,32 +10,48 @@ headers_send( 103 );
 $fallbackImage = get_theme_mod( 'anonymous_image' );
 $semesterID    = get_theme_mod( 'displayed_semester' );
 
+$semester               = get_term( $semesterID, 'semester' );
+$semesterScreeningStart = get_term_meta( $semester->term_id, 'semester_start', true );
+$startDate              = date_parse_from_format( "d.m.Y", $semesterScreeningStart );
+$supposedStartDate      = mktime( 0, 0, 0, $startDate['month'], $startDate['day'], $startDate['year'] );
 
-$next_meta       = [];
-$next_meta[]     = [
-	'key'     => 'screening_date',
-	'value'   => time(),
-	'compare' => '>=',
-];
-$next_query_args = array(
-	'do_preload'     => false,
-	'post_type'      => [ 'movie', 'event' ],
-	'posts_per_page' => 1,
-	'meta_query'     => $next_meta,
-	'tax_query'      => array(
-		array(
-			'taxonomy' => 'semester',
-			'terms'    => $semesterID,
-		)
-	),
-	'meta_key'       => 'screening_date',
-	'orderby'        => 'meta_value_num',
-	'order'          => 'ASC',
-);
+if ( time() < strtotime( "-14 days", $supposedStartDate )) {
+	define( "GGL_ANNOUNCE_NEW_PROGRAM", true);
+	define( "GGL_SEMESTER_BREAK", false);
+} else {
+	define( "GGL_ANNOUNCE_NEW_PROGRAM", false);
+	define( "GGL_SEMESTER_BREAK", false);
 
-$next = new WP_Query( $next_query_args );
+}
 
-define( "GGL_SEMESTER_BREAK", !$next->have_posts() || get_theme_mod( "manual_semester_break" ) );
+if ( ! defined( 'GGL_SEMESTER_BREAK' )) {
+	$next_meta       = [];
+	$next_meta[]     = [
+		'key'     => 'screening_date',
+		'value'   => time(),
+		'compare' => '>=',
+	];
+	$next_query_args = array(
+		'do_preload'     => false,
+		'post_type'      => [ 'movie', 'event' ],
+		'posts_per_page' => 1,
+		'meta_query'     => $next_meta,
+		'tax_query'      => array(
+			array(
+				'taxonomy' => 'semester',
+				'terms'    => $semesterID,
+			)
+		),
+		'meta_key'       => 'screening_date',
+		'orderby'        => 'meta_value_num',
+		'order'          => 'ASC',
+	);
+
+	$next = new WP_Query( $next_query_args );
+
+	define( "GGL_SEMESTER_BREAK", ! $next->have_posts() || get_theme_mod( "manual_semester_break" ) );
+}
+
 
 /**
  * Configure the page title used in the HTML <head> element
@@ -100,21 +116,22 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
 }
 
 ?>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="<?= substr( get_locale(), 0, 2 ) ?>" data-theme="">
-    <head>
-        <title><?= esc_html( GGL_PAGE_TITLE ) ?></title>
-        <meta charset="<?php bloginfo( 'charset' ); ?>">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
-        <link rel="profile" href="http://gmpg.org/xfn/11">
-		<?php wp_head(); ?>
-    </head>
+<head>
+    <title><?= esc_html( GGL_PAGE_TITLE ) ?></title>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+	<?php wp_head(); ?>
+</head>
 <?php do_action( 'wp_body_open' ); ?>
 <body>
 <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand px-2">
-            <a class="navbar-item m-0 p-0 my-2 is-flex is-tab is-hidden-desktop-only" href="<?= get_home_url( scheme: 'https' ) ?>"
+            <a class="navbar-item m-0 p-0 my-2 is-flex is-tab is-hidden-desktop-only"
+               href="<?= get_home_url( scheme: 'https' ) ?>"
                style="border-bottom: none !important;" aria-label="Back To Start">
 				<?php
 				if ( $headerImage != false ):
@@ -196,7 +213,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
             </div>
         </div>
     </nav>
-	<?php if ( GGL_SEMESTER_BREAK && !$hideBreakBanner ): ?>
+	<?php if ( GGL_SEMESTER_BREAK && ! $hideBreakBanner && ! GGL_ANNOUNCE_NEW_PROGRAM ): ?>
         <div class="page-content semester-break mb-5">
             <div class="marquee py-5">
                 <div class="marquee-content">
@@ -214,4 +231,26 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
             </div>
         </div>
 	<?php endif; ?>
+	<?php if ( GGL_ANNOUNCE_NEW_PROGRAM && ! $hideBreakBanner  ):
+		$timeRemaining = $supposedStartDate - time();
+		$daysRemaining = floor( $timeRemaining / ( 60 * 60 * 24 ) );
+		$hoursRemaining = floor( ( $timeRemaining - ( $daysRemaining * 60 * 60 * 24 ) ) / ( 60 * 60 ) );
+		?>
+        <div class="page-content semester-break mb-5">
+            <div class="marquee py-5">
+                <div class="marquee-content">
+					<?php for ( $i = 0; $i < 2; $i ++ ) {
+						echo "<p>" . esc_html__( "New Program Releases In", 'gegenlicht' ) . "&nbsp;" . $daysRemaining . "&nbsp;" . ( $daysRemaining == 1 ? esc_html__( "Day", "gegenlicht" ) : esc_html__( "Days", "gegenlicht" ) ) . "&nbsp;" . $hoursRemaining . "&nbsp;" . ( $hoursRemaining == 1 ? esc_html__( "Hour", "gegenlicht" ) : esc_html__( "Hours", "gegenlicht" ) ) . "</p>";
+						echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
+					} ?>
+                </div>
+                <div class="marquee-content">
+					<?php for ( $i = 0; $i < 2; $i ++ ) {
+						echo "<p>" . esc_html__( "New Program Releases In", 'gegenlicht' ) . "&nbsp;" . $daysRemaining . "&nbsp;" . ( $daysRemaining == 1 ? esc_html__( "Day", "gegenlicht" ) : esc_html__( "Days", "gegenlicht" ) ) . "&nbsp;" . $hoursRemaining . "&nbsp;" . ( $hoursRemaining == 1 ? esc_html__( "Hour", "gegenlicht" ) : esc_html__( "Hours", "gegenlicht" ) ) . "</p>";
+						echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
+					} ?>
+                </div>
+            </div>
+        </div>
+		<?php endif; ?>
 </header>
