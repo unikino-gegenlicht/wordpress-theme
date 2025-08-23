@@ -187,6 +187,9 @@ $contentPadding: 0.75rem;
   color: var(--bulma-body-color) !important;
 }
 
+.navbar-menu {
+  box-shadow: none !important;
+}
 
 .navbar-item > svg {
   max-height: 3rem;
