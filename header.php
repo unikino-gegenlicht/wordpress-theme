@@ -35,7 +35,7 @@ $next_query_args = array(
 
 $next = new WP_Query( $next_query_args );
 
-define( "GGL_SEMESTER_BREAK", $next->have_posts() || get_theme_mod( "manual_semester_break" ) );
+define( "GGL_SEMESTER_BREAK", !$next->have_posts() || get_theme_mod( "manual_semester_break" ) );
 
 /**
  * Configure the page title used in the HTML <head> element
