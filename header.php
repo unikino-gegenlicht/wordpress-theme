@@ -20,8 +20,6 @@ if ( time() < strtotime( "-14 days", $supposedStartDate )) {
 	define( "GGL_SEMESTER_BREAK", false);
 } else {
 	define( "GGL_ANNOUNCE_NEW_PROGRAM", false);
-	define( "GGL_SEMESTER_BREAK", false);
-
 }
 
 if ( ! defined( 'GGL_SEMESTER_BREAK' )) {
@@ -72,12 +70,11 @@ if ( is_singular( [ "movie", "event" ] ) && ! defined( "GGL_PAGE_TITLE" ) ) {
 	$inSpecialProgram = rwmb_meta( 'program_type' ) == 'special_program';
 
 	if ( ! $showDetails && $inSpecialProgram ) {
-		$specialProgramID = rwmb_meta( 'special_program' );
-		$specialProgram   = get_term( $specialProgramID, 'special-program' );
+		$specialProgram =  rwmb_get_value( 'special_program' );
 		$title            = $specialProgram->name;
 	}
 
-	if ( ! $showDetails ) {
+	elseif ( ! $showDetails ) {
 		$title = __( "An unnamed movie", "gegenlicht" );
 	}
 	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ $title, $blogName ] ) );
@@ -103,6 +100,14 @@ if ( is_location_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
 		get_bloginfo( "name" )
 	] ) );
 }
+
+if ( is_impress_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
+	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
+		__( "Impress", "gegenlicht" ),
+		get_bloginfo( "name" )
+	] ) );
+}
+
 
 if ( ! defined( "GGL_PAGE_TITLE" ) ) {
 	if ( is_front_page() ) {
