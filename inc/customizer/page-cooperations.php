@@ -79,6 +79,20 @@ class CooperationPageCustomizer extends GGLCustomizerBase {
 			"settings" => "cooperation_rules[en]",
 		) ) );
 
+		$this->add_control( "cooperation_rules_closer[de]", array(
+			"section" => self::SECTION,
+			"label"   => __( 'Rule Closer Text (German)', 'gegenlicht' ),
+			"description" => __('This text is displayed below the cooperation rules', 'gegenlicht' ),
+			"type"    => "textarea"
+		) );
+
+		$this->add_control( "cooperation_rules_closer[en]", array(
+			"section" => self::SECTION,
+			"label"   => __( 'Rule Closer Text (English)', 'gegenlicht' ),
+			"description" => __('This text is displayed below the cooperation rules', 'gegenlicht' ),
+			"type"    => "textarea"
+		) );
+
 		$this->add_control( "cooperation_partner_text[de]", array(
 			"section" => self::SECTION,
 			"label"   => __( 'Partner List Text (German)', 'gegenlicht' ),
