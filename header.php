@@ -15,14 +15,14 @@ $semesterScreeningStart = get_term_meta( $semester->term_id, 'semester_start', t
 $startDate              = date_parse_from_format( "d.m.Y", $semesterScreeningStart );
 $supposedStartDate      = mktime( 0, 0, 0, $startDate['month'], $startDate['day'], $startDate['year'] );
 
-if ( time() < strtotime( "-14 days", $supposedStartDate )) {
-	define( "GGL_ANNOUNCE_NEW_PROGRAM", true);
-	define( "GGL_SEMESTER_BREAK", false);
+if ( time() < strtotime( "-14 days", $supposedStartDate ) ) {
+	define( "GGL_ANNOUNCE_NEW_PROGRAM", true );
+	define( "GGL_SEMESTER_BREAK", false );
 } else {
-	define( "GGL_ANNOUNCE_NEW_PROGRAM", false);
+	define( "GGL_ANNOUNCE_NEW_PROGRAM", false );
 }
 
-if ( ! defined( 'GGL_SEMESTER_BREAK' )) {
+if ( ! defined( 'GGL_SEMESTER_BREAK' ) ) {
 	$next_meta       = [];
 	$next_meta[]     = [
 		'key'     => 'screening_date',
@@ -70,14 +70,16 @@ if ( is_singular( [ "movie", "event" ] ) && ! defined( "GGL_PAGE_TITLE" ) ) {
 	$inSpecialProgram = rwmb_meta( 'program_type' ) == 'special_program';
 
 	if ( ! $showDetails && $inSpecialProgram ) {
-		$specialProgram =  rwmb_get_value( 'special_program' );
-		$title            = $specialProgram->name;
-	}
-
-	elseif ( ! $showDetails ) {
+		$specialProgram = rwmb_get_value( 'special_program' );
+		$title          = $specialProgram->name;
+	} elseif ( ! $showDetails ) {
 		$title = __( "An unnamed movie", "gegenlicht" );
 	}
 	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ $title, $blogName ] ) );
+}
+
+if ( is_front_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
+	define( "GGL_PAGE_TITLE", get_bloginfo( "name" ) . " – " . get_bloginfo( "description" ) );
 }
 
 if ( is_archive() && ! defined( "GGL_PAGE_TITLE" ) ) {
@@ -110,14 +112,11 @@ if ( is_impress_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
 
 
 if ( ! defined( "GGL_PAGE_TITLE" ) ) {
-	if ( is_front_page() ) {
-		define( "GGL_PAGE_TITLE", get_bloginfo( "name" ) . " – " . get_bloginfo( "description" ) );
-	} else {
-		define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
-			get_the_title(),
-			get_bloginfo( "name" )
-		] ) );
-	}
+	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
+		get_the_title(),
+		get_bloginfo( "name" )
+	] ) );
+
 }
 
 ?>
@@ -236,7 +235,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
             </div>
         </div>
 	<?php endif; ?>
-	<?php if ( GGL_ANNOUNCE_NEW_PROGRAM && ! $hideBreakBanner  ):
+	<?php if ( GGL_ANNOUNCE_NEW_PROGRAM && ! $hideBreakBanner ):
 		$timeRemaining = $supposedStartDate - time();
 		$daysRemaining = floor( $timeRemaining / ( 60 * 60 * 24 ) );
 		$hoursRemaining = floor( ( $timeRemaining - ( $daysRemaining * 60 * 60 * 24 ) ) / ( 60 * 60 ) );
@@ -257,5 +256,5 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                 </div>
             </div>
         </div>
-		<?php endif; ?>
+	<?php endif; ?>
 </header>
