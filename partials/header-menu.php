@@ -30,7 +30,7 @@ for ( $i = 0; $i < count( $navItems ); $i ++ ) {
 	}
 
 	if ($item->url == get_post_type_archive_link("supporter")) {
-		$title = __( "Supporters", "gegenlicht" );
+		$title = __( "Support", "gegenlicht" );
 	}
 	?>
     <a class="navbar-item is-size-5 py-0 px-2 <?= $isActivePage ? 'is-active' : '' ?>"

@@ -52,9 +52,9 @@ do_action( 'wp_body_open' );
 		<?php foreach ( $others as $post ) : setup_postdata( $post ); ?>
             <article id="<?= basename( get_post_permalink() ) ?>" class="page-content content my-6">
                 <header>
-                    <figure class="image supporter-logo">
+                    <a href="<?= get_post_permalink() ?>"> <figure class="image supporter-logo">
                         <img height="150" src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>" decoding="async" loading="lazy"/>
-                    </figure>
+                    </figure></a>
                     <h2 class="mt-2"><?php the_title() ?></h2>
                 </header>
 				<?php the_content();
