@@ -1,7 +1,7 @@
 <?php
 
 $postID = ($args['post-id'] ?? null);
-$lazyLoad = (bool) ($args['lazyload'] ?? false);
+$lazyLoad = $args['lazyload'] ?? false;
 $style = ($args['style'] ?? "");
 
 if (isset($post) && $postID != null):

@@ -166,16 +166,6 @@ $contentPadding: 0.75rem;
   }
 }
 
-@include mixins.desktop {
-  .next-movie {
-    border-top: var(--border-thickness) solid var(--bulma-body-color) !important;
-  }
-}
-
-.next-movie.follow-up {
-  border-top: var(--border-thickness) solid var(--bulma-body-color) !important;
-}
-
 .navbar-end {
   gap: 0;
 }
@@ -265,12 +255,22 @@ html {
     }
   }
 
-  > a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .movie-list-title {
+    font-family: "GEGENLICHT";
+    text-transform: uppercase;
+    padding: 0.25rem;
+    font-size: 1.25rem;
+    background-color: var(--bulma-body-color);
+    color: var(--bulma-body-background-color);
   }
 
+  .movie-list-entries {
+    a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
 }
 
 
@@ -286,6 +286,10 @@ html {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    border-top: var(--border-thickness) solid var(--bulma-body-color);
+    border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
   .next-movie-title {
