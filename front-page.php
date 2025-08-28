@@ -3,127 +3,35 @@ defined( 'ABSPATH' ) || exit;
 
 $fallbackImage = get_theme_mod( 'anonymous_image' );
 $semesterID    = get_theme_mod( 'displayed_semester' );
+$upcoming      = ggl_get_advertisements( $semesterID );
 
-
-$next_meta       = [];
-$next_meta[]     = [
-	'key'     => 'screening_date',
-	'value'   => time(),
-	'compare' => '>=',
-];
-$next_query_args = array(
-	'do_preload'     => true,
-	'post_type'      => [ 'movie', 'event' ],
-	'posts_per_page' => 1,
-	'meta_query'     => $next_meta,
-	'tax_query'      => array(
-		array(
-			'taxonomy' => 'semester',
-			'terms'    => $semesterID,
-		)
-	),
-	'meta_key'       => 'screening_date',
-	'orderby'        => 'meta_value_num',
-	'order'          => 'ASC',
-);
-
-$next = new WP_Query( $next_query_args );
-
-$upcoming = [];
-if ( $next->have_posts() ) {
-	$next->the_post();
-	$upcoming[] = $post;
-
-	$followingQuery = new WP_Query( array(
-		'post_type'      => [ 'movie', 'event' ],
-		'posts_per_page' => - 1,
-		'meta_query'     => [
-			[
-				'key'     => 'screening_date',
-				'value'   => [
-					(int) rwmb_meta( 'screening_date' ) + 1,
-					( (int) strtotime( 'tomorrow', (int) rwmb_meta( 'screening_date' ) ) )
-				],
-				'compare' => 'BETWEEN',
-			]
-		],
-		'tax_query'      => array(
-			array(
-				'taxonomy' => 'semester',
-				'terms'    => $semesterID,
-			)
-		),
-	) );
-	wp_reset_postdata();
-
-	while ( $followingQuery->have_posts() ) {
-		$followingQuery->the_post();
-		$upcoming[] = $post;
-	}
-	wp_reset_postdata();
-
-}
 
 get_header();
-do_action( 'wp_body_open' );
+
 ?>
     <main class="px-2 mb-6 page-content">
-<?php
-if ( ! empty( $upcoming ) && !GGL_SEMESTER_BREAK ):
+<?php if ( empty( $upcoming ) || GGL_SEMESTER_BREAK ):
+	get_template_part( "intermission" );
+else:
 	for ( $i = 0; $i < count( $upcoming ); $i ++ ):
-		$post = get_post( $upcoming[ $i ] );
-		setup_postdata( $post );
-		$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-		$programType = rwmb_meta( 'program_type' );
-		$specialProgram = rwmb_meta( 'special_program' );
-		$title = $showDetails ? ( get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ) : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) )
-		?>
-        <article
-                class="next-movie pt-2 <?= $i == count( $upcoming ) - 1 ? 'pb-6' : '' ?> <?= $i != 0 ? "follow-up" : "" ?>">
-            <div class="next-movie-header">
-                <p><?= $i == 0 ? esc_html__( 'Next Screening', 'gegenlicht' ) : esc_html__( 'Afterwards at', 'gegenlicht' ) ?></p>
-                <p class="is-size-6 m-0 p-0"><?= $i == 0 ? date( "d.m.Y | H:i", (int) rwmb_meta( 'screening_date' ) ) : date( "H:i", (int) rwmb_meta( 'screening_date' ) ) ?></p>
-            </div>
-            <hr class="separator"/>
-            <h2 class="title next-movie-title py-4"><?= $showDetails ? $title : esc_html__( 'An unnamed movie', 'gegenlicht' ) ?></h2>
-			<?php get_template_part( 'partials/responsive-image', args: [
-				'fetch-priority' => 'high',
-				'post-id'        => $post->ID
-			] ) ?>
-            <hr class="separator"/>
-			<?php get_template_part( 'partials/button', args: [
-				'href'    => get_the_permalink(),
-				'content' => $post->post_type == 'movie' ? esc_html__( 'To the movie', 'gegenlicht' ) : esc_html__( 'To the event', 'gegenlicht' )
-			] ) ?>
-        </article>
-	<?php endfor;
+		get_template_part( "partials/movie-advertisement", args: [
+			"post_id"  => $upcoming[ $i ]->ID,
+			"last"     => $i == ( count( $upcoming ) - 1 ),
+			"followUp" => $i != 0
+		] );
+	endfor;
 	wp_reset_postdata(); ?>
 
 	<?php
 
-	$lastDisplayed = end( $upcoming );
+	$lastDisplayed                   = end( $upcoming );
+	$lastAdvertisementScreeningStart = (int) rwmb_get_value( "screening_date", post_id: $lastDisplayed->ID );
 
-	$meta_query   = [];
-	$meta_query[] = [
-		'key'     => 'screening_date',
-		'value'   => (int) rwmb_meta( 'screening_date', post_id: $lastDisplayed->ID ),
-		'compare' => '>',
-	];
-	$programQuery = array(
-		'post_type'      => [ 'movie', 'event' ],
-		'posts_per_page' => - 1,
-		'meta_query'     => $meta_query,
-		'meta_key'       => 'screening_date',
-		'orderby'        => 'meta_value_num',
-		'order'          => 'ASC',
-	);
-
-	$query = new WP_Query( $programQuery );
-
-	$monthlyMovies = array();
-
-	while ( $query->have_posts() ): $query->the_post();
-		$screeningMonth                     = date( 'F', (int) rwmb_meta( 'screening_date' ) );
+	while ( have_posts() ): the_post();
+		if ( ( (int) rwmb_get_value( "screening_date" ) ) < $lastAdvertisementScreeningStart ) {
+			continue;
+		}
+		$screeningMonth                     = date( 'F', (int) rwmb_get_value( 'screening_date' ) );
 		$monthlyMovies[ $screeningMonth ][] = $post;
 	endwhile;
 	?>
@@ -144,30 +52,7 @@ if ( ! empty( $upcoming ) && !GGL_SEMESTER_BREAK ):
             </span>
     </div>
     <hr class="separator mb-6" style="margin-top: 0.25rem;"/>
-	<?php foreach ( $monthlyMovies as $month => $posts ) : ?>
-        <div class="movie-list mb-5 is-filterable">
-            <p style="background-color: var(--bulma-body-color); color: var(--bulma-body-background-color)"
-               class="font-ggl is-uppercase is-size-5 py-1 pl-1"><?= esc_html__( $month, 'gegenlicht' ) ?></p>
-			<?php foreach ( $posts as $post ) : $post = get_post( $post );
-				$programType = rwmb_meta( 'program_type' );
-				$specialProgram = rwmb_meta( 'special_program' );
-				$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-				$title = $showDetails ? ( get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ) : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?>
-                <a role="link"
-                   aria-label="<?= $title ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( "r", rwmb_meta( 'screening_date' ) ) ?>"
-                   data-program-type="<?= $programType ?>" href="<?= get_permalink() ?>">
-                    <div>
-                        <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
-                                    class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
-                        </time>
-                        <h2 class="is-size-5 has-text-weight-bold is-uppercase no-separator"><?= $title ?></h2>
-                    </div>
-                    <span class="icon">
-                        <span class="material-symbols">arrow_forward_ios</span>
-                    </span>
-                </a>
-			<?php endforeach; ?>
-        </div>
+	<?php foreach ( $monthlyMovies as $month => $posts ) : get_template_part("partials/movie-list", args: ["title" => esc_html__( $month, 'gegenlicht' ), "posts" => $posts])?>
 	<?php endforeach; ?>
 <?php else: ?>
     <div class="content">
@@ -185,96 +70,8 @@ endforeach; ?>
     <div class="page-content">
         <hr class="separator is-only-darkmode"/>
     </div>
-<?php else: ?>
-    <h2 class="title next-movie-title pb-5"><?= esc_html__( 'Intermission in the Cinema', 'gegenlicht' ) ?></h2>
-	<?php
-	get_template_part( 'partials/responsive-image', args: [
-		'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'desktop' ),
-		'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'mobile' ),
-		'fetch-priority' => "high",
-        "loading" => "eager"
-	] );
-	?>
-    <hr class="separator" style="margin-top: 1rem !important;"/>
-    <h3 class="py-2"><?= get_theme_mod( "semester_break_tagline" )[ get_locale() ] ?? "" ?></h3>
 
-	<?php
-
-	$semesterBreakMeta   = [];
-	$semesterBreakMeta[] = [
-		'key'     => 'screening_date',
-		'value'   => time(),
-		'compare' => '>=',
-	];
-	$query_args          = array(
-		'do_preload'     => false,
-		'post_type'      => [ 'movie', 'event' ],
-		'posts_per_page' => 1,
-		'meta_query'     => $semesterBreakMeta,
-		'tax_query'      => array(
-			array(
-				'taxonomy' => 'semester',
-				'field'    => "id",
-				'operator' => "NOT EXISTS"
-			)
-		),
-		'meta_key'       => 'screening_date',
-		'orderby'        => 'meta_value_num',
-		'order'          => 'ASC',
-	);
-
-	$semesterBreakScreenings = new WP_Query( $query_args );
-
-	if ( $semesterBreakScreenings->have_posts() ):
-		?>
-        <div class="content pt-2">
-			<?= apply_filters( "the_content", get_theme_mod( "semester_break_pre_events_text" )[ get_locale() ] ?? "" ) ?>
-        </div>
-        <div class="movie-list mb-5 is-filterable">
-            <p style="background-color: var(--bulma-body-color); color: var(--bulma-body-background-color)"
-               class="font-ggl is-uppercase is-size-5 py-1 pl-1"><?= esc_html__( "Intermission Specials", 'gegenlicht' ) ?></p>
-			<?php while ( $semesterBreakScreenings->have_posts() ) : $semesterBreakScreenings->the_post();
-				$programType    = rwmb_meta( 'program_type' );
-				$specialProgram = rwmb_meta( 'special_program' );
-				$showDetails    = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-				$title          = $showDetails ? ( get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ) : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?>
-                <a role="link"
-                   aria-label="<?= $title ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( "r", rwmb_meta( 'screening_date' ) ) ?>"
-                   data-program-type="<?= $programType ?>" href="<?= get_permalink() ?>">
-                    <div>
-                        <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
-                                    class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
-                        </time>
-                        <h2 class="is-size-5 has-text-weight-bold is-uppercase no-separator"><?= $title ?></h2>
-                    </div>
-                    <span class="icon">
-                        <span class="material-symbols">arrow_forward_ios</span>
-                    </span>
-                </a>
-			<?php endwhile; ?>
-        </div>
-        <div class="content pt-2">
-			<?= apply_filters( "the_content", get_theme_mod( "semester_break_post_events_text" )[ get_locale() ] ?? "" ) ?>
-			<?= apply_filters( "the_content", get_theme_mod( "semester_break_text" )[ get_locale() ] ?? "" ) ?>
-        </div>
-	<?php else: ?>
-        <div class="content pt-2">
-			<?= apply_filters( "the_content", get_theme_mod( "semester_break_text" )[ get_locale() ] ?? "" ) ?>
-        </div>
-
-	<?php endif; ?>
-    <h3><?= esc_html__( "What we have shown so far", "gegenlicht" ) ?></h3>
-    <div class="content pt-2">
-		<?= apply_filters( "the_content", get_theme_mod( "semester_break_archive_text" )[ get_locale() ] ?? "" ) ?>
-		<?php get_template_part( 'partials/button', args: [
-			'href'    => get_post_type_archive_link( 'movie' ),
-			'content' => __( 'To the Archive', 'gegenlicht' )
-		] ) ?>
-    </div>
-<?php endif; ?>
-    </main>
-
-<?php if ( in_array( 'team', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
+	<?php if ( in_array( 'team', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #team {
             --bulma-body-color: <?= get_theme_mod('teamBlock_text_color')['light'] ?? 'inherit' ?> !important;
@@ -332,7 +129,7 @@ endforeach; ?>
     </div>
 <?php endif; ?>
 
-<?php if ( in_array( 'location', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
+	<?php if ( in_array( 'location', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #location {
 
@@ -392,7 +189,7 @@ endforeach; ?>
         </div>
     </article>
 <?php endif; ?>
-<?php if ( in_array( 'cooperations', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
+	<?php if ( in_array( 'cooperations', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #cooperations {
             --bulma-body-background-color: <?= get_theme_mod('cooperations_background_color')['light'] ?>;
@@ -447,8 +244,9 @@ endforeach; ?>
 			<?php
 
 			$externalsQuery = new WP_Query( [
-				'post_type' => [ 'supporter', 'cooperation-partner' ],
-				'orderby'   => 'rand'
+				'post_type'  => [ 'supporter', 'cooperation-partner' ],
+				'orderby'    => 'rand',
+				"do_preload" => false,
 			] );
 
 			if ( $externalsQuery->have_posts() ) :
@@ -456,8 +254,12 @@ endforeach; ?>
 				$postImages = array();
 
 				while ( $externalsQuery->have_posts() ) : $externalsQuery->the_post();
+					get_post( $externalsQuery->post );
 					if ( ! rwmb_meta( "supporter_display_first" ) ) {
 						$fp = get_attached_file( attachment_url_to_postid( get_the_post_thumbnail_url() ), true );
+						if ( ! $fp ) {
+							continue;
+						}
 						if ( mime_content_type( $fp ) == "image/svg+xml" ) {
 							$postImages[] = $fp;
 						}
@@ -465,11 +267,8 @@ endforeach; ?>
 							break;
 						}
 					}
-
 				endwhile;
 				wp_reset_postdata();
-
-
 				?>
                 <div role="marquee" aria-live="off"
                      aria-label="<?= esc_html__( 'Logos of ours Cooperation partners', 'gegenlicht' ) ?>"
@@ -509,5 +308,6 @@ endforeach; ?>
             </div>
         </div>
     </article>
+<?php endif; ?>
 <?php endif; ?>
 <?php get_footer(); ?>
