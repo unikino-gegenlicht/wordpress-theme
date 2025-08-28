@@ -298,8 +298,9 @@ add_action( "pre_get_posts", function ( WP_Query $query ) {
 
 	if ( is_post_type_archive( [ "team-member", "cooperation-partner", "supporter" ] ) ) {
 		$query->set( 'posts_per_page', - 1 );
-        $query->set( 'orderby', 'name' );
-        $query->set( 'order', 'ASC' );
+		$query->set( 'orderby', 'name' );
+		$query->set( 'order', 'ASC' );
+
 		return;
 	}
 } );
@@ -322,3 +323,104 @@ function is_impress_page(): bool {
 function is_contact_page(): bool {
 	return get_post()->ID == get_theme_mod( 'contact_page' );
 }
+
+/**
+ * Retrieve the movies that shall be advertised for
+ *
+ * @return WP_Post[] movies that shall be advertised for
+ */
+function ggl_get_advertisements( int $forSemester ): array {
+	$advertisable = array();
+
+	$args = array(
+		"do_preload"     => true,
+		"post_type"      => [ "movie", "event" ],
+		"posts_per_page" => 1,
+		"meta_key"       => "screening_date",
+		"orderby"        => "meta_value_num",
+		"order"          => "ASC",
+		"meta_query"     => array(
+			[
+				"key"     => "screening_date",
+				"value"   => time(),
+				"compare" => ">="
+			]
+		),
+		"tax_query"      => array(
+			[
+				"taxonomy" => "semester",
+				"terms"    => $forSemester
+			]
+		)
+	);
+
+	$query = new WP_Query( $args );
+	if ( $query->have_posts() ): $query->the_post();
+		$advertisable[] = $query->post;
+		wp_reset_postdata();
+	endif;
+
+	if ( ! empty( $advertisable ) ):
+		$firstScreeningStarts = (int) rwmb_get_value( "screening_date", post_id: $advertisable[0]->ID );
+		$args                 = array(
+			"do_preload"     => true,
+			"post_type"      => [ "movie", "event" ],
+			"posts_per_page" => - 1,
+			"meta_key"       => "screening_date",
+			"orderby"        => "meta_value_num",
+			"order"          => "ASC",
+			"meta_query"     => array(
+				[
+					"key"     => "screening_date",
+					"value"   => [
+						$firstScreeningStarts + 1,
+						strtotime( 'tomorrow', $firstScreeningStarts ) ?: 0
+
+					],
+					"compare" => "BETWEEN"
+				]
+			),
+			"tax_query"      => array(
+				[
+					"taxonomy" => "semester",
+					"terms"    => $forSemester
+				]
+			)
+		);
+
+		$query = new WP_Query( $args );
+		while ( $query->have_posts() ) : $query->the_post();
+			$advertisable[] = $query->post;
+		endwhile;
+		wp_reset_postdata();
+	endif;
+
+	return $advertisable;
+}
+
+function ggl_modify_frontpage_query( WP_Query $query ) {
+	if ( ! $query->is_front_page() || !$query->is_main_query() ) {
+		return;
+	}
+	$query->set( 'do_preload', false);
+	$query->set( 'post_type', [ "movie", "event" ] );
+	$query->set( 'posts_per_page', - 1 );
+	$query->set( 'meta_key', 'screening_date' );
+	$query->set( 'orderby', 'meta_value_num' );
+	$query->set( 'order', 'ASC' );
+	$query->set( 'tax_query', [
+		[
+			"taxonomy" => "semester",
+			"terms"    => get_theme_mod( "displayed_semester" )
+		]
+	] );
+    $query->set("meta_query", array(
+	    [
+		    "key"     => "screening_date",
+		    "value"   => time(),
+		    "compare" => ">"
+	    ]
+    ));
+
+}
+add_action( "pre_get_posts", 'ggl_modify_frontpage_query' , 1);
