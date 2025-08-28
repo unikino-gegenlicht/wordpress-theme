@@ -152,21 +152,21 @@ if ( $isSpecialProgram ):
 
 			if ( $audioType == 'original' ):
 				if ( $subtitleLanguage == 'eng' ):
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht") . '">OmeU</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht") . '">OmeU</span>';
                 elseif ( $subtitleLanguage == 'deu' ):
-	                echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht") . '">OmdU</span>';
+	                echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht") . '">OmdU</span>';
                 elseif ( $subtitleLanguage == 'zxx' ):
-	                echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__("None", "gegenlicht") . '">'. esc_html__("OV w/o Subs", "gegenlicht") .'</span>';
+	                echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__("None", "gegenlicht") . '">'. esc_html__("OV w/o Subs", "gegenlicht") .'</span>';
 				else:
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht"). '">'. esc_html__("OV w/o Subs", "gegenlicht") .'</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Original', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht"). '">'. esc_html__("OV w/ Subs", "gegenlicht") .'</span>';
 				endif;
 			endif;
 
 			if ( $audioType == 'synchronization' ):
 				if ( $subtitleLanguage == 'zxx' ):
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Synchronization', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__("None", "gegenlicht") . '">'. esc_html__("Dub w/o Subs", "gegenlicht") .'</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Synchronization', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__("None", "gegenlicht") . '">'. esc_html__("Dub w/o Subs", "gegenlicht") .'</span>';
 				else:
-					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '.&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Synchronization', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht"). '">'. esc_html__("Dub w/ Subs", "gegenlicht") .'</span>';
+					echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom" style="border: var(--bulma-body-color) solid var(--border-thickness);" data-tooltip="' . esc_html__("Audio Language:", "gegenlicht") . '&nbsp;' . esc_html__($audioLanguage, "gegenlicht") . '&nbsp;('  . esc_html__( 'Synchronization', 'gegenlicht' ) . ')'. PHP_EOL . esc_html__("Subtitle Language:", "gegenlicht") . '&nbsp;' . esc_html__($subtitleLanguage, "gegenlicht"). '">'. esc_html__("Dub w/ Subs", "gegenlicht") .'</span>';
 				endif;
 			endif;
 
@@ -197,7 +197,7 @@ if ( $isSpecialProgram ):
             </a>
         </div>
 	<?php endif; ?>
-    <article class="page-content px-2 mt-4 content">
+    <article class="page-content px-2 my-4 content">
 		<?php if ( rwmb_meta( 'show_content_notice' ) ): ?>
             <div class="content-notice mb-6 p-2">
                 <h2 class="is-size-4 border-is-background-color"><?= esc_html__( "Content Notice", 'gegenlicht' ) ?></h2>
