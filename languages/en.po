@@ -55,20 +55,19 @@ msgid "Former Members"
 msgstr "Former Members"
 
 #: archive-movie.php:87
-#: front-page.php:79
-#: front-page.php:88
-#: front-page.php:155
-#: front-page.php:240
-#: header.php:65
+#: header.php:78
+#: intermission.php:58
+#: partials/movie-advertisement.php:18
+#: partials/movie-list.php:64
 #: single-movie.php:95
 msgid "An unnamed movie"
 msgstr "An unnamed movie"
 
-#: header.php:185
+#: header.php:207
 msgid "Logout"
 msgstr "Logout"
 
-#: header.php:193
+#: header.php:215
 msgid "Login"
 msgstr "Login"
 
@@ -128,47 +127,37 @@ msgid "Not Rated"
 msgstr "Not Rated"
 
 #: single-event.php:110
-#: single-movie.php:143
 msgid "FSK"
 msgstr "FSK"
 
 #: single-event.php:122
 #: single-event.php:125
-#: single-movie.php:155
-#: single-movie.php:158
 msgid "Original with"
 msgstr "Original with"
 
 #: single-event.php:122
 #: single-event.php:125
 #: single-event.php:133
-#: single-movie.php:155
-#: single-movie.php:158
-#: single-movie.php:166
 msgid "Subtitles"
 msgstr "Subtitles"
 
 #: single-event.php:128
-#: single-movie.php:161
 msgid "Original without Subtitles"
 msgstr "Original without Subtitles"
 
 #: single-event.php:128
-#: single-movie.php:161
 msgid "OV"
 msgstr "OV"
 
 #: single-event.php:133
-#: single-movie.php:166
 msgid "Audio without Subtitles"
 msgstr "Audio without Subtitles"
 
 #: single-event.php:133
-#: single-movie.php:166
 msgid "Audio with"
 msgstr "Audio with"
 
-#: front-page.php:84
+#: partials/movie-advertisement.php:36
 msgid "Next Screening"
 msgstr "Next Screening"
 
@@ -177,25 +166,26 @@ msgid "Youth Protection Officer"
 msgstr "Youth Protection Officer"
 
 #: footer.php:45
+#: header.php:106
 #: templates/page-impress.php:3
 msgid "Impress"
 msgstr "Impress"
 
 #: footer.php:47
-#: header.php:79
+#: header.php:92
 #: privacy-policy.php:8
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
-#: front-page.php:84
+#: partials/movie-advertisement.php:32
 msgid "Afterwards at"
 msgstr "Afterwards at"
 
-#: front-page.php:96
+#: partials/movie-advertisement.php:78
 msgid "To the movie"
 msgstr "To the movie"
 
-#: front-page.php:138
+#: front-page.php:46
 msgid "Main Program Only"
 msgstr "Main Program Only"
 
@@ -212,7 +202,7 @@ msgid "Displayed Semester"
 msgstr "Displayed Semester"
 
 #: single-event.php:157
-#: single-movie.php:199
+#: single-movie.php:203
 msgid "Content Notice"
 msgstr "Content Notice"
 
@@ -221,22 +211,22 @@ msgstr "Content Notice"
 msgid "The program hosted"
 msgstr "The program hosted"
 
-#: front-page.php:132
+#: front-page.php:40
 msgid "Our Semester Program"
 msgstr "Our Semester Program"
 
 #: single-event.php:149
 #: single-event.php:175
-#: single-movie.php:191
-#: single-movie.php:233
+#: single-movie.php:195
+#: single-movie.php:237
 msgid "Reserve Now"
 msgstr "Reserve Now"
 
-#: single-movie.php:206
+#: single-movie.php:210
 msgid "What the movie is about"
 msgstr "What the movie is about"
 
-#: single-movie.php:210
+#: single-movie.php:214
 msgid "Why it's worth watching"
 msgstr "Why it's worth watching"
 
@@ -248,7 +238,7 @@ msgstr "Selected by"
 msgid "No proposals found. Check back later…"
 msgstr "No proposals found. Check back later…"
 
-#: front-page.php:326
+#: front-page.php:123
 msgid "To the team"
 msgstr "To the team"
 
@@ -2479,51 +2469,51 @@ msgstr ""
 msgid "Visitor Address"
 msgstr ""
 
-#: front-page.php:96
+#: partials/movie-advertisement.php:78
 msgid "To the event"
 msgstr ""
 
-#: front-page.php:157
-#: front-page.php:242
+#: intermission.php:62
+#: partials/movie-list.php:73
 msgid "Screening starts: "
 msgstr ""
 
-#: front-page.php:179
-#: front-page.php:271
+#: front-page.php:64
+#: intermission.php:94
 msgid "To the Archive"
 msgstr ""
 
-#: header.php:204
-#: header.php:210
+#: header.php:226
+#: header.php:232
 msgid "Semester Break"
 msgstr ""
 
-#: front-page.php:189
+#: intermission.php:1
 msgid "Intermission in the Cinema"
 msgstr ""
 
-#: front-page.php:235
+#: intermission.php:50
 msgid "Intermission Specials"
 msgstr ""
 
-#: front-page.php:266
+#: intermission.php:89
 msgid "What we have shown so far"
 msgstr ""
 
-#: front-page.php:389
-#: front-page.php:390
+#: front-page.php:186
+#: front-page.php:187
 msgid "To our Location"
 msgstr ""
 
-#: front-page.php:475
+#: front-page.php:274
 msgid "Logos of ours Cooperation partners"
 msgstr ""
 
-#: front-page.php:503
+#: front-page.php:302
 msgid "Our Cooperation Partners"
 msgstr ""
 
-#: front-page.php:507
+#: front-page.php:306
 msgid "Our supporters"
 msgstr ""
 
@@ -2662,7 +2652,7 @@ msgstr ""
 msgid "Cooperation Rules (English)"
 msgstr ""
 
-#: inc/customizer/page-cooperations.php:91
+#: inc/customizer/page-cooperations.php:105
 msgid "Partner List Text (English)"
 msgstr ""
 
@@ -2797,6 +2787,9 @@ msgstr ""
 msgid "Event starts"
 msgstr ""
 
+#: intermission.php:58
+#: partials/movie-advertisement.php:20
+#: partials/movie-list.php:67
 #: single-event.php:84
 msgid "An unnamed event"
 msgstr ""
@@ -2870,7 +2863,7 @@ msgstr ""
 msgid "The background color of the whole block during dark mode"
 msgstr ""
 
-#: header.php:86
+#: header.php:99
 #: inc/customizer/block-location.php:8
 #: inc/customizer/front-page.php:54
 #: partials/header-menu.php:17
@@ -3042,24 +3035,24 @@ msgstr ""
 msgid "Select a SVG Image for the navigation brand. Please select a logo which has no color set to it, to allow coloring it in in dark themes and special program pages"
 msgstr ""
 
-#: inc/customizer/page-cooperations.php:84
+#: inc/customizer/page-cooperations.php:98
 msgid "Partner List Text (German)"
 msgstr ""
 
-#: inc/customizer/page-cooperations.php:85
-#: inc/customizer/page-cooperations.php:92
+#: inc/customizer/page-cooperations.php:99
+#: inc/customizer/page-cooperations.php:106
 msgid "This text is displayed just above the entries showcasing our cooperation partners"
 msgstr ""
 
-#: inc/customizer/page-cooperations.php:98
+#: inc/customizer/page-cooperations.php:112
 msgid "Button Label (German)"
 msgstr ""
 
-#: inc/customizer/page-cooperations.php:104
+#: inc/customizer/page-cooperations.php:118
 msgid "Button Label (English)"
 msgstr ""
 
-#: inc/customizer/page-cooperations.php:110
+#: inc/customizer/page-cooperations.php:124
 msgid "URL to Cooperation Request Form"
 msgstr ""
 
@@ -3199,4 +3192,89 @@ msgstr ""
 
 #: partials/header-menu.php:33
 msgid "Supporters"
+msgstr ""
+
+#: header.php:248
+#: header.php:254
+msgid "New Program Releases In"
+msgstr ""
+
+#: header.php:248
+#: header.php:254
+msgid "Days"
+msgstr ""
+
+#: header.php:248
+#: header.php:254
+msgid "Hours"
+msgstr ""
+
+#: header.php:248
+#: header.php:254
+msgid "Day"
+msgstr ""
+
+#: header.php:248
+#: header.php:254
+msgid "Hour"
+msgstr ""
+
+#: inc/customizer/page-cooperations.php:84
+msgid "Rule Closer Text (German)"
+msgstr ""
+
+#: inc/customizer/page-cooperations.php:85
+#: inc/customizer/page-cooperations.php:92
+msgid "This text is displayed below the cooperation rules"
+msgstr ""
+
+#: inc/customizer/page-cooperations.php:91
+msgid "Rule Closer Text (English)"
+msgstr ""
+
+#: partials/movie-advertisement.php:39
+msgid "Next Event"
+msgstr ""
+
+#: partials/movie-advertisement.php:42
+msgid "Up next"
+msgstr ""
+
+#: single-movie.php:155
+#: single-movie.php:157
+#: single-movie.php:159
+#: single-movie.php:161
+#: single-movie.php:167
+#: single-movie.php:169
+msgid "Audio Language:"
+msgstr ""
+
+#: single-movie.php:155
+#: single-movie.php:157
+#: single-movie.php:159
+#: single-movie.php:161
+#: single-movie.php:167
+#: single-movie.php:169
+msgid "Subtitle Language:"
+msgstr ""
+
+#: single-movie.php:159
+#: single-movie.php:167
+msgid "None"
+msgstr ""
+
+#: single-movie.php:159
+msgid "OV w/o Subs"
+msgstr ""
+
+#: single-movie.php:161
+msgid "OV w/ Subs"
+msgstr ""
+
+#: single-movie.php:167
+msgid "Dub w/o Subs"
+msgstr ""
+
+#: single-movie.php:169
+msgid "Dub w/ Subs"
 msgstr ""
