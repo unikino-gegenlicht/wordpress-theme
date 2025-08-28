@@ -269,6 +269,17 @@ html {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
+      border-bottom: var(--shared-border-thickness) solid var(--bulma-body-color);
+
+      &:first-child {
+        border-top: none !important;
+      }
+
+      &:last-child {
+        border-bottom: none !important;
+      }
     }
   }
 }

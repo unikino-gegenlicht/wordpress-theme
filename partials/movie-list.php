@@ -40,9 +40,11 @@ if ( empty( $posts ) ) {
 }
 ?>
 <div class="movie-list mb-5 <?= $allowFiltering ? "is-filterable" : "" ?>">
+    <?php if (!empty($title)): ?>
     <p class="movie-list-title">
 		<?= $title ?>
     </p>
+    <?php endif; ?>
     <div class="movie-list-entries">
 		<?php foreach ( $posts as $post ) :
 			$post = get_post( $post->ID );

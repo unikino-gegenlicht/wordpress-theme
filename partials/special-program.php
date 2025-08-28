@@ -44,8 +44,8 @@ $semesterID       = $args['semester'] ?? null;
     }
 </style>
 <article id="special-program-<?= $specialProgramID ?>" class="py-5">
-    <div class="page-content content">
-        <header>
+    <div class="page-content">
+        <header class="content">
             <a href="<?= get_term_link( $specialProgramID, 'special-program' ) ?>"
                aria-label="<?= esc_html__( 'Show details of', 'gegenlicht' ) . ' ' . get_term( $specialProgramID )->name ?>">
                 <figure class="image mb-6">
@@ -62,6 +62,9 @@ $semesterID       = $args['semester'] ?? null;
                 </figure>
             </a>
         </header>
+        <div class="content">
+            <?= apply_filters("the_content", get_term( (int) $specialProgramID )->description) ?>
+        </div>
 		<?php
 		$query = new WP_Query( array(
 			'post_type'      => [ 'movie', 'event' ],
@@ -89,33 +92,11 @@ $semesterID       = $args['semester'] ?? null;
 		) );
 		?>
 
-		<?php if ( ! $query->have_posts() ) :
-			echo apply_filters("the_content", get_term( (int) $specialProgramID )->description)
-			?>
+		<?php if ( ! $query->have_posts() ) : ?>
             <p class="is-italic"><?= esc_html__( 'Sadly, all movies of this special program have been screened for the current semester. Check back next semester.', "gegenlicht" ) ?></p>
-
 		<?php
 		else:
-			?>
-            <div class="movie-list">
-
-				<?php while ( $query->have_posts() ) : $query->the_post();
-					$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-					$title       = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
-
-					?>
-                    <a href="<?= get_permalink() ?>"
-                       aria-label="<?= $showDetails ? $title : get_term( $specialProgramID )->name ?>">
-                        <div>
-                            <time datetime="<?= date( "Y-m-d H:i", rwmb_meta( 'screening_date' ) ) ?>"><p
-                                        class="is-size-6 m-0 p-0"><?= date( "d.m.Y | H:i", rwmb_meta( 'screening_date' ) ) ?></p>
-                            </time>
-                            <p class="is-size-5 has-text-weight-bold is-uppercase"><?= $showDetails ? $title : get_term( $specialProgramID )->name ?></p>
-                        </div>
-                        <span class="icon">
-					<span class="material-symbols">arrow_forward_ios</span></span>
-                    </a>
-				<?php endwhile; ?>        </div>
-		<?php endif; ?>
+			get_template_part("partials/movie-list", args: ["posts" => $query->posts] );
+		endif; ?>
     </div>
 </article>
