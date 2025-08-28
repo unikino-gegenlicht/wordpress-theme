@@ -27,6 +27,9 @@ class AnonymizationCustomizer extends GGLCustomizerBase {
 
 		$this->add_theme_mod("anonymized_movie_explainer[de]");
 		$this->add_theme_mod("anonymized_movie_explainer[en]");
+
+		$this->add_theme_mod("special_program_anonymous_explainer[de]");
+		$this->add_theme_mod("special_program_anonymous_explainer[en]");
 	}
 
 	private function register_controls(): void {
@@ -48,6 +51,20 @@ class AnonymizationCustomizer extends GGLCustomizerBase {
 			'label' => __( 'Anonymous Movie Explanation (English)', 'gegenlicht' ),
 			'type'    => 'textarea',
 			'description' => __("This text is displayed below the anonymized movie image explaining why some data is missing on the page.")
+		));
+
+		$this->manager->add_control("special_program_anonymous_explainer[de]", array(
+			'section' => self::SECTION,
+			'label' => __( 'Hidden Movie List Explanation (German)', 'gegenlicht' ),
+			'type'    => 'textarea',
+			'description' => __("This text is displayed on the display pages of the special programs if a user is not logged in.")
+		));
+
+		$this->manager->add_control("special_program_anonymous_explainer[en]", array(
+			'section' => self::SECTION,
+			'label' => __( 'Anonymous Movie Explanation (English)', 'gegenlicht' ),
+			'type'    => 'textarea',
+			'description' => __("This text is displayed on the display pages of the special programs if a user is not logged in.")
 		));
 
 		$this->manager->add_control(new WP_Customize_Media_Control($this->manager, "anonymous_team_image", array(

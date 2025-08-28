@@ -1,17 +1,19 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-
-get_header();
+$taxonomy = get_queried_object();
+get_header(args: ["title" => $taxonomy->name]);
 do_action( 'wp_body_open' );
 
-$taxonomy = get_queried_object();
 
 $anonymousImage      = get_term_meta( $taxonomy->term_id, 'anonymous_image', true );
 $backgroundColor     = get_term_meta( $taxonomy->term_id, 'background_color', true );
 $textColor           = get_term_meta( $taxonomy->term_id, 'text_color', true );
 $backgroundColorDark = get_term_meta( $taxonomy->term_id, 'dark_background_color', true );
 $textColorDark       = get_term_meta( $taxonomy->term_id, 'dark_text_color', true );
+
+$logo = get_term_meta( $taxonomy->term_id, 'logo', true );
+$logoDark = get_term_meta( $taxonomy->term_id, 'logo_dark', true );
 ?>
 <style>
     :root {
@@ -34,21 +36,19 @@ $textColorDark       = get_term_meta( $taxonomy->term_id, 'dark_text_color', tru
         }
     }
 </style>
-<main class="page-content">
+<main class="page-content mt-4">
 
     <article class="content">
-        <header>
-            <h1 class="is-size-2"><?= $taxonomy->name ?></h1>
+        <header class="has-text-centered">
+            <picture>
+                <source srcset="<?= wp_get_attachment_image_url( $logo, 'full' ); ?>)">
+                <source srcset="<?= wp_get_attachment_image_url( $logoDark, 'full' ); ?>)" media="(prefers-color-scheme: dark)">
+                <img style="max-height: 300px" height="300" src="<?= wp_get_attachment_image_url($logo) ?>">
+            </picture>
+            <h1 class="is-size-2 has-text-left"><?= $taxonomy->name ?></h1>
         </header>
 		<?php
-		$paragraphs = preg_split( "/\R\R/", $taxonomy->description );
-		foreach ( $paragraphs as $paragraph ) :
-			?>
-            <p>
-				<?= $paragraph ?>
-            </p>
-		<?php
-		endforeach;
+		echo apply_filters("the_content", $taxonomy->description);
 		?>
     </article>
 	<?php if ( is_user_logged_in() ) : ?>
@@ -71,5 +71,9 @@ $textColorDark       = get_term_meta( $taxonomy->term_id, 'dark_text_color', tru
                 <p class="mt-2 has-text-weight-bold font-ggl is-uppercase is-size-5"><?= $post->post_title ?></p>
 			<?php endwhile; ?>
         </article>
-	<?php endif; ?>
+	<?php else: ?>
+        <article class="mt-6">
+            <?= apply_filters("the_content", get_theme_mod( 'special_program_anonymous_explainer' )[get_locale()] ?? ""); ?>
+        </article>
+    <?php endif; ?>
 </main>
