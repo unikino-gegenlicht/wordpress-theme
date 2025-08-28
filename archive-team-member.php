@@ -68,7 +68,7 @@ do_action( 'wp_body_open' );
                                 <img alt="" src="<?= $imageUrl ?:  wp_get_attachment_image_url(get_theme_mod( 'anonymous_team_image' )) ?>"/>
                             </figure>
                             <hr class="separator mb-1"/>
-                            <h5 class="is-size-5"><?= $member->post_title ?></h5>
+                            <a href="<?= get_permalink($member) ?>"><h5 class="is-size-5"><?= $member->post_title ?></h5></a>
                             <p class="is-italic"> <?= rwmb_meta( 'joined_in', post_id: $member->ID ) ?>–<?= rwmb_meta( 'left_in', post_id: $member->ID ) ?> </p>
                         </div>
 					<?php endforeach; ?>
