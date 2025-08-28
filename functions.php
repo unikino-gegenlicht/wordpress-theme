@@ -253,10 +253,10 @@ add_action( 'wp_head', function () {
 	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/inter.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
 	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/inter_italic.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
 	header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/simple-icons.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', replace: false );
-} );
+}, 1 );
 
 
-add_filter( 'wp_print_styles', function () {
+add_filter( 'wp_head', function () {
 	$styles  = crunchify_print_scripts_styles()['styles'] ?? [];
 	$scripts = crunchify_print_scripts_styles()['scripts'] ?? [];
 
@@ -271,7 +271,7 @@ add_filter( 'wp_print_styles', function () {
 	endforeach;
 
 	header( 'Link: ' . join( ', ', $links ), replace: false );
-} );
+}, 1 );
 
 
 add_action( 'pre_get_posts', function ( WP_Query $query ) {
@@ -421,6 +421,5 @@ function ggl_modify_frontpage_query( WP_Query $query ) {
 		    "compare" => ">"
 	    ]
     ));
-
 }
 add_action( "pre_get_posts", 'ggl_modify_frontpage_query' , 1);

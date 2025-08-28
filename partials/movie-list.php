@@ -74,7 +74,8 @@ if ( empty( $posts ) ) {
             <a role="link"
                aria-label="<?= $title ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( 'r', $startDateTime ) ?>"
                data-program-type="<?= $programType ?>"
-               href="<?= get_permalink() ?>">
+               href="<?= get_permalink() ?>"
+            class="entry">
                 <div>
                     <p>
                         <time datetime="<?= date( 'Y-m-d H:i:s', $startDateTime ) ?>">

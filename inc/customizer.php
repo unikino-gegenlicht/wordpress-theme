@@ -20,6 +20,8 @@ require_once 'customizer/semester-break.php';
 require_once 'customizer/footer.php';
 require_once 'customizer/youth-protection.php';
 require_once 'customizer/archiv.php';
+require_once 'customizer/single-team.php';
+require_once 'customizer/single-cooperation-partner.php';
 
 function configure_customizer( WP_Customize_Manager $wp_customize ): void {
 	custom_controls();
@@ -51,6 +53,9 @@ function configure_customizer( WP_Customize_Manager $wp_customize ): void {
 	new SupporterPageCustomizer( $wp_customize, priority: 2, additionalArgs: [ "panel" => "pages" ] );
 	new TeamPageCustomizer( $wp_customize, priority: 3, additionalArgs: [ "panel" => "pages" ] );
 	new LocationPageCustomizer( $wp_customize, priority: 4, additionalArgs: [ "panel" => "pages" ] );
+	new SingleTeamCustomizer($wp_customize, priority: 5, additionalArgs: [ "panel" => "pages" ]);
+	new SingleCoopCustomizer($wp_customize, priority: 6, additionalArgs: [ "panel" => "pages" ]);
+
 
 	new AnonymizationCustomizer( $wp_customize, priority: 26 );
 

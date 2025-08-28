@@ -51,7 +51,7 @@ $href              = (string) ( $args['href'] ?? "" );
 $content           = (string) ( $args['content'] ?? "" );
 $role              = (string) ( $args['aria-role'] ?? "link" );
 $additionalClasses = (array) ( $args['additional-classes'] ?? [] );
-$external          = (bool) ( $args['external'] ?? null );
+$external          =  ( $args['external'] ?? null );
 $icon              = (string)  ( $args['icon'] ?? null );
 
 $websiteHost = parse_url(get_home_url())['host'] ?? "";
