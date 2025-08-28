@@ -8,7 +8,7 @@ get_header();
         <div class="is-flex is-align-items-top is-flex-wrap-wrap is-gap-1 mt-3">
             <figure class="image is-3by4 member-picture">
                 <img alt=""
-                     src="<?= get_the_post_thumbnail_url( size: 'member-crop' ) ?: wp_get_attachment_image_url( get_theme_mod( 'member_fallback_image' ), 'member-crop' ) ?>"/>
+                     src="<?= get_the_post_thumbnail_url( size: 'member-crop' ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
             </figure>
             <header class="is-flex-grow-1" style="width: min-content !important;">
                 <div class="content mb-0" >
