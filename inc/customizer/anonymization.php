@@ -62,7 +62,7 @@ class AnonymizationCustomizer extends GGLCustomizerBase {
 
 		$this->manager->add_control("special_program_anonymous_explainer[en]", array(
 			'section' => self::SECTION,
-			'label' => __( 'Anonymous Movie Explanation (English)', 'gegenlicht' ),
+			'label' => __( 'Hidden Movie List Explanation (English)', 'gegenlicht' ),
 			'type'    => 'textarea',
 			'description' => __("This text is displayed on the display pages of the special programs if a user is not logged in.")
 		));

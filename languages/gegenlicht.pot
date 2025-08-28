@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-28T09:09:41+00:00\n"
+"POT-Creation-Date: 2025-08-28T10:22:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -2241,6 +2241,23 @@ msgstr ""
 msgid "https://github.com/unikino-gegenlicht/wordpress-theme/graphs/contributors"
 msgstr ""
 
+#: 404.php:4
+#: 404.php:7
+msgid "Not Found"
+msgstr ""
+
+#: 404.php:16
+msgid "The page you are trying to open could not be found. Please check the URL in your address bar"
+msgstr ""
+
+#: 404.php:19
+msgid "One Step Back"
+msgstr ""
+
+#: 404.php:24
+msgid "Back to the Frontpage"
+msgstr ""
+
 #: archive-cooperation-partner.php:37
 msgid "Inquire About A Cooperation Now"
 msgstr ""
@@ -2250,10 +2267,10 @@ msgid "Our Cooperations"
 msgstr ""
 
 #: archive-movie.php:87
-#: header.php:78
+#: header.php:76
 #: intermission.php:58
 #: partials/movie-advertisement.php:18
-#: partials/movie-list.php:64
+#: partials/movie-list.php:66
 #: single-movie.php:95
 msgid "An unnamed movie"
 msgstr ""
@@ -2296,13 +2313,13 @@ msgid "Youth Protection Officer"
 msgstr ""
 
 #: footer.php:45
-#: header.php:106
+#: header.php:108
 #: templates/page-impress.php:3
 msgid "Impress"
 msgstr ""
 
 #: footer.php:47
-#: header.php:92
+#: header.php:94
 #: privacy-policy.php:8
 msgid "Privacy Policy"
 msgstr ""
@@ -2353,48 +2370,48 @@ msgstr ""
 msgid "The entered credentials are invalid. Please try again"
 msgstr ""
 
-#: header.php:99
+#: header.php:101
 #: inc/customizer/block-location.php:8
 #: inc/customizer/front-page.php:54
 #: partials/header-menu.php:17
 msgid "Location"
 msgstr ""
 
-#: header.php:207
+#: header.php:206
 msgid "Logout"
 msgstr ""
 
-#: header.php:215
+#: header.php:214
 msgid "Login"
 msgstr ""
 
-#: header.php:226
-#: header.php:232
+#: header.php:225
+#: header.php:231
 msgid "Semester Break"
 msgstr ""
 
-#: header.php:248
-#: header.php:254
+#: header.php:247
+#: header.php:253
 msgid "New Program Releases In"
 msgstr ""
 
-#: header.php:248
-#: header.php:254
+#: header.php:247
+#: header.php:253
 msgid "Day"
 msgstr ""
 
-#: header.php:248
-#: header.php:254
+#: header.php:247
+#: header.php:253
 msgid "Days"
 msgstr ""
 
-#: header.php:248
-#: header.php:254
+#: header.php:247
+#: header.php:253
 msgid "Hour"
 msgstr ""
 
-#: header.php:248
-#: header.php:254
+#: header.php:247
+#: header.php:253
 msgid "Hours"
 msgstr ""
 
@@ -2430,27 +2447,35 @@ msgstr ""
 msgid "Configure the anonymization functions of the theme"
 msgstr ""
 
-#: inc/customizer/anonymization.php:35
+#: inc/customizer/anonymization.php:38
 msgid "Anonymous Event/Movie Image"
 msgstr ""
 
-#: inc/customizer/anonymization.php:36
+#: inc/customizer/anonymization.php:39
 msgid "This image is displayed if a movie or event doesn't have a advertisement license set in the backend. Additionally, the image might be displayed as fallback image in case a event or movie doesn't have one set"
 msgstr ""
 
-#: inc/customizer/anonymization.php:41
+#: inc/customizer/anonymization.php:44
 msgid "Anonymous Movie Explanation (German)"
 msgstr ""
 
-#: inc/customizer/anonymization.php:48
+#: inc/customizer/anonymization.php:51
 msgid "Anonymous Movie Explanation (English)"
 msgstr ""
 
-#: inc/customizer/anonymization.php:55
+#: inc/customizer/anonymization.php:58
+msgid "Hidden Movie List Explanation (German)"
+msgstr ""
+
+#: inc/customizer/anonymization.php:65
+msgid "Hidden Movie List Explanation (English)"
+msgstr ""
+
+#: inc/customizer/anonymization.php:72
 msgid "Anonymous Team Member Image"
 msgstr ""
 
-#: inc/customizer/anonymization.php:56
+#: inc/customizer/anonymization.php:73
 msgid "This image is displayed if a team member doesn't have a picture set for them"
 msgstr ""
 
@@ -3034,13 +3059,13 @@ msgstr ""
 
 #: intermission.php:58
 #: partials/movie-advertisement.php:20
-#: partials/movie-list.php:67
+#: partials/movie-list.php:69
 #: single-event.php:84
 msgid "An unnamed event"
 msgstr ""
 
 #: intermission.php:62
-#: partials/movie-list.php:73
+#: partials/movie-list.php:75
 msgid "Screening starts: "
 msgstr ""
 
@@ -3116,7 +3141,7 @@ msgstr ""
 msgid "Show details of"
 msgstr ""
 
-#: partials/special-program.php:95
+#: partials/special-program.php:96
 msgid "Sadly, all movies of this special program have been screened for the current semester. Check back next semester."
 msgstr ""
 
@@ -3275,7 +3300,6 @@ msgstr ""
 msgid "Why it's worth watching"
 msgstr ""
 
-#: taxonomy-semester.php:31
 #: taxonomy-special-program.php:57
 msgid "The program hosted"
 msgstr ""

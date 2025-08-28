@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "POT-Creation-Date: 2025-07-04T16:26:53+00:00\n"
-"PO-Revision-Date: 2025-08-28 11:11+0200\n"
+"PO-Revision-Date: 2025-08-28 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -54,17 +54,17 @@ msgstr "seit"
 msgid "Former Members"
 msgstr "Ehemalige Mitglieder"
 
-#: archive-movie.php:87 header.php:78 intermission.php:58
-#: partials/movie-advertisement.php:18 partials/movie-list.php:64
+#: archive-movie.php:87 header.php:76 intermission.php:58
+#: partials/movie-advertisement.php:18 partials/movie-list.php:66
 #: single-movie.php:95
 msgid "An unnamed movie"
 msgstr "Ein ungenannter Film"
 
-#: header.php:207
+#: header.php:206
 msgid "Logout"
 msgstr "Abmelden"
 
-#: header.php:215
+#: header.php:214
 msgid "Login"
 msgstr "Anmelden"
 
@@ -153,11 +153,11 @@ msgstr "Nächste Vorstellung"
 msgid "Youth Protection Officer"
 msgstr "Jugendschutzbeauftragter"
 
-#: footer.php:45 header.php:106 templates/page-impress.php:3
+#: footer.php:45 header.php:108 templates/page-impress.php:3
 msgid "Impress"
 msgstr "Impressum"
 
-#: footer.php:47 header.php:92 privacy-policy.php:8
+#: footer.php:47 header.php:94 privacy-policy.php:8
 msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
@@ -189,7 +189,7 @@ msgstr "Angezeigtes Semester"
 msgid "Content Notice"
 msgstr "Inhaltshinweis"
 
-#: taxonomy-semester.php:31 taxonomy-special-program.php:57
+#: taxonomy-special-program.php:57
 msgid "The program hosted"
 msgstr "In diesem Sonderprogramm lief bereits"
 
@@ -2450,7 +2450,7 @@ msgstr "Besucher*innenanschrift"
 msgid "To the event"
 msgstr "Zum Event"
 
-#: intermission.php:62 partials/movie-list.php:73
+#: intermission.php:62 partials/movie-list.php:75
 msgid "Screening starts: "
 msgstr "Vorstellung startet um:"
 
@@ -2458,7 +2458,7 @@ msgstr "Vorstellung startet um:"
 msgid "To the Archive"
 msgstr "Zum Archiv"
 
-#: header.php:226 header.php:232
+#: header.php:225 header.php:231
 msgid "Semester Break"
 msgstr "Semesterpause"
 
@@ -2510,11 +2510,11 @@ msgstr "Bearbeite die Inhalte und Darstellung von besonderen Seiten"
 msgid "Configure the anonymization functions of the theme"
 msgstr "Stelle die Anonymisierungsfunktionen des Themes ein"
 
-#: inc/customizer/anonymization.php:41
+#: inc/customizer/anonymization.php:44
 msgid "Anonymous Movie Explanation (German)"
 msgstr "Erklärung für anonymisierte Filme (Deutsch)"
 
-#: inc/customizer/anonymization.php:48
+#: inc/customizer/anonymization.php:51
 msgid "Anonymous Movie Explanation (English)"
 msgstr "Erklärung für anonymisierte Filme (Englisch)"
 
@@ -2737,7 +2737,7 @@ msgid "Event starts"
 msgstr "Event startet um"
 
 #: intermission.php:58 partials/movie-advertisement.php:20
-#: partials/movie-list.php:67 single-event.php:84
+#: partials/movie-list.php:69 single-event.php:84
 msgid "An unnamed event"
 msgstr "Ein ungenanntes Event"
 
@@ -2773,19 +2773,19 @@ msgstr "Kontaktmöglichkeiten"
 msgid "Configure the contact options listed throughout the website"
 msgstr "Konfiguriere die Kontaktmöglichkeiten die auf der Website gelistet werden."
 
-#: inc/customizer/anonymization.php:35
+#: inc/customizer/anonymization.php:38
 msgid "Anonymous Event/Movie Image"
 msgstr "Anonymisiertes Event–/Filmbild"
 
-#: inc/customizer/anonymization.php:36
+#: inc/customizer/anonymization.php:39
 msgid "This image is displayed if a movie or event doesn't have a advertisement license set in the backend. Additionally, the image might be displayed as fallback image in case a event or movie doesn't have one set"
 msgstr "Dieses Bild wird angezeigt, wenn ein Film oder Event ohne Werberechte eingetragen wurde. Zusätzlich wird dieses Bild verwendet, wenn dem Film oder Event kein Beitragsbild zugewiesen wurde"
 
-#: inc/customizer/anonymization.php:55
+#: inc/customizer/anonymization.php:72
 msgid "Anonymous Team Member Image"
 msgstr "Anonymisiertes Teamfoto"
 
-#: inc/customizer/anonymization.php:56
+#: inc/customizer/anonymization.php:73
 msgid "This image is displayed if a team member doesn't have a picture set for them"
 msgstr "Dieses Bild wird angezeigt, wenn ein Teammitglied kein Bild gesetzt hat"
 
@@ -2807,7 +2807,7 @@ msgstr "Die Farbe des Textes und der Logos (falls möglich) im Dark Mode"
 msgid "The background color of the whole block during dark mode"
 msgstr "Hintergrundfarbe des gesamten Blocks im Dark Mode"
 
-#: header.php:99 inc/customizer/block-location.php:8
+#: header.php:101 inc/customizer/block-location.php:8
 #: inc/customizer/front-page.php:54 partials/header-menu.php:17
 msgid "Location"
 msgstr "Ort"
@@ -3110,7 +3110,7 @@ msgstr "EMail Adresse des Jugendschutzbeauftragten"
 msgid "Navigation Logo (Small)"
 msgstr "Navigationslogo (klein)"
 
-#: partials/special-program.php:95
+#: partials/special-program.php:96
 msgid "Sadly, all movies of this special program have been screened for the current semester. Check back next semester."
 msgstr "Leider sind schon alle Filme und Events des Sonderprogramms vorbei für dieses Semester, aber schaue hier gerne nächstes Semester nochmal vorbei"
 
@@ -3126,23 +3126,23 @@ msgstr "Kooperation"
 msgid "Supporters"
 msgstr "Unterstützer*innen"
 
-#: header.php:248 header.php:254
+#: header.php:247 header.php:253
 msgid "New Program Releases In"
 msgstr "Neues Programm in"
 
-#: header.php:248 header.php:254
+#: header.php:247 header.php:253
 msgid "Days"
 msgstr "Tagen"
 
-#: header.php:248 header.php:254
+#: header.php:247 header.php:253
 msgid "Hours"
 msgstr "Stunden"
 
-#: header.php:248 header.php:254
+#: header.php:247 header.php:253
 msgid "Day"
 msgstr "Tag"
 
-#: header.php:248 header.php:254
+#: header.php:247 header.php:253
 msgid "Hour"
 msgstr "Stunde"
 
@@ -3196,3 +3196,27 @@ msgstr "SF o. UT"
 #: single-movie.php:169
 msgid "Dub w/ Subs"
 msgstr "SF m. UT"
+
+#: 404.php:4 404.php:7
+msgid "Not Found"
+msgstr "Nichts gefunden"
+
+#: 404.php:16
+msgid "The page you are trying to open could not be found. Please check the URL in your address bar"
+msgstr "Die Seite die du aufrufen wolltest können wir leider nicht finden. Kontrolliere bitte die URL in deiner Adressleiste"
+
+#: 404.php:19
+msgid "One Step Back"
+msgstr "Eine Seite zurück"
+
+#: 404.php:24
+msgid "Back to the Frontpage"
+msgstr "Zurück zur Startseite"
+
+#: inc/customizer/anonymization.php:58
+msgid "Hidden Movie List Explanation (German)"
+msgstr "Erklärung für Versteckte Filmliste (Deutsch)"
+
+#: inc/customizer/anonymization.php:65
+msgid "Hidden Movie List Explanation (English)"
+msgstr "Erklärung für Versteckte Filmliste (Englisch)"
