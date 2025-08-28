@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) || exit;
         <div class="is-flex-grow-1">
             <h5 class="has-text-weight-semibold no-separator is-size-6 is-underlined"><?= esc_html__( 'Visitor Address', 'gegenlicht' ) ?></h5>
             <address class="has-text-primary" style="user-select: text">
-				<?= nl2br( get_theme_mod( 'address' )["postal"] ) ?>
+				<?= nl2br( get_theme_mod( 'address' )["visitor"] ) ?>
             </address>
         </div>
 	    <?php endif; ?>
