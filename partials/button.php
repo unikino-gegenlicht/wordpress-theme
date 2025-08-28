@@ -51,13 +51,13 @@ $href              = (string) ( $args['href'] ?? "" );
 $content           = (string) ( $args['content'] ?? "" );
 $role              = (string) ( $args['aria-role'] ?? "link" );
 $additionalClasses = (array) ( $args['additional-classes'] ?? [] );
-$external          = (bool) ( $args['external'] ?? false );
+$external          = (bool) ( $args['external'] ?? null );
 $icon              = (string)  ( $args['icon'] ?? null );
 
 $websiteHost = parse_url(get_home_url())['host'] ?? "";
 $targetHost = parse_url($href)['host'] ?? "";
 
-if ($websiteHost !== $targetHost) {
+if ($external === null && $websiteHost !== $targetHost) {
     $external = true;
 }
 ?>
