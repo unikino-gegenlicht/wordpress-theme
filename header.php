@@ -4,9 +4,6 @@ defined( 'ABSPATH' ) || exit;
 $headerImage      = get_theme_mod( 'header_logo' );
 $smallHeaderImage = get_theme_mod( 'small_header_logo' );
 
-headers_send( 103 );
-
-
 $fallbackImage = get_theme_mod( 'anonymous_image' );
 $semesterID    = get_theme_mod( 'displayed_semester' );
 
