@@ -205,7 +205,8 @@ $contentPadding: 0.75rem;
     background-color: var(--bulma-primary) !important;
   }
 
-  .supporter-logo {
+  .supporter-logo > img,
+  .coop-logo > img {
     filter: invert(74%) sepia(89%) saturate(508%) hue-rotate(358deg) brightness(102%) contrast(105%);
   }
 }
@@ -676,11 +677,9 @@ figure.supporter-logo {
   height: max-content;
 
   img {
-
     object-fit: scale-down;
     padding: 1rem;
     max-height: 250px;
-
   }
 }
 
