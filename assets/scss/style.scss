@@ -684,6 +684,16 @@ figure.supporter-logo {
   }
 }
 
+figure.coop-logo {
+  outline: var(--border-thickness) solid var(--bulma-body-color);
+
+  img {
+    padding: 0.5rem;
+    max-height: 250px;
+    object-fit: fill;
+  }
+}
+
 .navbar-item.no-hover {
   --bulma-navbar-item-background-l-delta: 0% !important;
   --bulma-navbar-item-background-a: unset !important;
