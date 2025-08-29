@@ -686,11 +686,15 @@ figure.supporter-logo {
 
 figure.coop-logo {
   outline: var(--border-thickness) solid var(--bulma-body-color);
+  height: 250px;
+  aspect-ratio: 3/4;
 
   img {
     padding: 0.5rem;
     max-height: 250px;
     object-fit: fill;
+    height: 100%;
+    width: 100%;
   }
 }
 
