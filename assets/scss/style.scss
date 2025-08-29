@@ -70,6 +70,7 @@ $contentPadding: 0.75rem;
   --content-padding: #{$contentPadding};
   --bulma-hr-background-color: var(--bulma-body-color);
   font-feature-settings: "calt" on, "tnum" on, "frac" on, "ss01" on, "ss02" on;
+  hyphens: auto;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -205,7 +206,8 @@ $contentPadding: 0.75rem;
     background-color: var(--bulma-primary) !important;
   }
 
-  .supporter-logo {
+  .supporter-logo > img,
+  .coop-logo > img {
     filter: invert(74%) sepia(89%) saturate(508%) hue-rotate(358deg) brightness(102%) contrast(105%);
   }
 }
@@ -676,11 +678,23 @@ figure.supporter-logo {
   height: max-content;
 
   img {
-
     object-fit: scale-down;
     padding: 1rem;
     max-height: 250px;
+  }
+}
 
+figure.coop-logo {
+  outline: var(--border-thickness) solid var(--bulma-body-color);
+  height: 250px;
+  aspect-ratio: 3/4;
+
+  img {
+    padding: 0.5rem;
+    max-height: 250px;
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -719,4 +733,20 @@ html {
 ::-webkit-scrollbar-button:decrement,
 ::-webkit-scrollbar-button:increment {
   width: 0px;
+}
+
+@include mixins.mobile {
+  .is-dynamic-flex {
+    flex-direction: column !important;
+
+    .main-content {
+      width: fit-content !important;
+    }
+  }
+}
+
+.is-dynamic-flex {
+  .main-content {
+    width: min-content;
+  }
 }
