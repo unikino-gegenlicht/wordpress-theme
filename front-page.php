@@ -10,7 +10,7 @@ get_header();
 
 ?>
     <main class="px-2 mb-6 page-content">
-<?php if ( empty( $upcoming ) || GGL_SEMESTER_BREAK ):
+<?php if ( empty( $upcoming ) || GGL_SEMESTER_BREAK || (defined("GGL_ANNOUNCE_NEW_PROGRAM") && GGL_ANNOUNCE_NEW_PROGRAM) ):
 	get_template_part( "intermission" );
 else:
 	for ( $i = 0; $i < count( $upcoming ); $i ++ ):
