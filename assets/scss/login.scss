@@ -40,8 +40,14 @@
   font-feature-settings: "calt" on, "tnum" on, "frac" on, "ss01" on, "ss02" on;
 }
 
-::-webkit-scrollbar {
-  display: none;
+html {
+  scrollbar-width: none;
+  scrollbar-color: var(--bulma-body-background-color) var(--bulma-body-color) !important;
+}
+
+::-webkit-scrollbar-button:decrement,
+::-webkit-scrollbar-button:increment {
+  width: 0px;
 }
 
 body {
@@ -56,7 +62,6 @@ body.login {
 
 body.login div#login {
   max-width: calc(100vw - 0.75rem) !important;
-  margin: 0 auto;
   padding: 1rem 0 !important;
   width: 100% !important;
 }

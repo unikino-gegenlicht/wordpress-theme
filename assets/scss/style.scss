@@ -577,8 +577,7 @@ p:empty {
   background-color: var(--bulma-body-background-color) !important;
   max-width: 1668px;
   margin: 0 auto !important;
-  padding: 0 1rem !important;
-  overflow-x: scroll !important;
+  padding: 0 0.5rem !important;
 
   .navbar-item {
     color: var(--bulma-body-color) !important;
@@ -712,6 +711,12 @@ figure.supporter-logo {
   --bulma-navbar-background-color: var(--bulma-body-background-color) !important;
 }
 
-::-webkit-scrollbar {
-  display: none;
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bulma-body-background-color) var(--bulma-body-color) !important;
+}
+
+::-webkit-scrollbar-button:decrement,
+::-webkit-scrollbar-button:increment {
+  width: 0px;
 }
