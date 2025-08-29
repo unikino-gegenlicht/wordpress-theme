@@ -49,13 +49,13 @@ do_action( 'wp_body_open' );
 				<?php while ( have_posts() ) : the_post(); ?>
                     <div class="cell">
                        <a href="<?= get_the_permalink() ?>">
-                           <figure class="image is-3by4 coop-logo">
+                           <figure class="image coop-logo">
                             <img src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>"/>
                             </figure>
 
                         <hr class="separator"/>
                         <p style="word-break: break-word"
-                           class="font-ggl is-uppercase is-size-5 no-separator"><?= the_title() ?></p>
+                           class="font-ggl is-uppercase"><?= the_title() ?></p>
                        </a>
                     </div>
 				<?php endwhile; ?>

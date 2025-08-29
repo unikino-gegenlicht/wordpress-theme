@@ -5,12 +5,12 @@ get_header();
 ?>
 <main class="page-content mt-4">
     <article>
-        <div class="is-flex is-align-items-top is-flex-wrap-wrap is-gap-1 mt-3">
+        <div class="is-flex is-dynamic-flex is-align-items-top is-justify-content-space-evenly is-flex-wrap-wrap is-gap-2 mt-3">
             <figure class="image is-3by4 member-picture">
                 <img alt=""
                      src="<?= get_the_post_thumbnail_url( size: 'member-crop' ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
             </figure>
-            <header class="is-flex-grow-1" style="width: min-content !important;">
+            <header class="is-flex-grow-1 main-content">
                 <div class="content mb-0" >
                     <h1><?php the_title() ?></h1>
                     <?php
