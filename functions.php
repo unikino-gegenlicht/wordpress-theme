@@ -159,7 +159,7 @@ function my_login_logo() {
         }
 
         #loginform:after {
-            content: "<?= esc_html__('Members of the Carl von Ossietzky University are able to register for a free account to get more details about the program') ?>";
+            content: "<?= esc_html__('Members of the Carl von Ossietzky University are able to register for a free account to get more details about the program', "gegenlicht") ?>";
             display: block;
             margin-top: 4rem !important;
             font-style: italic;

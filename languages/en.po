@@ -59,7 +59,9 @@ msgstr "Former Members"
 #: intermission.php:58
 #: partials/movie-advertisement.php:18
 #: partials/movie-list.php:66
+#: single-cooperation-partner.php:61
 #: single-movie.php:95
+#: single-team-member.php:123
 msgid "An unnamed movie"
 msgstr "An unnamed movie"
 
@@ -2453,6 +2455,7 @@ msgstr ""
 
 #: archive-supporter.php:45
 #: archive-supporter.php:65
+#: single-supporter.php:19
 #: templates/page-location.php:32
 msgid "To the Website"
 msgstr ""
@@ -2516,19 +2519,19 @@ msgstr ""
 msgid "Our supporters"
 msgstr ""
 
-#: inc/customizer.php:35
+#: inc/customizer.php:37
 msgid "Blocks"
 msgstr ""
 
-#: inc/customizer.php:38
+#: inc/customizer.php:40
 msgid "Edit the blocks displayed on the frontpage"
 msgstr ""
 
-#: inc/customizer.php:45
+#: inc/customizer.php:47
 msgid "Pages"
 msgstr ""
 
-#: inc/customizer.php:48
+#: inc/customizer.php:50
 msgid "Edit the display of some content pages of this theme"
 msgstr ""
 
@@ -2789,7 +2792,9 @@ msgstr ""
 #: intermission.php:58
 #: partials/movie-advertisement.php:20
 #: partials/movie-list.php:69
+#: single-cooperation-partner.php:64
 #: single-event.php:84
+#: single-team-member.php:126
 msgid "An unnamed event"
 msgstr ""
 
@@ -2817,11 +2822,11 @@ msgstr ""
 msgid "Inquire About A Cooperation Now"
 msgstr ""
 
-#: inc/customizer.php:58
+#: inc/customizer.php:63
 msgid "Contact Options"
 msgstr ""
 
-#: inc/customizer.php:61
+#: inc/customizer.php:66
 msgid "Configure the contact options listed throughout the website"
 msgstr ""
 
@@ -3146,6 +3151,8 @@ msgid "Team Page"
 msgstr ""
 
 #: inc/customizer/page-team.php:9
+#: inc/customizer/single-cooperation-partner.php:9
+#: inc/customizer/single-team.php:9
 msgid "Configure the content of the page showing our current team and our former members"
 msgstr ""
 
@@ -3187,10 +3194,6 @@ msgstr ""
 
 #: partials/header-menu.php:29
 msgid "Cooperation"
-msgstr ""
-
-#: partials/header-menu.php:33
-msgid "Supporters"
 msgstr ""
 
 #: header.php:247
@@ -3301,4 +3304,103 @@ msgstr ""
 
 #: inc/customizer/anonymization.php:65
 msgid "Hidden Movie List Explanation (English)"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "December"
+msgstr ""
+
+#: inc/customizer/single-cooperation-partner.php:9
+msgid "Cooperation Partner (Single Page)"
+msgstr ""
+
+#: inc/customizer/single-cooperation-partner.php:23
+msgid "Missing Entries Explanation (German)"
+msgstr ""
+
+#: inc/customizer/single-cooperation-partner.php:24
+#: inc/customizer/single-cooperation-partner.php:31
+msgid "This text is displayed if the cooperation partner never had any cooperation screenings with us, but is created nevertheless"
+msgstr ""
+
+#: inc/customizer/single-cooperation-partner.php:30
+msgid "Missing Entries Explanation (English)"
+msgstr ""
+
+#: inc/customizer/single-team.php:9
+msgid "Member (Single Page)"
+msgstr ""
+
+#: inc/customizer/single-team.php:26
+msgid "Active Member Text (German)"
+msgstr ""
+
+#: inc/customizer/single-team.php:27
+#: inc/customizer/single-team.php:34
+msgid "This text is displayed below each active team member on their individual page. The following variables are available for use: <br/> <code>%%name%%</code> – Name of the Member<br/><code>%%joinedIn%%</code> – Year in which the member joined<br/>"
+msgstr ""
+
+#: inc/customizer/single-team.php:33
+msgid "Active Member Text (English)"
+msgstr ""
+
+#: inc/customizer/single-team.php:40
+msgid "Former Member Text (German)"
+msgstr ""
+
+#: inc/customizer/single-team.php:41
+#: inc/customizer/single-team.php:48
+msgid "This text is displayed below each former team member on their individual page. The following variables are available for use: <br/> <code>%%name%%</code> – Name of the Member<br/><code>%%joinedIn%%</code> – Year in which the member joined<br/><code>%%leftIn%%</code> – Year in which the member left<br/>"
+msgstr ""
+
+#: inc/customizer/single-team.php:47
+msgid "Former Member Text (English)"
+msgstr ""
+
+#: partials/header-menu.php:33
+msgid "Support"
+msgstr ""
+
+#: single-team-member.php:72
+msgid "Upcoming Screenings"
+msgstr ""
+
+#: templates/page-contact.php:3
+msgid "Contact Page"
+msgstr ""
+
+#: functions.php:162
+msgid "Members of the Carl von Ossietzky University are able to register for a free account to get more details about the program"
 msgstr ""
