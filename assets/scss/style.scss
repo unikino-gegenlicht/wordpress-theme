@@ -734,3 +734,19 @@ html {
 ::-webkit-scrollbar-button:increment {
   width: 0px;
 }
+
+@include mixins.mobile {
+  .is-dynamic-flex {
+    flex-direction: column !important;
+
+    .main-content {
+      width: fit-content !important;
+    }
+  }
+}
+
+.is-dynamic-flex {
+  .main-content {
+    width: min-content;
+  }
+}
