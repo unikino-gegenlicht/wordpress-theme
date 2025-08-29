@@ -48,10 +48,10 @@ do_action( 'wp_body_open' );
             <div class="grid" style="grid-template-rows: auto">
 				<?php while ( have_posts() ) : the_post(); ?>
                     <div class="cell">
-                       <a href="<?= get_the_permalink() ?>"> <figure class="image is-3by4 member-picture">
-                            <img src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>"
-                                 style="object-fit: scale-down; border: var(--bulma-body-color) solid var(--border-thickness)"/>
-                        </figure>
+                       <a href="<?= get_the_permalink() ?>">
+                           <figure class="image is-3by4 coop-logo">
+                            <img src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>"/>
+                            </figure>
 
                         <hr class="separator"/>
                         <p style="word-break: break-word"
