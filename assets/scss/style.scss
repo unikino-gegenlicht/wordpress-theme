@@ -70,6 +70,7 @@ $contentPadding: 0.75rem;
   --content-padding: #{$contentPadding};
   --bulma-hr-background-color: var(--bulma-body-color);
   font-feature-settings: "calt" on, "tnum" on, "frac" on, "ss01" on, "ss02" on;
+  hyphens: auto;
 }
 
 @media (prefers-color-scheme: dark) {
