@@ -297,6 +297,9 @@ function ggl_setup_menus(): void {
 
 
 function ggl_send_link_headers(): void {
+    if (is_404()) {
+        return;
+    }
 	$styles  = wp_styles();
 	$scripts = wp_scripts();
 
