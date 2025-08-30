@@ -1,67 +1,16 @@
 <?php
 defined( 'ABSPATH' ) || exit;
-$semester          = get_the_terms( get_the_ID(), 'semester' );
-$currentSemesterID = get_theme_mod( "displayed_semester" );
-
-$showPage = false;
-
-foreach ( $semester as $key => $term ) {
-	if ( $term->term_id == $currentSemesterID ) {
-		$showPage = true;
-		break;
-	}
-}
-
-if ( ! $showPage && ! is_user_logged_in() ):
-	wp_redirect( home_url(), status: 308 );
-
-	return;
-endif;
-
-
 get_header();
 
-$showDetails = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-$title       = get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
-
 $anonymousImage = get_theme_mod( 'anonymous_image' );
+$anonymize  = rwmb_get_value( "license_type" ) != "full" && ! is_user_logged_in();
+$isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 
-$isSpecialProgram   = rwmb_meta( 'program_type' ) == 'special_program';
-if ( $isSpecialProgram ):
-	$specialProgramID = rwmb_meta( 'special_program' );
-	$specialProgram = get_term( $specialProgramID, 'special-program' );
 
-	$anonymousImage      = get_term_meta( $specialProgram->term_id, 'anonymous_image', true );
-	$backgroundColor     = get_term_meta( $specialProgram->term_id, 'background_color', true );
-	$textColor           = get_term_meta( $specialProgram->term_id, 'text_color', true );
-	$backgroundColorDark = get_term_meta( $specialProgram->term_id, 'dark_background_color', true );
-	$textColorDark       = get_term_meta( $specialProgram->term_id, 'dark_text_color', true );
-	?>
-    <style>
-        :root {
-            --bulma-body-background-color: <?= $backgroundColor ?> !important;
-            --bulma-body-color: <?= $textColor ?> !important;
-        }
-
-        .navbar {
-            background-color: var(--bulma-body-background-color) !important;
-        }
-
-        a.navbar-item {
-            color: var(--bulma-body-color) !important;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bulma-body-background-color: <?= $backgroundColorDark ?> !important;
-                --bulma-body-color: <?= $textColorDark ?> !important;
-            }
-        }
-    </style>
-<?php endif; ?>
+?>
 <main>
     <header class="page-content">
-        <div class="screening-information <?= ( $showDetails && $title != rwmb_meta( 'original_title' ) ) ? '' : 'pb-0' ?>">
+        <div class="screening-information <?= ( !$anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? '' : 'pb-0' ?>">
             <div>
                 <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
                 <p>
@@ -91,10 +40,10 @@ if ( $isSpecialProgram ):
             </div>
         </div>
         <h1 role="heading"
-            class="<?= $showDetails ? ( $title != rwmb_meta( 'original_title' ) ? 'no-separator' : '' ) : '' ?>">
-			<?= $showDetails ? $title : ( rwmb_meta( 'program_type' ) == 'special_program' ? trim( get_term( rwmb_meta( 'special_program' ) )->name ) : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?>
+            class="<?= !$anonymize ? ( get_the_title() != rwmb_meta( 'original_title' ) ? 'no-separator' : '' ) : '' ?>">
+			<?= ggl_get_title() ?>
         </h1>
-		<?php if ( $showDetails && $title != rwmb_meta( 'original_title' ) ): ?>
+		<?php if (!$anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ): ?>
             <p class="font-ggl is-size-4"><?= rwmb_meta( 'original_title' ) ?></p>
             <hr class="separator"/>
 		<?php endif; ?>
@@ -105,14 +54,14 @@ if ( $isSpecialProgram ):
 				<?= rwmb_meta( 'running_time' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
             </p>
             <p>
-				<?= esc_html__( 'by', 'gegenlicht' ) ?> <?= $showDetails ? rwmb_meta( 'director' )->name : trim( preg_replace( '/\w/', '█', rwmb_meta( 'director' )->name ) ) ?>
+				<?= esc_html__( 'by', 'gegenlicht' ) ?> <?= !$anonymize ? rwmb_meta( 'director' )->name : trim( preg_replace( '/\w/', '█', rwmb_meta( 'director' )->name ) ) ?>
             </p>
             <p>
 				<?php
 				$actors     = rwmb_meta( 'actors' );
 				$actorNames = array();
 				foreach ( $actors as $actor ) {
-					if ( $showDetails ) {
+					if ( !$anonymize ) {
 						$actorNames[] = $actor->name;
 					} else {
 						$actorNames[] = preg_replace( '/\w/', '█', $actor->name );
@@ -131,7 +80,7 @@ if ( $isSpecialProgram ):
 			$translatedDescriptors = array();
 
 			foreach ( $descriptors as $descriptor ) {
-				$translatedDescriptors[] = ggl_theme_get_translated_age_rating_descriptor( $descriptor );
+				$translatedDescriptors[] = ggl_get_translate_rating_descriptor( $descriptor );
 			}
 
 			switch ( $ageRating ) {
@@ -175,16 +124,16 @@ if ( $isSpecialProgram ):
         </div>
 		<?php get_template_part( 'partials/responsive-image', args: [
 			'fetch-priority' => 'high',
-			'image_url'      => $showDetails ? get_the_post_thumbnail_url( size: 'full' ) ?: wp_get_attachment_image_url( $anonymousImage, 'large' ) : wp_get_attachment_image_url( $anonymousImage, 'large' )
+			'image_url'      => !$anonymize ? get_the_post_thumbnail_url( size: 'full' ) ?: wp_get_attachment_image_url( $anonymousImage, 'large' ) : wp_get_attachment_image_url( $anonymousImage, 'large' )
 		] ) ?>
-		<?php if ( ! $showDetails && ! $isSpecialProgram ): ?>
+		<?php if ( ! !$anonymize && ! $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
 				<?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ get_locale() ] ?? "" ) ?>
             </div>
 		<?php endif; ?>
 		<?php if ( $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
-				<?= apply_filters( "the_content", $specialProgram->description ) ?>
+				<?= apply_filters( "the_content", rwmb_get_value("special_program")->description ) ?>
             </div>
 		<?php endif; ?>
     </header>
@@ -202,32 +151,30 @@ if ( $isSpecialProgram ):
             <div class="content-notice mb-6 p-2">
                 <h2 class="is-size-4 border-is-background-color"><?= esc_html__( "Content Notice", 'gegenlicht' ) ?></h2>
                 <p>
-					<?= ggl_cleanup_paragraphs( rwmb_get_value( 'content_notice' ) ) ?>
+					<?= apply_filters("the_content", rwmb_get_value( 'content_notice' ) ?? "" ) ?>
                 </p>
             </div>
 		<?php endif; ?>
         <h2 class="font-ggl is-size-3 is-uppercase">
 			<?= esc_html__( 'What the movie is about', 'gegenlicht' ) ?>
         </h2>
-		<?= ggl_cleanup_paragraphs( $showDetails ? rwmb_get_value( 'summary' ) : rwmb_get_value( 'anon_summary' ) ) ?>
+		<?= apply_filters("the_content",  !$anonymize ? rwmb_get_value( 'summary' ) : rwmb_get_value( 'anon_summary' ) ) ?>
         <h2 class="font-ggl is-size-3 is-uppercase mt-6">
 			<?= esc_html__( "Why it's worth watching", 'gegenlicht' ) ?>
         </h2>
-		<?= ggl_cleanup_paragraphs( $showDetails ? rwmb_get_value( 'worth_to_see' ) : rwmb_get_value( 'anon_worth_to_see' ) ) ?>
+		<?= apply_filters( "the_content",!$anonymize ? rwmb_get_value( 'worth_to_see' ) : rwmb_get_value( 'anon_worth_to_see' ) ) ?>
 		<?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
-            <hr class="separator mt-6"/>
-            <h3 class="font-ggl is-size-5 is-uppercase">
+            <h2 class="font-ggl is-size-3 is-uppercase">
 				<?= esc_html__( 'Short Movie' ) ?>
-            </h3>
-            <p><?= rwmb_meta( 'short_movie_title' ) ?></p>
-            <div class="is-flex is-align-items-center short-details">
+            </h2>
+            <p class="m-0"><?= rwmb_meta( 'short_movie_title' ) ?></p>
+            <div class="is-flex short-details">
                 <p><?= esc_html__( 'by' ) ?> <?= rwmb_meta( 'short_movie_directed_by' ) ?></p>
                 |
                 <p><?= join( '/', rwmb_meta( 'short_movie_country' ) ) ?> <?= rwmb_meta( 'short_movie_release_year' ) ?></p>
                 |
                 <p><?= rwmb_meta( 'short_movie_running_time' ) ?> <?= esc_html__( 'Minutes' ) ?></p>
             </div>
-            <hr class="separator"/>
 		<?php endif; ?>
     </article>
 	<?php if ( rwmb_meta( "allow_reservations" ) ): ?>
