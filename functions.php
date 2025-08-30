@@ -1,6 +1,5 @@
 <?php
 defined( 'ABSPATH' ) || exit;
-
 /**
  * GEGENLICHT Website Theme
  *
@@ -28,7 +27,7 @@ add_action( "init", "ggl_disable_tinymce_emojis" );
 add_action( "wp_enqueue_scripts", "ggl_remove_default_styles" );
 add_action( "wp_enqueue_scripts", "ggl_enqueue_styles" );
 add_action( "wp_enqueue_scripts", "ggl_enqueue_scripts" );
-add_action( "wp_enqueue_scripts", "ggl_send_link_headers", 99 );
+add_action( "wp_enqueue_scripts", "ggl_send_link_headers", 90 );
 add_action( "after_setup_theme", "ggl_setup_menus" );
 add_action( "init", "ggl_disable_wpadmin_for_subscribers" );
 add_action( "init", "ggl_disable_admin_bar" );
@@ -38,11 +37,92 @@ add_action( "login_enqueue_scripts", "ggl_enqueue_login_style" );
 add_filter( "login_headerurl", "ggl_login_header_url" );
 add_filter( "login_display_language_dropdown", "__return_false" );
 add_filter( "login_errors", "ggl_obfuscate_login_errors" );
-add_action( "send_headers", "ggl_send_image_link_headers" );
+add_action( "wp_enqueue_scripts", "ggl_send_image_link_headers", 70 );
 add_action( "pre_get_posts", "ggl_list_all_entities_sorted" );
 add_action( "pre_get_posts", "ggl_frontpage_query_only_current_semester", 1 );
 add_filter( "locale", "ggl_locale_use_http_fallback", 10 );
 add_filter( "locale", "ggl_locale_log", 11 );
+add_action( "wp_head", "ggl_inject_special_program_colors" );
+add_action( "get_header", "ggl_redirect_from_non_semester_pages", 2 );
+
+function ggl_redirect_from_non_semester_pages(): void {
+	if ( ! is_singular( [ "movie", "event" ] ) ) {
+		return;
+	}
+
+	if ( current_user_can( "edit_posts" ) ) {
+		return;
+	}
+
+	$visibleSemester  = (int) get_theme_mod( "displayed_semester" );
+	$assignedSemester = rwmb_get_value( "semester" );
+
+	if ( $visibleSemester === $assignedSemester->term_id ) {
+		$screeningTs    = (int) rwmb_get_value( "screening_date" );
+		$now            = new DateTimeImmutable( "now" );
+		$screeningStart = new DateTime( date( "Y-m-d\TH:i:s", (int) rwmb_get_value( "screening_date" ) ) . " Europe/Berlin" );
+		$availableUntil = $screeningStart->add( new DateInterval( "P14D" ) );
+		$availableUntil = $availableUntil->setTimezone( new DateTimeZone( "UTC" ) );
+		if ( $availableUntil < $now ) {
+			goto issue410;
+		}
+
+		return;
+	}
+
+	issue410:
+	remove_action( "wp_enqueue_scripts", "ggl_send_image_link_headers", 70 );
+	remove_action( "wp_enqueue_scripts", "ggl_send_link_headers", 90 );
+	remove_action( "wp_head", "ggl_inject_special_program_colors" );
+
+
+	header( $_SERVER["SERVER_PROTOCOL"] . " 410 Gone" );
+	require_once "410.php";
+	die;
+}
+
+function ggl_inject_special_program_colors(): void {
+	if ( ! is_singular( [ "movie", "event" ] ) ) {
+		return;
+	}
+
+	$specialProgram = rwmb_get_value( "program_type" ) == "special_program" ? rwmb_get_value( "special_program" ) : false;
+	if ( ! $specialProgram ) {
+		return;
+	}
+
+	$colors["light"]["background"] = get_term_meta( $specialProgram->term_id, 'background_color', true );
+	$colors["light"]["body"]       = get_term_meta( $specialProgram->term_id, 'text_color', true );
+	$colors["dark"]["background"]  = get_term_meta( $specialProgram->term_id, 'dark_background_color', true );
+	$colors["dark"]["body"]        = get_term_meta( $specialProgram->term_id, 'dark_text_color', true );
+
+	?>
+
+    <style>
+        :root {
+            --bulma-body-color: <?= $colors["light"]["body"] ?> !important;
+            --bulma-body-background-color: <?= $colors["light"]["background"] ?> !important;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bulma-body-color: <?= $colors["dark"]["body"] ?> !important;
+                --bulma-body-background-color: <?= $colors["dark"]["background"] ?> !important;
+            }
+        }
+
+        .navbar {
+            background-color: var(--bulma-body-background-color) !important;
+        }
+
+        a.navbar-item {
+            color: var(--bulma-body-color) !important;
+        }
+    </style>
+
+	<?php
+
+}
 
 function ggl_locale_log( string $locale ): string {
 	error_log( $locale );
@@ -145,8 +225,8 @@ function ggl_send_image_link_headers(): void {
 	$mobileOptimizedImage  = get_the_post_thumbnail_url( size: "mobile" );
 	$desktopOptimizedImage = get_the_post_thumbnail_url( size: "desktop" );
 
-	header( 'Link: <' . $mobileOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', replace: false );
-	header( 'Link: <' . $desktopOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', replace: false );
+	header( 'Link: <' . $mobileOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', false, 103 );
+	header( 'Link: <' . $desktopOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', false, 103 );
 }
 
 
@@ -168,9 +248,9 @@ function ggl_login_header_url( $_ ): string {
 
 function ggl_enqueue_login_style(): void {
 	if ( defined( "WP_DEBUG" ) && WP_DEBUG ) {
-		wp_enqueue_style( 'custom-login', get_stylesheet() . '/assets/css/login.css' );
+		wp_enqueue_style( 'custom-login', parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/css/login.css' );
 	} else {
-		wp_enqueue_style( 'custom-login', get_stylesheet() . '/assets/css/login.min.css' );
+		wp_enqueue_style( 'custom-login', parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/css/login.min.css' );
 	}
 }
 
@@ -274,9 +354,9 @@ function ggl_enqueue_scripts(): void {
 }
 
 function ggl_enqueue_styles() {
-    if (is_user_logged_in()) {
-	    wp_enqueue_style( "simple-icons", get_stylesheet_directory_uri() . '/assets/css/simple-icons.css' );
-    }
+	if ( is_user_logged_in() ) {
+		wp_enqueue_style( "simple-icons", get_stylesheet_directory_uri() . '/assets/css/simple-icons.css' );
+	}
 
 	if ( defined( "WP_DEBUG" ) && WP_DEBUG ) {
 		wp_enqueue_style( "gegenlicht-main", get_stylesheet_directory_uri() . '/style.css' );
