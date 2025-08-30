@@ -44,6 +44,93 @@ add_filter( "locale", "ggl_locale_use_http_fallback", 10 );
 add_filter( "locale", "ggl_locale_log", 11 );
 add_action( "wp_head", "ggl_inject_special_program_colors" );
 add_action( "get_header", "ggl_redirect_from_non_semester_pages", 2 );
+add_action( "wp_head", "ggl_inject_movie_schema_markup" );
+
+function ggl_inject_movie_schema_markup() {
+	if ( ! is_singular( ["movie", "event"] ) ) {
+		return;
+	}
+
+	$title          = ggl_get_title();
+	$screeningStart = new DateTimeImmutable( date( "Y-m-d\TH:i:s", (int) rwmb_get_value( "screening_date" ) ) . " Europe/Berlin" );
+	$duration       = (int) rwmb_get_value( "running_time" );
+	$shortDuration  = (int) rwmb_get_value( "short_movie_running_time" );
+	$totalDuration  = $duration + $shortDuration + 10;
+	$screeningEnd   = $screeningStart->add( new DateInterval( "PT{$totalDuration}M" ) );
+
+	$organizer     = "";
+	$organizerType = "";
+	$organizerUrl  = "";
+	switch ( rwmb_get_value( "selected_by" ) ) {
+		case "member":
+			$selectorID    = rwmb_meta( 'team_member_id' );
+			$member        = get_post( $selectorID );
+			$organizer     = $member->post_title;
+			$organizerType = "Person";
+			$organizerUrl  = get_post_permalink( $member );
+			break;
+		case "cooperation":
+			$selectorID          = rwmb_meta( 'cooperation_partner_id' );
+			$cooperation_partner = get_post( $selectorID );
+			$organizer           = $cooperation_partner->post_title . " & " . get_bloginfo( "name" );
+			$organizerType       = "Organization";
+			$organizerUrl        = get_post_permalink( $cooperation_partner );
+
+			break;
+	}
+
+	$paidEvent    = rwmb_get_value( "admission_type" ) == "paid";
+	$admissionFee = rwmb_get_value( "admission_fee" );
+
+	$location = get_post( rwmb_get_value( "screening_location" ) );
+
+	$schemaData["@context"]                               = "https://schema.org";
+	$schemaData["@type"]                                  = "Event";
+	$schemaData["name"]                                   = $title;
+	$schemaData["startDate"]                              = $screeningStart->format( "c" );
+	$schemaData["endDate"]                                = $screeningEnd->format( "c" );
+	$schemaData["location"]["@type"]                      = "Place";
+	$schemaData["location"]["name"]                       = $location->post_title;
+	$schemaData["location"]["address"]["streetAddress"]   = rwmb_get_value( "street", post_id: $location->ID );
+	$schemaData["location"]["address"]["addressLocality"] = rwmb_get_value( "city", post_id: $location->ID );
+	$schemaData["location"]["address"]["postalCode"]      = rwmb_get_value( "postal_code", post_id: $location->ID );
+	$schemaData["location"]["address"]["addressCountry"]  = rwmb_get_value( "country", post_id: $location->ID );
+	$schemaData["image"]                                  = get_the_post_thumbnail_url( size: "full" ) ?: wp_get_attachment_image_url( get_theme_mod( "anonymous_image" ), 'full' );
+	$schemaData["description"]                            = strip_tags( ggl_get_summary() );
+	$schemaData["organizer"]["@type"]                     = $organizerType;
+	$schemaData["organizer"]["name"]                      = $organizer;
+	$schemaData["organizer"]["url"]                       = $organizerUrl;
+	$schemaData["eventStatus"]                            = "https://schema.org/EventScheduled";
+	if ( rwmb_get_value( "allow_reservations" ) ):
+		$schemaData["offers"] = [
+			[
+				"@type"         => "Offer",
+				"availability"  => "https://schema.org/PreOrder",
+				"priceCurrency" => "EUR",
+				"price"         => $paidEvent ? $admissionFee : 0.00,
+				"url"           => rwmb_get_value( "reservation_url" ),
+				"validFrom"     => $screeningStart->sub( new DateInterval( "P28D" ) )->format( "c" ),
+			]
+		];
+	endif;
+    if (is_singular("movie")):
+	$schemaData["workPresented"]["@type"]                    = "Movie";
+	$schemaData["workPresented"]["countryOfOrigin"]["@type"] = "Country";
+	$schemaData["workPresented"]["countryOfOrigin"]["name"]  = rwmb_meta( 'country' )[0] ?? "Unknown";
+	$schemaData["workPresented"]["name"]                     = $title;
+	$schemaData["workPresented"]["image"]                    = get_the_post_thumbnail_url( size: "full" ) ?: wp_get_attachment_image_url( get_theme_mod( "anonymous_image" ), 'full' );
+	$schemaData["workPresented"]["director"][]               = [
+		"@type" => "Person",
+		"name"  => rwmb_get_value( "director" )->name
+	];
+	$schemaData["workPresented"]["duration"]                 = "PT[$duration}M";
+	$schemaData["workPresented"]["description"]              = strip_tags( ggl_get_summary() );
+    endif;
+
+	?>
+    <script type="application/ld+json"><?= json_encode( $schemaData ) ?></script>
+	<?php
+}
 
 function ggl_redirect_from_non_semester_pages(): void {
 	if ( ! is_singular( [ "movie", "event" ] ) ) {
@@ -248,9 +335,9 @@ function ggl_login_header_url( $_ ): string {
 
 function ggl_enqueue_login_style(): void {
 	if ( defined( "WP_DEBUG" ) && WP_DEBUG ) {
-		wp_enqueue_style( 'custom-login', parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/css/login.css', ver: md5_file(get_stylesheet_directory() .  '/assets/css/login.css') );
+		wp_enqueue_style( 'custom-login', parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/css/login.css', ver: md5_file( get_stylesheet_directory() . '/assets/css/login.css' ) );
 	} else {
-		wp_enqueue_style( 'custom-login', parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/css/login.min.css', ver: md5_file(get_stylesheet_directory() .  '/assets/css/login.min.css')  );
+		wp_enqueue_style( 'custom-login', parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/css/login.min.css', ver: md5_file( get_stylesheet_directory() . '/assets/css/login.min.css' ) );
 	}
 }
 
@@ -297,9 +384,9 @@ function ggl_setup_menus(): void {
 
 
 function ggl_send_link_headers(): void {
-    if (is_404()) {
-        return;
-    }
+	if ( is_404() ) {
+		return;
+	}
 	$styles  = wp_styles();
 	$scripts = wp_scripts();
 
@@ -358,13 +445,13 @@ function ggl_enqueue_scripts(): void {
 
 function ggl_enqueue_styles() {
 	if ( is_user_logged_in() ) {
-		wp_enqueue_style( "simple-icons", get_stylesheet_directory_uri() . '/assets/css/simple-icons.css', ver: md5_file(get_stylesheet_directory() . "/assets/css/simple-icons.css") );
+		wp_enqueue_style( "simple-icons", get_stylesheet_directory_uri() . '/assets/css/simple-icons.css', ver: md5_file( get_stylesheet_directory() . "/assets/css/simple-icons.css" ) );
 	}
 
 	if ( defined( "WP_DEBUG" ) && WP_DEBUG ) {
-		wp_enqueue_style( "gegenlicht-main", get_stylesheet_directory_uri() . '/style.css', ver: md5_file(get_stylesheet_directory() .  '/style.css')  );
+		wp_enqueue_style( "gegenlicht-main", get_stylesheet_directory_uri() . '/style.css', ver: md5_file( get_stylesheet_directory() . '/style.css' ) );
 	} else {
-		wp_enqueue_style( "gegenlicht-main", get_stylesheet_directory_uri() . '/style.min.css', ver: md5_file(get_stylesheet_directory() .  '/style.min.css')   );
+		wp_enqueue_style( "gegenlicht-main", get_stylesheet_directory_uri() . '/style.min.css', ver: md5_file( get_stylesheet_directory() . '/style.min.css' ) );
 	}
 }
 

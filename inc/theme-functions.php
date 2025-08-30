@@ -113,6 +113,25 @@ function ggl_get_title(WP_Post|int $post = 0): string {
 	return __( "An unnamed movie", "gegenlicht" );
 }
 
+
+function ggl_get_summary(WP_Post|int $post = 0, bool $plain = false): string {
+	$post = get_post($post);
+	$val = "";
+	if ($post->post_type !== "movie" && $post->post_type !== "event") {
+		return $val;
+	}
+
+	$anonymize = (rwmb_get_value("license_type") != "full" && !is_user_logged_in());
+	if ($anonymize) {
+		$val = rwmb_get_value("anon_summary");
+	} else {
+		$val = rwmb_get_value("summary");
+	}
+
+	return $plain ? strip_tags($val) : $val;
+}
+
+
 function ggl_get_translate_rating_descriptor(string $descriptorKey): string {
 	$descriptors = [
 		'sexualized_violence' => esc_html__( 'Sexualized Violence', 'gegenlicht' ),
