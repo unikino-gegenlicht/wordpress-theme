@@ -24,3 +24,6 @@ get_header(args: ["title" => __("Not Found", "gegenlicht")]);
 		'content' => __( 'Back to the Frontpage', 'gegenlicht' )
 	] ) ?>
 </main>
+<?php
+get_footer();
+?>
