@@ -5,21 +5,12 @@ $post       = get_post( $args['post_id'] ?? - 1 );
 $anonymize  = rwmb_get_value( "license_type" ) != "full" && ! is_user_logged_in();
 
 
-
-$title   = get_locale() == 'de' ? rwmb_get_value( 'german_title' ) : rwmb_get_value( 'english_title' );
-$imageID = -1;
+$imageID = - 1;
 if ( $anonymize ) {
 	$imageID = get_theme_mod( 'anonymous_image' );
 	if ( rwmb_get_value( "program_type" ) == "special_program" ) {
 		$specialProgram = rwmb_get_value( "special_program" );
-		$title            = $specialProgram->name;
-		$imageID          = get_term_meta( $specialProgram->term_id, "anonymous_image", single: true );
-	} elseif ( $post->post_type == "movie" ) {
-		$title = esc_html__( "An unnamed movie", "gegenlicht" );
-	} elseif ( $post->post_type == "event" ) {
-		$title = esc_html__( "An unnamed event", "gegenlicht" );
-	} else {
-		$title = "Something went wrong here!";
+		$imageID        = get_term_meta( $specialProgram->term_id, "anonymous_image", single: true );
 	}
 }
 
@@ -55,22 +46,22 @@ if ( $anonymize ) {
         </p>
     </header>
     <h2 class="title next-movie-title py-4">
-		<?= $title ?>
+		<?= ggl_get_title() ?>
     </h2>
-    <?php
-    $imageArgs = [
-            "fetch-priority" => "high",
-        "lazy-load"      => false,
-    ];
+	<?php
+	$imageArgs = [
+		"fetch-priority" => "high",
+		"lazy-load"      => false,
+	];
 
-    if ($imageID != -1) {
-      $imageArgs["image_url"] = wp_get_attachment_url( $imageID );
-    } else {
-        $imageArgs["post-id"] = $post->ID;
-    }
+	if ( $imageID != - 1 ) {
+		$imageArgs["image_url"] = wp_get_attachment_url( $imageID );
+	} else {
+		$imageArgs["post-id"] = $post->ID;
+	}
 
-    get_template_part("partials/responsive-image", args: $imageArgs);
-    ?>
+	get_template_part( "partials/responsive-image", args: $imageArgs );
+	?>
     <hr class="separator"/>
 	<?php
 	get_template_part( "partials/button", args: [
