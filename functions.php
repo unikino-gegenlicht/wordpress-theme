@@ -248,9 +248,9 @@ function ggl_login_header_url( $_ ): string {
 
 function ggl_enqueue_login_style(): void {
 	if ( defined( "WP_DEBUG" ) && WP_DEBUG ) {
-		wp_enqueue_style( 'custom-login', parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/css/login.css' );
+		wp_enqueue_style( 'custom-login', parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/css/login.css', ver: md5_file(get_stylesheet_directory() .  '/assets/css/login.css') );
 	} else {
-		wp_enqueue_style( 'custom-login', parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/css/login.min.css' );
+		wp_enqueue_style( 'custom-login', parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/css/login.min.css', ver: md5_file(get_stylesheet_directory() .  '/assets/css/login.min.css')  );
 	}
 }
 
@@ -355,13 +355,13 @@ function ggl_enqueue_scripts(): void {
 
 function ggl_enqueue_styles() {
 	if ( is_user_logged_in() ) {
-		wp_enqueue_style( "simple-icons", get_stylesheet_directory_uri() . '/assets/css/simple-icons.css' );
+		wp_enqueue_style( "simple-icons", get_stylesheet_directory_uri() . '/assets/css/simple-icons.css', ver: md5_file(get_stylesheet_directory() . "/assets/css/simple-icons.css") );
 	}
 
 	if ( defined( "WP_DEBUG" ) && WP_DEBUG ) {
-		wp_enqueue_style( "gegenlicht-main", get_stylesheet_directory_uri() . '/style.css' );
+		wp_enqueue_style( "gegenlicht-main", get_stylesheet_directory_uri() . '/style.css', ver: md5_file(get_stylesheet_directory() .  '/style.css')  );
 	} else {
-		wp_enqueue_style( "gegenlicht-main", get_stylesheet_directory_uri() . '/style.min.css' );
+		wp_enqueue_style( "gegenlicht-main", get_stylesheet_directory_uri() . '/style.min.css', ver: md5_file(get_stylesheet_directory() .  '/style.min.css')   );
 	}
 }
 
