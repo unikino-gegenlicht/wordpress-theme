@@ -115,17 +115,19 @@ function ggl_get_title(WP_Post|int $post = 0): string {
 
 function ggl_get_translate_rating_descriptor(string $descriptorKey): string {
 	$descriptors = [
-		'sexualized_violence' => esc_html__( 'Sexualized Violence', 'ggl-post-types' ),
-		'violence'            => esc_html__( 'Violence', 'ggl-post-types' ),
-		'self_harm'           => esc_html__( 'Self Harm', 'ggl-post-types' ),
-		'drug_usage'          => esc_html__( 'Drug Usage', 'ggl-post-types' ),
-		'discrimination'      => esc_html__( 'Discrimination', 'ggl-post-types' ),
-		'sexuality'           => esc_html__( 'Sexuality', 'ggl-post-types' ),
-		'threat'              => esc_html__( 'Threat', 'ggl-post-types' ),
-		'injury'              => esc_html__( 'Injury', 'ggl-post-types' ),
-		'stressful_topics'    => esc_html__( 'Stressful Topics', 'ggl-post-types' ),
-		'language'            => esc_html__( 'Language', 'ggl-post-types' ),
-		'nudeness'            => esc_html__( 'Nudeness', 'ggl-post-types' ),
+		'sexualized_violence' => esc_html__( 'Sexualized Violence', 'gegenlicht' ),
+		'violence'            => esc_html__( 'Violence', 'gegenlicht' ),
+		'self_harm'           => esc_html__( 'Self Harm', 'gegenlicht' ),
+		'drug_usage'          => esc_html__( 'Drug Usage', 'gegenlicht' ),
+		'discrimination'      => esc_html__( 'Discrimination', 'gegenlicht' ),
+		'sexuality'           => esc_html__( 'Sexuality', 'gegenlicht' ),
+		'threat'              => esc_html__( 'Threat', 'gegenlicht' ),
+		'injury'              => esc_html__( 'Injury', 'gegenlicht' ),
+		'stressful_topics'    => esc_html__( 'Stressful Topics', 'gegenlicht' ),
+		'language'            => esc_html__( 'Language', 'gegenlicht' ),
+		'nudeness'            => esc_html__( 'Nudeness', 'gegenlicht' ),
+		'risky_behaviour'     => esc_html__( 'Risky Behaviour', 'gegenlicht' ),
+		'marginalization'     => esc_html__( 'Marginalization', 'gegenlicht' ),
 	];
 	if ( array_key_exists( $descriptorKey, $descriptors ) ) {
 		return $descriptors[ $descriptorKey ];
