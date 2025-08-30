@@ -53,6 +53,17 @@ $textColor     = (string) ( $args['colors']['text']['light'] ?? get_theme_mod( '
         }
     }
 </style>
+<script>
+    <?php
+
+        $randBytes = random_bytes(16);
+        $funcName = bin2hex($randBytes);
+    ?>
+    function _<?= $funcName ?>(enc) {
+        var addr = atob(enc);
+        window.location.href = "mailto:" + addr;
+    }
+</script>
 <article class="contact-block content">
     <div class="info">
         <h2 class="is-size-3 is-uppercase pt-4">
@@ -68,7 +79,7 @@ $textColor     = (string) ( $args['colors']['text']['light'] ?? get_theme_mod( '
 			<?php if ( $showEmail && ! empty( $emailAddress ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "e-mail", "gegenlicht" ) ?></td>
-                    <td><?= preg_replace( "/@/", " (at) ", $emailAddress ) ?></td>
+                    <td><a class="has-text-primary" href='javascript:_<?= $funcName ?>("<?= base64_encode($emailAddress) ?>")'><?= preg_replace( "/@/", " (at) ", $emailAddress ) ?></a></td>
                 </tr>
 			<?php endif; ?>
 			<?php if ( $showInstagram && ! empty( $instagramUsername ) ) : ?>
