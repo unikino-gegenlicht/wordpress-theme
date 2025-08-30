@@ -107,7 +107,7 @@ class LocationBlockCustomizer extends GGLCustomizerBase {
 			'type' => 'dropdown-pages',
 			'section' => self::SECTION,
 			'label' => __( 'Detail Page', 'gegenlicht' ),
-			'description' => __('This page contains detailed information about the location'),
+			'description' => __('This page contains detailed information about the location', "gegenlicht"),
 		));
 	}
 

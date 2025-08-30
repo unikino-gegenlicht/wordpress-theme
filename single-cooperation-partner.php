@@ -19,7 +19,7 @@ get_header();
 		<?php
 		get_template_part( "partials/button", args: [
 			"href"    => rwmb_get_value( "cooperation-partner_website" ),
-			"content" => __( "Open Website" ),
+			"content" => __( "Open Website", "gegenlicht" ),
 		] )
 		?>
 
