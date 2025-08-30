@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "POT-Creation-Date: 2025-07-04T16:26:53+00:00\n"
-"PO-Revision-Date: 2025-08-30 13:14+0200\n"
+"PO-Revision-Date: 2025-08-30 13:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -3320,3 +3320,63 @@ msgstr "Die Seite ist weg!"
 #: 410.php:16
 msgid "The page you are trying to open is not available anymore"
 msgstr "Die Seite, die du versucht hast zu öffnen ist nicht mehr verfügbar."
+
+#: inc/customizer/block-location.php:110
+msgid "This page contains detailed information about the location"
+msgstr "Die Seite mit den genaueren Informationen zum Ort"
+
+#: inc/theme-functions.php:118
+msgid "Sexualized Violence"
+msgstr "sexualisierte Gewalt"
+
+#: inc/theme-functions.php:119
+msgid "Violence"
+msgstr "Gewalt"
+
+#: inc/theme-functions.php:120
+msgid "Self Harm"
+msgstr "Selbstschädigung"
+
+#: inc/theme-functions.php:121
+msgid "Drug Usage"
+msgstr "Drogenkonsum"
+
+#: inc/theme-functions.php:122
+msgid "Discrimination"
+msgstr "Diskriminierung"
+
+#: inc/theme-functions.php:123
+msgid "Sexuality"
+msgstr "Sexualität"
+
+#: inc/theme-functions.php:124
+msgid "Threat"
+msgstr "Bedrohung"
+
+#: inc/theme-functions.php:125
+msgid "Injury"
+msgstr "Verletzung"
+
+#: inc/theme-functions.php:126
+msgid "Stressful Topics"
+msgstr "belastende Themen"
+
+#: inc/theme-functions.php:127
+msgid "Language"
+msgstr "Sprache"
+
+#: inc/theme-functions.php:128
+msgid "Nudeness"
+msgstr "Nacktheit"
+
+#: single-cooperation-partner.php:22
+msgid "Open Website"
+msgstr "Website öffnen"
+
+#: inc/theme-functions.php:129
+msgid "Risky Behaviour"
+msgstr "Risikoverhalten"
+
+#: inc/theme-functions.php:130
+msgid "Marginalization"
+msgstr "Ausgrenzung"

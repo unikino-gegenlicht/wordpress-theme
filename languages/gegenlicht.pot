@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-30T11:13:27+00:00\n"
+"POT-Creation-Date: 2025-08-30T11:29:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -2653,6 +2653,10 @@ msgstr ""
 msgid "Detail Page"
 msgstr ""
 
+#: inc/customizer/block-location.php:110
+msgid "This page contains detailed information about the location"
+msgstr ""
+
 #: inc/customizer/block-team.php:8
 #: inc/customizer/front-page.php:53
 #: partials/header-menu.php:25
@@ -3155,6 +3159,58 @@ msgstr ""
 msgid "An unnamed event"
 msgstr ""
 
+#: inc/theme-functions.php:118
+msgid "Sexualized Violence"
+msgstr ""
+
+#: inc/theme-functions.php:119
+msgid "Violence"
+msgstr ""
+
+#: inc/theme-functions.php:120
+msgid "Self Harm"
+msgstr ""
+
+#: inc/theme-functions.php:121
+msgid "Drug Usage"
+msgstr ""
+
+#: inc/theme-functions.php:122
+msgid "Discrimination"
+msgstr ""
+
+#: inc/theme-functions.php:123
+msgid "Sexuality"
+msgstr ""
+
+#: inc/theme-functions.php:124
+msgid "Threat"
+msgstr ""
+
+#: inc/theme-functions.php:125
+msgid "Injury"
+msgstr ""
+
+#: inc/theme-functions.php:126
+msgid "Stressful Topics"
+msgstr ""
+
+#: inc/theme-functions.php:127
+msgid "Language"
+msgstr ""
+
+#: inc/theme-functions.php:128
+msgid "Nudeness"
+msgstr ""
+
+#: inc/theme-functions.php:129
+msgid "Risky Behaviour"
+msgstr ""
+
+#: inc/theme-functions.php:130
+msgid "Marginalization"
+msgstr ""
+
 #: intermission.php:1
 msgid "Intermission in the Cinema"
 msgstr ""
@@ -3254,6 +3310,10 @@ msgstr ""
 
 #: partials/team-proposals.php:75
 msgid "No proposals found. Check back later…"
+msgstr ""
+
+#: single-cooperation-partner.php:22
+msgid "Open Website"
 msgstr ""
 
 #: single-event.php:56

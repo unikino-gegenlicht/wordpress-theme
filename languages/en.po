@@ -3409,3 +3409,63 @@ msgstr ""
 #: 410.php:16
 msgid "The page you are trying to open is not available anymore"
 msgstr ""
+
+#: inc/customizer/block-location.php:110
+msgid "This page contains detailed information about the location"
+msgstr ""
+
+#: inc/theme-functions.php:118
+msgid "Sexualized Violence"
+msgstr ""
+
+#: inc/theme-functions.php:119
+msgid "Violence"
+msgstr ""
+
+#: inc/theme-functions.php:120
+msgid "Self Harm"
+msgstr ""
+
+#: inc/theme-functions.php:121
+msgid "Drug Usage"
+msgstr ""
+
+#: inc/theme-functions.php:122
+msgid "Discrimination"
+msgstr ""
+
+#: inc/theme-functions.php:123
+msgid "Sexuality"
+msgstr ""
+
+#: inc/theme-functions.php:124
+msgid "Threat"
+msgstr ""
+
+#: inc/theme-functions.php:125
+msgid "Injury"
+msgstr ""
+
+#: inc/theme-functions.php:126
+msgid "Stressful Topics"
+msgstr ""
+
+#: inc/theme-functions.php:127
+msgid "Language"
+msgstr ""
+
+#: inc/theme-functions.php:128
+msgid "Nudeness"
+msgstr ""
+
+#: single-cooperation-partner.php:22
+msgid "Open Website"
+msgstr ""
+
+#: inc/theme-functions.php:129
+msgid "Risky Behaviour"
+msgstr ""
+
+#: inc/theme-functions.php:130
+msgid "Marginalization"
+msgstr ""
