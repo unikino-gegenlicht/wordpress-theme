@@ -208,3 +208,17 @@ button.wp-generate-pw {
   box-shadow: none !important;
   border-radius: 0;
 }
+
+@media (prefers-color-scheme: dark) {
+  #login h1 a {
+    filter: invert(74%) sepia(89%) saturate(508%) hue-rotate(358deg) brightness(102%) contrast(105%);
+  }
+}
+
+#login h1 a {
+  background-image: var(--login-logo);
+  width: 320px;
+  background-size: 320px 65px;
+  background-repeat: no-repeat;
+  padding-bottom: 30px;
+}
