@@ -15,11 +15,13 @@ if ( $post !== null ) {
 	$metaKey     = match ( $proposal_by ) {
 		"member" => "team_member_id",
 		"coop" => "cooperation_partner_id",
+        default => ""
 	};
 } else {
 	$metaKey = match ( $proposal_by ) {
 		"member" => "team_member_id",
 		"coop" => "cooperation_partner_id",
+        default => ""
 	};
 }
 
@@ -89,7 +91,7 @@ if (count( $proposals ) < 6 ) {
             <div class="movie-list-entries">
 	            <?php foreach ( $proposals as $proposal ) : ?>
                 <div class="entry">
-                    <p class="py-1 is-size-5 has-text-weight-bold"><?= $proposal ?></p>
+                    <p class="py-1 is-uppercase has-text-weight-bold"><?= $proposal ?></p>
                 </div>
                 <?php endforeach; ?>
             </div>

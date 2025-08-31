@@ -87,6 +87,11 @@ $semesterID       = $args['semester'] ?? null;
 				[
 					'key'   => 'program_type',
 					'value' => 'special_program',
+				],
+				[
+					"key"     => "screening_date",
+					"value"   => time(),
+					"compare" => ">=",
 				]
 			)
 		) );
@@ -96,7 +101,7 @@ $semesterID       = $args['semester'] ?? null;
             <p class="is-italic"><?= esc_html__( 'Sadly, all movies of this special program have been screened for the current semester. Check back next semester.', "gegenlicht" ) ?></p>
 		<?php
 		else:
-			get_template_part("partials/movie-list", args: ["posts" => $query->posts] );
+			get_template_part("partials/movie-list", args: ["posts" => $query->posts, "allowFiltering" => false] );
 		endif; ?>
     </div>
 </article>

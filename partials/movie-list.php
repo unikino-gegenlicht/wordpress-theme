@@ -48,31 +48,12 @@ if ( empty( $posts ) ) {
     <div class="movie-list-entries">
 		<?php foreach ( $posts as $post ) :
 			$post = get_post( $post->ID );
-
-			// get the metadata that is being displayed
 			$programType   = (string) rwmb_get_value( 'program_type' );
-			$startDateTime = (int) rwmb_get_value( 'screening_date' );
+	        $startDateTime = (int) rwmb_get_value( 'screening_date' );
 
-			// now resolve the name that shall be displayed
-			$anonymizeTitle = ( rwmb_get_value( 'license_type' ) !== "full" && ! is_user_logged_in() );
-			$title          = ( get_locale() === "de" ? rwmb_get_value( "german_title" ) : rwmb_get_value( "english_title" ) );
-			if ( $anonymizeTitle ) {
-				if ( $programType === "special_program" ) {
-					$specialProgram = rwmb_get_value( "special_program" );
-					$title          = $specialProgram->name;
-				} else {
-					switch ( $post->post_type ) {
-						case "movie":
-							$title = esc_html__( 'An unnamed movie', 'gegenlicht' );
-							break;
-						case "event":
-							$title = esc_html__( 'An unnamed event', 'gegenlicht' );
-					}
-				}
-			}
 			?>
             <a role="link"
-               aria-label="<?= $title ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( 'r', $startDateTime ) ?>"
+               aria-label="<?= ggl_get_title() ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( 'r', $startDateTime ) ?>"
                data-program-type="<?= $programType ?>"
                href="<?= get_permalink() ?>"
             class="entry">
@@ -83,7 +64,7 @@ if ( empty( $posts ) ) {
                         </time>
                     </p>
                     <h2 class="is-size-5 no-separator is-uppercase">
-						<?= $title ?>
+						<?= ggl_get_title() ?>
                     </h2>
                 </div>
                 <span class="icon">
