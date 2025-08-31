@@ -195,7 +195,7 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 			$member     = get_post( $selectorID );
 			$selectedBy = $member->post_title;
 			break;
-		case 'cooperation':
+		case 'coop':
 			$selectorID = rwmb_meta( 'cooperation_partner_id' );
 			$partner    = get_post( $selectorID );
 			$selectedBy = $partner->post_title;
