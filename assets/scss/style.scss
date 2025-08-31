@@ -201,9 +201,8 @@ $contentPadding: 0.75rem;
   }
 
   #proposed-by {
-    background-color: black !important;
-    color: var(--bulma-primary) !important;
-    padding: 1rem 0 !important;
+    --bulma-body-color: var(--bulma-primary) !important;
+    --bulma-body-background-color: black !important;
   }
 
   .member-picture {
@@ -484,10 +483,15 @@ hr.separator {
 }
 
 #proposed-by {
-  background-color: var(--bulma-primary);
-  color: black;
+  background-color: var(--bulma-body-background-color);
+  color: var(--bulma-body-color);
   padding: 1rem 0;
+
+  --bulma-body-color: black;
+  --bulma-body-background-color: var(--bulma-primary);
 }
+
+
 
 * {
   overflow-wrap: break-word;
