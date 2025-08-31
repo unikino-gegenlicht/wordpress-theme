@@ -15,7 +15,7 @@ if ( $anonymize ) {
 }
 
 ?>
-<article class="next-movie pt-2 <?= $isFollowup ? 'follow-up' : '' ?> <?= $isLast ? 'pb-6' : '' ?>">
+<article class="next-movie pt-2 <?= $isFollowup ? 'follow-up' : '' ?> <?= $isLast ? 'pb-5' : '' ?>">
     <header class="next-movie-header">
         <p>
 			<?php
@@ -49,18 +49,7 @@ if ( $anonymize ) {
 		<?= ggl_get_title() ?>
     </h2>
 	<?php
-	$imageArgs = [
-		"fetch-priority" => "high",
-		"lazy-load"      => false,
-	];
-
-	if ( $imageID != - 1 ) {
-		$imageArgs["image_url"] = wp_get_attachment_url( $imageID );
-	} else {
-		$imageArgs["post-id"] = $post->ID;
-	}
-
-	get_template_part( "partials/responsive-image", args: $imageArgs );
+    ggl_the_post_thumbnail();
 	?>
     <hr class="separator"/>
 	<?php

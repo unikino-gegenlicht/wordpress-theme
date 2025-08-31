@@ -2,7 +2,6 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 
-$anonymousImage = get_theme_mod( 'anonymous_image' );
 $anonymize  = rwmb_get_value( "license_type" ) != "full" && ! is_user_logged_in();
 $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 
@@ -122,10 +121,7 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 
 			?>
         </div>
-		<?php get_template_part( 'partials/responsive-image', args: [
-			'fetch-priority' => 'high',
-			'image_url'      => !$anonymize ? get_the_post_thumbnail_url( size: 'full' ) ?: wp_get_attachment_image_url( $anonymousImage, 'large' ) : wp_get_attachment_image_url( $anonymousImage, 'large' )
-		] ) ?>
+		<?php ggl_the_post_thumbnail(); ?>
 		<?php if ( ! !$anonymize && ! $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
 				<?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ get_locale() ] ?? "" ) ?>
@@ -158,11 +154,11 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
         <h2 class="font-ggl is-size-3 is-uppercase">
 			<?= esc_html__( 'What the movie is about', 'gegenlicht' ) ?>
         </h2>
-		<?= apply_filters("the_content",  !$anonymize ? rwmb_get_value( 'summary' ) : rwmb_get_value( 'anon_summary' ) ) ?>
+		<?= apply_filters("the_content",  ggl_get_summary() ) ?>
         <h2 class="font-ggl is-size-3 is-uppercase mt-6">
 			<?= esc_html__( "Why it's worth watching", 'gegenlicht' ) ?>
         </h2>
-		<?= apply_filters( "the_content",!$anonymize ? rwmb_get_value( 'worth_to_see' ) : rwmb_get_value( 'anon_worth_to_see' ) ) ?>
+		<?= apply_filters( "the_content",ggl_get_worth_to_see() ) ?>
 		<?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
             <h2 class="font-ggl is-size-3 is-uppercase">
 				<?= esc_html__( 'Short Movie' ) ?>

@@ -96,7 +96,8 @@ function ggl_get_title(WP_Post|int $post = 0): string {
 		return get_the_title($post);
 	}
 
-	$anonymize = (rwmb_get_value("license_type") != "full" && !is_user_logged_in());
+    $licensingType = rwmb_get_value("licensing_type") ?? "full";
+	$anonymize = ($licensingType != "full" && !is_user_logged_in());
 	if (!$anonymize) {
 		return get_locale() == "de" ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
 	}
@@ -121,7 +122,8 @@ function ggl_get_summary(WP_Post|int $post = 0, bool $plain = false): string {
 		return $val;
 	}
 
-	$anonymize = (rwmb_get_value("license_type") != "full" && !is_user_logged_in());
+	$licensingType = rwmb_get_value("licensing_type") ?? "full";
+	$anonymize = ($licensingType != "full" && !is_user_logged_in());
 	if ($anonymize) {
 		$val = rwmb_get_value("anon_summary");
 	} else {
