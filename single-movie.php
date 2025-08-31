@@ -39,7 +39,7 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
             </div>
         </div>
         <h1 role="heading"
-            class="<?= !$anonymize ? ( get_the_title() != rwmb_meta( 'original_title' ) ? 'no-separator' : '' ) : '' ?>">
+            class="<?= (!$anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? 'no-separator' : '' ?>">
 			<?= ggl_get_title() ?>
         </h1>
 		<?php if (!$anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ): ?>
