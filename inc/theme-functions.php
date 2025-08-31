@@ -128,7 +128,29 @@ function ggl_get_summary(WP_Post|int $post = 0, bool $plain = false): string {
 		$val = rwmb_get_value("summary");
 	}
 
-	return $plain ? strip_tags($val) : $val;
+	return ggl_cleanup($val, $plain);
+}
+
+function ggl_get_worth_to_see(WP_Post|int $post = 0, bool $plain = false): string {
+	$post = get_post($post);
+	$val = "";
+	if ($post->post_type !== "movie" && $post->post_type !== "event") {
+		return $val;
+	}
+
+	$anonymize = (rwmb_get_value("license_type") != "full" && !is_user_logged_in());
+	if ($anonymize) {
+		$val = rwmb_get_value("anon_worth_to_see");
+	} else {
+		$val = rwmb_get_value("worth_to_see");
+	}
+
+	return ggl_cleanup($val, $plain);
+}
+
+function ggl_cleanup($content, bool $plain = false): string {
+	return $plain ? strip_tags($content) : strip_tags($content, ["p", "ul", "ol", "li", "blockquote", "strong", "em", "del", "span"]);
+
 }
 
 function ggl_get_thumbnail_url(WP_Post|int $post = 0, string $size = "full"): false|string {
@@ -150,6 +172,23 @@ function ggl_get_thumbnail_url(WP_Post|int $post = 0, string $size = "full"): fa
 		return wp_get_attachment_image_url(get_term_meta( $specialProgram->term_id, "anonymous_image", single: true ), $size) ?:$fallbackImageUrl;
 	}
 	return $fallbackImageUrl;
+}
+
+
+function ggl_the_post_thumbnail(WP_Post|int $post = 0): void {
+	$post = get_post($post);
+	$mobileUrl = ggl_get_thumbnail_url( $post, "mobile" );
+	$desktopUrl = ggl_get_thumbnail_url( $post, "desktop" );
+	?>
+	<div>
+		<figure class="image movie-image mt-4">
+			<picture>
+				<source media="(width <= 768px)" srcset="<?= $mobileUrl ?>"/>
+				<img src="<?= $desktopUrl ?>"/>
+			</picture>
+		</figure>
+	</div>
+	<?php
 }
 
 
