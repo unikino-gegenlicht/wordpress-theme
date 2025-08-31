@@ -185,7 +185,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 </main>
 <section id="proposed-by">
 	<?php
-	get_template_part( "partials/team-proposals" )
+	get_template_part( "partials/proposal-list" )
 	?>
 </section>
 <?php get_footer(); ?>
