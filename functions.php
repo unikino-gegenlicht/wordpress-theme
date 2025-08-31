@@ -55,8 +55,8 @@ function ggl_anonymize_opengraph_image( $original_image ) {
 	return $original_image;
 }
 
-function ggl_inject_movie_schema_markup() {
-	if ( ! is_singular( ["movie", "event"] ) ) {
+function ggl_inject_movie_schema_markup(): void {
+	if ( ! is_singular( [ "movie", "event" ] ) ) {
 		return;
 	}
 
@@ -122,19 +122,20 @@ function ggl_inject_movie_schema_markup() {
 			]
 		];
 	endif;
-    if (is_singular("movie")):
-	$schemaData["workPresented"]["@type"]                    = "Movie";
-	$schemaData["workPresented"]["countryOfOrigin"]["@type"] = "Country";
-	$schemaData["workPresented"]["countryOfOrigin"]["name"]  = rwmb_meta( 'country' )[0] ?? "Unknown";
-	$schemaData["workPresented"]["name"]                     = $title;
-	$schemaData["workPresented"]["image"]                    = get_the_post_thumbnail_url( size: "full" ) ?: wp_get_attachment_image_url( get_theme_mod( "anonymous_image" ), 'full' );
-	$schemaData["workPresented"]["director"][]               = [
-		"@type" => "Person",
-		"name"  => rwmb_get_value( "director" )->name
-	];
-	$schemaData["workPresented"]["duration"]                 = "PT[$duration}M";
-	$schemaData["workPresented"]["description"]              = strip_tags( ggl_get_summary() );
-    endif;
+	if ( is_singular( "movie" ) ):
+		$schemaData["workFeatured"]["@type"]                    = "Movie";
+		$schemaData["workFeatured"]["countryOfOrigin"]["@type"] = "Country";
+		$schemaData["workFeatured"]["countryOfOrigin"]["name"]  = rwmb_meta( 'country' )[0] ?? "Unknown";
+		$schemaData["workFeatured"]["name"]                     = $title;
+		$schemaData["workFeatured"]["image"]                    = ggl_get_thumbnail_url();
+		$schemaData["workFeatured"]["director"][]               = [
+			"@type" => "Person",
+			"name"  => rwmb_get_value( "director" )->name
+		];
+		$schemaData["workFeatured"]["duration"]                 = "PT{$duration}M";
+		$schemaData["workFeatured"]["description"]              = strip_tags( ggl_get_summary() );
+		$schemaData["workFeatured"]["dateCreated"]              = rwmb_get_value("release_date");
+	endif;
 
 	?>
     <script type="application/ld+json"><?= json_encode( $schemaData ) ?></script>
