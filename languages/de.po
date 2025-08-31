@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "POT-Creation-Date: 2025-07-04T16:26:53+00:00\n"
-"PO-Revision-Date: 2025-08-31 18:18+0200\n"
+"PO-Revision-Date: 2025-08-31 18:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -56,7 +56,6 @@ msgstr "Ehemalige Mitglieder"
 
 #: archive-movie.php:87 header.php:72 inc/theme-functions.php:115
 #: intermission.php:58 partials/movie-list.php:66
-#: single-cooperation-partner.php:59
 msgid "An unnamed movie"
 msgstr "Ein ungenannter Film"
 
@@ -2697,7 +2696,6 @@ msgid "Event starts"
 msgstr "Event startet um"
 
 #: inc/theme-functions.php:112 intermission.php:58 partials/movie-list.php:69
-#: single-cooperation-partner.php:62
 msgid "An unnamed event"
 msgstr "Ein ungenanntes Event"
 
@@ -3264,7 +3262,7 @@ msgstr "Text für ehemaliges Mitglied (Englisch)"
 msgid "Support"
 msgstr "Unterstützung"
 
-#: single-team-member.php:77
+#: single-cooperation-partner.php:68 single-team-member.php:77
 msgid "Upcoming Screenings"
 msgstr "Kommende Vorstellungen"
 
@@ -3365,3 +3363,7 @@ msgstr "Kooperation mit: %s"
 #: partials/proposal-list.php:99
 msgid "No other entries found here. Please check back next semester or log in…"
 msgstr "Keine weiteren Einträge gefunden. Schaue nächstes Semester nochmal vorbei oder melde dich an…"
+
+#: single-cooperation-partner.php:120
+msgid "Past Cooperations"
+msgstr "Vergangene Kooperationen"
