@@ -49,9 +49,14 @@ get_header();
 						),
 					),
 					"meta_query"     => [
+						"relation" => "AND",
 						[
 							"key"   => "team_member_id",
 							"value" => get_the_ID(),
+						],
+						[
+							"key"   => "selected_by",
+							"value" => "member",
 						],
 						[
 							"key"     => "screening_date",
@@ -87,9 +92,14 @@ get_header();
 						"post_type"      => [ "movie", "event" ],
 						"posts_per_page" => - 1,
 						"meta_query"     => [
+							"relation" => "AND",
 							[
 								"key"   => "team_member_id",
 								"value" => get_the_ID(),
+							],
+							[
+								"key"   => "selected_by",
+								"value" => "member",
 							],
 							[
 								"key"     => "screening_date",
@@ -108,7 +118,7 @@ get_header();
 					while ( $query->have_posts() ) : $query->the_post();
 						$programType                                     = (string) rwmb_get_value( 'program_type' );
 						$startDateTime                                   = (int) rwmb_get_value( 'screening_date' );
-						$pastScreenings[ date( "Y", $startDateTime ) ][] = ggl_get_title();
+						$pastScreenings[ date( "Y", $startDateTime ) ][] = ggl_get_title( $query->post );
 					endwhile;
 					wp_reset_postdata();
 
