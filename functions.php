@@ -109,6 +109,9 @@ function ggl_inject_movie_schema_markup(): void {
 	$schemaData["organizer"]["@type"]                     = $organizerType;
 	$schemaData["organizer"]["name"]                      = $organizer;
 	$schemaData["organizer"]["url"]                       = $organizerUrl;
+	$schemaData["performer"]["@type"]                     = $organizerType;
+	$schemaData["performer"]["name"]                      = $organizer;
+	$schemaData["performer"]["url"]                       = $organizerUrl;
 	$schemaData["eventStatus"]                            = "https://schema.org/EventScheduled";
 	if ( rwmb_get_value( "allow_reservations" ) ):
 		$schemaData["offers"] = [
