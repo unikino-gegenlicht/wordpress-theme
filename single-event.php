@@ -101,30 +101,8 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 </main>
 <section id="proposed-by">
 	<?php
-	$selectedBy     = '';
-	$selectedByType = rwmb_meta( 'selected_by' );
-	$selectorID        = '';
-	$skipSelectedBy = false;
-	switch ( $selectedByType ) {
-		case 'member':
-			$selectorID = rwmb_meta( 'team_member_id' );
-			$member     = get_post( $selectorID );
-			$selectedBy = $member->post_title;
-			break;
-		case 'cooperation':
-			$selectorID = rwmb_meta( 'cooperation_partner_id' );
-			$partner    = get_post( $selectorID );
-			$selectedBy = $partner->post_title;
-			break;
-		default:
-			$skipSelectedBy = true;
-			break;
-	}
-
-	if ( ! $skipSelectedBy ):
-		get_template_part("partials/team-proposals", args: ['post-id' => $post->ID, 'proposal-by' => $selectedByType, 'proposer-id' => $selectorID ])
-		?>
-	<?php endif; ?>
+	get_template_part( "partials/proposal-list" )
+	?>
 </section>
 <?php get_footer(); ?>
 
