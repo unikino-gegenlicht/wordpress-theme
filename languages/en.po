@@ -56,7 +56,7 @@ msgstr "Former Members"
 
 #: archive-movie.php:87
 #: header.php:72
-#: inc/theme-functions.php:113
+#: inc/theme-functions.php:114
 #: intermission.php:58
 #: partials/movie-list.php:66
 #: single-cooperation-partner.php:59
@@ -76,7 +76,7 @@ msgstr "Login"
 msgid "Contact"
 msgstr "Contact"
 
-#: partials/contact-block.php:64
+#: partials/contact-block.php:75
 msgid "Telephone"
 msgstr "Telephone"
 
@@ -102,61 +102,29 @@ msgstr "Team"
 msgid "Screening"
 msgstr "Screening"
 
-#: single-event.php:70
+#: single-event.php:29
 #: single-movie.php:29
 msgid "Free Admission"
 msgstr "Free Admission"
 
-#: single-event.php:73
+#: single-event.php:32
 #: single-movie.php:32
 msgid "Donations welcome"
 msgstr "Donations welcome"
 
-#: single-event.php:77
+#: single-event.php:36
 #: single-movie.php:36
 msgid "Admission"
 msgstr "Admission"
 
-#: single-event.php:92
+#: single-event.php:45
 #: single-movie.php:54
 msgid "Minutes"
 msgstr "Minutes"
 
-#: single-event.php:107
 #: single-movie.php:89
 msgid "Not Rated"
 msgstr "Not Rated"
-
-#: single-event.php:110
-msgid "FSK"
-msgstr "FSK"
-
-#: single-event.php:122
-#: single-event.php:125
-msgid "Original with"
-msgstr "Original with"
-
-#: single-event.php:122
-#: single-event.php:125
-#: single-event.php:133
-msgid "Subtitles"
-msgstr "Subtitles"
-
-#: single-event.php:128
-msgid "Original without Subtitles"
-msgstr "Original without Subtitles"
-
-#: single-event.php:128
-msgid "OV"
-msgstr "OV"
-
-#: single-event.php:133
-msgid "Audio without Subtitles"
-msgstr "Audio without Subtitles"
-
-#: single-event.php:133
-msgid "Audio with"
-msgstr "Audio with"
 
 #: partials/movie-advertisement.php:27
 msgid "Next Screening"
@@ -182,7 +150,7 @@ msgstr "Privacy Policy"
 msgid "Afterwards at"
 msgstr "Afterwards at"
 
-#: partials/movie-advertisement.php:69
+#: partials/movie-advertisement.php:58
 msgid "To the movie"
 msgstr "To the movie"
 
@@ -190,11 +158,11 @@ msgstr "To the movie"
 msgid "Main Program Only"
 msgstr "Main Program Only"
 
-#: functions.php:235
+#: functions.php:346
 msgid "Username or email address is missing"
 msgstr "Username or email address is missing"
 
-#: functions.php:239
+#: functions.php:350
 msgid "The entered credentials are invalid. Please try again"
 msgstr "The entered credentials are invalid. Please try again"
 
@@ -202,8 +170,8 @@ msgstr "The entered credentials are invalid. Please try again"
 msgid "Displayed Semester"
 msgstr "Displayed Semester"
 
-#: single-event.php:157
-#: single-movie.php:152
+#: single-event.php:78
+#: single-movie.php:149
 msgid "Content Notice"
 msgstr "Content Notice"
 
@@ -215,18 +183,18 @@ msgstr "The program hosted"
 msgid "Our Semester Program"
 msgstr "Our Semester Program"
 
-#: single-event.php:149
-#: single-event.php:175
-#: single-movie.php:144
-#: single-movie.php:184
+#: single-event.php:70
+#: single-event.php:96
+#: single-movie.php:141
+#: single-movie.php:181
 msgid "Reserve Now"
 msgstr "Reserve Now"
 
-#: single-movie.php:159
+#: single-movie.php:156
 msgid "What the movie is about"
 msgstr "What the movie is about"
 
-#: single-movie.php:163
+#: single-movie.php:160
 msgid "Why it's worth watching"
 msgstr "Why it's worth watching"
 
@@ -2470,7 +2438,7 @@ msgstr ""
 msgid "Visitor Address"
 msgstr ""
 
-#: partials/movie-advertisement.php:69
+#: partials/movie-advertisement.php:58
 msgid "To the event"
 msgstr ""
 
@@ -2752,27 +2720,27 @@ msgstr ""
 msgid "Archive Reference Text (English)"
 msgstr ""
 
-#: partials/contact-block.php:59
+#: partials/contact-block.php:70
 msgid "Contact Us"
 msgstr ""
 
-#: partials/contact-block.php:70
+#: partials/contact-block.php:81
 msgid "e-mail"
 msgstr ""
 
-#: partials/contact-block.php:76
+#: partials/contact-block.php:87
 msgid "Instagram"
 msgstr ""
 
-#: partials/contact-block.php:82
+#: partials/contact-block.php:93
 msgid "Mastodon"
 msgstr ""
 
-#: partials/contact-block.php:88
+#: partials/contact-block.php:99
 msgid "Letterboxd"
 msgstr ""
 
-#: partials/contact-block.php:94
+#: partials/contact-block.php:105
 msgid "Or just chat us up at one of our screenings"
 msgstr ""
 
@@ -2784,24 +2752,23 @@ msgstr ""
 msgid "Also shown together with"
 msgstr ""
 
-#: single-event.php:56
+#: single-event.php:15
 msgid "Event starts"
 msgstr ""
 
-#: inc/theme-functions.php:110
+#: inc/theme-functions.php:111
 #: intermission.php:58
 #: partials/movie-list.php:69
 #: single-cooperation-partner.php:62
-#: single-event.php:84
 #: single-team-member.php:126
 msgid "An unnamed event"
 msgstr ""
 
-#: single-event.php:164
+#: single-event.php:85
 msgid "What the event is about"
 msgstr ""
 
-#: single-event.php:168
+#: single-event.php:89
 msgid "Why it's worth attending"
 msgstr ""
 
@@ -3414,47 +3381,47 @@ msgstr ""
 msgid "This page contains detailed information about the location"
 msgstr ""
 
-#: inc/theme-functions.php:118
+#: inc/theme-functions.php:199
 msgid "Sexualized Violence"
 msgstr ""
 
-#: inc/theme-functions.php:119
+#: inc/theme-functions.php:200
 msgid "Violence"
 msgstr ""
 
-#: inc/theme-functions.php:120
+#: inc/theme-functions.php:201
 msgid "Self Harm"
 msgstr ""
 
-#: inc/theme-functions.php:121
+#: inc/theme-functions.php:202
 msgid "Drug Usage"
 msgstr ""
 
-#: inc/theme-functions.php:122
+#: inc/theme-functions.php:203
 msgid "Discrimination"
 msgstr ""
 
-#: inc/theme-functions.php:123
+#: inc/theme-functions.php:204
 msgid "Sexuality"
 msgstr ""
 
-#: inc/theme-functions.php:124
+#: inc/theme-functions.php:205
 msgid "Threat"
 msgstr ""
 
-#: inc/theme-functions.php:125
+#: inc/theme-functions.php:206
 msgid "Injury"
 msgstr ""
 
-#: inc/theme-functions.php:126
+#: inc/theme-functions.php:207
 msgid "Stressful Topics"
 msgstr ""
 
-#: inc/theme-functions.php:127
+#: inc/theme-functions.php:208
 msgid "Language"
 msgstr ""
 
-#: inc/theme-functions.php:128
+#: inc/theme-functions.php:209
 msgid "Nudeness"
 msgstr ""
 
@@ -3462,10 +3429,16 @@ msgstr ""
 msgid "Open Website"
 msgstr ""
 
-#: inc/theme-functions.php:129
+#: inc/theme-functions.php:210
 msgid "Risky Behaviour"
 msgstr ""
 
-#: inc/theme-functions.php:130
+#: inc/theme-functions.php:211
 msgid "Marginalization"
+msgstr ""
+
+#. translators: %d Minimal Attendee Age
+#: single-event.php:55
+#, php-format
+msgid "For Ages %d+"
 msgstr ""

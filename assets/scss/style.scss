@@ -130,6 +130,10 @@ $contentPadding: 0.75rem;
 .content {
   --bulma-content-heading-color: var(--bulma-body-color) !important;
   --bulma-content-table-head-cell-color: var(--bulma-content-heading-color) !important;
+
+  --bulma-content-blockquote-background-color: var(--bulma-body-background-color) !important;
+  --bulma-content-blockquote-border-left: var(--border-thickness) solid var(--bulma-body-color) !important;
+  --bulma-content-blockquote-padding: 1rem !important;
 }
 
 .button.is-outlined {
@@ -550,6 +554,7 @@ h1, h2, h3, h4, h5, h6 {
 .tag.is-primary {
   color: var(--bulma-body-color);
   background-color: var(--bulma-body-background-color) !important;
+  border: var(--bulma-body-color) solid var(--border-thickness);
 }
 
 img,

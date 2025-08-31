@@ -45,9 +45,18 @@ add_filter( "locale", "ggl_locale_log", 11 );
 add_action( "wp_head", "ggl_inject_special_program_colors" );
 add_action( "get_header", "ggl_redirect_from_non_semester_pages", 2 );
 add_action( "wp_head", "ggl_inject_movie_schema_markup" );
+add_filter( "wpseo_opengraph_image", "ggl_anonymize_opengraph_image" );
 
-function ggl_inject_movie_schema_markup() {
-	if ( ! is_singular( ["movie", "event"] ) ) {
+function ggl_anonymize_opengraph_image( $original_image ) {
+	if ( is_singular( [ "movie", "event" ] ) ) {
+		return ggl_get_thumbnail_url( size: "desktop" );
+	}
+
+	return $original_image;
+}
+
+function ggl_inject_movie_schema_markup(): void {
+	if ( ! is_singular( [ "movie", "event" ] ) ) {
 		return;
 	}
 
@@ -100,6 +109,9 @@ function ggl_inject_movie_schema_markup() {
 	$schemaData["organizer"]["@type"]                     = $organizerType;
 	$schemaData["organizer"]["name"]                      = $organizer;
 	$schemaData["organizer"]["url"]                       = $organizerUrl;
+	$schemaData["performer"]["@type"]                     = $organizerType;
+	$schemaData["performer"]["name"]                      = $organizer;
+	$schemaData["performer"]["url"]                       = $organizerUrl;
 	$schemaData["eventStatus"]                            = "https://schema.org/EventScheduled";
 	if ( rwmb_get_value( "allow_reservations" ) ):
 		$schemaData["offers"] = [
@@ -113,19 +125,20 @@ function ggl_inject_movie_schema_markup() {
 			]
 		];
 	endif;
-    if (is_singular("movie")):
-	$schemaData["workPresented"]["@type"]                    = "Movie";
-	$schemaData["workPresented"]["countryOfOrigin"]["@type"] = "Country";
-	$schemaData["workPresented"]["countryOfOrigin"]["name"]  = rwmb_meta( 'country' )[0] ?? "Unknown";
-	$schemaData["workPresented"]["name"]                     = $title;
-	$schemaData["workPresented"]["image"]                    = get_the_post_thumbnail_url( size: "full" ) ?: wp_get_attachment_image_url( get_theme_mod( "anonymous_image" ), 'full' );
-	$schemaData["workPresented"]["director"][]               = [
-		"@type" => "Person",
-		"name"  => rwmb_get_value( "director" )->name
-	];
-	$schemaData["workPresented"]["duration"]                 = "PT[$duration}M";
-	$schemaData["workPresented"]["description"]              = strip_tags( ggl_get_summary() );
-    endif;
+	if ( is_singular( "movie" ) ):
+		$schemaData["workFeatured"]["@type"]                    = "Movie";
+		$schemaData["workFeatured"]["countryOfOrigin"]["@type"] = "Country";
+		$schemaData["workFeatured"]["countryOfOrigin"]["name"]  = rwmb_meta( 'country' )[0] ?? "Unknown";
+		$schemaData["workFeatured"]["name"]                     = $title;
+		$schemaData["workFeatured"]["image"]                    = ggl_get_thumbnail_url();
+		$schemaData["workFeatured"]["director"][]               = [
+			"@type" => "Person",
+			"name"  => rwmb_get_value( "director" )->name
+		];
+		$schemaData["workFeatured"]["duration"]                 = "PT{$duration}M";
+		$schemaData["workFeatured"]["description"]              = strip_tags( ggl_get_summary() );
+		$schemaData["workFeatured"]["dateCreated"]              = rwmb_get_value("release_date");
+	endif;
 
 	?>
     <script type="application/ld+json"><?= json_encode( $schemaData ) ?></script>
@@ -161,6 +174,14 @@ function ggl_redirect_from_non_semester_pages(): void {
 	remove_action( "wp_enqueue_scripts", "ggl_send_image_link_headers", 70 );
 	remove_action( "wp_enqueue_scripts", "ggl_send_link_headers", 90 );
 	remove_action( "wp_head", "ggl_inject_special_program_colors" );
+	remove_action( "wp_head", "ggl_inject_movie_schema_markup" );
+	add_filter( 'wpseo_frontend_presenter_classes', function ( $classes ) {
+		$classes = array_filter( $classes, function ( $class ) {
+			return strpos( $class, 'Open_Graph' ) === false;
+		} );
+
+		return $classes;
+	} );
 
 
 	header( $_SERVER["SERVER_PROTOCOL"] . " 410 Gone" );
@@ -374,7 +395,7 @@ function ggl_disable_wpadmin_for_subscribers(): void {
 	}
 
 	nocache_headers();
-	wp_safe_redirect( home_url(), HTTP_REDIRECT_TEMP );
+	wp_safe_redirect( home_url(), 307 );
 	exit();
 }
 
