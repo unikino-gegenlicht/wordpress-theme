@@ -395,7 +395,7 @@ function ggl_disable_wpadmin_for_subscribers(): void {
 	}
 
 	nocache_headers();
-	wp_safe_redirect( home_url(), HTTP_REDIRECT_TEMP );
+	wp_safe_redirect( home_url(), 307 );
 	exit();
 }
 
