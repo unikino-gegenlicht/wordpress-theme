@@ -45,6 +45,15 @@ add_filter( "locale", "ggl_locale_log", 11 );
 add_action( "wp_head", "ggl_inject_special_program_colors" );
 add_action( "get_header", "ggl_redirect_from_non_semester_pages", 2 );
 add_action( "wp_head", "ggl_inject_movie_schema_markup" );
+add_filter( "wpseo_opengraph_image", "ggl_anonymize_opengraph_image" );
+
+function ggl_anonymize_opengraph_image( $original_image ) {
+	if ( is_singular( [ "movie", "event" ] ) ) {
+		return ggl_get_thumbnail_url( size: "desktop" );
+	}
+
+	return $original_image;
+}
 
 function ggl_inject_movie_schema_markup() {
 	if ( ! is_singular( ["movie", "event"] ) ) {
@@ -161,6 +170,14 @@ function ggl_redirect_from_non_semester_pages(): void {
 	remove_action( "wp_enqueue_scripts", "ggl_send_image_link_headers", 70 );
 	remove_action( "wp_enqueue_scripts", "ggl_send_link_headers", 90 );
 	remove_action( "wp_head", "ggl_inject_special_program_colors" );
+	remove_action( "wp_head", "ggl_inject_movie_schema_markup" );
+	add_filter( 'wpseo_frontend_presenter_classes', function ( $classes ) {
+		$classes = array_filter( $classes, function ( $class ) {
+			return strpos( $class, 'Open_Graph' ) === false;
+		} );
+
+		return $classes;
+	} );
 
 
 	header( $_SERVER["SERVER_PROTOCOL"] . " 410 Gone" );

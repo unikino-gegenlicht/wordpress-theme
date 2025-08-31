@@ -131,6 +131,27 @@ function ggl_get_summary(WP_Post|int $post = 0, bool $plain = false): string {
 	return $plain ? strip_tags($val) : $val;
 }
 
+function ggl_get_thumbnail_url(WP_Post|int $post = 0, string $size = "full"): false|string {
+	$post = get_post($post);
+	if ($post->post_type !== "movie" && $post->post_type !== "event") {
+		return get_the_post_thumbnail_url($post, $size);
+	}
+
+	$fallbackImageUrl = wp_get_attachment_image_url( get_theme_mod( 'anonymous_image' ), $size );
+
+	$anonymize = (rwmb_get_value("license_type") != "full" && !is_user_logged_in());
+	if (!$anonymize) {
+		return get_the_post_thumbnail_url($post, $size) ?: $fallbackImageUrl;
+	}
+
+	$inSpecialProgram = rwmb_meta( 'program_type' ) == 'special_program';
+	if ($inSpecialProgram) {
+		$specialProgram = rwmb_get_value( 'special_program' );
+		return wp_get_attachment_image_url(get_term_meta( $specialProgram->term_id, "anonymous_image", single: true ), $size) ?:$fallbackImageUrl;
+	}
+	return $fallbackImageUrl;
+}
+
 
 function ggl_get_translate_rating_descriptor(string $descriptorKey): string {
 	$descriptors = [
