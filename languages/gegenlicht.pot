@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-31T12:52:49+00:00\n"
+"POT-Creation-Date: 2025-08-31T16:27:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -2314,11 +2314,9 @@ msgstr ""
 
 #: archive-movie.php:87
 #: header.php:72
-#: inc/theme-functions.php:114
+#: inc/theme-functions.php:115
 #: intermission.php:58
 #: partials/movie-list.php:66
-#: single-cooperation-partner.php:59
-#: single-team-member.php:123
 msgid "An unnamed movie"
 msgstr ""
 
@@ -2410,11 +2408,11 @@ msgstr ""
 msgid "Our supporters"
 msgstr ""
 
-#: functions.php:346
+#: functions.php:343
 msgid "Username or email address is missing"
 msgstr ""
 
-#: functions.php:350
+#: functions.php:347
 msgid "The entered credentials are invalid. Please try again"
 msgstr ""
 
@@ -3150,63 +3148,61 @@ msgstr ""
 msgid "E-Mail Address of Youth Protection Officer"
 msgstr ""
 
-#: inc/theme-functions.php:111
+#: inc/theme-functions.php:112
 #: intermission.php:58
 #: partials/movie-list.php:69
-#: single-cooperation-partner.php:62
-#: single-team-member.php:126
 msgid "An unnamed event"
 msgstr ""
 
-#: inc/theme-functions.php:199
+#: inc/theme-functions.php:205
 msgid "Sexualized Violence"
 msgstr ""
 
-#: inc/theme-functions.php:200
+#: inc/theme-functions.php:206
 msgid "Violence"
 msgstr ""
 
-#: inc/theme-functions.php:201
+#: inc/theme-functions.php:207
 msgid "Self Harm"
 msgstr ""
 
-#: inc/theme-functions.php:202
+#: inc/theme-functions.php:208
 msgid "Drug Usage"
 msgstr ""
 
-#: inc/theme-functions.php:203
+#: inc/theme-functions.php:209
 msgid "Discrimination"
 msgstr ""
 
-#: inc/theme-functions.php:204
+#: inc/theme-functions.php:210
 msgid "Sexuality"
 msgstr ""
 
-#: inc/theme-functions.php:205
+#: inc/theme-functions.php:211
 msgid "Threat"
 msgstr ""
 
-#: inc/theme-functions.php:206
+#: inc/theme-functions.php:212
 msgid "Injury"
 msgstr ""
 
-#: inc/theme-functions.php:207
+#: inc/theme-functions.php:213
 msgid "Stressful Topics"
 msgstr ""
 
-#: inc/theme-functions.php:208
+#: inc/theme-functions.php:214
 msgid "Language"
 msgstr ""
 
-#: inc/theme-functions.php:209
+#: inc/theme-functions.php:215
 msgid "Nudeness"
 msgstr ""
 
-#: inc/theme-functions.php:210
+#: inc/theme-functions.php:216
 msgid "Risky Behaviour"
 msgstr ""
 
-#: inc/theme-functions.php:211
+#: inc/theme-functions.php:217
 msgid "Marginalization"
 msgstr ""
 
@@ -3291,6 +3287,22 @@ msgstr ""
 msgid "To the event"
 msgstr ""
 
+#. translators: %s is the Team Members name
+#: partials/proposal-list.php:79
+#, php-format
+msgid "Selected by %s"
+msgstr ""
+
+#. translators: %s is the Cooperation Partner's name
+#: partials/proposal-list.php:79
+#, php-format
+msgid "In cooperation with %s"
+msgstr ""
+
+#: partials/proposal-list.php:99
+msgid "No other entries found here. Please check back next semester or log in…"
+msgstr ""
+
 #: partials/special-program.php:50
 msgid "Show details of"
 msgstr ""
@@ -3299,20 +3311,17 @@ msgstr ""
 msgid "Sadly, all movies of this special program have been screened for the current semester. Check back next semester."
 msgstr ""
 
-#: partials/team-proposals.php:49
-msgid "Selected by"
-msgstr ""
-
-#: partials/team-proposals.php:49
-msgid "Also shown together with"
-msgstr ""
-
-#: partials/team-proposals.php:75
-msgid "No proposals found. Check back later…"
-msgstr ""
-
 #: single-cooperation-partner.php:22
 msgid "Open Website"
+msgstr ""
+
+#: single-cooperation-partner.php:68
+#: single-team-member.php:77
+msgid "Upcoming Screenings"
+msgstr ""
+
+#: single-cooperation-partner.php:120
+msgid "Past Cooperations"
 msgstr ""
 
 #: single-event.php:15
@@ -3320,22 +3329,22 @@ msgid "Event starts"
 msgstr ""
 
 #: single-event.php:29
-#: single-movie.php:29
+#: single-movie.php:28
 msgid "Free Admission"
 msgstr ""
 
 #: single-event.php:32
-#: single-movie.php:32
+#: single-movie.php:31
 msgid "Donations welcome"
 msgstr ""
 
 #: single-event.php:36
-#: single-movie.php:36
+#: single-movie.php:35
 msgid "Admission"
 msgstr ""
 
 #: single-event.php:45
-#: single-movie.php:54
+#: single-movie.php:53
 msgid "Minutes"
 msgstr ""
 
@@ -3347,13 +3356,13 @@ msgstr ""
 
 #: single-event.php:70
 #: single-event.php:96
-#: single-movie.php:141
-#: single-movie.php:181
+#: single-movie.php:140
+#: single-movie.php:180
 msgid "Reserve Now"
 msgstr ""
 
 #: single-event.php:78
-#: single-movie.php:149
+#: single-movie.php:148
 msgid "Content Notice"
 msgstr ""
 
@@ -3365,75 +3374,75 @@ msgstr ""
 msgid "Why it's worth attending"
 msgstr ""
 
-#: single-movie.php:15
+#: single-movie.php:14
 msgid "Screening"
 msgstr ""
 
-#: single-movie.php:57
+#: single-movie.php:56
 msgid "by"
 msgstr ""
 
-#: single-movie.php:71
+#: single-movie.php:70
 msgid "with"
 msgstr ""
 
-#: single-movie.php:71
+#: single-movie.php:70
 msgid "and"
 msgstr ""
 
-#: single-movie.php:89
+#: single-movie.php:88
 msgid "Not Rated"
 msgstr ""
 
-#: single-movie.php:104
-#: single-movie.php:106
-#: single-movie.php:108
-#: single-movie.php:110
-#: single-movie.php:116
-#: single-movie.php:118
+#: single-movie.php:103
+#: single-movie.php:105
+#: single-movie.php:107
+#: single-movie.php:109
+#: single-movie.php:115
+#: single-movie.php:117
 msgid "Audio Language:"
 msgstr ""
 
-#: single-movie.php:104
-#: single-movie.php:106
-#: single-movie.php:108
-#: single-movie.php:110
-#: single-movie.php:116
-#: single-movie.php:118
+#: single-movie.php:103
+#: single-movie.php:105
+#: single-movie.php:107
+#: single-movie.php:109
+#: single-movie.php:115
+#: single-movie.php:117
 msgid "Subtitle Language:"
 msgstr ""
 
-#: single-movie.php:108
-#: single-movie.php:116
+#: single-movie.php:107
+#: single-movie.php:115
 msgid "None"
 msgstr ""
 
-#: single-movie.php:108
+#: single-movie.php:107
 msgid "OV w/o Subs"
 msgstr ""
 
-#: single-movie.php:110
+#: single-movie.php:109
 msgid "OV w/ Subs"
 msgstr ""
 
-#: single-movie.php:116
+#: single-movie.php:115
 msgid "Dub w/o Subs"
 msgstr ""
 
-#: single-movie.php:118
+#: single-movie.php:117
 msgid "Dub w/ Subs"
 msgstr ""
 
-#: single-movie.php:156
+#: single-movie.php:155
 msgid "What the movie is about"
 msgstr ""
 
-#: single-movie.php:160
+#: single-movie.php:159
 msgid "Why it's worth watching"
 msgstr ""
 
-#: single-team-member.php:72
-msgid "Upcoming Screenings"
+#: single-team-member.php:87
+msgid "Past Screenings"
 msgstr ""
 
 #: taxonomy-special-program.php:57

@@ -2,14 +2,14 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 
-$anonymize  = rwmb_get_value( "license_type" ) != "full" && ! is_user_logged_in();
-$isSpecialProgram = rwmb_get_value("program_type") === "special_program";
+$anonymize        = rwmb_get_value( "license_type" ) != "full" && ! is_user_logged_in();
+$isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 
 
 ?>
 <main>
     <header class="page-content">
-        <div class="screening-information <?= ( !$anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? '' : 'pb-0' ?>">
+        <div class="screening-information <?= ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? '' : 'pb-0' ?>">
             <div>
                 <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
                 <p>
@@ -39,10 +39,10 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
             </div>
         </div>
         <h1 role="heading"
-            class="<?= !$anonymize ? ( get_the_title() != rwmb_meta( 'original_title' ) ? 'no-separator' : '' ) : '' ?>">
+            class="<?= ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? 'no-separator' : '' ?>">
 			<?= ggl_get_title() ?>
         </h1>
-		<?php if (!$anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ): ?>
+		<?php if ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ): ?>
             <p class="font-ggl is-size-4"><?= rwmb_meta( 'original_title' ) ?></p>
             <hr class="separator"/>
 		<?php endif; ?>
@@ -53,14 +53,14 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 				<?= rwmb_meta( 'running_time' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
             </p>
             <p>
-				<?= esc_html__( 'by', 'gegenlicht' ) ?> <?= !$anonymize ? rwmb_meta( 'director' )->name : trim( preg_replace( '/\w/', '█', rwmb_meta( 'director' )->name ) ) ?>
+				<?= esc_html__( 'by', 'gegenlicht' ) ?> <?= ! $anonymize ? rwmb_meta( 'director' )->name : trim( preg_replace( '/\w/', '█', rwmb_meta( 'director' )->name ) ) ?>
             </p>
             <p>
 				<?php
 				$actors     = rwmb_meta( 'actors' );
 				$actorNames = array();
 				foreach ( $actors as $actor ) {
-					if ( !$anonymize ) {
+					if ( ! $anonymize ) {
 						$actorNames[] = $actor->name;
 					} else {
 						$actorNames[] = preg_replace( '/\w/', '█', $actor->name );
@@ -122,14 +122,14 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 			?>
         </div>
 		<?php ggl_the_post_thumbnail(); ?>
-		<?php if ( ! !$anonymize && ! $isSpecialProgram ): ?>
+		<?php if ( ! ! $anonymize && ! $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
 				<?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ get_locale() ] ?? "" ) ?>
             </div>
 		<?php endif; ?>
 		<?php if ( $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
-				<?= apply_filters( "the_content", rwmb_get_value("special_program")->description ) ?>
+				<?= apply_filters( "the_content", rwmb_get_value( "special_program" )->description ) ?>
             </div>
 		<?php endif; ?>
     </header>
@@ -147,18 +147,18 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
             <div class="content-notice mb-6 p-2">
                 <h2 class="is-size-4 border-is-background-color"><?= esc_html__( "Content Notice", 'gegenlicht' ) ?></h2>
                 <p>
-					<?= apply_filters("the_content", rwmb_get_value( 'content_notice' ) ?? "" ) ?>
+					<?= apply_filters( "the_content", rwmb_get_value( 'content_notice' ) ?? "" ) ?>
                 </p>
             </div>
 		<?php endif; ?>
         <h2 class="font-ggl is-size-3 is-uppercase">
 			<?= esc_html__( 'What the movie is about', 'gegenlicht' ) ?>
         </h2>
-		<?= apply_filters("the_content",  ggl_get_summary() ) ?>
+		<?= apply_filters( "the_content", ggl_get_summary() ) ?>
         <h2 class="font-ggl is-size-3 is-uppercase mt-6">
 			<?= esc_html__( "Why it's worth watching", 'gegenlicht' ) ?>
         </h2>
-		<?= apply_filters( "the_content",ggl_get_worth_to_see() ) ?>
+		<?= apply_filters( "the_content", ggl_get_worth_to_see() ) ?>
 		<?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
             <h2 class="font-ggl is-size-3 is-uppercase">
 				<?= esc_html__( 'Short Movie' ) ?>
@@ -185,34 +185,8 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 </main>
 <section id="proposed-by">
 	<?php
-	$selectedBy     = '';
-	$selectedByType = rwmb_meta( 'selected_by' );
-	$selectorID     = '';
-	$skipSelectedBy = false;
-	switch ( $selectedByType ) {
-		case 'member':
-			$selectorID = rwmb_meta( 'team_member_id' );
-			$member     = get_post( $selectorID );
-			$selectedBy = $member->post_title;
-			break;
-		case 'cooperation':
-			$selectorID = rwmb_meta( 'cooperation_partner_id' );
-			$partner    = get_post( $selectorID );
-			$selectedBy = $partner->post_title;
-			break;
-		default:
-			$skipSelectedBy = true;
-			break;
-	}
-
-	if ( ! $skipSelectedBy ):
-		get_template_part( "partials/team-proposals", args: [
-			'post-id'     => $post->ID,
-			'proposal-by' => $selectedByType,
-			'proposer-id' => $selectorID
-		] )
-		?>
-	<?php endif; ?>
+	get_template_part( "partials/team-proposals" )
+	?>
 </section>
 <?php get_footer(); ?>
 

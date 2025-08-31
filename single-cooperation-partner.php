@@ -25,14 +25,73 @@ get_header();
 
         <div class="my-5">
 			<?php
+			$status          = rwmb_meta( 'status' );
+			$currentSemester = get_theme_mod( "displayed_semester" );
+			if ( $status == "active" ):
 
+				$args = array(
+					"post_type"      => [ "movie", "event" ],
+					"posts_per_page" => 3,
+					'tax_query'      => array(
+						'relation' => "AND",
+						array(
+							'taxonomy' => 'semester',
+							'terms'    => $currentSemester,
+						),
+					),
+					"meta_query"     => [
+						"relation" => "AND",
+						[
+							"key"   => "cooperation_partner_id",
+							"value" => get_the_ID(),
+						],
+						[
+							"key"   => "selected_by",
+							"value" => "coop",
+						],
+						[
+							"key"     => "screening_date",
+							"value"   => time(),
+							"compare" => ">",
+						]
+					],
+					"meta_key"       => "screening_date",
+					"orderby"        => "meta_value_num",
+					"order"          => "ASC"
+				);
+
+				$query = new WP_Query( $args );
+
+				if ( $query->have_posts() ) :
+					get_template_part( 'partials/movie-list', args: [
+						"posts" => $query->posts,
+						"title" => __( "Upcoming Screenings", "gegenlicht" )
+					] );
+					?>
+
+				<?php endif; ?>
+			<?php else: ?>
+
+			<?php endif; ?>
+
+			<?php
 			$args = array(
 				"post_type"      => [ "movie", "event" ],
 				"posts_per_page" => - 1,
 				"meta_query"     => [
+					"relation" => "AND",
 					[
 						"key"   => "cooperation_partner_id",
 						"value" => get_the_ID(),
+					],
+					[
+						"key"   => "selected_by",
+						"value" => "coop",
+					],
+					[
+						"key"     => "screening_date",
+						"value"   => time(),
+						"compare" => "<",
 					]
 				],
 				"meta_key"       => "screening_date",
@@ -40,49 +99,56 @@ get_header();
 				"order"          => "ASC"
 			);
 
-			$query = new WP_Query( $args );
+			$query          = new WP_Query( $args );
+			$pastScreenings = [];
+			while ( $query->have_posts() ) : $query->the_post();
+				$programType                                     = (string) rwmb_get_value( 'program_type' );
+				$startDateTime                                   = (int) rwmb_get_value( 'screening_date' );
+				$pastScreenings[ date( "Y", $startDateTime ) ][] = ggl_get_title( $query->post );
+			endwhile;
+			wp_reset_postdata();
 
-			if ( $query->have_posts() ) :
-				while ( $query->have_posts() ) : $query->the_post();
-					$programType   = (string) rwmb_get_value( 'program_type' );
-					$startDateTime = (int) rwmb_get_value( 'screening_date' );
-					// now resolve the name that shall be displayed
-					$anonymizeTitle = ( rwmb_get_value( 'license_type' ) !== "full" && ! is_user_logged_in() );
-					$title          = ( get_locale() === "de" ? rwmb_get_value( "german_title" ) : rwmb_get_value( "english_title" ) );
-					if ( $anonymizeTitle ) {
-						if ( $programType === "special_program" ) {
-							$specialProgram = rwmb_get_value( "special_program" );
-							$title          = $specialProgram->name;
-						} else {
-							switch ( $post->post_type ) {
-								case "movie":
-									$title = esc_html__( 'An unnamed movie', 'gegenlicht' );
-									break;
-								case "event":
-									$title = esc_html__( 'An unnamed event', 'gegenlicht' );
-							}
+			$manualEntries = rwmb_get_value( "cooperation-partner_shown_movies" ) ?: [];
+			foreach ( $manualEntries as $entry ) {
+				$pastScreenings[ $entry[0] ][] = $entry[1];
+			}
+			krsort( $pastScreenings, SORT_NUMERIC );
+			if ( ! empty( $pastScreenings ) ):
+			?>
+            <div class="movie-list mt-4">
+                <p class="movie-list-title">
+					<?= esc_html__( "Past Cooperations", "gegenlicht" ) ?>
+                </p>
+                <div class="movie-list-entries">
+					<?php
+					foreach ( $pastScreenings as $year => $screenings ) {
+						foreach ( $screenings as $screening ) {
+							?>
+                            <div class="entry">
+                                <div>
+                                    <p style="font-feature-settings: unset !important;">
+										<?= $year ?>
+                                    </p>
+                                    <h2 class="is-size-5 no-separator is-uppercase">
+										<?= $screening ?>
+                                    </h2>
+                                </div>
+                            </div>
+							<?php
 						}
 					}
 					?>
-                    <div class="entry">
-                        <div>
-                            <p style="font-feature-settings: unset !important;">
-								<?= date( "Y", $startDateTime ) ?>
-                            </p>
-                            <h2 class="is-size-5 no-separator is-uppercase">
-								<?= $title ?>
-                            </h2>
-                        </div>
-                    </div>
-
-				<?php
-				endwhile;
-			else:
-				?>
-                <div class="content">
-                    <?= apply_filters("the_content", get_theme_mod("missing_coop_entries")[get_locale()] ?? "") ?>
                 </div>
-			<?php endif; ?>
+
+            </div>
+			<?php
+			else:
+			?>
+            <div class="content">
+		        <?= apply_filters("the_content", get_theme_mod("missing_coop_entries")[get_locale()] ?? "") ?>
+            </div>
+            <?php endif; ?>
+
         </div>
     </article>
 </main>

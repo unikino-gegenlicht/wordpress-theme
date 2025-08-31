@@ -96,8 +96,9 @@ function ggl_get_title(WP_Post|int $post = 0): string {
 		return get_the_title($post);
 	}
 
-    $licensingType = rwmb_get_value("licensing_type") ?? "full";
+	$licensingType = rwmb_get_value("license_type") ?: "full";
 	$anonymize = ($licensingType != "full" && !is_user_logged_in());
+
 	if (!$anonymize) {
 		return get_locale() == "de" ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
 	}
@@ -122,8 +123,9 @@ function ggl_get_summary(WP_Post|int $post = 0, bool $plain = false): string {
 		return $val;
 	}
 
-	$licensingType = rwmb_get_value("licensing_type") ?? "full";
+	$licensingType = rwmb_get_value("license_type") ?: "full";
 	$anonymize = ($licensingType != "full" && !is_user_logged_in());
+
 	if ($anonymize) {
 		$val = rwmb_get_value("anon_summary");
 	} else {
@@ -140,7 +142,9 @@ function ggl_get_worth_to_see(WP_Post|int $post = 0, bool $plain = false): strin
 		return $val;
 	}
 
-	$anonymize = (rwmb_get_value("license_type") != "full" && !is_user_logged_in());
+	$licensingType = rwmb_get_value("license_type") ?: "full";
+	$anonymize = ($licensingType != "full" && !is_user_logged_in());
+
 	if ($anonymize) {
 		$val = rwmb_get_value("anon_worth_to_see");
 	} else {
@@ -163,7 +167,9 @@ function ggl_get_thumbnail_url(WP_Post|int $post = 0, string $size = "full"): fa
 
 	$fallbackImageUrl = wp_get_attachment_image_url( get_theme_mod( 'anonymous_image' ), $size );
 
-	$anonymize = (rwmb_get_value("license_type") != "full" && !is_user_logged_in());
+	$licensingType = rwmb_get_value("license_type") ?: "full";
+	$anonymize = ($licensingType != "full" && !is_user_logged_in());
+
 	if (!$anonymize) {
 		return get_the_post_thumbnail_url($post, $size) ?: $fallbackImageUrl;
 	}

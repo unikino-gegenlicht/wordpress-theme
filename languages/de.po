@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "POT-Creation-Date: 2025-07-04T16:26:53+00:00\n"
-"PO-Revision-Date: 2025-08-31 15:02+0200\n"
+"PO-Revision-Date: 2025-08-31 18:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -54,9 +54,8 @@ msgstr "seit"
 msgid "Former Members"
 msgstr "Ehemalige Mitglieder"
 
-#: archive-movie.php:87 header.php:72 inc/theme-functions.php:114
+#: archive-movie.php:87 header.php:72 inc/theme-functions.php:115
 #: intermission.php:58 partials/movie-list.php:66
-#: single-cooperation-partner.php:59 single-team-member.php:123
 msgid "An unnamed movie"
 msgstr "Ein ungenannter Film"
 
@@ -93,27 +92,27 @@ msgstr "Mastodon Profil URL"
 msgid "Team"
 msgstr "Team"
 
-#: single-movie.php:15
+#: single-movie.php:14
 msgid "Screening"
 msgstr "Vorstellung"
 
-#: single-event.php:29 single-movie.php:29
+#: single-event.php:29 single-movie.php:28
 msgid "Free Admission"
 msgstr "Freier Eintritt"
 
-#: single-event.php:32 single-movie.php:32
+#: single-event.php:32 single-movie.php:31
 msgid "Donations welcome"
 msgstr "Eintritt gegen Spende"
 
-#: single-event.php:36 single-movie.php:36
+#: single-event.php:36 single-movie.php:35
 msgid "Admission"
 msgstr "Eintritt"
 
-#: single-event.php:45 single-movie.php:54
+#: single-event.php:45 single-movie.php:53
 msgid "Minutes"
 msgstr "Minuten"
 
-#: single-movie.php:89
+#: single-movie.php:88
 msgid "Not Rated"
 msgstr "Ungeprüft"
 
@@ -145,11 +144,11 @@ msgstr "Zum Film"
 msgid "Main Program Only"
 msgstr "Nur Hauptprogramm"
 
-#: functions.php:346
+#: functions.php:343
 msgid "Username or email address is missing"
 msgstr "Der Benutzername oder die E-Mail Adresse fehlen"
 
-#: functions.php:350
+#: functions.php:347
 msgid "The entered credentials are invalid. Please try again"
 msgstr "Die eingegebenen Login-Informationen sind ungültig"
 
@@ -157,7 +156,7 @@ msgstr "Die eingegebenen Login-Informationen sind ungültig"
 msgid "Displayed Semester"
 msgstr "Angezeigtes Semester"
 
-#: single-event.php:78 single-movie.php:149
+#: single-event.php:78 single-movie.php:148
 msgid "Content Notice"
 msgstr "Inhaltshinweis"
 
@@ -169,26 +168,18 @@ msgstr "In diesem Sonderprogramm lief bereits"
 msgid "Our Semester Program"
 msgstr "Unser Semesterprogramm"
 
-#: single-event.php:70 single-event.php:96 single-movie.php:141
-#: single-movie.php:181
+#: single-event.php:70 single-event.php:96 single-movie.php:140
+#: single-movie.php:180
 msgid "Reserve Now"
 msgstr "Jetzt Reservieren"
 
-#: single-movie.php:156
+#: single-movie.php:155
 msgid "What the movie is about"
 msgstr "Darum geht es"
 
-#: single-movie.php:160
+#: single-movie.php:159
 msgid "Why it's worth watching"
 msgstr "Darum sehenswert"
-
-#: partials/team-proposals.php:49
-msgid "Selected by"
-msgstr "Ausgesucht von"
-
-#: partials/team-proposals.php:75
-msgid "No proposals found. Check back later…"
-msgstr "Nichts gefunden. Schau später nochmal vorbei…"
 
 #: front-page.php:123
 msgid "To the team"
@@ -2700,16 +2691,11 @@ msgstr "Oder sprich uns einfach bei einer unserer Vorstellungen an"
 msgid "Show details of"
 msgstr "Zeige Details über"
 
-#: partials/team-proposals.php:49
-msgid "Also shown together with"
-msgstr "Ebenfalls zusammen gezeigt mit"
-
 #: single-event.php:15
 msgid "Event starts"
 msgstr "Event startet um"
 
-#: inc/theme-functions.php:111 intermission.php:58 partials/movie-list.php:69
-#: single-cooperation-partner.php:62 single-team-member.php:126
+#: inc/theme-functions.php:112 intermission.php:58 partials/movie-list.php:69
 msgid "An unnamed event"
 msgstr "Ein ungenanntes Event"
 
@@ -2721,15 +2707,15 @@ msgstr "Worum geht es beim Event?"
 msgid "Why it's worth attending"
 msgstr "Darum lohnt es sich mitzumachen"
 
-#: single-movie.php:57
+#: single-movie.php:56
 msgid "by"
 msgstr "von"
 
-#: single-movie.php:71
+#: single-movie.php:70
 msgid "with"
 msgstr "mit"
 
-#: single-movie.php:71
+#: single-movie.php:70
 msgid "and"
 msgstr "und"
 
@@ -3137,33 +3123,33 @@ msgstr "Nächstes Event"
 msgid "Up next"
 msgstr "Als nächstes"
 
-#: single-movie.php:104 single-movie.php:106 single-movie.php:108
-#: single-movie.php:110 single-movie.php:116 single-movie.php:118
+#: single-movie.php:103 single-movie.php:105 single-movie.php:107
+#: single-movie.php:109 single-movie.php:115 single-movie.php:117
 msgid "Audio Language:"
 msgstr "Sprache:"
 
-#: single-movie.php:104 single-movie.php:106 single-movie.php:108
-#: single-movie.php:110 single-movie.php:116 single-movie.php:118
+#: single-movie.php:103 single-movie.php:105 single-movie.php:107
+#: single-movie.php:109 single-movie.php:115 single-movie.php:117
 msgid "Subtitle Language:"
 msgstr "Untertitel:"
 
-#: single-movie.php:108 single-movie.php:116
+#: single-movie.php:107 single-movie.php:115
 msgid "None"
 msgstr "Keine"
 
-#: single-movie.php:108
+#: single-movie.php:107
 msgid "OV w/o Subs"
 msgstr "OV"
 
-#: single-movie.php:110
+#: single-movie.php:109
 msgid "OV w/ Subs"
 msgstr "OmU"
 
-#: single-movie.php:116
+#: single-movie.php:115
 msgid "Dub w/o Subs"
 msgstr "SF o. UT"
 
-#: single-movie.php:118
+#: single-movie.php:117
 msgid "Dub w/ Subs"
 msgstr "SF m. UT"
 
@@ -3276,7 +3262,7 @@ msgstr "Text für ehemaliges Mitglied (Englisch)"
 msgid "Support"
 msgstr "Unterstützung"
 
-#: single-team-member.php:72
+#: single-cooperation-partner.php:68 single-team-member.php:77
 msgid "Upcoming Screenings"
 msgstr "Kommende Vorstellungen"
 
@@ -3296,47 +3282,47 @@ msgstr "Die Seite, die du versucht hast zu öffnen ist nicht mehr verfügbar."
 msgid "This page contains detailed information about the location"
 msgstr "Die Seite mit den genaueren Informationen zum Ort"
 
-#: inc/theme-functions.php:199
+#: inc/theme-functions.php:205
 msgid "Sexualized Violence"
 msgstr "Sexualisierte Gewalt"
 
-#: inc/theme-functions.php:200
+#: inc/theme-functions.php:206
 msgid "Violence"
 msgstr "Gewalt"
 
-#: inc/theme-functions.php:201
+#: inc/theme-functions.php:207
 msgid "Self Harm"
 msgstr "Selbstschädigung"
 
-#: inc/theme-functions.php:202
+#: inc/theme-functions.php:208
 msgid "Drug Usage"
 msgstr "Drogenkonsum"
 
-#: inc/theme-functions.php:203
+#: inc/theme-functions.php:209
 msgid "Discrimination"
 msgstr "Diskriminierung"
 
-#: inc/theme-functions.php:204
+#: inc/theme-functions.php:210
 msgid "Sexuality"
 msgstr "Sexualität"
 
-#: inc/theme-functions.php:205
+#: inc/theme-functions.php:211
 msgid "Threat"
 msgstr "Bedrohung"
 
-#: inc/theme-functions.php:206
+#: inc/theme-functions.php:212
 msgid "Injury"
 msgstr "Verletzung"
 
-#: inc/theme-functions.php:207
+#: inc/theme-functions.php:213
 msgid "Stressful Topics"
 msgstr "Belastende Themen"
 
-#: inc/theme-functions.php:208
+#: inc/theme-functions.php:214
 msgid "Language"
 msgstr "Sprache"
 
-#: inc/theme-functions.php:209
+#: inc/theme-functions.php:215
 msgid "Nudeness"
 msgstr "Nacktheit"
 
@@ -3344,11 +3330,11 @@ msgstr "Nacktheit"
 msgid "Open Website"
 msgstr "Website öffnen"
 
-#: inc/theme-functions.php:210
+#: inc/theme-functions.php:216
 msgid "Risky Behaviour"
 msgstr "Risikoverhalten"
 
-#: inc/theme-functions.php:211
+#: inc/theme-functions.php:217
 msgid "Marginalization"
 msgstr "Ausgrenzung"
 
@@ -3357,3 +3343,27 @@ msgstr "Ausgrenzung"
 #, php-format
 msgid "For Ages %d+"
 msgstr "Ab %d Jahren"
+
+#: single-team-member.php:87
+msgid "Past Screenings"
+msgstr "Vergangene Vorstellungen"
+
+#. translators: %s is the Team Members name
+#: partials/proposal-list.php:79
+#, php-format
+msgid "Selected by %s"
+msgstr "Von %s ausgesucht"
+
+#. translators: %s is the Cooperation Partner's name
+#: partials/proposal-list.php:79
+#, php-format
+msgid "In cooperation with %s"
+msgstr "Kooperation mit: %s"
+
+#: partials/proposal-list.php:99
+msgid "No other entries found here. Please check back next semester or log in…"
+msgstr "Keine weiteren Einträge gefunden. Schaue nächstes Semester nochmal vorbei oder melde dich an…"
+
+#: single-cooperation-partner.php:120
+msgid "Past Cooperations"
+msgstr "Vergangene Kooperationen"
