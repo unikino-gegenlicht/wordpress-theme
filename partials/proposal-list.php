@@ -15,11 +15,13 @@ if ( $post !== null ) {
 	$metaKey     = match ( $proposal_by ) {
 		"member" => "team_member_id",
 		"coop" => "cooperation_partner_id",
+        default => ""
 	};
 } else {
 	$metaKey = match ( $proposal_by ) {
 		"member" => "team_member_id",
 		"coop" => "cooperation_partner_id",
+        default => ""
 	};
 }
 
