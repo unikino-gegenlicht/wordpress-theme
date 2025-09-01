@@ -698,6 +698,10 @@ figure.coop-logo {
   height: 250px;
   aspect-ratio: 3/4;
 
+  @include mixins.mobile {
+    margin: 0 auto;
+  }
+
   img {
     padding: 0.5rem;
     max-height: 250px;
