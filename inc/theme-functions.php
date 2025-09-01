@@ -47,7 +47,7 @@ function ggl_get_advertisements(int $semesterID): array {
 		"key" => "screening_date",
 		"value" => [
 			(int) rwmb_get_value("screening_date") + 1,
-			strtotime("+1 hours", (int) rwmb_get_value("screening_date")) ?: 0,
+			strtotime("+8 hours", (int) rwmb_get_value("screening_date")) ?: 0,
 		],
 		"compare" => "BETWEEN"
 	]];

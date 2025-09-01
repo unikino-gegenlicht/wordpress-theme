@@ -15,13 +15,13 @@ if ( $post !== null ) {
 	$metaKey     = match ( $proposal_by ) {
 		"member" => "team_member_id",
 		"coop" => "cooperation_partner_id",
-        default => ""
+		default => ""
 	};
 } else {
 	$metaKey = match ( $proposal_by ) {
 		"member" => "team_member_id",
 		"coop" => "cooperation_partner_id",
-        default => ""
+		default => ""
 	};
 }
 
@@ -35,6 +35,10 @@ $args = [
 	"post__not_in"   => [ $post->ID ],
 	"orderby"        => "rand",
 	"meta_query"     => [
+		[
+			"key"   => "selected_by",
+			"value" => $proposal_by,
+		],
 		[
 			"key"   => $metaKey,
 			"value" => $proposer_id,
@@ -56,20 +60,20 @@ $query = new WP_Query( $args );
 
 $proposals = [];
 while ( $query->have_posts() ) : $query->the_post();
-    $proposals[] = ggl_get_title();
+	$proposals[] = ggl_get_title();
 endwhile;
 
-if (count( $proposals ) < 6 ) {
-    $metaKey = match ( $proposal_by ) {
-        "member" =>"team-member_shown_movies",
-        "coop" =>"cooperation-partner_shown_movies",
-    };
+if ( count( $proposals ) < 6 ) {
+	$metaKey = match ( $proposal_by ) {
+		"member" => "team-member_shown_movies",
+		"coop" => "cooperation-partner_shown_movies",
+	};
 
-    $manualEntries = rwmb_get_value($metaKey) ?: [];
+	$manualEntries = rwmb_get_value( $metaKey ) ?: [];
 	foreach ( $manualEntries as $entry ) {
-        if (count($proposals) >= 6) {
-            break;
-        }
+		if ( count( $proposals ) >= 6 ) {
+			break;
+		}
 		$proposals[] = $entry[1];
 	}
 }
@@ -86,20 +90,20 @@ if (count( $proposals ) < 6 ) {
             <img alt=""
                  src="<?= get_the_post_thumbnail_url( $proposer_id, "full" ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
         </figure>
-        <?php if (!empty( $proposals )): ?>
-        <div class="movie-list proposal-list">
-            <div class="movie-list-entries">
-	            <?php foreach ( $proposals as $proposal ) : ?>
-                <div class="entry">
-                    <p class="py-1 is-uppercase has-text-weight-bold"><?= $proposal ?></p>
+		<?php if ( ! empty( $proposals ) ): ?>
+            <div class="movie-list proposal-list">
+                <div class="movie-list-entries">
+					<?php foreach ( $proposals as $proposal ) : ?>
+                        <div class="entry">
+                            <p class="py-1 is-uppercase has-text-weight-bold"><?= $proposal ?></p>
+                        </div>
+					<?php endforeach; ?>
                 </div>
-                <?php endforeach; ?>
             </div>
-        </div>
-        <?php else: ?>
-        <div class="proposal-list">
-            <?= esc_html__("No other entries found here. Please check back next semester or log in…", "gegenlicht") ?>
-        </div>
-        <?php endif; ?>
+		<?php else: ?>
+            <div class="proposal-list">
+				<?= esc_html__( "No other entries found here. Please check back next semester or log in…", "gegenlicht" ) ?>
+            </div>
+		<?php endif; ?>
     </div>
 </article>

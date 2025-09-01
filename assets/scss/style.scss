@@ -589,6 +589,7 @@ p:empty {
   max-width: 1668px;
   margin: 0 auto !important;
   padding: 0 0.5rem !important;
+  border-bottom: var(--border-thickness) solid var(--bulma-body-color);
 
   .navbar-item {
     color: var(--bulma-body-color) !important;
