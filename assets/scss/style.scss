@@ -183,8 +183,7 @@ $contentPadding: 0.75rem;
   box-shadow: none !important;
 }
 
-.navbar-item > svg {
-  max-height: 3rem;
+.navbar-item > div > svg {
   fill: var(--bulma-body-color) !important;
 }
 
