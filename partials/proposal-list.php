@@ -31,7 +31,7 @@ if ( empty( $metaKey ) || empty( $proposer_id ) ) {
 
 $args = [
 	"post_type"      => [ "movie", "event" ],
-	"posts_per_page" => 6,
+	"posts_per_page" => 7,
 	"post__not_in"   => [ $post->ID ],
 	"orderby"        => "rand",
 	"meta_query"     => [
@@ -52,6 +52,11 @@ $args = [
 			'key'     => 'license_type',
 			'value'   => is_user_logged_in() ? [ "full", "pool", "none", null ] : [ "full" ],
 			"compare" => "IN"
+		],
+		[
+			'key'     => "screening_date",
+			'value'   => time(),
+			"compare" => "<"
 		]
 	]
 ];
@@ -63,15 +68,15 @@ while ( $query->have_posts() ) : $query->the_post();
 	$proposals[] = ggl_get_title();
 endwhile;
 
-if ( count( $proposals ) < 6 ) {
+if ( count( $proposals ) < 7 ) {
 	$metaKey = match ( $proposal_by ) {
 		"member" => "team-member_shown_movies",
 		"coop" => "cooperation-partner_shown_movies",
 	};
 
-	$manualEntries = rwmb_get_value( $metaKey ) ?: [];
+	$manualEntries = rwmb_get_value( $metaKey, post_id: $proposer_id ) ?: [];
 	foreach ( $manualEntries as $entry ) {
-		if ( count( $proposals ) >= 6 ) {
+		if ( count( $proposals ) >= 7 ) {
 			break;
 		}
 		$proposals[] = $entry[1];
