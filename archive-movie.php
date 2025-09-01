@@ -5,7 +5,7 @@ define( "DONOTCACHEPAGE", true );
 
 $semesters = get_terms( array(
 	'taxonomy'   => 'semester',
-	'hide_empty' => true,
+	'hide_empty' => false,
 ) );
 
 $semesterScreenings = [];
