@@ -11,7 +11,9 @@ $semesterScreeningStart = get_term_meta( $semester->term_id, 'semester_start', t
 $startDate              = date_parse_from_format( "d.m.Y", $semesterScreeningStart );
 $supposedStartDate      = mktime( 0, 0, 0, $startDate['month'], $startDate['day'], $startDate['year'] );
 
-if ( time() < strtotime( "-14 days", $supposedStartDate ) ) {
+$publicationDelay = get_theme_mod( 'program_reveal_delay' );
+
+if ( time() < strtotime( "-{$publicationDelay} days", $supposedStartDate ) ) {
 	define( "GGL_ANNOUNCE_NEW_PROGRAM", true );
 	define( "GGL_SEMESTER_BREAK", false );
 } else {
@@ -125,15 +127,9 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                style="border-bottom: none !important;" aria-label="Back To Start">
                 <div>
 					<?php
-					if ( $headerImage != false ):
-						$alternativeDescription = get_post_meta( $headerImage, '_wp_attachment_image_alt', true );
-
-						$slement = file_get_contents( get_attached_file( $headerImage, true ) );
-
-						echo $slement;
-						?>
-
-					<?php else: ?>
+					if ( $headerImage ):
+						echo file_get_contents( get_attached_file( $headerImage, true ) );
+					else: ?>
                         <p class="title has-text-black">
 							<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
                         </p>
@@ -146,14 +142,8 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                 <div>
 					<?php
 					if ( $smallHeaderImage ):
-						$alternativeDescription = get_post_meta( $smallHeaderImage, '_wp_attachment_image_alt', true );
-
-						$slement = file_get_contents( get_attached_file( $smallHeaderImage, true ) );
-
-						echo $slement;
-						?>
-
-					<?php else: ?>
+						echo file_get_contents( get_attached_file( $smallHeaderImage, true ) );
+					else: ?>
                         <p class="title has-text-black">
 							<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
                         </p>
@@ -191,8 +181,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                     <a class="navbar-item no-hover"
                        href="<?= wp_logout_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
-                        <span
-                                class="icon"><span class="material-symbols">logout</span></span>
+                        <span class="icon"><span class="material-symbols">logout</span></span>
                         <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Logout', 'gegenlicht' ) ?></span></span>
                     </a>
 				<?php else: ?>
@@ -210,18 +199,14 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
 	<?php if ( GGL_SEMESTER_BREAK && ! $hideBreakBanner && ! GGL_ANNOUNCE_NEW_PROGRAM ): ?>
         <div class="page-content semester-break mb-5">
             <div class="marquee py-5">
-                <div class="marquee-content">
-					<?php for ( $i = 0; $i < 4; $i ++ ) {
-						echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . " </p>";
-						echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
-					} ?>
-                </div>
-                <div class="marquee-content">
-					<?php for ( $i = 0; $i < 4; $i ++ ) {
-						echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . "</p>";
-						echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
-					} ?>
-                </div>
+				<?php for ( $i = 0; $i < 2; $i ++ ): ?>
+                    <div class="marquee-content">
+						<?php for ( $j = 0; $j < 4; $j ++ ) {
+							echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . " </p>";
+							echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
+						} ?>
+                    </div>
+				<?php endfor; ?>
             </div>
         </div>
 	<?php endif; ?>
@@ -232,18 +217,14 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
 		?>
         <div class="page-content semester-break mb-5">
             <div class="marquee py-5">
-                <div class="marquee-content">
-					<?php for ( $i = 0; $i < 2; $i ++ ) {
-						echo "<p>" . esc_html__( "New Program Releases In", 'gegenlicht' ) . "&nbsp;" . $daysRemaining . "&nbsp;" . ( $daysRemaining == 1 ? esc_html__( "Day", "gegenlicht" ) : esc_html__( "Days", "gegenlicht" ) ) . "&nbsp;" . $hoursRemaining . "&nbsp;" . ( $hoursRemaining == 1 ? esc_html__( "Hour", "gegenlicht" ) : esc_html__( "Hours", "gegenlicht" ) ) . "</p>";
-						echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
-					} ?>
-                </div>
-                <div class="marquee-content">
-					<?php for ( $i = 0; $i < 2; $i ++ ) {
-						echo "<p>" . esc_html__( "New Program Releases In", 'gegenlicht' ) . "&nbsp;" . $daysRemaining . "&nbsp;" . ( $daysRemaining == 1 ? esc_html__( "Day", "gegenlicht" ) : esc_html__( "Days", "gegenlicht" ) ) . "&nbsp;" . $hoursRemaining . "&nbsp;" . ( $hoursRemaining == 1 ? esc_html__( "Hour", "gegenlicht" ) : esc_html__( "Hours", "gegenlicht" ) ) . "</p>";
-						echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
-					} ?>
-                </div>
+				<?php for ( $i = 0; $i < 2; $i ++ ): ?>
+                    <div class="marquee-content">
+						<?php for ( $j = 0; $j < 2; $j ++ ) {
+							echo "<p>" . esc_html__( "New Program Releases In", 'gegenlicht' ) . "&nbsp;" . $daysRemaining . "&nbsp;" . ( $daysRemaining == 1 ? esc_html__( "Day", "gegenlicht" ) : esc_html__( "Days", "gegenlicht" ) ) . "&nbsp;" . $hoursRemaining . "&nbsp;" . ( $hoursRemaining == 1 ? esc_html__( "Hour", "gegenlicht" ) : esc_html__( "Hours", "gegenlicht" ) ) . "</p>";
+							echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
+						} ?>
+                    </div>
+				<?php endfor; ?>
             </div>
         </div>
 	<?php endif; ?>
