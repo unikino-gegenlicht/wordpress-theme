@@ -1,6 +1,8 @@
 <?php
 
 defined( 'ABSPATH' ) || exit;
+define( "DONOTCACHEPAGE", true );
+
 get_header();
 do_action( 'wp_body_open' );
 ?>

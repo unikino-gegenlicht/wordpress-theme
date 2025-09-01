@@ -1,6 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 get_header(args: ["title" => __("Archive", "gegenlicht")]);
+define( "DONOTCACHEPAGE", true );
 
 $semesters = get_terms( array(
 	'taxonomy'   => 'semester',
