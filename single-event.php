@@ -47,7 +47,9 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
         </div>
         <hr class="separator"/>
         <div class="tags are-medium">
+            <?php if (rwmb_get_value("language")): ?>
             <span class="tag is-rounded is-primary"><?= esc_html__(rwmb_meta( 'language' ), "gegenlicht") ?></span>
+            <?php endif; ?>
             <?php if (rwmb_get_value("age_restricted")): ?>
             <span class="tag is-rounded is-primary"><?=
                 sprintf(

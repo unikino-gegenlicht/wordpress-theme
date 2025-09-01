@@ -46,6 +46,15 @@ add_action( "wp_head", "ggl_inject_special_program_colors" );
 add_action( "get_header", "ggl_redirect_from_non_semester_pages", 2 );
 add_action( "wp_head", "ggl_inject_movie_schema_markup" );
 add_filter( "wpseo_opengraph_image", "ggl_anonymize_opengraph_image" );
+add_filter("init", "ggl_add_shortcodes");
+
+function ggl_add_shortcodes() {
+    require_once "shortcodes/button.php";
+    require_once "shortcodes/inverted-block.php";
+
+    add_shortcode("ggl_inverted_block", "ggl_inverted_block_shortcode");
+    add_shortcode("ggl_button", "ggl_button_shortcode");
+}
 
 function ggl_anonymize_opengraph_image( $original_image ) {
 	if ( is_singular( [ "movie", "event" ] ) ) {
