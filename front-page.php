@@ -28,7 +28,7 @@ else:
 	$lastAdvertisementScreeningStart = (int) rwmb_get_value( "screening_date", post_id: $lastDisplayed->ID );
 
 	while ( have_posts() ): the_post();
-		if ( ( (int) rwmb_get_value( "screening_date" ) ) < $lastAdvertisementScreeningStart ) {
+		if ( ( (int) rwmb_get_value( "screening_date" ) ) <= $lastAdvertisementScreeningStart ) {
 			continue;
 		}
 		$screeningMonth                     = date( 'F', (int) rwmb_get_value( 'screening_date' ) );

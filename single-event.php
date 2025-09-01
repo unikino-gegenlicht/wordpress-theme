@@ -10,7 +10,7 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 ?>
 <main>
     <header class="page-content">
-        <div class="screening-information pb-0">
+        <div class="screening-information py-0">
             <div>
                 <p><?= esc_html__( 'Event starts', 'gegenlicht' ) ?></p>
                 <p>
@@ -47,7 +47,9 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
         </div>
         <hr class="separator"/>
         <div class="tags are-medium">
+            <?php if (rwmb_get_value("language")): ?>
             <span class="tag is-rounded is-primary"><?= esc_html__(rwmb_meta( 'language' ), "gegenlicht") ?></span>
+            <?php endif; ?>
             <?php if (rwmb_get_value("age_restricted")): ?>
             <span class="tag is-rounded is-primary"><?=
                 sprintf(
