@@ -1,97 +1,101 @@
 <?php
 defined( 'ABSPATH' ) || exit;
-get_header(args: ["title" => __("Archive")]);
+get_header(args: ["title" => __("Archive", "gegenlicht")]);
 
 $semesters = get_terms( array(
 	'taxonomy'   => 'semester',
-	'hide_empty' => false,
+	'hide_empty' => true,
 ) );
 
-$map = [];
-
+$semesterScreenings = [];
 foreach ( $semesters as $semester ) {
-	$start             = (string) get_term_meta( $semester->term_id, 'semester_start', true );
-	$date              = date_parse_from_format( "d.m.Y", $start );
-	$timestamp         = mktime( $date['hour'] ?: '0', null, null, $date['month'], $date['day'], $date['year'] );
-	$map[ $timestamp ] = $semester;
+    $semesterStart = (string) get_term_meta( $semester->term_id, 'semester_start', true );
+    $parsed_semester_start = date_parse_from_format("d.m.Y", $semesterStart);
+    $timestamp = mktime(0, 0, 0, $parsed_semester_start["month"], $parsed_semester_start["day"], $parsed_semester_start["year"] );
+    $semesterScreenings[$timestamp] = $semester;
 }
-ksort( $map );
+
+krsort( $semesterScreenings );
 ?>
-
-<main class="page-content">
-    <div class="content">
-        <h1><?= get_theme_mod( 'archive_header' )[ get_locale() ] ?? "" ?></h1>
-		<?= apply_filters( "the_content", get_theme_mod( 'archive_text' )[ get_locale() ] ?? "" ) ?>
-    </div>
+<main class="page-content mt-4">
+    <article class="content">
+        <header>
+            <h1><?= get_theme_mod( 'archive_header' )[ get_locale() ] ?? "" ?></h1>
+        </header>
+	    <?= apply_filters( "the_content", get_theme_mod( 'archive_text' )[ get_locale() ] ?? "" ) ?>
+    </article>
     <hr class="separator"/>
-	<?php
-	foreach ( $map
+    <?php
+    foreach( $semesterScreenings as $timestamp => $semester ):
+	    $data = new WP_Query( array(
+		    'post_type'      => [ 'movie', 'event' ],
+		    'posts_per_page' => - 1,
+		    'meta_query'     => [
+			    [
+				    'key'     => 'screening_date',
+				    'value'   => time(),
+				    'compare' => '<=',
+			    ]
+		    ],
+		    'tax_query'      => [
+			    [
+				    'taxonomy' => 'semester',
+				    'field'    => 'term_id',
+				    'terms'    => $semester->term_id,
+			    ]
+		    ],
+		    'meta_key'       => 'screening_date',
+		    'orderby'        => 'meta_value_num',
+		    'order'          => 'DESC',
+	    ) );
 
-	as $timestamp => $semester ) :
-	$manualEntries      = get_term_meta( $semester->term_id, 'semester_shown_movies', true );
-	$add_manual_entries = (bool) get_term_meta( $semester->term_id, 'semester_add_archival_data', true );
-	if ( ! empty( $manualEntries ) && ! $add_manual_entries ):
-	$entries = [];
-	foreach ( $manualEntries as $manual_entry ):
-		$date                  = date_parse_from_format( "d.m.Y", $manual_entry[0] );
-		$timestamp             = mktime( $date['hour'] ?: '0', null, null, $date['month'], $date['day'], $date['year'] );
-		$entries[ $timestamp ] = $manual_entry[1];
-	endforeach;
-	ksort( $entries, SORT_NUMERIC );
-	?>
-    <div class="archive-list mb-6">
-        <p style="background-color: var(--bulma-body-color); color: var(--bulma-body-background-color)"
-           class="font-ggl is-uppercase is-size-5 py-1 pl-1"><?= $semester->name ?></p>
+        $screenings = [];
+        while ( $data->have_posts() ) : $data->the_post();
+            $screeningDate = (int) rwmb_get_value("screening_date");
+            $title = ggl_get_title();
 
-		<?php
-		foreach ( $entries as $date => $name ):
-			?>
-            <p aria-label="<?= $name ?>"
-               class="has-text-weight-bold is-uppercase font-ggl py-1"><?= $name ?></p>
-		<?php
-		endforeach;
-		endif;
+            $screenings[$screeningDate] = $title;
+        endwhile;
 
-		$movies = new WP_Query( array(
-			'post_type'      => [ 'movie', 'event' ],
-			'posts_per_page' => - 1,
-			'meta_query'     => [
-				[
-					'key'     => 'screening_date',
-					'value'   => time(),
-					'compare' => '<=',
-				]
-			],
-			'tax_query'      => [
-				[
-					'taxonomy' => 'semester',
-					'field'    => 'term_id',
-					'terms'    => $semester->term_id,
-				]
-			],
-			'meta_key'       => 'screening_date',
-			'orderby'        => 'meta_value_num',
-			'order'          => 'ASC',
-		) );
+	    $archive_data = get_term_meta( $semester->term_id, 'semester_shown_movies', true );
+        if (!$archive_data) {
+            $archive_data = [];
+        }
+	    $merge_archive_data = (bool) get_term_meta( $semester->term_id, 'semester_add_archival_data', true );
+        if (!$merge_archive_data) {
+            $screenings = [];
+        }
+	    foreach ($archive_data as $entry) {
+		    $date                  = date_parse_from_format( "d.m.Y", $entry[0] );
+		    $timestamp             = mktime( $date['hour'] ?: '0', null, null, $date['month'], $date['day'], $date['year'] );
+		    $screenings[$timestamp] = $entry[1];
+	    }
 
-		if ( $movies->have_posts() ) :
-			?>
-            <div class="archive-list mb-6">
-                <p style="background-color: var(--bulma-body-color); color: var(--bulma-body-background-color)"
-                   class="font-ggl is-uppercase is-size-5 py-1 pl-1"><?= $semester->name ?></p>
-				<?php
-				while ( $movies->have_posts() ): $movies->the_post();
-					$programType    = rwmb_meta( 'program_type' );
-					$specialProgram = rwmb_meta( 'special_program' );
-					$showDetails    = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-					$title          = $showDetails ? ( get_locale() == 'de' ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ) : ( $programType == 'special_program' ? get_term( $specialProgram )->name : esc_html__( 'An unnamed movie', 'gegenlicht' ) ) ?>
-                    <p id="<?= $post->ID ?>" aria-label="<?= $title ?>"
-                       class="has-text-weight-bold is-uppercase font-ggl py-1"><?= $title ?></p>
-
-				<?php endwhile; ?>
+        krsort( $screenings );
+        if (empty($screenings)) {
+            continue;
+        }
+        ?>
+        <article>
+            <div class="movie-list mb-6">
+                <div class="movie-list-title">
+			        <?= $semester->name ?>
+                </div>
+                <div class="movie-list-entries">
+			        <?php foreach ( $screenings as $screeningDate => $title ) : ?>
+                        <div class="entry">
+                            <div>
+                                <p><?= date("d.m.Y", $screeningDate) ?></p>
+                                <p class="font-ggl is-size-5 is-uppercase"><?= $title ?></p>
+                            </div>
+                        </div>
+			        <?php endforeach; ?>
+                </div>
             </div>
-		<?php endif ?>
-		<?php endforeach ?>
-</main>
+        </article>
+    <?php
+    endforeach;
+    ?>
 
-<?php get_footer(); ?>
+
+</main>
