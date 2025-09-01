@@ -25,6 +25,7 @@ class FrontPageCustomizerOverrides extends GGLCustomizerBase {
 		$this->add_theme_mod( "displayed_semester" );
 		$this->add_theme_mod( "displayed_special_programs", array() );
 		$this->add_theme_mod( "displayed_blocks", array() );
+		$this->add_theme_mod( "program_reveal_delay", 14 );
 	}
 
 	private function add_controls(): void {
@@ -44,17 +45,24 @@ class FrontPageCustomizerOverrides extends GGLCustomizerBase {
 			'choices'     => $this->get_special_programs()
 		) ) );
 
-		$this->manager->add_control(new WP_CheckboxList_Customize_Control( $this->manager, "displayed_blocks", array(
+		$this->manager->add_control( new WP_CheckboxList_Customize_Control( $this->manager, "displayed_blocks", array(
 			'section'     => self::SECTION,
 			'label'       => __( "Displayed Blocks", "gegenlicht" ),
-			'description' => __("The selected blocks will be displayed below the special programs. Only if a block is activated here, the customizer for that block will be accessible", "gegenlicht"),
+			'description' => __( "The selected blocks will be displayed below the special programs. Only if a block is activated here, the customizer for that block will be accessible", "gegenlicht" ),
 			'type'        => 'multi-select',
-			'choices' => [
-				'team' => __( 'Team', 'gegenlicht' ),
-				'location' => __( 'Location', 'gegenlicht' ),
+			'choices'     => [
+				'team'         => __( 'Team', 'gegenlicht' ),
+				'location'     => __( 'Location', 'gegenlicht' ),
 				'cooperations' => __( 'Cooperation Partners and Supporters', 'gegenlicht' )
 			]
-		)));
+		) ) );
+
+		$this->add_control( "program_reveal_delay", array(
+			'section'     => self::SECTION,
+			'type'        => 'number',
+			'label'       => __( 'Program Reveal', "gegenlicht" ),
+			'description' => __( 'This value controls how many days before the start of the screenings the frontpage shows the semester program', 'gegenlicht' ),
+		) );
 	}
 
 	private function get_semesters(): array {
