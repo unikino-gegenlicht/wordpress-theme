@@ -82,74 +82,77 @@ get_header();
 			<?php else: ?>
 
 			<?php endif; ?>
-            <div class="movie-list mt-4">
-                <p class="movie-list-title">
-					<?= esc_html__( "Past Screenings", "gegenlicht" ) ?>
-                </p>
-                <div class="movie-list-entries">
-					<?php
-					$args = array(
-						"post_type"      => [ "movie", "event" ],
-						"posts_per_page" => - 1,
-						"meta_query"     => [
-							"relation" => "AND",
-							[
-								"key"   => "team_member_id",
-								"value" => get_the_ID(),
-							],
-							[
-								"key"   => "selected_by",
-								"value" => "member",
-							],
-							[
-								"key"     => "screening_date",
-								"value"   => time(),
-								"compare" => "<",
-							]
-						],
-						"meta_key"       => "screening_date",
-						"orderby"        => "meta_value_num",
-						"order"          => "ASC"
-					);
+			<?php
+			$args = array(
+				"post_type"      => [ "movie", "event" ],
+				"posts_per_page" => - 1,
+				"meta_query"     => [
+					"relation" => "AND",
+					[
+						"key"   => "team_member_id",
+						"value" => get_the_ID(),
+					],
+					[
+						"key"   => "selected_by",
+						"value" => "member",
+					],
+					[
+						"key"     => "screening_date",
+						"value"   => time(),
+						"compare" => "<",
+					]
+				],
+				"meta_key"       => "screening_date",
+				"orderby"        => "meta_value_num",
+				"order"          => "ASC"
+			);
 
-					$query          = new WP_Query( $args );
-					$pastScreenings = [];
-					if ( $query->have_posts() ) :
-					while ( $query->have_posts() ) : $query->the_post();
-						$programType                                     = (string) rwmb_get_value( 'program_type' );
-						$startDateTime                                   = (int) rwmb_get_value( 'screening_date' );
-						$pastScreenings[ date( "Y", $startDateTime ) ][] = ggl_get_title( $query->post );
-					endwhile;
-					wp_reset_postdata();
+			$query          = new WP_Query( $args );
+			$pastScreenings = [];
+			if ( $query->have_posts() ) :
+				while ( $query->have_posts() ) : $query->the_post();
+					$programType                                     = (string) rwmb_get_value( 'program_type' );
+					$startDateTime                                   = (int) rwmb_get_value( 'screening_date' );
+					$pastScreenings[ date( "Y", $startDateTime ) ][] = ggl_get_title( $query->post );
+				endwhile;
+				wp_reset_postdata();
+			endif;
 
-					$manualEntries = rwmb_get_value( "team-member_shown_movies" );
-					foreach ( $manualEntries as $entry ) {
-						$pastScreenings[ $entry[0] ][] = $entry[1];
-					}
-					krsort( $pastScreenings, SORT_NUMERIC );
+			$manualEntries = rwmb_get_value( "team-member_shown_movies" );
+			foreach ( $manualEntries as $entry ) {
+				$pastScreenings[ $entry[0] ][] = $entry[1];
+			}
+			krsort( $pastScreenings, SORT_NUMERIC );
 
-					foreach ( $pastScreenings as $year => $screenings ) {
-						foreach ( $screenings as $screening ) {
-							?>
-                            <div class="entry">
-                                <div>
-                                    <p style="font-feature-settings: unset !important;">
-										<?= $year ?>
-                                    </p>
-                                    <h2 class="is-size-5 no-separator is-uppercase">
-										<?= $screening ?>
-                                    </h2>
-                                </div>
-                            </div>
-							<?php
-						}
-					}
-					?>
-                </div>
-				<?php
-				endif;
+			if ( ! empty( $pastScreenings ) ):
 				?>
-            </div>
+                <div class="movie-list mt-4">
+                    <p class="movie-list-title">
+						<?= esc_html__( "Past Screenings", "gegenlicht" ) ?>
+                    </p>
+                    <div class="movie-list-entries">
+						<?php
+
+						foreach ( $pastScreenings as $year => $screenings ) {
+							foreach ( $screenings as $screening ) {
+								?>
+                                <div class="entry">
+                                    <div>
+                                        <p style="font-feature-settings: unset !important;">
+											<?= $year ?>
+                                        </p>
+                                        <h2 class="is-size-5 no-separator is-uppercase">
+											<?= $screening ?>
+                                        </h2>
+                                    </div>
+                                </div>
+								<?php
+							}
+						}
+						?>
+                    </div>
+                </div>
+			<?php endif; ?>
 
         </div>
     </article>

@@ -33,7 +33,7 @@ for ( $i = 0; $i < count( $navItems ); $i ++ ) {
 		$title = __( "Support", "gegenlicht" );
 	}
 	?>
-    <a class="navbar-item is-size-5 py-0 px-2 <?= $isActivePage ? 'is-active' : '' ?>"
+    <a class="navbar-item py-0 px-2 <?= $isActivePage ? 'is-active' : '' ?>"
        href="<?= $item->url ?>">
         <span><?= str_pad($i+1, 2, "0", STR_PAD_LEFT) ?>&nbsp;</span>
         <span class="font-ggl is-uppercase"><?= $title ?></span>

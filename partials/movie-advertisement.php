@@ -15,7 +15,7 @@ if ( $anonymize ) {
 }
 
 ?>
-<article class="next-movie pt-2 <?= $isFollowup ? 'follow-up' : '' ?> <?= $isLast ? 'pb-5' : '' ?>">
+<article class="next-movie pt-0 <?= $isFollowup ? 'follow-up' : '' ?> <?= $isLast ? 'pb-5' : '' ?>">
     <header class="next-movie-header">
         <p>
 			<?php

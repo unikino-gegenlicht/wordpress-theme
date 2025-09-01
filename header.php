@@ -61,17 +61,7 @@ if ( $manualPartialTitle ) {
 }
 
 if ( is_singular( [ "movie", "event" ] ) && ! defined( "GGL_PAGE_TITLE" ) ) {
-	$showDetails      = ( rwmb_meta( 'license_type' ) == 'full' || is_user_logged_in() );
-	$title            = get_locale() == "de" ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' );
-	$inSpecialProgram = rwmb_meta( 'program_type' ) == 'special_program';
-
-	if ( ! $showDetails && $inSpecialProgram ) {
-		$specialProgram = rwmb_get_value( 'special_program' );
-		$title          = $specialProgram->name;
-	} elseif ( ! $showDetails ) {
-		$title = __( "An unnamed movie", "gegenlicht" );
-	}
-	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ $title, $blogName ] ) );
+	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ ggl_get_title(), $blogName ] ) );
 }
 
 if ( is_front_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
@@ -117,7 +107,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
 
 ?>
 <!DOCTYPE html>
-<html lang="<?= substr( get_locale(), 0, 2 ) ?>" data-theme="">
+<html lang="<?= substr( get_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top">
 <head>
     <title><?= esc_html( GGL_PAGE_TITLE ) ?></title>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -128,43 +118,47 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
 <?php do_action( 'wp_body_open' ); ?>
 <body>
 <header>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand px-2">
-            <a class="navbar-item m-0 p-0 my-2 is-flex is-tab is-hidden-desktop-only"
+            <a class="navbar-item m-0 is-flex is-tab is-hidden-desktop-only"
                href="<?= get_home_url( scheme: 'https' ) ?>"
                style="border-bottom: none !important;" aria-label="Back To Start">
-				<?php
-				if ( $headerImage != false ):
-					$alternativeDescription = get_post_meta( $headerImage, '_wp_attachment_image_alt', true );
+                <div>
+					<?php
+					if ( $headerImage != false ):
+						$alternativeDescription = get_post_meta( $headerImage, '_wp_attachment_image_alt', true );
 
-					$slement = file_get_contents( get_attached_file( $headerImage, true ) );
+						$slement = file_get_contents( get_attached_file( $headerImage, true ) );
 
-					echo $slement;
-					?>
+						echo $slement;
+						?>
 
-				<?php else: ?>
-                    <p class="title has-text-black">
-						<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
-                    </p>
-				<?php endif; ?>
+					<?php else: ?>
+                        <p class="title has-text-black">
+							<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
+                        </p>
+					<?php endif; ?>
+                </div>
             </a>
-            <a class="navbar-item p-0 my-2 is-tab is-hidden-mobile is-hidden-tablet-only is-hidden-widescreen"
+            <a class="navbar-item m-0 is-tab is-hidden-mobile is-hidden-tablet-only is-hidden-widescreen"
                href="<?= get_home_url( scheme: 'https' ) ?>"
                style="border-bottom: none !important;" aria-label="Back To Start">
-				<?php
-				if ( $smallHeaderImage ):
-					$alternativeDescription = get_post_meta( $smallHeaderImage, '_wp_attachment_image_alt', true );
+                <div>
+					<?php
+					if ( $smallHeaderImage ):
+						$alternativeDescription = get_post_meta( $smallHeaderImage, '_wp_attachment_image_alt', true );
 
-					$slement = file_get_contents( get_attached_file( $smallHeaderImage, true ) );
+						$slement = file_get_contents( get_attached_file( $smallHeaderImage, true ) );
 
-					echo $slement;
-					?>
+						echo $slement;
+						?>
 
-				<?php else: ?>
-                    <p class="title has-text-black">
-						<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
-                    </p>
-				<?php endif; ?>
+					<?php else: ?>
+                        <p class="title has-text-black">
+							<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
+                        </p>
+					<?php endif; ?>
+                </div>
             </a>
 
             <a role="button" id="burger" class="navbar-burger" aria-label="menu" aria-expanded="false"
