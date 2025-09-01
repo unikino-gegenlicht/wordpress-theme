@@ -9,7 +9,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 ?>
 <main>
     <header class="page-content">
-        <div class="screening-information <?= ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? '' : 'pb-0' ?>">
+        <div class="screening-information pt-0 <?= ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? '' : 'pb-0' ?>">
             <div>
                 <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
                 <p>
@@ -85,10 +85,10 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 			switch ( $ageRating ) {
 				case - 2:
 				case - 1:
-					echo '<span class="tag is-rounded is-primary ' . ( ! empty( $translatedDescriptors ) ? ( 'has-tooltip-arrow has-tooltip-bottom has-tooltip-text-left" data-tooltip="' . join( PHP_EOL, $translatedDescriptors ) . '"' ) : '' ) . '" style="border: var(--bulma-body-color) solid var(--border-thickness);">' . esc_html__( 'Not Rated', 'gegenlicht' ) . '</span>';
+					echo '<span class="tag is-rounded is-primary ' . ( ! empty( $translatedDescriptors ) ? ( 'has-tooltip-arrow has-tooltip-bottom has-tooltip-text-left" data-tooltip="' . join( PHP_EOL, $translatedDescriptors ) . '"' ) : '' ) . '">' . esc_html__( 'Not Rated', 'gegenlicht' ) . '</span>';
 					break;
 				default:
-					echo '<span class="tag is-rounded is-primary ' . ( ! empty( $translatedDescriptors ) ? ( 'has-tooltip-arrow has-tooltip-bottom has-tooltip-text-left" data-tooltip="' . join( PHP_EOL, $translatedDescriptors ) . '"' ) : '' ) . '" style="border: var(--bulma-body-color) solid var(--border-thickness);">FSK ' . $ageRating . '</span>';
+					echo '<span class="tag is-rounded is-primary ' . ( ! empty( $translatedDescriptors ) ? ( 'has-tooltip-arrow has-tooltip-bottom has-tooltip-text-left" data-tooltip="' . join( PHP_EOL, $translatedDescriptors ) . '"' ) : '' ) . '>FSK ' . $ageRating . '</span>';
 
 			}
 			?>

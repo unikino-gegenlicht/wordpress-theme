@@ -10,7 +10,7 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 ?>
 <main>
     <header class="page-content">
-        <div class="screening-information pb-0">
+        <div class="screening-information py-0">
             <div>
                 <p><?= esc_html__( 'Event starts', 'gegenlicht' ) ?></p>
                 <p>
