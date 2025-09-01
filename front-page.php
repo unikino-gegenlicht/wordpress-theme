@@ -1,5 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
+define( "DONOTCACHEPAGE", true );
+
 
 $fallbackImage = get_theme_mod( 'anonymous_image' );
 $semesterID    = get_theme_mod( 'displayed_semester' );

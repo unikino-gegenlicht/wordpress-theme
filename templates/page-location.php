@@ -1,3 +1,4 @@
+<?php define("DONOTCACHEPAGE", true); ?>
 <article class="page-content content">
     <figure class="image mb-3">
         <picture>

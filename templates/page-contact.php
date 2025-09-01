@@ -1,3 +1,4 @@
+<?php define("DONOTCACHEPAGE", true); ?>
 <main class="page-content">
 	<header>
 		<h1><?= esc_html__("Contact Page", "gegenlicht") ?></h1>
