@@ -10,7 +10,7 @@ $phoneNumber        = (string) ( $args['phoneNumber'] ?? get_theme_mod( 'contact
 $emailAddress       = (string) ( $args['emailAddress'] ?? get_theme_mod( 'contact_info' )["emailAddress"] ?? "" );
 $instagramUsername  = (string) str_replace( "https://instagram.com/", "", ( $args['instagramUsername'] ?? get_theme_mod( 'social_medias' )["instagram"] ?? "" ) );
 $mastodonUrl        = (string) ( $args['mastodonUrl'] ?? get_theme_mod( 'social_medias' )["mastodon"] ?? "" );
-$letterboxdUsername = (string) str_replace( "https://letterboxd.com/", "",( $args['letterboxdUsername'] ?? get_theme_mod( 'social_medias' )["letterboxd"] ?? "" ));
+$letterboxdUsername = (string) str_replace( "https://letterboxd.com/", "", ( $args['letterboxdUsername'] ?? get_theme_mod( 'social_medias' )["letterboxd"] ?? "" ) );
 
 $mastodonUsername = "";
 if ( ! empty( $mastodonUrl ) ) {
@@ -54,11 +54,11 @@ $textColor     = (string) ( $args['colors']['text']['light'] ?? get_theme_mod( '
     }
 </style>
 <script>
-    <?php
+	<?php
 
-        $randBytes = random_bytes(16);
-        $funcName = bin2hex($randBytes);
-    ?>
+	$randBytes = random_bytes( 16 );
+	$funcName = bin2hex( $randBytes );
+	?>
     function _<?= $funcName ?>(enc) {
         var addr = atob(enc);
         window.location.href = "mailto:" + addr;
@@ -79,25 +79,36 @@ $textColor     = (string) ( $args['colors']['text']['light'] ?? get_theme_mod( '
 			<?php if ( $showEmail && ! empty( $emailAddress ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "e-mail", "gegenlicht" ) ?></td>
-                    <td><a class="has-text-primary" href='javascript:_<?= $funcName ?>("<?= base64_encode($emailAddress) ?>")'><?= preg_replace( "/@/", " (at) ", $emailAddress ) ?></a></td>
+                    <td><a class="has-text-primary"
+                           href='javascript:_<?= $funcName ?>("<?= base64_encode( $emailAddress ) ?>")'><?= preg_replace( "/@/", " (at) ", $emailAddress ) ?></a>
+                    </td>
                 </tr>
 			<?php endif; ?>
 			<?php if ( $showInstagram && ! empty( $instagramUsername ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "Instagram", "gegenlicht" ) ?></td>
-                    <td><?= $instagramUsername ?></td>
+                    <td><a class="has-text-primary" href="https://instagram.com/<?= $instagramUsername ?>">
+                    <span class="icon-text"><span><?= $instagramUsername ?></span><span
+                                class="material-symbols ml-1">open_in_new</span></span> </a>
+                    </td>
                 </tr>
 			<?php endif; ?>
 			<?php if ( $showMastodon && ! empty( $mastodonUsername ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "Mastodon", "gegenlicht" ) ?></td>
-                    <td><?= $mastodonUsername ?></td>
+                    <td><a class="has-text-primary" href="<?= $mastodonUrl ?>">
+                    <span class="icon-text"><span><?= $mastodonUsername ?></span><span
+                                class="material-symbols ml-1">open_in_new</span></span> </a>
+                    </td>
                 </tr>
 			<?php endif; ?>
 			<?php if ( $showLetterboxd && ! empty( $letterboxdUsername ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "Letterboxd", "gegenlicht" ) ?></td>
-                    <td><?= $letterboxdUsername ?></td>
+                    <td><a class="has-text-primary" href="https://letterboxd.com/<?= $letterboxdUsername ?>">
+                    <span class="icon-text"><span><?= $letterboxdUsername ?></span><span
+                                class="material-symbols ml-1">open_in_new</span></span> </a>
+                    </td>
                 </tr>
 			<?php endif; ?>
         </table>
