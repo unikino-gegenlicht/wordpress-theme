@@ -67,12 +67,14 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 		<?php endif; ?>
     </header>
     <?php if (rwmb_meta("allow_reservations")): ?>
-    <div class="has-background-white py-4 px-2 my-5 reservation-button">
-        <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" href="<?= rwmb_meta("reservation_url") ?>">
-            <span class="has-text-weight-bold"><?= esc_html__( 'Reserve Now', 'gegenlicht' ) ?></span>
-            <span class="material-symbols ml-1">open_in_new</span>
-        </a>
-    </div>
+        <div class="reservation-button">
+		    <?php get_template_part( 'partials/button', args: [
+			    'href'    => rwmb_get_value( "reservation_url" ),
+			    'content' => esc_html__( 'Reserve Now', 'gegenlicht' ),
+			    'external' => false,
+			    'icon' => 'confirmation_number'
+		    ] ) ?>
+        </div>
     <?php endif; ?>
     <article class="page-content px-2 mt-4 content">
 		<?php if (rwmb_meta('show_content_notice')): ?>
@@ -93,11 +95,13 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
 	    <?= apply_filters( "the_content",ggl_get_worth_to_see() ) ?>
     </article>
 	<?php if (rwmb_meta("allow_reservations")): ?>
-        <div class="has-background-white py-4 px-2 my-5 reservation-button">
-            <a class="button is-fullwidth is-uppercase is-size-5 has-background-white has-text-black" href="<?= rwmb_meta("reservation_url") ?>">
-                <span class="has-text-weight-bold"><?= esc_html__( 'Reserve Now', 'gegenlicht' ) ?></span>
-                <span class="material-symbols ml-1">open_in_new</span>
-            </a>
+        <div class="reservation-button">
+			<?php get_template_part( 'partials/button', args: [
+				'href'    => rwmb_get_value( "reservation_url" ),
+				'content' => esc_html__( 'Reserve Now', 'gegenlicht' ),
+				'external' => false,
+				'icon' => 'confirmation_number'
+			] ) ?>
         </div>
 	<?php endif; ?>
 </main>
