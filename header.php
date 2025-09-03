@@ -210,7 +210,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
         </div>
 	<?php endif; ?>
 	<?php if ( GGL_ANNOUNCE_NEW_PROGRAM && ! $hideBreakBanner ):
-		$timeRemaining = $supposedStartDate - time();
+		$timeRemaining = strtotime( "-{$publicationDelay} days", $supposedStartDate ) - time();
 		$daysRemaining = floor( $timeRemaining / ( 60 * 60 * 24 ) );
 		$hoursRemaining = floor( ( $timeRemaining - ( $daysRemaining * 60 * 60 * 24 ) ) / ( 60 * 60 ) );
 		?>

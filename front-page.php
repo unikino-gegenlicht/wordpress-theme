@@ -12,7 +12,7 @@ get_header();
 
 ?>
     <main class="px-2 mb-6 page-content">
-<?php if ( empty( $upcoming ) || GGL_SEMESTER_BREAK || (defined("GGL_ANNOUNCE_NEW_PROGRAM") && GGL_ANNOUNCE_NEW_PROGRAM) ):
+<?php if ( empty( $upcoming ) || GGL_SEMESTER_BREAK || ( defined( "GGL_ANNOUNCE_NEW_PROGRAM" ) && GGL_ANNOUNCE_NEW_PROGRAM ) ):
 	get_template_part( "intermission" );
 else:
 	for ( $i = 0; $i < count( $upcoming ); $i ++ ):
@@ -54,7 +54,10 @@ else:
             </span>
     </div>
     <hr class="separator mb-6" style="margin-top: 0.25rem;"/>
-	<?php foreach ( $monthlyMovies as $month => $posts ) : get_template_part("partials/movie-list", args: ["title" => esc_html__( $month, 'gegenlicht' ), "posts" => $posts])?>
+	<?php foreach ( $monthlyMovies as $month => $posts ) : get_template_part( "partials/movie-list", args: [
+		"title" => esc_html__( $month, 'gegenlicht' ),
+		"posts" => $posts
+	] ) ?>
 	<?php endforeach; ?>
 <?php else: ?>
     <div class="content">
@@ -72,8 +75,10 @@ endforeach; ?>
     <div class="page-content">
         <hr class="separator is-only-darkmode"/>
     </div>
+<?php endif; ?>
 
-	<?php if ( in_array( 'team', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
+
+<?php if ( in_array( 'team', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #team {
             --bulma-body-color: <?= get_theme_mod('teamBlock_text_color')['light'] ?? 'inherit' ?> !important;
@@ -131,7 +136,7 @@ endforeach; ?>
     </div>
 <?php endif; ?>
 
-	<?php if ( in_array( 'location', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
+<?php if ( in_array( 'location', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #location {
 
@@ -191,7 +196,7 @@ endforeach; ?>
         </div>
     </article>
 <?php endif; ?>
-	<?php if ( in_array( 'cooperations', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
+<?php if ( in_array( 'cooperations', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #cooperations {
             --bulma-body-background-color: <?= get_theme_mod('cooperations_background_color')['light'] ?? 'inherit' ?>;
@@ -306,6 +311,5 @@ endforeach; ?>
             </div>
         </div>
     </article>
-<?php endif; ?>
 <?php endif; ?>
 <?php get_footer(); ?>
