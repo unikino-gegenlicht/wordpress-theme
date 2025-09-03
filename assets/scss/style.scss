@@ -139,6 +139,16 @@ $contentPadding: 0.75rem;
 
 .button.is-outlined {
   --bulma-button-border-width: var(--border-thickness) !important;
+
+  &:hover {
+    color: var(--bulma-body-background-color) !important;
+    background-color: var(--bulma-body-color) !important;
+  }
+
+  .icon,
+  .icon-text {
+    color: inherit !important;
+  }
 }
 
 .footer {
@@ -466,19 +476,38 @@ hr.separator {
 
 .links {
 
+  --link-color: var(--bulma-primary);
+
   &.are-primary {
     * {
-      color: var(--bulma-primary)
+      color: var(--link-color);
     }
+
+    *:hover {
+      --link-color: white !important;
+    }
+  }
+
+  .icon-text {
+    align-items: center;
+  }
+
+  .material-symbols {
+    font-size: 1rem;
+    vertical-align: center;
+    pointer-events: none !important;
   }
 
   a:last-child:after {
     content: "";
+    pointer-events: none !important;
   }
 
   a:after {
     content: "|";
     margin: 0 0.5rem;
+    pointer-events: none !important;
+    color: var(--bulma-primary) !important;
   }
 }
 
