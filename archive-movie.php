@@ -81,7 +81,7 @@ krsort( $semesterScreenings );
 				continue;
 			}
 			?>
-            <article>
+            <article id="<?= $semester->slug ?>">
                 <div class="movie-list mb-6">
                     <div class="movie-list-title">
 						<?= $semester->name ?>
