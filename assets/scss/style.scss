@@ -137,20 +137,6 @@ $contentPadding: 0.75rem;
   --bulma-content-blockquote-padding: 1rem !important;
 }
 
-.button.is-outlined {
-  --bulma-button-border-width: var(--border-thickness) !important;
-
-  &:hover {
-    color: var(--bulma-body-background-color) !important;
-    background-color: var(--bulma-body-color) !important;
-  }
-
-  .icon,
-  .icon-text {
-    color: inherit !important;
-  }
-}
-
 .button {
   white-space: unset !important;
 }
@@ -617,8 +603,36 @@ p:empty {
 }
 
 .button.is-outlined {
+  --bulma-button-border-width: var(--border-thickness) !important;
+
   border-color: var(--bulma-body-color) !important;
   color: var(--bulma-body-color) !important;
+  background-color: var(--bulma-body-background-color) !important;
+
+  &:hover {
+    color: var(--bulma-body-background-color) !important;
+    background-color: var(--bulma-body-color) !important;
+  }
+
+  .icon,
+  .icon-text {
+    color: inherit !important;
+  }
+}
+
+.reservation-button {
+  margin: 1rem 0;
+  padding: 1rem 0;
+  background-color: var(--bulma-body-background-color) !important;
+
+  @include mixins.until(800px) {
+    padding: 1rem var(--content-padding) !important;
+  }
+
+  & {
+    --bulma-body-color: black;
+    --bulma-body-background-color: white;
+  }
 }
 
 .marquee {
@@ -780,16 +794,6 @@ html {
 .is-dynamic-flex {
   .main-content {
     width: min-content;
-  }
-}
-
-.reservation-button {
-  margin: 1rem 0;
-  padding: 1rem 0;
-  background-color: white;
-
-  @include mixins.until(800px) {
-    padding: 1rem var(--content-padding) !important;
   }
 }
 
