@@ -28,7 +28,7 @@ if ( is_contact_page() ) {
 
 get_header();
 ?>
-    <article class="page-content content">
+    <article class="page-content content mt-4">
         <header>
             <h1><?= get_the_title() ?></h1>
         </header>

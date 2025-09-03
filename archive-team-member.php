@@ -5,15 +5,12 @@ define( "DONOTCACHEPAGE", true );
 get_header();
 do_action( 'wp_body_open' );
 ?>
-
-    <article class="page-content">
-        <h1 class="is-size-2 no-separator"><?= get_theme_mod("team_page_title")[get_locale()] ?? "" ?></h1>
-        <div class="content">
-			<?php
+    <article class="page-content content mt-4">
+            <h1 class="is-size-2 no-separator"><?= get_theme_mod("team_page_title")[get_locale()] ?? "" ?></h1>
+            <?php
 			$raw = get_theme_mod( 'team_page_text' )[get_locale()] ?? "";
 			echo apply_filters("the_content", $raw);
 			?>
-        </div>
     </article>
     <?php get_template_part("partials/contact-block", args: ["emailAddress" => get_theme_mod("email_address")["join"]]) ?>
     <main class="page-content content">

@@ -3,7 +3,7 @@
 defined('ABSPATH') || exit;
 get_header( args: [ "hideBreakBanner" => true ] );
 ?>
-<main id="privacyPolicy" class="page-content">
+<main id="privacyPolicy" class="page-content mt-4">
 	<header>
 		<h1><?= esc_html__('Privacy Policy', 'gegenlicht') ?></h1>
 	</header>
