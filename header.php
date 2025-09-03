@@ -181,15 +181,14 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                     <a class="navbar-item no-hover"
                        href="<?= wp_logout_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
-                        <span class="icon"><span class="material-symbols">logout</span></span>
+                        <span class="icon"><span class="material-symbols is-size-4">logout</span></span>
                         <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Logout', 'gegenlicht' ) ?></span></span>
                     </a>
 				<?php else: ?>
                     <a class="navbar-item no-hover"
                        href="<?= wp_login_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
-                        <span
-                                class="icon"><span class="material-symbols">login</span></span>
+                        <span class="icon"><span class="material-symbols is-size-4">login</span></span>
                         <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Login', 'gegenlicht' ) ?></span></span>
                     </a>
 				<?php endif ?>

@@ -46,14 +46,15 @@ add_action( "wp_head", "ggl_inject_special_program_colors" );
 add_action( "get_header", "ggl_redirect_from_non_semester_pages", 2 );
 add_action( "wp_head", "ggl_inject_movie_schema_markup" );
 add_filter( "wpseo_opengraph_image", "ggl_anonymize_opengraph_image" );
-add_filter("init", "ggl_add_shortcodes");
+add_filter( "init", "ggl_add_shortcodes" );
+add_filter( 'wpseo_sitemap_exclude_empty_terms', '__return_false' );
 
 function ggl_add_shortcodes() {
-    require_once "shortcodes/button.php";
-    require_once "shortcodes/inverted-block.php";
+	require_once "shortcodes/button.php";
+	require_once "shortcodes/inverted-block.php";
 
-    add_shortcode("ggl_inverted_block", "ggl_inverted_block_shortcode");
-    add_shortcode("ggl_button", "ggl_button_shortcode");
+	add_shortcode( "ggl_inverted_block", "ggl_inverted_block_shortcode" );
+	add_shortcode( "ggl_button", "ggl_button_shortcode" );
 }
 
 function ggl_anonymize_opengraph_image( $original_image ) {
@@ -146,7 +147,7 @@ function ggl_inject_movie_schema_markup(): void {
 		];
 		$schemaData["workFeatured"]["duration"]                 = "PT{$duration}M";
 		$schemaData["workFeatured"]["description"]              = strip_tags( ggl_get_summary() );
-		$schemaData["workFeatured"]["dateCreated"]              = rwmb_get_value("release_date");
+		$schemaData["workFeatured"]["dateCreated"]              = rwmb_get_value( "release_date" );
 	endif;
 
 	?>
@@ -459,10 +460,10 @@ function ggl_send_link_headers(): void {
 		header( "Link: <{$relativeScriptPath}>; rel=preload; as=script; fetchpriority=high;", false, 103 );
 	}
 
-	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/gegenlicht.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
-	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/icons.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
-	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/inter.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
-	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/inter_italic.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
+	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/gegenlicht.woff2?ver=' . md5_file( get_stylesheet_directory() . "/assets/fonts/gegenlicht.woff2" ) . '.>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
+	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/icons.woff2?ver=' . md5_file( get_stylesheet_directory() . "/assets/fonts/icons.woff2" ) . '>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
+	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/inter.woff2?ver=' . md5_file( get_stylesheet_directory() . "/assets/fonts/inter.woff2" ) . '>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
+	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/inter_italic.woff2?ver=' . md5_file( get_stylesheet_directory() . "/assets/fonts/inter_italic.woff2" ) . '>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
 	if ( is_user_logged_in() ):
 		header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/simple-icons.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
 	endif;
