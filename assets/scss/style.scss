@@ -712,7 +712,7 @@ figure.supporter-logo {
 
 figure.coop-logo {
   outline: var(--border-thickness) solid var(--bulma-body-color);
-  height: 250px;
+  max-height: 250px;
   aspect-ratio: 3/4;
 
   @include mixins.mobile {
