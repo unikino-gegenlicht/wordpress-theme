@@ -5,15 +5,13 @@ get_header();
 ?>
 <main class="page-content mt-4">
     <article class="content">
-        <div class="is-flex is-align-items-top is-justify-content-space-evenly is-flex-wrap-wrap is-gap-1 mb-5">
-            <figure class="image coop-logo is-flex-grow-1   ">
+        <div class="is-flex is-dynamic-flex is-align-items-top is-justify-content-space-evenly is-flex-wrap-wrap is-gap-1 mb-5">
+            <figure class="image coop-logo is-flex is-justify-content-center is-align-items-center is-flex-grow-1   ">
                 <img src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>"/>
             </figure>
-            <header class="is-flex-grow-3 main-content">
-                <div class="content mb-0">
-                    <h1><?php the_title() ?></h1>
-					<?php the_content(); ?>
-                </div>
+            <header class="is-flex-grow-3 main-content word-break-break-word">
+                <h1><?php the_title() ?></h1>
+	            <?php the_content(); ?>
             </header>
         </div>
 		<?php

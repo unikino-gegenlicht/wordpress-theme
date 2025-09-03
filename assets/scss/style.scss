@@ -5,7 +5,7 @@ Author: Unikino GEGENLICHT
 Author URI: https://github.com/unikino-gegenlicht/wordpress-theme/graphs/contributors
 Description: The default theme for our website (Design by Philip Kaufmann // Implementation by Jan Eike Suchard)
 Tags: entertainment,grid-layout,single-column,custom-logo,custom-menu,featured-images,footer-widgets,theme-options,translation-ready
-Version: 3.2.4
+Version: 3.2.5
 Requires at least: 6.7
 Tested up to: 6.8
 Requires PHP: 8.4
@@ -740,6 +740,10 @@ figure.coop-logo {
   max-width: 250px;
   aspect-ratio: 3/4;
 
+  &.no-outline {
+    outline: none !important;
+  }
+
   @include mixins.mobile {
     margin: 0 auto;
   }
@@ -790,19 +794,21 @@ html {
   width: 0px;
 }
 
-@include mixins.mobile {
+@include mixins.until(600) {
   .is-dynamic-flex {
     flex-direction: column !important;
 
     .main-content {
       width: fit-content !important;
+      flex-grow: 3
     }
   }
 }
 
-.is-dynamic-flex {
-  .main-content {
-    width: min-content;
-  }
+.main-content {
+  width: min-content;
 }
 
+.word-break-break-word {
+  word-break: break-word;
+}

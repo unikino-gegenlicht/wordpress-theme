@@ -4,14 +4,13 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 <main class="page-content mt-4">
-    <article>
-        <div class="is-flex is-align-items-top is-justify-content-space-evenly is-flex-wrap-wrap is-gap-2 mt-3">
-            <figure class="image is-3by4 member-picture is-flex-grow-1">
+    <article class="content">
+        <div class="is-flex is-dynamic-flex is-align-items-top is-justify-content-space-evenly is-flex-wrap-wrap is-gap-1 mb-5 content">
+            <figure class="image member-picture is-flex is-flex-grow-1">
                 <img alt=""
                      src="<?= get_the_post_thumbnail_url( size: 'member-crop' ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
             </figure>
-            <header class="is-flex-grow-3 main-content">
-                <div class="content mb-0">
+            <header class="is-flex-grow-3 main-content word-break-break-word">
                     <h1><?php the_title() ?></h1>
 					<?php
 					if ( rwmb_get_value( "status" ) == "active" ):
@@ -28,9 +27,9 @@ get_header();
 
 					echo apply_filters( 'the_content', $outputText );
 					?>
-                </div>
             </header>
         </div>
+    </article>
 
         <div class="my-5">
 			<?php
@@ -155,7 +154,6 @@ get_header();
 			<?php endif; ?>
 
         </div>
-    </article>
 </main>
 <?php
 get_footer();

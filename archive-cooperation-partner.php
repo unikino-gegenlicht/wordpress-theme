@@ -32,13 +32,16 @@ do_action( 'wp_body_open' );
         </div>
     </article>
     <div class="has-background-white py-4 px-2 mt-5">
-        <?php
+        <div class="page-content" style="--bulma-body-background-color: white;">
+	        <?php
 
-        get_template_part( 'partials/button', args: [
-	        'href'    => get_theme_mod( 'cooperation_form_url' ),
-	        'content' => get_theme_mod( 'cooperation_form_button_text' )[get_locale()] ??  esc_html__( 'Inquire About A Cooperation Now', 'gegenlicht' )
-        ] )
-        ?>
+	        get_template_part( 'partials/button', args: [
+		        'href'    => get_theme_mod( 'cooperation_form_url' ),
+		        'content' => get_theme_mod( 'cooperation_form_button_text' )[get_locale()] ??  esc_html__( 'Inquire About A Cooperation Now', 'gegenlicht' )
+	        ] )
+	        ?>
+        </div>
+
     </div>
     <main class="content page-content mt-5">
         <h3 class="is-size-3"><?= esc_html__( 'Our Cooperations', 'gegenlicht' ) ?></h3>

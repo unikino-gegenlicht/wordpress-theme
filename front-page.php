@@ -252,7 +252,7 @@ endforeach; ?>
                         if (count($postImages) > 6) {
                             break;
                         }
-						$postImages[] = get_the_post_thumbnail_url(size: "full");
+						$postImages[] = [get_the_post_thumbnail_url(size: "full"), get_permalink()];
 					}
 				endwhile;
 				wp_reset_postdata();
@@ -260,18 +260,22 @@ endforeach; ?>
                 <div role="marquee" aria-live="off"
                      aria-label="<?= esc_html__( 'Logos of ours Cooperation partners', 'gegenlicht' ) ?>"
                      class="marquee" style="--height: 200px;">
-                    <div class="marquee-content" style="height: 200px;">
+                    <div class="marquee-content is-align-items-center" style="height: 200px;">
 						<?php foreach ( $postImages as $postImage ) : ?>
-                            <figure class="image marquee-image">
-                                <img src="<?= $postImage ?>"/>
-                            </figure>
+                            <a href="<?= $postImage[1] ?>">
+                                <figure class="image marquee-image">
+                                    <img src="<?= $postImage[0] ?>"/>
+                                </figure>
+                            </a>
 						<?php endforeach; ?>
                     </div>
                     <div class="marquee-content" style="height: 200px;">
 						<?php foreach ( $postImages as $postImage ) : ?>
+                        <a href="<?= $postImage[1] ?>">
                             <figure class="image marquee-image">
-								<img src="<?= $postImage ?>"/>
+								<img src="<?= $postImage[0] ?>"/>
                             </figure>
+                        </a>
 						<?php endforeach; ?>
                     </div>
                 </div>

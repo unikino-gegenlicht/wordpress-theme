@@ -460,10 +460,10 @@ function ggl_send_link_headers(): void {
 		header( "Link: <{$relativeScriptPath}>; rel=preload; as=script; fetchpriority=high;", false, 103 );
 	}
 
-	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/gegenlicht.woff2?ver=' . md5_file( get_stylesheet_directory() . "/assets/fonts/gegenlicht.woff2" ) . '.>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
-	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/icons.woff2?ver=' . md5_file( get_stylesheet_directory() . "/assets/fonts/icons.woff2" ) . '>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
-	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/inter.woff2?ver=' . md5_file( get_stylesheet_directory() . "/assets/fonts/inter.woff2" ) . '>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
-	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/inter_italic.woff2?ver=' . md5_file( get_stylesheet_directory() . "/assets/fonts/inter_italic.woff2" ) . '>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
+	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/gegenlicht.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
+	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/icons.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
+	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/inter.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
+	header( 'Link: <' . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH ) . '/assets/fonts/inter_italic.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
 	if ( is_user_logged_in() ):
 		header( 'Link: <' . get_stylesheet_directory_uri() . '/assets/fonts/simple-icons.woff2>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;', false, 103 );
 	endif;
