@@ -5,7 +5,7 @@ for ( $i = 0; $i < count( $navItems ); $i ++ ) {
 
 	global $wp;
 	$isActivePage = $item->url === (home_url( $wp->request) . '/') || $item->url === (home_url( $wp->request));
-	$page         = get_page_by_path( $item->url );
+	$page         = get_page_by_path( parse_url($item->url, PHP_URL_PATH ) ?? "") ;
 
 	$title = $item->title;
 
@@ -13,7 +13,7 @@ for ( $i = 0; $i < count( $navItems ); $i ++ ) {
         $title = __("Program", "gegenlicht");
     }
 
-	if ( $page != null && $page->ID == get_theme_mod( "location_page" ) ) {
+	if ( $page != null && $page->ID === (int) get_theme_mod( "location_detail_page" ) ) {
 		$title = __( "Location", "gegenlicht" );
 	}
 
