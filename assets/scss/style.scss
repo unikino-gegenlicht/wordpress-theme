@@ -434,7 +434,7 @@ hr.separator {
 }
 
 .member-picture {
-  height: 250px;
+  max-height: 250px;
 
   @include mixins.mobile {
     margin: 0 auto;
@@ -442,7 +442,7 @@ hr.separator {
 
   img {
     filter: saturate(0);
-    object-fit: cover;
+    object-fit: scale-down;
     mix-blend-mode: multiply;
   }
 }
