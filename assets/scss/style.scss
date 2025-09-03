@@ -508,7 +508,6 @@ hr.separator {
 }
 
 
-
 * {
   overflow-wrap: break-word;
 }
@@ -559,12 +558,15 @@ h1, h2, h3, h4, h5, h6 {
   h1 {
     font-size: 1.75rem !important;
   }
+
   h2 {
     font-size: 1.5rem !important;
   }
+
   h3 {
     font-size: 1.25rem !important;
   }
+
   h4 {
     font-size: var(--bulma-body-size) !important;
     text-decoration: underline;
