@@ -38,7 +38,7 @@ do_action( 'wp_body_open' );
 					?>
                     <div class="cell">
                         <figure class="image is-3by4 member-picture">
-                            <img alt="" src="<?= $imageUrl ?: wp_get_attachment_image_url(get_theme_mod( 'anonymous_team_image' )) ?>"/>
+                            <img alt="" src="<?= $imageUrl ?: wp_get_attachment_image_url(get_theme_mod( 'anonymous_team_image' ),  size: 'member-crop') ?>"/>
                         </figure>
                         <hr class="separator mb-1"/>
                         <a href="<?= get_permalink($member) ?>"><h5 class="is-size-5"><?= $member->post_title ?></h5></a>
@@ -63,7 +63,7 @@ do_action( 'wp_body_open' );
 						?>
                         <div class="cell">
                             <figure class="image is-3by4 member-picture">
-                                <img alt="" src="<?= $imageUrl ?:  wp_get_attachment_image_url(get_theme_mod( 'anonymous_team_image' )) ?>"/>
+                                <img alt="" src="<?= $imageUrl ?:  wp_get_attachment_image_url(get_theme_mod( 'anonymous_team_image' ),  size: 'member-crop') ?>"/>
                             </figure>
                             <hr class="separator mb-1"/>
                             <a href="<?= get_permalink($member) ?>"><h5 class="is-size-5"><?= $member->post_title ?></h5></a>
