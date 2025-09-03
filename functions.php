@@ -46,7 +46,8 @@ add_action( "wp_head", "ggl_inject_special_program_colors" );
 add_action( "get_header", "ggl_redirect_from_non_semester_pages", 2 );
 add_action( "wp_head", "ggl_inject_movie_schema_markup" );
 add_filter( "wpseo_opengraph_image", "ggl_anonymize_opengraph_image" );
-add_filter("init", "ggl_add_shortcodes");
+add_filter( "init", "ggl_add_shortcodes" );
+add_filter( 'wpseo_sitemap_exclude_empty_terms', '__return_false' );
 
 function ggl_add_shortcodes() {
     require_once "shortcodes/button.php";
