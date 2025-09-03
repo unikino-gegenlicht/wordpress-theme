@@ -66,16 +66,17 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
             </div>
 		<?php endif; ?>
     </header>
-    <?php if (rwmb_meta("allow_reservations")): ?>
+	<?php if ( rwmb_meta( "allow_reservations" ) ): ?>
         <div class="reservation-button">
-		    <?php get_template_part( 'partials/button', args: [
-			    'href'    => rwmb_get_value( "reservation_url" ),
-			    'content' => esc_html__( 'Reserve Now', 'gegenlicht' ),
-			    'external' => false,
-			    'icon' => 'confirmation_number'
-		    ] ) ?>
+            <div class="page-content">
+				<?php get_template_part( 'partials/button', args: [
+					'href'     => rwmb_get_value( "reservation_url" ),
+					'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
+					'external' => false,
+					'icon'     => 'confirmation_number'
+				] ) ?></div>
         </div>
-    <?php endif; ?>
+	<?php endif; ?>
     <article class="page-content px-2 mt-4 content">
 		<?php if (rwmb_meta('show_content_notice')): ?>
             <div class="content-notice mb-6 p-2">
@@ -94,14 +95,15 @@ $isSpecialProgram = rwmb_get_value("program_type") === "special_program";
         </h2>
 	    <?= apply_filters( "the_content",ggl_get_worth_to_see() ) ?>
     </article>
-	<?php if (rwmb_meta("allow_reservations")): ?>
+	<?php if ( rwmb_meta( "allow_reservations" ) ): ?>
         <div class="reservation-button">
-			<?php get_template_part( 'partials/button', args: [
-				'href'    => rwmb_get_value( "reservation_url" ),
-				'content' => esc_html__( 'Reserve Now', 'gegenlicht' ),
-				'external' => false,
-				'icon' => 'confirmation_number'
-			] ) ?>
+            <div class="page-content">
+				<?php get_template_part( 'partials/button', args: [
+					'href'     => rwmb_get_value( "reservation_url" ),
+					'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
+					'external' => false,
+					'icon'     => 'confirmation_number'
+				] ) ?></div>
         </div>
 	<?php endif; ?>
 </main>
