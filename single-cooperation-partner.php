@@ -20,6 +20,7 @@ get_header();
 			"content" => __( "Open Website", "gegenlicht" ),
 		] )
 		?>
+    </article>
 
         <div class="my-5">
 			<?php
@@ -148,7 +149,6 @@ get_header();
             <?php endif; ?>
 
         </div>
-    </article>
 </main>
 <?php
 get_footer();
