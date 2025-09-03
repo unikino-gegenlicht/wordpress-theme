@@ -71,6 +71,7 @@ $contentPadding: 0.75rem;
   --bulma-hr-background-color: var(--bulma-body-color);
   font-feature-settings: "calt" on, "tnum" on, "frac" on, "ss01" on, "ss02" on;
   hyphens: auto;
+  hyphenate-limit-chars: 6 4 4;
 }
 
 @media (prefers-color-scheme: dark) {
