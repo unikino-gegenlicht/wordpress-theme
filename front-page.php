@@ -14,6 +14,11 @@ get_header();
     <main class="px-2 mb-6 page-content">
 <?php if ( empty( $upcoming ) || GGL_SEMESTER_BREAK || ( defined( "GGL_ANNOUNCE_NEW_PROGRAM" ) && GGL_ANNOUNCE_NEW_PROGRAM ) ):
 	get_template_part( "intermission" );
+	?>
+    <div class="page-content">
+        <hr class="separator">
+    </div>
+<?php
 else:
 	for ( $i = 0; $i < count( $upcoming ); $i ++ ):
 		get_template_part( "partials/movie-advertisement", args: [
@@ -72,12 +77,7 @@ else:
 	<?php foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) : $termID = (int) $termID;
 	get_template_part( "partials/special-program", args: [ "id" => $termID, "semester" => $semesterID ] );
 endforeach; ?>
-    <div class="page-content">
-        <hr class="separator is-only-darkmode"/>
-    </div>
 <?php endif; ?>
-
-
 <?php if ( in_array( 'team', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #team {
@@ -119,12 +119,10 @@ endforeach; ?>
 				] );
 			endif; ?>
             <h2><?= get_theme_mod( "team_block_title" )[ get_locale() ] ?? "Please set this value!" ?></h2>
-            <div>
-				<?php
-				$raw = get_theme_mod( 'team_block_text' )[ get_locale() ] ?? "";
-				echo apply_filters( "the_content", $raw );
-				?>
-            </div>
+			<?php
+			$raw = get_theme_mod( 'team_block_text' )[ get_locale() ] ?? "";
+			echo apply_filters( "the_content", $raw );
+			?>
 			<?php get_template_part( 'partials/button', args: [
 				'href'    => get_post_type_archive_link( 'team-member' ),
 				'content' => __( 'To the team', 'gegenlicht' )
@@ -180,22 +178,25 @@ endforeach; ?>
 					] ) ?>
 				<?php endif; ?>
                 <h2><?= get_theme_mod( "location_block_title" )[ get_locale() ] ?? "Content Not Set" ?></h2>
-                <div>
-					<?php
-					$raw = get_theme_mod( 'location_block_text' )[ get_locale() ] ?? "";
-					echo apply_filters( "the_content", $raw );
-					?>
-                </div>
+				<?php
+				$raw = get_theme_mod( 'location_block_text' )[ get_locale() ] ?? "";
+				echo apply_filters( "the_content", $raw );
+				?>
+				<?php
+				get_template_part( "partials/button", args: [
+					"href"     => get_page_link( get_theme_mod( 'location_detail_page' ) ?? '#' ),
+					"content"  => esc_html__( 'To our Location', 'gegenlicht' ),
+					"external" => false
+				] );
+				?>
             </div>
-            <a role="button" class="button is-outlined is-size-5 is-fullwidth mt-2 has-text-weight-bold is-uppercase"
-               style="padding: 0.75rem 0 !important;"
-               href="<?= get_page_link( get_theme_mod( 'location_detail_page' ) ?? '#' ) ?>"
-               aria-label="<?= esc_html__( 'To our Location', 'gegenlicht' ) ?>">
-				<?= esc_html__( 'To our Location', 'gegenlicht' ) ?>
-            </a>
+
         </div>
     </article>
 <?php endif; ?>
+<div class="page-content">
+    <hr class="separator is-only-darkmode"/>
+</div>
 <?php if ( in_array( 'cooperations', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #cooperations {
@@ -259,16 +260,10 @@ endforeach; ?>
 				while ( $externalsQuery->have_posts() ) : $externalsQuery->the_post();
 					get_post( $externalsQuery->post );
 					if ( ! rwmb_meta( "supporter_display_first" ) ) {
-						$fp = get_attached_file( attachment_url_to_postid( get_the_post_thumbnail_url() ), true );
-						if ( ! $fp ) {
-							continue;
-						}
-						if ( mime_content_type( $fp ) == "image/svg+xml" ) {
-							$postImages[] = $fp;
-						}
-						if ( count( $postImages ) >= 6 ) {
-							break;
-						}
+                        if (count($postImages) > 6) {
+                            break;
+                        }
+						$postImages[] = get_the_post_thumbnail_url(size: "full");
 					}
 				endwhile;
 				wp_reset_postdata();
@@ -278,15 +273,15 @@ endforeach; ?>
                      class="marquee" style="--height: 200px;">
                     <div class="marquee-content" style="height: 200px;">
 						<?php foreach ( $postImages as $postImage ) : ?>
-                            <figure style="fill: var(--bulma-body-color) !important;">
-								<?= file_get_contents( $postImage ) ?>
+                            <figure class="image marquee-image">
+                                <img src="<?= $postImage ?>"/>
                             </figure>
 						<?php endforeach; ?>
                     </div>
                     <div class="marquee-content" style="height: 200px;">
 						<?php foreach ( $postImages as $postImage ) : ?>
-                            <figure style="fill: var(--bulma-body-color) !important;">
-								<?= file_get_contents( $postImage ) ?>
+                            <figure class="image marquee-image">
+								<img src="<?= $postImage ?>"/>
                             </figure>
 						<?php endforeach; ?>
                     </div>
@@ -294,21 +289,25 @@ endforeach; ?>
 			<?php endif; ?>
             <div class="content">
                 <h2><?= esc_html__( 'Our Cooperation Partners' ) ?></h2>
-                <div>
+                <p>
 					<?php
 					$raw = get_theme_mod( 'coop_block_text' )[ get_locale() ] ?? "";
 					echo apply_filters( "the_content", $raw );
 					?>
-                </div>
-				<?php get_template_part( 'partials/button', args: [
-					'href'    => get_post_type_archive_link( 'cooperation-partner' ),
-					'content' => __( 'Our Cooperation Partners', 'gegenlicht' )
-				] ) ?>
-				<?php get_template_part( 'partials/button', args: [
-					'href'    => get_post_type_archive_link( 'supporter' ),
-					'content' => __( 'Our supporters', 'gegenlicht' )
-				] ) ?>
+                <p>
+					<?php get_template_part( 'partials/button', args: [
+						'href'    => get_post_type_archive_link( 'cooperation-partner' ),
+						'content' => __( 'Our Cooperation Partners', 'gegenlicht' )
+					] ) ?>
+                </p>
+                <p>
+					<?php get_template_part( 'partials/button', args: [
+						'href'    => get_post_type_archive_link( 'supporter' ),
+						'content' => __( 'Our supporters', 'gegenlicht' ),
+					] ) ?>
+                </p>
             </div>
+
         </div>
     </article>
 <?php endif; ?>

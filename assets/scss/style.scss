@@ -210,8 +210,17 @@ $contentPadding: 0.75rem;
   }
 
   .supporter-logo > img,
-  .coop-logo > img {
+  .coop-logo > img,
+  .marquee-image > img {
     filter: invert(74%) sepia(89%) saturate(508%) hue-rotate(358deg) brightness(102%) contrast(105%);
+  }
+}
+
+.marquee-image {
+  img {
+    object-fit: scale-down;
+    height: calc(var(--height) - 6rem);
+
   }
 }
 
