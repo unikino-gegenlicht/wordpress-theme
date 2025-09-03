@@ -96,7 +96,7 @@ if ( count( $proposals ) < 7 ) {
                  src="<?= get_the_post_thumbnail_url( $proposer_id, "member-crop" ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
         </figure>
 		<?php if ( ! empty( $proposals ) ): ?>
-            <div class="movie-list proposal-list is-flex-grow-2">
+            <div class="movie-list proposal-list is-flex-grow-3">
                 <div class="movie-list-entries">
 					<?php foreach ( $proposals as $proposal ) : ?>
                         <div class="entry">
