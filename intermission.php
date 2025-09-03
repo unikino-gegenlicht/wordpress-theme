@@ -1,14 +1,16 @@
-<h2 class="title next-movie-title pb-5"><?= esc_html__( 'Intermission in the Cinema', 'gegenlicht' ) ?></h2>
-<?php
-get_template_part( 'partials/responsive-image', args: [
-	'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'desktop' ),
-	'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'mobile' ),
-	'fetch-priority'   => "high",
-	"loading"          => "eager"
-] );
-?>
-<hr class="separator" style="margin-top: 1rem !important;"/>
-<h3 class="py-2"><?= get_theme_mod( "semester_break_tagline" )[ get_locale() ] ?? "" ?></h3>
+<div class="content">
+    <h2 class="title next-movie-title pb-5"><?= esc_html__( 'Intermission in the Cinema', 'gegenlicht' ) ?></h2>
+	<?php
+	get_template_part( 'partials/responsive-image', args: [
+		'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'desktop' ),
+		'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'mobile' ),
+		'fetch-priority'   => "high",
+		"loading"          => "eager"
+	] );
+	?>
+    <hr class="separator" style="margin-top: 1rem !important;"/>
+    <h3 class="mt-0 pb-2"><?= get_theme_mod( "semester_break_tagline" )[ get_locale() ] ?? "" ?></h3>
+</div>
 <?php
 /**
  * Load possible events and screenings that take olace during the semester break
@@ -30,7 +32,7 @@ $args = array(
 	"tax_query"      => array(
 		[
 			"taxonomy" => "semester",
-            "field" => "id",
+			"field"    => "id",
 			"operator" => "NOT EXISTS",
 		]
 	)
@@ -70,7 +72,7 @@ if ( $query->have_posts() ):
                     <h2 class="is-size-5 has-text-weight-bold is-uppercase no-separator"><?= $title ?></h2>
                 </div>
 
-                    <span class="icon">
+                <span class="icon">
                         <span class="material-symbols">arrow_forward_ios</span>
                     </span>
             </a>
@@ -85,9 +87,9 @@ if ( $query->have_posts() ):
 <div class="content pt-2">
 	<?= apply_filters( "the_content", get_theme_mod( "semester_break_text" )[ get_locale() ] ?? "" ) ?>
 </div>
-<div>
+<div class="content">
     <h3><?= esc_html__( "What we have shown so far", "gegenlicht" ) ?></h3>
-    <div class="content pt-2">
+    <div class="pt-2">
 		<?= apply_filters( "the_content", get_theme_mod( "semester_break_archive_text" )[ get_locale() ] ?? "" ) ?>
 		<?php get_template_part( 'partials/button', args: [
 			'href'    => get_post_type_archive_link( 'movie' ),
