@@ -63,7 +63,7 @@ krsort( $semesterScreenings );
             $archive_data = [];
         }
 	    $merge_archive_data = (bool) get_term_meta( $semester->term_id, 'semester_add_archival_data', true );
-        if (!$merge_archive_data) {
+        if (!$merge_archive_data && $archive_data != null) {
             $screenings = [];
         }
 	    foreach ($archive_data as $entry) {
