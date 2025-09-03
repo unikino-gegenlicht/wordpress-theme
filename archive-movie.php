@@ -69,6 +69,10 @@ krsort( $semesterScreenings );
 	    foreach ($archive_data as $entry) {
 		    $date                  = date_parse_from_format( "d.m.Y", $entry[0] );
 		    $timestamp             = mktime( $date['hour'] ?: '0', null, null, $date['month'], $date['day'], $date['year'] );
+            $offset = 0;
+            while (($screenings[$timestamp + $offset] ?? null) !== null) {
+                $offset++;
+            }
 		    $screenings[$timestamp] = $entry[1];
 	    }
 
