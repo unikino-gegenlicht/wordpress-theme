@@ -215,24 +215,13 @@ endforeach; ?>
 
             }
 
-            .button {
-                --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['light'] ?? 'inherit' ?>;
-            }
-
             .marquee-content {
                 animation: scroll 60s linear infinite;
-                gap: 2rem;
+                gap: 1.5rem;
             }
 
             figure {
-
                 align-content: space-around;
-
-                svg {
-                    object-fit: scale-down;
-                    height: 100px;
-
-                }
             }
         }
 
