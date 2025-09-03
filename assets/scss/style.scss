@@ -151,6 +151,10 @@ $contentPadding: 0.75rem;
   }
 }
 
+.button {
+  white-space: unset !important;
+}
+
 .footer {
   --bulma-footer-background-color: black !important;
   border-top: var(--bulma-primary) var(--border-thickness) solid !important;
