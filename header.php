@@ -189,7 +189,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                        href="<?= wp_login_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
                         <span
-                                class="icon"><span class="material-symbols">login</span></span>
+                                class="icon"><span class="material-symbols is-size-4">login</span></span>
                         <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Login', 'gegenlicht' ) ?></span></span>
                     </a>
 				<?php endif ?>
