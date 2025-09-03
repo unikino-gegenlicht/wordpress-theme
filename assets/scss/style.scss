@@ -19,7 +19,6 @@ $maxWidth: 800px;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 $contentPadding: 0.75rem;
-@use 'contact-forms.scss';
 @use 'fonts.scss';
 
 @use "bulma/sass/utilities" with (

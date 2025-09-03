@@ -55,7 +55,7 @@ krsort( $semesterScreenings );
 				$screeningDate = (int) rwmb_get_value( "screening_date" );
 				$title         = ggl_get_title();
 
-				$screenings[ $screeningDate ] = $title;
+				$screenings[ $screeningDate ][] = $title;
 			endwhile;
 
 			$archive_data = get_term_meta( $semester->term_id, 'semester_shown_movies', true );
@@ -87,7 +87,7 @@ krsort( $semesterScreenings );
 						<?= $semester->name ?>
                     </div>
                     <div class="movie-list-entries">
-						<?php foreach ( $screenings as $screeningDate => $movies ) : ?>
+						<?php foreach ( $screenings as $screeningDate => $movies ): ?>
 							<?php foreach ( $movies as $movie ) : ?>
                                 <div class="entry">
                                     <div>

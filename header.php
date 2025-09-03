@@ -177,6 +177,14 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                         </span>
                     </a>
 				<?php endif; ?>
+                <?php if (is_singular() && $post != null && current_user_can('edit_post', $post->ID)): ?>
+                    <a class="navbar-item no-hover"
+                       href="<?= get_edit_post_link( ) ?>">
+                        <span class="icon-text">
+                        <span class="icon"><span class="material-symbols is-size-4">edit</span></span>
+                        <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Edit', 'gegenlicht' ) ?></span></span>
+                    </a>
+                <?php endif; ?>
 				<?php if ( is_user_logged_in() ): ?>
                     <a class="navbar-item no-hover"
                        href="<?= wp_logout_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">

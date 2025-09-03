@@ -38,35 +38,31 @@ msgstr "Unikino GEGENLICHT"
 msgid "https://github.com/unikino-gegenlicht/wordpress-theme/graphs/contributors"
 msgstr "https://github.com/unikino-gegenlicht/wordpress-theme/graphs/contributors"
 
-#: archive-team-member.php:20
+#: archive-team-member.php:18
 msgid "Our Team"
 msgstr "Our Team"
 
-#: archive-team-member.php:22
+#: archive-team-member.php:20
 msgid "Active Members"
 msgstr "Active Members"
 
-#: archive-team-member.php:47
+#: archive-team-member.php:45
 msgid "since"
 msgstr "since"
 
-#: archive-team-member.php:54
+#: archive-team-member.php:52
 msgid "Former Members"
 msgstr "Former Members"
 
-#: archive-movie.php:87
-#: header.php:72
 #: inc/theme-functions.php:115
-#: intermission.php:58
-#: partials/movie-list.php:66
 msgid "An unnamed movie"
 msgstr "An unnamed movie"
 
-#: header.php:202
+#: header.php:193
 msgid "Logout"
 msgstr "Logout"
 
-#: header.php:210
+#: header.php:200
 msgid "Login"
 msgstr "Login"
 
@@ -91,7 +87,7 @@ msgid "Mastodon URL"
 msgstr "Mastodon URL"
 
 #: inc/customizer/block-team.php:8
-#: inc/customizer/front-page.php:53
+#: inc/customizer/front-page.php:54
 #: partials/header-menu.php:25
 msgid "Team"
 msgstr "Team"
@@ -133,13 +129,13 @@ msgid "Youth Protection Officer"
 msgstr "Youth Protection Officer"
 
 #: footer.php:45
-#: header.php:104
-#: templates/page-impress.php:3
+#: header.php:96
+#: templates/page-impress.php:4
 msgid "Impress"
 msgstr "Impress"
 
 #: footer.php:47
-#: header.php:90
+#: header.php:82
 #: privacy-policy.php:8
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
@@ -152,24 +148,24 @@ msgstr "Afterwards at"
 msgid "To the movie"
 msgstr "To the movie"
 
-#: front-page.php:46
+#: front-page.php:53
 msgid "Main Program Only"
 msgstr "Main Program Only"
 
-#: functions.php:343
+#: functions.php:353
 msgid "Username or email address is missing"
 msgstr "Username or email address is missing"
 
-#: functions.php:347
+#: functions.php:357
 msgid "The entered credentials are invalid. Please try again"
 msgstr "The entered credentials are invalid. Please try again"
 
-#: inc/customizer/front-page.php:34
+#: inc/customizer/front-page.php:35
 msgid "Displayed Semester"
 msgstr "Displayed Semester"
 
-#: single-event.php:78
-#: single-movie.php:148
+#: single-event.php:83
+#: single-movie.php:150
 msgid "Content Notice"
 msgstr "Content Notice"
 
@@ -177,26 +173,26 @@ msgstr "Content Notice"
 msgid "The program hosted"
 msgstr "The program hosted"
 
-#: front-page.php:40
+#: front-page.php:47
 msgid "Our Semester Program"
 msgstr "Our Semester Program"
 
-#: single-event.php:70
-#: single-event.php:96
-#: single-movie.php:140
-#: single-movie.php:180
+#: single-event.php:74
+#: single-event.php:103
+#: single-movie.php:141
+#: single-movie.php:183
 msgid "Reserve Now"
 msgstr "Reserve Now"
 
-#: single-movie.php:155
+#: single-movie.php:157
 msgid "What the movie is about"
 msgstr "What the movie is about"
 
-#: single-movie.php:159
+#: single-movie.php:161
 msgid "Why it's worth watching"
 msgstr "Why it's worth watching"
 
-#: front-page.php:123
+#: front-page.php:128
 msgid "To the team"
 msgstr "To the team"
 
@@ -2406,14 +2402,14 @@ msgstr "No linguistic content; Not applicable"
 msgid "zza"
 msgstr "Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki"
 
-#: archive-cooperation-partner.php:42
+#: archive-cooperation-partner.php:47
 msgid "Our Cooperations"
 msgstr ""
 
-#: archive-supporter.php:45
-#: archive-supporter.php:65
+#: archive-supporter.php:47
+#: archive-supporter.php:67
 #: single-supporter.php:19
-#: templates/page-location.php:32
+#: templates/page-location.php:33
 msgid "To the Website"
 msgstr ""
 
@@ -2432,47 +2428,45 @@ msgstr ""
 msgid "To the event"
 msgstr ""
 
-#: intermission.php:62
-#: partials/movie-list.php:75
+#: partials/movie-list.php:56
+#: taxonomy-semester.php:70
 msgid "Screening starts: "
 msgstr ""
 
-#: front-page.php:64
-#: intermission.php:94
+#: front-page.php:74
+#: intermission.php:68
 msgid "To the Archive"
 msgstr ""
 
-#: header.php:221
-#: header.php:227
+#: header.php:212
 msgid "Semester Break"
 msgstr ""
 
-#: intermission.php:1
+#: intermission.php:2
 msgid "Intermission in the Cinema"
 msgstr ""
 
-#: intermission.php:50
+#: intermission.php:51
 msgid "Intermission Specials"
 msgstr ""
 
-#: intermission.php:89
+#: intermission.php:63
 msgid "What we have shown so far"
 msgstr ""
 
-#: front-page.php:186
-#: front-page.php:187
+#: front-page.php:188
 msgid "To our Location"
 msgstr ""
 
-#: front-page.php:274
+#: front-page.php:261
 msgid "Logos of ours Cooperation partners"
 msgstr ""
 
-#: front-page.php:302
+#: front-page.php:293
 msgid "Our Cooperation Partners"
 msgstr ""
 
-#: front-page.php:306
+#: front-page.php:299
 msgid "Our supporters"
 msgstr ""
 
@@ -2505,7 +2499,7 @@ msgid "Anonymous Movie Explanation (English)"
 msgstr ""
 
 #: inc/customizer/block-coops.php:8
-#: inc/customizer/front-page.php:55
+#: inc/customizer/front-page.php:56
 msgid "Cooperation Partners and Supporters"
 msgstr ""
 
@@ -2615,7 +2609,7 @@ msgstr ""
 msgid "Partner List Text (English)"
 msgstr ""
 
-#: inc/customizer/front-page.php:41
+#: inc/customizer/front-page.php:42
 msgid "Displayed Special Programs"
 msgstr ""
 
@@ -2718,19 +2712,19 @@ msgstr ""
 msgid "e-mail"
 msgstr ""
 
-#: partials/contact-block.php:87
+#: partials/contact-block.php:89
 msgid "Instagram"
 msgstr ""
 
-#: partials/contact-block.php:93
+#: partials/contact-block.php:98
 msgid "Mastodon"
 msgstr ""
 
-#: partials/contact-block.php:99
+#: partials/contact-block.php:107
 msgid "Letterboxd"
 msgstr ""
 
-#: partials/contact-block.php:105
+#: partials/contact-block.php:116
 msgid "Or just chat us up at one of our screenings"
 msgstr ""
 
@@ -2743,16 +2737,14 @@ msgid "Event starts"
 msgstr ""
 
 #: inc/theme-functions.php:112
-#: intermission.php:58
-#: partials/movie-list.php:69
 msgid "An unnamed event"
 msgstr ""
 
-#: single-event.php:85
+#: single-event.php:90
 msgid "What the event is about"
 msgstr ""
 
-#: single-event.php:89
+#: single-event.php:94
 msgid "Why it's worth attending"
 msgstr ""
 
@@ -2768,7 +2760,7 @@ msgstr ""
 msgid "and"
 msgstr ""
 
-#: archive-cooperation-partner.php:37
+#: archive-cooperation-partner.php:40
 msgid "Inquire About A Cooperation Now"
 msgstr ""
 
@@ -2796,6 +2788,7 @@ msgstr ""
 msgid "This image is displayed if a team member doesn't have a picture set for them"
 msgstr ""
 
+#: archive-movie.php:3
 #: inc/customizer/archiv.php:10
 #: partials/header-menu.php:21
 msgid "Archive"
@@ -2817,9 +2810,9 @@ msgstr ""
 msgid "The background color of the whole block during dark mode"
 msgstr ""
 
-#: header.php:97
+#: header.php:89
 #: inc/customizer/block-location.php:8
-#: inc/customizer/front-page.php:54
+#: inc/customizer/front-page.php:55
 #: partials/header-menu.php:17
 msgid "Location"
 msgstr ""
@@ -2960,15 +2953,15 @@ msgstr ""
 msgid "Configure the content displayed on the front page"
 msgstr ""
 
-#: inc/customizer/front-page.php:35
+#: inc/customizer/front-page.php:36
 msgid "Only movies and events associated with this semester will be displayed on the front page and be accessible for non-logged in users"
 msgstr ""
 
-#: inc/customizer/front-page.php:49
+#: inc/customizer/front-page.php:50
 msgid "Displayed Blocks"
 msgstr ""
 
-#: inc/customizer/front-page.php:50
+#: inc/customizer/front-page.php:51
 msgid "The selected blocks will be displayed below the special programs. Only if a block is activated here, the customizer for that block will be accessible"
 msgstr ""
 
@@ -3134,7 +3127,7 @@ msgstr ""
 msgid "Navigation Logo (Small)"
 msgstr ""
 
-#: partials/special-program.php:96
+#: partials/special-program.php:101
 msgid "Sadly, all movies of this special program have been screened for the current semester. Check back next semester."
 msgstr ""
 
@@ -3146,28 +3139,23 @@ msgstr ""
 msgid "Cooperation"
 msgstr ""
 
-#: header.php:243
-#: header.php:249
+#: header.php:230
 msgid "New Program Releases In"
 msgstr ""
 
-#: header.php:243
-#: header.php:249
+#: header.php:230
 msgid "Days"
 msgstr ""
 
-#: header.php:243
-#: header.php:249
+#: header.php:230
 msgid "Hours"
 msgstr ""
 
-#: header.php:243
-#: header.php:249
+#: header.php:230
 msgid "Day"
 msgstr ""
 
-#: header.php:243
-#: header.php:249
+#: header.php:230
 msgid "Hour"
 msgstr ""
 
@@ -3345,12 +3333,12 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: single-cooperation-partner.php:68
-#: single-team-member.php:77
+#: single-cooperation-partner.php:67
+#: single-team-member.php:76
 msgid "Upcoming Screenings"
 msgstr ""
 
-#: templates/page-contact.php:3
+#: templates/page-contact.php:4
 msgid "Contact Page"
 msgstr ""
 
@@ -3410,7 +3398,7 @@ msgstr ""
 msgid "Nudeness"
 msgstr ""
 
-#: single-cooperation-partner.php:22
+#: single-cooperation-partner.php:20
 msgid "Open Website"
 msgstr ""
 
@@ -3423,31 +3411,43 @@ msgid "Marginalization"
 msgstr ""
 
 #. translators: %d Minimal Attendee Age
-#: single-event.php:55
+#: single-event.php:57
 #, php-format
 msgid "For Ages %d+"
 msgstr ""
 
-#: single-team-member.php:87
+#: single-team-member.php:130
 msgid "Past Screenings"
 msgstr ""
 
 #. translators: %s is the Team Members name
-#: partials/proposal-list.php:79
+#: partials/proposal-list.php:90
 #, php-format
 msgid "Selected by %s"
 msgstr ""
 
 #. translators: %s is the Cooperation Partner's name
-#: partials/proposal-list.php:79
+#: partials/proposal-list.php:90
 #, php-format
 msgid "In cooperation with %s"
 msgstr ""
 
-#: partials/proposal-list.php:99
+#: partials/proposal-list.php:110
 msgid "No other entries found here. Please check back next semester or log in…"
 msgstr ""
 
-#: single-cooperation-partner.php:120
+#: single-cooperation-partner.php:119
 msgid "Past Cooperations"
+msgstr ""
+
+#: header.php:185
+msgid "Edit"
+msgstr ""
+
+#: inc/customizer/front-page.php:63
+msgid "Program Reveal"
+msgstr ""
+
+#: inc/customizer/front-page.php:64
+msgid "This value controls how many days before the start of the screenings the frontpage shows the semester program"
 msgstr ""
