@@ -412,30 +412,13 @@ hr.separator {
   }
 }
 
-.reservation-button {
-  width: 100%;
-  padding: 0.75rem 0 !important;
-
-  > a.button {
-
-
-    max-width: 780px;
-
+.button.is-fullwidth {
+  padding: 0.75rem !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  @include mixins.until(800px) {
+    max-width: calc(100vw - var(--content-padding)) !important;
     margin: 0 auto;
-    border: var(--border-thickness) solid black;
-  }
-}
-
-@include mixins.mobile {
-  .reservation-button {
-    width: 100%;
-    padding: 0.75rem 0 !important;
-
-    > a.button {
-      max-width: calc(100vw - 0.75rem) !important;
-      margin: 0 auto;
-      border: var(--border-thickness) solid black;
-    }
   }
 }
 
@@ -797,3 +780,14 @@ html {
     width: min-content;
   }
 }
+
+.reservation-button {
+  margin: 1rem 0;
+  padding: 1rem 0;
+  background-color: white;
+
+  @include mixins.until(800px) {
+    padding: 1rem var(--content-padding) !important;
+  }
+}
+
