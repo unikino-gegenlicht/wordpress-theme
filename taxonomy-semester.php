@@ -18,32 +18,86 @@ do_action( 'wp_body_open' );
     </article>
 
 	<?php
-
-	$query = new WP_Query( array(
-		'post_type'      => [ 'movie', "event" ],
+	$data = new WP_Query( array(
+		'post_type'      => [ 'movie', 'event' ],
 		'posts_per_page' => - 1,
-		'tax_query'      => array(
-			array(
+		'tax_query'      => [
+			[
 				'taxonomy' => 'semester',
+				'field'    => 'term_id',
 				'terms'    => $taxonomy->term_id,
-			)
-		),
-		"meta_key"       => "screening_date",
-		"orderby"        => "meta_value_num",
-		"order"          => "ASC"
+			]
+		],
+		'meta_key'       => 'screening_date',
+		'orderby'        => 'meta_value_num',
+		'order'          => 'DESC',
 	) );
 
-	while ( $query->have_posts() ): $query->the_post();
-		$screeningMonth                     = date( 'F', (int) rwmb_get_value( 'screening_date' ) );
-		$monthlyMovies[ $screeningMonth ][] = $post;
+	$screenings = [];
+	while ( $data->have_posts() ) : $data->the_post();
+		$screeningDate = (int) rwmb_get_value( "screening_date" );
+		$title         = ggl_get_title();
+
+		$screenings[ $screeningDate ][] = [ $title, get_permalink() ];
 	endwhile;
 
-	foreach ( $monthlyMovies as $month => $posts ) :
-		get_template_part( "partials/movie-list", args: [
-			"title" => esc_html__( $month, 'gegenlicht' ),
-			"posts" => $posts
-		] );
-    endforeach; ?>
+	$archive_data = get_term_meta( $taxonomy->term_id, 'semester_shown_movies', true );
+	if ( ! $archive_data ) {
+		$archive_data = [];
+	}
+	$merge_archive_data = (bool) get_term_meta( $taxonomy->term_id, 'semester_add_archival_data', true );
+	if ( ! $merge_archive_data && $archive_data != null ) {
+		$screenings = [];
+	}
+	foreach ( $archive_data as $entry ) {
+		$date                       = date_parse_from_format( "d.m.Y", $entry[0] );
+		$timestamp                  = mktime( 20, 0, null, $date['month'], $date['day'], $date['year'] );
+		$screenings[ $timestamp ][] = [ $entry[1], "" ];
+	}
+
+	ksort( $screenings );
+	?>
+    <article>
+        <div class="movie-list mb-6">
+            <div class="movie-list-title">
+				<?= esc_html__( "The Program" ) ?>
+            </div>
+            <div class="movie-list-entries">
+				<?php foreach ( $screenings as $screeningDate => $titles ) : ?>
+					<?php foreach ( $titles as $data ) : ?>
+						<?php if ( $screeningDate > time() ) : ?>
+                            <a role="link"
+                               aria-label="<?= $data[0] ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( 'r', $screeningDate ) ?>"
+                               href="<?= $data[1] ?>"
+                               class="entry">
+                                <div>
+                                    <p>
+                                        <time datetime="<?= date( 'Y-m-d H:i:s', $screeningDate ) ?>">
+											<?= date( GGL_LIST_DATETIME, $screeningDate ) ?>
+                                        </time>
+                                    </p>
+                                    <h2 class="is-size-5 no-separator is-uppercase">
+										<?= $data[0] ?>
+                                    </h2>
+                                </div>
+                                <span class="icon">
+                                    <span class="material-symbols">arrow_forward_ios</span>
+                                 </span>
+                            </a>
+						<?php else: ?>
+                            <div class="entry">
+                                <div>
+                                    <p><?= date( "d.m.Y", $screeningDate ) ?></p>
+                                    <p class="font-ggl is-size-5 is-uppercase"><?= $data[0] ?></p>
+                                </div>
+                            </div>
+						<?php endif; ?>
+					<?php endforeach ?>
+				<?php endforeach; ?>
+            </div>
+        </div>
+    </article>
 
 
 </main>
+<?php get_footer() ?>;
