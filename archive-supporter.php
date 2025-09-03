@@ -7,7 +7,7 @@ get_header();
 do_action( 'wp_body_open' );
 ?>
 
-    <article class="page-content">
+    <article class="page-content mt-4">
         <div class="content">
             <h1 class="is-size-3 is-uppercase"><?= get_theme_mod( "supporter_page_title" )[ get_locale() ] ?? "Configure Me!" ?></h1>
 			<?php

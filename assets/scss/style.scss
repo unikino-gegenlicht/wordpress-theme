@@ -71,6 +71,7 @@ $contentPadding: 0.75rem;
   --bulma-hr-background-color: var(--bulma-body-color);
   font-feature-settings: "calt" on, "tnum" on, "frac" on, "ss01" on, "ss02" on;
   hyphens: auto;
+  hyphenate-limit-chars: 6 4 4;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -138,6 +139,20 @@ $contentPadding: 0.75rem;
 
 .button.is-outlined {
   --bulma-button-border-width: var(--border-thickness) !important;
+
+  &:hover {
+    color: var(--bulma-body-background-color) !important;
+    background-color: var(--bulma-body-color) !important;
+  }
+
+  .icon,
+  .icon-text {
+    color: inherit !important;
+  }
+}
+
+.button {
+  white-space: unset !important;
 }
 
 .footer {
@@ -397,30 +412,13 @@ hr.separator {
   }
 }
 
-.reservation-button {
-  width: 100%;
-  padding: 0.75rem 0 !important;
-
-  > a.button {
-
-
-    max-width: 780px;
-
+.button.is-fullwidth {
+  padding: 0.75rem !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  @include mixins.until(800px) {
+    max-width: calc(100vw - var(--content-padding)) !important;
     margin: 0 auto;
-    border: var(--border-thickness) solid black;
-  }
-}
-
-@include mixins.mobile {
-  .reservation-button {
-    width: 100%;
-    padding: 0.75rem 0 !important;
-
-    > a.button {
-      max-width: calc(100vw - 0.75rem) !important;
-      margin: 0 auto;
-      border: var(--border-thickness) solid black;
-    }
   }
 }
 
@@ -436,7 +434,7 @@ hr.separator {
 }
 
 .member-picture {
-  height: 250px;
+  max-height: 250px;
 
   @include mixins.mobile {
     margin: 0 auto;
@@ -444,7 +442,7 @@ hr.separator {
 
   img {
     filter: saturate(0);
-    object-fit: cover;
+    object-fit: scale-down;
     mix-blend-mode: multiply;
   }
 }
@@ -465,19 +463,38 @@ hr.separator {
 
 .links {
 
+  --link-color: var(--bulma-primary);
+
   &.are-primary {
     * {
-      color: var(--bulma-primary)
+      color: var(--link-color);
     }
+
+    *:hover {
+      --link-color: white !important;
+    }
+  }
+
+  .icon-text {
+    align-items: center;
+  }
+
+  .material-symbols {
+    font-size: 1rem;
+    vertical-align: center;
+    pointer-events: none !important;
   }
 
   a:last-child:after {
     content: "";
+    pointer-events: none !important;
   }
 
   a:after {
     content: "|";
     margin: 0 0.5rem;
+    pointer-events: none !important;
+    color: var(--bulma-primary) !important;
   }
 }
 
@@ -489,7 +506,6 @@ hr.separator {
   --bulma-body-color: black;
   --bulma-body-background-color: var(--bulma-primary);
 }
-
 
 
 * {
@@ -542,12 +558,15 @@ h1, h2, h3, h4, h5, h6 {
   h1 {
     font-size: 1.75rem !important;
   }
+
   h2 {
     font-size: 1.5rem !important;
   }
+
   h3 {
     font-size: 1.25rem !important;
   }
+
   h4 {
     font-size: var(--bulma-body-size) !important;
     text-decoration: underline;
@@ -695,7 +714,7 @@ figure.supporter-logo {
 
 figure.coop-logo {
   outline: var(--border-thickness) solid var(--bulma-body-color);
-  height: 250px;
+  max-height: 250px;
   aspect-ratio: 3/4;
 
   @include mixins.mobile {
@@ -763,3 +782,14 @@ html {
     width: min-content;
   }
 }
+
+.reservation-button {
+  margin: 1rem 0;
+  padding: 1rem 0;
+  background-color: white;
+
+  @include mixins.until(800px) {
+    padding: 1rem var(--content-padding) !important;
+  }
+}
+

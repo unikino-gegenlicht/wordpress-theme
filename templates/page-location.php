@@ -1,5 +1,5 @@
 <?php define("DONOTCACHEPAGE", true); ?>
-<article class="page-content content">
+<article class="page-content content mt-4">
     <figure class="image mb-3">
         <picture>
             <source srcset="<?= wp_get_attachment_image_url( get_theme_mod( "location_map" )["dark"] ) ?? "" ?>"

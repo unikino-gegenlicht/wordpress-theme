@@ -5,7 +5,7 @@ for ( $i = 0; $i < count( $navItems ); $i ++ ) {
 
 	global $wp;
 	$isActivePage = $item->url === (home_url( $wp->request) . '/') || $item->url === (home_url( $wp->request));
-	$page         = get_page_by_path( $item->url );
+	$page         = get_page_by_path( parse_url($item->url, PHP_URL_PATH ) ?? "") ;
 
 	$title = $item->title;
 
@@ -13,7 +13,7 @@ for ( $i = 0; $i < count( $navItems ); $i ++ ) {
         $title = __("Program", "gegenlicht");
     }
 
-	if ( $page != null && $page->ID == get_theme_mod( "location_page" ) ) {
+	if ( $page != null && $page->ID === (int) get_theme_mod( "location_detail_page" ) ) {
 		$title = __( "Location", "gegenlicht" );
 	}
 
@@ -33,7 +33,7 @@ for ( $i = 0; $i < count( $navItems ); $i ++ ) {
 		$title = __( "Support", "gegenlicht" );
 	}
 	?>
-    <a class="navbar-item py-0 px-2 <?= $isActivePage ? 'is-active' : '' ?>"
+    <a class="navbar-item is-size-5-touch px-2 <?= $isActivePage ? 'is-active' : '' ?>"
        href="<?= $item->url ?>">
         <span><?= str_pad($i+1, 2, "0", STR_PAD_LEFT) ?>&nbsp;</span>
         <span class="font-ggl is-uppercase"><?= $title ?></span>

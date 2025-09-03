@@ -135,8 +135,8 @@ endforeach; ?>
     <style>
         #location {
 
-            --bulma-body-background-color: <?= get_theme_mod('location_block_bg_color')['light'] ?>;
-            --bulma-body-color: <?= get_theme_mod('location_block_text_color')['light'] ?>;
+            --bulma-body-background-color: <?= get_theme_mod('location_block_bg_color')['light'] ?? "inherit" ?>;
+            --bulma-body-color: <?= get_theme_mod('location_block_text_color')['light'] ?? "inherit" ?>;
 
             color: var(--bulma-body-color) !important;
             background-color: var(--bulma-body-background-color) !important;
@@ -194,8 +194,8 @@ endforeach; ?>
 	<?php if ( in_array( 'cooperations', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #cooperations {
-            --bulma-body-background-color: <?= get_theme_mod('cooperations_background_color')['light'] ?>;
-            --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['light'] ?>;
+            --bulma-body-background-color: <?= get_theme_mod('cooperations_background_color')['light'] ?? 'inherit' ?>;
+            --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['light'] ?? 'inherit' ?>;
 
 
             color: var(--bulma-body-color) !important;
@@ -210,11 +210,7 @@ endforeach; ?>
             }
 
             .button {
-                --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['light'] ?>;
-
-                > * {
-                    color: var(--bulma-body-color) !important;
-                }
+                --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['light'] ?? 'inherit' ?>;
             }
 
             .marquee-content {
@@ -236,8 +232,8 @@ endforeach; ?>
 
         @media (prefers-color-scheme: dark) {
             #cooperations {
-                --bulma-body-background-color: <?= get_theme_mod('cooperations_background_color')['dark'] ?>;
-                --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['dark'] ?>;
+                --bulma-body-background-color: <?= get_theme_mod('cooperations_background_color')['dark'] ?? 'inherit' ?>;
+                --bulma-body-color: <?= get_theme_mod('cooperations_text_color')['dark'] ?? 'inherit' ?>;
             }
         }
     </style>

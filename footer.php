@@ -2,10 +2,10 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<footer class="footer has-text-primary">
-    <p class="is-size-3 font-ggl is-uppercase has-text-primary">
+<footer class="footer has-text-primary content">
+    <h5 class="is-size-3 my-0 font-ggl is-uppercase has-text-primary">
 		<?= str_replace( ' ', '<br class="is-hidden-tablet"/> ', get_bloginfo( 'name' ) ) ?>
-    </p>
+    </h5>
     <hr class="separator is-primary"/>
 	<?php if ( ! empty( get_theme_mod( 'displayed_social_medias' ) ?? [] ) ): ?>
         <div class="is-flex is-align-items-center my-3 are-primary is-flex-wrap-wrap links">
@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
     <div class="has-text-primary my-5 is-flex is-align-items-top is-flex-wrap-wrap is-justify-content-space-evenly is-row-gap-2.5">
         <?php if (in_array("postal", get_theme_mod("displayed_addresses") ?? [])): ?>
         <div class="is-flex-grow-1">
-            <h5 class="has-text-weight-semibold no-separator is-size-6 is-underlined"><?= esc_html__( 'Postal Address', 'gegenlicht' ) ?></h5>
+            <h5 class="has-text-weight-semibold has-text-primary no-separator is-size-6 is-underlined"><?= esc_html__( 'Postal Address', 'gegenlicht' ) ?></h5>
             <address class="has-text-primary" style="user-select: text">
 				<?= nl2br( get_theme_mod( 'address' )["postal"] ) ?>
             </address>
@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
         <?php endif; ?>
 	    <?php if (in_array("visitor", get_theme_mod("displayed_addresses") ?? [])): ?>
         <div class="is-flex-grow-1">
-            <h5 class="has-text-weight-semibold no-separator is-size-6 is-underlined"><?= esc_html__( 'Visitor Address', 'gegenlicht' ) ?></h5>
+            <h5 class="has-text-weight-semibold has-text-primary no-separator is-size-6 is-underlined"><?= esc_html__( 'Visitor Address', 'gegenlicht' ) ?></h5>
             <address class="has-text-primary" style="user-select: text">
 				<?= nl2br( get_theme_mod( 'address' )["visitor"] ) ?>
             </address>
@@ -37,8 +37,8 @@ defined( 'ABSPATH' ) || exit;
     </div>
     <hr class="separator is-primary"/>
     <div class="has-text-primary my-5">
-        <h5 class="is-size-6 has-text-weight-semibold no-separator"><?= esc_html__( 'Youth Protection Officer', 'gegenlicht' ) ?></h5>
-        <p><?= get_theme_mod( 'youth_protection_officer' )['name'] ?? 'MISSING' ?></p>
+        <h5 class="is-size-6 has-text-weight-semibold has-text-primary no-separator"><?= esc_html__( 'Youth Protection Officer', 'gegenlicht' ) ?></h5>
+        <p class="mb-0"><?= get_theme_mod( 'youth_protection_officer' )['name'] ?? 'MISSING' ?></p>
         <p><?= str_replace( "@", " (at) ", ( get_theme_mod( 'youth_protection_officer' )['email'] ?? "missing@missing" ) ) ?></p>
     </div>
     <div class="is-flex is-align-items-center mb-2 mt-5 has-text-primary links are-primary is-flex-wrap-wrap">

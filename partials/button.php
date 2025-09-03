@@ -64,24 +64,23 @@ if ($external === null && $websiteHost !== $targetHost) {
 
 <a href="<?= $href ?>"
    role="<?= $role ?>"
-   class="button is-outlined is-fullwidth mt-2 is-size-5 has-text-weight-bold <?= join( ' ', $additionalClasses ) ?>)"
-   style="padding: 0.75rem 0 !important;"
+   class="button is-outlined is-fullwidth mt-2 py-3 is-uppercase is-size-5 has-text-weight-bold <?= join( ' ', $additionalClasses ) ?>)"
    rel="<?= $external ? '_blank' : '' ?>">
 	<?php if ( $external ) : ?>
-        <span class="icon-text is-align-items-center">
-            <span class="is-uppercase"><?= esc_html( $content ) ?></span>
+        <span class="icon-text is-align-items-center is-justify-content-space-around">
+            <span><?= esc_html( $content ) ?></span>
             <span class="icon">
-                <span class="material-symbols">open_in_new</span>
+                <span class="material-symbols is-size-4">open_in_new</span>
             </span>
         </span>
-    <?php elseif ( $icon ) : ?>; ?>
-    <span class="icon-text is-align-items-center">
-            <span class="is-uppercase"><?= esc_html( $content ) ?></span>
+    <?php elseif ( $icon ) : ?>
+        <span class="icon-text is-align-items-center is-justify-content-space-around">
+            <span><?= esc_html( $content ) ?></span>
             <span class="icon">
-                <span class="material-symbols"><?= $icon ?></span>
+                <span class="material-symbols is-size-4"><?= $icon ?></span>
             </span>
         </span>
 	<?php else: ?>
-    <span class="is-uppercase"><?= esc_html( $content ) ?></span>
-	<?php endif ?>
+		<?= esc_html( $content ) ?>
+    <?php endif ?>
 </a>

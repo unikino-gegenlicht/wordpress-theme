@@ -97,6 +97,5 @@ krsort( $semesterScreenings );
     <?php
     endforeach;
     ?>
-
-
 </main>
+<?php get_footer();
