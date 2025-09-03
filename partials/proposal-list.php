@@ -91,12 +91,12 @@ if ( count( $proposals ) < 7 ) {
         </h3>
     </header>
     <div class="is-flex is-align-items-top is-flex-wrap-wrap is-gap-1 mt-3">
-        <figure class="image is-3by4 <?= $proposal_by == "member" ? "member-picture" : "coop-logo" ?>">
+        <figure class="image is-flex-grow-1 is-3by4 <?= $proposal_by == "member" ? "member-picture" : "coop-logo" ?>">
             <img alt=""
-                 src="<?= get_the_post_thumbnail_url( $proposer_id, "full" ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
+                 src="<?= get_the_post_thumbnail_url( $proposer_id, "member-crop" ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
         </figure>
 		<?php if ( ! empty( $proposals ) ): ?>
-            <div class="movie-list proposal-list">
+            <div class="movie-list proposal-list is-flex-grow-2">
                 <div class="movie-list-entries">
 					<?php foreach ( $proposals as $proposal ) : ?>
                         <div class="entry">
