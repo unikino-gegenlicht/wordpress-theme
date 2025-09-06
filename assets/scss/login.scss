@@ -218,7 +218,23 @@ button.wp-generate-pw {
 #login h1 a {
   background-image: var(--login-logo);
   width: 320px;
-  background-size: 320px 65px;
+  background-size: contain;
   background-repeat: no-repeat;
-  padding-bottom: 30px;
+  background-position: center;
+  margin-bottom: 0;
+}
+
+#loginform:after {
+  content: var(--login-after-text);
+  display: block;
+  margin-top: 4rem !important;
+  font-style: italic;
+}
+
+.wp-login-logo:after {
+  content: var(--logo-after-text);
+  display: block;
+  font-variant: all-small-caps;
+  font-weight: 600;
+  font-size: 1.5rem;
 }

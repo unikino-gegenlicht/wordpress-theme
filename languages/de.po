@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "POT-Creation-Date: 2025-07-04T16:26:53+00:00\n"
-"PO-Revision-Date: 2025-09-03 21:58+0200\n"
+"PO-Revision-Date: 2025-09-06 16:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -3378,3 +3378,15 @@ msgstr "Release des Semesterprogramm"
 #: inc/customizer/front-page.php:64
 msgid "This value controls how many days before the start of the screenings the frontpage shows the semester program"
 msgstr "Dieser Wert kontrolliert in wie viele Tage vor dem Start des Semesterprogramms die Website dieses anzeigen soll"
+
+#: functions.php:380
+msgid "Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)"
+msgstr "Studierende und weitere Angehörige der Carl von Ossietzky Universität können sich kostenlos registieren. Der Zugang erlaubt einen detaillierteren Zugang zum Programm (insbesondere den Sonderprogrammen)."
+
+#: taxonomy-semester.php:63
+msgid "The Program"
+msgstr "Das Programm"
+
+#: functions.php:381
+msgid "Your Student Arthouse Cinema"
+msgstr "Dein studentisches Programmkino"

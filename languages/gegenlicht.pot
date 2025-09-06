@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-03T19:57:12+00:00\n"
+"POT-Creation-Date: 2025-09-06T14:30:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -2413,6 +2413,14 @@ msgstr ""
 msgid "The entered credentials are invalid. Please try again"
 msgstr ""
 
+#: functions.php:380
+msgid "Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)"
+msgstr ""
+
+#: functions.php:381
+msgid "Your Student Arthouse Cinema"
+msgstr ""
+
 #: header.php:89
 #: inc/customizer/block-location.php:8
 #: inc/customizer/front-page.php:55
@@ -3443,6 +3451,10 @@ msgstr ""
 
 #: single-team-member.php:130
 msgid "Past Screenings"
+msgstr ""
+
+#: taxonomy-semester.php:63
+msgid "The Program"
 msgstr ""
 
 #: taxonomy-special-program.php:57

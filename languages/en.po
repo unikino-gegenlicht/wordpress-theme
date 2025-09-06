@@ -3451,3 +3451,15 @@ msgstr ""
 #: inc/customizer/front-page.php:64
 msgid "This value controls how many days before the start of the screenings the frontpage shows the semester program"
 msgstr ""
+
+#: functions.php:380
+msgid "Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)"
+msgstr ""
+
+#: taxonomy-semester.php:63
+msgid "The Program"
+msgstr ""
+
+#: functions.php:381
+msgid "Your Student Arthouse Cinema"
+msgstr ""

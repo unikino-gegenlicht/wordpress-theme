@@ -376,7 +376,9 @@ function ggl_enqueue_logo_url_variable(): void {
 	?>
     <style>
         :root {
-            --login-logo: url(<?= wp_get_attachment_image_url(get_theme_mod("header_logo"), "full") ?: "/wp-includes/images/w-logo-blue.png" ?>)
+            --login-logo: url(<?= wp_get_attachment_image_url(get_theme_mod("header_logo"), "full") ?: "/wp-includes/images/w-logo-blue.png" ?>);
+            --login-after-text: "<?= esc_html__('Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)', "gegenlicht") ?>";
+            --logo-after-text: "<?= esc_html__('Your Student Arthouse Cinema', "gegenlicht") ?>";
         }
     </style>
 	<?php

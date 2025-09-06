@@ -10,8 +10,8 @@ do_action( 'wp_body_open' );
 
 ?>
 <main class="page-content">
-    <article>
-        <header class="content">
+    <article class="content">
+        <header>
             <h1 class="is-size-2"><?= $taxonomy->name ?></h1>
         </header>
 		<?= apply_filters( "the_content", $taxonomy->description ) ?>
@@ -60,7 +60,7 @@ do_action( 'wp_body_open' );
     <article>
         <div class="movie-list mb-6">
             <div class="movie-list-title">
-				<?= esc_html__( "The Program" ) ?>
+				<?= esc_html__( "The Program", "gegenlicht" ) ?>
             </div>
             <div class="movie-list-entries">
 				<?php foreach ( $screenings as $screeningDate => $titles ) : ?>
