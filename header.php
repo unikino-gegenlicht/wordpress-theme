@@ -111,11 +111,13 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
 <!DOCTYPE html>
 <html lang="<?= substr( get_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top">
 <head>
+    <?php wp_head(); ?>
     <title><?= esc_html( GGL_PAGE_TITLE ) ?></title>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
-	<?php wp_head(); ?>
+    <meta name="theme-color" content="#ffdd00">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 </head>
 <?php do_action( 'wp_body_open' ); ?>
 <body>
