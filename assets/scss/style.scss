@@ -19,7 +19,6 @@ $maxWidth: 800px;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 $contentPadding: 0.75rem;
-@use 'fonts.scss';
 
 @use "bulma/sass/utilities" with (
     $family-primary: 'Inter',
@@ -810,4 +809,8 @@ html {
 
 .word-break-break-word {
   word-break: break-word;
+}
+
+.is-smallcaps {
+  font-variant-caps: small-caps;
 }
