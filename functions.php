@@ -51,6 +51,21 @@ add_filter( "wpseo_opengraph_image", "ggl_anonymize_opengraph_image" );
 add_filter( "init", "ggl_add_shortcodes" );
 add_filter( 'wpseo_sitemap_exclude_empty_terms', '__return_false' );
 add_action( "wp_head", "ggl_insert_font_faces" );
+add_filter("query_vars", "ggl_add_query_vars");
+add_filter("template_include", "ggl_calendar_rewrite");
+
+function ggl_calendar_rewrite($template): string {
+    global $wp;
+    if (in_array($wp->request, GGL_ICAL_SUBSCRIBE_PATHS)) {
+       return get_stylesheet_directory() . "/ical.php";
+    };
+    return $template;
+}
+
+function ggl_add_query_vars($vars) {
+    $vars[] = "ics";
+    return $vars;
+}
 
 function ggl_insert_font_faces() {
     ?>
