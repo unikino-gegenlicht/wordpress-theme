@@ -53,14 +53,22 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
             <?php if ( rwmb_get_value( "age_restricted" ) ): ?>
                 <span class="tag is-rounded is-primary"><?= sprintf( /* translators: %d Minimal Attendee Age*/ esc_html__( "For Ages %d+", "gegenlicht" ), (int) rwmb_get_value( "minimal_age" ) ) ?></span>
             <?php endif; ?>
-            <?php if ( function_exists( 'ggl_cpt__get_ical_download_url' ) && ggl_cpt__get_ical_download_url() ): ?>
+            <?php
+            if (
+                    function_exists('ggl_cpt__generate_single_ical') &&
+                    function_exists('ggl_cpt__serialize_icals')
+            ):
+                $ical = ggl_cpt__generate_single_ical($post);
+                $serializedData = ggl_cpt__serialize_icals([$ical]);
+                ?>
                 <span class="tag is-rounded is-primary ml-auto">
-                    <a class="has-text-primary" href="<?= ggl_cpt__get_ical_download_url() ?>"
-                       download="<?= ggl_get_title() ?>.ics">
+                    <a href="<?= $serializedData ?>"
+                       download="<?= ggl_get_title() ?>.ics"
+                       style="color: var(--bulma-body-color)">
                         <span class="icon-text">
                             <span class="icon"><span class="material-symbols"
                                                      style="font-size: 24px">download</span></span>
-                            <span><?= esc_html__( "iCal", "gegenlicht" ) ?></span>
+                            <span ><?= esc_html__( "iCal", "gegenlicht" ) ?></span>
                         </span>
                     </a>
                 </span>

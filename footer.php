@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<footer class="footer has-text-primary ">
+<footer class="footer has-text-primary">
     <div class="content">
         <h5 class="is-size-3 no-separator my-0 font-ggl is-uppercase has-text-primary">
             <?= str_replace( ' ', '<br class="is-hidden-tablet"/> ', get_bloginfo( 'name' ) ) ?>

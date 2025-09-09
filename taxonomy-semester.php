@@ -3,13 +3,47 @@
 defined( 'ABSPATH' ) || exit;
 
 $taxonomy = get_queried_object();
+$data = new WP_Query( array(
+        'post_type'      => [ 'movie', 'event' ],
+        'posts_per_page' => - 1,
+        'tax_query'      => [
+                [
+                        'taxonomy' => 'semester',
+                        'field'    => 'term_id',
+                        'terms'    => $taxonomy->term_id,
+                ]
+        ],
+        'meta_key'       => 'screening_date',
+        'orderby'        => 'meta_value_num',
+        'order'          => 'DESC',
+) );
+
+$outputIcs = get_query_var("ics", false);
+if (
+        $outputIcs &&
+        function_exists('ggl_cpt__generate_single_ical') &&
+        function_exists('ggl_cpt__serialize_icals')) {
+    $events = [];
+    while ($data->have_posts()) : $data->the_post();
+        $event = ggl_cpt__generate_single_ical($data->post);
+        //var_dump($event);
+        $events[] = $event;
+    endwhile;
+    $data->rewind_posts();
+
+    header("Content-type: text/calendar; charset=utf-8");
+    header('Content-Disposition: attachment; filename="'. $taxonomy->name. '".ics');
+
+    echo ggl_cpt__serialize_icals($events, false);
+    return;
+}
 
 
 get_header( args: [ "title" => $taxonomy->name ] );
 do_action( 'wp_body_open' );
 
 ?>
-<main class="page-content">
+<main class="page-content mt-4">
     <article class="content">
         <header>
             <h1 class="is-size-2"><?= $taxonomy->name ?></h1>
@@ -18,20 +52,7 @@ do_action( 'wp_body_open' );
     </article>
 
 	<?php
-	$data = new WP_Query( array(
-		'post_type'      => [ 'movie', 'event' ],
-		'posts_per_page' => - 1,
-		'tax_query'      => [
-			[
-				'taxonomy' => 'semester',
-				'field'    => 'term_id',
-				'terms'    => $taxonomy->term_id,
-			]
-		],
-		'meta_key'       => 'screening_date',
-		'orderby'        => 'meta_value_num',
-		'order'          => 'DESC',
-	) );
+
 
 	$screenings = [];
 	while ( $data->have_posts() ) : $data->the_post();
@@ -100,4 +121,4 @@ do_action( 'wp_body_open' );
 
 
 </main>
-<?php get_footer() ?>;
+<?php get_footer() ?>

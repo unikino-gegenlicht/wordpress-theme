@@ -14,15 +14,15 @@ require_once "header.php"
 	] );
 	?>
 	<p class="mt-4"><?= esc_html__("The page you are trying to open is not available anymore", "gegenlicht") ?></p>
-	<?php get_template_part( 'partials/button', args: [
-		'href'    => "javascript:history.back()",
-		'content' => __( 'One Step Back', 'gegenlicht' ),
-		"external" => false,
-	] ) ?>
-	<?php get_template_part( 'partials/button', args: [
-		'href'    => get_home_url(scheme: "https"),
-		'content' => __( 'Back to the Frontpage', 'gegenlicht' )
-	] ) ?>
+    <p><?php get_template_part( 'partials/button', args: [
+                'href'    => "javascript:history.back()",
+                'content' => __( 'One Step Back', 'gegenlicht' ),
+                "external" => false,
+        ] ) ?></p>
+    <p><?php get_template_part( 'partials/button', args: [
+                'href'    => get_home_url(scheme: "https"),
+                'content' => __( 'Back to the Frontpage', 'gegenlicht' )
+        ] ) ?></p>
 </main>
 <?php
 get_footer();
