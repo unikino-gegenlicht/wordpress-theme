@@ -14,15 +14,15 @@ get_header(args: ["title" => __("Not Found", "gegenlicht")]);
 	] );
 	?>
 	<p class="mt-4"><?= esc_html__("The page you are trying to open could not be found. Please check the URL in your address bar", "gegenlicht") ?></p>
-	<?php get_template_part( 'partials/button', args: [
+	<p><?php get_template_part( 'partials/button', args: [
 		'href'    => "javascript:history.back()",
 		'content' => __( 'One Step Back', 'gegenlicht' ),
 		"external" => false,
-	] ) ?>
-	<?php get_template_part( 'partials/button', args: [
+	] ) ?></p>
+	<p><?php get_template_part( 'partials/button', args: [
 		'href'    => get_home_url(scheme: "https"),
 		'content' => __( 'Back to the Frontpage', 'gegenlicht' )
-	] ) ?>
+	] ) ?></p>
 </main>
 <?php
 get_footer();
