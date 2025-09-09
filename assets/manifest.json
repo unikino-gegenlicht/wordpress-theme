@@ -1,0 +1,8 @@
+{
+  "short_name": "GEGENLICHT",
+  "name": "Unikino GEGENLICHT",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffdd00",
+  "theme_color": "#ffdd00"
+}
