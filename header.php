@@ -8,12 +8,10 @@ $semesterID    = get_theme_mod( 'displayed_semester' );
 
 $semester               = get_term( $semesterID, 'semester' );
 $semesterScreeningStart = get_term_meta( $semester->term_id, 'semester_start', true );
-$startDate              = date_parse_from_format( "d.m.Y", $semesterScreeningStart );
-$supposedStartDate      = mktime( 0, 0, 0, $startDate['month'], $startDate['day'], $startDate['year'] );
 
 $publicationDelay = get_theme_mod( 'program_reveal_delay' );
 
-if ( time() < strtotime( "-{$publicationDelay} days", $supposedStartDate ) ) {
+if ( time() < strtotime( "-{$publicationDelay} days", $semesterScreeningStart ) ) {
 	define( "GGL_ANNOUNCE_NEW_PROGRAM", true );
 	define( "GGL_SEMESTER_BREAK", false );
 } else {
@@ -220,7 +218,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
         </div>
 	<?php endif; ?>
 	<?php if ( GGL_ANNOUNCE_NEW_PROGRAM && ! $hideBreakBanner ):
-		$timeRemaining = strtotime( "-{$publicationDelay} days", $supposedStartDate ) - time();
+		$timeRemaining = strtotime( "-{$publicationDelay} days", $semesterScreeningStart ) - time();
 		$daysRemaining = floor( $timeRemaining / ( 60 * 60 * 24 ) );
 		$hoursRemaining = floor( ( $timeRemaining - ( $daysRemaining * 60 * 60 * 24 ) ) / ( 60 * 60 ) );
 		?>
