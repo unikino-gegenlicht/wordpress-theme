@@ -10,10 +10,8 @@ $semesters = get_terms( array(
 
 $semesterScreenings = [];
 foreach ( $semesters as $semester ) {
-	$semesterStart                    = (string) get_term_meta( $semester->term_id, 'semester_start', true );
-	$parsed_semester_start            = date_parse_from_format( "d.m.Y", $semesterStart );
-	$timestamp                        = mktime( 0, 0, 0, $parsed_semester_start["month"], $parsed_semester_start["day"], $parsed_semester_start["year"] );
-	$semesterScreenings[ $timestamp ] = $semester;
+	$semesterStart                    = (int) get_term_meta( $semester->term_id, 'semester_start', true );
+	$semesterScreenings[ $semesterStart ] = $semester;
 }
 
 krsort( $semesterScreenings );
