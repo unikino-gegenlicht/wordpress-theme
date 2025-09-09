@@ -17,6 +17,7 @@ require_once "inc/constants.php";
  * Load the customizer configuration
  */
 require_once "inc/customizer.php";
+require_once "inc/GGL_Font.php";
 
 add_action( "after_setup_theme", "ggl_setup_theme_supports" );
 add_action( "after_setup_theme", "ggl_add_image_sizes" );
@@ -27,6 +28,7 @@ add_action( "init", "ggl_disable_tinymce_emojis" );
 add_action( "wp_enqueue_scripts", "ggl_remove_default_styles" );
 add_action( "wp_enqueue_scripts", "ggl_enqueue_styles" );
 add_action( "wp_enqueue_scripts", "ggl_enqueue_scripts" );
+add_action( "wp_enqueue_scripts", "ggl_enqueue_fonts" );
 add_action( "wp_enqueue_scripts", "ggl_send_link_headers", 90 );
 add_action( "after_setup_theme", "ggl_setup_menus" );
 add_action( "init", "ggl_disable_wpadmin_for_subscribers" );
@@ -48,6 +50,35 @@ add_action( "wp_head", "ggl_inject_movie_schema_markup" );
 add_filter( "wpseo_opengraph_image", "ggl_anonymize_opengraph_image" );
 add_filter( "init", "ggl_add_shortcodes" );
 add_filter( 'wpseo_sitemap_exclude_empty_terms', '__return_false' );
+add_action( "wp_head", "ggl_insert_font_faces" );
+
+function ggl_insert_font_faces() {
+    ?>
+    <style>
+        <?php foreach (FONT_REGISTRY as $font): ?>
+        @font-face {
+            font-family: <?= $font->name ?>;
+            src: url('<?= "{$font->public_path}?ver={$font->hash}" ?>') format('<?= $font->type ?>');
+        <?php foreach ($font->font_face_attrs as $key => $value): ?>
+        <?= $key ?>: <?= $value ?>;
+        <?php endforeach; ?>
+        }
+
+        <?php foreach ($font->additional_classes as $name => $attrs): ?>
+        <?= $name ?>
+        {
+        <?php foreach ($attrs as $key => $value): ?>
+        <?= $key ?>
+        :
+        <?= $value ?>
+        ;
+        <?php endforeach; ?>
+        }
+        <?php endforeach; ?>
+        <?php endforeach; ?>
+    </style>
+    <?php
+}
 
 function ggl_add_shortcodes() {
 	require_once "shortcodes/button.php";
