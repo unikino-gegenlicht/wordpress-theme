@@ -65,11 +65,8 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                     <a href="<?= $serializedData ?>"
                        download="<?= ggl_get_title() ?>.ics"
                        style="color: var(--bulma-body-color)">
-                        <span class="icon-text">
-                            <span class="icon"><span class="material-symbols"
-                                                     style="font-size: 24px">download</span></span>
-                            <span ><?= esc_html__( "iCal", "gegenlicht" ) ?></span>
-                        </span>
+                            <span class="icon is-medium"><span class="material-symbols"
+                                                               style="font-size: 24px">calendar_add_on</span></span>
                     </a>
                 </span>
             <?php endif; ?>
