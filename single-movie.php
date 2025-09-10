@@ -148,7 +148,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                 <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ get_locale() ] ?? "" ) ?>
             </div>
         <?php endif; ?>
-        <?php if ( $isSpecialProgram ): ?>
+        <?php if ( $isSpecialProgram && !empty(trim(rwmb_get_value( "special_program" )->description))): ?>
             <div class="boxed-text mt-3">
                 <?= apply_filters( "the_content", rwmb_get_value( "special_program" )->description ) ?>
             </div>
