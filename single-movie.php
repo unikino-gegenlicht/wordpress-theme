@@ -38,14 +38,16 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                 ?>
             </div>
         </div>
-        <h1 role="heading"
-            class="<?= ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? 'no-separator' : '' ?>">
-            <?= ggl_get_title() ?>
-        </h1>
-        <?php if ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ): ?>
-            <p class="font-ggl is-size-4"><?= rwmb_meta( 'original_title' ) ?></p>
-            <hr class="separator"/>
-        <?php endif; ?>
+        <div class="content mb-0">
+            <h1 role="heading"
+                class="mb-0 no-separator <?= ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? "" : "pt-2" ?>">
+                <?= ggl_get_title() ?>
+            </h1>
+            <?php if ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ): ?>
+                <p class="is-size-5 mb-0"><?= rwmb_meta( 'original_title' ) ?></p>
+            <?php endif; ?>
+        </div>
+        <hr class="separator"/>
         <div class="mt-2">
             <p>
                 <?= join( '/', rwmb_meta( 'country' ) ) ?> <?= date( 'Y', strtotime( rwmb_meta( 'release_date' ) ) ) ?>

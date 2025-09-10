@@ -51,19 +51,21 @@ add_filter( "wpseo_opengraph_image", "ggl_anonymize_opengraph_image" );
 add_filter( "init", "ggl_add_shortcodes" );
 add_filter( 'wpseo_sitemap_exclude_empty_terms', '__return_false' );
 add_action( "wp_head", "ggl_insert_font_faces" );
-add_filter("query_vars", "ggl_add_query_vars");
-add_filter("template_include", "ggl_calendar_rewrite");
+add_filter( "query_vars", "ggl_add_query_vars" );
+add_filter( "template_include", "ggl_calendar_rewrite" );
 
-function ggl_calendar_rewrite($template): string {
+function ggl_calendar_rewrite( $template ): string {
     global $wp;
-    if (in_array($wp->request, GGL_ICAL_SUBSCRIBE_PATHS)) {
-       return get_stylesheet_directory() . "/ical.php";
-    };
+    if ( in_array( $wp->request, GGL_ICAL_SUBSCRIBE_PATHS ) ) {
+        return get_stylesheet_directory() . "/ical.php";
+    }
+
     return $template;
 }
 
-function ggl_add_query_vars($vars) {
+function ggl_add_query_vars( $vars ) {
     $vars[] = "ics";
+
     return $vars;
 }
 
@@ -247,6 +249,10 @@ function ggl_redirect_from_non_semester_pages(): void {
 
 function ggl_inject_special_program_colors(): void {
     if ( ! is_singular( [ "movie", "event" ] ) ) {
+        ?>
+        <meta name="theme-color" content="#ffdd00>">
+
+        <?php
         return;
     }
 
@@ -261,7 +267,7 @@ function ggl_inject_special_program_colors(): void {
     $colors["dark"]["body"]        = get_term_meta( $specialProgram->term_id, 'dark_text_color', true );
 
     ?>
-
+    <meta name="theme-color" content="<?= $colors["light"]["background"] ?? '#ffdd00' ?>">
     <style>
         :root {
             --bulma-body-color: <?= $colors["light"]["body"] ?> !important;
