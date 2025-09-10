@@ -102,18 +102,18 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                 if ( $audioType == 'original' ):
                     if ( $subtitleLanguage == 'eng' ):
                         echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $subtitleLanguage, "gegenlicht" ) . '">OmeU</span>';
-                    elseif ( $subtitleLanguage == 'deu' ):
-                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $subtitleLanguage, "gegenlicht" ) . '">OmdU</span>';
                     elseif ( $subtitleLanguage == 'zxx' ):
-                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( "None", "gegenlicht" ) . '">' . esc_html__( "OV w/o Subs", "gegenlicht" ) . '</span>';
+                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( "None", "gegenlicht" ) . '">OV</span>';
                     else:
-                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $subtitleLanguage, "gegenlicht" ) . '">' . esc_html__( "OV w/ Subs", "gegenlicht" ) . '</span>';
+                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $subtitleLanguage, "gegenlicht" ) . '">OmU</span>';
                     endif;
                 endif;
 
                 if ( $audioType == 'synchronization' ):
                     if ( $subtitleLanguage == 'zxx' ):
                         echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( "None", "gegenlicht" ) . '">' . esc_html__( "Dub w/o Subs", "gegenlicht" ) . '</span>';
+                    elseif ( $subtitleLanguage == 'eng' ):
+                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $subtitleLanguage, "gegenlicht" ) . '">' . esc_html__( "Dub w/ eng. Subs", "gegenlicht" ) . '</span>';
                     else:
                         echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $subtitleLanguage, "gegenlicht" ) . '">' . esc_html__( "Dub w/ Subs", "gegenlicht" ) . '</span>';
                     endif;
@@ -122,19 +122,16 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 
                 ?>
                 <?php
-                if (
-                        function_exists('ggl_cpt__generate_single_ical') &&
-                        function_exists('ggl_cpt__serialize_icals')
-                ):
-                    $ical = ggl_cpt__generate_single_ical($post);
-                    $serializedData = ggl_cpt__serialize_icals([$ical]);
-                ?>
-                <span class="tag is-rounded is-primary ml-auto">
+                if ( function_exists( 'ggl_cpt__generate_single_ical' ) && function_exists( 'ggl_cpt__serialize_icals' ) ):
+                    $ical = ggl_cpt__generate_single_ical( $post );
+                    $serializedData = ggl_cpt__serialize_icals( [ $ical ] );
+                    ?>
+                    <span class="tag is-rounded is-primary ml-auto">
                     <a href="<?= $serializedData ?>"
                        download="<?= ggl_get_title() ?>.ics"
                        style="color: var(--bulma-body-color)">
                             <span class="icon is-medium"><span class="material-symbols"
-                                                     style="font-size: 24px">calendar_add_on</span></span>
+                                                               style="font-size: 24px">calendar_add_on</span></span>
                     </a>
                 </span>
                 <?php endif; ?>

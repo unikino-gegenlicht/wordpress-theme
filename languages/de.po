@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "POT-Creation-Date: 2025-07-04T16:26:53+00:00\n"
-"PO-Revision-Date: 2025-09-06 16:31+0200\n"
+"PO-Revision-Date: 2025-09-10 12:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -54,7 +54,7 @@ msgstr "seit"
 msgid "Former Members"
 msgstr "Ehemalige Mitglieder"
 
-#: inc/theme-functions.php:115
+#: inc/theme-functions.php:121
 msgid "An unnamed movie"
 msgstr "Ein ungenannter Film"
 
@@ -66,7 +66,7 @@ msgstr "Abmelden"
 msgid "Login"
 msgstr "Anmelden"
 
-#: footer.php:48
+#: footer.php:51
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -111,7 +111,7 @@ msgstr "Eintritt"
 msgid "Minutes"
 msgstr "Minuten"
 
-#: single-movie.php:88
+#: single-movie.php:89
 msgid "Not Rated"
 msgstr "Ungeprüft"
 
@@ -119,15 +119,15 @@ msgstr "Ungeprüft"
 msgid "Next Screening"
 msgstr "Nächste Vorstellung"
 
-#: footer.php:40
+#: footer.php:41
 msgid "Youth Protection Officer"
 msgstr "Jugendschutzbeauftragter"
 
-#: footer.php:45 header.php:96 templates/page-impress.php:4
+#: footer.php:47 header.php:94 templates/page-impress.php:4
 msgid "Impress"
 msgstr "Impressum"
 
-#: footer.php:47 header.php:82 privacy-policy.php:8
+#: footer.php:49 header.php:80 privacy-policy.php:8
 msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
@@ -143,11 +143,11 @@ msgstr "Zum Film"
 msgid "Main Program Only"
 msgstr "Nur Hauptprogramm"
 
-#: functions.php:353
+#: functions.php:399
 msgid "Username or email address is missing"
 msgstr "Der Benutzername oder die E-Mail Adresse fehlen"
 
-#: functions.php:357
+#: functions.php:403
 msgid "The entered credentials are invalid. Please try again"
 msgstr "Die eingegebenen Login-Informationen sind ungültig"
 
@@ -155,7 +155,7 @@ msgstr "Die eingegebenen Login-Informationen sind ungültig"
 msgid "Displayed Semester"
 msgstr "Angezeigtes Semester"
 
-#: single-event.php:83 single-movie.php:150
+#: single-event.php:95 single-movie.php:169
 msgid "Content Notice"
 msgstr "Inhaltshinweis"
 
@@ -167,16 +167,16 @@ msgstr "In diesem Sonderprogramm lief bereits"
 msgid "Our Semester Program"
 msgstr "Unser Semesterprogramm"
 
-#: single-event.php:74 single-event.php:103 single-movie.php:141
-#: single-movie.php:183
+#: single-event.php:86 single-event.php:115 single-movie.php:160
+#: single-movie.php:202
 msgid "Reserve Now"
 msgstr "Jetzt Reservieren"
 
-#: single-movie.php:157
+#: single-movie.php:176
 msgid "What the movie is about"
 msgstr "Darum geht es"
 
-#: single-movie.php:161
+#: single-movie.php:180
 msgid "Why it's worth watching"
 msgstr "Darum sehenswert"
 
@@ -2399,12 +2399,12 @@ msgstr "Unsere Kooperationspartner"
 msgid "To the Website"
 msgstr "Zur Website"
 
-#: footer.php:23 inc/customizer/contact-addresses.php:25
+#: footer.php:24 inc/customizer/contact-addresses.php:25
 #: inc/customizer/footer.php:39
 msgid "Postal Address"
 msgstr "Postanschrift"
 
-#: footer.php:31 inc/customizer/contact-addresses.php:21
+#: footer.php:32 inc/customizer/contact-addresses.php:21
 msgid "Visitor Address"
 msgstr "Besucher*innenanschrift"
 
@@ -2412,7 +2412,7 @@ msgstr "Besucher*innenanschrift"
 msgid "To the event"
 msgstr "Zum Event"
 
-#: partials/movie-list.php:56 taxonomy-semester.php:70
+#: partials/movie-list.php:56 taxonomy-semester.php:91
 msgid "Screening starts: "
 msgstr "Vorstellung startet um:"
 
@@ -2694,15 +2694,15 @@ msgstr "Zeige Details über"
 msgid "Event starts"
 msgstr "Event startet um"
 
-#: inc/theme-functions.php:112
+#: inc/theme-functions.php:118
 msgid "An unnamed event"
 msgstr "Ein ungenanntes Event"
 
-#: single-event.php:90
+#: single-event.php:102
 msgid "What the event is about"
 msgstr "Worum geht es beim Event?"
 
-#: single-event.php:94
+#: single-event.php:106
 msgid "Why it's worth attending"
 msgstr "Darum lohnt es sich mitzumachen"
 
@@ -2764,7 +2764,7 @@ msgstr "Die Farbe des Textes und der Logos (falls möglich) im Dark Mode"
 msgid "The background color of the whole block during dark mode"
 msgstr "Hintergrundfarbe des gesamten Blocks im Dark Mode"
 
-#: header.php:89 inc/customizer/block-location.php:8
+#: header.php:87 inc/customizer/block-location.php:8
 #: inc/customizer/front-page.php:55 partials/header-menu.php:17
 msgid "Location"
 msgstr "Ort"
@@ -3122,35 +3122,27 @@ msgstr "Nächstes Event"
 msgid "Up next"
 msgstr "Als nächstes"
 
-#: single-movie.php:103 single-movie.php:105 single-movie.php:107
-#: single-movie.php:109 single-movie.php:115 single-movie.php:117
+#: single-movie.php:104 single-movie.php:106 single-movie.php:108
+#: single-movie.php:114 single-movie.php:116 single-movie.php:118
 msgid "Audio Language:"
 msgstr "Sprache:"
 
-#: single-movie.php:103 single-movie.php:105 single-movie.php:107
-#: single-movie.php:109 single-movie.php:115 single-movie.php:117
+#: single-movie.php:104 single-movie.php:106 single-movie.php:108
+#: single-movie.php:114 single-movie.php:116 single-movie.php:118
 msgid "Subtitle Language:"
 msgstr "Untertitel:"
 
-#: single-movie.php:107 single-movie.php:115
+#: single-movie.php:106 single-movie.php:114
 msgid "None"
 msgstr "Keine"
 
-#: single-movie.php:107
-msgid "OV w/o Subs"
-msgstr "OV"
-
-#: single-movie.php:109
-msgid "OV w/ Subs"
-msgstr "OmU"
-
-#: single-movie.php:115
+#: single-movie.php:114
 msgid "Dub w/o Subs"
-msgstr "SF o. UT"
+msgstr "SF"
 
-#: single-movie.php:117
+#: single-movie.php:118
 msgid "Dub w/ Subs"
-msgstr "SF m. UT"
+msgstr "SFmU"
 
 #: 404.php:4 404.php:7
 msgid "Not Found"
@@ -3281,47 +3273,47 @@ msgstr "Die Seite, die du versucht hast zu öffnen ist nicht mehr verfügbar."
 msgid "This page contains detailed information about the location"
 msgstr "Die Seite mit den genaueren Informationen zum Ort"
 
-#: inc/theme-functions.php:205
+#: inc/theme-functions.php:223
 msgid "Sexualized Violence"
 msgstr "Sexualisierte Gewalt"
 
-#: inc/theme-functions.php:206
+#: inc/theme-functions.php:224
 msgid "Violence"
 msgstr "Gewalt"
 
-#: inc/theme-functions.php:207
+#: inc/theme-functions.php:225
 msgid "Self Harm"
 msgstr "Selbstschädigung"
 
-#: inc/theme-functions.php:208
+#: inc/theme-functions.php:226
 msgid "Drug Usage"
 msgstr "Drogenkonsum"
 
-#: inc/theme-functions.php:209
+#: inc/theme-functions.php:227
 msgid "Discrimination"
 msgstr "Diskriminierung"
 
-#: inc/theme-functions.php:210
+#: inc/theme-functions.php:228
 msgid "Sexuality"
 msgstr "Sexualität"
 
-#: inc/theme-functions.php:211
+#: inc/theme-functions.php:229
 msgid "Threat"
 msgstr "Bedrohung"
 
-#: inc/theme-functions.php:212
+#: inc/theme-functions.php:230
 msgid "Injury"
 msgstr "Verletzung"
 
-#: inc/theme-functions.php:213
+#: inc/theme-functions.php:231
 msgid "Stressful Topics"
 msgstr "Belastende Themen"
 
-#: inc/theme-functions.php:214
+#: inc/theme-functions.php:232
 msgid "Language"
 msgstr "Sprache"
 
-#: inc/theme-functions.php:215
+#: inc/theme-functions.php:233
 msgid "Nudeness"
 msgstr "Nacktheit"
 
@@ -3329,16 +3321,16 @@ msgstr "Nacktheit"
 msgid "Open Website"
 msgstr "Website öffnen"
 
-#: inc/theme-functions.php:216
+#: inc/theme-functions.php:234
 msgid "Risky Behaviour"
 msgstr "Risikoverhalten"
 
-#: inc/theme-functions.php:217
+#: inc/theme-functions.php:235
 msgid "Marginalization"
 msgstr "Ausgrenzung"
 
 #. translators: %d Minimal Attendee Age
-#: single-event.php:57
+#: single-event.php:54
 #, php-format
 msgid "For Ages %d+"
 msgstr "Ab %d Jahren"
@@ -3379,14 +3371,18 @@ msgstr "Release des Semesterprogramm"
 msgid "This value controls how many days before the start of the screenings the frontpage shows the semester program"
 msgstr "Dieser Wert kontrolliert in wie viele Tage vor dem Start des Semesterprogramms die Website dieses anzeigen soll"
 
-#: functions.php:380
+#: functions.php:426
 msgid "Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)"
 msgstr "Studierende und weitere Angehörige der Carl von Ossietzky Universität können sich kostenlos registieren. Der Zugang erlaubt einen detaillierteren Zugang zum Programm (insbesondere den Sonderprogrammen)."
 
-#: taxonomy-semester.php:63
+#: taxonomy-semester.php:84
 msgid "The Program"
 msgstr "Das Programm"
 
-#: functions.php:381
+#: functions.php:427
 msgid "Your Student Arthouse Cinema"
 msgstr "Dein studentisches Programmkino"
+
+#: single-movie.php:116
+msgid "Dub w/ eng. Subs"
+msgstr "SFmeU"
