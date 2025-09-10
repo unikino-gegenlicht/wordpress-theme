@@ -5,6 +5,8 @@ $proposer_id = $args["proposer_id"] ?? null; // default to null as this value is
 
 $metaKey = "";
 
+$max_entries = 5;
+
 if ( $post !== null ) {
 	$proposal_by = rwmb_get_value( "selected_by", $post );
 	$proposer_id = match ( $proposal_by ) {
@@ -31,7 +33,7 @@ if ( empty( $metaKey ) || empty( $proposer_id ) ) {
 
 $args = [
 	"post_type"      => [ "movie", "event" ],
-	"posts_per_page" => 7,
+	"posts_per_page" => $max_entries,
 	"post__not_in"   => [ $post->ID ],
 	"orderby"        => "rand",
 	"meta_query"     => [
@@ -68,7 +70,7 @@ while ( $query->have_posts() ) : $query->the_post();
 	$proposals[] = ggl_get_title();
 endwhile;
 
-if ( count( $proposals ) < 7 ) {
+if ( count( $proposals ) < $max_entries ) {
 	$metaKey = match ( $proposal_by ) {
 		"member" => "team-member_shown_movies",
 		"coop" => "cooperation-partner_shown_movies",
@@ -76,7 +78,7 @@ if ( count( $proposals ) < 7 ) {
 
 	$manualEntries = rwmb_get_value( $metaKey, post_id: $proposer_id ) ?: [];
 	foreach ( $manualEntries as $entry ) {
-		if ( count( $proposals ) >= 7 ) {
+		if ( count( $proposals ) >= $max_entries ) {
 			break;
 		}
 		$proposals[] = $entry[1];
