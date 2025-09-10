@@ -379,7 +379,7 @@ function ggl_list_all_entities_sorted( WP_Query $query ): void {
     }
 
     $query->set( "posts_per_page", - 1 );
-    $query->set( "orderby", "name" );
+    $query->set( "orderby", "title" );
     $query->set( "order", "ASC" );
 }
 
