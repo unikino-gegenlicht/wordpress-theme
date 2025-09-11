@@ -7,7 +7,7 @@ get_header();
     <article class="content">
         <div class="is-flex is-dynamic-flex is-align-items-top is-justify-content-space-evenly is-flex-wrap-wrap is-gap-1 mb-5">
             <figure class="image coop-logo is-flex is-justify-content-center is-align-items-center is-flex-grow-1   ">
-                <img src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>"/>
+                <img height="250" src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>" style="height: 250px;"/>
             </figure>
             <header class="is-flex-grow-3 main-content word-break-break-word">
                 <h1><?php the_title() ?></h1>
