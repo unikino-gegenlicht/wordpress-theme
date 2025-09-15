@@ -184,11 +184,11 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         <?= apply_filters( "the_content", ggl_get_worth_to_see() ) ?>
         <?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
             <h2 class="font-ggl is-size-3 is-uppercase">
-                <?= esc_html__( 'Short Movie' ) ?>
+                <?= esc_html__( 'Short Movie', "gegenlicht" ) ?>
             </h2>
             <p class="m-0"><?= rwmb_meta( 'short_movie_title' ) ?></p>
             <div class="is-flex short-details">
-                <p><?= esc_html__( 'by' ) ?> <?= rwmb_meta( 'short_movie_directed_by' ) ?></p>
+                <p><?= esc_html__( 'by', "gegenlicht" ) ?> <?= rwmb_meta( 'short_movie_directed_by' ) ?></p>
                 |
                 <p><?= join( '/', rwmb_meta( 'short_movie_country' ) ) ?> <?= rwmb_meta( 'short_movie_release_year' ) ?></p>
                 |
