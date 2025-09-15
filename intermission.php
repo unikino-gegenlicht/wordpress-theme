@@ -53,7 +53,6 @@ if ( $query->have_posts() ):
 	?>
     <div class="content pt-2">
 		<?= apply_filters( "the_content", get_theme_mod( "semester_break_post_events_text" )[ get_locale() ] ?? "" ) ?>
-		<?= apply_filters( "the_content", get_theme_mod( "semester_break_text" )[ get_locale() ] ?? "" ) ?>
     </div>
 <?php endif; ?>
 <div class="content pt-2">

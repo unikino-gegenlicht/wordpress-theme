@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "POT-Creation-Date: 2025-07-04T16:26:53+00:00\n"
-"PO-Revision-Date: 2025-09-10 12:25+0200\n"
+"PO-Revision-Date: 2025-09-15 22:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -58,11 +58,11 @@ msgstr "Ehemalige Mitglieder"
 msgid "An unnamed movie"
 msgstr "Ein ungenannter Film"
 
-#: header.php:193
+#: header.php:191
 msgid "Logout"
 msgstr "Abmelden"
 
-#: header.php:200
+#: header.php:198
 msgid "Login"
 msgstr "Anmelden"
 
@@ -107,11 +107,11 @@ msgstr "Eintritt gegen Spende"
 msgid "Admission"
 msgstr "Eintritt"
 
-#: single-event.php:45 single-movie.php:53
+#: single-event.php:45 single-movie.php:55
 msgid "Minutes"
 msgstr "Minuten"
 
-#: single-movie.php:89
+#: single-movie.php:91
 msgid "Not Rated"
 msgstr "Ungeprüft"
 
@@ -143,11 +143,11 @@ msgstr "Zum Film"
 msgid "Main Program Only"
 msgstr "Nur Hauptprogramm"
 
-#: functions.php:399
+#: functions.php:405
 msgid "Username or email address is missing"
 msgstr "Der Benutzername oder die E-Mail Adresse fehlen"
 
-#: functions.php:403
+#: functions.php:409
 msgid "The entered credentials are invalid. Please try again"
 msgstr "Die eingegebenen Login-Informationen sind ungültig"
 
@@ -2412,15 +2412,15 @@ msgstr "Besucher*innenanschrift"
 msgid "To the event"
 msgstr "Zum Event"
 
-#: partials/movie-list.php:56 taxonomy-semester.php:91
+#: partials/movie-list.php:56 taxonomy-semester.php:99
 msgid "Screening starts: "
 msgstr "Vorstellung startet um:"
 
-#: front-page.php:74 intermission.php:68
+#: front-page.php:74 intermission.php:67
 msgid "To the Archive"
 msgstr "Zum Archiv"
 
-#: header.php:212
+#: header.php:210
 msgid "Semester Break"
 msgstr "Semesterpause"
 
@@ -2432,7 +2432,7 @@ msgstr "Pause im Kino"
 msgid "Intermission Specials"
 msgstr "Spielpausen-Specials"
 
-#: intermission.php:63
+#: intermission.php:62
 msgid "What we have shown so far"
 msgstr "Was wir bis jetzt alles gezeigt haben"
 
@@ -2706,15 +2706,15 @@ msgstr "Worum geht es beim Event?"
 msgid "Why it's worth attending"
 msgstr "Darum lohnt es sich mitzumachen"
 
-#: single-movie.php:56
+#: single-movie.php:58 single-movie.php:189
 msgid "by"
 msgstr "von"
 
-#: single-movie.php:70
+#: single-movie.php:72
 msgid "with"
 msgstr "mit"
 
-#: single-movie.php:70
+#: single-movie.php:72
 msgid "and"
 msgstr "und"
 
@@ -3081,23 +3081,23 @@ msgstr "Programm"
 msgid "Cooperation"
 msgstr "Kooperation"
 
-#: header.php:230
+#: header.php:228
 msgid "New Program Releases In"
 msgstr "Neues Programm in"
 
-#: header.php:230
+#: header.php:228
 msgid "Days"
 msgstr "Tagen"
 
-#: header.php:230
+#: header.php:228
 msgid "Hours"
 msgstr "Stunden"
 
-#: header.php:230
+#: header.php:228
 msgid "Day"
 msgstr "Tag"
 
-#: header.php:230
+#: header.php:228
 msgid "Hour"
 msgstr "Stunde"
 
@@ -3122,25 +3122,25 @@ msgstr "Nächstes Event"
 msgid "Up next"
 msgstr "Als nächstes"
 
-#: single-movie.php:104 single-movie.php:106 single-movie.php:108
-#: single-movie.php:114 single-movie.php:116 single-movie.php:118
+#: single-movie.php:106 single-movie.php:108 single-movie.php:110
+#: single-movie.php:116 single-movie.php:118 single-movie.php:120
 msgid "Audio Language:"
 msgstr "Sprache:"
 
-#: single-movie.php:104 single-movie.php:106 single-movie.php:108
-#: single-movie.php:114 single-movie.php:116 single-movie.php:118
+#: single-movie.php:106 single-movie.php:108 single-movie.php:110
+#: single-movie.php:116 single-movie.php:118 single-movie.php:120
 msgid "Subtitle Language:"
 msgstr "Untertitel:"
 
-#: single-movie.php:106 single-movie.php:114
+#: single-movie.php:108 single-movie.php:116
 msgid "None"
 msgstr "Keine"
 
-#: single-movie.php:114
+#: single-movie.php:116
 msgid "Dub w/o Subs"
 msgstr "SF"
 
-#: single-movie.php:118
+#: single-movie.php:120
 msgid "Dub w/ Subs"
 msgstr "SFmU"
 
@@ -3273,47 +3273,47 @@ msgstr "Die Seite, die du versucht hast zu öffnen ist nicht mehr verfügbar."
 msgid "This page contains detailed information about the location"
 msgstr "Die Seite mit den genaueren Informationen zum Ort"
 
-#: inc/theme-functions.php:223
+#: inc/theme-functions.php:227
 msgid "Sexualized Violence"
 msgstr "Sexualisierte Gewalt"
 
-#: inc/theme-functions.php:224
+#: inc/theme-functions.php:228
 msgid "Violence"
 msgstr "Gewalt"
 
-#: inc/theme-functions.php:225
+#: inc/theme-functions.php:229
 msgid "Self Harm"
 msgstr "Selbstschädigung"
 
-#: inc/theme-functions.php:226
+#: inc/theme-functions.php:230
 msgid "Drug Usage"
 msgstr "Drogenkonsum"
 
-#: inc/theme-functions.php:227
+#: inc/theme-functions.php:231
 msgid "Discrimination"
 msgstr "Diskriminierung"
 
-#: inc/theme-functions.php:228
+#: inc/theme-functions.php:232
 msgid "Sexuality"
 msgstr "Sexualität"
 
-#: inc/theme-functions.php:229
+#: inc/theme-functions.php:233
 msgid "Threat"
 msgstr "Bedrohung"
 
-#: inc/theme-functions.php:230
+#: inc/theme-functions.php:234
 msgid "Injury"
 msgstr "Verletzung"
 
-#: inc/theme-functions.php:231
+#: inc/theme-functions.php:235
 msgid "Stressful Topics"
 msgstr "Belastende Themen"
 
-#: inc/theme-functions.php:232
+#: inc/theme-functions.php:236
 msgid "Language"
 msgstr "Sprache"
 
-#: inc/theme-functions.php:233
+#: inc/theme-functions.php:237
 msgid "Nudeness"
 msgstr "Nacktheit"
 
@@ -3321,11 +3321,11 @@ msgstr "Nacktheit"
 msgid "Open Website"
 msgstr "Website öffnen"
 
-#: inc/theme-functions.php:234
+#: inc/theme-functions.php:238
 msgid "Risky Behaviour"
 msgstr "Risikoverhalten"
 
-#: inc/theme-functions.php:235
+#: inc/theme-functions.php:239
 msgid "Marginalization"
 msgstr "Ausgrenzung"
 
@@ -3340,18 +3340,18 @@ msgid "Past Screenings"
 msgstr "Vergangene Vorstellungen"
 
 #. translators: %s is the Team Members name
-#: partials/proposal-list.php:90
+#: partials/proposal-list.php:92
 #, php-format
 msgid "Selected by %s"
 msgstr "Von %s ausgesucht"
 
 #. translators: %s is the Cooperation Partner's name
-#: partials/proposal-list.php:90
+#: partials/proposal-list.php:92
 #, php-format
 msgid "In cooperation with %s"
 msgstr "Kooperation mit: %s"
 
-#: partials/proposal-list.php:110
+#: partials/proposal-list.php:112
 msgid "No other entries found here. Please check back next semester or log in…"
 msgstr "Keine weiteren Einträge gefunden. Schaue nächstes Semester nochmal vorbei oder melde dich an…"
 
@@ -3359,7 +3359,7 @@ msgstr "Keine weiteren Einträge gefunden. Schaue nächstes Semester nochmal vor
 msgid "Past Cooperations"
 msgstr "Vergangene Kooperationen"
 
-#: header.php:185
+#: header.php:183
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -3371,7 +3371,7 @@ msgstr "Release des Semesterprogramm"
 msgid "This value controls how many days before the start of the screenings the frontpage shows the semester program"
 msgstr "Dieser Wert kontrolliert in wie viele Tage vor dem Start des Semesterprogramms die Website dieses anzeigen soll"
 
-#: functions.php:426
+#: functions.php:432
 msgid "Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)"
 msgstr "Studierende und weitere Angehörige der Carl von Ossietzky Universität können sich kostenlos registieren. Der Zugang erlaubt einen detaillierteren Zugang zum Programm (insbesondere den Sonderprogrammen)."
 
@@ -3379,10 +3379,14 @@ msgstr "Studierende und weitere Angehörige der Carl von Ossietzky Universität 
 msgid "The Program"
 msgstr "Das Programm"
 
-#: functions.php:427
+#: functions.php:433
 msgid "Your Student Arthouse Cinema"
 msgstr "Dein studentisches Programmkino"
 
-#: single-movie.php:116
+#: single-movie.php:118
 msgid "Dub w/ eng. Subs"
 msgstr "SFmeU"
+
+#: single-movie.php:185
+msgid "Short Movie"
+msgstr "Kurzfilm"

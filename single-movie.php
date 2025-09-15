@@ -55,7 +55,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                 <?= rwmb_meta( 'running_time' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
             </p>
             <p>
-                <?= esc_html__( 'by', 'gegenlicht' ) ?> <?= ! $anonymize ? rwmb_meta( 'director' )->name : trim( preg_replace( '/\w/', '█', rwmb_meta( 'director' )->name ) ) ?>
+                <?= esc_html__( 'by', 'gegenlicht' ) ?> <?= ! $anonymize ? rwmb_meta( 'director' )->name : trim( preg_replace( '/\w/u', '█', rwmb_meta( 'director' )->name ) ) ?>
             </p>
             <p>
                 <?php
@@ -65,7 +65,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                     if ( ! $anonymize ) {
                         $actorNames[] = $actor->name;
                     } else {
-                        $actorNames[] = preg_replace( '/\w/', '█', $actor->name );
+                        $actorNames[] = preg_replace( '/\w/u', '█', $actor->name );
                     }
                 }
                 ?>
@@ -140,8 +140,6 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
             </div>
         </div>
 
-
-        </span>
         <?php ggl_the_post_thumbnail(); ?>
         <?php if ( ! ! $anonymize && ! $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
@@ -184,11 +182,11 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         <?= apply_filters( "the_content", ggl_get_worth_to_see() ) ?>
         <?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
             <h2 class="font-ggl is-size-3 is-uppercase">
-                <?= esc_html__( 'Short Movie' ) ?>
+                <?= esc_html__( 'Short Movie', "gegenlicht" ) ?>
             </h2>
             <p class="m-0"><?= rwmb_meta( 'short_movie_title' ) ?></p>
             <div class="is-flex short-details">
-                <p><?= esc_html__( 'by' ) ?> <?= rwmb_meta( 'short_movie_directed_by' ) ?></p>
+                <p><?= esc_html__( 'by', "gegenlicht" ) ?> <?= rwmb_meta( 'short_movie_directed_by' ) ?></p>
                 |
                 <p><?= join( '/', rwmb_meta( 'short_movie_country' ) ) ?> <?= rwmb_meta( 'short_movie_release_year' ) ?></p>
                 |

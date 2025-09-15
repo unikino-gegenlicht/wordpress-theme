@@ -43,7 +43,6 @@ add_action( "wp_enqueue_scripts", "ggl_send_image_link_headers", 70 );
 add_action( "pre_get_posts", "ggl_list_all_entities_sorted" );
 add_action( "pre_get_posts", "ggl_frontpage_query_only_current_semester", 1 );
 add_filter( "locale", "ggl_locale_use_http_fallback", 10 );
-add_filter( "locale", "ggl_locale_log", 11 );
 add_action( "wp_head", "ggl_inject_special_program_colors" );
 add_action( "get_header", "ggl_redirect_from_non_semester_pages", 2 );
 add_action( "wp_head", "ggl_inject_movie_schema_markup" );
@@ -299,12 +298,6 @@ function ggl_inject_special_program_colors(): void {
 
     <?php
 
-}
-
-function ggl_locale_log( string $locale ): string {
-    error_log( $locale );
-
-    return $locale;
 }
 
 function ggl_locale_use_http_fallback( string $locale ): string {
