@@ -207,10 +207,14 @@ function ggl_the_post_thumbnail( WP_Post|int $post = 0 ): void {
     $desktopUrl = ggl_get_thumbnail_url( $post, "desktop" );
     ?>
     <div>
-        <figure class="image movie-image mt-4">
+        <figure class="image movie-image mt-4 is-hidden-mobile">
             <picture>
-                <source media="(width <= 768px)" srcset="<?= $mobileUrl ?>"/>
-                <img src="<?= $desktopUrl ?>"/>
+                <img width="800" height="450" src="<?= $desktopUrl ?>"/>
+            </picture>
+        </figure>
+        <figure class="image movie-image mt-4 is-hidden-tablet">
+            <picture>
+                <img width="800" height="1000" src="<?= $mobileUrl ?>"/>
             </picture>
         </figure>
     </div>
@@ -230,7 +234,7 @@ function ggl_get_translate_rating_descriptor( string $descriptorKey ): string {
             'injury'              => esc_html__( 'Injury', 'gegenlicht' ),
             'stressful_topics'    => esc_html__( 'Stressful Topics', 'gegenlicht' ),
             'language'            => esc_html__( 'Language', 'gegenlicht' ),
-            'nudeness'            => esc_html__( 'Nudeness', 'gegenlicht' ),
+            'nudity'            => esc_html__( 'Nudeness', 'gegenlicht' ),
             'risky_behaviour'     => esc_html__( 'Risky Behaviour', 'gegenlicht' ),
             'marginalization'     => esc_html__( 'Marginalization', 'gegenlicht' ),
     ];
