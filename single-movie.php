@@ -55,7 +55,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                 <?= rwmb_meta( 'running_time' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
             </p>
             <p>
-                <?= esc_html__( 'by', 'gegenlicht' ) ?> <?= ! $anonymize ? rwmb_meta( 'director' )->name : trim( preg_replace( '/\w/', '█', rwmb_meta( 'director' )->name ) ) ?>
+                <?= esc_html__( 'by', 'gegenlicht' ) ?> <?= ! $anonymize ? rwmb_meta( 'director' )->name : trim( preg_replace( '/\w/u', '█', rwmb_meta( 'director' )->name ) ) ?>
             </p>
             <p>
                 <?php
@@ -65,7 +65,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                     if ( ! $anonymize ) {
                         $actorNames[] = $actor->name;
                     } else {
-                        $actorNames[] = preg_replace( '/\w/', '█', $actor->name );
+                        $actorNames[] = preg_replace( '/\w/u', '█', $actor->name );
                     }
                 }
                 ?>
