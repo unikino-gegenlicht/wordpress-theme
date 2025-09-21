@@ -87,7 +87,7 @@ if ( count( $proposals ) < $max_entries ) {
 
 ?>
 <article class="page-content">
-    <header>
+    <header class="content">
         <h3>
 			<?= sprintf( $proposal_by == "member" ? /* translators: %s is the Team Members name */ esc_html__( "Selected by %s", "gegenlicht" ) : /* translators: %s is the Cooperation Partner's name */ esc_html__( "In cooperation with %s", "gegenlicht" ), get_post( $proposer_id )->post_title ) ?>
         </h3>
