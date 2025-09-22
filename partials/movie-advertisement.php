@@ -45,9 +45,11 @@ if ( $anonymize ) {
 			?>
         </p>
     </header>
+    <div class="content">
     <h2 class="title next-movie-title py-4">
 		<?= ggl_get_title() ?>
     </h2>
+    </div>
 	<?php
     ggl_the_post_thumbnail();
 	?>
