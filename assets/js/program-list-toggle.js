@@ -9,16 +9,22 @@ function toggleSpecialProgramDisplay() {
             break;
     }
 
+    let displaySpecialPrograms = switcher.innerText === "toggle_off";
+
     let entries = document.querySelectorAll('[data-program-type="special_program"]');
     for (let entry of entries) {
-        entry.classList.toggle('is-hidden');
+        if (displaySpecialPrograms) {
+            entry.classList.remove("is-hidden");
+        } else {
+            entry.classList.add("is-hidden");
+        }
     }
 
     let movieLists = document.getElementsByClassName('movie-list is-filterable')
     for (let movieList of movieLists) {
         let visibleLinks = 0;
 
-        for (let child of movieList.children) {
+        for (let child of movieList.children[1].children) {
             if (child.tagName !== 'A') {
                 continue;
             }
@@ -27,6 +33,8 @@ function toggleSpecialProgramDisplay() {
                 visibleLinks++;
             }
         }
+
+        console.log(movieList, visibleLinks);
 
         if (visibleLinks === 0) {
             movieList.classList.add('is-hidden');

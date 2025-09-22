@@ -598,8 +598,8 @@ function ggl_enqueue_fonts(): void {
 }
 
 function ggl_enqueue_scripts(): void {
-    wp_enqueue_script( 'menu-toggle', get_stylesheet_directory_uri() . '/assets/js/menu-toggle.js' );
-    wp_enqueue_script( 'list-toggle', get_stylesheet_directory_uri() . '/assets/js/program-list-toggle.js' );
+    wp_enqueue_script( 'menu-toggle', get_stylesheet_directory_uri() . '/assets/js/menu-toggle.js', ver:  md5_file( get_stylesheet_directory() . '/assets/js/menu-toggle.js' ) );
+    wp_enqueue_script( 'list-toggle', get_stylesheet_directory_uri() . '/assets/js/program-list-toggle.js', ver:  md5_file( get_stylesheet_directory() . '/assets/js/program-list-toggle.js' ) );
 }
 
 function ggl_enqueue_styles() {
