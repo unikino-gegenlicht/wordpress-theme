@@ -54,7 +54,9 @@ if ( empty( $posts ) ) {
 			?>
             <a role="link"
                aria-label="<?= ggl_get_title() ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( 'r', $startDateTime ) ?>"
+               <?php if ($allowFiltering): ?>
                data-program-type="<?= $programType ?>"
+               <?php endif; ?>
                href="<?= get_permalink() ?>"
                class="entry">
                 <div>
