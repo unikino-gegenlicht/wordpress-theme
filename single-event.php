@@ -42,7 +42,6 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         <div class="content mb-0">
         <h1 role="heading" class="mb-0"><?= ggl_get_title() ?></h1>
         </div>
-        <hr class="separator"/>
         <div class="mt-2">
             <p>
                 <?= rwmb_meta( 'duration' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
