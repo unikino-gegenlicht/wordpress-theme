@@ -6,6 +6,7 @@ $semesterID       = $args['semester'] ?? null;
     #special-program-<?= $specialProgramID ?> {
         --bulma-body-background-color: <?= get_term_meta($specialProgramID, 'background_color', true) ?? "inherit" ?>;
         --bulma-body-color: <?= get_term_meta($specialProgramID, 'text_color', true) ?? "inherit" ?>;
+        --bulma-link-text: var(--bulma-body-color) !important;
 
         background-color: var(--bulma-body-background-color);
         color: var(--bulma-body-color);
