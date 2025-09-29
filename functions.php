@@ -77,7 +77,7 @@ function ggl_new_user_notification_email(array $notification, WP_User $user, str
 
 
     $notification['subject'] = "[%s] Benutzeraccount erstellt // User Account Created";
-    $notification['content'] = $content;
+    $notification['message'] = $content;
     $notification['headers'] = ["Content-Type: text/html; charset=UTF-8", 'From: "Unikino GEGENLICHT" <noreply@gegenlicht.net>'];
 
     return $notification;
