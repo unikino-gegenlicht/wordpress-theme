@@ -1,4 +1,9 @@
 <?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Loader\FilesystemLoader;
+
 defined( 'ABSPATH' ) || exit;
 /**
  * GEGENLICHT Website Theme
@@ -18,6 +23,8 @@ require_once "inc/constants.php";
  */
 require_once "inc/customizer.php";
 require_once "inc/GGL_Font.php";
+
+require_once "vendor/autoload.php";
 
 add_action( "after_setup_theme", "ggl_setup_theme_supports" );
 add_action( "after_setup_theme", "ggl_add_image_sizes" );
@@ -52,6 +59,30 @@ add_filter( 'wpseo_sitemap_exclude_empty_terms', '__return_false' );
 add_action( "wp_head", "ggl_insert_font_faces" );
 add_filter( "query_vars", "ggl_add_query_vars" );
 add_filter( "template_include", "ggl_calendar_rewrite" );
+add_filter("wp_new_user_notification_email", "ggl_new_user_notification_email", 10, 3);
+function ggl_new_user_notification_email(array $notification, WP_User $user, string $blogname) {
+    $loader = new FilesystemLoader(get_stylesheet_directory() . "/email-templates");
+    $twig = new Environment($loader, [
+            'cache' => get_temp_dir() . "twig",
+    ]);
+
+    try {
+        $tmpl = $twig->load( "user-account-creation-notification.html.twig" );
+    } catch (Exception $e) {
+        error_log("Unable to find template for user notification");
+        wp_die("Unable to process the registration. Please try again later");
+    }
+
+    $content = $tmpl->render(["email" => $notification['to'], "username" => $user->user_login]);
+
+
+    $notification['subject'] = "[%s] Benutzeraccount erstellt // User Account Created";
+    $notification['content'] = $content;
+    $notification['headers'] = ["Content-Type: text/html; charset=UTF-8", 'From: "Unikino GEGENLICHT" <noreply@gegenlicht.net>'];
+
+    return $notification;
+
+}
 
 function ggl_calendar_rewrite( $template ): string {
     global $wp;
@@ -431,6 +462,28 @@ function ggl_enqueue_logo_url_variable(): void {
             --login-logo: url(<?= wp_get_attachment_image_url(get_theme_mod("header_logo"), "full") ?: "/wp-includes/images/w-logo-blue.png" ?>);
             --login-after-text: "<?= esc_html__('Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)', "gegenlicht") ?>";
             --logo-after-text: "<?= esc_html__('Your Student Arthouse Cinema', "gegenlicht") ?>";
+        }
+
+        .frc-captcha * {
+            /* Mostly a CSS reset so existing website styles don't clash */
+            margin: 0;
+            padding: 0;
+            border: 0;
+            text-align: initial;
+            border-radius: 0;
+            filter: none !important;
+            transition: none !important;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 1.2;
+            text-decoration: none;
+            background-color: initial;
+            color: #222;
+        }
+
+        .frc-captcha {
+            width: 100% !important;
+            background-color: var(--bulma-body-color);
         }
     </style>
     <?php

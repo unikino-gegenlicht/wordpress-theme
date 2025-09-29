@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="de">
+<head><title>Danke für deine Registrierung // Thank you for the registration</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <style>
+        div[style="border: solid #003333 1.0pt; padding: 2.0pt 2.0pt 2.0pt 2.0pt;"] {
+            display: none !important
+        }
+    </style>
+</head>
+<body id="body" style="width:100%;margin:0;background-color:#fd0!important">
+<div style="max-width:800px;margin:0 auto" id="content">
+    <div style="background-color:#fd0;color:#000!important;font-family:sans-serif;font-size:1rem!important" id="german">
+        <p style="text-align:center;font-size:small">
+            <a href="#english"
+               style="color:#000!important;text-decoration:none!important">
+                &ndash; English Version Below &ndash;
+            </a>
+        </p>
+        <p style="font-weight:700;font-size:larger">
+            Hallo {{username}},
+        </p>
+        <p>
+            du hast dich erfolgreich mit deiner E-Mail-Adresse (<span style="font-family:monospace">{{email}}</span>)
+            für ein Konto auf unserer Website registriert!
+            Solltest du das nicht gewesen sein, schreibe uns bitte eine Mail an
+            <a href="mailto:website@gegenlicht.net?subject=Unbekannte%20Registrierung%20auf%20der%20Website"
+               style="color:#000">
+                website@gegenlicht.net
+            </a>
+            und wir kümmern uns darum.
+        </p>
+        <p>
+            Als Passwort nutze bitte das Passwort, das du bei deiner Registrierung genutzt hast.
+            Solltest du dein Passwort jemals vergessen kannst du dir dieses einfach auf der Website zurücksetzen.
+        </p>
+        <p>
+            Wir freuen uns auf deinen Besuch und wünschen dir eine gute Zeit!<br>
+            Dein Team vom Unikino GEGENLICHT
+        </p>
+    </div>
+    <div style="background-color:#fd0;color:#000!important;font-family:sans-serif;font-size:1rem!important"
+         id="english">
+        <p style="text-align:center;font-size:small">
+            — English Version —
+        </p>
+        <p style="font-weight:700;font-size:larger">
+            Hi '. $username . ',
+        </p>
+        <p>
+            you've successfully registered an account on our website using your email address
+            (<span style="font-family:monospace">'. $email .'</span>).
+            If you didn't register an account using your email address please mail us at
+            <a href="mailto:website@gegenlicht.net?subject=Unknown%20Registration%20on%20the%20Website"
+               style="color:#000">
+                website@gegenlicht.net
+            </a>
+            and we will get that sorted out.
+        </p>
+        <p>
+            For logging in, please use the password you set during the registration process.
+            If you should forget that password you can reset it on the website.
+        </p>
+        <p>
+            We look forward to your visit and hope you have a great time!<br>
+            Your Team of the Student Cinema GEGENLICHT
+        </p>
+    </div>
+</div>
+<div style="background-color:#000!important;color:#fd0!important;width:100%;font-family:sans-serif!important;font-size:1rem!important;padding-bottom:1.5rem"
+     id="footer">
+    <div style="max-width:800px;margin:0 auto"><p
+            style="padding:16px 0 0 0!important;text-align:center!important;margin-bottom:0"><img
+            src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4KCjxzdmcKICAgdmVyc2lvbj0iMS4xIgogICB4PSIwcHgiCiAgIHk9IjBweCIKICAgdmlld0JveD0iMCAwIDQ4MS43OTk5OCAxMDAiCiAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgIGlkPSJzdmcyMCIKICAgc29kaXBvZGk6ZG9jbmFtZT0iZ2VnZW5saWNodF9sb2dvX2dlbGIuc3ZnIgogICB3aWR0aD0iNDgxLjc5OTk5bW0iCiAgIGhlaWdodD0iMTAwbW0iCiAgIGlua3NjYXBlOnZlcnNpb249IjEuNC4yIChlYmYwZTk0MGQwLCAyMDI1LTA1LTA4KSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcwogICBpZD0iZGVmczIwIiAvPjxzb2RpcG9kaTpuYW1lZHZpZXcKICAgaWQ9Im5hbWVkdmlldzIwIgogICBwYWdlY29sb3I9IiNmZmZmZmYiCiAgIGJvcmRlcmNvbG9yPSIjMDAwMDAwIgogICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICBpbmtzY2FwZTpzaG93cGFnZXNoYWRvdz0iMiIKICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgaW5rc2NhcGU6ZGVza2NvbG9yPSIjZDFkMWQxIgogICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0ibW0iCiAgIGlua3NjYXBlOnpvb209IjAuNDM1MDA0MzIiCiAgIGlua3NjYXBlOmN4PSI5MTIuNjM0NjIiCiAgIGlua3NjYXBlOmN5PSIyNjMuMjE1NzgiCiAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMTI3OSIKICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iMTAwOCIKICAgaW5rc2NhcGU6d2luZG93LXg9IjAiCiAgIGlua3NjYXBlOndpbmRvdy15PSIwIgogICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIwIgogICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJzdmcyMCIgLz4KPHN0eWxlCiAgIHR5cGU9InRleHQvY3NzIgogICBpZD0ic3R5bGUxIj4KCS5zdDB7ZmlsbDojRkZERDAwO30KPC9zdHlsZT4KCgo8ZwogICBpZD0iZ2VnZW5saWNodCIKICAgdHJhbnNmb3JtPSJtYXRyaXgoMC42MzcwODU4OSwwLDAsMC42MzcwODU4OSwxLjYxNjkwNDUsMC4zMzI3ODQwMikiPgoJPGcKICAgaWQ9ImcxNyI+CgkJPHBhdGgKICAgY2xhc3M9InN0MCIKICAgZD0ibSAxNzMuOSwxMS4zIHYgMzYuMjUgYyAwLDQuNzIgMS4zOSw4LjIgNC4xNywxMC40MiAyLjc4LDIuMjIgNi4yNSwzLjMzIDEwLjQyLDMuMzMgNC4xNywwIDcuNjQsLTEuMTEgMTAuNDIsLTMuMzMgMi43OCwtMi4yMiA0LjE3LC01LjY5IDQuMTcsLTEwLjQyIFYgMTEuMyBoIDEyLjUgdiAzOS41OSBjIDAsNi4zOSAtMi41NywxMS44MSAtNy43MSwxNi4yNSAtNS4xNCw0LjQ1IC0xMS42LDYuNjcgLTE5LjM4LDYuNjcgLTcuNzgsMCAtMTQuMjQsLTIuMjIgLTE5LjM4LC02LjY3IC01LjE0LC00LjQ0IC03LjcxLC05Ljg2IC03LjcxLC0xNi4yNSBWIDExLjMgWiIKICAgaWQ9InBhdGgxIiAvPgoJCTxwYXRoCiAgIGNsYXNzPSJzdDAiCiAgIGQ9Ik0gMjI5LjM1LDczLjggViAxMS4zIGggNC4xNyBsIDM5LjE3LDM5LjE3IFYgMTEuMyBoIDEyLjUgdiA2Mi41IGggLTQuNTggTCAyNDEuODYsMzUuMDUgViA3My44IFoiCiAgIGlkPSJwYXRoMiIgLz4KCQk8cGF0aAogICBjbGFzcz0ic3QwIgogICBkPSJtIDI5OC40NCwxMS4yNSBoIDEyLjUgViA3My44IGggLTEyLjUgeiIKICAgaWQ9InBhdGgzIiAvPgoJCTxwYXRoCiAgIGNsYXNzPSJzdDAiCiAgIGQ9Im0gMzIzLjg4LDExLjMgaCAxMi41IHYgMjUgbCAyMC44MywtMjUgaCAxNC4wMSBMIDM0Ni44LDQwLjQ3IDM3Ni4zOCw3My44IEggMzYwLjEzIEwgMzM2LjM4LDQ2LjgyIFYgNzMuOCBoIC0xMi41IHoiCiAgIGlkPSJwYXRoNCIgLz4KCQk8cGF0aAogICBjbGFzcz0ic3QwIgogICBkPSJtIDM4NC4xOCwxMS4yNSBoIDEyLjUgViA3My44IGggLTEyLjUgeiIKICAgaWQ9InBhdGg1IiAvPgoJCTxwYXRoCiAgIGNsYXNzPSJzdDAiCiAgIGQ9Ik0gNDA5LjQ3LDczLjggViAxMS4zIGggNC4xNyBsIDM5LjE3LDM5LjE3IFYgMTEuMyBoIDEyLjUgdiA2Mi41IGggLTQuNTggTCA0MjEuOTgsMzUuMDUgViA3My44IFoiCiAgIGlkPSJwYXRoNiIgLz4KCQk8cGF0aAogICBjbGFzcz0ic3QwIgogICBkPSJtIDQ4NC4zOSw2NC44MiBjIC01Ljk3LC01Ljk5IC04Ljk2LC0xMy40MSAtOC45NiwtMjIuMjcgMCwtOC44OSAyLjk5LC0xNi4zMiA4Ljk2LC0yMi4yOSA1Ljk3LC01Ljk3IDEzLjM5LC04Ljk2IDIyLjI0LC04Ljk2IDguODksMCAxNi4zMiwyLjk5IDIyLjI5LDguOTYgNS45Nyw1Ljk3IDguOTYsMTMuNCA4Ljk2LDIyLjI5IDAsOC44OSAtMi45OSwxNi4zMiAtOC45NiwyMi4yOSAtNS45Nyw1Ljk3IC0xMy40LDguOTYgLTIyLjI5LDguOTYgLTguODUsMCAtMTYuMjcsLTIuOTkgLTIyLjI0LC04Ljk4IHogbSAyMi4yOSwtMi42OSBjIDUuNTIsMCAxMC4wMiwtMS44OCAxMy40OSwtNS42MyAzLjQ3LC0zLjc1IDUuMjEsLTguNCA1LjIxLC0xMy45NiAwLC01LjU2IC0xLjc0LC0xMC4yMSAtNS4yMSwtMTMuOTYgLTMuNDcsLTMuNzUgLTcuOTksLTUuNjMgLTEzLjU0LC01LjYzIC01LjUyLDAgLTEwLjAyLDEuODggLTEzLjQ5LDUuNjMgLTMuNDcsMy43NSAtNS4yMSw4LjQgLTUuMjEsMTMuOTYgMCw1LjU2IDEuNzMsMTAuMjEgNS4xOCwxMy45NiAzLjQ1LDMuNzUgNy45OCw1LjYzIDEzLjU3LDUuNjMgeiIKICAgaWQ9InBhdGg3IiAvPgoJCTxwYXRoCiAgIGNsYXNzPSJzdDAiCiAgIGQ9Im0gMTY3Ljk2LDEzNS42OCBjIC01Ljk3LC01Ljk2IC04Ljk2LC0xMy40MSAtOC45NiwtMjIuMzcgMC4wMywtOC43OCAzLjAzLC0xNi4xNyA4Ljk4LC0yMi4xNiA1Ljk1LC01Ljk5IDEzLjM2LC04Ljk4IDIyLjIxLC04Ljk4IDguOTIsMCAxNi41NiwyLjc4IDIyLjkyLDguMzMgbCAtOC4zMyw5LjEyIGMgLTQuMjQsLTMuMzMgLTkuMSwtNSAtMTQuNTgsLTUgLTUuNjMsMC4wNCAtMTAuMTUsMS43OSAtMTMuNTcsNS4yNiAtMy40MiwzLjQ3IC01LjEzLDcuOTIgLTUuMTMsMTMuMzMgMC4wMyw1LjggMS43NywxMC40MSA1LjIxLDEzLjgzIDMuNDQsMy40MiA3Ljk1LDUuMTMgMTMuNTQsNS4xMyA0LjUxLDAgNy45NywtMC44OCAxMC4zNiwtMi42NiB2IC0xMC43MyBsIC04LjMzLDAuMDUgdiAtMTEuNjcgaCAyMC44MyB2IDI5LjE3IGMgLTYuMzUsNS41NiAtMTMuOTksOC4zMyAtMjIuOTIsOC4zMyAtOC44NCwtMC4wMyAtMTYuMjYsLTMuMDMgLTIyLjIzLC04Ljk4IHoiCiAgIGlkPSJwYXRoOCIgLz4KCQk8cGF0aAogICBjbGFzcz0ic3QwIgogICBkPSJNIDIyNS44NiwxNDQuNjYgViA4Mi4yMSBsIDQ1Ljk0LC0wLjA1IHYgMTEuNjcgaCAtMzMuNDQgdiAxMy4zMyBoIDI1LjA1IHYgMTEuNjIgSCAyMzguMzYgViAxMzMgaCAzMy4zMyB2IDExLjY3IGggLTQ1LjgzIHoiCiAgIGlkPSJwYXRoOSIgLz4KCQk8cGF0aAogICBjbGFzcz0ic3QwIgogICBkPSJtIDI5MC4yNiwxMzUuNjggYyAtNS45NywtNS45NiAtOC45NiwtMTMuNDEgLTguOTYsLTIyLjM3IDAuMDMsLTguNzggMy4wMywtMTYuMTcgOC45OCwtMjIuMTYgNS45NSwtNS45OSAxMy4zNiwtOC45OCAyMi4yMSwtOC45OCA4LjkyLDAgMTYuNTYsMi43OCAyMi45Miw4LjMzIGwgLTguMzMsOS4xMiBjIC00LjI0LC0zLjMzIC05LjEsLTUgLTE0LjU4LC01IC01LjYzLDAuMDQgLTEwLjE1LDEuNzkgLTEzLjU3LDUuMjYgLTMuNDIsMy40NyAtNS4xMyw3LjkyIC01LjEzLDEzLjMzIDAuMDMsNS44IDEuNzcsMTAuNDEgNS4yMSwxMy44MyAzLjQ0LDMuNDIgNy45NSw1LjEzIDEzLjU0LDUuMTMgNC41MSwwIDcuOTcsLTAuODggMTAuMzYsLTIuNjYgdiAtMTAuNzMgbCAtOC4zMywwLjA1IHYgLTExLjY3IGggMjAuODMgdiAyOS4xNyBjIC02LjM1LDUuNTYgLTEzLjk5LDguMzMgLTIyLjkyLDguMzMgLTguODQsLTAuMDMgLTE2LjI2LC0zLjAzIC0yMi4yMywtOC45OCB6IgogICBpZD0icGF0aDEwIiAvPgoJCTxwYXRoCiAgIGNsYXNzPSJzdDAiCiAgIGQ9Ik0gMzQ4LjE2LDE0NC42NiBWIDgyLjIxIGwgNDUuOTQsLTAuMDUgdiAxMS42NyBoIC0zMy40NCB2IDEzLjMzIGggMjUuMDUgdiAxMS42MiBIIDM2MC42NiBWIDEzMyBoIDMzLjMzIHYgMTEuNjcgaCAtNDUuODMgeiIKICAgaWQ9InBhdGgxMSIgLz4KCQk8cGF0aAogICBjbGFzcz0ic3QwIgogICBkPSJtIDQwNi45MywxNDQuNjYgdiAtNjIuNSBoIDQuMTcgbCAzOS4xNywzOS4xNyBWIDgyLjE2IGggMTIuNSB2IDYyLjUgaCAtNC41OCBsIC0zOC43NSwtMzguNzUgdiAzOC43NSB6IgogICBpZD0icGF0aDEyIiAvPgoJCTxwYXRoCiAgIGNsYXNzPSJzdDAiCiAgIGQ9Ik0gNDg4LjY4LDgyLjE2IFYgMTMzIGggMzMuMzMgdiAxMS42NyBoIC00NS44MyB2IC02Mi41IGggMTIuNSB6IgogICBpZD0icGF0aDEzIiAvPgoJCTxwYXRoCiAgIGNsYXNzPSJzdDAiCiAgIGQ9Im0gNTMyLjU3LDgyLjExIGggMTIuNSB2IDYyLjU1IGggLTEyLjUgeiIKICAgaWQ9InBhdGgxNCIgLz4KCQk8cGF0aAogICBjbGFzcz0ic3QwIgogICBkPSJtIDU2My43NywxMzUuNjggYyAtNS45OSwtNS45NiAtOC45OCwtMTMuNDEgLTguOTgsLTIyLjM3IDAuMDMsLTguNzggMy4wNCwtMTYuMTcgOS4wMSwtMjIuMTYgNS45NywtNS45OSAxMy4zNywtOC45OCAyMi4xOSwtOC45OCA4LjkyLDAgMTYuNTgsMi43OCAyMi45Nyw4LjMzIGwgLTguMzMsOS4xMiBjIC00LjI0LC0zLjMzIC05LjExLC01IC0xNC42NCwtNSAtNS42MywwLjA0IC0xMC4xNSwxLjc5IC0xMy41Nyw1LjI2IC0zLjQyLDMuNDcgLTUuMTMsNy45MiAtNS4xMywxMy4zMyAwLjAzLDUuOCAxLjc3LDEwLjQxIDUuMjEsMTMuODMgMy40NCwzLjQyIDcuOTcsNS4xMyAxMy41OSw1LjEzIDUuNjIsMCAxMC40NywtMS42NSAxNC41MywtNC45NSBsIDguMzMsOS4xMSBjIC02LjM1LDUuNTYgLTE0LjAxLDguMzMgLTIyLjk3LDguMzMgLTguODIsLTAuMDMgLTE2LjIyLC0zLjAzIC0yMi4yMSwtOC45OCB6IgogICBpZD0icGF0aDE1IiAvPgoJCTxwYXRoCiAgIGNsYXNzPSJzdDAiCiAgIGQ9Im0gNjIyLjY4LDE0NC42NiB2IC02Mi41IGggMTIuNSB2IDI1IEggNjY0LjMgViA4Mi4xMSBoIDEyLjUgdiA2Mi41IGwgLTEyLjUsMC4wNSB2IC0yNS44MyBoIC0yOS4xMiB2IDI1LjgzIHoiCiAgIGlkPSJwYXRoMTYiIC8+CgkJPHBhdGgKICAgY2xhc3M9InN0MCIKICAgZD0ibSA3NDEuNjIsODIuMTYgdiAxMS42NyBoIC0yMC44MyB2IDUwLjgzIGggLTEyLjUgViA5My44MiBIIDY4Ny41IFYgODIuMTYgWiIKICAgaWQ9InBhdGgxNyIgLz4KCTwvZz4KCTxnCiAgIGlkPSJnMjAiPgoJCTxwYXRoCiAgIGNsYXNzPSJzdDAiCiAgIGQ9Im0gOTUuNjYsMTkuMTYgLTg2LjEsOTMuMDYgMTM0LjI4LDIzLjAzIHogbSAtMy40NSw0My44MiBjIDAuNzIsLTEuMTIgMS40NywtMi4yMiAyLjI0LC0zLjMxIDAuMTgsLTAuMjYgMC40MSwtMC41MSAwLjY3LC0wLjcxIDAuMTIsLTAuMSAwLjQyLC0wLjE1IDAuNTEsLTAuMDggMC4xNSwwLjEzIDAuMTksMC4zNyAwLjI0LDAuNDkgLTAuMTMsMC4yMiAtMC4yLDAuMzggLTAuMywwLjUxIC0wLjg5LDEuMjEgLTEuNzYsMi40MyAtMi42OSwzLjYxIC0wLjE2LDAuMjEgLTAuNTcsMC4yMyAtMC44NiwwLjM0IDAuMDYsLTAuMjggMC4wNSwtMC42MiAwLjE5LC0wLjg1IHogTSA4OC45Niw2MS41IGMgMC40NSwtMS4wMiAwLjkzLC0yLjAzIDEuNDcsLTMuMDEgMC4xMSwtMC4xOSAwLjU2LC0wLjE5IDAuODYsLTAuMjggMC4wNiwwLjA5IDAuMTEsMC4xOSAwLjE3LDAuMjggLTAuMzUsMC43OSAtMC43LDEuNTggLTEuMDUsMi4zNiAtMC4xNiwwLjM0IC0wLjI2LDAuNzQgLTAuNTEsMS4wMSAtMC4yMSwwLjIyIC0wLjU4LDAuMyAtMC44OCwwLjQ1IC0wLjAzLC0wLjI4IC0wLjE2LC0wLjU5IC0wLjA2LC0wLjgxIHogbSAtMi44MywtMS44IGMgMC4xNSwtMC42MyAwLjM4LC0xLjI1IDAuNjIsLTEuODUgMC4wNywtMC4xOCAwLjMsLTAuMzEgMC40NiwtMC40NiAwLjEyLDAuMiAwLjM3LDAuNDIgMC4zNiwwLjYyIC0wLjA0LDAuNTMgLTAuMTgsMS4wNiAtMC4zMSwxLjU5IC0wLjExLDAuNDIgLTAuMjMsMC44MyAtMC40LDEuMjMgLTAuMTUsMC4zNyAtMC4zNywwLjcgLTAuNTcsMS4wNSAtMC4xNiwtMC4wNiAtMC4zNCwtMC4xMSAtMC41LC0wLjE3IDAuMTEsLTAuNjggMC4xNywtMS4zNSAwLjM0LC0yLjAxIHogbSAtMy42MiwtMyBjIDAuMTQsMC40NyAwLjI1LDAuNjggMC4yNywwLjkgMC4xLDEuMTggMC4yMSwyLjM2IDAuMjUsMy41NSAwLDAuMTcgLTAuMywwLjQzIC0wLjUsMC41IC0wLjE0LDAuMDUgLTAuNTMsLTAuMTYgLTAuNTQsLTAuMjcgLTAuMDgsLTEuMzEgLTAuMTMsLTIuNjIgLTAuMTMsLTMuOTMgLTAuMDEsLTAuMiAwLjMyLC0wLjM5IDAuNjUsLTAuNzUgeiBtIC02LjIsLTAuMDYgYyAwLjIyLDAuMjMgMC41MywwLjQzIDAuNjIsMC43MSAwLjM1LDAuOTkgMC41OSwyLjAyIDAuOTMsMy4wMSAwLjIzLDAuNjYgLTAuNCwwLjkxIC0wLjkzLDEuMjggLTAuNCwtMS4zOSAtMC43OSwtMi42MiAtMS4wOSwtMy44NyAtMC4wNywtMC4zIDAuMzQsLTAuODEgMC40NywtMS4xMyB6IG0gLTYuMTMsMS42NSBjIDAuNTUsLTAuNTEgMS4yOSwtMC4wOCAxLjU3LDAuMjQgMC45LDEuMDQgMS42OSwyLjE3IDIuNTEsMy4yNiAtMC4xNiwwLjI2IC0wLjI1LDAuNCAtMC4zNCwwLjUzIC0wLjMxLDAuNDIgLTAuODcsMC42MiAtMS4xOSwwLjE3IC0wLjczLC0xLjAzIC0xLjUzLC0yIC0yLjI0LC0zLjA0IC0wLjIyLC0wLjMzIC0wLjQ1LC0xLjAyIC0wLjMxLC0xLjE2IHogbSAxLjU5LDI0LjggYyAtMC40OCwtMC45NSAtMC45OCwtMS44OSAtMS40MywtMi44NSAtMC4wNiwtMC4xMiAwLjA2LC0wLjM3IDAuMTgsLTAuNDkgMC4wNSwtMC4wNiAwLjMyLC0wLjAyIDAuNDMsMC4wNSAwLjUxLDAuMzMgMS4yLDIuNTUgMC44MiwzLjI5IHogbSAyLjgyLDUuMzEgYyAtMC40LC0wLjg5IC0wLjgsLTEuNzkgLTEuMywtMi45IDAuNDcsMC4xMSAwLjg2LDAuMDkgMC45NSwwLjI0IDAuNDgsMC44IDAuOTgsMS42MSAwLjM1LDIuNjYgeiBtIDMuNiwyMi44OCBjIC0wLjc5LDAuNjIgLTEuMzgsMC40OSAtMS41MSwtMC40MiAtMC4yMywtMS41NyAtMC4xNiwtMy4wOSAxLjIsLTQuMjMgMC4yMiwtMC4xOCAwLjYsLTAuMTkgMC45LC0wLjI4IDAuMDMsMC4xIDAuMDUsMC4yIDAuMDcsMC4zIC0xLjU4LDIuNTEgLTEuNywzLjQxIC0wLjY2LDQuNjMgeiBNIDc2Ljc0LDkyLjQgYyAtMC4wNCwtMC4xMSAwLjE1LC0wLjI5IDAuMjMsLTAuNDMgMC4xNCwwLjEgMC4zNSwwLjE4IDAuNCwwLjMxIDAuNDIsMS4xOCAwLjgyLDIuMzggMS4yMywzLjU3IC0wLjA2LDAuMDQgLTAuMTIsMC4wOCAtMC4xOSwwLjEyIC0wLjE2LC0wLjA4IC0wLjQyLC0wLjEzIC0wLjQ3LC0wLjI2IC0wLjQzLC0xLjEgLTAuODMsLTIuMiAtMS4yLC0zLjMxIHogbSA2LjkzLDIzLjMgYyAtMC44NywwLjE1IC0xLjc3LDAuMTcgLTIuOTEsMC4yNSAtMC40NywtMC42IC0xLC0xLjI3IC0xLjQ4LC0xLjk2IC0wLjAyLC0wLjA0IDAuMzYsLTAuMzggMC41OSwtMC41MSAwLjA3LC0wLjAzIDAuMzIsMC4xNyAwLjQzLDAuMzEgMC45MiwxLjIyIDEuNjMsMS40NCAzLjIsMS4wNyAwLjI4LC0wLjA2IDAuNjEsMC4xIDAuOTIsMC4xNiAtMC4yNSwwLjIzIC0wLjQ3LDAuNjMgLTAuNzUsMC42OCB6IG0gLTQsLTE1LjQ0IGMgLTAuMDMsLTAuMDcgMC4wOSwtMC4xOCAwLjE0LC0wLjI3IDAuMDgsMC4wNiAwLjIyLDAuMTEgMC4yNSwwLjE5IDAuMjcsMC43NCAwLjUxLDEuNDkgMC43NywyLjIzIC0wLjA0LDAuMDIgLTAuMDgsMC4wNSAtMC4xMiwwLjA4IC0wLjEsLTAuMDUgLTAuMjYsLTAuMDggLTAuMjksLTAuMTYgLTAuMjYsLTAuNjggLTAuNTEsLTEuMzggLTAuNzUsLTIuMDcgeiBtIDQuNzksOS43NiBjIC0wLjMzLDEuNDUgLTEuNTQsMS43NyAtMi43NCwxLjY1IC0xLjA4LC0wLjExIC0xLjgxLC0xLjQ5IC0xLjUzLC0yLjU4IDAuNCwtMS41MiAxLjY2LC0yLjI0IDMuMjMsLTEuODUgMC45LDAuMjMgMS4zNywxLjQ4IDEuMDQsMi43OCB6IG0gLTAuOTQsLTcuMTQgMS40NSwtMi40NyBjIDAuMjQsMC42IC0wLjY3LDIuMjEgLTEuNDUsMi40NyB6IG0gNC4xOSw3LjIgYyAtMC4xNSwwLjcyIC0wLjQyLDEuNDEgLTAuNjksMi4xMSAtMC4wNSwwLjE0IC0wLjM0LDAuMTkgLTAuNTIsMC4yOCAtMC4wOCwtMC4xOCAtMC4yMywtMC4zNyAtMC4yMiwtMC41NSAwLjAyLC0wLjMyIDAuMTQsLTAuNjMgMC4yNCwtMSAwLjU1LC0xLjMgMC4wMywtMi40OSAtMC42MiwtMy42NiAtMC4yMSwtMC4zOCAtMC40NywtMC44MSAwLjEsLTEuMDEgMC4xNywtMC4wNiAwLjY1LDAuMzQgMC43NywwLjYxIDAuNDUsMS4wMyAxLjE5LDIuMDEgMC45NCwzLjIyIHogTSA4NS41OSw5Ny40IGMgMC4yNiwtMC44MiAwLjQ5LC0xLjYgMC43NiwtMi4zNyAwLjA1LC0wLjE0IDAuMjUsLTAuMjYgMC40LC0wLjMyIDAuMDYsLTAuMDMgMC4yNCwwLjEyIDAuMjksMC4yMiAwLjI0LDAuNjEgLTAuNjcsMi4yMSAtMS40NSwyLjQ3IHogbSA0LjIxLC03LjcgYyAtMC4zNiwwLjg3IC0wLjc5LDEuNzEgLTEuMjEsMi41NSAtMC4wOCwwLjE2IC0wLjI2LDAuMjggLTAuMzgsMC40MSAtMC4wNywtMC4wNyAtMC4xNCwtMC4xNSAtMC4yMiwtMC4yMyAwLjM2LC0xLjAxIDAuNjksLTIuMDEgMS4wOCwtMyAwLjA4LC0wLjIxIDAuMzcsLTAuMzMgMC41NiwtMC40OSAwLjA2LDAuMjUgMC4yNSwwLjU2IDAuMTcsMC43NiB6IG0gMi4zMSwtNC44IGMgLTAuMTIsLTAuMDMgLTAuMjQsLTAuMDYgLTAuMzYsLTAuMDkgMC4wNCwtMC4zNyAwLjAyLC0wLjc0IDAuMTIsLTEuMDkgMC4xNywtMC42MiAwLjM5LC0xLjI0IDAuNjUsLTEuODQgMC4wOCwtMC4xNyAwLjM0LC0wLjI3IDAuNTIsLTAuNDEgMC4wOSwwLjE5IDAuMywwLjQzIDAuMjUsMC41NyAtMC4zNiwwLjk3IC0wLjc4LDEuOTEgLTEuMTgsMi44NiB6IG0gMjMuMzYsLTQuMDEgYyAtMC4xMywtMC4wMyAtMC4yNywtMC4wNSAtMC40MywtMC4wNiAtMS4zNCwtMC4wOSAtMi42OCwtMC4xOCAtNC4wMywtMC4yMSAtNC44LC0wLjExIC05LjYxLC0wLjE5IC0xNC40MiwtMC4zMSAtMy4xNSwtMC4wOCAtNi4zLC0wLjIxIC05LjQ1LC0wLjM0IC0zLjQsLTAuMTQgLTYuOCwtMC4zNiAtMTAuMiwtMC40OCBDIDc0LjM3LDc5LjQgNjkuOTMsNzguOTIgNjkuMjMsNzguODcgNjcuNDYsNzguNzQgNjUuMDUsNzguNDQgNjIuOTYsNzguNCA2MC4wNSw3OC4zNCA1Ny4xNCw3OC4yNyA1NC4yMiw3OC4yNSA1My44Myw3OC4wOCA1My40LDc4LjAzIDUyLjk3LDc3Ljk5IDUyLjg1LDc3Ljk4IDUyLjc0LDc3Ljk2IDUyLjYzLDc3Ljk0IDUyLjU1LDc3Ljg3IDUyLjQ3LDc3Ljc5IDUyLjQyLDc3LjcxIDUyLjM0LDc3LjYgNTIuNCw3Ny40MyA1Mi41LDc3LjI1IGMgMC4xLC0wLjA3IDAuMTksLTAuMTUgMC4yNiwtMC4yMyAwLjgxLC0wLjg5IDEuNCwtMS45OCAyLjI3LC0yLjggMS41MywtMS40MyAzLjE2LC0yLjc2IDQuODQsLTQuMDIgMi43OCwtMi4wOCA2LjA3LC0zLjIgOS4zMywtNC4zMyAxLjM0LC0wLjQ3IDIuNjcsLTAuOTQgNC4wMywtMS4zNSAyLjYxLC0wLjc4IDUuMzQsLTAuODEgOC4wMiwtMS4xNCAyLjI5LC0wLjI4IDQuNTEsLTAuMDEgNi43MiwwLjU4IDEuNDcsMC40IDIuOTYsMC43NCA0LjQ2LDEuMDUgbCAyLjYxLDAuMzkgYyAxLjUzLDAuNjIgMy4wNiwxLjEgNC40NCwxLjg1IDIuOTcsMS42MiA1Ljg4LDMuMzMgOC43NSw1LjExIDIuMzMsMS40MyA0Ljc3LDIuNzUgNi41Miw0LjkzIDAuMjUsMC4zMiAwLjU3LDAuNiAwLjg5LDAuODggLTAuMDMsMC4zNSAtMC4wOCwxLjUxIC0wLjEsMS44NyAtMC4wMSwwLjI3IC0wLjA1LDAuNTYgLTAuMDcsMC44NSB6IgogICBpZD0icGF0aDE4IiAvPgoJCTxwYXRoCiAgIGNsYXNzPSJzdDAiCiAgIGQ9Im0gMTA0LjU0LDcxLjY5IGMgLTEuOCwtMS4xIC0zLjY2LC0yLjEgLTUuNTEsLTMuMTIgLTAuMTksLTAuMTEgLTAuNTYsLTAuMTUgLTAuNzMsLTAuMDQgLTEuMTUsMC44IC0yLjI2LDEuNjcgLTMuNDEsMi40OSAtMS44NCwxLjMxIC0zLjg0LDIuMzIgLTYuMSwyLjc4IC0wLjYsMC4xMiAtMS4yMiwwLjEgLTEuODQsMC4xNiAtMi4xOCwwLjI1IC00LjMzLDAuNTEgLTYuNTYsMC4yNyBDIDc3LjYzLDczLjkyIDc1LDczLjM1IDcyLjQ3LDcyLjIgNzAuMzgsNzEuMjUgNjguMyw3MC4zIDY2LjY4LDY4LjY3IGMgLTAuNSwtMC41MSAtMC44NiwtMC40NyAtMS40MiwtMC4yMiAtMi44MSwxLjIgLTUuNDMsMi43MyAtNy42OSw0Ljc0IC0xLjMsMS4xNSAtMi4zNSwyLjU2IC0zLjYyLDMuOTYgMjAuNDcsMC42NCA0MC42MSwxLjI3IDYwLjc4LDEuOSAtMS4wNCwtMC45NSAtMi4wMSwtMi4wNSAtMy4xOSwtMi44OCAtMi4yNywtMS41OSAtNC42NCwtMy4wNCAtNywtNC40OCB6IE0gNjUuNzksNzAgYyAtMC4xMSwtMC4yMSAtMC4wNSwtMC41NSAwLjA1LC0wLjc5IDAuMDYsLTAuMTYgMC4zMiwtMC4yNCAwLjQ4LC0wLjM0IDAuMTMsMC4xMSAwLjIyLDAuMTUgMC4yNiwwLjIxIDAuMzcsMC42OSAwLjc2LDEuMzggMS4wNywyLjEgMC4wOSwwLjIgLTAuMDcsMC41MSAtMC4xMywwLjc3IEMgNjcuMjYsNzEuODIgNjYuOSw3MS43NCA2Ni43NCw3MS41MyA2Ni4zNyw3MS4wNiA2Ni4wNSw3MC41NCA2NS43OSw3MCBaIG0gMi41Nyw1Ljc2IGMgLTAuMzUsLTAuNDUgLTAuNjUsLTAuOTUgLTAuODksLTEuNDYgLTAuMDYsLTAuMTIgMC4xNywtMC4zOCAwLjI2LC0wLjU3IDAuMTIsMCAwLjI0LC0wLjAyIDAuMzYsLTAuMDIgMC4zMywwLjY0IDAuNjcsMS4yOSAxLDEuOTQgLTAuMjYsMC4wNCAtMC42NywwLjIgLTAuNzMsMC4xMSB6IG0gMjguMTIsMC4wNCBjIC0wLjI1LDAuODYgLTAuMzksMS44MSAtMS40MSwyLjE3IC0wLjA5LC0wLjA0IC0wLjE4LC0wLjEgLTAuMjgsLTAuMTQgMC4yOSwtMC43NyAwLjU2LC0xLjU1IDAuODksLTIuMyAwLjA3LC0wLjE2IDAuNCwtMC4yMSAwLjYyLC0wLjMgMC4wNywwLjE5IDAuMjMsMC40MSAwLjE4LDAuNTcgeiBtIDAuNjMsLTIuNDUgYyAtMC4wOSwtMC4wMiAtMC4xOCwtMC4wNCAtMC4yNywtMC4wNiAwLjA1LC0wLjM0IDAuMDUsLTAuNjggMC4xNSwtMSAwLjMyLC0wLjkyIDAuNjYsLTEuODMgMS4wMywtMi43MyAwLjA5LC0wLjIxIDAuMzQsLTAuMzYgMC41MSwtMC41NCAwLjEyLDAuMjEgMC4zNSwwLjQzIDAuMzQsMC42MyAtMC4wNiwxLjQ3IC0wLjg5LDIuNTkgLTEuNzYsMy43IHoiCiAgIGlkPSJwYXRoMTkiIC8+CgkJPHBhdGgKICAgY2xhc3M9InN0MCIKICAgZD0ibSA5Ny40LDY3LjU1IGMgLTEuMTgsLTAuMzYgLTIuMjgsLTAuNzEgLTMuMzksLTEuMDIgLTAuMTQsLTAuMDQgLTAuMzUsMC4yIC0wLjUzLDAuMzEgLTEuMTksMC42OSAtMi4zMSwxLjU0IC0zLjU4LDIuMDMgLTEuMjEsMC40NyAtMi41OCwwLjYyIC0zLjg5LDAuOCAtMS4zOSwwLjE5IC0yLjgzLDAuNSAtNC4yLDAuMzQgLTMuMzIsLTAuMzkgLTUuOTUsLTIuMjMgLTguNSwtNC4zOCAtMS45MSwwLjU5IC0zLjg4LDEuMiAtNi4wMiwxLjg2IDguNSw3LjQ5IDIyLjI2LDcuNzEgMzAuMTEsMC4wNiB6IgogICBpZD0icGF0aDIwIiAvPgoJPC9nPgo8L2c+Cjwvc3ZnPgo="
+            style="max-width:80%;max-height:75px"></p></div>
+    <div style="width:max-content;margin:0 auto">
+        <p style="margin-bottom:0">
+            Carl von Ossietzky Universität Oldenburg
+        </p>
+        <table style="color:#fd0!important;border-spacing:0!important">
+            <tbody>
+            <tr>
+                <td style="padding-right:1ex!important;padding-left:0!important">Büro:</td>
+                <td>M 1-161 (AStA-Trakt)</td>
+            </tr>
+            <tr>
+                <td style="padding-right:1ex!important;padding-left:0!important">Telefon:</td>
+                <td>
+                    <a href="tel:+4944179825720" style="color:#fd0;text-decoration:none!important">
+                        +49&nbsp;(0)&nbsp;441&nbsp;798–25720
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-right:1ex!important;padding-left:0!important">E-Mail:</td>
+                <td>
+                    <a href="mailto:info@gegenlicht.net" style="color:#fd0;text-decoration:none!important">
+                        info@gegenlicht.net
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="display:flex;gap:.25rem;justify-content:space-around;flex-wrap:wrap;max-width:95%;margin:1.5rem auto!important">
+        <div style="width:0;flex:1 1 450px">
+            <p style="font-weight:700">
+                Postadresse // Postal Address
+            </p>
+            <p>
+                Unikino&nbsp;GEGENLICHT<br>
+                c/o AStA&nbsp;der&nbsp;Carl&nbsp;von&nbsp;Ossietzky&nbsp;Universität&nbsp;Oldenburg<br>
+                Ammerländer&nbsp;Heerstraße&nbsp;114–118<br>
+                26129&nbsp;Oldenburg
+            </p>
+        </div>
+        <div style="width:0;flex:1 1 450px">
+            <p style="font-weight:700">
+                Semesterprogramm // Semester Program
+            </p>
+            <p>
+                <a href="https://www.gegenlicht.net"
+                   style="color:#fd0;text-decoration:none!important"
+                   target="_blank">
+                    www.gegenlicht.net
+                </a><br>
+                <a href="https://instagram.com/unikino_gegenlicht"
+                   style="color:#fd0;text-decoration:none!important"
+                   target="_blank">
+                    Instagram
+                </a><br>
+                <a href="https://mastodon.social/@gegenlicht.net"
+                   style="color:#fd0;text-decoration:none!important"
+                   target="_blank">
+                    Mastodon
+                </a><br>
+                <a href="https://bsky.app/profile/gegenlicht.net"
+                   style="color:#fd0;text-decoration:none!important"
+                   target="_blank">
+                    Bluesky
+                </a>
+            </p>
+        </div>
+        <div style="width:0;flex:1 1 450px">
+            <p style="font-weight:700">
+                Tickets&nbsp;&&nbsp;Reservierungen // Tickets&nbsp;&&nbsp;Reservations
+            </p>
+            <a href="https://tickets.gegenlicht.net/gegenlicht/"
+               style="color:#fd0;text-decoration:none!important"
+               target="_blank"
+               title="Unser Hauptprogramm">
+                tickets.gegenlicht.net/gegenlicht
+            </a><br>
+            <a
+                    href="https://tickets.gegenlicht.net/anime-nights/"
+                    style="color:#fd0;text-decoration:none!important"
+                    target="_blank"
+                    title="Unser traumhaft schönes Anime Sonderprogramm">
+                tickets.gegenlicht.net/anime-nights
+            </a><br>
+            <a
+                    href="https://tickets.gegenlicht.net/mmm/"
+                    style="color:#fd0;text-decoration:none!important"
+                    target="_blank"
+                    title="Unser mitsing Musical Sonderprogramm">
+                tickets.gegenlicht.net/mmm
+            </a><br>
+            <a href="https://tickets.gegenlicht.net/popcornkino/"
+               style="color:#fd0;text-decoration:none!important"
+               target="_blank"
+               title="Das actionreiche Popcornkino">
+                tickets.gegenlicht.net/popcornkino
+            </a><br>
+            <a href="https://tickets.gegenlicht.net/specials/"
+               style="color:#fd0;text-decoration:none!important"
+               target="_blank"
+               title="Unsere Sonderveranstaltungen">
+                tickets.gegenlicht.net/specials
+            </a>
+        </div>
+        <div style="width:0;flex:1 1 450px">
+            <p style="font-weight:700">
+                Besucher*innenadresse // Visitors Address
+            </p>
+            <p>
+                Unikino GEGENLICHT<br>
+                (im UNIKUM Oldenburg auf Bühne 1)<br>
+                Uhlhornsweg 49–55<br>
+                26129 Oldenburg<br>
+                <a href="geo:53.147240,8.178468?q=53.147240,8.178468(Unikino+GEGENLICHT)"
+                   style="color:#fd0;text-decoration:underline!important">Auf einer Karte anzeigen</a>
+            </p>
+        </div>
+    </div>
+</div>
+</body>

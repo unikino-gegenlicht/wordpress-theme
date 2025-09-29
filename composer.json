@@ -1,0 +1,14 @@
+{
+    "name": "gegenlicht/wordpress-theme",
+    "type": "wordpress-theme",
+    "license": "EUPL-1.2",
+    "authors": [
+        {
+            "name": "Jan Eike Suchard",
+            "email": "60288203+dr4hcu5-jan@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.0"
+    }
+}
