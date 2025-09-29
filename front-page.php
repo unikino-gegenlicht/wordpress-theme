@@ -43,10 +43,11 @@ else:
     endwhile;
     ?>
 
+    <?php if ( ! empty( $monthlyMovies ) ) : ?>
+
     <h1 id="program"
         class="title is-uppercase mb-1"><?= esc_html__( 'Our Semester Program', 'gegenlicht' ) ?></h1>
 
-    <?php if ( ! empty( $monthlyMovies ) ) : ?>
 
     <div class="is-flex is-justify-content-space-between is-align-items-center">
         <div>
@@ -264,16 +265,16 @@ endforeach; ?>
                         <?php foreach ( $postImages as $postImage ) : ?>
                             <a href="<?= $postImage[1] ?>">
                                 <figure class="image marquee-image">
-                                    <img src="<?= $postImage[0] ?>"/>
+                                    <img src="<?= $postImage[0] ?>" alt=""/>
                                 </figure>
                             </a>
                         <?php endforeach; ?>
                     </div>
-                    <div class="marquee-content" style="height: 200px;">
+                    <div class="marquee-content  is-align-items-center" style="height: 200px;">
                         <?php foreach ( $postImages as $postImage ) : ?>
                             <a href="<?= $postImage[1] ?>">
                                 <figure class="image marquee-image">
-                                    <img src="<?= $postImage[0] ?>"/>
+                                    <img src="<?= $postImage[0] ?>" alt=""/>
                                 </figure>
                             </a>
                         <?php endforeach; ?>
