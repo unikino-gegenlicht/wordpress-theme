@@ -65,7 +65,7 @@ if ( empty( $posts ) ) {
 							<?= date( GGL_LIST_DATETIME, $startDateTime ) ?>
                         </time>
                     </p>
-                    <h2 class="is-size-5 no-separator is-uppercase">
+                    <h2 class="is-size-5 no-separator is-uppercase movie-title">
 						<?= ggl_get_title() ?>
                     </h2>
                 </div>

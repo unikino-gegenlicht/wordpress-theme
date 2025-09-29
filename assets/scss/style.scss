@@ -285,6 +285,9 @@ html {
       justify-content: space-between;
       align-items: center;
 
+      .movie-title {
+        line-height: 1.125;
+      }
       border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
       border-bottom: var(--shared-border-thickness) solid var(--bulma-body-color);
 
