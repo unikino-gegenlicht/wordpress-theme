@@ -2,7 +2,9 @@
 
 namespace inc\customizer;
 
-use WP_CheckboxList_Customize_Control;
+use inc\customizer\controls\MultiInputControl;
+use inc\customizer\controls\WP_CheckboxList_Customize_Control;
+use WP_Customize_Code_Editor_Control;
 use WP_Customize_Manager;
 
 require_once "base.php";
@@ -32,6 +34,8 @@ class FrontPageCustomizerOverrides extends GGLCustomizerBase {
 		$this->add_theme_mod( "displayed_special_programs", array() );
 		$this->add_theme_mod( "displayed_blocks", array() );
 		$this->add_theme_mod( "program_reveal_delay", 14 );
+		$this->add_theme_mod( "show_custom_banner_message", false );
+		$this->add_theme_mod("custom_banner_message", "");
 	}
 
 	private function add_controls(): void {
@@ -69,6 +73,23 @@ class FrontPageCustomizerOverrides extends GGLCustomizerBase {
 			'label'       => __( 'Program Reveal', "gegenlicht" ),
 			'description' => __( 'This value controls how many days before the start of the screenings the frontpage shows the semester program', 'gegenlicht' ),
 		) );
+
+		$this->add_control( "show_custom_banner_message", array(
+			"section"     => self::SECTION,
+			"label"       => esc_html__( "Show a customized banner message", "gegenlicht" ),
+			"description" => esc_html__( "Display a customized banner message. This will override the semester break banner and other banners that will normally be displayed", "gegenlicht" ),
+			"type"        => "checkbox",
+		) );
+
+		$this->manager->add_control( new WP_Customize_Code_Editor_Control( $this->manager, "custom_banner_message", array(
+			"section"     => self::SECTION,
+			"panel"       => $this->panel,
+			"label"       => __( 'Banner Content', 'gegenlicht' ),
+			"description" => __( "The content shown in the banner. The delimitation with stars is done automatically", "gegenlicht" ),
+			"settings"    => "custom_banner_message",
+			'code_type' => "text/html",
+		) ) );
+
 	}
 
 	private function get_semesters(): array {

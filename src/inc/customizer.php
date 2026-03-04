@@ -1,5 +1,7 @@
 <?php
 
+require_once "customizer/controls/custom_controls.php";
+
 use inc\customizer\AddressOptionsCustomizer;
 use inc\customizer\AnonymizationCustomizer;
 use inc\customizer\ArchivePageCustomizer;
@@ -19,6 +21,7 @@ use inc\customizer\SupporterPageCustomizer;
 use inc\customizer\TeamBlockCustomizer;
 use inc\customizer\TeamPageCustomizer;
 use inc\customizer\YouthProtectionCustomizer;
+use function inc\customizer\controls\custom_controls;
 
 defined( 'ABSPATH' ) || exit;
 

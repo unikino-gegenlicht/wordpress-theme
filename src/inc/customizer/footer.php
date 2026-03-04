@@ -2,7 +2,7 @@
 
 namespace inc\customizer;
 
-use WP_CheckboxList_Customize_Control;
+use inc\customizer\controls\WP_CheckboxList_Customize_Control;
 use WP_Customize_Manager;
 
 require_once "base.php";
