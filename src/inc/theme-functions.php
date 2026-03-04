@@ -102,8 +102,8 @@ function ggl_get_title( WP_Post|int $post = 0 ): string {
         return get_the_title( $post );
     }
 
-    $licensingType = rwmb_get_value( "license_type", post_id: $post->ID ) ?: "full";
-    $anonymize     = ( $licensingType != "full" && ! is_user_logged_in() );
+    $anonymize = ! apply_filters( "ggl__show_full_details", false, $post );
+
 
     if ( ! $anonymize ) {
         return get_locale() == "de" ? rwmb_get_value( 'german_title', post_id: $post->ID ) : rwmb_get_value( 'english_title', post_id: $post->ID );
@@ -129,8 +129,8 @@ function ggl_get_summary( WP_Post|int $post = 0, bool $plain = false ): string {
         return $val;
     }
 
-    $licensingType = rwmb_get_value( "license_type" ) ?: "full";
-    $anonymize     = ( $licensingType != "full" && ! is_user_logged_in() );
+    $anonymize = ! apply_filters( "ggl__show_full_details", false, $post );
+
 
     if ( $anonymize ) {
         $val = rwmb_get_value( "anon_summary" );
@@ -148,8 +148,7 @@ function ggl_get_worth_to_see( WP_Post|int $post = 0, bool $plain = false ): str
         return $val;
     }
 
-    $licensingType = rwmb_get_value( "license_type" ) ?: "full";
-    $anonymize     = ( $licensingType != "full" && ! is_user_logged_in() );
+    $anonymize     = ! apply_filters( "ggl__show_full_details", false, $post );
 
     if ( $anonymize ) {
         $val = rwmb_get_value( "anon_worth_to_see" );
@@ -234,7 +233,7 @@ function ggl_get_translate_rating_descriptor( string $descriptorKey ): string {
             'injury'              => esc_html__( 'Injury', 'gegenlicht' ),
             'stressful_topics'    => esc_html__( 'Stressful Topics', 'gegenlicht' ),
             'language'            => esc_html__( 'Language', 'gegenlicht' ),
-            'nudity'            => esc_html__( 'Nudeness', 'gegenlicht' ),
+            'nudity'              => esc_html__( 'Nudeness', 'gegenlicht' ),
             'risky_behaviour'     => esc_html__( 'Risky Behaviour', 'gegenlicht' ),
             'marginalization'     => esc_html__( 'Marginalization', 'gegenlicht' ),
     ];
@@ -245,22 +244,23 @@ function ggl_get_translate_rating_descriptor( string $descriptorKey ): string {
     return $descriptorKey;
 }
 
-function ggl_resolve_country_list(array $selectedCountries): array {
+function ggl_resolve_country_list( array $selectedCountries ): array {
     require_once get_stylesheet_directory() . '/src/inc/defunct-countries.php';
 
     $country_list = [];
-    foreach ($selectedCountries as $numeric) {
+    foreach ( $selectedCountries as $numeric ) {
         try {
             $country = ( new League\ISO3166\ISO3166 )->numeric( $numeric );
-        } catch (League\ISO3166\Exception\OutOfBoundsException $e) {
-            foreach ($defunct_countries as $country) {
+        } catch ( League\ISO3166\Exception\OutOfBoundsException $e ) {
+            foreach ( $defunct_countries as $country ) {
                 $comparison = mb_strtolower( $country['numeric'] );
-                if ($numeric === $comparison || $numeric === mb_substr($comparison, 0, mb_strlen($numeric))) {
+                if ( $numeric === $comparison || $numeric === mb_substr( $comparison, 0, mb_strlen( $numeric ) ) ) {
                     $country_list[] = $country["alpha2"];
                 }
             }
         }
         $country_list[] = $country["alpha2"];
     }
+
     return $country_list;
 }

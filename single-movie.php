@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 
-$anonymize        = rwmb_get_value( "license_type" ) != "full" && ! is_user_logged_in();
+$anonymize        = !apply_filters("ggl__show_full_details", false, $post);
 $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 
 
@@ -11,7 +11,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 ?>
 <main>
     <header class="page-content">
-        <div class="screening-information pt-0 <?= ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? '' : 'pb-0' ?>">
+        <div class="screening-information pt-0 <?= ( !$anonymize && (ggl_get_title() != rwmb_meta( 'original_title' ) )) ? '' : 'pb-0' ?>">
             <div>
                 <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
                 <p>
@@ -42,10 +42,10 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         </div>
         <div class="content mb-0">
             <h1 role="heading"
-                class="mb-0 no-separator <?= ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? "" : "pt-2" ?>">
+                class="mb-0 no-separator <?= (!$anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? "" : "pt-2" ?>">
                 <?= ggl_get_title() ?>
             </h1>
-            <?php if ( ! $anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ): ?>
+            <?php if ( !$anonymize &&  ggl_get_title() != rwmb_meta( 'original_title' ) ): ?>
                 <p class="is-size-5 mb-0"><?= rwmb_meta( 'original_title' ) ?></p>
             <?php endif; ?>
         </div>
