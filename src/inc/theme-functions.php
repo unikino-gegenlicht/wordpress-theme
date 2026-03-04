@@ -97,16 +97,14 @@ function is_contact_page(): bool {
  */
 function ggl_get_title( WP_Post|int $post = 0 ): string {
     $post = get_post( $post );
-
     if ( $post->post_type !== "movie" && $post->post_type !== "event" ) {
         return get_the_title( $post );
     }
 
-    $anonymize = ! apply_filters( "ggl__show_full_details", false, $post );
+    $show_details = apply_filters( "ggl__show_full_details", false, $post );
 
-
-    if ( ! $anonymize ) {
-        return get_locale() == "de" ? rwmb_get_value( 'german_title', post_id: $post->ID ) : rwmb_get_value( 'english_title', post_id: $post->ID );
+    if ( $show_details ) {
+        return get_locale() == "de" ? mb_trim(rwmb_get_value( 'german_title', post_id: $post->ID )) : mb_trim(rwmb_get_value( 'english_title', post_id: $post->ID ));
     }
 
     $inSpecialProgram = rwmb_get_value( 'program_type', post_id: $post->ID ) == 'special_program';
@@ -129,7 +127,7 @@ function ggl_get_summary( WP_Post|int $post = 0, bool $plain = false ): string {
         return $val;
     }
 
-    $anonymize = ! apply_filters( "ggl__show_full_details", false, $post );
+    $anonymize = !apply_filters( "ggl__show_full_details", false, $post );
 
 
     if ( $anonymize ) {
@@ -204,19 +202,20 @@ function ggl_the_post_thumbnail( WP_Post|int $post = 0 ): void {
     $post       = get_post( $post );
     $mobileUrl  = ggl_get_thumbnail_url( $post, "mobile" );
     $desktopUrl = ggl_get_thumbnail_url( $post, "desktop" );
+    $landscape_animation_url = wp_get_original_image_url( rwmb_meta("landscape_animated_feature_image")["ID"] ?? false);
+    $portrait_animation_url = wp_get_original_image_url( rwmb_meta("portrait_animated_feature_image")["ID"] ?? false);
+    $is_animated = rwmb_meta("use_animated_feature_image");
+
+    $show_details = apply_filters( "ggl__show_full_details", false, $post );
     ?>
-    <div>
-        <figure class="image movie-image mt-4 is-hidden-mobile">
-            <picture>
-                <img width="800" height="450" src="<?= $desktopUrl ?>"/>
-            </picture>
-        </figure>
-        <figure class="image movie-image mt-4 is-hidden-tablet">
-            <picture>
-                <img width="800" height="1000" src="<?= $mobileUrl ?>"/>
-            </picture>
-        </figure>
-    </div>
+        <picture class="image movie-image">
+            <source height="450" width="800" media="(prefers-reduced-motion: reduce) and (width > 768px)" srcset="<?= $desktopUrl ?>">
+            <source height="1000" width="800" media="(prefers-reduced-motion: reduce) and (width <= 768px)" srcset="<?= $mobileUrl ?>">
+            <source height="450" width="800" media="(width > 768px)" srcset="<?= $is_animated && $show_details ? $landscape_animation_url : $desktopUrl ?> ">
+            <source height="1000" width="800" media="(width <= 768px)" srcset="<?= $is_animated && $show_details ? $portrait_animation_url : $mobileUrl ?> ">
+            <img width="800" height="1000" src="<?= $mobileUrl ?>">
+        </picture>
+
     <?php
 }
 

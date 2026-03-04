@@ -25,6 +25,7 @@ require_once "src/inc/customizer.php";
 require_once "src/inc/GGL_Font.php";
 
 require_once "vendor/autoload.php";
+require_once "src/filters.php";
 
 add_action( "after_setup_theme", "ggl_setup_theme_supports" );
 add_action( "after_setup_theme", "ggl_add_image_sizes" );
