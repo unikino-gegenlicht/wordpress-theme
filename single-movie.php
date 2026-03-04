@@ -2,16 +2,13 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 
-
-$anonymize        = !apply_filters("ggl__show_full_details", false, $post);
+$show_details = apply_filters( "ggl__show_full_details", false, $post );
 $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
-
-
 
 ?>
 <main>
     <header class="page-content">
-        <div class="screening-information pt-0 <?= ( !$anonymize && (ggl_get_title() != rwmb_meta( 'original_title' ) )) ? '' : 'pb-0' ?>">
+        <div class="screening-information pt-0 <?= ( $show_details && ( ggl_get_title() !== rwmb_meta( 'original_title' ) ) ) ? '' : 'pb-0' ?>">
             <div>
                 <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
                 <p>
@@ -42,29 +39,29 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         </div>
         <div class="content mb-0">
             <h1 role="heading"
-                class="mb-0 no-separator <?= (!$anonymize && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? "" : "pt-2" ?>">
+                class="mb-0 no-separator <?= ( $show_details && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? "" : "pt-2" ?>">
                 <?= ggl_get_title() ?>
             </h1>
-            <?php if ( !$anonymize &&  ggl_get_title() != rwmb_meta( 'original_title' ) ): ?>
+            <?php if ( $show_details && ggl_get_title() != rwmb_meta( 'original_title' ) ): ?>
                 <p class="is-size-5 mb-0"><?= rwmb_meta( 'original_title' ) ?></p>
             <?php endif; ?>
         </div>
         <hr class="separator"/>
         <div class="mt-2">
             <p>
-                <?= join( '/', ggl_resolve_country_list(rwmb_meta("country")) ) ?> <?= date( 'Y', rwmb_meta( 'release_date' ) ) ?>
+                <?= join( '/', ggl_resolve_country_list( rwmb_meta( "country" ) ) ) ?> <?= date( 'Y', rwmb_meta( 'release_date' ) ) ?>
                 |
                 <?= rwmb_meta( 'running_time' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
             </p>
             <p>
-                <?= esc_html__( 'by', 'gegenlicht' ) ?> <?= ! $anonymize ? rwmb_meta( 'director' )->name : trim( preg_replace( '/\w/u', '█', rwmb_meta( 'director' )->name ) ) ?>
+                <?= esc_html__( 'by', 'gegenlicht' ) ?> <?= $show_details ? rwmb_meta( 'director' )->name : trim( preg_replace( '/\w/u', '█', rwmb_meta( 'director' )->name ) ) ?>
             </p>
             <p>
                 <?php
                 $actors     = rwmb_meta( 'actors' );
                 $actorNames = array();
                 foreach ( $actors as $actor ) {
-                    if ( ! $anonymize ) {
+                    if ( $show_details ) {
                         $actorNames[] = $actor->name;
                     } else {
                         $actorNames[] = preg_replace( '/\w/u', '█', $actor->name );
@@ -143,12 +140,12 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         </div>
 
         <?php ggl_the_post_thumbnail(); ?>
-        <?php if ( ! ! $anonymize && ! $isSpecialProgram ): ?>
+        <?php if ( !$show_details && ! $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
                 <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ get_locale() ] ?? "" ) ?>
             </div>
         <?php endif; ?>
-        <?php if ( $isSpecialProgram && !empty(trim(rwmb_get_value( "special_program" )->description))): ?>
+        <?php if ( $isSpecialProgram && ! empty( trim( rwmb_get_value( "special_program" )->description ) ) ): ?>
             <div class="boxed-text mt-3">
                 <?= apply_filters( "the_content", rwmb_get_value( "special_program" )->description ) ?>
             </div>
