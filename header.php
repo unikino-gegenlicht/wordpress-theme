@@ -11,39 +11,47 @@ $semesterScreeningStart = get_term_meta( $semester->term_id, 'semester_start', t
 
 $publicationDelay = get_theme_mod( 'program_reveal_delay' );
 
+
 if ( time() < strtotime( "-{$publicationDelay} days", $semesterScreeningStart ) ) {
-	define( "GGL_ANNOUNCE_NEW_PROGRAM", true );
-	define( "GGL_SEMESTER_BREAK", false );
+    define( "GGL_ANNOUNCE_NEW_PROGRAM", true );
+    define( "GGL_SEMESTER_BREAK", false );
 } else {
-	define( "GGL_ANNOUNCE_NEW_PROGRAM", false );
+    define( "GGL_ANNOUNCE_NEW_PROGRAM", false );
 }
 
 if ( ! defined( 'GGL_SEMESTER_BREAK' ) ) {
-	$next_meta       = [];
-	$next_meta[]     = [
-		'key'     => 'screening_date',
-		'value'   => time(),
-		'compare' => '>=',
-	];
-	$next_query_args = array(
-		'do_preload'     => false,
-		'post_type'      => [ 'movie', 'event' ],
-		'posts_per_page' => 1,
-		'meta_query'     => $next_meta,
-		'tax_query'      => array(
-			array(
-				'taxonomy' => 'semester',
-				'terms'    => $semesterID,
-			)
-		),
-		'meta_key'       => 'screening_date',
-		'orderby'        => 'meta_value_num',
-		'order'          => 'ASC',
-	);
+    $next_meta       = [];
+    $next_meta[]     = [
+            'key'     => 'screening_date',
+            'value'   => time(),
+            'compare' => '>=',
+    ];
+    $next_query_args = array(
+            'do_preload'     => false,
+            'post_type'      => [ 'movie', 'event' ],
+            'posts_per_page' => 1,
+            'meta_query'     => $next_meta,
+            'tax_query'      => array(
+                    array(
+                            'taxonomy' => 'semester',
+                            'terms'    => $semesterID,
+                    )
+            ),
+            'meta_key'       => 'screening_date',
+            'orderby'        => 'meta_value_num',
+            'order'          => 'ASC',
+    );
 
-	$next = new WP_Query( $next_query_args );
+    $next = new WP_Query( $next_query_args );
 
-	define( "GGL_SEMESTER_BREAK", ! $next->have_posts() || get_theme_mod( "manual_semester_break" ) );
+    define( "GGL_SEMESTER_BREAK", ! $next->have_posts() || get_theme_mod( "manual_semester_break" ) );
+}
+
+$show_custom_banner = get_theme_mod( "show_custom_banner_message" );
+if ( $show_custom_banner ) {
+    define( "GGL_ANNOUNCE_NEW_PROGRAM", false );
+    define( "GGL_SEMESTER_BREAK", false );
+    define( "GGL_CUSTOM_BANNER_MSG", true );
 }
 
 
@@ -57,51 +65,51 @@ $blogName           = get_bloginfo( "name" );
 
 
 if ( $manualPartialTitle ) {
-	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ $manualPartialTitle, $blogName ] ) );
+    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ $manualPartialTitle, $blogName ] ) );
 }
 
 if ( is_singular( [ "movie", "event" ] ) && ! defined( "GGL_PAGE_TITLE" ) ) {
-	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ ggl_get_title(), $blogName ] ) );
+    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ ggl_get_title(), $blogName ] ) );
 }
 
 if ( is_front_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
-	define( "GGL_PAGE_TITLE", get_bloginfo( "name" ) . " – " . get_bloginfo( "description" ) );
+    define( "GGL_PAGE_TITLE", get_bloginfo( "name" ) . " – " . get_bloginfo( "description" ) );
 }
 
 if ( is_archive() && ! defined( "GGL_PAGE_TITLE" ) ) {
-	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
-		post_type_archive_title( display: false ),
-		get_bloginfo( "name" )
-	] ) );
+    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
+            post_type_archive_title( display: false ),
+            get_bloginfo( "name" )
+    ] ) );
 }
 
 if ( is_privacy_policy() && ! defined( "GGL_PAGE_TITLE" ) ) {
-	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
-		__( "Privacy Policy", "gegenlicht" ),
-		get_bloginfo( "name" )
-	] ) );
+    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
+            __( "Privacy Policy", "gegenlicht" ),
+            get_bloginfo( "name" )
+    ] ) );
 }
 
 if ( is_location_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
-	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
-		__( "Location", "gegenlicht" ),
-		get_bloginfo( "name" )
-	] ) );
+    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
+            __( "Location", "gegenlicht" ),
+            get_bloginfo( "name" )
+    ] ) );
 }
 
 if ( is_impress_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
-	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
-		__( "Impress", "gegenlicht" ),
-		get_bloginfo( "name" )
-	] ) );
+    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
+            __( "Impress", "gegenlicht" ),
+            get_bloginfo( "name" )
+    ] ) );
 }
 
 
 if ( ! defined( "GGL_PAGE_TITLE" ) ) {
-	define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
-		get_the_title(),
-		get_bloginfo( "name" )
-	] ) );
+    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
+            get_the_title(),
+            get_bloginfo( "name" )
+    ] ) );
 
 }
 
@@ -124,28 +132,28 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                href="<?= get_home_url( scheme: 'https' ) ?>"
                style="border-bottom: none !important;" aria-label="Back To Start">
                 <div>
-					<?php
-					if ( $headerImage ):
-						echo file_get_contents( get_attached_file( $headerImage, true ) );
-					else: ?>
+                    <?php
+                    if ( $headerImage ):
+                        echo file_get_contents( get_attached_file( $headerImage, true ) );
+                    else: ?>
                         <p class="title has-text-black">
-							<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
+                            <?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
                         </p>
-					<?php endif; ?>
+                    <?php endif; ?>
                 </div>
             </a>
             <a class="navbar-item m-0 is-tab is-hidden-mobile is-hidden-tablet-only is-hidden-widescreen"
                href="<?= get_home_url( scheme: 'https' ) ?>"
                style="border-bottom: none !important;" aria-label="Back To Start">
                 <div>
-					<?php
-					if ( $smallHeaderImage ):
-						echo file_get_contents( get_attached_file( $smallHeaderImage, true ) );
-					else: ?>
+                    <?php
+                    if ( $smallHeaderImage ):
+                        echo file_get_contents( get_attached_file( $smallHeaderImage, true ) );
+                    else: ?>
                         <p class="title has-text-black">
-							<?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
+                            <?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
                         </p>
-					<?php endif; ?>
+                    <?php endif; ?>
                 </div>
             </a>
 
@@ -160,10 +168,10 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
         </div>
         <div class="navbar-menu is-shadowless" id="menu">
             <div class="navbar-end">
-				<?php
-				get_template_part( "partials/header-menu" ) ?>
+                <?php
+                get_template_part( "partials/header-menu" ) ?>
                 <hr class="separator is-hidden-desktop">
-				<?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ): ?>
+                <?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ): ?>
                     <a class="navbar-item no-hover" href="<?= get_admin_url( scheme: 'https' ) ?>">
                         <span class="icon-text is-size-5">
                             <span class="icon">
@@ -174,63 +182,78 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                             </span>
                         </span>
                     </a>
-				<?php endif; ?>
-                <?php if (is_singular() && $post != null && current_user_can('edit_post', $post->ID)): ?>
+                <?php endif; ?>
+                <?php if ( is_singular() && $post != null && current_user_can( 'edit_post', $post->ID ) ): ?>
                     <a class="navbar-item no-hover"
-                       href="<?= get_edit_post_link( ) ?>">
+                       href="<?= get_edit_post_link() ?>">
                         <span class="icon-text">
                         <span class="icon"><span class="material-symbols is-size-4">edit</span></span>
                         <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Edit', 'gegenlicht' ) ?></span></span>
                     </a>
                 <?php endif; ?>
-				<?php if ( is_user_logged_in() ): ?>
+                <?php if ( is_user_logged_in() ): ?>
                     <a class="navbar-item no-hover"
                        href="<?= wp_logout_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
                         <span class="icon"><span class="material-symbols is-size-4">logout</span></span>
                         <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Logout', 'gegenlicht' ) ?></span></span>
                     </a>
-				<?php else: ?>
+                <?php else: ?>
                     <a class="navbar-item no-hover"
                        href="<?= wp_login_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
                         <span class="icon-text">
                         <span class="icon"><span class="material-symbols is-size-4">login</span></span>
                         <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Login', 'gegenlicht' ) ?></span></span>
                     </a>
-				<?php endif ?>
+                <?php endif ?>
             </div>
         </div>
     </nav>
-	<?php if ( GGL_SEMESTER_BREAK && ! $hideBreakBanner && ! GGL_ANNOUNCE_NEW_PROGRAM ): ?>
+    <?php if ( defined( "GGL_CUSTOM_BANNER_MSG" ) && GGL_CUSTOM_BANNER_MSG ): ?>
         <div class="page-content semester-break mb-5">
             <div class="marquee py-5">
-				<?php for ( $i = 0; $i < 2; $i ++ ): ?>
+                <?php for ( $i = 0; $i < 2; $i ++ ): ?>
                     <div class="marquee-content">
-						<?php for ( $j = 0; $j < 4; $j ++ ) {
-							echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . " </p>";
-							echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
-						} ?>
+                        <?php for ( $j = 0; $j < 3; $j ++ ) {
+                            echo get_theme_mod( "custom_banner_message" );
+                            echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
+                        } ?>
                     </div>
-				<?php endfor; ?>
+                <?php endfor; ?>
             </div>
         </div>
-	<?php endif; ?>
-	<?php if ( GGL_ANNOUNCE_NEW_PROGRAM && ! $hideBreakBanner ):
-		$timeRemaining = strtotime( "-{$publicationDelay} days", $semesterScreeningStart ) - time();
-		$daysRemaining = floor( $timeRemaining / ( 60 * 60 * 24 ) );
-		$hoursRemaining = floor( ( $timeRemaining - ( $daysRemaining * 60 * 60 * 24 ) ) / ( 60 * 60 ) );
-		?>
-        <div class="page-content semester-break mb-5">
-            <div class="marquee py-5">
-				<?php for ( $i = 0; $i < 2; $i ++ ): ?>
-                    <div class="marquee-content">
-						<?php for ( $j = 0; $j < 2; $j ++ ) {
-							echo "<p>" . esc_html__( "New Program Releases In", 'gegenlicht' ) . "&nbsp;" . $daysRemaining . "&nbsp;" . ( $daysRemaining == 1 ? esc_html__( "Day", "gegenlicht" ) : esc_html__( "Days", "gegenlicht" ) ) . "&nbsp;" . $hoursRemaining . "&nbsp;" . ( $hoursRemaining == 1 ? esc_html__( "Hour", "gegenlicht" ) : esc_html__( "Hours", "gegenlicht" ) ) . "</p>";
-							echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
-						} ?>
-                    </div>
-				<?php endfor; ?>
+    <?php else: ?>
+        <?php if ( GGL_SEMESTER_BREAK && ! $hideBreakBanner && ! GGL_ANNOUNCE_NEW_PROGRAM ): ?>
+            <div class="page-content semester-break mb-5">
+                <div class="marquee py-5">
+                    <?php for ( $i = 0; $i < 2; $i ++ ): ?>
+                        <div class="marquee-content">
+                            <?php for ( $j = 0; $j < 4; $j ++ ) {
+                                echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . " </p>";
+                                echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
+                            } ?>
+                        </div>
+                    <?php endfor; ?>
+                </div>
             </div>
-        </div>
-	<?php endif; ?>
+        <?php endif; ?>
+        <?php if ( GGL_ANNOUNCE_NEW_PROGRAM && ! $hideBreakBanner ):
+            $timeRemaining = strtotime( "-{$publicationDelay} days", $semesterScreeningStart ) - time();
+            $daysRemaining = floor( $timeRemaining / ( 60 * 60 * 24 ) );
+            $hoursRemaining = floor( ( $timeRemaining - ( $daysRemaining * 60 * 60 * 24 ) ) / ( 60 * 60 ) );
+            ?>
+            <div class="page-content semester-break mb-5">
+                <div class="marquee py-5">
+                    <?php for ( $i = 0; $i < 2; $i ++ ): ?>
+                        <div class="marquee-content">
+                            <?php for ( $j = 0; $j < 2; $j ++ ) {
+                                echo "<p>" . esc_html__( "New Program Releases In", 'gegenlicht' ) . "&nbsp;" . $daysRemaining . "&nbsp;" . ( $daysRemaining == 1 ? esc_html__( "Day", "gegenlicht" ) : esc_html__( "Days", "gegenlicht" ) ) . "&nbsp;" . $hoursRemaining . "&nbsp;" . ( $hoursRemaining == 1 ? esc_html__( "Hour", "gegenlicht" ) : esc_html__( "Hours", "gegenlicht" ) ) . "</p>";
+                                echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
+                            } ?>
+                        </div>
+                    <?php endfor; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
 </header>
