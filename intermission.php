@@ -1,7 +1,7 @@
 <div class="content">
     <h2 class="title next-movie-title pb-5"><?= esc_html__( 'Intermission in the Cinema', 'gegenlicht' ) ?></h2>
 	<?php
-	get_template_part( 'partials/responsive-image', args: [
+	get_template_part( 'src/partials/responsive-image', args: [
 		'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'desktop' ),
 		'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'semester_break_image' ), 'mobile' ),
 		'fetch-priority'   => "high",
@@ -46,7 +46,7 @@ if ( $query->have_posts() ):
 		<?= apply_filters( "the_content", get_theme_mod( "semester_break_pre_events_text" )[ get_locale() ] ?? "" ) ?>
     </div>
 	<?php
-	get_template_part( 'partials/movie-list', args: [
+	get_template_part( 'src/partials/movie-list', args: [
 		"posts" => $query->posts,
 		"title" => esc_html__( "Intermission Specials", "gegenlicht" )
 	] );
@@ -62,7 +62,7 @@ if ( $query->have_posts() ):
     <h3><?= esc_html__( "What we have shown so far", "gegenlicht" ) ?></h3>
     <div class="pt-2">
 		<?= apply_filters( "the_content", get_theme_mod( "semester_break_archive_text" )[ get_locale() ] ?? "" ) ?>
-		<?php get_template_part( 'partials/button', args: [
+		<?php get_template_part( 'src/partials/button', args: [
 			'href'    => get_post_type_archive_link( 'movie' ),
 			'content' => __( 'To the Archive', 'gegenlicht' )
 		] ) ?>

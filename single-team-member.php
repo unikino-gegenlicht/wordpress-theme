@@ -74,7 +74,7 @@ get_header();
             $query = new WP_Query( $args );
 
             if ( $query->have_posts() ) :
-                get_template_part( 'partials/movie-list', args: [
+                get_template_part( 'src/partials/movie-list', args: [
                         "posts" => $query->posts,
                         "title" => __( "Upcoming Screenings", "gegenlicht" )
                 ] );

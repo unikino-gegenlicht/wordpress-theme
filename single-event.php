@@ -83,7 +83,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
     <?php if ( rwmb_meta( "allow_reservations" ) ): ?>
         <div class="reservation-button">
             <div class="page-content">
-                <?php get_template_part( 'partials/button', args: [
+                <?php get_template_part( 'src/partials/button', args: [
                         'href'     => rwmb_get_value( "reservation_url" ),
                         'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
                         'external' => false,
@@ -112,7 +112,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
     <?php if ( rwmb_meta( "allow_reservations" ) ): ?>
         <div class="reservation-button">
             <div class="page-content">
-                <?php get_template_part( 'partials/button', args: [
+                <?php get_template_part( 'src/partials/button', args: [
                         'href'     => rwmb_get_value( "reservation_url" ),
                         'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
                         'external' => false,

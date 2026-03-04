@@ -14,7 +14,7 @@ get_header();
 		<?php the_content();
 
 
-		get_template_part( 'partials/button', args: [
+		get_template_part( 'src/partials/button', args: [
 			'href'     => rwmb_the_value( 'supporter_website', echo: false ),
 			'content'  => __( 'To the Website', 'gegenlicht' ),
 			'external' => true

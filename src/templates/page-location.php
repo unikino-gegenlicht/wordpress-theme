@@ -28,7 +28,7 @@
         <div class="content pb-3">
 			<?= apply_filters( "the_content", get_theme_mod( "location_unikum_block_content" )[ get_locale() ] ?? "" ) ?>
 			<?php
-			get_template_part( 'partials/button', args: [
+			get_template_part( 'src/partials/button', args: [
 				'href'     => get_theme_mod( "location_unikum_block_website_url" ),
 				'content'  => __( 'To the Website', 'gegenlicht' ),
 				'external' => true

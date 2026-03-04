@@ -35,7 +35,7 @@ do_action( 'wp_body_open' );
         <div class="page-content" style="--bulma-body-background-color: white;">
 	        <?php
 
-	        get_template_part( 'partials/button', args: [
+	        get_template_part( 'src/partials/button', args: [
 		        'href'    => get_theme_mod( 'cooperation_form_url' ),
 		        'content' => get_theme_mod( 'cooperation_form_button_text' )[get_locale()] ??  esc_html__( 'Inquire About A Cooperation Now', 'gegenlicht' )
 	        ] )

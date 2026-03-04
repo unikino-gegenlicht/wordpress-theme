@@ -21,7 +21,7 @@ get_header();
 <?php
 else:
     for ( $i = 0; $i < count( $upcoming ); $i ++ ):
-        get_template_part( "partials/movie-advertisement", args: [
+        get_template_part( "src/partials/movie-advertisement", args: [
                 "post_id"  => $upcoming[ $i ]->ID,
                 "last"     => $i == ( count( $upcoming ) - 1 ),
                 "followUp" => $i != 0
@@ -60,7 +60,7 @@ else:
             </span>
     </div>
     <hr class="separator mb-6" style="margin-top: 0.25rem;"/>
-    <?php foreach ( $monthlyMovies as $month => $posts ) : get_template_part( "partials/movie-list", args: [
+    <?php foreach ( $monthlyMovies as $month => $posts ) : get_template_part( "src/partials/movie-list", args: [
             "title" => esc_html__( $month, 'gegenlicht' ),
             "posts" => $posts
     ] ) ?>
@@ -70,13 +70,13 @@ else:
         <?= apply_filters( "the_content", get_theme_mod( "semester_break_premonition_text" )[ get_locale() ] ?? "" ) ?>
     </div>
 <?php endif; ?>
-    <?php get_template_part( 'inc/partials/button', args: [
+    <?php get_template_part( 'src/partials/button', args: [
         'href'    => get_post_type_archive_link( 'movie' ),
         'content' => __( 'To the Archive', 'gegenlicht' )
 ] ) ?>
     </main>
     <?php foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) : $termID = (int) $termID;
-    get_template_part( "partials/special-program", args: [ "id" => $termID, "semester" => $semesterID ] );
+    get_template_part( "src/partials/special-program", args: [ "id" => $termID, "semester" => $semesterID ] );
 endforeach; ?>
 <?php endif; ?>
 <?php if ( in_array( 'team', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
@@ -114,7 +114,7 @@ endforeach; ?>
     <article id="team" class="py-5">
         <div class="page-content content">
             <?php if ( get_theme_mod( 'team_block_image' ) ):
-                get_template_part( 'inc/partials/responsive-image', args: [
+                get_template_part( 'src/partials/responsive-image', args: [
                         'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'team_block_image' ), 'desktop' ),
                         'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'team_block_image' ), 'mobile' )
                 ] );
@@ -124,7 +124,7 @@ endforeach; ?>
             $raw = get_theme_mod( 'team_block_text' )[ get_locale() ] ?? "";
             echo apply_filters( "the_content", $raw );
             ?>
-            <?php get_template_part( 'inc/partials/button', args: [
+            <?php get_template_part( 'src/partials/button', args: [
                     'href'    => get_post_type_archive_link( 'team-member' ),
                     'content' => __( 'To the team', 'gegenlicht' )
             ] ) ?>
@@ -172,7 +172,7 @@ endforeach; ?>
         <div class="page-content content">
             <div class="">
                 <?php if ( get_theme_mod( 'location_block_image' ) ): ?>
-                    <?php get_template_part( 'inc/partials/responsive-image', args: [
+                    <?php get_template_part( 'src/partials/responsive-image', args: [
                             'image_url'    => wp_get_attachment_image_url( get_theme_mod( 'location_block_image' ), 'full' ),
                             'disable16by9' => true,
                             'style'        => 'object-position: 15%;'
@@ -184,7 +184,7 @@ endforeach; ?>
                 echo apply_filters( "the_content", $raw );
                 ?>
                 <?php
-                get_template_part( "partials/button", args: [
+                get_template_part( "src/partials/button", args: [
                         "href"     => get_page_link( get_theme_mod( 'location_detail_page' ) ?? '#' ),
                         "content"  => esc_html__( 'To our Location', 'gegenlicht' ),
                         "external" => false
@@ -289,13 +289,13 @@ endforeach; ?>
                     echo apply_filters( "the_content", $raw );
                     ?>
                 <p>
-                    <?php get_template_part( 'inc/partials/button', args: [
+                    <?php get_template_part( 'src/partials/button', args: [
                             'href'    => get_post_type_archive_link( 'cooperation-partner' ),
                             'content' => __( 'Our Cooperation Partners', 'gegenlicht' )
                     ] ) ?>
                 </p>
                 <p>
-                    <?php get_template_part( 'inc/partials/button', args: [
+                    <?php get_template_part( 'src/partials/button', args: [
                             'href'    => get_post_type_archive_link( 'supporter' ),
                             'content' => __( 'Our supporters', 'gegenlicht' ),
                     ] ) ?>
