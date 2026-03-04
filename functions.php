@@ -1,7 +1,7 @@
 <?php
 
+use inc\GGL_Font;
 use Twig\Environment;
-use Twig\Error\LoaderError;
 use Twig\Loader\FilesystemLoader;
 
 defined( 'ABSPATH' ) || exit;
@@ -16,13 +16,13 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Load constants that are used thoughout the theme
  */
-require_once "inc/constants.php";
+require_once "src/inc/constants.php";
 
 /**
  * Load the customizer configuration
  */
-require_once "inc/customizer.php";
-require_once "inc/GGL_Font.php";
+require_once "src/inc/customizer.php";
+require_once "src/inc/GGL_Font.php";
 
 require_once "vendor/autoload.php";
 
@@ -51,7 +51,7 @@ add_action( "pre_get_posts", "ggl_list_all_entities_sorted" );
 add_action( "pre_get_posts", "ggl_frontpage_query_only_current_semester", 1 );
 add_filter( "locale", "ggl_locale_use_http_fallback", 10 );
 add_action( "wp_head", "ggl_inject_special_program_colors" );
-add_action( "get_header", "ggl_redirect_from_non_semester_pages", 2 );
+//add_action( "get_header", "ggl_redirect_from_non_semester_pages", 2 );
 add_action( "wp_head", "ggl_inject_movie_schema_markup" );
 add_filter( "wpseo_opengraph_image", "ggl_anonymize_opengraph_image" );
 add_filter( "init", "ggl_add_shortcodes" );
@@ -61,7 +61,7 @@ add_filter( "query_vars", "ggl_add_query_vars" );
 add_filter( "template_include", "ggl_calendar_rewrite" );
 add_filter("wp_new_user_notification_email", "ggl_new_user_notification_email", 10, 3);
 function ggl_new_user_notification_email(array $notification, WP_User $user, string $blogname) {
-    $loader = new FilesystemLoader(get_stylesheet_directory() . "/email-templates");
+    $loader = new FilesystemLoader( get_stylesheet_directory() . "assets/email-templates" );
     $twig = new Environment($loader, [
             'cache' => get_temp_dir() . "twig",
     ]);
@@ -128,8 +128,8 @@ function ggl_insert_font_faces() {
 }
 
 function ggl_add_shortcodes() {
-    require_once "shortcodes/button.php";
-    require_once "shortcodes/inverted-block.php";
+    require_once "src/shortcodes/button.php";
+    require_once "src/shortcodes/inverted-block.php";
 
     add_shortcode( "ggl_inverted_block", "ggl_inverted_block_shortcode" );
     add_shortcode( "ggl_button", "ggl_button_shortcode" );
@@ -137,7 +137,7 @@ function ggl_add_shortcodes() {
 
 function ggl_anonymize_opengraph_image( $original_image ) {
     if ( is_singular( [ "movie", "event" ] ) ) {
-        return ggl_get_thumbnail_url( size: "desktop" );
+        return ggl_get_thumbnail_url( size: "medium_large" );
     }
 
     return $original_image;
@@ -716,4 +716,4 @@ function ggl_add_image_sizes(): void {
     add_image_size( 'member-crop', 450, 600, crop: true );
 }
 
-require_once "inc/theme-functions.php";
+require_once "src/inc/theme-functions.php";

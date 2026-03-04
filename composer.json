@@ -9,6 +9,7 @@
         }
     ],
     "require": {
-        "twig/twig": "^3.0"
+        "twig/twig": "^3.0",
+        "league/iso3166": "^4.4"
     }
 }

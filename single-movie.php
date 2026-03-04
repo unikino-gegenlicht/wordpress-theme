@@ -2,8 +2,10 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 
+
 $anonymize        = rwmb_get_value( "license_type" ) != "full" && ! is_user_logged_in();
 $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
+
 
 
 ?>
@@ -50,7 +52,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         <hr class="separator"/>
         <div class="mt-2">
             <p>
-                <?= join( '/', rwmb_meta( 'country' ) ) ?> <?= date( 'Y', strtotime( rwmb_meta( 'release_date' ) ) ) ?>
+                <?= join( '/', ggl_resolve_country_list(rwmb_meta("country")) ) ?> <?= date( 'Y', rwmb_meta( 'release_date' ) ) ?>
                 |
                 <?= rwmb_meta( 'running_time' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
             </p>

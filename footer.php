@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
             <hr class="separator is-primary"/>
         <?php endif; ?>
         <div class="has-text-primary my-5 is-flex is-align-items-top is-flex-wrap-wrap is-justify-content-space-evenly is-row-gap-2.5">
-            <?php if ( in_array( "postal", get_theme_mod( "displayed_addresses" ) ?? [] ) ): ?>
+            <?php if ( in_array( "postal", get_theme_mod( "displayed_addresses" ) ?: [] ) ): ?>
                 <div class="is-flex-grow-1">
                     <h5 class="has-text-weight-semibold has-text-primary no-separator is-size-6 is-underlined"><?= esc_html__( 'Postal Address', 'gegenlicht' ) ?></h5>
                     <address class="has-text-primary" style="user-select: text">
@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
                     </address>
                 </div>
             <?php endif; ?>
-            <?php if ( in_array( "visitor", get_theme_mod( "displayed_addresses" ) ?? [] ) ): ?>
+            <?php if ( in_array( "visitor", get_theme_mod( "displayed_addresses" ) ?: [] ) ): ?>
                 <div class="is-flex-grow-1">
                     <h5 class="has-text-weight-semibold has-text-primary no-separator is-size-6 is-underlined"><?= esc_html__( 'Visitor Address', 'gegenlicht' ) ?></h5>
                     <address class="has-text-primary" style="user-select: text">
