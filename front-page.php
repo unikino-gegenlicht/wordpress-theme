@@ -70,7 +70,7 @@ else:
         <?= apply_filters( "the_content", get_theme_mod( "semester_break_premonition_text" )[ get_locale() ] ?? "" ) ?>
     </div>
 <?php endif; ?>
-    <?php get_template_part( 'partials/button', args: [
+    <?php get_template_part( 'inc/partials/button', args: [
         'href'    => get_post_type_archive_link( 'movie' ),
         'content' => __( 'To the Archive', 'gegenlicht' )
 ] ) ?>
@@ -114,7 +114,7 @@ endforeach; ?>
     <article id="team" class="py-5">
         <div class="page-content content">
             <?php if ( get_theme_mod( 'team_block_image' ) ):
-                get_template_part( 'partials/responsive-image', args: [
+                get_template_part( 'inc/partials/responsive-image', args: [
                         'image_url'        => wp_get_attachment_image_url( get_theme_mod( 'team_block_image' ), 'desktop' ),
                         'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'team_block_image' ), 'mobile' )
                 ] );
@@ -124,7 +124,7 @@ endforeach; ?>
             $raw = get_theme_mod( 'team_block_text' )[ get_locale() ] ?? "";
             echo apply_filters( "the_content", $raw );
             ?>
-            <?php get_template_part( 'partials/button', args: [
+            <?php get_template_part( 'inc/partials/button', args: [
                     'href'    => get_post_type_archive_link( 'team-member' ),
                     'content' => __( 'To the team', 'gegenlicht' )
             ] ) ?>
@@ -172,7 +172,7 @@ endforeach; ?>
         <div class="page-content content">
             <div class="">
                 <?php if ( get_theme_mod( 'location_block_image' ) ): ?>
-                    <?php get_template_part( 'partials/responsive-image', args: [
+                    <?php get_template_part( 'inc/partials/responsive-image', args: [
                             'image_url'    => wp_get_attachment_image_url( get_theme_mod( 'location_block_image' ), 'full' ),
                             'disable16by9' => true,
                             'style'        => 'object-position: 15%;'
@@ -289,13 +289,13 @@ endforeach; ?>
                     echo apply_filters( "the_content", $raw );
                     ?>
                 <p>
-                    <?php get_template_part( 'partials/button', args: [
+                    <?php get_template_part( 'inc/partials/button', args: [
                             'href'    => get_post_type_archive_link( 'cooperation-partner' ),
                             'content' => __( 'Our Cooperation Partners', 'gegenlicht' )
                     ] ) ?>
                 </p>
                 <p>
-                    <?php get_template_part( 'partials/button', args: [
+                    <?php get_template_part( 'inc/partials/button', args: [
                             'href'    => get_post_type_archive_link( 'supporter' ),
                             'content' => __( 'Our supporters', 'gegenlicht' ),
                     ] ) ?>
