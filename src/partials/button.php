@@ -65,12 +65,12 @@ if ($external === null && $websiteHost !== $targetHost) {
 <a href="<?= $href ?>"
    role="<?= $role ?>"
    class="button is-outlined is-fullwidth mt-2 py-3 is-uppercase is-size-5 has-text-weight-bold <?= join( ' ', $additionalClasses ) ?>)"
-   rel="<?= $external ? '_blank' : '' ?>">
+   target="<?= $external ? '_blank' : '' ?>">
 	<?php if ( $external ) : ?>
         <span class="icon-text is-align-items-center is-justify-content-space-around">
             <span><?= esc_html( $content ) ?></span>
             <span class="icon">
-                <span class="material-symbols is-size-4">open_in_new</span>
+                <span class="material-symbols is-size-4"><?= $icon ?: "open_in_new" ?></span>
             </span>
         </span>
     <?php elseif ( $icon ) : ?>

@@ -180,10 +180,9 @@ function ggl_get_thumbnail_url( WP_Post|int $post = 0, string $size = "full" ): 
 
     $fallbackImageUrl = wp_get_attachment_image_url( get_theme_mod( 'anonymous_image' ), $size );
 
-    $licensingType = rwmb_get_value( "license_type" ) ?: "full";
-    $anonymize     = ( $licensingType != "full" && ! is_user_logged_in() );
+    $show_details = apply_filters("ggl__show_full_details", false, $post);
 
-    if ( ! $anonymize ) {
+    if ( $show_details ) {
         return get_the_post_thumbnail_url( $post, $size ) ?: $fallbackImageUrl;
     }
 
