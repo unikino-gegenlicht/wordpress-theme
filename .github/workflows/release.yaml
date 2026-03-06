@@ -27,6 +27,7 @@ jobs:
       - name: Create Directory Structure and Archive
         shell: bash
         run: |
+          sed 's/GGL_THEME_VERSION/${{ github.ref_name }}/g' assets/scss/style.scss
           composer install
           npm install
           npm run build:css

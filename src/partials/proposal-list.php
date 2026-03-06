@@ -114,17 +114,14 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
         </div>
         <?php else: ?>
         <div class="is-flex is-align-items-top is-flex-wrap-wrap is-gap-1 mt-3">
-            <div class="is-flex is-align-items-top is-gap-1 is-flex-grow-1">
-                <?php foreach ( $proposer_ids as $proposer_id ): ?>
-                    <figure class="image is-3by4 <?= $proposal_by == "member" ? "member-picture" : "coop-logo" ?>">
-                        <img alt=""
-                             src="<?= get_the_post_thumbnail_url( $proposer_id, "member-crop" ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
-                    </figure>
-                <?php endforeach; ?>
-            </div>
+            <figure class="image is-3by4  is-flex-grow-1 <?= $proposal_by == "member" ? "member-picture" : "coop-logo" ?>">
+                <img alt=""
+                     src="<?= get_the_post_thumbnail_url( $proposer_ids[0], "member-crop" ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
+            </figure>
             <?php endif; ?>
             <?php if ( ! empty( $proposals ) ): ?>
-                <div class="movie-list proposal-list is-flex-grow-3" style="<?= count($proposer_names) > 1 ? 'width: auto; margin-top: 0.5em;' : '' ?>">
+                <div class="movie-list proposal-list is-flex-grow-3"
+                     style="<?= count( $proposer_names ) > 1 ? 'width: auto; margin-top: 0.5em;' : '' ?>">
                     <div class="movie-list-entries">
                         <?php foreach ( $proposals as $proposal ) : ?>
                             <div class="entry">
@@ -134,7 +131,8 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
                     </div>
                 </div>
             <?php else: ?>
-                <div class="proposal-list is-flex-grow-3" style="<?= count($proposer_names) > 1 ? 'width: auto; margin-top: 0.5em' : '' ?>">
+                <div class="proposal-list is-flex-grow-3"
+                     style="<?= count( $proposer_names ) > 1 ? 'width: auto; margin-top: 0.5em' : '' ?>">
                     <?= esc_html__( "No other entries found here. Please check back next semester or log in…", "gegenlicht" ) ?>
                 </div>
             <?php endif; ?>
