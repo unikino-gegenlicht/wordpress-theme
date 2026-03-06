@@ -30,7 +30,7 @@ jobs:
           VERSION: ${{ case( startsWith(github.ref, 'refs/heads/'), steps.vars.outputs.sha_short,  startsWith(github.ref, 'refs/tags/'), github.ref_name, 'unknown' ) }}
         run: |
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-          echo "version=${TAG#v}" >> $GITHUB_OUTPUT
+          echo "version=${VERSION#v}" >> $GITHUB_OUTPUT
 
       - name: Create Directory Structure and Archive
         shell: bash
