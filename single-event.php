@@ -80,11 +80,11 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
             </div>
         <?php endif; ?>
     </header>
-    <?php if ( rwmb_meta( "allow_reservations" ) ): ?>
+    <?php if ( time() < rwmb_get_value( 'screening_date' ) && !empty(trim(rwmb_get_value("pretix_event_url"))) ): ?>
         <div class="reservation-button">
             <div class="page-content">
                 <?php get_template_part( 'src/partials/button', args: [
-                        'href'     => rwmb_get_value( "reservation_url" ),
+                        'href'     => rwmb_get_value( "pretix_event_url" ),
                         'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
                         'external' => false,
                         'icon'     => 'confirmation_number'
@@ -109,11 +109,11 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         </h2>
         <?= apply_filters( "the_content", ggl_get_worth_to_see() ) ?>
     </article>
-    <?php if ( rwmb_meta( "allow_reservations" ) ): ?>
+    <?php if ( time() < rwmb_get_value( 'screening_date' ) && !empty(trim(rwmb_get_value("pretix_event_url"))) ): ?>
         <div class="reservation-button">
             <div class="page-content">
                 <?php get_template_part( 'src/partials/button', args: [
-                        'href'     => rwmb_get_value( "reservation_url" ),
+                        'href'     => rwmb_get_value( "pretix_event_url" ),
                         'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
                         'external' => false,
                         'icon'     => 'confirmation_number'
@@ -123,7 +123,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 </main>
 <section id="proposed-by">
     <?php
-    get_template_part( "partials/proposal-list" )
+    get_template_part( "src/partials/proposal-list" )
     ?>
 </section>
 <?php get_footer(); ?>
