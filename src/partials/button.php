@@ -51,13 +51,13 @@ $href              = (string) ( $args['href'] ?? "" );
 $content           = (string) ( $args['content'] ?? "" );
 $role              = (string) ( $args['aria-role'] ?? "link" );
 $additionalClasses = (array) ( $args['additional-classes'] ?? [] );
-$external          =  ( $args['external'] ?? null );
-$icon              = (string)  ( $args['icon'] ?? null );
+$external          = ( $args['external'] ?? null );
+$icon              = (string) ( $args['icon'] ?? null );
 
-$websiteHost = parse_url(get_home_url())['host'] ?? "";
-$targetHost = parse_url($href)['host'] ?? "";
+$websiteHost = parse_url( get_home_url() )['host'] ?? "";
+$targetHost  = parse_url( $href )['host'] ?? "";
 
-if ($external === null && $websiteHost !== $targetHost) {
+if ( $external === null && $websiteHost !== $targetHost ) {
     $external = true;
 }
 ?>
@@ -66,7 +66,7 @@ if ($external === null && $websiteHost !== $targetHost) {
    role="<?= $role ?>"
    class="button is-outlined is-fullwidth mt-2 py-3 is-uppercase is-size-5 has-text-weight-bold <?= join( ' ', $additionalClasses ) ?>)"
    target="<?= $external ? '_blank' : '' ?>">
-	<?php if ( $external ) : ?>
+    <?php if ( $external ) : ?>
         <span class="icon-text is-align-items-center is-justify-content-space-around">
             <span><?= esc_html( $content ) ?></span>
             <span class="icon">
@@ -80,7 +80,7 @@ if ($external === null && $websiteHost !== $targetHost) {
                 <span class="material-symbols is-size-4"><?= $icon ?></span>
             </span>
         </span>
-	<?php else: ?>
-		<?= esc_html( $content ) ?>
+    <?php else: ?>
+        <?= esc_html( $content ) ?>
     <?php endif ?>
 </a>

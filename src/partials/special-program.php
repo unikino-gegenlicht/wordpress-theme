@@ -64,45 +64,47 @@ $semesterID       = $args['semester'] ?? null;
             </a>
         </header>
         <div class="content">
-            <?= apply_filters("the_content", get_term( (int) $specialProgramID )->description) ?>
+            <?= apply_filters( "the_content", get_term( (int) $specialProgramID )->description ) ?>
         </div>
-		<?php
-		$query = new WP_Query( array(
-			'post_type'      => [ 'movie', 'event' ],
-			'posts_per_page' => - 1,
-			'tax_query'      => array(
-				'relation' => "AND",
-				array(
-					'taxonomy' => 'semester',
-					'terms'    => $semesterID,
-				),
-				array(
-					'taxonomy' => 'special-program',
-					'terms'    => $specialProgramID,
-				),
-			),
-			'meta_key'       => 'screening_date',
-			'orderby'        => 'meta_value_num',
-			'order'          => 'ASC',
-			'meta_query'     => array(
-				[
-					'key'   => 'program_type',
-					'value' => 'special_program',
-				],
-				[
-					"key"     => "screening_date",
-					"value"   => time(),
-					"compare" => ">=",
-				]
-			)
-		) );
-		?>
+        <?php
+        $query = new WP_Query( array(
+                'post_type'      => [ 'movie', 'event' ],
+                'posts_per_page' => - 1,
+                'tax_query'      => array(
+                        'relation' => "AND",
+                        array(
+                                'taxonomy' => 'semester',
+                                'terms'    => $semesterID,
+                        ),
+                        array(
+                                'taxonomy' => 'special-program',
+                                'terms'    => $specialProgramID,
+                        ),
+                ),
+                'meta_key'       => 'screening_date',
+                'orderby'        => 'meta_value_num',
+                'order'          => 'ASC',
+                'meta_query'     => array(
+                        [
+                                'key'   => 'program_type',
+                                'value' => 'special_program',
+                        ],
+                        [
+                                "key"     => "screening_date",
+                                "value"   => time(),
+                                "compare" => ">=",
+                        ]
+                )
+        ) );
+        ?>
 
-		<?php if ( ! $query->have_posts() ) : ?>
+        <?php if ( ! $query->have_posts() ) : ?>
             <p class="is-italic"><?= esc_html__( 'Sadly, all movies of this special program have been screened for the current semester. Check back next semester.', "gegenlicht" ) ?></p>
-		<?php
-		else:
-			get_template_part( "partials/movie-list.php", args: [ "posts" => $query->posts, "allowFiltering" => false] );
-		endif; ?>
+        <?php
+        else:
+            get_template_part( "src/partials/movie-list.php", args: [ "posts"          => $query->posts,
+                                                                      "allowFiltering" => false
+            ] );
+        endif; ?>
     </div>
 </article>

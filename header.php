@@ -169,7 +169,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
         <div class="navbar-menu is-shadowless" id="menu">
             <div class="navbar-end">
                 <?php
-                get_template_part( "partials/header-menu" ) ?>
+                get_template_part( "src/partials/header-menu" ) ?>
                 <hr class="separator is-hidden-desktop">
                 <?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ): ?>
                     <a class="navbar-item no-hover" href="<?= get_admin_url( scheme: 'https' ) ?>">

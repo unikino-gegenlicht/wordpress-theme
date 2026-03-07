@@ -27,7 +27,7 @@ get_header();
 
                 echo apply_filters( 'the_content', $outputText );
 
-                echo apply_filters("the_content", rwmb_get_value("description") );
+                echo apply_filters( "the_content", rwmb_get_value( "description" ) );
                 ?>
 
             </header>

@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 
-$show_details = apply_filters( "ggl__show_full_details", false, $post );
+$show_details     = apply_filters( "ggl__show_full_details", false, $post );
 $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 
 ?>
@@ -140,7 +140,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         </div>
 
         <?php ggl_the_post_thumbnail(); ?>
-        <?php if ( !$show_details && ! $isSpecialProgram ): ?>
+        <?php if ( ! $show_details && ! $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
                 <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ get_locale() ] ?? "" ) ?>
             </div>
@@ -151,7 +151,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
             </div>
         <?php endif; ?>
     </header>
-    <?php if ( time() < rwmb_get_value( 'screening_date' ) && !empty(trim(rwmb_get_value("pretix_event_url"))) ): ?>
+    <?php if ( time() < rwmb_get_value( 'screening_date' ) && ! empty( trim( rwmb_get_value( "pretix_event_url" ) ) ) ): ?>
         <div class="reservation-button">
             <div class="page-content">
                 <?php get_template_part( 'src/partials/button', args: [
@@ -187,13 +187,13 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
             <div class="is-flex short-details">
                 <p><?= esc_html__( 'by', "gegenlicht" ) ?> <?= rwmb_meta( 'short_movie_directed_by' ) ?></p>
                 |
-                <p><?= join( '/', rwmb_meta( 'short_movie_country' ) ) ?> <?= rwmb_meta( 'short_movie_release_year' ) ?></p>
+                <p><?= join( '/', ggl_resolve_country_list( rwmb_meta( 'short_movie_country' ) ) ) ?> <?= rwmb_meta( 'short_movie_release_year' ) ?></p>
                 |
                 <p><?= rwmb_meta( 'short_movie_running_time' ) ?> <?= esc_html__( 'Minutes' ) ?></p>
             </div>
         <?php endif; ?>
     </article>
-    <?php if ( time() < rwmb_get_value( 'screening_date' ) && !empty(trim(rwmb_get_value("pretix_event_url"))) ): ?>
+    <?php if ( time() < rwmb_get_value( 'screening_date' ) && ! empty( trim( rwmb_get_value( "pretix_event_url" ) ) ) ): ?>
         <div class="reservation-button">
             <div class="page-content">
                 <?php get_template_part( 'src/partials/button', args: [

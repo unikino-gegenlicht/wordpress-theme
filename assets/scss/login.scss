@@ -36,6 +36,7 @@
   --bulma-label-color: var(--bulma-primary) !important;
 
 }
+
 * {
   font-feature-settings: "calt" on, "tnum" on, "frac" on, "ss01" on, "ss02" on;
 }
@@ -133,7 +134,7 @@ body.login div#login form#loginform p.forgetmenot {
 }
 
 input#wp-submit,
-input#wp-submit{
+input#wp-submit {
   border-radius: 0;
   width: 100%;
   font-size: 1rem;
@@ -152,12 +153,15 @@ button.wp-hide-pw {
   &.strong {
     background-color: var(--bulma-success) !important;
   }
+
   &.short {
     background-color: var(--bulma-danger) !important;
   }
+
   &.bad {
     background-color: var(--bulma-danger) !important;
   }
+
   &.good {
     background-color: var(--bulma-warning) !important;
   }

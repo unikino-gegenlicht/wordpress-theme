@@ -8,11 +8,12 @@
 </div>
 
 This [WordPress] Theme powers our [official website].
-It enables custom post types to store movies and our team members in an 
+It enables custom post types to store movies and our team members in an
 efficient manner and automatically handles the display of some pages generated
 automatically by the theme.
 
 [WordPress]: https://wordpress.org
+
 [official website]: https://gegenlicht.net
 
 The theme utilizes [Bulma] as the main CSS framework and uses PHP on the
@@ -26,4 +27,5 @@ The visual design of the theme has been done by [Philip Kaufmann] and the
 implementation has been realized by [Jan Eike Suchard] (@dr4hu5-jan).
 
 [Philip Kaufmann]: mailto:philip@gegenlicht.net
+
 [Jan Eike Suchard]: mailto:jan@gegenlicht.net

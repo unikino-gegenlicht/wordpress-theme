@@ -14,8 +14,8 @@ $letterboxdUsername = (string) str_replace( "https://letterboxd.com/", "", ( $ar
 
 $mastodonUsername = "";
 if ( ! empty( $mastodonUrl ) ) {
-	$parts            = explode( "/", $mastodonUrl );
-	$mastodonUsername = $parts[3] . '@' . $parts[2];
+    $parts            = explode( "/", $mastodonUrl );
+    $mastodonUsername = $parts[3] . '@' . $parts[2];
 }
 
 $backgroundColorDark = (string) ( $args['colors']['background']['dark'] ?? get_theme_mod( 'contact_partial' )['background']['dark'] ?? 'black' );
@@ -54,11 +54,11 @@ $textColor     = (string) ( $args['colors']['text']['light'] ?? get_theme_mod( '
     }
 </style>
 <script>
-	<?php
+    <?php
 
-	$randBytes = random_bytes( 16 );
-	$funcName = bin2hex( $randBytes );
-	?>
+    $randBytes = random_bytes( 16 );
+    $funcName = bin2hex( $randBytes );
+    ?>
     function _<?= $funcName ?>(enc) {
         var addr = atob(enc);
         window.location.href = "mailto:" + addr;
@@ -67,24 +67,24 @@ $textColor     = (string) ( $args['colors']['text']['light'] ?? get_theme_mod( '
 <article class="contact-block content">
     <div class="info">
         <h2 class="is-size-3 is-uppercase pt-4">
-			<?= esc_html__( "Contact Us", "gegenlicht" ) ?>
+            <?= esc_html__( "Contact Us", "gegenlicht" ) ?>
         </h2>
         <table class="table is-fullwidth">
-			<?php if ( $showPhoneNumber ) : ?>
+            <?php if ( $showPhoneNumber ) : ?>
                 <tr>
                     <td><?= esc_html__( "Telephone", "gegenlicht" ) ?></td>
                     <td><?= $phoneNumber ?></td>
                 </tr>
-			<?php endif; ?>
-			<?php if ( $showEmail && ! empty( $emailAddress ) ) : ?>
+            <?php endif; ?>
+            <?php if ( $showEmail && ! empty( $emailAddress ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "e-mail", "gegenlicht" ) ?></td>
                     <td><a class="has-text-primary"
                            href='javascript:_<?= $funcName ?>("<?= base64_encode( $emailAddress ) ?>")'><?= preg_replace( "/@/", " (at) ", $emailAddress ) ?></a>
                     </td>
                 </tr>
-			<?php endif; ?>
-			<?php if ( $showInstagram && ! empty( $instagramUsername ) ) : ?>
+            <?php endif; ?>
+            <?php if ( $showInstagram && ! empty( $instagramUsername ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "Instagram", "gegenlicht" ) ?></td>
                     <td><a class="has-text-primary" href="https://instagram.com/<?= $instagramUsername ?>">
@@ -92,8 +92,8 @@ $textColor     = (string) ( $args['colors']['text']['light'] ?? get_theme_mod( '
                                 class="material-symbols ml-1">open_in_new</span></span> </a>
                     </td>
                 </tr>
-			<?php endif; ?>
-			<?php if ( $showMastodon && ! empty( $mastodonUsername ) ) : ?>
+            <?php endif; ?>
+            <?php if ( $showMastodon && ! empty( $mastodonUsername ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "Mastodon", "gegenlicht" ) ?></td>
                     <td><a class="has-text-primary" href="<?= $mastodonUrl ?>">
@@ -101,8 +101,8 @@ $textColor     = (string) ( $args['colors']['text']['light'] ?? get_theme_mod( '
                                 class="material-symbols ml-1">open_in_new</span></span> </a>
                     </td>
                 </tr>
-			<?php endif; ?>
-			<?php if ( $showLetterboxd && ! empty( $letterboxdUsername ) ) : ?>
+            <?php endif; ?>
+            <?php if ( $showLetterboxd && ! empty( $letterboxdUsername ) ) : ?>
                 <tr>
                     <td><?= esc_html__( "Letterboxd", "gegenlicht" ) ?></td>
                     <td><a class="has-text-primary" href="https://letterboxd.com/<?= $letterboxdUsername ?>">
@@ -110,10 +110,10 @@ $textColor     = (string) ( $args['colors']['text']['light'] ?? get_theme_mod( '
                                 class="material-symbols ml-1">open_in_new</span></span> </a>
                     </td>
                 </tr>
-			<?php endif; ?>
+            <?php endif; ?>
         </table>
         <p class="is-size-5 is-uppercase font-ggl pb-4">
-			<?= esc_html__( "Or just chat us up at one of our screenings", "gegenlicht" ) ?>
+            <?= esc_html__( "Or just chat us up at one of our screenings", "gegenlicht" ) ?>
         </p>
     </div>
 </article>

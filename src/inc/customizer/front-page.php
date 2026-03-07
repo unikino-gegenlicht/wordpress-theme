@@ -2,7 +2,6 @@
 
 namespace inc\customizer;
 
-use inc\customizer\controls\MultiInputControl;
 use inc\customizer\controls\WP_CheckboxList_Customize_Control;
 use WP_Customize_Code_Editor_Control;
 use WP_Customize_Manager;
@@ -35,7 +34,7 @@ class FrontPageCustomizerOverrides extends GGLCustomizerBase {
 		$this->add_theme_mod( "displayed_blocks", array() );
 		$this->add_theme_mod( "program_reveal_delay", 14 );
 		$this->add_theme_mod( "show_custom_banner_message", false );
-		$this->add_theme_mod("custom_banner_message", "");
+		$this->add_theme_mod( "custom_banner_message", "" );
 	}
 
 	private function add_controls(): void {
@@ -87,7 +86,7 @@ class FrontPageCustomizerOverrides extends GGLCustomizerBase {
 			"label"       => __( 'Banner Content', 'gegenlicht' ),
 			"description" => __( "The content shown in the banner. The delimitation with stars is done automatically", "gegenlicht" ),
 			"settings"    => "custom_banner_message",
-			'code_type' => "text/html",
+			'code_type'   => "text/html",
 		) ) );
 
 	}

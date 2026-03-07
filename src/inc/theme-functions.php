@@ -104,7 +104,7 @@ function ggl_get_title( WP_Post|int $post = 0 ): string {
     $show_details = apply_filters( "ggl__show_full_details", false, $post );
 
     if ( $show_details ) {
-        return get_locale() == "de" ? mb_trim(rwmb_get_value( 'german_title', post_id: $post->ID )) : mb_trim(rwmb_get_value( 'english_title', post_id: $post->ID ));
+        return get_locale() == "de" ? mb_trim( rwmb_get_value( 'german_title', post_id: $post->ID ) ) : mb_trim( rwmb_get_value( 'english_title', post_id: $post->ID ) );
     }
 
     $inSpecialProgram = rwmb_get_value( 'program_type', post_id: $post->ID ) == 'special_program';
@@ -127,10 +127,10 @@ function ggl_get_summary( WP_Post|int $post = 0, bool $plain = false ): string {
         return $val;
     }
 
-    $anonymize = !apply_filters( "ggl__show_full_details", false, $post );
+    $show_details = apply_filters( "ggl__show_full_details", false, $post );
 
 
-    if ( $anonymize ) {
+    if ( ! $show_details ) {
         $val = rwmb_get_value( "anon_summary" );
     } else {
         $val = rwmb_get_value( "summary" );
@@ -146,9 +146,9 @@ function ggl_get_worth_to_see( WP_Post|int $post = 0, bool $plain = false ): str
         return $val;
     }
 
-    $anonymize     = ! apply_filters( "ggl__show_full_details", false, $post );
+    $show_details = apply_filters( "ggl__show_full_details", false, $post );
 
-    if ( $anonymize ) {
+    if ( ! $show_details ) {
         $val = rwmb_get_value( "anon_worth_to_see" );
     } else {
         $val = rwmb_get_value( "worth_to_see" );
@@ -180,7 +180,7 @@ function ggl_get_thumbnail_url( WP_Post|int $post = 0, string $size = "full" ): 
 
     $fallbackImageUrl = wp_get_attachment_image_url( get_theme_mod( 'anonymous_image' ), $size );
 
-    $show_details = apply_filters("ggl__show_full_details", false, $post);
+    $show_details = apply_filters( "ggl__show_full_details", false, $post );
 
     if ( $show_details ) {
         return get_the_post_thumbnail_url( $post, $size ) ?: $fallbackImageUrl;
@@ -198,22 +198,26 @@ function ggl_get_thumbnail_url( WP_Post|int $post = 0, string $size = "full" ): 
 
 
 function ggl_the_post_thumbnail( WP_Post|int $post = 0 ): void {
-    $post       = get_post( $post );
-    $mobileUrl  = ggl_get_thumbnail_url( $post, "mobile" );
-    $desktopUrl = ggl_get_thumbnail_url( $post, "desktop" );
-    $landscape_animation_url = wp_get_original_image_url( rwmb_meta("landscape_animated_feature_image")["ID"] ?? false);
-    $portrait_animation_url = wp_get_original_image_url( rwmb_meta("portrait_animated_feature_image")["ID"] ?? false);
-    $is_animated = rwmb_meta("use_animated_feature_image");
+    $post                    = get_post( $post );
+    $mobileUrl               = ggl_get_thumbnail_url( $post, "mobile" );
+    $desktopUrl              = ggl_get_thumbnail_url( $post, "desktop" );
+    $landscape_animation_url = wp_get_original_image_url( rwmb_meta( "landscape_animated_feature_image" )["ID"] ?? false );
+    $portrait_animation_url  = wp_get_original_image_url( rwmb_meta( "portrait_animated_feature_image" )["ID"] ?? false );
+    $is_animated             = rwmb_meta( "use_animated_feature_image" );
 
     $show_details = apply_filters( "ggl__show_full_details", false, $post );
     ?>
-        <picture class="image movie-image">
-            <source height="450" width="800" media="(prefers-reduced-motion: reduce) and (width > 768px)" srcset="<?= $desktopUrl ?>">
-            <source height="1000" width="800" media="(prefers-reduced-motion: reduce) and (width <= 768px)" srcset="<?= $mobileUrl ?>">
-            <source height="450" width="800" media="(width > 768px)" srcset="<?= $is_animated && $show_details ? $landscape_animation_url : $desktopUrl ?> ">
-            <source height="1000" width="800" media="(width <= 768px)" srcset="<?= $is_animated && $show_details ? $portrait_animation_url : $mobileUrl ?> ">
-            <img width="800" height="1000" src="<?= $mobileUrl ?>">
-        </picture>
+    <picture class="image movie-image">
+        <source height="450" width="800" media="(prefers-reduced-motion: reduce) and (width > 768px)"
+                srcset="<?= $desktopUrl ?>">
+        <source height="1000" width="800" media="(prefers-reduced-motion: reduce) and (width <= 768px)"
+                srcset="<?= $mobileUrl ?>">
+        <source height="450" width="800" media="(width > 768px)"
+                srcset="<?= $is_animated && $show_details ? $landscape_animation_url : $desktopUrl ?> ">
+        <source height="1000" width="800" media="(width <= 768px)"
+                srcset="<?= $is_animated && $show_details ? $portrait_animation_url : $mobileUrl ?> ">
+        <img width="800" height="1000" src="<?= $mobileUrl ?>">
+    </picture>
 
     <?php
 }

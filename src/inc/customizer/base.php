@@ -1,6 +1,7 @@
 <?php
 
 namespace inc\customizer;
+
 use WP_Customize_Manager;
 
 class GGLCustomizerBase {
@@ -46,8 +47,9 @@ class GGLCustomizerBase {
 	}
 
 	protected function add_control( string $setting, array $args ): void {
-		$this->manager->add_control( $setting, array_merge( $args, array( "panel"   => $this->panel,
-		                                                                  "section" => $this->section
+		$this->manager->add_control( $setting, array_merge( $args, array(
+			"panel"   => $this->panel,
+			"section" => $this->section
 		) ) );
 	}
 }
