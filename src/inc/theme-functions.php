@@ -252,7 +252,7 @@ function ggl_resolve_country_list( array $selectedCountries ): array {
     $country_list = [];
     foreach ( $selectedCountries as $numeric ) {
         try {
-            $country = ( new League\ISO3166\ISO3166 )->numeric( $numeric );
+            $country = ( new League\ISO3166\ISO3166 )->numeric( str_pad($numeric, 3, "0", STR_PAD_LEFT ));
         } catch ( League\ISO3166\Exception\OutOfBoundsException $e ) {
             foreach ( $defunct_countries as $country ) {
                 $comparison = mb_strtolower( $country['numeric'] );
