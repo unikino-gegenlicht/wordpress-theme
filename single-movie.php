@@ -187,7 +187,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
             <div class="is-flex short-details">
                 <p><?= esc_html__( 'by', "gegenlicht" ) ?> <?= rwmb_meta( 'short_movie_directed_by' ) ?></p>
                 |
-                <p><?= join( '/', rwmb_meta( 'short_movie_country' ) ) ?> <?= rwmb_meta( 'short_movie_release_year' ) ?></p>
+                <p><?= join( '/', ggl_resolve_country_list(rwmb_meta( 'short_movie_country' ) )) ?> <?= rwmb_meta( 'short_movie_release_year' ) ?></p>
                 |
                 <p><?= rwmb_meta( 'short_movie_running_time' ) ?> <?= esc_html__( 'Minutes' ) ?></p>
             </div>
