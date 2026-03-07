@@ -55,7 +55,7 @@ if ( $anonymize ) {
 	?>
     <hr class="separator"/>
 	<?php
-	get_template_part( "partials/button.php", args: [
+	get_template_part( "src/partials/button.php", args: [
 		"href"    => get_the_permalink(),
 		'content' => $post->post_type == 'movie' ? esc_html__( 'To the movie', 'gegenlicht' ) : esc_html__( 'To the event', 'gegenlicht' )
 	] );
