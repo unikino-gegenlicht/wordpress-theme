@@ -4,7 +4,7 @@ do_action( 'wp_body_open' );
 
 if ( is_location_page() ) {
     get_header();
-    get_template_part( 'templates/page', 'location' );
+    get_template_part( 'src/templates/page', 'location' );
     get_footer();
 
     return;
@@ -12,7 +12,7 @@ if ( is_location_page() ) {
 
 if ( is_impress_page() ) {
     get_header( args: [ "hideBreakBanner" => true ] );
-    get_template_part( 'templates/page', 'impress' );
+    get_template_part( 'src/templates/page', 'impress' );
     get_footer();
 
     return;
@@ -20,7 +20,7 @@ if ( is_impress_page() ) {
 
 if ( is_contact_page() ) {
     get_header();
-    get_template_part( 'templates/page', 'contact' );
+    get_template_part( 'src/templates/page', 'contact' );
     get_footer();
 
     return;
