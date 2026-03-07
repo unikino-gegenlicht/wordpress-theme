@@ -68,7 +68,10 @@ $logoDark = get_term_meta( $taxonomy->term_id, 'logo_dark', true );
                             'taxonomy' => 'special-program',
                             'terms'    => $taxonomy->term_id,
                     )
-            )
+            ),
+            'meta_key'       => 'screening_date',
+            'orderby'        => 'meta_value_num',
+            'order'          => 'ASC',
     ) );
 
     get_template_part( "src/partials/movie-list", args: [
