@@ -86,7 +86,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                 <?php get_template_part( 'src/partials/button', args: [
                         'href'     => rwmb_get_value( "pretix_event_url" ),
                         'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
-                        'external' => false,
+                        'external' => true,
                         'icon'     => 'confirmation_number'
                 ] ) ?></div>
         </div>
@@ -115,7 +115,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                 <?php get_template_part( 'src/partials/button', args: [
                         'href'     => rwmb_get_value( "pretix_event_url" ),
                         'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
-                        'external' => false,
+                        'external' => true,
                         'icon'     => 'confirmation_number'
                 ] ) ?></div>
         </div>
