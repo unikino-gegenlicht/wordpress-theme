@@ -2,14 +2,14 @@
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: GEGENLICHT 3.5\n"
+"Project-Id-Version: GEGENLICHT 3.5.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-04T13:20:46+00:00\n"
+"POT-Creation-Date: 2026-03-07T21:03:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -80,9 +80,9 @@ msgstr ""
 msgid "Archive"
 msgstr ""
 
-#: archive-supporter.php:47
-#: archive-supporter.php:67
-#: single-supporter.php:19
+#: archive-supporter.php:48
+#: archive-supporter.php:71
+#: single-supporter.php:20
 #: src/templates/page-location.php:33
 msgid "To the Website"
 msgstr ""
@@ -95,11 +95,11 @@ msgstr ""
 msgid "Active Members"
 msgstr ""
 
-#: archive-team-member.php:45
+#: archive-team-member.php:47
 msgid "since"
 msgstr ""
 
-#: archive-team-member.php:52
+#: archive-team-member.php:54
 msgid "Former Members"
 msgstr ""
 
@@ -167,25 +167,21 @@ msgstr ""
 msgid "Our supporters"
 msgstr ""
 
-#: functions.php:437
+#: functions.php:441
 msgid "Username or email address is missing"
 msgstr ""
 
-#: functions.php:441
+#: functions.php:445
 msgid "The entered credentials are invalid. Please try again"
 msgstr ""
 
-#: functions.php:464
+#: functions.php:468
 msgid "Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)"
-msgstr ""
-
-#: functions.php:465
-msgid "Your Student Arthouse Cinema"
 msgstr ""
 
 #: header.php:95
 #: src/inc/customizer/block-location.php:15
-#: src/inc/customizer/front-page.php:65
+#: src/inc/customizer/front-page.php:64
 #: src/partials/header-menu.php:17
 msgid "Location"
 msgstr ""
@@ -315,6 +311,7 @@ msgid "with"
 msgstr ""
 
 #: single-movie.php:71
+#: src/partials/proposal-list.php:95
 msgid "and"
 msgstr ""
 
@@ -474,7 +471,7 @@ msgid "Text (English)"
 msgstr ""
 
 #: src/inc/customizer/block-coops.php:14
-#: src/inc/customizer/front-page.php:66
+#: src/inc/customizer/front-page.php:65
 msgid "Cooperation Partners and Supporters"
 msgstr ""
 
@@ -563,7 +560,7 @@ msgid "This page contains detailed information about the location"
 msgstr ""
 
 #: src/inc/customizer/block-team.php:15
-#: src/inc/customizer/front-page.php:64
+#: src/inc/customizer/front-page.php:63
 #: src/partials/header-menu.php:25
 msgid "Team"
 msgstr ""
@@ -680,51 +677,51 @@ msgstr ""
 msgid "Please select the page the contact details are setup on"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:23
+#: src/inc/customizer/front-page.php:22
 msgid "Configure the content displayed on the front page"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:45
+#: src/inc/customizer/front-page.php:44
 msgid "Displayed Semester"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:46
+#: src/inc/customizer/front-page.php:45
 msgid "Only movies and events associated with this semester will be displayed on the front page and be accessible for non-logged in users"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:52
+#: src/inc/customizer/front-page.php:51
 msgid "Displayed Special Programs"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:60
+#: src/inc/customizer/front-page.php:59
 msgid "Displayed Blocks"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:61
+#: src/inc/customizer/front-page.php:60
 msgid "The selected blocks will be displayed below the special programs. Only if a block is activated here, the customizer for that block will be accessible"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:73
+#: src/inc/customizer/front-page.php:72
 msgid "Program Reveal"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:74
+#: src/inc/customizer/front-page.php:73
 msgid "This value controls how many days before the start of the screenings the frontpage shows the semester program"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:79
+#: src/inc/customizer/front-page.php:78
 msgid "Show a customized banner message"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:80
+#: src/inc/customizer/front-page.php:79
 msgid "Display a customized banner message. This will override the semester break banner and other banners that will normally be displayed"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:87
+#: src/inc/customizer/front-page.php:86
 msgid "Banner Content"
 msgstr ""
 
-#: src/inc/customizer/front-page.php:88
+#: src/inc/customizer/front-page.php:87
 msgid "The content shown in the banner. The delimitation with stars is done automatically"
 msgstr ""
 
@@ -1087,55 +1084,55 @@ msgstr ""
 msgid "An unnamed movie"
 msgstr ""
 
-#: src/inc/theme-functions.php:225
+#: src/inc/theme-functions.php:228
 msgid "Sexualized Violence"
 msgstr ""
 
-#: src/inc/theme-functions.php:226
+#: src/inc/theme-functions.php:229
 msgid "Violence"
 msgstr ""
 
-#: src/inc/theme-functions.php:227
+#: src/inc/theme-functions.php:230
 msgid "Self Harm"
 msgstr ""
 
-#: src/inc/theme-functions.php:228
+#: src/inc/theme-functions.php:231
 msgid "Drug Usage"
 msgstr ""
 
-#: src/inc/theme-functions.php:229
+#: src/inc/theme-functions.php:232
 msgid "Discrimination"
 msgstr ""
 
-#: src/inc/theme-functions.php:230
+#: src/inc/theme-functions.php:233
 msgid "Sexuality"
 msgstr ""
 
-#: src/inc/theme-functions.php:231
+#: src/inc/theme-functions.php:234
 msgid "Threat"
 msgstr ""
 
-#: src/inc/theme-functions.php:232
+#: src/inc/theme-functions.php:235
 msgid "Injury"
 msgstr ""
 
-#: src/inc/theme-functions.php:233
+#: src/inc/theme-functions.php:236
 msgid "Stressful Topics"
 msgstr ""
 
-#: src/inc/theme-functions.php:234
+#: src/inc/theme-functions.php:237
 msgid "Language"
 msgstr ""
 
-#: src/inc/theme-functions.php:235
+#: src/inc/theme-functions.php:238
 msgid "Nudeness"
 msgstr ""
 
-#: src/inc/theme-functions.php:236
+#: src/inc/theme-functions.php:239
 msgid "Risky Behaviour"
 msgstr ""
 
-#: src/inc/theme-functions.php:237
+#: src/inc/theme-functions.php:240
 msgid "Marginalization"
 msgstr ""
 
@@ -1209,18 +1206,18 @@ msgid "Screening starts: "
 msgstr ""
 
 #. translators: %s is the Team Members name
-#: src/partials/proposal-list.php:99
+#: src/partials/proposal-list.php:101
 #, php-format
 msgid "Selected by %s"
 msgstr ""
 
 #. translators: %s is the Cooperation Partner's name
-#: src/partials/proposal-list.php:99
+#: src/partials/proposal-list.php:101
 #, php-format
 msgid "In cooperation with %s"
 msgstr ""
 
-#: src/partials/proposal-list.php:121
+#: src/partials/proposal-list.php:136
 msgid "No other entries found here. Please check back next semester or log in…"
 msgstr ""
 
@@ -1240,6 +1237,10 @@ msgstr ""
 msgid "The Program"
 msgstr ""
 
-#: taxonomy-special-program.php:57
+#: taxonomy-special-program.php:75
+msgid "Upcoming in this special program"
+msgstr ""
+
+#: taxonomy-special-program.php:81
 msgid "The program hosted"
 msgstr ""

@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 do_action( 'wp_body_open' );
-$anonymize        = ! apply_filters( "ggl__show_full_details", $post );
+$anonymize        = ! apply_filters( "ggl__show_full_details", false, $post );
 $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 
 ?>
