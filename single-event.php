@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 do_action( 'wp_body_open' );
-$anonymize        = !apply_filters("ggl__show_full_details", $post);
+$anonymize        = ! apply_filters( "ggl__show_full_details", $post );
 $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 
 ?>
@@ -40,7 +40,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
             </div>
         </div>
         <div class="content mb-0">
-        <h1 role="heading" class="mb-0"><?= ggl_get_title() ?></h1>
+            <h1 role="heading" class="mb-0"><?= ggl_get_title() ?></h1>
         </div>
         <div class="mt-2">
             <p>
@@ -57,11 +57,11 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
             <?php endif; ?>
             <?php
             if (
-                    function_exists('ggl_cpt__generate_single_ical') &&
-                    function_exists('ggl_cpt__serialize_icals')
+                    function_exists( 'ggl_cpt__generate_single_ical' ) &&
+                    function_exists( 'ggl_cpt__serialize_icals' )
             ):
-                $ical = ggl_cpt__generate_single_ical($post);
-                $serializedData = ggl_cpt__serialize_icals([$ical]);
+                $ical = ggl_cpt__generate_single_ical( $post );
+                $serializedData = ggl_cpt__serialize_icals( [ $ical ] );
                 ?>
                 <span class="tag is-rounded is-primary ml-auto">
                     <a href="<?= $serializedData ?>"
@@ -80,7 +80,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
             </div>
         <?php endif; ?>
     </header>
-    <?php if ( time() < rwmb_get_value( 'screening_date' ) && !empty(trim(rwmb_get_value("pretix_event_url"))) ): ?>
+    <?php if ( time() < rwmb_get_value( 'screening_date' ) && ! empty( trim( rwmb_get_value( "pretix_event_url" ) ) ) ): ?>
         <div class="reservation-button">
             <div class="page-content">
                 <?php get_template_part( 'src/partials/button', args: [
@@ -109,7 +109,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         </h2>
         <?= apply_filters( "the_content", ggl_get_worth_to_see() ) ?>
     </article>
-    <?php if ( time() < rwmb_get_value( 'screening_date' ) && !empty(trim(rwmb_get_value("pretix_event_url"))) ): ?>
+    <?php if ( time() < rwmb_get_value( 'screening_date' ) && ! empty( trim( rwmb_get_value( "pretix_event_url" ) ) ) ): ?>
         <div class="reservation-button">
             <div class="page-content">
                 <?php get_template_part( 'src/partials/button', args: [

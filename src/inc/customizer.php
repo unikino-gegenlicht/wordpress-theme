@@ -76,8 +76,8 @@ function configure_customizer( WP_Customize_Manager $wp_customize ): void {
 	new SupporterPageCustomizer( $wp_customize, priority: 2, additionalArgs: [ "panel" => "pages" ] );
 	new TeamPageCustomizer( $wp_customize, priority: 3, additionalArgs: [ "panel" => "pages" ] );
 	new LocationPageCustomizer( $wp_customize, priority: 4, additionalArgs: [ "panel" => "pages" ] );
-	new SingleTeamCustomizer($wp_customize, priority: 5, additionalArgs: [ "panel" => "pages" ]);
-	new SingleCoopCustomizer($wp_customize, priority: 6, additionalArgs: [ "panel" => "pages" ]);
+	new SingleTeamCustomizer( $wp_customize, priority: 5, additionalArgs: [ "panel" => "pages" ] );
+	new SingleCoopCustomizer( $wp_customize, priority: 6, additionalArgs: [ "panel" => "pages" ] );
 
 
 	new AnonymizationCustomizer( $wp_customize, priority: 26 );
@@ -86,13 +86,13 @@ function configure_customizer( WP_Customize_Manager $wp_customize ): void {
 		'title'       => esc_html__( 'Contact Options', 'gegenlicht' ),
 		'priority'    => 27,
 		'capability'  => 'edit_others_posts',
-		'description' => __('Configure the contact options listed throughout the website', 'gegenlicht' ),
+		'description' => __( 'Configure the contact options listed throughout the website', 'gegenlicht' ),
 	) );
-	new SocialMediasOptionsCustomizer($wp_customize, priority: 1, additionalArgs: ["panel" => "contact-options"]);
-	new EmailOptionsCustomizer($wp_customize, priority: 2, additionalArgs: ["panel" => "contact-options"]);
-	new AddressOptionsCustomizer($wp_customize, 3, ["panel" => "contact-options"]);
-	new YouthProtectionCustomizer( $wp_customize, priority: 28);
-	new FooterCustomizer( $wp_customize, priority: 29);
-	new ArchivePageCustomizer( $wp_customize, priority: 30);
+	new SocialMediasOptionsCustomizer( $wp_customize, priority: 1, additionalArgs: [ "panel" => "contact-options" ] );
+	new EmailOptionsCustomizer( $wp_customize, priority: 2, additionalArgs: [ "panel" => "contact-options" ] );
+	new AddressOptionsCustomizer( $wp_customize, 3, [ "panel" => "contact-options" ] );
+	new YouthProtectionCustomizer( $wp_customize, priority: 28 );
+	new FooterCustomizer( $wp_customize, priority: 29 );
+	new ArchivePageCustomizer( $wp_customize, priority: 30 );
 
 }

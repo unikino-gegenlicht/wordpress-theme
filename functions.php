@@ -60,26 +60,29 @@ add_filter( 'wpseo_sitemap_exclude_empty_terms', '__return_false' );
 add_action( "wp_head", "ggl_insert_font_faces" );
 add_filter( "query_vars", "ggl_add_query_vars" );
 add_filter( "template_include", "ggl_calendar_rewrite" );
-add_filter("wp_new_user_notification_email", "ggl_new_user_notification_email", 10, 3);
-function ggl_new_user_notification_email(array $notification, WP_User $user, string $blogname) {
+add_filter( "wp_new_user_notification_email", "ggl_new_user_notification_email", 10, 3 );
+function ggl_new_user_notification_email( array $notification, WP_User $user, string $blogname ) {
     $loader = new FilesystemLoader( get_stylesheet_directory() . "assets/email-templates" );
-    $twig = new Environment($loader, [
+    $twig   = new Environment( $loader, [
             'cache' => get_temp_dir() . "twig",
-    ]);
+    ] );
 
     try {
         $tmpl = $twig->load( "user-account-creation-notification.html.twig" );
-    } catch (Exception $e) {
-        error_log("Unable to find template for user notification");
-        wp_die("Unable to process the registration. Please try again later");
+    } catch ( Exception $e ) {
+        error_log( "Unable to find template for user notification" );
+        wp_die( "Unable to process the registration. Please try again later" );
     }
 
-    $content = $tmpl->render(["email" => $notification['to'], "username" => $user->user_login]);
+    $content = $tmpl->render( [ "email" => $notification['to'], "username" => $user->user_login ] );
 
 
     $notification['subject'] = "[%s] Benutzeraccount erstellt // User Account Created";
     $notification['message'] = $content;
-    $notification['headers'] = ["Content-Type: text/html; charset=UTF-8", 'From: "Unikino GEGENLICHT" <noreply@gegenlicht.net>'];
+    $notification['headers'] = [
+            "Content-Type: text/html; charset=UTF-8",
+            'From: "Unikino GEGENLICHT" <noreply@gegenlicht.net>'
+    ];
 
     return $notification;
 
@@ -193,7 +196,7 @@ function ggl_inject_movie_schema_markup(): void {
     $schemaData["location"]["address"]["addressLocality"] = rwmb_get_value( "city", post_id: $location->ID );
     $schemaData["location"]["address"]["postalCode"]      = rwmb_get_value( "postal_code", post_id: $location->ID );
     $schemaData["location"]["address"]["addressCountry"]  = rwmb_get_value( "country", post_id: $location->ID );
-    $schemaData["image"]                                  = get_the_post_thumbnail_url( size: "full" ) ?: wp_get_attachment_image_url( get_theme_mod( "anonymous_image" ), 'full' );
+    $schemaData["image"]                                  = ggl_get_thumbnail_url( size: "medium_large" );
     $schemaData["description"]                            = strip_tags( ggl_get_summary() );
     $schemaData["organizer"]["@type"]                     = $organizerType;
     $schemaData["organizer"]["name"]                      = $organizer;
@@ -305,7 +308,8 @@ function ggl_inject_special_program_colors(): void {
 
     ?>
     <meta name="theme-color" content="<?= $colors["light"]["background"] ?? '#ffdd00' ?>">
-    <meta name="theme-color" content="<?= $colors["dark"]["background"] ?? '#000000' ?>" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="<?= $colors["dark"]["background"] ?? '#000000' ?>"
+          media="(prefers-color-scheme: dark)">
     <style>
         :root {
             --bulma-body-color: <?= $colors["light"]["body"] ?> !important;
@@ -462,7 +466,6 @@ function ggl_enqueue_logo_url_variable(): void {
         :root {
             --login-logo: url(<?= wp_get_attachment_image_url(get_theme_mod("header_logo"), "full") ?: "/wp-includes/images/w-logo-blue.png" ?>);
             --login-after-text: "<?= esc_html__('Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)', "gegenlicht") ?>";
-            --logo-after-text: "<?= esc_html__('Your Student Arthouse Cinema', "gegenlicht") ?>";
         }
 
         .frc-captcha * {
@@ -652,8 +655,8 @@ function ggl_enqueue_fonts(): void {
 }
 
 function ggl_enqueue_scripts(): void {
-    wp_enqueue_script( 'menu-toggle', get_stylesheet_directory_uri() . '/assets/js/menu-toggle.js', ver:  md5_file( get_stylesheet_directory() . '/assets/js/menu-toggle.js' ) );
-    wp_enqueue_script( 'list-toggle', get_stylesheet_directory_uri() . '/assets/js/program-list-toggle.js', ver:  md5_file( get_stylesheet_directory() . '/assets/js/program-list-toggle.js' ) );
+    wp_enqueue_script( 'menu-toggle', get_stylesheet_directory_uri() . '/assets/js/menu-toggle.js', ver: md5_file( get_stylesheet_directory() . '/assets/js/menu-toggle.js' ) );
+    wp_enqueue_script( 'list-toggle', get_stylesheet_directory_uri() . '/assets/js/program-list-toggle.js', ver: md5_file( get_stylesheet_directory() . '/assets/js/program-list-toggle.js' ) );
 }
 
 function ggl_enqueue_styles() {

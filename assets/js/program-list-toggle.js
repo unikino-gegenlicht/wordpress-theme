@@ -1,6 +1,6 @@
 function toggleSpecialProgramDisplay() {
     let switcher = document.getElementById("programSwitcher");
-    switch(switcher.innerText) {
+    switch (switcher.innerText) {
         case "toggle_off":
             switcher.innerText = "toggle_on";
             break;

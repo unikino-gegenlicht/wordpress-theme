@@ -20,29 +20,29 @@ Custom controls css file
 */
 
 /*************** 10. Multi fields ***************/
-.customize_multi_fields .set{
+.customize_multi_fields .set {
     margin-bottom: 5px;
     padding-right: 15px;
     position: relative;
 }
 
-.customize_multi_fields input{
-    margin-bottom: 5px!important;
+.customize_multi_fields input {
+    margin-bottom: 5px !important;
 }
 
-.customize_multi_remove_field{
+.customize_multi_remove_field {
     color: red;
     position: absolute;
     right: -7px;
     top: 3px;
 }
 
-.customize_multi_remove_field span{
+.customize_multi_remove_field span {
     text-decoration: none;
 }
 
 .customize_multi_remove_field:active,
-.customize_multi_remove_field:focus{
+.customize_multi_remove_field:focus {
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none;
