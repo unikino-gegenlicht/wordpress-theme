@@ -126,7 +126,7 @@ function ggl_get_summary( WP_Post|int $post = 0, bool $plain = false ): string {
     $show_details = apply_filters( "ggl__show_full_details", false, $post );
 
 
-    if ( ! $show_details ) {
+    if ( ! $show_details && $post->post_type !== "event" ) {
         $val = rwmb_get_value( "anon_summary" );
     } else {
         $val = rwmb_get_value( "summary" );
@@ -144,7 +144,7 @@ function ggl_get_worth_to_see( WP_Post|int $post = 0, bool $plain = false ): str
 
     $show_details = apply_filters( "ggl__show_full_details", false, $post );
 
-    if ( ! $show_details ) {
+    if ( ! $show_details && $post->post_type !== "event" ) {
         $val = rwmb_get_value( "anon_worth_to_see" );
     } else {
         $val = rwmb_get_value( "worth_to_see" );
