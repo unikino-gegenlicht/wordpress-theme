@@ -587,7 +587,33 @@ figure {
 .content-notice {
   background-color: var(--bulma-body-color) !important;
   color: var(--bulma-body-background-color) !important;
-  --bulma-content-heading-color: var(--bulma-body-background-color) !important
+  --bulma-content-heading-color: var(--bulma-body-background-color) !important;
+}
+
+.post-password-form {
+  background-color: var(--bulma-body-color) !important;
+  color: var(--bulma-body-background-color) !important;
+  --bulma-content-heading-color: var(--bulma-body-background-color) !important;
+  --bulma-label-color: var(--bulma-body-background-color) !important;
+  padding: 0.5rem;
+
+  input {
+    border-radius: 0;
+    border: var(--bulma-body-background-color) 2px solid !important;
+    background-color: var(--bulma-body-color) !important;
+    box-shadow: none !important;
+    color: var(--bulma-body-background-color) !important;
+
+    &.is-danger {
+     border: var(--bulma-danger) 2px solid !important
+    }
+
+  }
+
+  .help {
+    font-size: unset !important;
+    color: var(--bulma-danger) !important;
+  }
 }
 
 .boxed-text {
