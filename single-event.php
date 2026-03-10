@@ -80,6 +80,26 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                 <?= apply_filters( "the_content", rwmb_get_value( "special_program" )->description ) ?>
             </div>
         <?php endif; ?>
+        <?php if ( get_theme_mod("main_screening_location", null) != null && get_theme_mod( "main_screening_location" ) != rwmb_get_value( "screening_location" ) ) : $screening_location = get_post( rwmb_get_value( "screening_location" ) ); ?>
+            <div class="content-notice mt-2 p-2 content">
+                <h2 class="is-size-4 border-is-background-color"><?= esc_html__( "Changed Screening Location", "gegenlicht" ) ?></h2>
+                <p>
+                    <?= esc_html__( "This screening is not taking place at our usual screening location. Instead the screening will be hosted at:", "gegenlicht" ) ?>
+                    <?= $screening_location->post_title ?>,
+                    <?= rwmb_get_value( "street", post_id: $screening_location->ID ) ?>,
+                    <?= rwmb_get_value( "postal_code", post_id: $screening_location->ID ) ?> <?= rwmb_get_value( "city", post_id: $screening_location->ID ) ?>
+                </p>
+                <?php
+                $lat = rwmb_get_value( "lat", post_id: $screening_location->ID );
+                $lng = rwmb_get_value( "long", post_id: $screening_location->ID );
+                $name = $screening_location->post_title;
+                get_template_part( 'src/partials/button', args: [
+                        'href'     => "geo:$lat,$lng?q=$lat,$lng(" . rawurlencode( $name ) . ")",
+                        'content'  => __( 'Show on a Map', 'gegenlicht' ),
+                        'external' => true
+                ] ); ?>
+            </div>
+        <?php endif; ?>
     </header>
     <?php if ( time() < rwmb_get_value( 'screening_date' ) && ! empty( trim( rwmb_get_value( "pretix_event_url" ) ) ) ): ?>
         <div class="reservation-button">
