@@ -2,14 +2,14 @@
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: GEGENLICHT 3.5.3\n"
+"Project-Id-Version: GEGENLICHT GGL_THEME_VERSION\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-07T21:03:45+00:00\n"
+"POT-Creation-Date: 2026-03-10T11:17:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -266,34 +266,49 @@ msgstr ""
 msgid "Admission"
 msgstr ""
 
-#: single-event.php:47
+#: single-event.php:48
 #: single-movie.php:54
 msgid "Minutes"
 msgstr ""
 
 #. translators: %d Minimal Attendee Age
-#: single-event.php:56
+#: single-event.php:57
 #, php-format
 msgid "For Ages %d+"
 msgstr ""
 
-#: single-event.php:88
-#: single-event.php:117
-#: single-movie.php:159
-#: single-movie.php:201
+#: single-event.php:85
+#: single-movie.php:155
+msgid "Changed Screening Location"
+msgstr ""
+
+#: single-event.php:87
+#: single-movie.php:157
+msgid "This screening is not taking place at our usual screening location. Instead the screening will be hosted at:"
+msgstr ""
+
+#: single-event.php:98
+#: single-movie.php:168
+msgid "Show on a Map"
+msgstr ""
+
+#: single-event.php:109
+#: single-event.php:138
+#: single-movie.php:179
+#: single-movie.php:221
 msgid "Reserve Now"
 msgstr ""
 
-#: single-event.php:97
-#: single-movie.php:168
+#: single-event.php:118
+#: single-movie.php:188
 msgid "Content Notice"
 msgstr ""
 
-#: single-event.php:104
+#: single-event.php:125
 msgid "What the event is about"
 msgstr ""
 
-#: single-event.php:108
+#: single-event.php:129
 msgid "Why it's worth attending"
 msgstr ""
 
@@ -302,7 +317,7 @@ msgid "Screening"
 msgstr ""
 
 #: single-movie.php:57
-#: single-movie.php:188
+#: single-movie.php:208
 msgid "by"
 msgstr ""
 
@@ -354,15 +369,15 @@ msgstr ""
 msgid "Dub w/ Subs"
 msgstr ""
 
-#: single-movie.php:175
+#: single-movie.php:195
 msgid "What the movie is about"
 msgstr ""
 
-#: single-movie.php:179
+#: single-movie.php:199
 msgid "Why it's worth watching"
 msgstr ""
 
-#: single-movie.php:184
+#: single-movie.php:204
 msgid "Short Movie"
 msgstr ""
 
@@ -370,27 +385,40 @@ msgstr ""
 msgid "Past Screenings"
 msgstr ""
 
-#: src/inc/customizer.php:60
+#: src/filters.php:30
+msgid "The content of this page is protected by a password. If you received a password for displaying this page please enter it below to unlock the contents on this page"
+msgstr ""
+
+#: src/filters.php:36
+#: src/filters.php:39
+msgid "Password"
+msgstr ""
+
+#: src/filters.php:42
+msgid "The password you entered is not correct. Please try again"
+msgstr ""
+
+#: src/inc/customizer.php:62
 msgid "Blocks"
 msgstr ""
 
-#: src/inc/customizer.php:63
+#: src/inc/customizer.php:65
 msgid "Edit the blocks displayed on the frontpage"
 msgstr ""
 
-#: src/inc/customizer.php:70
+#: src/inc/customizer.php:72
 msgid "Pages"
 msgstr ""
 
-#: src/inc/customizer.php:73
+#: src/inc/customizer.php:75
 msgid "Edit the display of some content pages of this theme"
 msgstr ""
 
-#: src/inc/customizer.php:86
+#: src/inc/customizer.php:89
 msgid "Contact Options"
 msgstr ""
 
-#: src/inc/customizer.php:89
+#: src/inc/customizer.php:92
 msgid "Configure the contact options listed throughout the website"
 msgstr ""
 
@@ -623,6 +651,22 @@ msgstr ""
 
 #: src/inc/customizer/contact-social-medias.php:49
 msgid "Letterbox URL"
+msgstr ""
+
+#: src/inc/customizer/detail-page.php:12
+msgid "Detail Pages"
+msgstr ""
+
+#: src/inc/customizer/detail-page.php:12
+msgid "Configure behaviour on the detail pages of movies and events"
+msgstr ""
+
+#: src/inc/customizer/detail-page.php:24
+msgid "Main Screening Location"
+msgstr ""
+
+#: src/inc/customizer/detail-page.php:25
+msgid "If a different screening location is set in a post, a warning block will be displayed for users"
 msgstr ""
 
 #: src/inc/customizer/footer.php:15
@@ -1076,63 +1120,59 @@ msgstr ""
 msgid "E-Mail Address of Youth Protection Officer"
 msgstr ""
 
-#: src/inc/theme-functions.php:116
-msgid "An unnamed event"
-msgstr ""
-
-#: src/inc/theme-functions.php:119
+#: src/inc/theme-functions.php:115
 msgid "An unnamed movie"
 msgstr ""
 
-#: src/inc/theme-functions.php:228
+#: src/inc/theme-functions.php:224
 msgid "Sexualized Violence"
 msgstr ""
 
-#: src/inc/theme-functions.php:229
+#: src/inc/theme-functions.php:225
 msgid "Violence"
 msgstr ""
 
-#: src/inc/theme-functions.php:230
+#: src/inc/theme-functions.php:226
 msgid "Self Harm"
 msgstr ""
 
-#: src/inc/theme-functions.php:231
+#: src/inc/theme-functions.php:227
 msgid "Drug Usage"
 msgstr ""
 
-#: src/inc/theme-functions.php:232
+#: src/inc/theme-functions.php:228
 msgid "Discrimination"
 msgstr ""
 
-#: src/inc/theme-functions.php:233
+#: src/inc/theme-functions.php:229
 msgid "Sexuality"
 msgstr ""
 
-#: src/inc/theme-functions.php:234
+#: src/inc/theme-functions.php:230
 msgid "Threat"
 msgstr ""
 
-#: src/inc/theme-functions.php:235
+#: src/inc/theme-functions.php:231
 msgid "Injury"
 msgstr ""
 
-#: src/inc/theme-functions.php:236
+#: src/inc/theme-functions.php:232
 msgid "Stressful Topics"
 msgstr ""
 
-#: src/inc/theme-functions.php:237
+#: src/inc/theme-functions.php:233
 msgid "Language"
 msgstr ""
 
-#: src/inc/theme-functions.php:238
+#: src/inc/theme-functions.php:234
 msgid "Nudeness"
 msgstr ""
 
-#: src/inc/theme-functions.php:239
+#: src/inc/theme-functions.php:235
 msgid "Risky Behaviour"
 msgstr ""
 
-#: src/inc/theme-functions.php:240
+#: src/inc/theme-functions.php:236
 msgid "Marginalization"
 msgstr ""
 
@@ -1237,10 +1277,10 @@ msgstr ""
 msgid "The Program"
 msgstr ""
 
-#: taxonomy-special-program.php:75
+#: taxonomy-special-program.php:78
 msgid "Upcoming in this special program"
 msgstr ""
 
-#: taxonomy-special-program.php:81
+#: taxonomy-special-program.php:84
 msgid "The program hosted"
 msgstr ""
