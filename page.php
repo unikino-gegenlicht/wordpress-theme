@@ -30,7 +30,8 @@ get_header();
 ?>
     <article class="page-content content mt-4">
         <header>
-            <h1><?= get_the_title() ?></h1>
+            <?php if (has_post_thumbnail()) { ggl_the_post_thumbnail(); } ?>
+            <h1 class="mt-2"><?= get_the_title() ?></h1>
         </header>
         <?= apply_filters( 'the_content', get_the_content() ) ?>
     </article>
