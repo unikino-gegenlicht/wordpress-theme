@@ -214,7 +214,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
             <div class="marquee py-5">
                 <?php for ( $i = 0; $i < 2; $i ++ ): ?>
                     <div class="marquee-content">
-                        <?php for ( $j = 0; $j < 3; $j ++ ) {
+                        <?php for ( $j = 0; $j < 2; $j ++ ) {
                             echo get_theme_mod( "custom_banner_message" );
                             echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
                         } ?>
