@@ -104,7 +104,7 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
     <?php if ( count( $proposer_ids ) > 1 ) : ?>
     <div class="mt-3">
         <div class="is-flex is-align-items-top is-justify-content-space-around is-flex-grow-5 is-gap-3"
-             style="height: 250px !important;">
+             style="height: 250px !important; overflow: scroll;">
             <?php foreach ( $proposer_ids as $proposer_id ) : ?>
                 <figure class="image is-3by4 <?= $proposal_by == "member" ? "member-picture" : "coop-logo" ?>">
                     <img alt=""
