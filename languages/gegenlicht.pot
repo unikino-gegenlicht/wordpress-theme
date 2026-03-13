@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-10T11:17:01+00:00\n"
+"POT-Creation-Date: 2026-03-13T12:33:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -119,13 +119,13 @@ msgid "Youth Protection Officer"
 msgstr ""
 
 #: footer.php:47
-#: header.php:102
+#: header.php:105
 #: src/templates/page-impress.php:4
 msgid "Impress"
 msgstr ""
 
 #: footer.php:49
-#: header.php:88
+#: header.php:91
 #: privacy-policy.php:8
 msgid "Privacy Policy"
 msgstr ""
@@ -167,58 +167,58 @@ msgstr ""
 msgid "Our supporters"
 msgstr ""
 
-#: functions.php:441
+#: functions.php:443
 msgid "Username or email address is missing"
 msgstr ""
 
-#: functions.php:445
+#: functions.php:447
 msgid "The entered credentials are invalid. Please try again"
 msgstr ""
 
-#: functions.php:468
+#: functions.php:470
 msgid "Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)"
 msgstr ""
 
-#: header.php:95
+#: header.php:98
 #: src/inc/customizer/block-location.php:15
 #: src/inc/customizer/front-page.php:64
 #: src/partials/header-menu.php:17
 msgid "Location"
 msgstr ""
 
-#: header.php:191
+#: header.php:194
 msgid "Edit"
 msgstr ""
 
-#: header.php:199
+#: header.php:202
 msgid "Logout"
 msgstr ""
 
-#: header.php:206
+#: header.php:209
 msgid "Login"
 msgstr ""
 
-#: header.php:232
+#: header.php:235
 msgid "Semester Break"
 msgstr ""
 
-#: header.php:250
+#: header.php:253
 msgid "New Program Releases In"
 msgstr ""
 
-#: header.php:250
+#: header.php:253
 msgid "Day"
 msgstr ""
 
-#: header.php:250
+#: header.php:253
 msgid "Days"
 msgstr ""
 
-#: header.php:250
+#: header.php:253
 msgid "Hour"
 msgstr ""
 
-#: header.php:250
+#: header.php:253
 msgid "Hours"
 msgstr ""
 
@@ -287,28 +287,23 @@ msgstr ""
 msgid "This screening is not taking place at our usual screening location. Instead the screening will be hosted at:"
 msgstr ""
 
-#: single-event.php:98
-#: single-movie.php:168
-msgid "Show on a Map"
-msgstr ""
-
-#: single-event.php:109
-#: single-event.php:138
-#: single-movie.php:179
-#: single-movie.php:221
+#: single-event.php:104
+#: single-event.php:133
+#: single-movie.php:174
+#: single-movie.php:216
 msgid "Reserve Now"
 msgstr ""
 
-#: single-event.php:118
-#: single-movie.php:188
+#: single-event.php:113
+#: single-movie.php:183
 msgid "Content Notice"
 msgstr ""
 
-#: single-event.php:125
+#: single-event.php:120
 msgid "What the event is about"
 msgstr ""
 
-#: single-event.php:129
+#: single-event.php:124
 msgid "Why it's worth attending"
 msgstr ""
 
@@ -317,7 +312,7 @@ msgid "Screening"
 msgstr ""
 
 #: single-movie.php:57
-#: single-movie.php:208
+#: single-movie.php:203
 msgid "by"
 msgstr ""
 
@@ -369,15 +364,15 @@ msgstr ""
 msgid "Dub w/ Subs"
 msgstr ""
 
-#: single-movie.php:195
+#: single-movie.php:190
 msgid "What the movie is about"
 msgstr ""
 
-#: single-movie.php:199
+#: single-movie.php:194
 msgid "Why it's worth watching"
 msgstr ""
 
-#: single-movie.php:204
+#: single-movie.php:199
 msgid "Short Movie"
 msgstr ""
 
@@ -1214,6 +1209,14 @@ msgstr ""
 
 #: src/partials/header-menu.php:33
 msgid "Support"
+msgstr ""
+
+#: src/partials/location-button.php:52
+msgid "Show on Apple Maps"
+msgstr ""
+
+#: src/partials/location-button.php:52
+msgid "Show on Google Maps"
 msgstr ""
 
 #: src/partials/movie-advertisement.php:23

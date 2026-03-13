@@ -90,13 +90,8 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                     <?= rwmb_get_value( "postal_code", post_id: $screening_location->ID ) ?> <?= rwmb_get_value( "city", post_id: $screening_location->ID ) ?>
                 </p>
                 <?php
-                $lat = rwmb_get_value( "lat", post_id: $screening_location->ID );
-                $lng = rwmb_get_value( "long", post_id: $screening_location->ID );
-                $name = $screening_location->post_title;
-                get_template_part( 'src/partials/button', args: [
-                        'href'     => "geo:$lat,$lng?q=$lat,$lng(" . rawurlencode( $name ) . ")",
-                        'content'  => __( 'Show on a Map', 'gegenlicht' ),
-                        'external' => true
+                get_template_part( 'src/partials/location-button', args: [
+                        "screening_location_id" => $screening_location->ID,
                 ] ); ?>
             </div>
         <?php endif; ?>
@@ -108,7 +103,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                         'href'     => rwmb_get_value( "pretix_event_url" ),
                         'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
                         'external' => true,
-                        'icon'     => 'confirmation_number'
+                        'icon'     => 'confirmation_number',
                 ] ) ?></div>
         </div>
     <?php endif; ?>

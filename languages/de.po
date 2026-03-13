@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
-"POT-Creation-Date: 2026-03-10T11:17:01+00:00\n"
-"PO-Revision-Date: 2026-03-10 12:46+0100\n"
+"POT-Creation-Date: 2026-03-13T12:33:34+00:00\n"
+"PO-Revision-Date: 2026-03-13 13:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -119,11 +119,11 @@ msgstr "Besucher*innenanschrift"
 msgid "Youth Protection Officer"
 msgstr "Jugendschutzbeauftragter"
 
-#: footer.php:47 header.php:102 src/templates/page-impress.php:4
+#: footer.php:47 header.php:105 src/templates/page-impress.php:4
 msgid "Impress"
 msgstr "Impressum"
 
-#: footer.php:49 header.php:88 privacy-policy.php:8
+#: footer.php:49 header.php:91 privacy-policy.php:8
 msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
@@ -163,15 +163,15 @@ msgstr "An einer Kooperation interessiert?"
 msgid "Our supporters"
 msgstr "Unsere Unterstützer*innen"
 
-#: functions.php:441
+#: functions.php:443
 msgid "Username or email address is missing"
 msgstr "Der Benutzername oder die E-Mail Adresse fehlen"
 
-#: functions.php:445
+#: functions.php:447
 msgid "The entered credentials are invalid. Please try again"
 msgstr "Die eingegebenen Login-Informationen sind ungültig"
 
-#: functions.php:468
+#: functions.php:470
 msgid ""
 "Students and Faculty at the Carl von Ossietzky University are able to "
 "register for a free account which unlocks more details about the program "
@@ -181,44 +181,44 @@ msgstr ""
 "sich kostenlos registieren. Der Zugang erlaubt einen detaillierteren Zugang "
 "zum Programm (insbesondere den Sonderprogrammen)."
 
-#: header.php:95 src/inc/customizer/block-location.php:15
+#: header.php:98 src/inc/customizer/block-location.php:15
 #: src/inc/customizer/front-page.php:64 src/partials/header-menu.php:17
 msgid "Location"
 msgstr "Ort"
 
-#: header.php:191
+#: header.php:194
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: header.php:199
+#: header.php:202
 msgid "Logout"
 msgstr "Abmelden"
 
-#: header.php:206
+#: header.php:209
 msgid "Login"
 msgstr "Anmelden"
 
-#: header.php:232
+#: header.php:235
 msgid "Semester Break"
 msgstr "Semesterpause"
 
-#: header.php:250
+#: header.php:253
 msgid "New Program Releases In"
 msgstr "Neues Programm in"
 
-#: header.php:250
+#: header.php:253
 msgid "Day"
 msgstr "Tag"
 
-#: header.php:250
+#: header.php:253
 msgid "Days"
 msgstr "Tagen"
 
-#: header.php:250
+#: header.php:253
 msgid "Hour"
 msgstr "Stunde"
 
-#: header.php:250
+#: header.php:253
 msgid "Hours"
 msgstr "Stunden"
 
@@ -284,24 +284,20 @@ msgstr ""
 "Diese Vorstellung findet nicht an unserem üblichen Standort statt. Der Ort "
 "für diese Vorstellung ist:"
 
-#: single-event.php:98 single-movie.php:168
-msgid "Show on a Map"
-msgstr "Auf Karte anzeigen"
-
-#: single-event.php:109 single-event.php:138 single-movie.php:179
-#: single-movie.php:221
+#: single-event.php:104 single-event.php:133 single-movie.php:174
+#: single-movie.php:216
 msgid "Reserve Now"
 msgstr "Jetzt Reservieren"
 
-#: single-event.php:118 single-movie.php:188
+#: single-event.php:113 single-movie.php:183
 msgid "Content Notice"
 msgstr "Inhaltshinweis"
 
-#: single-event.php:125
+#: single-event.php:120
 msgid "What the event is about"
 msgstr "Worum geht es beim Event?"
 
-#: single-event.php:129
+#: single-event.php:124
 msgid "Why it's worth attending"
 msgstr "Darum lohnt es sich mitzumachen"
 
@@ -309,7 +305,7 @@ msgstr "Darum lohnt es sich mitzumachen"
 msgid "Screening"
 msgstr "Vorstellung"
 
-#: single-movie.php:57 single-movie.php:208
+#: single-movie.php:57 single-movie.php:203
 msgid "by"
 msgstr "von"
 
@@ -351,15 +347,15 @@ msgstr "SFmeU"
 msgid "Dub w/ Subs"
 msgstr "SFmU"
 
-#: single-movie.php:195
+#: single-movie.php:190
 msgid "What the movie is about"
 msgstr "Darum geht es"
 
-#: single-movie.php:199
+#: single-movie.php:194
 msgid "Why it's worth watching"
 msgstr "Darum sehenswert"
 
-#: single-movie.php:204
+#: single-movie.php:199
 msgid "Short Movie"
 msgstr "Kurzfilm"
 
@@ -657,24 +653,24 @@ msgid "Letterbox URL"
 msgstr "Letterbox URL"
 
 #: src/inc/customizer/detail-page.php:12
-#, fuzzy
-#| msgid "Detail Page"
 msgid "Detail Pages"
 msgstr "Detailseite"
 
 #: src/inc/customizer/detail-page.php:12
 msgid "Configure behaviour on the detail pages of movies and events"
-msgstr ""
+msgstr "Stelle das Verhalten von den Detailseiten für Filme und Events ein"
 
 #: src/inc/customizer/detail-page.php:24
 msgid "Main Screening Location"
-msgstr ""
+msgstr "Hapuptvorstellungsort"
 
 #: src/inc/customizer/detail-page.php:25
 msgid ""
 "If a different screening location is set in a post, a warning block will be "
 "displayed for users"
 msgstr ""
+"Wenn ein anderer Vorstellungsort in einem post ausgewählt ist, dann wird ein "
+"Warnhinweis für die Besucher:innen angezeigt"
 
 #: src/inc/customizer/footer.php:15
 msgid "Footer"
@@ -1304,6 +1300,14 @@ msgstr "Kooperation"
 #: src/partials/header-menu.php:33
 msgid "Support"
 msgstr "Unterstützung"
+
+#: src/partials/location-button.php:52
+msgid "Show on Apple Maps"
+msgstr "Bei Apple Maps anzeigen"
+
+#: src/partials/location-button.php:52
+msgid "Show on Google Maps"
+msgstr "Bei Google Maps anzeigen"
 
 #: src/partials/movie-advertisement.php:23
 msgid "Afterwards at"
