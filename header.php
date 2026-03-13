@@ -1,5 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
+$platform = get_browser()->platform;
+
+
 $headerImage      = get_theme_mod( 'header_logo' );
 $smallHeaderImage = get_theme_mod( 'small_header_logo' );
 

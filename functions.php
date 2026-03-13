@@ -134,9 +134,11 @@ function ggl_insert_font_faces() {
 function ggl_add_shortcodes() {
     require_once "src/shortcodes/button.php";
     require_once "src/shortcodes/inverted-block.php";
+    require_once "src/shortcodes/location-button.php";
 
     add_shortcode( "ggl_inverted_block", "ggl_inverted_block_shortcode" );
     add_shortcode( "ggl_button", "ggl_button_shortcode" );
+    add_shortcode( "location_button", "ggl_location_button_shortcode" );
 }
 
 function ggl_anonymize_opengraph_image( $original_image ) {
