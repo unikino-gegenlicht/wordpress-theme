@@ -10,6 +10,7 @@
   ],
   "require": {
     "twig/twig": "^3.0",
-    "league/iso3166": "^4.4"
+    "league/iso3166": "^4.4",
+    "arraypress/wp-accept-language-utils": "@dev"
   }
 }

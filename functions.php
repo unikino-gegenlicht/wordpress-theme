@@ -1,5 +1,5 @@
 <?php
-
+use ArrayPress\AcceptLanguageUtils\AcceptLanguage;
 use inc\GGL_Font;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -338,35 +338,11 @@ function ggl_inject_special_program_colors(): void {
 }
 
 function ggl_locale_use_http_fallback( string $locale ): string {
-    if ( is_admin() && ! is_customize_preview() ) {
-        return $locale;
+    if ( ( is_admin() && ! is_customize_preview() ) || (is_user_logged_in() && current_user_can("edit_posts")) ) {
+        return AcceptLanguage::extract_language($locale);
     }
 
-    if ( is_user_logged_in() ) {
-        $locale = substr( $locale, 0, 2 );
-
-        return match ( $locale ) {
-            'en', 'de' => $locale,
-            default => "en",
-        };
-
-    }
-
-    if ( ! isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
-        return $locale;
-    }
-
-    $preferredLocales = array_reduce( explode( ',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] ), function ( $res, $el ) {
-        list( $l, $q ) = array_merge( explode( ';q=', $el ), [ 1 ] );
-        $res[ $l ] = (float) $q;
-
-        return $res;
-    }, [] );
-
-    arsort( $preferredLocales );
-
-    return substr( array_key_first( $preferredLocales ), 0, 2 );
-
+    return AcceptLanguage::get_best_match(["de", "en"], "en");
 }
 
 

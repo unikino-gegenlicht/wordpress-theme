@@ -4,8 +4,63 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "27c9e9db837ea852d1d4b87703a9c227",
+  "content-hash": "2aa139bad8429fd4afb64f9605443d0c",
   "packages": [
+    {
+      "name": "arraypress/wp-accept-language-utils",
+      "version": "dev-main",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/arraypress/wp-accept-language-utils.git",
+        "reference": "60922ca581f61b2d422f1540549de6880fa16cbd"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/arraypress/wp-accept-language-utils/zipball/60922ca581f61b2d422f1540549de6880fa16cbd",
+        "reference": "60922ca581f61b2d422f1540549de6880fa16cbd",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.4"
+      },
+      "default-branch": true,
+      "type": "library",
+      "autoload": {
+        "files": [
+          "src/Functions.php"
+        ],
+        "psr-4": {
+          "ArrayPress\\AcceptLanguageUtils\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "GPL-2.0-or-later"
+      ],
+      "authors": [
+        {
+          "name": "David Sherlock",
+          "homepage": "https://arraypress.com/"
+        }
+      ],
+      "description": "A lean WordPress utility for parsing and working with HTTP Accept-Language headers",
+      "homepage": "https://github.com/arraypress/wp-accept-language-utils",
+      "keywords": [
+        "accept-language",
+        "arraypress",
+        "http-headers",
+        "i18n",
+        "internationalization",
+        "language-detection",
+        "locale",
+        "wordpress"
+      ],
+      "support": {
+        "issues": "https://github.com/arraypress/wp-accept-language-utils/issues",
+        "source": "https://github.com/arraypress/wp-accept-language-utils"
+      },
+      "time": "2026-01-17T13:48:56+00:00"
+    },
     {
       "name": "league/iso3166",
       "version": "4.4.0",
@@ -310,16 +365,16 @@
     },
     {
       "name": "twig/twig",
-      "version": "v3.21.1",
+      "version": "v3.23.0",
       "source": {
         "type": "git",
         "url": "https://github.com/twigphp/Twig.git",
-        "reference": "285123877d4dd97dd7c11842ac5fb7e86e60d81d"
+        "reference": "a64dc5d2cc7d6cafb9347f6cd802d0d06d0351c9"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/twigphp/Twig/zipball/285123877d4dd97dd7c11842ac5fb7e86e60d81d",
-        "reference": "285123877d4dd97dd7c11842ac5fb7e86e60d81d",
+        "url": "https://api.github.com/repos/twigphp/Twig/zipball/a64dc5d2cc7d6cafb9347f6cd802d0d06d0351c9",
+        "reference": "a64dc5d2cc7d6cafb9347f6cd802d0d06d0351c9",
         "shasum": ""
       },
       "require": {
@@ -373,7 +428,7 @@
       ],
       "support": {
         "issues": "https://github.com/twigphp/Twig/issues",
-        "source": "https://github.com/twigphp/Twig/tree/v3.21.1"
+        "source": "https://github.com/twigphp/Twig/tree/v3.23.0"
       },
       "funding": [
         {
@@ -385,13 +440,15 @@
           "type": "tidelift"
         }
       ],
-      "time": "2025-05-03T07:21:55+00:00"
+      "time": "2026-01-23T21:00:41+00:00"
     }
   ],
   "packages-dev": [],
   "aliases": [],
   "minimum-stability": "stable",
-  "stability-flags": {},
+  "stability-flags": {
+    "arraypress/wp-accept-language-utils": 20
+  },
   "prefer-stable": false,
   "prefer-lowest": false,
   "platform": {},
