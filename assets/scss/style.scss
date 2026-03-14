@@ -752,6 +752,11 @@ address {
   }
 }
 
+.coop-request-button {
+  background: var(--bulma-body-color) !important;
+  color: var(--bulma-body-background-color) !important;
+}
+
 figure.supporter-logo {
   background-clip: content-box;
   width: max-content;

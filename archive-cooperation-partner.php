@@ -31,8 +31,8 @@ do_action( 'wp_body_open' );
             ?>
         </div>
     </article>
-    <div class="has-background-white py-4 px-2 mt-5">
-        <div class="page-content" style="--bulma-body-background-color: white;">
+    <div class="coop-request-button py-4 px-2 mt-5">
+        <div class="page-content">
             <?php
 
             get_template_part( 'src/partials/button', args: [
