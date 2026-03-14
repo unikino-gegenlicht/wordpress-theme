@@ -52,7 +52,6 @@ add_action( "pre_get_posts", "ggl_list_all_entities_sorted" );
 add_action( "pre_get_posts", "ggl_frontpage_query_only_current_semester", 1 );
 add_filter( "locale", "ggl_locale_use_http_fallback", 10 );
 add_action( "wp_head", "ggl_inject_special_program_colors" );
-//add_action( "get_header", "ggl_redirect_from_non_semester_pages", 2 );
 add_action( "wp_head", "ggl_inject_movie_schema_markup" );
 add_filter( "wpseo_opengraph_image", "ggl_anonymize_opengraph_image" );
 add_filter( "init", "ggl_add_shortcodes" );
@@ -345,13 +344,11 @@ function ggl_locale_use_http_fallback( string $locale ): string {
 
     if ( is_user_logged_in() ) {
         $locale = substr( $locale, 0, 2 );
-        switch ( $locale ) {
-            case 'en':
-            case 'de':
-                return $locale;
-            default:
-                return "en";
-        }
+
+        return match ( $locale ) {
+            'en', 'de' => $locale,
+            default => "en",
+        };
 
     }
 
@@ -433,8 +430,8 @@ function ggl_send_image_link_headers(): void {
     $mobileOptimizedImage  = get_the_post_thumbnail_url( size: "mobile" );
     $desktopOptimizedImage = get_the_post_thumbnail_url( size: "desktop" );
 
-    header( 'Link: <' . $mobileOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', false, 103 );
-    header( 'Link: <' . $desktopOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', false, 103 );
+    header( 'Link: <' . $mobileOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', replace: false, response_code: 103 );
+    header( 'Link: <' . $desktopOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', replace: false, response_code: 103 );
 }
 
 
@@ -565,6 +562,10 @@ function ggl_send_link_headers(): void {
         }
     }
 
+    foreach ( FONT_REGISTRY as $font ) {
+        header( "Link: <{$font->public_path}?ver={$font->hash}>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;", replace: false, response_code: 103 );
+    }
+
     foreach ( $relativeStylePaths as $relativeStylePath ) {
         header( "Link: <{$relativeStylePath}>; rel=preload; as=style; fetchpriority=high;", false, 103 );
     }
@@ -572,7 +573,6 @@ function ggl_send_link_headers(): void {
     foreach ( $relativeScriptPaths as $relativeScriptPath ) {
         header( "Link: <{$relativeScriptPath}>; rel=preload; as=script; fetchpriority=high;", false, 103 );
     }
-
 
 }
 
@@ -650,10 +650,6 @@ function ggl_enqueue_fonts(): void {
      * @type GGL_Font[]
      */
     define( "FONT_REGISTRY", $fonts );
-
-    foreach ( $fonts as $font ) {
-        header( "Link: <{$font->public_path}?ver={$font->hash}>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;", false, 103 );
-    }
 }
 
 function ggl_enqueue_scripts(): void {
