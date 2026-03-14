@@ -25,9 +25,15 @@ get_header();
                     $outputText   = str_replace( "%%leftIn%%", rwmb_get_value( "left_in" ), $outputText );
                 endif;
 
-                echo apply_filters( 'the_content', $outputText );
+                $description         = mb_trim( rwmb_get_value( "description" ) ?? "" );
+                $english_description = mb_trim( rwmb_get_value( "description_en" ) ?? "" );
 
-                echo apply_filters( "the_content", rwmb_get_value( "description" ) );
+                if ( $english_description == "" ) {
+                    $english_description = mb_trim( $description );
+                }
+
+                echo apply_filters( 'the_content', $outputText );
+                echo apply_filters( "the_content", str_starts_with( get_user_locale(), "de" ) ? $description : $english_description );
                 ?>
 
             </header>
@@ -42,7 +48,7 @@ get_header();
 
             $args = array(
                     "post_type"      => [ "movie", "event" ],
-                    "posts_per_page" => -1,
+                    "posts_per_page" => - 1,
                     'tax_query'      => array(
                             'relation' => "AND",
                             array(
