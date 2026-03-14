@@ -338,9 +338,14 @@ function ggl_inject_special_program_colors(): void {
 }
 
 function ggl_locale_use_http_fallback( string $locale ): string {
-    if ( ( is_admin() && ! is_customize_preview() ) || (is_user_logged_in() && current_user_can("edit_posts")) ) {
+    if (is_user_logged_in() && current_user_can("edit_post")) {
+        return AcceptLanguage::extract_language(get_user_locale());
+    }
+
+    if ( ( is_admin() && ! is_customize_preview() ) ) {
         return AcceptLanguage::extract_language($locale);
     }
+
 
     return AcceptLanguage::get_best_match(["de", "en"], "en");
 }
