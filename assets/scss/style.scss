@@ -434,6 +434,8 @@ hr.separator {
 
 .member-picture {
   max-width: 250px;
+  max-height: calc(250px * 1.33);
+  aspect-ratio: 3/4;
 
   @include mixins.mobile {
     margin: 0 auto;
@@ -767,6 +769,7 @@ figure.coop-logo {
   outline: var(--border-thickness) solid var(--bulma-body-color);
   max-width: 250px;
   aspect-ratio: 3/4;
+  max-height: calc(250px * 1.33);
 
   &.no-outline {
     outline: none !important;
