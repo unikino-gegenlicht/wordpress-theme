@@ -9,9 +9,9 @@ do_action( 'wp_body_open' );
 
     <article class="page-content mt-4">
         <div class="content">
-            <h1 class="is-size-3 is-uppercase"><?= get_theme_mod( "supporter_page_title" )[ get_user_locale() ] ?? "Configure Me!" ?></h1>
+            <h1 class="is-size-3 is-uppercase"><?= get_theme_mod( "supporter_page_title" )[ substr(get_user_locale(), 0, 2) ] ?? "Configure Me!" ?></h1>
             <?php
-            $raw = get_theme_mod( 'supporter_page_text' )[ get_user_locale() ] ?? "Some content is missing";
+            $raw = get_theme_mod( 'supporter_page_text' )[ substr(get_user_locale(), 0, 2) ] ?? "Some content is missing";
             echo apply_filters( "the_content", $raw );
             ?>
         </div>

@@ -22,11 +22,11 @@
                      src="<?= wp_get_attachment_image_url( get_theme_mod( "location_unikum_logo" ) ) ?? '' ?>"/>
             </figure>
         <?php endif; ?>
-        <h2><?= get_theme_mod( "location_unikum_block_title" )[ get_user_locale() ] ?? "" ?></h2>
-        <p class="pt-2"><?= get_theme_mod( "location_unikum_block_tagline" )[ get_user_locale() ] ?? "" ?></p>
+        <h2><?= get_theme_mod( "location_unikum_block_title" )[ substr(get_user_locale(), 0, 2)  ] ?? "" ?></h2>
+        <p class="pt-2"><?= get_theme_mod( "location_unikum_block_tagline" )[ substr(get_user_locale(), 0, 2)  ] ?? "" ?></p>
         <hr class="separator"/>
         <div class="content pb-3">
-            <?= apply_filters( "the_content", get_theme_mod( "location_unikum_block_content" )[ get_user_locale() ] ?? "" ) ?>
+            <?= apply_filters( "the_content", get_theme_mod( "location_unikum_block_content" )[ substr(get_user_locale(), 0, 2)  ] ?? "" ) ?>
             <?php
             get_template_part( 'src/partials/button', args: [
                     'href'     => get_theme_mod( "location_unikum_block_website_url" ),

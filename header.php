@@ -181,7 +181,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                                 <span class="si is-size-5 si-wordpress"></span>
                             </span>
                             <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop">
-                                <?= esc_html__( 'To the backend' ) ?>
+                                <?= esc_html__( 'To the backend', "gegenlicht" ) ?>
                             </span>
                         </span>
                     </a>

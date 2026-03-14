@@ -144,7 +144,7 @@ get_header();
         else:
             ?>
             <div class="content">
-                <?= apply_filters( "the_content", get_theme_mod( "missing_coop_entries" )[ get_user_locale() ] ?? "" ) ?>
+                <?= apply_filters( "the_content", get_theme_mod( "missing_coop_entries" )[ substr(get_user_locale(), 0, 2)  ] ?? "" ) ?>
             </div>
         <?php endif; ?>
 

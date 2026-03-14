@@ -14,12 +14,12 @@ get_header();
                 <h1><?php the_title() ?></h1>
                 <?php
                 if ( rwmb_get_value( "status" ) == "active" ):
-                    $templateText = get_theme_mod( "active_text" )[ get_user_locale() ] ?? "";
+                    $templateText = get_theme_mod( "active_text" )[ substr(get_user_locale(), 0, 2)  ] ?? "";
 
                     $outputText = str_replace( "%%name%%", get_the_title(), $templateText );
                     $outputText = str_replace( "%%joinedIn%%", rwmb_get_value( "joined_in" ), $outputText );
                 else:
-                    $templateText = get_theme_mod( "former_text" )[ get_user_locale() ] ?? "";
+                    $templateText = get_theme_mod( "former_text" )[ substr(get_user_locale(), 0, 2)  ] ?? "";
                     $outputText   = str_replace( "%%name%%", get_the_title(), $templateText );
                     $outputText   = str_replace( "%%joinedIn%%", rwmb_get_value( "joined_in" ), $outputText );
                     $outputText   = str_replace( "%%leftIn%%", rwmb_get_value( "left_in" ), $outputText );

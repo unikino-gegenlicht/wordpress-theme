@@ -142,7 +142,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         <?php ggl_the_post_thumbnail(); ?>
         <?php if ( ! $show_details && ! $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
-                <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ get_user_locale() ] ?? "" ) ?>
+                <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ substr(get_user_locale(), 0, 2)  ] ?? "" ) ?>
             </div>
         <?php endif; ?>
         <?php if ( $isSpecialProgram && ! empty( trim( rwmb_get_value( "special_program" )->description ) ) ): ?>
