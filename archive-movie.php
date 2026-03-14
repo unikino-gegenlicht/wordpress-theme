@@ -19,9 +19,9 @@ krsort( $semesterScreenings );
     <main class="page-content mt-4">
         <article class="content">
             <header>
-                <h1><?= get_theme_mod( 'archive_header' )[ get_locale() ] ?? "" ?></h1>
+                <h1><?= get_theme_mod( 'archive_header' )[ get_user_locale() ] ?? "" ?></h1>
             </header>
-            <?= apply_filters( "the_content", get_theme_mod( 'archive_text' )[ get_locale() ] ?? "" ) ?>
+            <?= apply_filters( "the_content", get_theme_mod( 'archive_text' )[ get_user_locale() ] ?? "" ) ?>
         </article>
         <hr class="separator"/>
         <?php

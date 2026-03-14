@@ -33,7 +33,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                         break;
                     case 'paid':
                         $admissionFee = (float) rwmb_meta( 'admission_fee' );
-                        echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, get_locale() == 'en' ? '.' : "," ) . "&euro;</p>";
+                        echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, get_user_locale() == 'en' ? '.' : "," ) . "&euro;</p>";
 
                 }
                 ?>

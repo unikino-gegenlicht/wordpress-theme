@@ -118,7 +118,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
 
 ?>
 <!DOCTYPE html>
-<html lang="<?= substr( get_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top">
+<html lang="<?= substr( get_user_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top">
 <head>
     <?php wp_head(); ?>
     <title><?= esc_html( GGL_PAGE_TITLE ) ?></title>

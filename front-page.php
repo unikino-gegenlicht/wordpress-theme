@@ -67,7 +67,7 @@ else:
     <?php endforeach; ?>
 <?php else: ?>
     <div class="content">
-        <?= apply_filters( "the_content", get_theme_mod( "semester_break_premonition_text" )[ get_locale() ] ?? "" ) ?>
+        <?= apply_filters( "the_content", get_theme_mod( "semester_break_premonition_text" )[ get_user_locale() ] ?? "" ) ?>
     </div>
 <?php endif; ?>
     <?php get_template_part( 'src/partials/button', args: [
@@ -119,9 +119,9 @@ endforeach; ?>
                         'mobile_image_url' => wp_get_attachment_image_url( get_theme_mod( 'team_block_image' ), 'mobile' )
                 ] );
             endif; ?>
-            <h2><?= get_theme_mod( "team_block_title" )[ get_locale() ] ?? "Please set this value!" ?></h2>
+            <h2><?= get_theme_mod( "team_block_title" )[ get_user_locale() ] ?? "Please set this value!" ?></h2>
             <?php
-            $raw = get_theme_mod( 'team_block_text' )[ get_locale() ] ?? "";
+            $raw = get_theme_mod( 'team_block_text' )[ get_user_locale() ] ?? "";
             echo apply_filters( "the_content", $raw );
             ?>
             <?php get_template_part( 'src/partials/button', args: [
@@ -178,9 +178,9 @@ endforeach; ?>
                             'style'        => 'object-position: 15%;'
                     ] ) ?>
                 <?php endif; ?>
-                <h2><?= get_theme_mod( "location_block_title" )[ get_locale() ] ?? "Content Not Set" ?></h2>
+                <h2><?= get_theme_mod( "location_block_title" )[ get_user_locale() ] ?? "Content Not Set" ?></h2>
                 <?php
-                $raw = get_theme_mod( 'location_block_text' )[ get_locale() ] ?? "";
+                $raw = get_theme_mod( 'location_block_text' )[ get_user_locale() ] ?? "";
                 echo apply_filters( "the_content", $raw );
                 ?>
                 <?php
@@ -285,7 +285,7 @@ endforeach; ?>
                 <h2><?= esc_html__( 'Our Cooperation Partners' ) ?></h2>
                 <p>
                     <?php
-                    $raw = get_theme_mod( 'coop_block_text' )[ get_locale() ] ?? "";
+                    $raw = get_theme_mod( 'coop_block_text' )[ get_user_locale() ] ?? "";
                     echo apply_filters( "the_content", $raw );
                     ?>
                 <p>

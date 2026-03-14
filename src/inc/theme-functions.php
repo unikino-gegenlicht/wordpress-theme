@@ -104,7 +104,7 @@ function ggl_get_title( WP_Post|int $post = 0 ): string {
     $show_details = apply_filters( "ggl__show_full_details", false, $post );
 
     if ( $show_details || $post->post_type === "event" ) {
-        return get_locale() == "de" ? mb_trim( rwmb_get_value( 'german_title', post_id: $post->ID ) ) : mb_trim( rwmb_get_value( 'english_title', post_id: $post->ID ) );
+        return get_user_locale() == "de" ? mb_trim( rwmb_get_value( 'german_title', post_id: $post->ID ) ) : mb_trim( rwmb_get_value( 'english_title', post_id: $post->ID ) );
     }
 
     $inSpecialProgram = rwmb_get_value( 'program_type', post_id: $post->ID ) == 'special_program';

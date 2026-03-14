@@ -31,7 +31,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                         break;
                     case 'paid':
                         $admissionFee = (float) rwmb_meta( 'admission_fee' );
-                        echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, get_locale() == 'en' ? '.' : "," ) . "&euro;</p>";
+                        echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, get_user_locale() == 'en' ? '.' : "," ) . "&euro;</p>";
 
                 }
                 ?>
@@ -142,7 +142,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         <?php ggl_the_post_thumbnail(); ?>
         <?php if ( ! $show_details && ! $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
-                <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ get_locale() ] ?? "" ) ?>
+                <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ get_user_locale() ] ?? "" ) ?>
             </div>
         <?php endif; ?>
         <?php if ( $isSpecialProgram && ! empty( trim( rwmb_get_value( "special_program" )->description ) ) ): ?>

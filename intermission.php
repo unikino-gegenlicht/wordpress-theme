@@ -9,7 +9,7 @@
     ] );
     ?>
     <hr class="separator" style="margin-top: 1rem !important;"/>
-    <h3 class="mt-0 pb-2"><?= get_theme_mod( "semester_break_tagline" )[ get_locale() ] ?? "" ?></h3>
+    <h3 class="mt-0 pb-2"><?= get_theme_mod( "semester_break_tagline" )[ get_user_locale() ] ?? "" ?></h3>
 </div>
 <?php
 /**
@@ -43,7 +43,7 @@ $query = new WP_Query( $args );
 if ( $query->have_posts() ):
     ?>
     <div class="content pt-2">
-        <?= apply_filters( "the_content", get_theme_mod( "semester_break_pre_events_text" )[ get_locale() ] ?? "" ) ?>
+        <?= apply_filters( "the_content", get_theme_mod( "semester_break_pre_events_text" )[ get_user_locale() ] ?? "" ) ?>
     </div>
     <?php
     get_template_part( 'src/partials/movie-list', args: [
@@ -52,16 +52,16 @@ if ( $query->have_posts() ):
     ] );
     ?>
     <div class="content pt-2">
-        <?= apply_filters( "the_content", get_theme_mod( "semester_break_post_events_text" )[ get_locale() ] ?? "" ) ?>
+        <?= apply_filters( "the_content", get_theme_mod( "semester_break_post_events_text" )[ get_user_locale() ] ?? "" ) ?>
     </div>
 <?php endif; ?>
 <div class="content pt-2">
-    <?= apply_filters( "the_content", get_theme_mod( "semester_break_text" )[ get_locale() ] ?? "" ) ?>
+    <?= apply_filters( "the_content", get_theme_mod( "semester_break_text" )[ get_user_locale() ] ?? "" ) ?>
 </div>
 <div class="content">
     <h3><?= esc_html__( "What we have shown so far", "gegenlicht" ) ?></h3>
     <div class="pt-2">
-        <?= apply_filters( "the_content", get_theme_mod( "semester_break_archive_text" )[ get_locale() ] ?? "" ) ?>
+        <?= apply_filters( "the_content", get_theme_mod( "semester_break_archive_text" )[ get_user_locale() ] ?? "" ) ?>
         <?php get_template_part( 'src/partials/button', args: [
                 'href'    => get_post_type_archive_link( 'movie' ),
                 'content' => __( 'To the Archive', 'gegenlicht' )
