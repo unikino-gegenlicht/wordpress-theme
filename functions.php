@@ -639,6 +639,7 @@ function ggl_enqueue_scripts(): void {
 }
 
 function ggl_enqueue_styles() {
+    wp_enqueue_style('dashicons');
     if ( is_user_logged_in() ) {
         wp_enqueue_style( "simple-icons", get_stylesheet_directory_uri() . '/assets/css/simple-icons.css', ver: md5_file( get_stylesheet_directory() . "/assets/css/simple-icons.css" ) );
     }

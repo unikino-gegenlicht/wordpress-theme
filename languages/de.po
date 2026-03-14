@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GEGENLICHT 2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wordpress-theme\n"
-"POT-Creation-Date: 2026-03-13T12:33:34+00:00\n"
-"PO-Revision-Date: 2026-03-13 13:37+0100\n"
+"POT-Creation-Date: 2026-03-14T22:13:37+00:00\n"
+"PO-Revision-Date: 2026-03-14 23:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -163,15 +163,15 @@ msgstr "An einer Kooperation interessiert?"
 msgid "Our supporters"
 msgstr "Unsere Unterstützer*innen"
 
-#: functions.php:443
+#: functions.php:421
 msgid "Username or email address is missing"
 msgstr "Der Benutzername oder die E-Mail Adresse fehlen"
 
-#: functions.php:447
+#: functions.php:425
 msgid "The entered credentials are invalid. Please try again"
 msgstr "Die eingegebenen Login-Informationen sind ungültig"
 
-#: functions.php:470
+#: functions.php:448
 msgid ""
 "Students and Faculty at the Carl von Ossietzky University are able to "
 "register for a free account which unlocks more details about the program "
@@ -186,39 +186,47 @@ msgstr ""
 msgid "Location"
 msgstr "Ort"
 
-#: header.php:194
+#: header.php:184
+msgid "Open Customizer"
+msgstr "Customizer öffnen"
+
+#: header.php:196
+msgid "To the backend"
+msgstr "Zum Backend"
+
+#: header.php:206
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: header.php:202
+#: header.php:214
 msgid "Logout"
 msgstr "Abmelden"
 
-#: header.php:209
+#: header.php:221
 msgid "Login"
 msgstr "Anmelden"
 
-#: header.php:235
+#: header.php:247
 msgid "Semester Break"
 msgstr "Semesterpause"
 
-#: header.php:253
+#: header.php:265
 msgid "New Program Releases In"
 msgstr "Neues Programm in"
 
-#: header.php:253
+#: header.php:265
 msgid "Day"
 msgstr "Tag"
 
-#: header.php:253
+#: header.php:265
 msgid "Days"
 msgstr "Tagen"
 
-#: header.php:253
+#: header.php:265
 msgid "Hour"
 msgstr "Stunde"
 
-#: header.php:253
+#: header.php:265
 msgid "Hours"
 msgstr "Stunden"
 
@@ -238,7 +246,7 @@ msgstr "Was wir bis jetzt alles gezeigt haben"
 msgid "Open Website"
 msgstr "Website öffnen"
 
-#: single-cooperation-partner.php:67 single-team-member.php:79
+#: single-cooperation-partner.php:67 single-team-member.php:85
 msgid "Upcoming Screenings"
 msgstr "Kommende Vorstellungen"
 
@@ -359,7 +367,7 @@ msgstr "Darum sehenswert"
 msgid "Short Movie"
 msgstr "Kurzfilm"
 
-#: single-team-member.php:133
+#: single-team-member.php:139
 msgid "Past Screenings"
 msgstr "Vergangene Vorstellungen"
 

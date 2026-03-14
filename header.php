@@ -174,6 +174,18 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                 <?php
                 get_template_part( "src/partials/header-menu" ) ?>
                 <hr class="separator is-hidden-desktop">
+                <?php if ( is_user_logged_in() && current_user_can( 'manage_options' ) ): ?>
+                    <a class="navbar-item no-hover" href="<?= wp_customize_url() ?>">
+                        <span class="icon-text is-size-5">
+                            <span class="icon">
+                                <span class="dashicons dashicons-admin-appearance"></span>
+                            </span>
+                            <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop">
+                                <?= esc_html__( 'Open Customizer', "gegenlicht" ) ?>
+                            </span>
+                        </span>
+                    </a>
+                <?php endif; ?>
                 <?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ): ?>
                     <a class="navbar-item no-hover" href="<?= get_admin_url( scheme: 'https' ) ?>">
                         <span class="icon-text is-size-5">
