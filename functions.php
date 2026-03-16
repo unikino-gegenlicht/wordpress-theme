@@ -1,4 +1,5 @@
 <?php
+
 use ArrayPress\AcceptLanguageUtils\AcceptLanguage;
 use inc\GGL_Font;
 use Twig\Environment;
@@ -34,14 +35,26 @@ add_action( "init", "ggl_disable_wp_emoji_styles" );
 add_action( "init", "ggl_disable_emoji_staticization" );
 add_action( "init", "ggl_disable_tinymce_emojis" );
 add_action( "wp_enqueue_scripts", "ggl_remove_default_styles" );
-add_action( "wp_enqueue_scripts", "ggl_enqueue_styles" );
-add_action( "wp_enqueue_scripts", "ggl_enqueue_scripts" );
-add_action( "wp_enqueue_scripts", "ggl_enqueue_fonts" );
-add_action( "wp_enqueue_scripts", "ggl_send_link_headers", 90 );
+add_action( "get_header", "ggl_enqueue_styles", 5 );
+add_action( "get_header", "ggl_enqueue_scripts", 6 );
+add_action( "get_header", "ggl_enqueue_fonts", 7 );
+add_action( "get_header", "ggl_send_link_headers", 8 );
 add_action( "after_setup_theme", "ggl_setup_menus" );
 add_action( "init", "ggl_disable_wpadmin_for_subscribers" );
 add_action( "init", "ggl_disable_admin_bar" );
 add_action( "setup_theme", "ggl_load_frontend_textdomain" );
+add_action( "pre_get_posts", function () {
+    if ( ! is_singular( "team-member" ) ) {
+        return;
+    }
+
+    $status = get_post_meta( get_the_ID(), 'status', true );
+    if ( ! str_starts_with( $status, "hidden" ) ) {
+        return;
+    }
+
+    wp_safe_redirect( get_post_type_archive_link( "team-member" ) );
+}, 2 );
 add_action( "login_enqueue_scripts", "ggl_enqueue_logo_url_variable" );
 add_action( "login_enqueue_scripts", "ggl_enqueue_login_style" );
 add_filter( "login_headerurl", "ggl_login_header_url" );
@@ -50,7 +63,7 @@ add_filter( "login_errors", "ggl_obfuscate_login_errors" );
 add_action( "wp_enqueue_scripts", "ggl_send_image_link_headers", 70 );
 add_action( "pre_get_posts", "ggl_list_all_entities_sorted" );
 add_action( "pre_get_posts", "ggl_frontpage_query_only_current_semester", 1 );
-add_filter( "locale", "ggl_locale_use_http_fallback", 10 );
+add_filter( "locale", "ggl_locale_use_http_fallback" );
 add_action( "wp_head", "ggl_inject_special_program_colors" );
 add_action( "wp_head", "ggl_inject_movie_schema_markup" );
 add_filter( "wpseo_opengraph_image", "ggl_anonymize_opengraph_image" );
@@ -338,16 +351,20 @@ function ggl_inject_special_program_colors(): void {
 }
 
 function ggl_locale_use_http_fallback( string $locale ): string {
-    if (is_user_logged_in() && current_user_can("edit_post")) {
-        return AcceptLanguage::extract_language(get_user_locale());
+    if ( is_user_logged_in() && current_user_can( "edit_posts" ) ) {
+        remove_filter( "locale", "ggl_locale_use_http_fallback" );
+        $locale = get_user_locale();
+        add_filter( "locale", "ggl_locale_use_http_fallback" );
+
+        return $locale;
     }
 
     if ( ( is_admin() && ! is_customize_preview() ) ) {
-        return AcceptLanguage::extract_language($locale);
+        return $locale;
     }
 
 
-    return AcceptLanguage::get_best_match(["de", "en"], "en");
+    return AcceptLanguage::get_best_match( [ "en_US", "de_DE" ], "en_US" );
 }
 
 
@@ -505,7 +522,7 @@ function ggl_setup_menus(): void {
 }
 
 
-function ggl_send_link_headers(): void {
+function ggl_send_link_headers( $_ ): void {
     if ( is_404() ) {
         return;
     }
@@ -544,7 +561,7 @@ function ggl_send_link_headers(): void {
     }
 
     foreach ( FONT_REGISTRY as $font ) {
-        header( "Link: <{$font->public_path}?ver={$font->hash}>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;", replace: false, response_code: 103 );
+        header( "Link: <{$font->public_path}?ver={$font->hash}>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;", false, 103 );
     }
 
     foreach ( $relativeStylePaths as $relativeStylePath ) {
@@ -554,7 +571,7 @@ function ggl_send_link_headers(): void {
     foreach ( $relativeScriptPaths as $relativeScriptPath ) {
         header( "Link: <{$relativeScriptPath}>; rel=preload; as=script; fetchpriority=high;", false, 103 );
     }
-
+    headers_send( 103 );
 }
 
 function ggl_enqueue_fonts(): void {
@@ -639,7 +656,7 @@ function ggl_enqueue_scripts(): void {
 }
 
 function ggl_enqueue_styles() {
-    wp_enqueue_style('dashicons');
+    wp_enqueue_style( 'dashicons' );
     if ( is_user_logged_in() ) {
         wp_enqueue_style( "simple-icons", get_stylesheet_directory_uri() . '/assets/css/simple-icons.css', ver: md5_file( get_stylesheet_directory() . "/assets/css/simple-icons.css" ) );
     }
