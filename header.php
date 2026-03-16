@@ -14,15 +14,13 @@ $semesterScreeningStart = get_term_meta( $semester->term_id, 'semester_start', t
 
 $publicationDelay = get_theme_mod( 'program_reveal_delay' );
 
-
+$announce_new_program = false;
+$is_break_period = false;
 if ( time() < strtotime( "-{$publicationDelay} days", $semesterScreeningStart ) ) {
-    define( "GGL_ANNOUNCE_NEW_PROGRAM", true );
-    define( "GGL_SEMESTER_BREAK", false );
-} else {
-    define( "GGL_ANNOUNCE_NEW_PROGRAM", false );
+    $announce_new_program = true;
 }
 
-if ( ! defined( 'GGL_SEMESTER_BREAK' ) ) {
+if ( !$is_break_period ) {
     $next_meta       = [];
     $next_meta[]     = [
             'key'     => 'screening_date',
@@ -46,15 +44,13 @@ if ( ! defined( 'GGL_SEMESTER_BREAK' ) ) {
     );
 
     $next = new WP_Query( $next_query_args );
-
-    define( "GGL_SEMESTER_BREAK", ! $next->have_posts() || get_theme_mod( "manual_semester_break" ) );
+    $is_break_period = !$next->have_posts() || get_theme_mod( 'manual_semester_break' );
 }
 
 $show_custom_banner = get_theme_mod( "show_custom_banner_message" );
 if ( $show_custom_banner ) {
-    define( "GGL_ANNOUNCE_NEW_PROGRAM", false );
-    define( "GGL_SEMESTER_BREAK", false );
-    define( "GGL_CUSTOM_BANNER_MSG", true );
+    $announce_new_program = false;
+    $is_break_period = false;
 }
 
 
@@ -224,7 +220,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
             </div>
         </div>
     </nav>
-    <?php if ( defined( "GGL_CUSTOM_BANNER_MSG" ) && GGL_CUSTOM_BANNER_MSG ): ?>
+    <?php if ( $show_custom_banner ): ?>
         <div class="page-content semester-break mb-5">
             <div class="marquee py-5">
                 <?php for ( $i = 0; $i < 2; $i ++ ): ?>
@@ -238,7 +234,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
             </div>
         </div>
     <?php else: ?>
-        <?php if ( GGL_SEMESTER_BREAK && ! $hideBreakBanner && ! GGL_ANNOUNCE_NEW_PROGRAM ): ?>
+        <?php if ( $is_break_period && ! $hideBreakBanner && ! $announce_new_program ): ?>
             <div class="page-content semester-break mb-5">
                 <div class="marquee py-5">
                     <?php for ( $i = 0; $i < 2; $i ++ ): ?>
@@ -252,7 +248,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
                 </div>
             </div>
         <?php endif; ?>
-        <?php if ( GGL_ANNOUNCE_NEW_PROGRAM && ! $hideBreakBanner ):
+        <?php if ( $announce_new_program && ! $hideBreakBanner ):
             $timeRemaining = strtotime( "-{$publicationDelay} days", $semesterScreeningStart ) - time();
             $daysRemaining = floor( $timeRemaining / ( 60 * 60 * 24 ) );
             $hoursRemaining = floor( ( $timeRemaining - ( $daysRemaining * 60 * 60 * 24 ) ) / ( 60 * 60 ) );
