@@ -12,31 +12,16 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
     <header class="page-content">
         <div class="screening-information py-0">
             <div>
-                <p><?= esc_html__( 'Event starts', 'gegenlicht' ) ?></p>
+                <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
                 <p>
                     <time
                             datetime="<?= date( 'Y-m-d H:i', rwmb_meta( 'screening_date' ) ) ?>">
-                        <?= date( 'd.m.Y | H:i', rwmb_meta( 'screening_date' ) ) ?>
+                        <?php ggl_the_starting_time() ?>
                     </time>
                 </p>
             </div>
             <div class="is-justify-content-right">
-                <?php
-                $admission_type = rwmb_meta( 'admission_type' );
-
-                switch ( $admission_type ) {
-                    case 'free':
-                        echo "<p>" . esc_html__( 'Free Admission', 'gegenlicht' ) . "</p>";
-                        break;
-                    case 'donation':
-                        echo "<p>" . esc_html__( 'Donations welcome', 'gegenlicht' ) . "</p>";
-                        break;
-                    case 'paid':
-                        $admissionFee = (float) rwmb_meta( 'admission_fee' );
-                        echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, str_starts_with( get_user_locale(), 'en' ) ? '.' : "," ) . "&euro;</p>";
-
-                }
-                ?>
+                <?= esc_html__( "Admission", "gegenlicht" ) ?>: <?= ggl_get_admission_fee() ?>
             </div>
         </div>
         <div class="content mb-0">
@@ -45,7 +30,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         <hr class="separator"/>
         <div class="mt-2">
             <p>
-                <?= rwmb_meta( 'duration' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
+                <?php ggl_the_running_time(); ?>
             </p>
         </div>
         <hr class="separator"/>
@@ -74,7 +59,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                 </span>
             <?php endif; ?>
         </div>
-        <?php ggl_the_post_thumbnail() ?>
+        <?php ggl_the_event_thumbnail(); ?>
         <?php if ( $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
                 <?= apply_filters( "the_content", rwmb_get_value( "special_program" )->description ) ?>

@@ -3,73 +3,45 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 $show_details     = apply_filters( "ggl__show_full_details", false, $post );
-$isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
+$isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && !empty(wp_get_post_terms(taxonomy: "special-program"));
 
 ?>
 <main>
     <header class="page-content">
-        <div class="screening-information pt-0 <?= ( $show_details && ( ggl_get_title() !== rwmb_meta( 'original_title' ) ) ) ? '' : 'pb-0' ?>">
+        <div class="screening-information pt-0 <?= ( ( ggl_get_title() !== ggl_get_localized_title() ) ) ? '' : 'pb-0' ?>">
             <div>
                 <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
                 <p>
                     <time
                             datetime="<?= date( 'Y-m-d H:i', rwmb_meta( 'screening_date' ) ) ?>">
-                        <?= date( 'd.m.Y | H:i', rwmb_meta( 'screening_date' ) ) ?>
+                        <?php ggl_the_starting_time() ?>
                     </time>
                 </p>
             </div>
             <div class="is-justify-content-right">
-                <?php
-                $admission_type = rwmb_meta( 'admission_type' );
-
-                switch ( $admission_type ) {
-                    case 'free':
-                        echo "<p>" . esc_html__( 'Free Admission', 'gegenlicht' ) . "</p>";
-                        break;
-                    case 'donation':
-                        echo "<p>" . esc_html__( 'Donations welcome', 'gegenlicht' ) . "</p>";
-                        break;
-                    case 'paid':
-                        $admissionFee = (float) rwmb_meta( 'admission_fee' );
-                        echo "<p>" . esc_html__( 'Admission', 'gegenlicht' ) . " " . number_format( $admissionFee, 2, get_user_locale() == 'en' ? '.' : "," ) . "&euro;</p>";
-
-                }
-                ?>
+                <?= esc_html__( "Admission", "gegenlicht" ) ?>: <?php ggl_the_admission_fee() ?>
             </div>
         </div>
         <div class="content mb-0">
             <h1 role="heading"
-                class="mb-0 no-separator <?= ( $show_details && ggl_get_title() != rwmb_meta( 'original_title' ) ) ? "" : "pt-2" ?>">
-                <?= ggl_get_title() ?>
+                class="mb-0 no-separator <?= ( ggl_get_title() !== ggl_get_localized_title() ) ? "" : "pt-2" ?>">
+                <?= ggl_get_localized_title() ?>
             </h1>
-            <?php if ( $show_details && ggl_get_title() != rwmb_meta( 'original_title' ) ): ?>
-                <p class="is-size-5 mb-0"><?= rwmb_meta( 'original_title' ) ?></p>
+            <?php if ( ggl_get_title() !== ggl_get_localized_title() ): ?>
+                <p class="is-size-5 mb-0"><?= ggl_get_title() ?></p>
             <?php endif; ?>
         </div>
         <hr class="separator"/>
         <div class="mt-2">
             <p>
-                <?= join( '/', ggl_resolve_country_list( rwmb_meta( "country" ) ) ) ?> <?= date( 'Y', rwmb_meta( 'release_date' ) ) ?>
+                <?php ggl_the_countries_of_origin(); ?>&nbsp;<?php ggl_the_release_date(); ?>
                 |
-                <?= rwmb_meta( 'running_time' ) ?> <?= esc_html__( 'Minutes', 'gegenlicht' ) ?>
+                <?php ggl_the_running_time(); ?>
             </p>
             <p>
-                <?= esc_html__( 'by', 'gegenlicht' ) ?> <?= $show_details ? rwmb_meta( 'director' )->name : trim( preg_replace( '/\w/u', '█', rwmb_meta( 'director' )->name ) ) ?>
+                <?= esc_html__( 'by', 'gegenlicht' ) ?>&nbsp;<?php ggl_the_movie_director(); ?>
             </p>
-            <p>
-                <?php
-                $actors     = rwmb_meta( 'actors' );
-                $actorNames = array();
-                foreach ( $actors as $actor ) {
-                    if ( $show_details ) {
-                        $actorNames[] = $actor->name;
-                    } else {
-                        $actorNames[] = preg_replace( '/\w/u', '█', $actor->name );
-                    }
-                }
-                ?>
-                <?= esc_html__( 'with', 'gegenlicht' ) ?> <?= join( separator: ' ' . esc_html__( 'and', 'gegenlicht' ) . ' ', array: $actorNames ) ?>
-            </p>
+            <p><?php ggl_the_actors(); ?></p>
         </div>
         <hr class="separator"/>
         <div class="mb-2">
@@ -97,26 +69,26 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
 
                 <?php
                 $audioType        = rwmb_meta( 'audio_type' );
-                $audioLanguage    = rwmb_meta( 'audio_language' );
+                $audioLanguage    = ggl_get_audio_language();
                 $subtitleLanguage = rwmb_meta( 'subtitle_language' );
 
                 if ( $audioType == 'original' ):
                     if ( $subtitleLanguage == 'eng' ):
-                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $subtitleLanguage, "gegenlicht" ) . '">OmeU</span>';
+                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_subtitle_language( output: false ) . '">OmeU</span>';
                     elseif ( $subtitleLanguage == 'zxx' ):
-                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( "None", "gegenlicht" ) . '">OV</span>';
+                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_subtitle_language( output: false ) . '">OV</span>';
                     else:
-                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $subtitleLanguage, "gegenlicht" ) . '">OmU</span>';
+                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_subtitle_language( output: false ) . '">OmU</span>';
                     endif;
                 endif;
 
                 if ( $audioType == 'synchronization' ):
                     if ( $subtitleLanguage == 'zxx' ):
-                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( "None", "gegenlicht" ) . '">' . esc_html__( "Dub w/o Subs", "gegenlicht" ) . '</span>';
+                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_subtitle_language( output: false ) . '">' . esc_html__( "Dub w/o Subs", "gegenlicht" ) . '</span>';
                     elseif ( $subtitleLanguage == 'eng' ):
-                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $subtitleLanguage, "gegenlicht" ) . '">' . esc_html__( "Dub w/ eng. Subs", "gegenlicht" ) . '</span>';
+                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_subtitle_language( output: false ) . '">' . esc_html__( "Dub w/ eng. Subs", "gegenlicht" ) . '</span>';
                     else:
-                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $audioLanguage, "gegenlicht" ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . esc_html__( $subtitleLanguage, "gegenlicht" ) . '">' . esc_html__( "Dub w/ Subs", "gegenlicht" ) . '</span>';
+                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_subtitle_language( output: false ) . '">' . esc_html__( "Dub w/ Subs", "gegenlicht" ) . '</span>';
                     endif;
                 endif;
 
@@ -139,10 +111,10 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
             </div>
         </div>
 
-        <?php ggl_the_post_thumbnail(); ?>
+        <?php ggl_the_movie_thumbnail(); ?>
         <?php if ( ! $show_details && ! $isSpecialProgram ): ?>
             <div class="boxed-text mt-3">
-                <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ substr(get_user_locale(), 0, 2)  ] ?? "" ) ?>
+                <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ substr( get_user_locale(), 0, 2 ) ] ?? "" ) ?>
             </div>
         <?php endif; ?>
         <?php if ( $isSpecialProgram && ! empty( trim( rwmb_get_value( "special_program" )->description ) ) ): ?>
@@ -189,22 +161,20 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         <h2 class="font-ggl is-size-3 is-uppercase">
             <?= esc_html__( 'What the movie is about', 'gegenlicht' ) ?>
         </h2>
-        <?= apply_filters( "the_content", ggl_get_summary() ) ?>
+        <?php ggl_the_summary(); ?>
         <h2 class="font-ggl is-size-3 is-uppercase mt-6">
             <?= esc_html__( "Why it's worth watching", 'gegenlicht' ) ?>
         </h2>
-        <?= apply_filters( "the_content", ggl_get_worth_to_see() ) ?>
-        <?php if ( rwmb_meta( 'short_movie_screened' ) == 'yes' && is_user_logged_in() ): ?>
+        <?php ggl_the_worth_to_see_section(); ?>
+        <?php if ( ggl_movie_has_short() ): ?>
             <h2 class="font-ggl is-size-3 is-uppercase">
                 <?= esc_html__( 'Short Movie', "gegenlicht" ) ?>
             </h2>
-            <p class="m-0"><?= rwmb_meta( 'short_movie_title' ) ?></p>
+            <p class="m-0"><?php ggl_the_short_movie_title(); ?></p>
             <div class="is-flex short-details">
-                <p><?= esc_html__( 'by', "gegenlicht" ) ?> <?= rwmb_meta( 'short_movie_directed_by' ) ?></p>
-                |
-                <p><?= join( '/', ggl_resolve_country_list( rwmb_meta( 'short_movie_country' ) ) ) ?> <?= rwmb_meta( 'short_movie_release_year' ) ?></p>
-                |
-                <p><?= rwmb_meta( 'short_movie_running_time' ) ?> <?= esc_html__( 'Minutes' ) ?></p>
+                <p><?= esc_html__( "by", "gegenlicht" ) ?>&nbsp;<?php ggl_the_short_movie_director() ?></p> |
+                <p><?php ggl_the_short_movie_countries(); ?> <?php ggl_the_short_movie_release_year() ?></p> |
+                <p><?php ggl_the_short_movie_running_time() ?></p>
             </div>
         <?php endif; ?>
     </article>

@@ -84,75 +84,6 @@ function is_contact_page(): bool {
     return ( get_post()->ID ?? - 2 ) == get_theme_mod( 'contact_page' );
 }
 
-/**
- * Get the title of a post
- *
- * This function supersedes the inbuilt `get_the_title()` function as it automatically handles the anonymization for
- * events and movies. Additionally, the function automatically handles the retrieval of the german or english title.
- * If a other type of post is used the function will just return the result of the inbuilt function.
- *
- * @param WP_Post|int $post Defaults to global $post. The post the title should be loaded from
- *
- * @return string
- */
-function ggl_get_title( WP_Post|int $post = 0 ): string {
-    $post = get_post( $post );
-    if ( $post->post_type !== "movie" && $post->post_type !== "event" ) {
-        return get_the_title( $post );
-    }
-
-    $show_details = apply_filters( "ggl__show_full_details", false, $post );
-
-    if ( $show_details || $post->post_type === "event" ) {
-        return str_starts_with( get_user_locale(), "de" ) ? mb_trim( rwmb_get_value( 'german_title', post_id: $post->ID ) ) : mb_trim( rwmb_get_value( 'english_title', post_id: $post->ID ) );
-    }
-
-    $inSpecialProgram = rwmb_get_value( 'program_type', post_id: $post->ID ) == 'special_program';
-    if ( $inSpecialProgram ) {
-        return rwmb_get_value( 'special_program', post_id: $post->ID )->name;
-    }
-
-    return __( "An unnamed movie", "gegenlicht" );
-}
-
-
-function ggl_get_summary( WP_Post|int $post = 0, bool $plain = false ): string {
-    $post = get_post( $post );
-    $val  = "";
-    if ( $post->post_type !== "movie" && $post->post_type !== "event" ) {
-        return $val;
-    }
-
-    $show_details = apply_filters( "ggl__show_full_details", false, $post );
-
-
-    if ( ! $show_details && $post->post_type !== "event" ) {
-        $val = rwmb_get_value( "anon_summary" );
-    } else {
-        $val = rwmb_get_value( "summary" );
-    }
-
-    return ggl_cleanup( $val, $plain );
-}
-
-function ggl_get_worth_to_see( WP_Post|int $post = 0, bool $plain = false ): string {
-    $post = get_post( $post );
-    $val  = "";
-    if ( $post->post_type !== "movie" && $post->post_type !== "event" ) {
-        return $val;
-    }
-
-    $show_details = apply_filters( "ggl__show_full_details", false, $post );
-
-    if ( ! $show_details && $post->post_type !== "event" ) {
-        $val = rwmb_get_value( "anon_worth_to_see" );
-    } else {
-        $val = rwmb_get_value( "worth_to_see" );
-    }
-
-    return ggl_cleanup( $val, $plain );
-}
-
 function ggl_cleanup( $content, bool $plain = false ): string {
     return $plain ? strip_tags( $content ) : strip_tags( $content, [
             "p",
@@ -192,31 +123,6 @@ function ggl_get_thumbnail_url( WP_Post|int $post = 0, string $size = "full" ): 
     return $fallbackImageUrl;
 }
 
-
-function ggl_the_post_thumbnail( WP_Post|int $post = 0 ): void {
-    $post                    = get_post( $post );
-    $mobileUrl               = ggl_get_thumbnail_url( $post, "mobile" );
-    $desktopUrl              = ggl_get_thumbnail_url( $post, "desktop" );
-    $landscape_animation_url = wp_get_original_image_url( rwmb_meta( "landscape_animated_feature_image" )["ID"] ?? false );
-    $portrait_animation_url  = wp_get_original_image_url( rwmb_meta( "portrait_animated_feature_image" )["ID"] ?? false );
-    $is_animated             = rwmb_meta( "use_animated_feature_image" );
-
-    $show_details = apply_filters( "ggl__show_full_details", false, $post );
-    ?>
-    <picture class="image movie-image">
-        <source height="450" width="800" media="(prefers-reduced-motion: reduce) and (width > 768px)"
-                srcset="<?= $desktopUrl ?>">
-        <source height="1000" width="800" media="(prefers-reduced-motion: reduce) and (width <= 768px)"
-                srcset="<?= $mobileUrl ?>">
-        <source height="450" width="800" media="(width > 768px)"
-                srcset="<?= $is_animated && $show_details ? $landscape_animation_url : $desktopUrl ?> ">
-        <source height="1000" width="800" media="(width <= 768px)"
-                srcset="<?= $is_animated && $show_details ? $portrait_animation_url : $mobileUrl ?> ">
-        <img width="800" height="1000" src="<?= $mobileUrl ?>">
-    </picture>
-
-    <?php
-}
 
 
 function ggl_get_translate_rating_descriptor( string $descriptorKey ): string {

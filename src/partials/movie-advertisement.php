@@ -50,12 +50,10 @@ if ( $anonymize ) {
             <?= ggl_get_title() ?>
         </h2>
     </div>
-    <?php
-    ggl_the_post_thumbnail();
-    ?>
+    <?php ggl_the_movie_thumbnail($post); ?>
     <hr class="separator"/>
     <?php
-    get_template_part( "src/partials/button.php", args: [
+    get_template_part( "src/partials/button", args: [
             "href"    => get_the_permalink(),
             'content' => $post->post_type == 'movie' ? esc_html__( 'To the movie', 'gegenlicht' ) : esc_html__( 'To the event', 'gegenlicht' )
     ] );

@@ -53,7 +53,7 @@ if ( empty( $posts ) ) {
 
             ?>
             <a role="link"
-               aria-label="<?= ggl_get_title() ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( 'r', $startDateTime ) ?>"
+               aria-label="<?= ggl_get_localized_title() ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( 'r', $startDateTime ) ?>"
                     <?php if ( $allowFiltering ): ?>
                         data-program-type="<?= $programType ?>"
                     <?php endif; ?>
@@ -66,7 +66,7 @@ if ( empty( $posts ) ) {
                         </time>
                     </p>
                     <h2 class="is-size-5 no-separator is-uppercase movie-title">
-                        <?= ggl_get_title() ?>
+                        <?= ggl_get_localized_title() ?>
                     </h2>
                 </div>
                 <span class="icon">

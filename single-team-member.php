@@ -6,36 +6,15 @@ get_header();
 <main class="page-content mt-4">
     <article class="content">
         <div class="is-flex is-dynamic-flex is-align-items-top is-justify-content-space-evenly is-flex-wrap-wrap is-gap-1 mb-5 content">
-            <figure class="image member-picture is-flex is-flex-grow-1">
-                <img alt=""
-                     src="<?= get_the_post_thumbnail_url( size: 'member-crop' ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
-            </figure>
-            <header class="is-flex-grow-3 main-content word-break-break-word">
-                <h1><?php the_title() ?></h1>
-                <?php
-                if ( rwmb_get_value( "status" ) == "active" ):
-                    $templateText = get_theme_mod( "active_text" )[ substr(get_user_locale(), 0, 2)  ] ?? "";
-
-                    $outputText = str_replace( "%%name%%", get_the_title(), $templateText );
-                    $outputText = str_replace( "%%joinedIn%%", rwmb_get_value( "joined_in" ), $outputText );
-                else:
-                    $templateText = get_theme_mod( "former_text" )[ substr(get_user_locale(), 0, 2)  ] ?? "";
-                    $outputText   = str_replace( "%%name%%", get_the_title(), $templateText );
-                    $outputText   = str_replace( "%%joinedIn%%", rwmb_get_value( "joined_in" ), $outputText );
-                    $outputText   = str_replace( "%%leftIn%%", rwmb_get_value( "left_in" ), $outputText );
-                endif;
-
-                $description         = mb_trim( rwmb_get_value( "description" ) ?? "" );
-                $english_description = mb_trim( rwmb_get_value( "description_en" ) ?? "" );
-
-                if ( $english_description == "" ) {
-                    $english_description = mb_trim( $description );
-                }
-
-                echo apply_filters( 'the_content', $outputText );
-                echo apply_filters( "the_content", str_starts_with( get_user_locale(), "de" ) ? $description : $english_description );
-                ?>
-
+            <?php ggl_the_teamie_image(classes: "image member-picture is-flex is-flex-grow-0 is-flex-shrink-0 is-float-left") ?>
+            <header class="is-flex-grow-3 main-content word-break-break-word is-float-none">
+                <h1 class="mb-1"><?php the_title() ?></h1>
+                <?php if (ggl_is_teamie_active()): ?>
+                <p class="is-italic mb-3"><?php ggl_teamie_joined_in(); ?></p>
+                <?php else: ?>
+                <p class="is-italic mb-3"><?php ggl_the_teamie_membership_duration(); ?></p>
+                <?php endif; ?>
+                <?php ggl_the_teamie_description(); ?>
             </header>
         </div>
     </article>

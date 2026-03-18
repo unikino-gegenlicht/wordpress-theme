@@ -24,73 +24,27 @@ if ( empty( $metaKey ) || empty( $proposer_ids ) ) {
     return;
 }
 
-$args = [
-        "post_type"      => [ "movie", "event" ],
-        "posts_per_page" => $max_entries,
-        "post__not_in"   => [ $post->ID ],
-        "orderby"        => "rand",
-        "meta_query"     => [
-                [
-                        "key"   => "selected_by",
-                        "value" => $proposal_by,
-                ],
-                [
-                        "key"     => $metaKey,
-                        "value"   => $proposer_ids,
-                        "compare" => "IN"
-                ],
-                [
-                        'key'     => 'program_type',
-                        'value'   => apply_filters( "ggl__show_full_details", false, $post ) ? [
-                                "main",
-                                "special_program"
-                        ] : [ "main" ],
-                        "compare" => "IN"
-                ],
-                [
-                        'key'     => 'license_type',
-                        'value'   => apply_filters( "ggl__show_full_details", false, $post ) ? [
-                                "full",
-                                "pool",
-                                "none",
-                                null
-                        ] : [ "full" ],
-                        "compare" => "IN"
-                ],
-                [
-                        'key'     => "screening_date",
-                        'value'   => time(),
-                        "compare" => "<"
-                ]
-        ]
-];
+$show_all_entries = apply_filters( "ggl__show_full_details", false, $post );
 
-$query = new WP_Query( $args );
-
-$proposals = [];
-while ( $query->have_posts() ) : $query->the_post();
-    $proposals[] = ggl_get_title( $query->post );
-endwhile;
-
-if ( count( $proposals ) < $max_entries ) {
-    $metaKey = match ( $proposal_by ) {
-        "member" => "team-member_shown_movies",
-        "coop" => "cooperation-partner_shown_movies",
-    };
-
-    $manualEntries = rwmb_get_value( $metaKey, post_id: $proposer_id ) ?: [];
-    foreach ( $manualEntries as $entry ) {
-        if ( count( $proposals ) >= $max_entries ) {
-            break;
-        }
-        $proposals[] = $entry[1];
+$proposed_movies = [];
+$proposer_names  = [];
+shuffle( $proposer_ids );
+foreach ( $proposer_ids as $proposer_id ) {
+    $proposer_names[] = ggl_get_title( $proposer_id );
+    if ( $proposal_by === "member" ) {
+        $proposed_movies = array_merge( $proposed_movies, ggl_get_teamie_movies( $proposer_id ) );
+    } else {
+        $proposed_movies = array_merge( $proposed_movies, ggl_get_partner_movies( $proposer_id ) );
     }
 }
 
-$proposer_names = [];
-foreach ( $proposer_ids as $proposer_id ) {
-    $proposer_names[] = get_post( $proposer_id )->post_title;
-}
+$filtered_proposals = array_filter( $proposed_movies, function ( $movie ) use ( $post ) {
+    return $movie->ID !== $post->ID;
+} );
+shuffle( $filtered_proposals );
+$proposals = array_slice( $filtered_proposals, 0, 5 );
+
+
 $proposer_name_list = implode( ", ", array_slice( $proposer_names, 0, count( $proposer_names ) - 1 ) );
 $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " . __( "and", "gegenlicht" ) . " " . end( $proposer_names ) : $proposer_names[0];
 
@@ -103,13 +57,14 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
     </header>
     <?php if ( count( $proposer_ids ) > 1 ) : ?>
     <div class="mt-3">
-        <div class="is-flex is-align-items-top is-justify-content-space-around is-flex-grow-5 is-gap-3"
-             style="height: 250px !important; overflow: scroll;">
+        <div class="is-flex is-justify-content-space-around is-flex-grow-5 is-gap-3 <?= $proposal_by === "member" ? 'is-align-items-center' : 'is-align-items-center' ?>"
+             style="height: min-content !important; overflow: scroll;">
             <?php foreach ( $proposer_ids as $proposer_id ) : ?>
-                <figure class="image is-3by4 <?= $proposal_by == "member" ? "member-picture" : "coop-logo" ?>">
-                    <img alt=""
-                         src="<?= get_the_post_thumbnail_url( $proposer_id, "member-crop" ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
-                </figure>
+                <?php if ( $proposal_by === "member" ) : ?>
+                    <?php ggl_the_teamie_image( $proposer_id, min_height: "250px" ); ?>
+                <?php else: ?>
+                    <?php ggl_the_partner_image( $proposer_id, min_width: "250px" ); ?>
+                <?php endif; ?>
             <?php endforeach; ?>
         </div>
         <?php else: ?>
@@ -120,12 +75,14 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
             </figure>
             <?php endif; ?>
             <?php if ( ! empty( $proposals ) ): ?>
-                <div class="movie-list proposal-list is-flex-grow-3"
+                <div class="movie-list is-flex-grow-3"
                      style="<?= count( $proposer_names ) > 1 ? 'width: auto; margin-top: 0.5em;' : '' ?>">
                     <div class="movie-list-entries">
                         <?php foreach ( $proposals as $proposal ) : ?>
-                            <div class="entry">
-                                <p class="py-1 is-uppercase has-text-weight-bold"><?= $proposal ?></p>
+                            <div class="entry is-flex-direction-column is-align-items-flex-start">
+                                <h2 class="is-size-6 no-separator is-uppercase movie-title">
+                                    <?php ggl_the_localized_title($proposal) ?>
+                                </h2>
                             </div>
                         <?php endforeach; ?>
                     </div>
