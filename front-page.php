@@ -9,10 +9,11 @@ $upcoming      = ggl_get_advertisements( $semesterID );
 
 
 get_header();
+global $is_break_period;
 
 ?>
     <main class="px-2 mb-6 page-content">
-<?php if ( empty( $upcoming ) || GGL_SEMESTER_BREAK || ( defined( "GGL_ANNOUNCE_NEW_PROGRAM" ) && GGL_ANNOUNCE_NEW_PROGRAM ) ):
+<?php if ( empty( $upcoming ) || $is_break_period || ( defined( "GGL_ANNOUNCE_NEW_PROGRAM" ) && GGL_ANNOUNCE_NEW_PROGRAM ) ):
     get_template_part( "intermission" );
     ?>
     <div class="page-content">
