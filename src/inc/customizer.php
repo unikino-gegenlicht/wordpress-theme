@@ -39,7 +39,6 @@ require_once 'customizer/navigation.php';
 require_once "customizer/contact-social-medias.php";
 require_once "customizer/contact-email.php";
 require_once "customizer/contact-addresses.php";
-require_once 'customizer/anonymization.php';
 require_once 'customizer/semester-break.php';
 require_once 'customizer/footer.php';
 require_once 'customizer/youth-protection.php';
@@ -81,9 +80,6 @@ function configure_customizer( WP_Customize_Manager $wp_customize ): void {
 	new SingleTeamCustomizer( $wp_customize, priority: 5, additionalArgs: [ "panel" => "pages" ] );
 	new SingleCoopCustomizer( $wp_customize, priority: 6, additionalArgs: [ "panel" => "pages" ] );
 	new DetailPageCustomizer( $wp_customize, priority: 7, additionalArgs: ["panel" => "pages"] );
-
-
-	new AnonymizationCustomizer( $wp_customize, priority: 26 );
 
 	$wp_customize->add_panel( 'contact-options', array(
 		'title'       => esc_html__( 'Contact Options', 'gegenlicht' ),
