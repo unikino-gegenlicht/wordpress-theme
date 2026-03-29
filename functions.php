@@ -6,6 +6,7 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 defined( 'ABSPATH' ) || exit;
+require_once ABSPATH . 'wp-admin/includes/file.php';
 /**
  * GEGENLICHT Website Theme
  *
