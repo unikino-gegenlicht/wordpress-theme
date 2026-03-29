@@ -116,6 +116,9 @@ function ggl_get_thumbnail_url( WP_Post|int $post = 0, string $size = "full" ): 
     $inSpecialProgram = rwmb_meta( 'program_type' ) == 'special_program';
     if ( $inSpecialProgram ) {
         $specialProgram = rwmb_get_value( 'special_program' );
+		if ($specialProgram === false) {
+			return $fallbackImageUrl;
+		}
 
         return wp_get_attachment_image_url( get_term_meta( $specialProgram->term_id, "anonymous_image", single: true ), $size ) ?: $fallbackImageUrl;
     }
