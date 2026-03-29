@@ -2,45 +2,17 @@
 defined( 'ABSPATH' ) || exit;
 
 $taxonomy = get_queried_object();
-get_header( args: [ "title" => $taxonomy->name ] );
+get_header( args: [ "title" => $taxonomy->name, "additionalClasses" => "special-program" ] );
 do_action( 'wp_body_open' );
-
-
-$anonymousImage      = get_term_meta( $taxonomy->term_id, 'anonymous_image', true );
-$backgroundColor     = get_term_meta( $taxonomy->term_id, 'background_color', true );
-$textColor           = get_term_meta( $taxonomy->term_id, 'text_color', true );
-$backgroundColorDark = get_term_meta( $taxonomy->term_id, 'dark_background_color', true );
-$textColorDark       = get_term_meta( $taxonomy->term_id, 'dark_text_color', true );
 
 $logo     = get_term_meta( $taxonomy->term_id, 'logo', true );
 $logoDark = get_term_meta( $taxonomy->term_id, 'logo_dark', true );
 ?>
-<style>
-    :root {
-        --bulma-body-background-color: <?= $backgroundColor ?> !important;
-        --bulma-body-color: <?= $textColor ?> !important;
-    }
-
-    .navbar {
-        background-color: var(--bulma-body-background-color) !important;
-    }
-
-    a.navbar-item {
-        color: var(--bulma-body-color) !important;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --bulma-body-background-color: <?= $backgroundColorDark ?> !important;
-            --bulma-body-color: <?= $textColorDark ?> !important;
-        }
-    }
-</style>
 <main class="page-content mt-4">
 
     <article class="content">
         <header class="has-text-centered">
-            <picture>
+            <picture style="max-height: 300px !important;">
                 <source srcset="<?= wp_get_attachment_image_url( $logoDark, 'full' ); ?>"
                         media="(prefers-color-scheme: dark)">
                 <source srcset="<?= wp_get_attachment_image_url( $logo, 'full' ); ?>">

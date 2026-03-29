@@ -60,6 +60,7 @@ if ( $show_custom_banner ) {
 $args               = $args ?? [ "hideBreakBanner" => false ];
 $hideBreakBanner    = ( $args['hideBreakBanner'] ?? false ) == true;
 $manualPartialTitle = trim( $args["title"] ?? "" );
+$additionalClasses  = $args["additionalClasses"] ?? [];
 $blogName           = get_bloginfo( "name" );
 
 
@@ -114,7 +115,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
 
 ?>
 <!DOCTYPE html>
-<html lang="<?= substr( get_user_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top <?= ggl_movie_is_special_feature() ? 'special-program' : '' ?>">
+<html lang="<?= substr( get_user_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top <?= ggl_movie_is_special_feature() ? 'special-program' : '' ?> <?= join(' ', $additionalClasses) ?>">
 <head>
     <?php wp_head(); ?>
     <title><?= esc_html( GGL_PAGE_TITLE ) ?></title>
