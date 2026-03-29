@@ -114,7 +114,7 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
 
 ?>
 <!DOCTYPE html>
-<html lang="<?= substr( get_user_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top">
+<html lang="<?= substr( get_user_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top <?= ggl_movie_is_special_feature() ? 'special-program' : '' ?>">
 <head>
     <?php wp_head(); ?>
     <title><?= esc_html( GGL_PAGE_TITLE ) ?></title>
