@@ -305,6 +305,35 @@ html {
   }
 }
 
+[id^='special-program_'] {
+  background-color: var(--bulma-body-background-color);
+  color: var(--bulma-body-color);
+  border-color: var(--bulma-body-color) !important;
+  background-clip: padding-box;
+
+  .page-content {
+    margin: 0 auto !important;
+  }
+
+  .movie-list {
+    border-width: var(--border-thickness) 0;
+  }
+
+  .image {
+    text-align: center !important;
+
+    picture {
+      object-position: center !important;
+      object-fit: scale-down !important;
+    }
+
+    img {
+      max-height: 125px !important;
+      object-fit: scale-down !important;
+    }
+  }
+}
+
 
 .next-movie {
   margin-bottom: 2rem;
@@ -607,7 +636,7 @@ figure {
     color: var(--bulma-body-background-color) !important;
 
     &.is-danger {
-     border: var(--bulma-danger) 2px solid !important
+      border: var(--bulma-danger) 2px solid !important
     }
 
   }
@@ -651,6 +680,7 @@ p:empty {
   &:hover {
     color: var(--bulma-body-background-color) !important;
     background-color: var(--bulma-body-color) !important;
+    border-color: var(--bulma-body-background-color) !important
   }
 
   .icon,
