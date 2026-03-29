@@ -61,7 +61,7 @@ add_filter( 'wpseo_sitemap_exclude_empty_terms', '__return_false' );
 add_action( "wp_head", "ggl_insert_font_faces" );
 add_filter( "query_vars", "ggl_add_query_vars" );
 add_filter( "template_include", "ggl_calendar_rewrite" );
-add_filter( "wp_new_user_notification_email", "ggl_new_user_notification_email", 10, 3 );
+//add_filter( "wp_new_user_notification_email", "ggl_new_user_notification_email", 10, 3 );
 function ggl_new_user_notification_email( array $notification, WP_User $user, string $blogname ) {
     $loader = new FilesystemLoader( get_stylesheet_directory() . "assets/email-templates" );
     $twig   = new Environment( $loader, [
@@ -319,7 +319,7 @@ function ggl_locale_use_http_fallback( string $locale ): string {
     }
 
 
-    return AcceptLanguage::get_best_match( [ "en_US", "de_DE" ], "en_US" );
+    return str_starts_with(AcceptLanguage::get_best_match( [ "en-US", "en", "de-DE", "de" ], "en_US" ), "de") ? "de_DE" : "en_US";
 }
 
 
