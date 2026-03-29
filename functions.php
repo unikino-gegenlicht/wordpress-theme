@@ -621,6 +621,25 @@ function ggl_enqueue_styles() {
     } else {
         wp_enqueue_style( "gegenlicht-main", get_stylesheet_directory_uri() . '/style.min.css', ver: md5_file( get_stylesheet_directory() . '/style.min.css' ) );
     }
+
+    if (function_exists('ggl_special_program_get_stylesheet_path')) {
+        if (is_front_page()) {
+            foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) {
+                $term = get_term($termID, "special-program");
+                $path = ggl_special_program_get_stylesheet_path( $term );
+                $http_path = str_replace(get_home_path(), "/", $path);
+                wp_enqueue_style($term->slug, $http_path, ver: md5_file( $path ) );
+            }
+
+        }
+        $specialProgram = rwmb_get_value( "program_type" ) == "special_program" ? rwmb_get_value( "special_program" ) : false;
+        if (!$specialProgram) {
+            return;
+        }
+        $path = ggl_special_program_get_stylesheet_path( $specialProgram );
+        $http_path = str_replace(get_home_path(), "/", $path);
+        wp_enqueue_style($specialProgram->slug, $http_path, ver: md5_file( $path ) );
+    }
 }
 
 
