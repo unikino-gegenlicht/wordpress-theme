@@ -39,6 +39,12 @@ foreach ( $proposer_ids as $proposer_id ) {
 }
 
 $filtered_proposals = array_filter( $proposed_movies, function ( $movie ) use ( $post ) {
+    $now           = new DateTime( "now", new DateTimeZone( "Europe/Berlin" ) );
+    $starting_time = ggl_get_starting_time( $movie );
+    if ( $starting_time === false || $starting_time > $now ) {
+        return false;
+    }
+
     return $movie->ID !== $post->ID;
 } );
 shuffle( $filtered_proposals );
@@ -68,20 +74,24 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
             <?php endforeach; ?>
         </div>
         <?php else: ?>
-        <div class="is-flex is-align-items-top is-flex-wrap-wrap is-gap-1 mt-3">
-            <figure class="image is-3by4  is-flex-grow-1 <?= $proposal_by == "member" ? "member-picture" : "coop-logo" ?>">
-                <img alt=""
-                     src="<?= get_the_post_thumbnail_url( $proposer_ids[0], "member-crop" ) ?: wp_get_attachment_image_url( get_theme_mod( 'anonymous_team_image' ), 'member-crop' ) ?>"/>
-            </figure>
+        <div class="is-flex is-dynamic-flex is-align-items-top is-flex-wrap-wrap is-gap-1 mt-3">
+            <?php if ( $proposal_by === "member" ) : ?>
+                <?php ggl_the_teamie_image( $proposer_ids[0], min_height: "250px" ); ?>
+            <?php else: ?>
+                <?php ggl_the_partner_image( $proposer_id[0], min_width: "250px" ); ?>
+            <?php endif; ?>
             <?php endif; ?>
             <?php if ( ! empty( $proposals ) ): ?>
-                <div class="movie-list is-flex-grow-3"
+                <div class="movie-list is-flex-grow-2"
                      style="<?= count( $proposer_names ) > 1 ? 'width: auto; margin-top: 0.5em;' : '' ?>">
                     <div class="movie-list-entries">
                         <?php foreach ( $proposals as $proposal ) : ?>
                             <div class="entry is-flex-direction-column is-align-items-flex-start">
-                                <h2 class="is-size-6 no-separator is-uppercase movie-title">
-                                    <?php ggl_the_localized_title($proposal) ?>
+                                <?php if (ggl_get_movie_semester( $proposal ) !== null ) : ?>
+                                <p class="is-hidden-mobile"><?= esc_html__("screened in ", "ggl-post-types") ?><?= ggl_get_starting_time()->format("Y") ?></p>
+                                <?php endif; ?>
+                                <h2 class="is-size-5 is-size-6-mobile no-separator is-uppercase movie-title">
+                                    <?php ggl_the_localized_title( $proposal ) ?>
                                 </h2>
                             </div>
                         <?php endforeach; ?>
