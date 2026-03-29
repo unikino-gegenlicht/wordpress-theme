@@ -22,35 +22,26 @@ if ( $anonymize ) {
             if ( $isFollowup ):
                 echo esc_html__( "Afterwards at", 'gegenlicht' );
             else:
-                switch ( $post->post_type ) {
-                    case "movie" :
-                        echo esc_html__( "Next Screening", 'gegenlicht' );
-                        break;
-                    case "event" :
-                        echo esc_html__( "Next Event", 'gegenlicht' );
-                        break;
-                    default:
-                        echo esc_html__( "Up next", "gegenlicht" );
-                }
+                echo match ( $post->post_type ) {
+                    "movie" => esc_html__( "Next Screening", 'gegenlicht' ),
+                    "event" => esc_html__( "Next Event", 'gegenlicht' ),
+                    default => esc_html__( "Up next", "gegenlicht" ),
+                };
             endif;
             ?>
         </p>
         <p class="is-size-6 m-0 p-0">
             <?php
-            if ( $isFollowup ):
-                echo date( GGL_TIME_ONLY, (int) rwmb_get_value( "screening_date" ) );
-            else:
-                echo date( GGL_LIST_DATETIME, (int) rwmb_get_value( "screening_date" ) );
-            endif;
+            echo ggl_get_starting_time( $post )->format( $isFollowup ? GGL_TIME_ONLY : GGL_LIST_DATETIME );
             ?>
         </p>
     </header>
     <div class="content">
         <h2 class="title next-movie-title py-4">
-            <?= ggl_get_title() ?>
+            <?= ggl_get_localized_title( $post ) ?>
         </h2>
     </div>
-    <?php ggl_the_movie_thumbnail($post); ?>
+    <?php ggl_the_movie_thumbnail( $post ); ?>
     <hr class="separator"/>
     <?php
     get_template_part( "src/partials/button", args: [
