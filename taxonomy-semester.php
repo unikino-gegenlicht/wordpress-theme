@@ -82,7 +82,8 @@ do_action( 'wp_body_open' );
             <div class="movie-list mb-6">
                 <div class="movie-list-title is-flex is-align-items-center">
                     <?= esc_html__( "The Program", "gegenlicht" ) ?>
-                    <span class="tag is-rounded is-medium is-primary ml-auto">
+                    <?php if ( isset( $serializedData ) ): ?>
+                        <span class="tag is-rounded is-medium is-primary ml-auto">
                     <a href="<?= $serializedData ?>"
                        download="<?= $taxonomy->name ?>.ics"
                        style="color: var(--bulma-body-color)">
@@ -90,6 +91,7 @@ do_action( 'wp_body_open' );
                                                                style="font-size: 24px">calendar_add_on</span></span>
                     </a>
                 </span>
+                    <?php endif; ?>
                 </div>
                 <div class="movie-list-entries">
                     <?php foreach ( $screenings as $screeningDate => $titles ) : ?>
