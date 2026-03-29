@@ -285,17 +285,8 @@ function ggl_redirect_from_non_semester_pages(): void {
 }
 
 function ggl_inject_special_program_colors(): void {
-    if ( ! is_singular( [ "movie", "event" ] ) ) {
-        ?>
-        <meta name="theme-color" content="#ffdd00">
-        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-
-        <?php
-        return;
-    }
-
     $specialProgram = rwmb_get_value( "program_type" ) == "special_program" ? rwmb_get_value( "special_program" ) : false;
-    if ( ! $specialProgram ) {
+    if ( ! is_singular( [ "movie", "event" ]) || ! $specialProgram ) {
         ?>
         <meta name="theme-color" content="#ffdd00">
         <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
