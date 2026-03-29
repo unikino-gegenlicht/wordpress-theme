@@ -94,30 +94,16 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && !e
 
 
                 ?>
-                <?php
-                if ( function_exists( 'ggl_cpt__generate_single_ical' ) && function_exists( 'ggl_cpt__serialize_icals' ) ):
-                    $ical = ggl_cpt__generate_single_ical( $post );
-                    $serializedData = ggl_cpt__serialize_icals( [ $ical ] );
-                    ?>
-                    <span class="tag is-rounded is-primary ml-auto">
-                    <a href="<?= $serializedData ?>"
-                       download="<?= ggl_get_title() ?>.ics"
-                       style="color: var(--bulma-body-color)">
-                            <span class="icon is-medium"><span class="material-symbols"
-                                                               style="font-size: 24px">calendar_add_on</span></span>
-                    </a>
-                </span>
-                <?php endif; ?>
             </div>
         </div>
 
         <?php ggl_the_movie_thumbnail(); ?>
-        <?php if ( ! $show_details && ! $isSpecialProgram ): ?>
+        <?php if ( ! $show_details && $isSpecialProgram !== false): ?>
             <div class="boxed-text mt-3">
                 <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ substr( get_user_locale(), 0, 2 ) ] ?? "" ) ?>
             </div>
         <?php endif; ?>
-        <?php if ( $isSpecialProgram && ! empty( trim( rwmb_get_value( "special_program" )->description ) ) ): ?>
+        <?php if ( $isSpecialProgram && ! empty( mb_trim( rwmb_get_value( "special_program" )->description ) ) ): ?>
             <div class="boxed-text mt-3">
                 <?= apply_filters( "the_content", rwmb_get_value( "special_program" )->description ) ?>
             </div>
