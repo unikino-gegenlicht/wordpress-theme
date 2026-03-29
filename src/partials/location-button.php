@@ -26,7 +26,7 @@ if ( $screening_location_id !== - 1 ) {
                 "query"      => $apple_place_id == null ? ( mb_trim( "$street, $postal_code $city" ) != "" ? mb_trim( "$street, $postal_code $city" ) : null ) : null,
         ];
 
-        $target_url = ( $apple_place_id !== null ? "https://maps.apple.com/place?" : "https://maps.apple.com/search?" ) . http_build_query( $query_params );
+        $url = ( $apple_place_id !== null ? "https://maps.apple.com/place?" : "https://maps.apple.com/search?" ) . http_build_query( $query_params );
     else:
         $query_params = [
                 "api"            => 1,
@@ -34,11 +34,11 @@ if ( $screening_location_id !== - 1 ) {
                 "query_place_id" => $google_place_id,
         ];
 
-        $target_url = "https://www.google.com/maps/search/?" . http_build_query( $query_params );
+        $url = "https://www.google.com/maps/search/?" . http_build_query( $query_params );
     endif;
 }
 ?>
-<a href="<?= esc_attr( ggl_get_location_map_url( $screening_location_id ) ) ?>"
+<a href="<?= esc_attr( $url ) ?>"
    role="link"
    class="button is-outlined is-fullwidth mt-2 py-3 is-uppercase is-size-5 has-text-weight-bold"
    target="_blank">
