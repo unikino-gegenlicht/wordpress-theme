@@ -284,6 +284,8 @@ html {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: var(--bulma-body-color);
+      color: var(--bulma-body-background-color);
 
       .movie-title {
         line-height: 1.125;
@@ -319,8 +321,8 @@ html {
     border-width: var(--border-thickness) 0;
   }
 
-  a {
-    color: var(--bulma-body-color);
+  .entry {
+    color: var(--bulma-body-color) !important;
   }
 
   .image {
