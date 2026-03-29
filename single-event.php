@@ -36,7 +36,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
         <hr class="separator"/>
         <div class="tags are-medium">
             <?php if ( rwmb_get_value( "language" ) ): ?>
-                <span class="tag is-rounded is-primary"><?= esc_html__( rwmb_meta( 'language' ), "gegenlicht" ) ?></span>
+                <span class="tag is-rounded is-primary"><?php ggl_the_event_language();  ?></span>
             <?php endif; ?>
             <?php if ( rwmb_get_value( "age_restricted" ) ): ?>
                 <span class="tag is-rounded is-primary"><?= sprintf( /* translators: %d Minimal Attendee Age*/ esc_html__( "For Ages %d+", "gegenlicht" ), (int) rwmb_get_value( "minimal_age" ) ) ?></span>
