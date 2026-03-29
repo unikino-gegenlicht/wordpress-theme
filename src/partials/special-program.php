@@ -2,49 +2,7 @@
 $specialProgramID = $args['id'] ?? null;
 $semesterID       = $args['semester'] ?? null;
 ?>
-<style>
-    #special-program-<?= $specialProgramID ?> {
-        --bulma-body-background-color: <?= get_term_meta($specialProgramID, 'background_color', true) ?? "inherit" ?>;
-        --bulma-body-color: <?= get_term_meta($specialProgramID, 'text_color', true) ?? "inherit" ?>;
-        --bulma-link-text: var(--bulma-body-color) !important;
-
-        background-color: var(--bulma-body-background-color);
-        color: var(--bulma-body-color);
-        border-color: var(--bulma-body-color) !important;
-
-        background-clip: padding-box;
-
-        .page-content {
-            margin: 0 auto !important;
-        }
-
-        .movie-list {
-            border-width: var(--border-thickness) 0;
-        }
-
-        .image {
-            text-align: center !important;
-
-            picture {
-                object-position: center !important;
-                object-fit: scale-down !important;
-            }
-
-            img {
-                max-height: 125px !important;
-                object-fit: scale-down !important;
-            }
-        }
-    }
-
-    @media (prefers-color-scheme: dark) {
-        #special-program-<?= $specialProgramID ?> {
-            --bulma-body-background-color: <?= get_term_meta($specialProgramID, 'dark_background_color', true) ?? "inherit" ?> !important;
-            --bulma-body-color: <?= get_term_meta($specialProgramID, 'dark_text_color', true) ?? "inherit" ?> !important;
-        }
-    }
-</style>
-<article id="special-program-<?= $specialProgramID ?>" class="py-5">
+<article id="special-program_<?= $specialProgramID ?>" class="py-5">
     <div class="page-content">
         <header class="content">
             <a href="<?= get_term_link( $specialProgramID, 'special-program' ) ?>"
@@ -57,7 +15,7 @@ $semesterID       = $args['semester'] ?? null;
                         <source
                                 srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $specialProgramID, 'logo', true ), 'full' ) ?>"/>
 
-                        <img alt=""
+                        <img height="125" alt=""
                              src=""/>
                     </picture>
                 </figure>
@@ -102,8 +60,9 @@ $semesterID       = $args['semester'] ?? null;
             <p class="is-italic"><?= esc_html__( 'Sadly, all movies of this special program have been screened for the current semester. Check back next semester.', "gegenlicht" ) ?></p>
         <?php
         else:
-            get_template_part( "src/partials/movie-list.php", args: [ "posts"          => $query->posts,
-                                                                      "allowFiltering" => false
+            get_template_part( "src/partials/movie-list", args: [
+                    "posts"          => $query->posts,
+                    "allowFiltering" => false
             ] );
         endif; ?>
     </div>
