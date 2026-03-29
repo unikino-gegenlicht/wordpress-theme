@@ -44,18 +44,6 @@ add_action( "after_setup_theme", "ggl_setup_menus" );
 add_action( "init", "ggl_disable_wpadmin_for_subscribers" );
 add_action( "init", "ggl_disable_admin_bar" );
 add_action( "setup_theme", "ggl_load_frontend_textdomain" );
-add_action( "pre_get_posts", function () {
-    if ( ! is_singular( "team-member" ) ) {
-        return;
-    }
-
-    $status = get_post_meta( get_the_ID(), 'status', true );
-    if ( ! str_starts_with( $status, "hidden" ) ) {
-        return;
-    }
-
-    wp_safe_redirect( get_post_type_archive_link( "team-member" ) );
-}, 2 );
 add_action( "login_enqueue_scripts", "ggl_enqueue_logo_url_variable" );
 add_action( "login_enqueue_scripts", "ggl_enqueue_login_style" );
 add_filter( "login_headerurl", "ggl_login_header_url" );
