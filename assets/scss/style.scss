@@ -319,6 +319,10 @@ html {
     border-width: var(--border-thickness) 0;
   }
 
+  a {
+    color: var(--bulma-body-color);
+  }
+
   .image {
     text-align: center !important;
 
