@@ -95,6 +95,9 @@ class FrontPageCustomizerOverrides extends GGLCustomizerBase {
 		$terms = get_terms( array(
 			'taxonomy'   => 'semester',
 			'hide_empty' => false,
+			"meta_key"   => "semester_start",
+			"orderby"    => "meta_value_num",
+			"order"      => "DESC",
 		) );
 
 		$output = array();
