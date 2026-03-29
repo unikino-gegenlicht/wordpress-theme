@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $taxonomy = get_queried_object();
-get_header( args: [ "title" => $taxonomy->name, "additionalClasses" => "special-program" ] );
+get_header( args: [ "title" => $taxonomy->name, "additionalClasses" => ["special-program"] ] );
 do_action( 'wp_body_open' );
 
 $logo     = get_term_meta( $taxonomy->term_id, 'logo', true );
