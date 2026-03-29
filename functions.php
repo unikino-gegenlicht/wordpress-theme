@@ -295,37 +295,12 @@ function ggl_inject_special_program_colors(): void {
         return;
     }
 
-    $colors["light"]["background"] = get_term_meta( $specialProgram->term_id, 'background_color', true );
-    $colors["light"]["body"]       = get_term_meta( $specialProgram->term_id, 'text_color', true );
-    $colors["dark"]["background"]  = get_term_meta( $specialProgram->term_id, 'dark_background_color', true );
-    $colors["dark"]["body"]        = get_term_meta( $specialProgram->term_id, 'dark_text_color', true );
+    $colors = ggl_get_special_program_colors($specialProgram);
 
     ?>
-    <meta name="theme-color" content="<?= $colors["light"]["background"] ?? '#ffdd00' ?>">
-    <meta name="theme-color" content="<?= $colors["dark"]["background"] ?? '#000000' ?>"
+    <meta name="theme-color" content="<?= $colors["lightMode"]["backgroundColor"] ?? '#ffdd00' ?>">
+    <meta name="theme-color" content="<?= $colors["darkMode"]["backgroundColor"] ?? '#000000' ?>"
           media="(prefers-color-scheme: dark)">
-    <style>
-        :root {
-            --bulma-body-color: <?= $colors["light"]["body"] ?> !important;
-            --bulma-body-background-color: <?= $colors["light"]["background"] ?> !important;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bulma-body-color: <?= $colors["dark"]["body"] ?> !important;
-                --bulma-body-background-color: <?= $colors["dark"]["background"] ?> !important;
-            }
-        }
-
-        .navbar {
-            background-color: var(--bulma-body-background-color) !important;
-        }
-
-        a.navbar-item {
-            color: var(--bulma-body-color) !important;
-        }
-    </style>
-
     <?php
 
 }
