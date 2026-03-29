@@ -2,11 +2,29 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
+
+$social_urls = ggl_get_teamie_social_links();
 ?>
 <main class="page-content mt-4">
     <article class="content">
         <div class="is-flex is-dynamic-flex is-align-items-top is-justify-content-space-evenly is-flex-wrap-wrap is-gap-1 mb-5 content">
-            <?php ggl_the_teamie_image( classes: "image member-picture is-flex is-flex-grow-0 is-flex-shrink-0 is-float-left" ) ?>
+            <?php if ( ! empty( $social_urls ) ) : ?>
+                <div class="is-flex is-flex-grow-0 is-flex-shrink-0 is-float-left is-flex-direction-column">
+                    <?php ggl_the_teamie_image( classes: "image member-picture" ) ?>
+                    <div class="is-flex is-gap-3 mt-2 is-justify-content-space-evenly">
+                        <?php foreach ( $social_urls as $platform => $url ) : ?>
+                            <a href="<?= esc_attr( $url ) ?>" title="">
+                                <span class="icon is-large social-icon">
+                                    <img alt="" height="48" width="48"
+                                         src="<?= get_stylesheet_directory_uri() ?>/assets/img/<?= $platform ?>.svg">
+                                </span>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php else: ?>
+                <?php ggl_the_teamie_image( classes: "image member-picture is-flex-grow-0 is-flex-shrink-0" ) ?>
+            <?php endif; ?>
             <header class="is-flex-grow-3 main-content word-break-break-word is-float-none">
                 <h1 class="mb-1"><?php the_title() ?></h1>
                 <?php if ( ggl_is_teamie_active() ): ?>
