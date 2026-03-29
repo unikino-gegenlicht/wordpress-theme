@@ -887,3 +887,25 @@ html {
 .is-smallcaps {
   font-variant-caps: small-caps;
 }
+
+.social-icon {
+
+  border: var(--border-thickness) var(--bulma-body-color) solid;
+  border-radius: 50%;
+  background-color: var(--bulma-body-color);
+  padding: 5px;
+
+  img {
+    height: 1.75rem;
+    width: 1.75rem;
+    filter: invert(74%) sepia(89%) saturate(508%) hue-rotate(358deg) brightness(102%) contrast(105%);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .social-icon {
+    img {
+      filter: unset !important;
+    }
+  }
+}
