@@ -24,93 +24,29 @@ get_header();
 
     <div class="my-5">
         <?php
-        $status          = rwmb_meta( 'status' );
-        $currentSemester = get_theme_mod( "displayed_semester" );
-        if ( $status == "active" ):
+        $movies = ggl_get_partner_movies();
+        $upcoming_movies = array_filter($movies, function($movie) {
+            $now = new DateTime();
+            return $now < ggl_get_starting_time($movie);
+        });
+        $past_movies = array_filter($movies, function($movie) {
+            $now = new DateTime();
+            return $now > ggl_get_starting_time($movie);
+        });
 
-            $args = array(
-                    "post_type"      => [ "movie", "event" ],
-                    "posts_per_page" => 3,
-                    'tax_query'      => array(
-                            'relation' => "AND",
-                            array(
-                                    'taxonomy' => 'semester',
-                                    'terms'    => $currentSemester,
-                            ),
-                    ),
-                    "meta_query"     => [
-                            "relation" => "AND",
-                            [
-                                    "key"   => "cooperation_partner_id",
-                                    "value" => get_the_ID(),
-                            ],
-                            [
-                                    "key"   => "selected_by",
-                                    "value" => "coop",
-                            ],
-                            [
-                                    "key"     => "screening_date",
-                                    "value"   => time(),
-                                    "compare" => ">",
-                            ]
-                    ],
-                    "meta_key"       => "screening_date",
-                    "orderby"        => "meta_value_num",
-                    "order"          => "ASC"
-            );
-
-            $query = new WP_Query( $args );
-
-            if ( $query->have_posts() ) :
-                get_template_part( 'src/partials/movie-list', args: [
-                        "posts" => $query->posts,
-                        "title" => __( "Upcoming Screenings", "gegenlicht" )
-                ] );
-                ?>
-
-            <?php endif; ?>
-        <?php else: ?>
-
-        <?php endif; ?>
-
-        <?php
-        $args = array(
-                "post_type"      => [ "movie", "event" ],
-                "posts_per_page" => - 1,
-                "meta_query"     => [
-                        "relation" => "AND",
-                        [
-                                "key"   => "cooperation_partner_id",
-                                "value" => get_the_ID(),
-                        ],
-                        [
-                                "key"   => "selected_by",
-                                "value" => "coop",
-                        ],
-                        [
-                                "key"     => "screening_date",
-                                "value"   => time(),
-                                "compare" => "<",
-                        ]
-                ],
-                "meta_key"       => "screening_date",
-                "orderby"        => "meta_value_num",
-                "order"          => "ASC"
-        );
-
-        $query          = new WP_Query( $args );
-        $pastScreenings = [];
-        while ( $query->have_posts() ) : $query->the_post();
-            $programType                                     = (string) rwmb_get_value( 'program_type' );
-            $startDateTime                                   = (int) rwmb_get_value( 'screening_date' );
-            $pastScreenings[ date( "Y", $startDateTime ) ][] = ggl_get_title( $query->post );
-        endwhile;
-        wp_reset_postdata();
-
-        $manualEntries = rwmb_get_value( "cooperation-partner_shown_movies" ) ?: [];
-        foreach ( $manualEntries as $entry ) {
-            $pastScreenings[ $entry[0] ][] = $entry[1];
+        if (!empty($upcoming_movies)) {
+            get_template_part( 'src/partials/movie-list', args: [
+                    "posts" => $upcoming_movies,
+                    "title" => __( "Upcoming Screenings", "gegenlicht" )
+            ] );
         }
+
+        $pastScreenings = array();
+
+        foreach ($past_movies as $movie) {
+            $pastScreenings[ggl_get_starting_time($movie)->format("Y")][] = ggl_get_localized_title($movie);
+        }
+
         krsort( $pastScreenings, SORT_NUMERIC );
         if ( ! empty( $pastScreenings ) ):
             ?>

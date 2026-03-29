@@ -18,22 +18,23 @@ get_header();
             </header>
         </div>
     </article>
-
     <div class="my-5">
         <?php
-        $entries = ggl_get_teamie_movies();
-        $upcoming_screenings = array_filter($entries, function($entry) {
-            $now = new DateTime();
-            $starting_time = ggl_get_starting_time($entry);
-            return $now < $starting_time;
-        });
-        $pastScreenings = array_filter($entries, function($entry) {
-            $now = new DateTime();
-            $starting_time = ggl_get_starting_time($entry);
-            return $now > $starting_time;
-        });
+        $entries             = ggl_get_teamie_movies();
+        $upcoming_screenings = array_filter( $entries, function ( $entry ) {
+            $now           = new DateTime();
+            $starting_time = ggl_get_starting_time( $entry );
 
-        if (!empty($upcoming_screenings)) {
+            return $now < $starting_time;
+        } );
+        $pastScreenings      = array_filter( $entries, function ( $entry ) {
+            $now           = new DateTime();
+            $starting_time = ggl_get_starting_time( $entry );
+
+            return $now > $starting_time;
+        } );
+
+        if ( ! empty( $upcoming_screenings ) ) {
             get_template_part( 'src/partials/movie-list', args: [
                     "posts" => $upcoming_screenings,
                     "title" => __( "Upcoming Screenings", "gegenlicht" )
@@ -41,9 +42,9 @@ get_header();
         }
 
         $pastScreeningEntries = [];
-        foreach ($pastScreenings as $past_screening) {
-            $starting_time = ggl_get_starting_time($past_screening);
-            $pastScreeningEntries[$starting_time->format("Y")][] = ggl_get_localized_title($past_screening);
+        foreach ( $pastScreenings as $past_screening ) {
+            $starting_time                                           = ggl_get_starting_time( $past_screening );
+            $pastScreeningEntries[ $starting_time->format( "Y" ) ][] = ggl_get_localized_title( $past_screening );
         }
 
         $manualEntries = ggl_get_teamie_manual_movie_entries();
