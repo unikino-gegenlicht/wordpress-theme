@@ -203,7 +203,7 @@ $contentPadding: 0.75rem;
     --bulma-body-background-color: black !important;
   }
 
-  .member-picture {
+  .member-picture > img {
     background-color: var(--bulma-primary) !important;
   }
 

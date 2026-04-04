@@ -47,6 +47,13 @@ get_header();
             $pastScreenings[ggl_get_starting_time($movie)->format("Y")][] = ggl_get_localized_title($movie);
         }
 
+        $manualEntries = ggl_get_partner_manual_movie_entries();
+        foreach ( $manualEntries as $entry ) {
+            $pastScreenings[ $entry[0] ][] = $entry[1];
+        }
+
+
+
         krsort( $pastScreenings, SORT_NUMERIC );
         if ( ! empty( $pastScreenings ) ):
             ?>

@@ -70,9 +70,9 @@ $social_urls = ggl_get_teamie_social_links();
             $pastScreeningEntries[ $entry[0] ][] = $entry[1];
         }
 
-        krsort( $pastScreenings, SORT_NUMERIC );
+        krsort( $pastScreeningEntries, SORT_NUMERIC );
 
-        if ( ! empty( $pastScreenings ) ):
+        if ( ! empty( $pastScreeningEntries ) ):
             ?>
             <div class="movie-list mt-4">
                 <p class="movie-list-title">
