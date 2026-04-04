@@ -203,7 +203,7 @@ $contentPadding: 0.75rem;
     --bulma-body-background-color: black !important;
   }
 
-  .member-picture > img {
+  .member-picture {
     background-color: var(--bulma-primary) !important;
   }
 
@@ -470,6 +470,7 @@ hr.separator {
   max-width: 250px;
   max-height: calc(250px * 1.33);
   aspect-ratio: 3/4;
+  height: fit-content;
 
   @include mixins.mobile {
     margin: 0 auto;

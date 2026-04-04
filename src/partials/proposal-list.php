@@ -74,7 +74,7 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
             <?php endforeach; ?>
         </div>
         <?php else: ?>
-        <div class="is-flex is-dynamic-flex is-align-items-top is-flex-wrap-wrap is-gap-1 mt-3">
+        <div class="is-flex is-dynamic-flex is-align-items-center is-flex-wrap-wrap is-gap-1 mt-3">
             <?php if ( $proposal_by === "member" ) : ?>
                 <?php ggl_the_teamie_image( $proposer_ids[0], min_height: "250px" ); ?>
             <?php else: ?>
