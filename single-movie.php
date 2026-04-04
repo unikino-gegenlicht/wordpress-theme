@@ -132,7 +132,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && ! 
                         'content'           => esc_html__( 'Reserve Now', 'gegenlicht' ),
                         'external'          => true,
                         'icon'              => 'confirmation_number',
-                        'additionalClasses' => "plausible-event-name=Opened+Reservations+Page"
+                        'additional-classes' => "plausible-event-name=Opened+Reservations+Page"
                 ] ) ?></div>
         </div>
     <?php endif; ?>

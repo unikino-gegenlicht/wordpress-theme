@@ -38,7 +38,7 @@ do_action( 'wp_body_open' );
             get_template_part( 'src/partials/button', args: [
                     'href'              => get_theme_mod( 'cooperation_form_url' ),
                     'content'           => get_theme_mod( 'cooperation_form_button_text' )[ substr( get_user_locale(), 0, 2 ) ] ?? esc_html__( 'Inquire About A Cooperation Now', 'gegenlicht' ),
-                    'additionalClasses' => "plausible-event-name=Open+Cooperation+Request+Form"
+                    'additional-classes' => "plausible-event-name=Open+Cooperation+Request+Form"
             ] )
             ?>
         </div>

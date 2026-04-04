@@ -18,7 +18,8 @@ get_header();
         get_template_part( 'src/partials/button', args: [
                 'href'     => rwmb_the_value( 'supporter_website', echo: false ),
                 'content'  => __( 'To the Website', 'gegenlicht' ),
-                'external' => true
+                'external' => true,
+                'additional-classes' => "plausible-event-name=Open+Supporter+Page"
         ] );
         ?>
     </article>

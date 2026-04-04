@@ -13,7 +13,7 @@ $social_urls = ggl_get_teamie_social_links();
                     <?php ggl_the_teamie_image( classes: "image member-picture" ) ?>
                     <div class="is-flex is-gap-3 mt-2 is-justify-content-space-evenly">
                         <?php foreach ( $social_urls as $platform => $url ) : ?>
-                            <a href="<?= esc_attr( $url ) ?>" title="">
+                            <a class="plausible-event-name=Open+Teamie+Social+Media" href="<?= esc_attr( $url ) ?>" title="">
                                 <span class="icon is-large social-icon">
                                     <img alt="" height="48" width="48"
                                          src="<?= get_stylesheet_directory_uri() ?>/assets/img/<?= $platform ?>.svg">

@@ -89,6 +89,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                         'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
                         'external' => true,
                         'icon'     => 'confirmation_number',
+                        'additional-classes' => "plausible-event-name=Opened+Reservations+Page"
                 ] ) ?></div>
         </div>
     <?php endif; ?>
@@ -117,7 +118,8 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program";
                         'href'     => rwmb_get_value( "pretix_event_url" ),
                         'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
                         'external' => true,
-                        'icon'     => 'confirmation_number'
+                        'icon'     => 'confirmation_number',
+                        'additional-classes' => "plausible-event-name=Opened+Reservations+Page"
                 ] ) ?></div>
         </div>
     <?php endif; ?>

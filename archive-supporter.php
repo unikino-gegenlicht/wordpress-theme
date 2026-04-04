@@ -47,7 +47,7 @@ do_action( 'wp_body_open' );
                             'href'     => rwmb_the_value( 'supporter_website', echo: false ),
                             'content'  => __( 'To the Website', 'gegenlicht' ),
                             'external' => true,
-                            'additionalClasses' => "plausible-event-name=Open+Supporter+Website"
+                            'additional-classes' => "plausible-event-name=Open+Supporter+Website"
                     ] );
                     ?>
                 </article>
