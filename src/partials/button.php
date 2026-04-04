@@ -64,7 +64,7 @@ if ( $external === null && $websiteHost !== $targetHost ) {
 
 <a href="<?= $href ?>"
    role="<?= $role ?>"
-   class="button is-outlined is-fullwidth mt-2 py-3 is-uppercase is-size-5 has-text-weight-bold <?= join( ' ', $additionalClasses ) ?>)"
+   class="button is-outlined is-fullwidth mt-2 py-3 is-uppercase is-size-5 has-text-weight-bold <?= join( ' ', $additionalClasses ) ?>"
    target="<?= $external ? '_blank' : '' ?>">
     <?php if ( $external ) : ?>
         <span class="icon-text is-align-items-center is-justify-content-space-around">
