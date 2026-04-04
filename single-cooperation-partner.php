@@ -18,6 +18,7 @@ get_header();
         get_template_part( "src/partials/button", args: [
                 "href"    => rwmb_get_value( "cooperation-partner_website" ),
                 "content" => __( "Open Website", "gegenlicht" ),
+                'additionalClasses' => "plausible-event-name=Open+Cooperation+Partner+Website"
         ] )
         ?>
     </article>

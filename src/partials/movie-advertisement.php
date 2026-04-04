@@ -41,7 +41,13 @@ if ( $anonymize ) {
             <?= ggl_get_localized_title( $post ) ?>
         </h2>
     </div>
-    <?php ggl_the_movie_thumbnail( $post ); ?>
+    <?php
+    if ( $post->post_type === "movie" ):
+        ggl_the_movie_thumbnail( $post );
+    else:
+        ggl_the_event_thumbnail( $post );
+    endif;
+    ?>
     <hr class="separator"/>
     <?php
     get_template_part( "src/partials/button", args: [

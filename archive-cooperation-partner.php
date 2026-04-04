@@ -7,15 +7,15 @@ do_action( 'wp_body_open' );
 ?>
     <article class="page-content mt-4">
         <div class="content">
-            <h1 class="is-size-3 is-uppercase"><?= get_theme_mod( 'cooperation_page_title' )[ substr(get_user_locale(), 0, 2) ] ?? "FILL ME WITH CONTENT" ?></h1>
+            <h1 class="is-size-3 is-uppercase"><?= get_theme_mod( 'cooperation_page_title' )[ substr( get_user_locale(), 0, 2 ) ] ?? "FILL ME WITH CONTENT" ?></h1>
             <?php
-            $raw = get_theme_mod( 'cooperation_page_text' )[ substr(get_user_locale(), 0, 2) ] ?? "Some content is missng";
+            $raw = get_theme_mod( 'cooperation_page_text' )[ substr( get_user_locale(), 0, 2 ) ] ?? "Some content is missng";
             echo apply_filters( "the_content", $raw );
             ?>
         </div>
         <article class="rules" id="rules">
             <?php
-            $rulesRaw = get_theme_mod( 'cooperation_rules' )[ substr(get_user_locale(), 0, 2) ] ?? "";
+            $rulesRaw = get_theme_mod( 'cooperation_rules' )[ substr( get_user_locale(), 0, 2 ) ] ?? "";
             $rules    = preg_split( "/\|/", $rulesRaw, flags: PREG_SPLIT_NO_EMPTY );
             ?>
             <ul>
@@ -26,7 +26,7 @@ do_action( 'wp_body_open' );
         </article>
         <div class="content">
             <?php
-            $raw = get_theme_mod( 'cooperation_rules_closer' )[ substr(get_user_locale(), 0, 2)  ] ?? "Some content is missng";
+            $raw = get_theme_mod( 'cooperation_rules_closer' )[ substr( get_user_locale(), 0, 2 ) ] ?? "Some content is missng";
             echo apply_filters( "the_content", $raw );
             ?>
         </div>
@@ -36,8 +36,9 @@ do_action( 'wp_body_open' );
             <?php
 
             get_template_part( 'src/partials/button', args: [
-                    'href'    => get_theme_mod( 'cooperation_form_url' ),
-                    'content' => get_theme_mod( 'cooperation_form_button_text' )[ substr(get_user_locale(), 0, 2)  ] ?? esc_html__( 'Inquire About A Cooperation Now', 'gegenlicht' )
+                    'href'              => get_theme_mod( 'cooperation_form_url' ),
+                    'content'           => get_theme_mod( 'cooperation_form_button_text' )[ substr( get_user_locale(), 0, 2 ) ] ?? esc_html__( 'Inquire About A Cooperation Now', 'gegenlicht' ),
+                    'additionalClasses' => "plausible-event-name=Open+Cooperation+Request+Form"
             ] )
             ?>
         </div>
@@ -46,7 +47,7 @@ do_action( 'wp_body_open' );
     <main class="content page-content mt-5">
         <h3 class="is-size-3"><?= esc_html__( 'Our Cooperations', 'gegenlicht' ) ?></h3>
         <?php
-        $raw = get_theme_mod( 'cooperation_partner_text' )[ substr(get_user_locale(), 0, 2)  ] ?? "Some content is missing here...";
+        $raw = get_theme_mod( 'cooperation_partner_text' )[ substr( get_user_locale(), 0, 2 ) ] ?? "Some content is missing here...";
         echo apply_filters( "the_content", $raw ); ?>
 
         <div class="fixed-grid has-2-cols-mobile has-4-cols-tablet">

@@ -46,7 +46,8 @@ do_action( 'wp_body_open' );
                     get_template_part( 'src/partials/button', args: [
                             'href'     => rwmb_the_value( 'supporter_website', echo: false ),
                             'content'  => __( 'To the Website', 'gegenlicht' ),
-                            'external' => true
+                            'external' => true,
+                            'additionalClasses' => "plausible-event-name=Open+Supporter+Website"
                     ] );
                     ?>
                 </article>

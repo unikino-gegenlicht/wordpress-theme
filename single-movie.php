@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 $show_details     = apply_filters( "ggl__show_full_details", false, $post );
-$isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && !empty(wp_get_post_terms(taxonomy: "special-program"));
+$isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && ! empty( wp_get_post_terms( taxonomy: "special-program" ) );
 
 ?>
 <main>
@@ -98,7 +98,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && !e
         </div>
 
         <?php ggl_the_movie_thumbnail(); ?>
-        <?php if ( ! $show_details && $isSpecialProgram !== false): ?>
+        <?php if ( ! $show_details && $isSpecialProgram !== false ): ?>
             <div class="boxed-text mt-3">
                 <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ substr( get_user_locale(), 0, 2 ) ] ?? "" ) ?>
             </div>
@@ -128,10 +128,11 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && !e
         <div class="reservation-button">
             <div class="page-content">
                 <?php get_template_part( 'src/partials/button', args: [
-                        'href'     => rwmb_get_value( "pretix_event_url" ),
-                        'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
-                        'external' => true,
-                        'icon'     => 'confirmation_number'
+                        'href'              => rwmb_get_value( "pretix_event_url" ),
+                        'content'           => esc_html__( 'Reserve Now', 'gegenlicht' ),
+                        'external'          => true,
+                        'icon'              => 'confirmation_number',
+                        'additionalClasses' => "plausible-event-name=Opened+Reservations+Page"
                 ] ) ?></div>
         </div>
     <?php endif; ?>
@@ -159,7 +160,7 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && !e
             <p class="m-0"><?php ggl_the_short_movie_title(); ?></p>
             <div class="is-flex short-details">
                 <p><?= esc_html__( "by", "gegenlicht" ) ?>&nbsp;<?php ggl_the_short_movie_director() ?></p> |
-                <p><?php ggl_the_short_movie_countries(); ?> <?php ggl_the_short_movie_release_year() ?></p> |
+                <p><?php ggl_the_short_movie_countries(); ?><?php ggl_the_short_movie_release_year() ?></p> |
                 <p><?php ggl_the_short_movie_running_time() ?></p>
             </div>
         <?php endif; ?>
@@ -168,10 +169,11 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && !e
         <div class="reservation-button">
             <div class="page-content">
                 <?php get_template_part( 'src/partials/button', args: [
-                        'href'     => rwmb_get_value( "pretix_event_url" ),
-                        'content'  => esc_html__( 'Reserve Now', 'gegenlicht' ),
-                        'external' => true,
-                        'icon'     => 'confirmation_number'
+                        'href'              => rwmb_get_value( "pretix_event_url" ),
+                        'content'           => esc_html__( 'Reserve Now', 'gegenlicht' ),
+                        'external'          => true,
+                        'icon'              => 'confirmation_number',
+                        'additionalClasses' => "plausible-event-name=Opened+Reservations+Page"
                 ] ) ?></div>
         </div>
     <?php endif; ?>

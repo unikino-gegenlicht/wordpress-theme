@@ -65,7 +65,7 @@ do_action( 'wp_body_open' );
                         <?php ggl_the_teamie_image( $member ); ?>
                         <hr class="separator mb-1"/>
                         <a href="<?= get_permalink( $member ) ?>"><h5
-                                    class="is-size-5 mb-1"><?php ggl_the_teamie_name( $member ); ?></h5>
+                                    class="is-size-5 mb-1 plausible-event-name=Show+Teamie+Details"><?php ggl_the_teamie_name( $member ); ?></h5>
                         </a>
                         <p class="is-italic"> <?php ggl_the_teamie_membership_duration( $member ); ?> </p>
                     </div>
