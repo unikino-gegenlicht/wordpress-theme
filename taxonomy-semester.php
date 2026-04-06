@@ -54,7 +54,7 @@ do_action( 'wp_body_open' );
         <?php
 
 
-        $screenings = [];
+        $screenings = ggl_get_semester_archived_screenings( $taxonomy );
         while ( $data->have_posts() ) : $data->the_post();
             $screeningDate = (int) rwmb_get_value( "screening_date" );
             $title         = ggl_get_title();
@@ -62,41 +62,25 @@ do_action( 'wp_body_open' );
             $screenings[ $screeningDate ][] = [ $title, get_permalink() ];
         endwhile;
 
-        $archive_data = get_term_meta( $taxonomy->term_id, 'semester_shown_movies', true );
-        if ( ! $archive_data ) {
-            $archive_data = [];
-        }
-        $merge_archive_data = (bool) get_term_meta( $taxonomy->term_id, 'semester_add_archival_data', true );
-        if ( ! $merge_archive_data && $archive_data != null ) {
-            $screenings = [];
-        }
-        foreach ( $archive_data as $entry ) {
-            $date                       = date_parse_from_format( "d.m.Y", $entry[0] );
-            $timestamp                  = mktime( 20, 0, null, $date['month'], $date['day'], $date['year'] );
-            $screenings[ $timestamp ][] = [ $entry[1], "" ];
-        }
-
         ksort( $screenings );
         ?>
         <article>
             <div class="movie-list mb-6">
                 <div class="movie-list-title is-flex is-align-items-center">
                     <?= esc_html__( "The Program", "gegenlicht" ) ?>
-                    <?php if ( isset( $serializedData ) ): ?>
-                        <span class="tag is-rounded is-medium is-primary ml-auto">
-                    <a href="<?= $serializedData ?>"
-                       download="<?= $taxonomy->name ?>.ics"
-                       style="color: var(--bulma-body-color)">
-                            <span class="icon is-medium"><span class="material-symbols"
-                                                               style="font-size: 24px">calendar_add_on</span></span>
-                    </a>
-                </span>
-                    <?php endif; ?>
                 </div>
                 <div class="movie-list-entries">
-                    <?php foreach ( $screenings as $screeningDate => $titles ) : ?>
-                        <?php foreach ( $titles as $data ) : ?>
-                            <?php if ( $screeningDate > time() ) : ?>
+                    <?php foreach (
+                            $screenings
+
+                            as $screeningDate => $titles
+                    ) : ?>
+                        <?php foreach (
+                                $titles
+
+                                as $data
+                        ) : ?>
+                            <?php if ( $screeningDate > time() && sizeof( $data ) == 2 ) : ?>
                                 <a role="link"
                                    aria-label="<?= $data[0] ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( 'r', $screeningDate ) ?>"
                                    href="<?= $data[1] ?>"
