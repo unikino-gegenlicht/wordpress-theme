@@ -1,7 +1,7 @@
 <?php
 defined( "ABSPATH" ) || exit();
-global $wp;
-require_once "header.php"
+
+get_header( args: [ "title" => __( "Gone", "gegenlicht" ) ] );
 ?>
     <main class="page-content content mt-4">
         <h1 class="has-text-centered"><?= __( "Gone", "gegenlicht" ) ?></h1>
