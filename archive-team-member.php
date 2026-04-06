@@ -37,7 +37,7 @@ do_action( 'wp_body_open' );
                 foreach ( $members['active'] as $member ) :
                     ?>
                     <div class="cell pb-3">
-                        <?php ggl_the_teamie_image( $member ); ?>
+                        <?php ggl_the_teamie_image( $member, "small-member-crop" ); ?>
                         <hr class="separator mb-1"/>
                         <a href="<?= get_permalink( $member ) ?>"><h5
                                     class="is-size-5 mb-1"><?php ggl_the_teamie_name( $member ); ?></h5>
@@ -62,7 +62,7 @@ do_action( 'wp_body_open' );
                     foreach ( $members['former'] as $member ) :
                     ?>
                     <div class="cell pb-3">
-                        <?php ggl_the_teamie_image( $member ); ?>
+                        <?php ggl_the_teamie_image( $member, "small-member-crop" ); ?>
                         <hr class="separator mb-1"/>
                         <a href="<?= get_permalink( $member ) ?>"><h5
                                     class="is-size-5 mb-1 plausible-event-name=Show+Teamie+Details"><?php ggl_the_teamie_name( $member ); ?></h5>
