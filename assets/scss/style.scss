@@ -875,6 +875,12 @@ html {
       flex-grow: 3
     }
   }
+
+  .movie-list {
+    width: stretch;
+    width: -webkit-fill-available;
+    width: -moz-available;
+  }
 }
 
 .main-content {
