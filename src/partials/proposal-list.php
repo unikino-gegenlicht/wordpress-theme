@@ -15,12 +15,8 @@ if ( $post !== null ) {
         default => [],
     };
 }
-$metaKey = match ( $proposal_by ) {
-    "member" => "team_member_id",
-    "coop" => "cooperation_partner_id",
-    default => ""
-};
-if ( empty( $metaKey ) || empty( $proposer_ids ) ) {
+
+if ( empty( $proposer_ids ) ) {
     return;
 }
 
@@ -29,27 +25,35 @@ $show_all_entries = apply_filters( "ggl__show_full_details", false, $post );
 $proposed_movies = [];
 $proposer_names  = [];
 shuffle( $proposer_ids );
+
+$proposals = [];
 foreach ( $proposer_ids as $proposer_id ) {
     $proposer_names[] = ggl_get_title( $proposer_id );
-    if ( $proposal_by === "member" ) {
-        $proposed_movies = array_merge( $proposed_movies, ggl_get_teamie_movies( $proposer_id ) );
-    } else {
-        $proposed_movies = array_merge( $proposed_movies, ggl_get_partner_movies( $proposer_id ) );
+    $movies = match ($proposal_by) {
+        "member" => ggl_get_teamie_movies($proposer_id),
+        "coop" => ggl_get_partner_movies($proposer_id),
+        default => []
+    };
+
+    $movies = array_filter( $movies, function ( $movie ) {
+        return new DateTime("now") > ggl_get_starting_time( $movie );
+    } );
+
+    foreach ( $movies as $movie ) {
+        $proposals[] = ["title" => ggl_get_localized_title( $movie ), "year" => ggl_get_starting_time( $movie )->format("Y")];
+    }
+
+    $archive_entries = match( $proposal_by ) {
+        "member" => ggl_get_teamie_manual_movie_entries( $proposer_id ),
+        "coop" => ggl_get_partner_manual_movie_entries($proposer_id)
+    };
+    foreach ( $archive_entries as $entry ) {
+        $proposals[] = ["title" => $entry[1], "year" => $entry[0]];
     }
 }
 
-$filtered_proposals = array_filter( $proposed_movies, function ( $movie ) use ( $post ) {
-    $now           = new DateTime( "now", new DateTimeZone( "Europe/Berlin" ) );
-    $starting_time = ggl_get_starting_time( $movie );
-    if ( $starting_time === false || $starting_time > $now ) {
-        return false;
-    }
-
-    return $movie->ID !== $post->ID;
-} );
-shuffle( $filtered_proposals );
-$proposals = array_slice( $filtered_proposals, 0, 5 );
-
+shuffle( $proposals );
+$proposals = array_slice( $proposals, 0, 5 );
 
 $proposer_name_list = implode( ", ", array_slice( $proposer_names, 0, count( $proposer_names ) - 1 ) );
 $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " . __( "and", "gegenlicht" ) . " " . end( $proposer_names ) : $proposer_names[0];
@@ -87,11 +91,9 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
                     <div class="movie-list-entries">
                         <?php foreach ( $proposals as $proposal ) : ?>
                             <div class="entry is-flex-direction-column is-align-items-flex-start">
-                                <?php if (ggl_get_movie_semester( $proposal ) !== null ) : ?>
-                                <p class="is-hidden-mobile"><?= esc_html__("screened in ", "ggl-post-types") ?><?= ggl_get_starting_time()->format("Y") ?></p>
-                                <?php endif; ?>
+                                <p class="is-hidden-mobile"><?= esc_html__("screened in ", "ggl-post-types") ?><?= $proposal["year"] ?></p>
                                 <h2 class="is-size-5 is-size-6-mobile no-separator is-uppercase movie-title">
-                                    <?php ggl_the_localized_title( $proposal ) ?>
+                                    <?=  $proposal["title"] ?>
                                 </h2>
                             </div>
                         <?php endforeach; ?>
