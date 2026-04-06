@@ -10,10 +10,10 @@ $semesterID       = $args['semester'] ?? null;
                 <figure class="image mb-6">
                     <picture>
                         <source
-                                srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $specialProgramID, 'logo_dark', true ), 'full' ) ?>"
+                                srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $specialProgramID, 'logo_dark', true ), array(800, 125) ) ?>"
                                 media="(prefers-color-scheme: dark)"/>
                         <source
-                                srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $specialProgramID, 'logo', true ), 'full' ) ?>"/>
+                                srcset="<?= wp_get_attachment_image_srcset( get_term_meta( $specialProgramID, 'logo', true ), array(800, 125) ) ?>"/>
 
                         <img height="125" alt=""
                              src=""/>
