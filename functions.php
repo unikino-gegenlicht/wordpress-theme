@@ -148,9 +148,10 @@ function ggl_anonymize_opengraph_image( $original_image ) {
 
     return $original_image;
 }
+
 function ggl_inject_special_program_colors(): void {
     $specialProgram = rwmb_get_value( "program_type" ) == "special_program" ? rwmb_get_value( "special_program" ) : false;
-    if ( ! is_singular( [ "movie", "event" ]) || ! $specialProgram ) {
+    if ( ! is_singular( [ "movie", "event" ] ) || ! $specialProgram ) {
         ?>
         <meta name="theme-color" content="#ffdd00">
         <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
@@ -159,7 +160,7 @@ function ggl_inject_special_program_colors(): void {
         return;
     }
 
-    $colors = ggl_get_special_program_colors($specialProgram);
+    $colors = ggl_get_special_program_colors( $specialProgram );
 
     ?>
     <meta name="theme-color" content="<?= $colors["lightMode"]["backgroundColor"] ?? '#ffdd00' ?>">
@@ -183,7 +184,12 @@ function ggl_locale_use_http_fallback( string $locale ): string {
     }
 
 
-    return str_starts_with(AcceptLanguage::get_best_match( [ "en-US", "en", "de-DE", "de" ], "en_US" ), "de") ? "de_DE" : "en_US";
+    return str_starts_with( AcceptLanguage::get_best_match( [
+            "en-US",
+            "en",
+            "de-DE",
+            "de"
+    ], "en_US" ), "de" ) ? "de_DE" : "en_US";
 }
 
 
@@ -486,23 +492,23 @@ function ggl_enqueue_styles() {
         wp_enqueue_style( "gegenlicht-main", get_stylesheet_directory_uri() . '/style.min.css', ver: md5_file( get_stylesheet_directory() . '/style.min.css' ) );
     }
 
-    if (function_exists('ggl_special_program_get_stylesheet_path')) {
-        if (is_front_page()) {
+    if ( function_exists( 'ggl_special_program_get_stylesheet_path' ) ) {
+        if ( is_front_page() ) {
             foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) {
-                $term = get_term($termID, "special-program");
-                $path = ggl_special_program_get_stylesheet_path( $term );
-                $http_path = str_replace(get_home_path(), "/", $path);
-                wp_enqueue_style($term->slug, $http_path, ver: md5_file( $path ) );
+                $term      = get_term( $termID, "special-program" );
+                $path      = ggl_special_program_get_stylesheet_path( $term );
+                $http_path = str_replace( get_home_path(), "/", $path );
+                wp_enqueue_style( $term->slug, $http_path, ver: md5_file( $path ) );
             }
 
         }
         $specialProgram = rwmb_get_value( "program_type" ) == "special_program" ? rwmb_get_value( "special_program" ) : false;
-        if (!$specialProgram) {
+        if ( ! $specialProgram ) {
             return;
         }
-        $path = ggl_special_program_get_stylesheet_path( $specialProgram );
-        $http_path = str_replace(get_home_path(), "/", $path);
-        wp_enqueue_style($specialProgram->slug, $http_path, ver: md5_file( $path ) );
+        $path      = ggl_special_program_get_stylesheet_path( $specialProgram );
+        $http_path = str_replace( get_home_path(), "/", $path );
+        wp_enqueue_style( $specialProgram->slug, $http_path, ver: md5_file( $path ) );
     }
 }
 
@@ -552,7 +558,7 @@ function ggl_setup_theme_supports(): void {
 function ggl_add_image_sizes(): void {
     add_image_size( 'mobile', 800, 1000, crop: true );
     add_image_size( 'desktop', 800, 450, crop: true );
-    add_image_size( 'member-crop', 450, 600, crop: true );
+
 }
 
 require_once "src/inc/theme-functions.php";
