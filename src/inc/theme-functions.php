@@ -31,10 +31,12 @@ function ggl_get_advertisements( int $semesterID ): array {
             ]
     );
 
+	$now = new DateTime(timezone: new DateTimeZone( 'Europe/Berlin' ) );
+
     $metaQuery = [
             [
                     "key"     => "screening_date",
-                    "value"   => time(),
+                    "value"   => $now->getTimestamp() + $now->getOffset(),
                     "compare" => ">="
             ]
     ];
@@ -69,11 +71,7 @@ function ggl_get_advertisements( int $semesterID ): array {
     wp_reset_postdata();
 
 
-    return array_filter( $posts , function ( $post ): bool {
-		$tz = new DateTimeZone('Europe/Berlin');
-		$now = new DateTime('now', $tz);
-		return $now < ggl_get_starting_time($post);
-    });
+    return $posts;
 }
 
 function is_location_page(): bool {
