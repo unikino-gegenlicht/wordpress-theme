@@ -59,7 +59,6 @@ add_filter( "init", "ggl_add_shortcodes" );
 add_filter( 'wpseo_sitemap_exclude_empty_terms', '__return_false' );
 add_action( "wp_head", "ggl_insert_font_faces" );
 add_filter( "query_vars", "ggl_add_query_vars" );
-add_filter( "template_include", "ggl_calendar_rewrite" );
 //add_filter( "wp_new_user_notification_email", "ggl_new_user_notification_email", 10, 3 );
 function ggl_new_user_notification_email( array $notification, WP_User $user, string $blogname ) {
     $loader = new FilesystemLoader( get_stylesheet_directory() . "assets/email-templates" );
@@ -86,15 +85,6 @@ function ggl_new_user_notification_email( array $notification, WP_User $user, st
 
     return $notification;
 
-}
-
-function ggl_calendar_rewrite( $template ): string {
-    global $wp;
-    if ( in_array( $wp->request, GGL_ICAL_SUBSCRIBE_PATHS ) ) {
-        return get_stylesheet_directory() . "/ical.php";
-    }
-
-    return $template;
 }
 
 function ggl_add_query_vars( $vars ) {
