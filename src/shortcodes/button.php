@@ -5,7 +5,7 @@ function ggl_button_shortcode( $atts, $content = null ) {
 	$options = shortcode_atts( array(
 		'external'        => false,
 		'backgroundColor' => 'inherit',
-		'textColor'       => 'inheritŝ',
+		'textColor'       => 'inherit',
 		'link'            => "",
 	), $atts );
 
