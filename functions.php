@@ -426,7 +426,7 @@ function ggl_enqueue_fonts(): void {
     $fonts[] = new GGL_Font( "Material Symbols", get_stylesheet_directory_uri() . "/assets/fonts/icons.woff2", "woff2", [
             "font-weight"  => "100 700",
             "font-style"   => "normal",
-            "font-display" => "block",
+            "font-display" => "swap",
     ], [
             ".material-symbols"           => [
                     "font-family"                => "'Material Symbols'",
