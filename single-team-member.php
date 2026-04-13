@@ -52,6 +52,10 @@ $social_urls = ggl_get_teamie_social_links();
             return $now > $starting_time;
         } );
 
+        usort( $upcoming_screenings, function ( $a, $b ) {
+            return ggl_get_starting_time($a)->getTimestamp() - ggl_get_starting_time($b)->getTimestamp();
+        });
+
         if ( ! empty( $upcoming_screenings ) ) {
             get_template_part( 'src/partials/movie-list', args: [
                     "posts" => $upcoming_screenings,
