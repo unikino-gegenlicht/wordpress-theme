@@ -69,7 +69,11 @@ function ggl_get_advertisements( int $semesterID ): array {
     wp_reset_postdata();
 
 
-    return $posts;
+    return array_filter( $posts , function ( $post ): bool {
+		$tz = new DateTimeZone('Europe/Berlin');
+		$now = new DateTime('now', $tz);
+		return $now < ggl_get_starting_time($post);
+    });
 }
 
 function is_location_page(): bool {
