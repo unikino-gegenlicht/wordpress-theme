@@ -82,7 +82,7 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
             <?php if ( $proposal_by === "member" ) : ?>
                 <?php ggl_the_teamie_image( $proposer_ids[0], min_height: "250px" ); ?>
             <?php else: ?>
-                <?php ggl_the_partner_image( $proposer_id[0], min_width: "250px" ); ?>
+                <?php ggl_the_partner_image( $proposer_ids[0], min_width: "250px" ); ?>
             <?php endif; ?>
             <?php endif; ?>
             <?php if ( ! empty( $proposals ) ): ?>
