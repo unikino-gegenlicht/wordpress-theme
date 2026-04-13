@@ -26,6 +26,13 @@ krsort( $semesterScreenings );
         <hr class="separator"/>
         <?php
         foreach ( $semesterScreenings as $timestamp => $semester ):
+            $screenings = [];
+            $archived_screenings = ggl_get_semester_archived_screenings( $semester );
+            foreach ($archived_screenings as $screening_date => $titles) {
+                foreach ($titles as $title) {
+                    $screenings[$screening_date][] = $title[0];
+                }
+            }
             $data = new WP_Query( array(
                     'post_type'      => [ 'movie', 'event' ],
                     'posts_per_page' => - 1,
@@ -48,31 +55,12 @@ krsort( $semesterScreenings );
                     'order'          => 'DESC',
             ) );
 
-            $screenings = [];
             while ( $data->have_posts() ) : $data->the_post();
                 $screeningDate = (int) rwmb_get_value( "screening_date" );
-                $title         = ggl_get_title();
+                $title         = ggl_get_localized_title();
 
                 $screenings[ $screeningDate ][] = $title;
             endwhile;
-
-            $archive_data = get_term_meta( $semester->term_id, 'semester_shown_movies', true );
-            if ( ! $archive_data ) {
-                $archive_data = [];
-            }
-            $merge_archive_data = (bool) get_term_meta( $semester->term_id, 'semester_add_archival_data', true );
-            if ( ! $merge_archive_data && $archive_data != null ) {
-                $screenings = [];
-            }
-            foreach ( $archive_data as $entry ) {
-                if ( $entry[0] == "" ) {
-                    $timestamp = 0;
-                } else {
-                    $date      = date_parse_from_format( "d.m.Y", $entry[0] );
-                    $timestamp = mktime( $date['hour'] ?: '0', null, null, $date['month'], $date['day'], $date['year'] );
-                }
-                $screenings[ $timestamp ][] = $entry[1];
-            }
 
             ksort( $screenings );
             if ( empty( $screenings ) ) {
