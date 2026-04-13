@@ -33,13 +33,18 @@ krsort( $semesterScreenings );
                     $screenings[$screening_date][] = $title[0];
                 }
             }
+            try {
+                $now = new DateTime( timezone: new DateTimeZone( wp_timezone_string() ) );
+            } catch ( DateInvalidTimeZoneException|DateMalformedStringException $e ) {
+                $now = new DateTime();
+            }
             $data = new WP_Query( array(
                     'post_type'      => [ 'movie', 'event' ],
                     'posts_per_page' => - 1,
                     'meta_query'     => [
                             [
                                     'key'     => 'screening_date',
-                                    'value'   => time(),
+                                    'value'   => $now->getTimestamp() + $now->getOffset(),
                                     'compare' => '<=',
                             ]
                     ],

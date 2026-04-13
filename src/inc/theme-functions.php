@@ -31,9 +31,16 @@ function ggl_get_advertisements( int $semesterID ): array {
             ]
     );
 
-	$now = new DateTime(timezone: new DateTimeZone( 'Europe/Berlin' ) );
 
-    $metaQuery = [
+	try {
+		$now = new DateTime( timezone: new DateTimeZone( wp_timezone_string() ) );
+	} catch ( DateInvalidTimeZoneException $e ) {
+		$now = new DateTime(timezone: new DateTimeZone("Europe/Berlin"));
+	} catch ( DateMalformedStringException $e ) {
+		$now = new DateTime();
+	}
+
+	$metaQuery = [
             [
                     "key"     => "screening_date",
                     "value"   => $now->getTimestamp() + $now->getOffset(),
