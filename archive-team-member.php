@@ -12,40 +12,38 @@ do_action( 'wp_body_open' );
         echo apply_filters( "the_content", $raw );
         ?>
     </article>
-<?php get_template_part( "src/partials/contact-block", args: [ "emailAddress" => get_theme_mod( "email_address" )["join"]  ?? ""] ) ?>
+<?php get_template_part( "src/partials/contact-block", args: [ "emailAddress" => get_theme_mod( "email_address" )["join"] ?? "" ] ) ?>
     <main class="page-content content">
         <hr class="separator">
         <p class="my-2"><?= esc_html__( 'Our Team', 'gegenlicht' ) ?></p>
         <hr class="separator">
         <h2 class="is-size-3"><?= esc_html__( 'Active Members', 'gegenlicht' ) ?></h2>
-        <div class="fixed-grid has-2-cols-mobile has-4-cols-tablet">
-            <div class="grid">
-                <?php
-                $members = array();
-                while ( have_posts() ) : the_post();
-                    $status = rwmb_meta( 'status' );
-                    switch ( $status ) :
-                        case 'active' :
-                            $members['active'][] = $post;
-                            break;
-                        case 'former':
-                            $members['former'][] = $post;
-                            break;
-                    endswitch;
-                endwhile;
+        <div class="grid is-col-min-7">
+            <?php
+            $members = array();
+            while ( have_posts() ) : the_post();
+                $status = rwmb_meta( 'status' );
+                switch ( $status ) :
+                    case 'active' :
+                        $members['active'][] = $post;
+                        break;
+                    case 'former':
+                        $members['former'][] = $post;
+                        break;
+                endswitch;
+            endwhile;
 
-                foreach ( $members['active'] as $member ) :
-                    ?>
-                    <div class="cell pb-3">
-                        <?php ggl_the_teamie_image( $member, "small-member-crop" ); ?>
-                        <hr class="separator mb-1"/>
-                        <a href="<?= get_permalink( $member ) ?>"><h5
-                                    class="is-size-5 mb-1"><?php ggl_the_teamie_name( $member ); ?></h5>
-                        </a>
-                        <p class="is-italic"> <?php ggl_teamie_joined_in( $member ); ?> </p>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+            foreach ( $members['active'] as $member ) :
+                ?>
+                <div class="cell pb-3">
+                    <?php ggl_the_teamie_image( $member, "small-member-crop" ); ?>
+                    <hr class="separator mb-1"/>
+                    <a href="<?= get_permalink( $member ) ?>"><h5
+                                class="is-size-5 mb-1"><?php ggl_the_teamie_name( $member ); ?></h5>
+                    </a>
+                    <p class="is-italic"> <?php ggl_teamie_joined_in( $member ); ?> </p>
+                </div>
+            <?php endforeach; ?>
         </div>
 
         <?php if ( isset( $members['former'] ) && count( $members['former'] ) > 0 )  : ?>
@@ -56,10 +54,9 @@ do_action( 'wp_body_open' );
                 echo apply_filters( "the_content", $raw );
                 ?>
             </div>
-            <div class="fixed-grid has-2-cols-mobile has-4-cols-tablet">
-                <div class="grid">
-                    <?php
-                    foreach ( $members['former'] as $member ) :
+            <div class="grid is-col-min-7">
+                <?php
+                foreach ( $members['former'] as $member ) :
                     ?>
                     <div class="cell pb-3">
                         <?php ggl_the_teamie_image( $member, "small-member-crop" ); ?>
@@ -69,8 +66,7 @@ do_action( 'wp_body_open' );
                         </a>
                         <p class="is-italic"> <?php ggl_the_teamie_membership_duration( $member ); ?> </p>
                     </div>
-                    <?php endforeach ?>
-                </div>
+                <?php endforeach ?>
             </div>
         <?php endif ?>
     </main>
