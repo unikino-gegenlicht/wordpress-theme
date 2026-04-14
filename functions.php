@@ -492,13 +492,23 @@ function ggl_enqueue_styles() {
             }
 
         }
-        $specialProgram = rwmb_get_value( "program_type" ) == "special_program" ? rwmb_get_value( "special_program" ) : false;
-        if ( ! $specialProgram ) {
-            return;
+        if (is_singular(['movie', 'event'])) {
+            $specialProgram = rwmb_get_value( "program_type" ) == "special_program" ? rwmb_get_value( "special_program" ) : false;
+            if ( ! $specialProgram ) {
+                return;
+            }
+            $path      = ggl_special_program_get_stylesheet_path( $specialProgram );
+            $http_path = str_replace( get_home_path(), "/", $path );
+            wp_enqueue_style( $specialProgram->slug, $http_path, ver: md5_file( $path ) );
         }
-        $path      = ggl_special_program_get_stylesheet_path( $specialProgram );
-        $http_path = str_replace( get_home_path(), "/", $path );
-        wp_enqueue_style( $specialProgram->slug, $http_path, ver: md5_file( $path ) );
+
+        if (is_tax('special-program')) {
+            $specialProgram = get_queried_object();
+            $path      = ggl_special_program_get_stylesheet_path( $specialProgram );
+            $http_path = str_replace( get_home_path(), "/", $path );
+            wp_enqueue_style( $specialProgram->slug, $http_path, ver: md5_file( $path ) );
+        }
+
     }
 }
 
