@@ -24,7 +24,8 @@ if ( $anonymize ) {
 }
 
 
-
+$running_time      = ggl_get_running_time( $post ) + 10;
+$movie_ends_at     = ggl_get_starting_time( $post )->add( new DateInterval( "PT{$running_time}M" ) );
 $currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends_at;
 
 if ( $movie_ends_at < $now ) {
