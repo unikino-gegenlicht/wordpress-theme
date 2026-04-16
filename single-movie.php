@@ -5,18 +5,59 @@ get_header();
 $show_details     = apply_filters( "ggl__show_full_details", false, $post );
 $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && ! empty( wp_get_post_terms( taxonomy: "special-program" ) );
 
+try {
+    $tz = new DateTimeZone( wp_timezone_string() );
+} catch ( DateInvalidTimeZoneException $e ) {
+    error_log( "Invalid timezone set in wordpress, falling back to Europe/Berlin" );
+    $tz = new DateTimeZone( "Europe/Berlin" );
+}
+
+$today = new DateTimeImmutable( "today", $tz );
+$now   = new DateTimeImmutable( "now", $tz );
+
+$running_time      = ggl_get_running_time( $post ) + 10;
+$movie_ends_at     = ggl_get_starting_time( $post )->add( new DateInterval( "PT{$running_time}M" ) );
+$currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends_at;
+
 ?>
 <main>
     <header class="page-content">
         <div class="screening-information pt-0 <?= ( ( ggl_get_title() !== ggl_get_localized_title() ) ) ? '' : 'pb-0' ?>">
             <div>
-                <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
-                <p>
-                    <time
-                            datetime="<?= date( 'Y-m-d H:i', rwmb_meta( 'screening_date' ) ) ?>">
-                        <?php ggl_the_starting_time() ?>
-                    </time>
-                </p>
+                <?php if ( $currently_running ) : ?>
+                    <p>
+                    <span class="icon-text">
+                    <span class="icon blink">
+                        <span class="material-symbols filled" style="color: red !important;">circle</span>
+                    </span>
+                    <span><?= esc_html__( "Currently screening", "gegenlicht" ) ?></span>
+                    </span>
+                    </p>
+                    <?php
+                    $remaining_time     = $movie_ends_at->diff( $now );
+                    $remaining_time_str = "";
+
+                    if ( $remaining_time->h > 0 ) {
+                        $remaining_time_str .= sprintf( _n( "%d hour", "%d hours", $remaining_time->h, "gegenlicht" ), number_format_i18n( $remaining_time->h ) );
+                    }
+                    if ( $remaining_time->i > 3 ) {
+                        $remaining_time_str .= " " .sprintf( _n( "%d minute", "%d minutes", $remaining_time->i, "gegenlicht" ), number_format_i18n( $remaining_time->i ) );
+                    } else {
+                        $remaining_time_str .= __("a few minutes", "gegenlicht" );
+                    }
+
+                    echo "<p>" . esc_html__( "Ends in", "gegenlicht" ) . "&nbsp;" . esc_html(mb_trim($remaining_time_str)) . "</p>";
+                    ?>
+
+                <?php else: ?>
+                    <p><?= esc_html__( 'Screening', 'gegenlicht' ) ?></p>
+                    <p>
+                        <time
+                                datetime="<?= date( 'Y-m-d H:i', rwmb_meta( 'screening_date' ) ) ?>">
+                            <?php ggl_the_starting_time() ?>
+                        </time>
+                    </p>
+                <?php endif; ?>
             </div>
             <div class="is-justify-content-right">
                 <?= esc_html__( "Admission", "gegenlicht" ) ?>: <?php ggl_the_admission_fee() ?>
@@ -128,10 +169,10 @@ $isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && ! 
         <div class="reservation-button">
             <div class="page-content">
                 <?php get_template_part( 'src/partials/button', args: [
-                        'href'              => rwmb_get_value( "pretix_event_url" ),
-                        'content'           => esc_html__( 'Reserve Now', 'gegenlicht' ),
-                        'external'          => true,
-                        'icon'              => 'confirmation_number',
+                        'href'               => rwmb_get_value( "pretix_event_url" ),
+                        'content'            => esc_html__( 'Reserve Now', 'gegenlicht' ),
+                        'external'           => true,
+                        'icon'               => 'confirmation_number',
                         'additional-classes' => "plausible-event-name=Opened+Reservations+Page"
                 ] ) ?></div>
         </div>

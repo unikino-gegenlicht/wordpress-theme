@@ -444,7 +444,7 @@ function ggl_enqueue_fonts(): void {
                     "-moz-osx-font-smoothing"    => "grayscale",
                     "font-variation-settings"    => "'FILL' 0"
             ],
-            ".material-symbols > .filled" => [
+            ".material-symbols.filled" => [
                     "font-variation-settings" => "'FILL' 1"
             ]
     ] );

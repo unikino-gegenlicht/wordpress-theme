@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-18T13:50:01+00:00\n"
+"POT-Creation-Date: 2026-04-16T10:35:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -58,6 +58,7 @@ msgstr ""
 msgid "Back to the Frontpage"
 msgstr ""
 
+#: 410.php:4
 #: 410.php:7
 msgid "Gone"
 msgstr ""
@@ -70,7 +71,7 @@ msgstr ""
 msgid "Inquire About A Cooperation Now"
 msgstr ""
 
-#: archive-cooperation-partner.php:47
+#: archive-cooperation-partner.php:48
 msgid "Our Cooperations"
 msgstr ""
 
@@ -81,7 +82,7 @@ msgid "Archive"
 msgstr ""
 
 #: archive-supporter.php:48
-#: archive-supporter.php:71
+#: archive-supporter.php:72
 #: single-supporter.php:20
 #: src/templates/page-location.php:33
 msgid "To the Website"
@@ -95,7 +96,7 @@ msgstr ""
 msgid "Active Members"
 msgstr ""
 
-#: archive-team-member.php:52
+#: archive-team-member.php:50
 msgid "Former Members"
 msgstr ""
 
@@ -115,13 +116,13 @@ msgid "Youth Protection Officer"
 msgstr ""
 
 #: footer.php:47
-#: header.php:101
+#: header.php:102
 #: src/templates/page-impress.php:4
 msgid "Impress"
 msgstr ""
 
 #: footer.php:49
-#: header.php:87
+#: header.php:88
 #: privacy-policy.php:8
 msgid "Privacy Policy"
 msgstr ""
@@ -163,66 +164,66 @@ msgstr ""
 msgid "Our supporters"
 msgstr ""
 
-#: functions.php:438
+#: functions.php:253
 msgid "Username or email address is missing"
 msgstr ""
 
-#: functions.php:442
+#: functions.php:257
 msgid "The entered credentials are invalid. Please try again"
 msgstr ""
 
-#: functions.php:465
+#: functions.php:280
 msgid "Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)"
 msgstr ""
 
-#: header.php:94
+#: header.php:95
 #: src/inc/customizer/block-location.php:15
 #: src/inc/customizer/front-page.php:64
 #: src/partials/header-menu.php:17
 msgid "Location"
 msgstr ""
 
-#: header.php:180
+#: header.php:181
 msgid "Open Customizer"
 msgstr ""
 
-#: header.php:192
+#: header.php:193
 msgid "To the backend"
 msgstr ""
 
-#: header.php:202
+#: header.php:203
 msgid "Edit"
 msgstr ""
 
-#: header.php:210
+#: header.php:211
 msgid "Logout"
 msgstr ""
 
-#: header.php:217
+#: header.php:218
 msgid "Login"
 msgstr ""
 
-#: header.php:243
+#: header.php:244
 msgid "Semester Break"
 msgstr ""
 
-#: header.php:261
+#: header.php:262
 msgid "New Program Releases In"
 msgstr ""
 
-#: header.php:261
+#: header.php:262
 msgid "Day"
 msgstr ""
 
-#: header.php:261
+#: header.php:262
 msgid "Days"
 msgstr ""
 
-#: header.php:261
+#: header.php:262
 msgid "Hour"
 msgstr ""
 
-#: header.php:261
+#: header.php:262
 msgid "Hours"
 msgstr ""
 
@@ -242,12 +243,12 @@ msgstr ""
 msgid "Open Website"
 msgstr ""
 
-#: single-cooperation-partner.php:67
-#: single-team-member.php:64
+#: single-cooperation-partner.php:41
+#: single-team-member.php:62
 msgid "Upcoming Screenings"
 msgstr ""
 
-#: single-cooperation-partner.php:119
+#: single-cooperation-partner.php:63
 msgid "Past Cooperations"
 msgstr ""
 
@@ -268,37 +269,37 @@ msgid "For Ages %d+"
 msgstr ""
 
 #: single-event.php:70
-#: single-movie.php:127
+#: single-movie.php:113
 msgid "Changed Screening Location"
 msgstr ""
 
 #: single-event.php:72
-#: single-movie.php:129
+#: single-movie.php:115
 msgid "This screening is not taking place at our usual screening location. Instead the screening will be hosted at:"
 msgstr ""
 
 #: single-event.php:89
-#: single-event.php:118
-#: single-movie.php:146
-#: single-movie.php:186
+#: single-event.php:119
+#: single-movie.php:132
+#: single-movie.php:173
 msgid "Reserve Now"
 msgstr ""
 
-#: single-event.php:98
-#: single-movie.php:155
+#: single-event.php:99
+#: single-movie.php:142
 msgid "Content Notice"
 msgstr ""
 
-#: single-event.php:105
+#: single-event.php:106
 msgid "What the event is about"
 msgstr ""
 
-#: single-event.php:109
+#: single-event.php:110
 msgid "Why it's worth attending"
 msgstr ""
 
 #: single-movie.php:42
-#: single-movie.php:175
+#: single-movie.php:162
 msgid "by"
 msgstr ""
 
@@ -336,19 +337,19 @@ msgstr ""
 msgid "Dub w/ Subs"
 msgstr ""
 
-#: single-movie.php:162
+#: single-movie.php:149
 msgid "What the movie is about"
 msgstr ""
 
-#: single-movie.php:166
+#: single-movie.php:153
 msgid "Why it's worth watching"
 msgstr ""
 
-#: single-movie.php:171
+#: single-movie.php:158
 msgid "Short Movie"
 msgstr ""
 
-#: single-team-member.php:118
+#: single-team-member.php:83
 msgid "Past Screenings"
 msgstr ""
 
@@ -1087,55 +1088,55 @@ msgstr ""
 msgid "E-Mail Address of Youth Protection Officer"
 msgstr ""
 
-#: src/inc/theme-functions.php:130
+#: src/inc/theme-functions.php:124
 msgid "Sexualized Violence"
 msgstr ""
 
-#: src/inc/theme-functions.php:131
+#: src/inc/theme-functions.php:125
 msgid "Violence"
 msgstr ""
 
-#: src/inc/theme-functions.php:132
+#: src/inc/theme-functions.php:126
 msgid "Self Harm"
 msgstr ""
 
-#: src/inc/theme-functions.php:133
+#: src/inc/theme-functions.php:127
 msgid "Drug Usage"
 msgstr ""
 
-#: src/inc/theme-functions.php:134
+#: src/inc/theme-functions.php:128
 msgid "Discrimination"
 msgstr ""
 
-#: src/inc/theme-functions.php:135
+#: src/inc/theme-functions.php:129
 msgid "Sexuality"
 msgstr ""
 
-#: src/inc/theme-functions.php:136
+#: src/inc/theme-functions.php:130
 msgid "Threat"
 msgstr ""
 
-#: src/inc/theme-functions.php:137
+#: src/inc/theme-functions.php:131
 msgid "Injury"
 msgstr ""
 
-#: src/inc/theme-functions.php:138
+#: src/inc/theme-functions.php:132
 msgid "Stressful Topics"
 msgstr ""
 
-#: src/inc/theme-functions.php:139
+#: src/inc/theme-functions.php:133
 msgid "Language"
 msgstr ""
 
-#: src/inc/theme-functions.php:140
+#: src/inc/theme-functions.php:134
 msgid "Nudeness"
 msgstr ""
 
-#: src/inc/theme-functions.php:141
+#: src/inc/theme-functions.php:135
 msgid "Risky Behaviour"
 msgstr ""
 
-#: src/inc/theme-functions.php:142
+#: src/inc/theme-functions.php:136
 msgid "Marginalization"
 msgstr ""
 
@@ -1179,68 +1180,102 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: src/partials/location-button.php:52
+#: src/partials/location-button.php:46
 msgid "Show on Apple Maps"
 msgstr ""
 
-#: src/partials/location-button.php:52
+#: src/partials/location-button.php:46
 msgid "Show on Google Maps"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:23
+#: src/partials/movie-advertisement.php:43
+msgid "Currently screening"
+msgstr ""
+
+#: src/partials/movie-advertisement.php:50
 msgid "Afterwards at"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:27
+#: src/partials/movie-advertisement.php:53
 msgid "Next Screening"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:30
+#: src/partials/movie-advertisement.php:54
 msgid "Next Event"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:33
+#: src/partials/movie-advertisement.php:55
 msgid "Up next"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:58
+#: src/partials/movie-advertisement.php:71
+#, php-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/partials/movie-advertisement.php:74
+#, php-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/partials/movie-advertisement.php:76
+msgid "a few minutes"
+msgstr ""
+
+#: src/partials/movie-advertisement.php:79
+msgid "Ends in"
+msgstr ""
+
+#: src/partials/movie-advertisement.php:84
+msgid "Today at"
+msgstr ""
+
+#: src/partials/movie-advertisement.php:87
+msgid "Tomorrow at"
+msgstr ""
+
+#: src/partials/movie-advertisement.php:110
 msgid "To the movie"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:58
+#: src/partials/movie-advertisement.php:110
 msgid "To the event"
 msgstr ""
 
 #: src/partials/movie-list.php:56
-#: taxonomy-semester.php:99
+#: taxonomy-semester.php:85
 msgid "Screening starts: "
 msgstr ""
 
-#: src/partials/proposal-list.php:49
+#: src/partials/proposal-list.php:59
 msgid "and"
 msgstr ""
 
 #. translators: %s is the Team Members name
-#: src/partials/proposal-list.php:55
+#: src/partials/proposal-list.php:65
 #, php-format
 msgid "Selected by %s"
 msgstr ""
 
 #. translators: %s is the Cooperation Partner's name
-#: src/partials/proposal-list.php:55
+#: src/partials/proposal-list.php:65
 #, php-format
 msgid "In cooperation with %s"
 msgstr ""
 
-#: src/partials/proposal-list.php:93
+#: src/partials/proposal-list.php:105
 msgid "No other entries found here. Please check back next semester or log in…"
 msgstr ""
 
-#: src/partials/special-program.php:51
+#: src/partials/special-program.php:9
 msgid "Show details of"
 msgstr ""
 
-#: src/partials/special-program.php:102
+#: src/partials/special-program.php:60
 msgid "Sadly, all movies of this special program have been screened for the current semester. Check back next semester."
 msgstr ""
 
@@ -1248,14 +1283,14 @@ msgstr ""
 msgid "Contact Page"
 msgstr ""
 
-#: taxonomy-semester.php:84
+#: taxonomy-semester.php:70
 msgid "The Program"
 msgstr ""
 
-#: taxonomy-special-program.php:78
+#: taxonomy-special-program.php:50
 msgid "Upcoming in this special program"
 msgstr ""
 
-#: taxonomy-special-program.php:84
+#: taxonomy-special-program.php:56
 msgid "The program hosted"
 msgstr ""
