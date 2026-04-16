@@ -3,7 +3,8 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 $show_details     = apply_filters( "ggl__show_full_details", false, $post );
-$isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && ! empty( wp_get_post_terms( taxonomy: "special-program" ) );
+$isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && rwmb_get_value("special_program") !== false;
+$specialProgram = $isSpecialProgram ? rwmb_get_value("special_program") : null;
 
 try {
     $tz = new DateTimeZone( wp_timezone_string() );
@@ -54,7 +55,18 @@ $currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends
                     <p>
                         <time
                                 datetime="<?= date( 'Y-m-d H:i', rwmb_meta( 'screening_date' ) ) ?>">
-                            <?php ggl_the_starting_time() ?>
+                            <?php
+                            $start = ggl_get_starting_time( $post )->setTime( 0, 0, 0 );
+                            $diff  = $today->diff( $start );
+                            if ( $diff->days == 0 ) {
+                                echo esc_html__( "Today at", 'gegenlicht' ) . "&nbsp;" . ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_TIME_FORMAT : GGL_THEME__ENGLISH_TIME_FORMAT );
+                            }
+                            if ( $diff->days == 1 ) {
+                                echo esc_html__( "Tomorrow at", 'gegenlicht' ) . "&nbsp;" . ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_TIME_FORMAT : GGL_THEME__ENGLISH_TIME_FORMAT );
+                            } else {
+                                echo ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_DATETIME_FORMAT : GGL_THEME__ENGLISH_DATETIME_FORMAT );
+                            }
+                            ?>
                         </time>
                     </p>
                 <?php endif; ?>
@@ -144,7 +156,7 @@ $currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends
                 <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ substr( get_user_locale(), 0, 2 ) ] ?? "" ) ?>
             </div>
         <?php endif; ?>
-        <?php if ( $isSpecialProgram && ! empty( mb_trim( rwmb_get_value( "special_program" )->description ) ) ): ?>
+        <?php if ( $isSpecialProgram && ! empty( mb_trim( $specialProgram->description ) ) ): ?>
             <div class="boxed-text mt-3">
                 <?= apply_filters( "the_content", rwmb_get_value( "special_program" )->description ) ?>
             </div>

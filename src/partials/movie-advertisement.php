@@ -61,7 +61,7 @@ if ( $movie_ends_at < $now ) {
         <p class="is-size-6 m-0 p-0">
             <?php
             if ( $isFollowup ):
-                echo ggl_get_starting_time( $post )->format( GGL_TIME_ONLY );
+                echo ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_TIME_FORMAT : GGL_THEME__ENGLISH_TIME_FORMAT );
             else:
                 if ( $currently_running ):
                     $remaining_time     = $movie_ends_at->diff( $now );
@@ -71,20 +71,22 @@ if ( $movie_ends_at < $now ) {
                         $remaining_time_str .= sprintf( _n( "%d hour", "%d hours", $remaining_time->h, "gegenlicht" ), number_format_i18n( $remaining_time->h ) );
                     }
                     if ( $remaining_time->i > 3 ) {
-                        $remaining_time_str .= " " .sprintf( _n( "%d minute", "%d minutes", $remaining_time->i, "gegenlicht" ), number_format_i18n( $remaining_time->i ) );
+                        $remaining_time_str .= " " . sprintf( _n( "%d minute", "%d minutes", $remaining_time->i, "gegenlicht" ), number_format_i18n( $remaining_time->i ) );
                     } else {
-                        $remaining_time_str .= __("a few minutes", "gegenlicht" );
+                        $remaining_time_str .= __( "a few minutes", "gegenlicht" );
                     }
 
-                    echo esc_html__( "Ends in", "gegenlicht" ) . "&nbsp;" . esc_html(mb_trim($remaining_time_str));
+                    echo esc_html__( "Ends in", "gegenlicht" ) . "&nbsp;" . esc_html( mb_trim( $remaining_time_str ) );
                 else:
                     $start = ggl_get_starting_time( $post )->setTime( 0, 0, 0 );
                     $diff  = $today->diff( $start );
                     if ( $diff->days == 0 ) {
-                        echo esc_html__( "Today at", 'gegenlicht' ) . "&nbsp;" . ggl_get_starting_time( $post )->format( GGL_TIME_ONLY );
+                        echo esc_html__( "Today at", 'gegenlicht' ) . "&nbsp;" . ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_TIME_FORMAT : GGL_THEME__ENGLISH_TIME_FORMAT );
                     }
                     if ( $diff->days == 1 ) {
-                        echo esc_html__( "Tomorrow at", 'gegenlicht' ) . "&nbsp;" . ggl_get_starting_time( $post )->format( GGL_TIME_ONLY );
+                        echo esc_html__( "Tomorrow at", 'gegenlicht' ) . "&nbsp;" . ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_TIME_FORMAT : GGL_THEME__ENGLISH_TIME_FORMAT );
+                    } else {
+                        echo ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_DATETIME_FORMAT : GGL_THEME__ENGLISH_DATETIME_FORMAT );
                     }
                 endif;
             endif;
