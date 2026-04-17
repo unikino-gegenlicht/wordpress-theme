@@ -3,8 +3,8 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 $show_details     = apply_filters( "ggl__show_full_details", false, $post );
-$isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && rwmb_get_value("special_program") !== false;
-$specialProgram = $isSpecialProgram ? rwmb_get_value("special_program") : null;
+$isSpecialProgram = rwmb_get_value( "program_type" ) === "special_program" && rwmb_get_value( "special_program" ) !== false;
+$specialProgram   = $isSpecialProgram ? rwmb_get_value( "special_program" ) : null;
 
 try {
     $tz = new DateTimeZone( wp_timezone_string() );
@@ -42,12 +42,12 @@ $currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends
                         $remaining_time_str .= sprintf( _n( "%d hour", "%d hours", $remaining_time->h, "gegenlicht" ), number_format_i18n( $remaining_time->h ) );
                     }
                     if ( $remaining_time->i > 3 ) {
-                        $remaining_time_str .= " " .sprintf( _n( "%d minute", "%d minutes", $remaining_time->i, "gegenlicht" ), number_format_i18n( $remaining_time->i ) );
+                        $remaining_time_str .= " " . sprintf( _n( "%d minute", "%d minutes", $remaining_time->i, "gegenlicht" ), number_format_i18n( $remaining_time->i ) );
                     } else {
-                        $remaining_time_str .= __("a few minutes", "gegenlicht" );
+                        $remaining_time_str .= __( "a few minutes", "gegenlicht" );
                     }
 
-                    echo "<p>" . esc_html__( "Ends in", "gegenlicht" ) . "&nbsp;" . esc_html(mb_trim($remaining_time_str)) . "</p>";
+                    echo "<p>" . esc_html__( "Ends in", "gegenlicht" ) . "&nbsp;" . esc_html( mb_trim( $remaining_time_str ) ) . "</p>";
                     ?>
 
                 <?php else: ?>
@@ -150,11 +150,11 @@ $currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends
         </div>
 
         <?php ggl_the_movie_thumbnail(); ?>
-        <?php if ( ! $show_details && $isSpecialProgram === false ): ?>
+        <?php if ( ! $show_details ): ?>
             <div class="boxed-text mt-3 content">
                 <?php
                 $locale = get_user_locale();
-                if (str_starts_with( $locale, "de" )) {
+                if ( str_starts_with( $locale, "de" ) ) {
                     $explanation = rwmb_meta( "de_movie_anonymization", [ "object_type" => "setting" ], "ggl_cpt__settings" );
                 } else {
                     $explanation = rwmb_meta( "en_movie_anonymization", [ "object_type" => "setting" ], "ggl_cpt__settings" );
