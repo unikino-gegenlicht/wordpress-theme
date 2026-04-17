@@ -150,8 +150,8 @@ $currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends
         </div>
 
         <?php ggl_the_movie_thumbnail(); ?>
-        <?php if ( ! $show_details && $isSpecialProgram !== false ): ?>
-            <div class="boxed-text mt-3">
+        <?php if ( ! $show_details && $isSpecialProgram === false ): ?>
+            <div class="boxed-text mt-3 content">
                 <?php
                 $locale = get_user_locale();
                 if (str_starts_with( $locale, "de" )) {
@@ -164,7 +164,7 @@ $currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends
             </div>
         <?php endif; ?>
         <?php if ( $isSpecialProgram && ! empty( mb_trim( $specialProgram->description ) ) ): ?>
-            <div class="boxed-text mt-3">
+            <div class="boxed-text mt-3 content">
                 <?= apply_filters( "the_content", rwmb_get_value( "special_program" )->description ) ?>
             </div>
         <?php endif; ?>
