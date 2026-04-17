@@ -49,7 +49,7 @@ if ( empty( $posts ) ) {
         <?php foreach ( $posts as $post ) :
             $post = get_post( $post->ID );
             $programType = (string) rwmb_get_value( 'program_type' );
-            $startDateTime = (int) rwmb_get_value( 'screening_date' );
+            $startDateTime = ggl_get_starting_time( $post );
 
             ?>
             <a role="link"
@@ -61,8 +61,8 @@ if ( empty( $posts ) ) {
                class="entry">
                 <div>
                     <p>
-                        <time datetime="<?= date( 'Y-m-d H:i:s', $startDateTime ) ?>">
-                            <?= date( GGL_LIST_DATETIME, $startDateTime ) ?>
+                        <time datetime="<?= $startDateTime->format('Y-m-d H:i:s') ?>">
+                            <?= $startDateTime->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_DATETIME_FORMAT : GGL_THEME__ENGLISH_DATETIME_FORMAT ) ?>
                         </time>
                     </p>
                     <h2 class="is-size-5 no-separator is-uppercase movie-title">

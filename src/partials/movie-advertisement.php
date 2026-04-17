@@ -14,15 +14,6 @@ try {
 $today = new DateTimeImmutable( "today", $tz );
 $now   = new DateTimeImmutable( "now", $tz );
 
-$imageID = - 1;
-if ( $anonymize ) {
-    $imageID = get_theme_mod( 'anonymous_image' );
-    if ( rwmb_get_value( "program_type" ) == "special_program" ) {
-        $specialProgram = rwmb_get_value( "special_program" );
-        $imageID        = get_term_meta( $specialProgram->term_id, "anonymous_image", single: true );
-    }
-}
-
 
 $running_time      = ggl_get_running_time( $post ) + 10;
 $movie_ends_at     = ggl_get_starting_time( $post )->add( new DateInterval( "PT{$running_time}M" ) );
@@ -82,8 +73,7 @@ if ( $movie_ends_at < $now ) {
                     $diff  = $today->diff( $start );
                     if ( $diff->days == 0 ) {
                         echo esc_html__( "Today at", 'gegenlicht' ) . "&nbsp;" . ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_TIME_FORMAT : GGL_THEME__ENGLISH_TIME_FORMAT );
-                    }
-                    if ( $diff->days == 1 ) {
+                    } elseif ( $diff->days == 1 ) {
                         echo esc_html__( "Tomorrow at", 'gegenlicht' ) . "&nbsp;" . ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_TIME_FORMAT : GGL_THEME__ENGLISH_TIME_FORMAT );
                     } else {
                         echo ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_DATETIME_FORMAT : GGL_THEME__ENGLISH_DATETIME_FORMAT );

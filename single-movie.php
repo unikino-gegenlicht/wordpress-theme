@@ -60,8 +60,7 @@ $currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends
                             $diff  = $today->diff( $start );
                             if ( $diff->days == 0 ) {
                                 echo esc_html__( "Today at", 'gegenlicht' ) . "&nbsp;" . ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_TIME_FORMAT : GGL_THEME__ENGLISH_TIME_FORMAT );
-                            }
-                            if ( $diff->days == 1 ) {
+                            } elseif ( $diff->days == 1 ) {
                                 echo esc_html__( "Tomorrow at", 'gegenlicht' ) . "&nbsp;" . ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_TIME_FORMAT : GGL_THEME__ENGLISH_TIME_FORMAT );
                             } else {
                                 echo ggl_get_starting_time( $post )->format( str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_DATETIME_FORMAT : GGL_THEME__ENGLISH_DATETIME_FORMAT );
@@ -153,7 +152,15 @@ $currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends
         <?php ggl_the_movie_thumbnail(); ?>
         <?php if ( ! $show_details && $isSpecialProgram !== false ): ?>
             <div class="boxed-text mt-3">
-                <?= apply_filters( "the_content", get_theme_mod( 'anonymized_movie_explainer' )[ substr( get_user_locale(), 0, 2 ) ] ?? "" ) ?>
+                <?php
+                $locale = get_user_locale();
+                if (str_starts_with( $locale, "de" )) {
+                    $explanation = rwmb_meta( "de_movie_anonymization", [ "object_type" => "setting" ], "ggl_cpt__settings" );
+                } else {
+                    $explanation = rwmb_meta( "en_movie_anonymization", [ "object_type" => "setting" ], "ggl_cpt__settings" );
+                }
+                ?>
+                <?= apply_filters( "the_content", $explanation ) ?>
             </div>
         <?php endif; ?>
         <?php if ( $isSpecialProgram && ! empty( mb_trim( $specialProgram->description ) ) ): ?>
