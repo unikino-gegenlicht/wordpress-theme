@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-16T10:35:49+00:00\n"
+"POT-Creation-Date: 2026-05-05T10:33:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -253,12 +253,12 @@ msgid "Past Cooperations"
 msgstr ""
 
 #: single-event.php:15
-#: single-movie.php:13
+#: single-movie.php:54
 msgid "Screening"
 msgstr ""
 
 #: single-event.php:24
-#: single-movie.php:22
+#: single-movie.php:74
 msgid "Admission"
 msgstr ""
 
@@ -269,24 +269,24 @@ msgid "For Ages %d+"
 msgstr ""
 
 #: single-event.php:70
-#: single-movie.php:113
+#: single-movie.php:173
 msgid "Changed Screening Location"
 msgstr ""
 
 #: single-event.php:72
-#: single-movie.php:115
+#: single-movie.php:175
 msgid "This screening is not taking place at our usual screening location. Instead the screening will be hosted at:"
 msgstr ""
 
 #: single-event.php:89
 #: single-event.php:119
-#: single-movie.php:132
-#: single-movie.php:173
+#: single-movie.php:192
+#: single-movie.php:233
 msgid "Reserve Now"
 msgstr ""
 
 #: single-event.php:99
-#: single-movie.php:142
+#: single-movie.php:202
 msgid "Content Notice"
 msgstr ""
 
@@ -298,54 +298,98 @@ msgstr ""
 msgid "Why it's worth attending"
 msgstr ""
 
+#: single-movie.php:34
+#: src/partials/movie-advertisement.php:34
+msgid "Currently screening"
+msgstr ""
+
 #: single-movie.php:42
-#: single-movie.php:162
-msgid "by"
+#: src/partials/movie-advertisement.php:62
+#, php-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: single-movie.php:45
+#: src/partials/movie-advertisement.php:65
+#, php-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: single-movie.php:47
+#: src/partials/movie-advertisement.php:67
+msgid "a few minutes"
+msgstr ""
+
+#: single-movie.php:50
+#: src/partials/movie-advertisement.php:70
+msgid "Ends in"
 msgstr ""
 
 #: single-movie.php:62
+#: src/partials/movie-advertisement.php:75
+msgid "Today at"
+msgstr ""
+
+#: single-movie.php:64
+#: src/partials/movie-advertisement.php:77
+msgid "Tomorrow at"
+msgstr ""
+
+#: single-movie.php:94
+#: single-movie.php:222
+msgid "by"
+msgstr ""
+
+#: single-movie.php:114
 msgid "Not Rated"
 msgstr ""
 
-#: single-movie.php:77
-#: single-movie.php:79
-#: single-movie.php:81
-#: single-movie.php:87
-#: single-movie.php:89
-#: single-movie.php:91
+#: single-movie.php:129
+#: single-movie.php:131
+#: single-movie.php:133
+#: single-movie.php:139
+#: single-movie.php:141
+#: single-movie.php:143
 msgid "Audio Language:"
 msgstr ""
 
-#: single-movie.php:77
-#: single-movie.php:79
-#: single-movie.php:81
-#: single-movie.php:87
-#: single-movie.php:89
-#: single-movie.php:91
+#: single-movie.php:129
+#: single-movie.php:133
+#: single-movie.php:141
+#: single-movie.php:143
 msgid "Subtitle Language:"
 msgstr ""
 
-#: single-movie.php:87
+#: single-movie.php:131
+#: single-movie.php:139
+msgid "Without Subtitles"
+msgstr ""
+
+#: single-movie.php:139
 msgid "Dub w/o Subs"
 msgstr ""
 
-#: single-movie.php:89
+#: single-movie.php:141
 msgid "Dub w/ eng. Subs"
 msgstr ""
 
-#: single-movie.php:91
+#: single-movie.php:143
 msgid "Dub w/ Subs"
 msgstr ""
 
-#: single-movie.php:149
+#: single-movie.php:209
 msgid "What the movie is about"
 msgstr ""
 
-#: single-movie.php:153
+#: single-movie.php:213
 msgid "Why it's worth watching"
 msgstr ""
 
-#: single-movie.php:158
+#: single-movie.php:218
 msgid "Short Movie"
 msgstr ""
 
@@ -1188,61 +1232,27 @@ msgstr ""
 msgid "Show on Google Maps"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:43
-msgid "Currently screening"
-msgstr ""
-
-#: src/partials/movie-advertisement.php:50
+#: src/partials/movie-advertisement.php:41
 msgid "Afterwards at"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:53
+#: src/partials/movie-advertisement.php:44
 msgid "Next Screening"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:54
+#: src/partials/movie-advertisement.php:45
 msgid "Next Event"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:55
+#: src/partials/movie-advertisement.php:46
 msgid "Up next"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:71
-#, php-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/partials/movie-advertisement.php:74
-#, php-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/partials/movie-advertisement.php:76
-msgid "a few minutes"
-msgstr ""
-
-#: src/partials/movie-advertisement.php:79
-msgid "Ends in"
-msgstr ""
-
-#: src/partials/movie-advertisement.php:84
-msgid "Today at"
-msgstr ""
-
-#: src/partials/movie-advertisement.php:87
-msgid "Tomorrow at"
-msgstr ""
-
-#: src/partials/movie-advertisement.php:110
+#: src/partials/movie-advertisement.php:102
 msgid "To the movie"
 msgstr ""
 
-#: src/partials/movie-advertisement.php:110
+#: src/partials/movie-advertisement.php:102
 msgid "To the event"
 msgstr ""
 

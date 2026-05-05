@@ -128,7 +128,7 @@ $currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends
                     if ( $subtitleLanguage == 'eng' ):
                         echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_subtitle_language( output: false ) . '">OmeU</span>';
                     elseif ( $subtitleLanguage == 'zxx' ):
-                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_subtitle_language( output: false ) . '">OV</span>';
+                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Without Subtitles", "gegenlicht" ). '">OV</span>';
                     else:
                         echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_subtitle_language( output: false ) . '">OmU</span>';
                     endif;
@@ -136,7 +136,7 @@ $currently_running = $now > ggl_get_starting_time( $post ) && $now < $movie_ends
 
                 if ( $audioType == 'synchronization' ):
                     if ( $subtitleLanguage == 'zxx' ):
-                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_subtitle_language( output: false ) . '">' . esc_html__( "Dub w/o Subs", "gegenlicht" ) . '</span>';
+                        echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Without Subtitles", "gegenlicht" ) . '">' . esc_html__( "Dub w/o Subs", "gegenlicht" ) . '</span>';
                     elseif ( $subtitleLanguage == 'eng' ):
                         echo '<span class="tag is-rounded is-primary has-tooltip-arrow has-tooltip-bottom"  data-tooltip="' . esc_html__( "Audio Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_audio_language( output: false ) . PHP_EOL . esc_html__( "Subtitle Language:", "gegenlicht" ) . '&nbsp;' . ggl_the_subtitle_language( output: false ) . '">' . esc_html__( "Dub w/ eng. Subs", "gegenlicht" ) . '</span>';
                     else:
