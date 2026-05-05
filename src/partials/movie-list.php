@@ -53,7 +53,7 @@ if ( empty( $posts ) ) {
 
             ?>
             <a role="link"
-               aria-label="<?= ggl_get_localized_title() ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= date( 'r', $startDateTime ) ?>"
+               aria-label="<?= ggl_get_localized_title() ?>. <?= esc_html__( 'Screening starts: ', 'gegenlicht' ) ?> <?= $startDateTime->format('r') ?>"
                     <?php if ( $allowFiltering ): ?>
                         data-program-type="<?= $programType ?>"
                     <?php endif; ?>
