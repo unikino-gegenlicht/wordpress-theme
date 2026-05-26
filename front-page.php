@@ -9,7 +9,7 @@ $upcoming      = ggl_get_advertisements( $semesterID );
 
 
 get_header();
-global $is_break_period;
+$is_break_period = defined("GGL_BREAK_PERIOD") && GGL_BREAK_PERIOD;
 
 ?>
     <main class="px-2 mb-6 page-content">
@@ -19,8 +19,7 @@ global $is_break_period;
     <div class="page-content">
         <hr class="separator">
     </div>
-<?php
-else:
+<?php else:
     for ( $i = 0; $i < count( $upcoming ); $i ++ ):
         get_template_part( "src/partials/movie-advertisement", args: [
                 "post_id"  => $upcoming[ $i ]->ID,
@@ -78,8 +77,7 @@ else:
     </main>
     <?php foreach ( get_theme_mod( 'displayed_special_programs' ) as $termID ) : $termID = (int) $termID;
     get_template_part( "src/partials/special-program", args: [ "id" => $termID, "semester" => $semesterID ] );
-endforeach; ?>
-<?php endif; ?>
+endforeach; endif;?>
 <?php if ( in_array( 'team', get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
     <style>
         #team {

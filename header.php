@@ -15,7 +15,7 @@ $semesterScreeningStart = get_term_meta( $semester->term_id, 'semester_start', t
 $publicationDelay = get_theme_mod( 'program_reveal_delay' );
 
 $announce_new_program = false;
-$is_break_period = false;
+$is_break_period = get_theme_mod("manual_semester_break");
 if ( time() < strtotime( "-{$publicationDelay} days", $semesterScreeningStart ) ) {
     $announce_new_program = true;
 }
@@ -44,7 +44,29 @@ if ( !$is_break_period ) {
     );
 
     $next = new WP_Query( $next_query_args );
-    $is_break_period = !$next->have_posts() || get_theme_mod( 'manual_semester_break' );
+    $is_break_period = !$next->have_posts();
+} else {
+    $next_meta       = [];
+    $next_meta[]     = [
+            'key'     => 'screening_date',
+            'value'   => time(),
+            'compare' => '>=',
+    ];
+    $next_query_args = array(
+            'do_preload'     => false,
+            'post_type'      => [ 'movie', 'event' ],
+            'posts_per_page' => 1,
+            'meta_query'     => $next_meta,
+            'tax_query'      => array(
+                    array(
+                            'taxonomy' => 'semester',
+                            'terms'    => "",
+                    )
+            ),
+            'meta_key'       => 'screening_date',
+            'orderby'        => 'meta_value_num',
+            'order'          => 'ASC',
+    );
 }
 
 $show_custom_banner = get_theme_mod( "show_custom_banner_message" );
@@ -112,6 +134,8 @@ if ( ! defined( "GGL_PAGE_TITLE" ) ) {
     ] ) );
 
 }
+
+define("GGL_BREAK_PERIOD", $is_break_period);
 
 ?>
 <!DOCTYPE html>
