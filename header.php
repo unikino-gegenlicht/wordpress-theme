@@ -139,7 +139,7 @@ define("GGL_BREAK_PERIOD", $is_break_period);
 
 ?>
 <!DOCTYPE html>
-<html lang="<?= substr( get_user_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top <?= ggl_movie_is_special_feature() ? 'special-program' : '' ?> <?= join(' ', $additionalClasses) ?>">
+<html lang="<?= substr( get_user_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top <?= ggl_movie_is_special_feature() || ggl_special_program_apply_to_page() ? 'special-program' : '' ?> <?= join(' ', $additionalClasses) ?>">
 <head>
     <?php wp_head(); ?>
     <title><?= esc_html( GGL_PAGE_TITLE ) ?></title>

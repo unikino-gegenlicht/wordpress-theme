@@ -428,7 +428,7 @@ function ggl_enqueue_fonts(): void {
             "font-style"   => "normal",
             "font-display" => "swap",
     ], [
-            ".material-symbols"           => [
+            ".material-symbols"        => [
                     "font-family"                => "'Material Symbols'",
                     "font-weight"                => "normal",
                     "font-style"                 => "normal",
@@ -466,8 +466,8 @@ function ggl_enqueue_fonts(): void {
 }
 
 function ggl_enqueue_scripts(): void {
-    wp_enqueue_script( 'menu-toggle', get_stylesheet_directory_uri() . '/assets/js/menu-toggle.js', ver: md5_file( get_stylesheet_directory() . '/assets/js/menu-toggle.js' ), args: ['strategy' => 'defer'] );
-    wp_enqueue_script( 'list-toggle', get_stylesheet_directory_uri() . '/assets/js/program-list-toggle.js', ver: md5_file( get_stylesheet_directory() . '/assets/js/program-list-toggle.js'), args: ['strategy' => 'defer'] );
+    wp_enqueue_script( 'menu-toggle', get_stylesheet_directory_uri() . '/assets/js/menu-toggle.js', ver: md5_file( get_stylesheet_directory() . '/assets/js/menu-toggle.js' ), args: [ 'strategy' => 'defer' ] );
+    wp_enqueue_script( 'list-toggle', get_stylesheet_directory_uri() . '/assets/js/program-list-toggle.js', ver: md5_file( get_stylesheet_directory() . '/assets/js/program-list-toggle.js' ), args: [ 'strategy' => 'defer' ] );
 }
 
 function ggl_enqueue_styles() {
@@ -492,7 +492,7 @@ function ggl_enqueue_styles() {
             }
 
         }
-        if (is_singular(['movie', 'event'])) {
+        if ( is_singular( [ 'movie', 'event' ] ) ) {
             $specialProgram = rwmb_get_value( "program_type" ) == "special_program" ? rwmb_get_value( "special_program" ) : false;
             if ( ! $specialProgram ) {
                 return;
@@ -502,10 +502,20 @@ function ggl_enqueue_styles() {
             wp_enqueue_style( $specialProgram->slug, $http_path, ver: md5_file( $path ) );
         }
 
-        if (is_tax('special-program')) {
+        if ( is_page() ) {
+            $overwrite_page_styles = rwmb_get_value( "overwrite_page_styles" );
+            if ( $overwrite_page_styles ) {
+                $specialProgram = rwmb_get_value( "special_program" );
+                $path           = ggl_special_program_get_stylesheet_path( $specialProgram );
+                $http_path      = str_replace( get_home_path(), "/", $path );
+                wp_enqueue_style( $specialProgram->slug, $http_path, ver: md5_file( $path ) );
+            }
+        }
+
+        if ( is_tax( 'special-program' ) ) {
             $specialProgram = get_queried_object();
-            $path      = ggl_special_program_get_stylesheet_path( $specialProgram );
-            $http_path = str_replace( get_home_path(), "/", $path );
+            $path           = ggl_special_program_get_stylesheet_path( $specialProgram );
+            $http_path      = str_replace( get_home_path(), "/", $path );
             wp_enqueue_style( $specialProgram->slug, $http_path, ver: md5_file( $path ) );
         }
 

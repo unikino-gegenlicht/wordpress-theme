@@ -10,9 +10,9 @@ function ggl_inverted_block_shortcode( $atts, $content = null ) {
 
 	return '<div style=" margin: -0.25rem;
                 padding: 1rem 0.25rem;
-                --bulma-body-background-color: black;
-                --bulma-body-color: var(--bulma-primary);
-                background-color: var(--bulma-body-background-color);
-                color: var(--bulma-body-color)" id="' . $blkID . '">' . $content . '
-                </div>';
+                --bg: var(--bulma-body-color);
+                --fg: var(--bulma-body-background-color);
+                background-color: var(--bg);
+                color: var(--fg)" id="' . $blkID . '"><div style="--bulma-body-color: var(--fg) !important; --bulma-body-background-color: var(--bg) !important; --bulma-content-heading-color: var(--fg);"' . $content . '
+                </div></div>';
 }
