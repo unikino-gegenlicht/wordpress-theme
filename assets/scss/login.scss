@@ -170,8 +170,8 @@ button.wp-hide-pw {
 #auth-external-service-login > p > a {
   display: flex;
   justify-content: center !important;
-  background-color: black !important;
-  color: var(--bulma-primary) !important;
+  background-color: var(--bulma-primary) !important;
+  color: var(---bulma-body-background-color) !important;
 }
 
 .language-switcher {

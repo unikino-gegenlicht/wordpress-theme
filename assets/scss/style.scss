@@ -879,9 +879,9 @@ html {
   }
 
   .movie-list {
-    width: stretch;
     width: -webkit-fill-available;
     width: -moz-available;
+    width: stretch;
   }
 }
 
