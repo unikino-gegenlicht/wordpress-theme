@@ -67,8 +67,7 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
     </header>
     <?php if ( count( $proposer_ids ) > 1 ) : ?>
     <div class="mt-3">
-        <div class="is-flex is-justify-content-space-around is-flex-grow-5 is-gap-3 <?= $proposal_by === "member" ? 'is-align-items-center' : 'is-align-items-center' ?>"
-             style="height: min-content !important; overflow: scroll;">
+        <div class="is-flex is-justify-content-space-around is-flex-grow-5 is-gap-3 is-align-items-center scrollable-member-list">
             <?php foreach ( $proposer_ids as $proposer_id ) : ?>
                 <?php if ( $proposal_by === "member" ) : ?>
                     <?php ggl_the_teamie_image( $proposer_id, min_height: "250px" ); ?>

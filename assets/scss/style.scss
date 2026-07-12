@@ -868,6 +868,13 @@ html {
   width: 0px;
 }
 
+.scrollable-member-list {
+  scrollbar-width: none;
+  height: min-content !important;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
 @include mixins.until(600) {
   .is-dynamic-flex {
     flex-direction: column !important;
