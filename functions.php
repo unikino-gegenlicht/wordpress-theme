@@ -140,23 +140,34 @@ function ggl_anonymize_opengraph_image( $original_image ) {
 }
 
 function ggl_inject_special_program_colors(): void {
-    $specialProgram = rwmb_get_value( "program_type" ) == "special_program" ? rwmb_get_value( "special_program" ) : false;
-    if ( ! is_singular( [ "movie", "event" ] ) || ! $specialProgram ) {
+    $current_obj = get_queried_object();
+    if ( $current_obj instanceof WP_Post ) {
+        $specialProgram = rwmb_get_value( "program_type", $current_obj->ID ) == "special_program" ? rwmb_get_value( "special_program", $current_obj->ID ) : false;
+        $colors         = $specialProgram ? ggl_get_special_program_colors( $specialProgram ) : [];
         ?>
-        <meta name="theme-color" content="#ffdd00">
-        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-
+        <meta name="theme-color" content="<?= $colors["lightMode"]["backgroundColor"] ?? '#ffdd00' ?>">
+        <meta name="theme-color" content="<?= $colors["darkMode"]["backgroundColor"] ?? '#000000' ?>"
+              media="(prefers-color-scheme: dark)">
         <?php
         return;
     }
 
-    $colors = ggl_get_special_program_colors( $specialProgram );
+    if ( $current_obj instanceof WP_Term ) {
+        $colors = ggl_get_special_program_colors( $current_obj->term_id );
+        ?>
+        <meta name="theme-color" content="<?= $colors["lightMode"]["backgroundColor"] ?? '#ffdd00' ?>">
+        <meta name="theme-color" content="<?= $colors["darkMode"]["backgroundColor"] ?? '#000000' ?>"
+              media="(prefers-color-scheme: dark)">
+        <?php
+        return;
+    }
 
     ?>
-    <meta name="theme-color" content="<?= $colors["lightMode"]["backgroundColor"] ?? '#ffdd00' ?>">
-    <meta name="theme-color" content="<?= $colors["darkMode"]["backgroundColor"] ?? '#000000' ?>"
-          media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffdd00">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+
     <?php
+
 
 }
 
