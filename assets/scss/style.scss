@@ -216,9 +216,8 @@ $contentPadding: 0.75rem;
 
 .marquee-image {
   img {
-    object-fit: scale-down;
+    object-fit: contain;
     height: calc(var(--height) - 6rem);
-
   }
 }
 
