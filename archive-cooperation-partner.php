@@ -56,7 +56,7 @@ do_action( 'wp_body_open' );
                     <div class="cell">
                         <a href="<?= get_the_permalink() ?>">
                             <figure class="image coop-logo">
-                                <img src="<?= get_the_post_thumbnail_url( size: 'full' ) ?>"/>
+                                <img src="<?= ggl_get_partner_image_url() ?>"/>
                             </figure>
 
                             <hr class="separator"/>

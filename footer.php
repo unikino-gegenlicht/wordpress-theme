@@ -8,16 +8,21 @@ defined( 'ABSPATH' ) || exit;
             <?= str_replace( ' ', '<br class="is-hidden-tablet"/> ', get_bloginfo( 'name' ) ) ?>
         </h5>
         <hr class="separator is-primary"/>
-        <?php if ( ! empty( get_theme_mod( 'displayed_social_medias' ) ?? [] ) ): ?>
-            <div class="is-flex is-align-items-center my-3 are-primary is-flex-wrap-wrap links">
-                <?php foreach ( get_theme_mod( 'displayed_social_medias' ) as $socialMedia => $entry ): ?>
-                    <a rel="me" href="<?= get_theme_mod( "social_medias" )[ $entry ] ?>"><span
-                                class="icon-text"><span class="is-underlined"><?= ucfirst( $entry ) ?></span><span
-                                    class="material-symbols ml-1">open_in_new</span></span> </a>
-                <?php endforeach; ?>
-            </div>
-            <hr class="separator is-primary"/>
-        <?php endif; ?>
+        <div class="is-flex is-align-items-center my-3 are-primary is-flex-wrap-wrap links">
+            <?php if ( ! empty( get_theme_mod( 'displayed_social_medias' ) ?? [] ) ): ?>
+            <?php foreach ( get_theme_mod( 'displayed_social_medias' ) as $socialMedia => $entry ): ?>
+                <a rel="me" href="<?= get_theme_mod( "social_medias" )[ $entry ] ?>"><span
+                            class="icon-text"><span class="is-underlined"><?= ucfirst( $entry ) ?></span><span
+                                class="material-symbols ml-1">open_in_new</span></span> </a>
+            <?php endforeach; ?>
+            <?php endif; ?>
+            <a rel="me" href="mailto:<?= get_theme_mod( 'general_email' ) ?>">
+                    <span
+                            class="icon-text"><span class="is-underlined">E-Mail</span><span
+                                class="material-symbols ml-1">open_in_new</span></span>
+            </a>
+        </div>
+        <hr class="separator is-primary"/>
         <div class="has-text-primary my-5 is-flex is-align-items-top is-flex-wrap-wrap is-justify-content-space-evenly is-row-gap-2.5">
             <?php if ( in_array( "postal", get_theme_mod( "displayed_addresses" ) ?: [] ) ): ?>
                 <div class="is-flex-grow-1">

@@ -237,7 +237,7 @@ endforeach; endif;?>
             <?php
 
             $externalsQuery = new WP_Query( [
-                    'post_type'  => [ 'supporter', 'cooperation-partner' ],
+                    'post_type'  => [ 'cooperation-partner' ],
                     'orderby'    => 'rand',
                     "do_preload" => false,
             ] );
@@ -252,7 +252,7 @@ endforeach; endif;?>
                         if ( count( $postImages ) > 6 ) {
                             break;
                         }
-                        $postImages[] = [ get_the_post_thumbnail_url( size: "full" ), get_permalink() ];
+                        $postImages[] = [ggl_get_partner_image_url($externalsQuery->post), get_permalink() ];
                     }
                 endwhile;
                 wp_reset_postdata();
