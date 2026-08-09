@@ -24,6 +24,7 @@ class FooterCustomizer extends GGLCustomizerBase {
 		$this->add_theme_mod( "show_youth_protection_officer", true );
 		$this->add_theme_mod( "impress_page" );
 		$this->add_theme_mod( "contact_page" );
+		$this->add_theme_mod( "general_email" );
 	}
 
 	function register_controls() {
@@ -63,6 +64,11 @@ class FooterCustomizer extends GGLCustomizerBase {
 			'description' => __( "Please select the page the contact details are setup on", "gegenlicht" ),
 			'type'        => 'dropdown-pages',
 		) );
+
+		$this->add_control( "general_email", array(
+			'label'       => __( 'Enter Contact Email', 'gegenlicht' ),
+			'description' => __( "Please enter a email address", "gegenlicht" ),
+		));
 
 
 	}
