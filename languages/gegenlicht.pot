@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-05T10:33:58+00:00\n"
+"POT-Creation-Date: 2026-08-25T13:06:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: gegenlicht\n"
@@ -100,34 +100,34 @@ msgstr ""
 msgid "Former Members"
 msgstr ""
 
-#: footer.php:24
+#: footer.php:29
 #: src/inc/customizer/contact-addresses.php:30
-#: src/inc/customizer/footer.php:45
+#: src/inc/customizer/footer.php:46
 msgid "Postal Address"
 msgstr ""
 
-#: footer.php:32
+#: footer.php:37
 #: src/inc/customizer/contact-addresses.php:26
 msgid "Visitor Address"
 msgstr ""
 
-#: footer.php:41
+#: footer.php:46
 msgid "Youth Protection Officer"
 msgstr ""
 
-#: footer.php:47
-#: header.php:102
+#: footer.php:52
+#: header.php:124
 #: src/templates/page-impress.php:4
 msgid "Impress"
 msgstr ""
 
-#: footer.php:49
-#: header.php:88
+#: footer.php:54
+#: header.php:110
 #: privacy-policy.php:8
 msgid "Privacy Policy"
 msgstr ""
 
-#: footer.php:51
+#: footer.php:56
 msgid "Contact"
 msgstr ""
 
@@ -144,86 +144,86 @@ msgstr ""
 msgid "To the Archive"
 msgstr ""
 
-#: front-page.php:130
+#: front-page.php:129
 msgid "To the team"
 msgstr ""
 
-#: front-page.php:190
+#: front-page.php:189
 msgid "To our Location"
 msgstr ""
 
-#: front-page.php:263
+#: front-page.php:262
 msgid "Logos of ours Cooperation partners"
 msgstr ""
 
-#: front-page.php:295
+#: front-page.php:294
 msgid "Our Cooperation Partners"
 msgstr ""
 
-#: front-page.php:301
+#: front-page.php:300
 msgid "Our supporters"
 msgstr ""
 
-#: functions.php:253
+#: functions.php:264
 msgid "Username or email address is missing"
 msgstr ""
 
-#: functions.php:257
+#: functions.php:268
 msgid "The entered credentials are invalid. Please try again"
 msgstr ""
 
-#: functions.php:280
+#: functions.php:291
 msgid "Students and Faculty at the Carl von Ossietzky University are able to register for a free account which unlocks more details about the program (especially the special programs)"
 msgstr ""
 
-#: header.php:95
+#: header.php:117
 #: src/inc/customizer/block-location.php:15
 #: src/inc/customizer/front-page.php:64
 #: src/partials/header-menu.php:17
 msgid "Location"
 msgstr ""
 
-#: header.php:181
+#: header.php:205
 msgid "Open Customizer"
 msgstr ""
 
-#: header.php:193
+#: header.php:217
 msgid "To the backend"
 msgstr ""
 
-#: header.php:203
+#: header.php:227
 msgid "Edit"
 msgstr ""
 
-#: header.php:211
+#: header.php:235
 msgid "Logout"
 msgstr ""
 
-#: header.php:218
+#: header.php:242
 msgid "Login"
 msgstr ""
 
-#: header.php:244
+#: header.php:268
 msgid "Semester Break"
 msgstr ""
 
-#: header.php:262
+#: header.php:286
 msgid "New Program Releases In"
 msgstr ""
 
-#: header.php:262
+#: header.php:286
 msgid "Day"
 msgstr ""
 
-#: header.php:262
+#: header.php:286
 msgid "Days"
 msgstr ""
 
-#: header.php:262
+#: header.php:286
 msgid "Hour"
 msgstr ""
 
-#: header.php:262
+#: header.php:286
 msgid "Hours"
 msgstr ""
 
@@ -395,6 +395,14 @@ msgstr ""
 
 #: single-team-member.php:83
 msgid "Past Screenings"
+msgstr ""
+
+#: single.php:18
+msgid "Published on"
+msgstr ""
+
+#: single.php:19
+msgid "Last edit"
 msgstr ""
 
 #: src/filters.php:30
@@ -689,48 +697,56 @@ msgstr ""
 msgid "Configure the content displayed in the footer"
 msgstr ""
 
-#: src/inc/customizer/footer.php:32
+#: src/inc/customizer/footer.php:33
 msgid "Displayed Social Medias"
 msgstr ""
 
-#: src/inc/customizer/footer.php:33
+#: src/inc/customizer/footer.php:34
 msgid "The selected social media pages will be linked in the footer"
 msgstr ""
 
-#: src/inc/customizer/footer.php:40
+#: src/inc/customizer/footer.php:41
 msgid "Displayed Addresses"
 msgstr ""
 
-#: src/inc/customizer/footer.php:41
+#: src/inc/customizer/footer.php:42
 msgid "The selected addresses will be shown in the footer"
 msgstr ""
 
-#: src/inc/customizer/footer.php:44
+#: src/inc/customizer/footer.php:45
 msgid "Visitor's Address"
 msgstr ""
 
-#: src/inc/customizer/footer.php:50
+#: src/inc/customizer/footer.php:51
 msgid "Show Youth Protection Officer Data"
 msgstr ""
 
-#: src/inc/customizer/footer.php:51
+#: src/inc/customizer/footer.php:52
 msgid "It's recommended to keep this enabled to ensure compliance with German Youth Protection Laws"
 msgstr ""
 
-#: src/inc/customizer/footer.php:56
+#: src/inc/customizer/footer.php:57
 msgid "Select Impress Page"
 msgstr ""
 
-#: src/inc/customizer/footer.php:57
+#: src/inc/customizer/footer.php:58
 msgid "Please select the page the impress is setup on"
 msgstr ""
 
-#: src/inc/customizer/footer.php:62
+#: src/inc/customizer/footer.php:63
 msgid "Select Contact Page"
 msgstr ""
 
-#: src/inc/customizer/footer.php:63
+#: src/inc/customizer/footer.php:64
 msgid "Please select the page the contact details are setup on"
+msgstr ""
+
+#: src/inc/customizer/footer.php:69
+msgid "Enter Contact Email"
+msgstr ""
+
+#: src/inc/customizer/footer.php:70
+msgid "Please enter a email address"
 msgstr ""
 
 #: src/inc/customizer/front-page.php:22
@@ -1132,55 +1148,55 @@ msgstr ""
 msgid "E-Mail Address of Youth Protection Officer"
 msgstr ""
 
-#: src/inc/theme-functions.php:124
+#: src/inc/theme-functions.php:127
 msgid "Sexualized Violence"
 msgstr ""
 
-#: src/inc/theme-functions.php:125
+#: src/inc/theme-functions.php:128
 msgid "Violence"
 msgstr ""
 
-#: src/inc/theme-functions.php:126
+#: src/inc/theme-functions.php:129
 msgid "Self Harm"
 msgstr ""
 
-#: src/inc/theme-functions.php:127
+#: src/inc/theme-functions.php:130
 msgid "Drug Usage"
 msgstr ""
 
-#: src/inc/theme-functions.php:128
+#: src/inc/theme-functions.php:131
 msgid "Discrimination"
 msgstr ""
 
-#: src/inc/theme-functions.php:129
+#: src/inc/theme-functions.php:132
 msgid "Sexuality"
 msgstr ""
 
-#: src/inc/theme-functions.php:130
+#: src/inc/theme-functions.php:133
 msgid "Threat"
 msgstr ""
 
-#: src/inc/theme-functions.php:131
+#: src/inc/theme-functions.php:134
 msgid "Injury"
 msgstr ""
 
-#: src/inc/theme-functions.php:132
+#: src/inc/theme-functions.php:135
 msgid "Stressful Topics"
 msgstr ""
 
-#: src/inc/theme-functions.php:133
+#: src/inc/theme-functions.php:136
 msgid "Language"
 msgstr ""
 
-#: src/inc/theme-functions.php:134
+#: src/inc/theme-functions.php:137
 msgid "Nudeness"
 msgstr ""
 
-#: src/inc/theme-functions.php:135
+#: src/inc/theme-functions.php:138
 msgid "Risky Behaviour"
 msgstr ""
 
-#: src/inc/theme-functions.php:136
+#: src/inc/theme-functions.php:139
 msgid "Marginalization"
 msgstr ""
 
