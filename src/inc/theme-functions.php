@@ -48,6 +48,7 @@ function ggl_theme__get_upcoming_screenings( WP_Term|int $semesterID ): array {
 	return array_filter( $all_movies_in_semester->posts, function ( $screening ) use ( $now ) {
 		$running_time  = ggl_get_running_time( $screening ) + 10;
 		$movie_ends_at = ggl_get_starting_time( $screening )->add( new DateInterval( "PT{$running_time}M" ) );
+
 		return $now <= $movie_ends_at;
 	} );
 }
@@ -63,16 +64,18 @@ function ggl_get_advertisements( WP_Term|int $semesterID ): array {
 	$screenings = ggl_theme__get_upcoming_screenings( $semesterID );
 
 	$advertisable_screenings[] = array_shift( $screenings );
-	$start_of_first_screening  = ggl_get_starting_time( $advertisable_screenings[0] )->setTime( 0, 0, 0 );
+	if ( $advertisable_screenings[0] !== null ) {
+		$start_of_first_screening = ggl_get_starting_time( $advertisable_screenings[0] )->setTime( 0, 0, 0 );
 
-	foreach ( $screenings as $screening ) {
+		foreach ( $screenings as $screening ) {
 
-		$screening_start = ggl_get_starting_time( $screening )->setTime( 0, 0, 0 );
-		$diff            = $start_of_first_screening->diff( $screening_start );
-		if ( $diff->days != 0  ) {
-			continue;
+			$screening_start = ggl_get_starting_time( $screening )->setTime( 0, 0, 0 );
+			$diff            = $start_of_first_screening->diff( $screening_start );
+			if ( $diff->days != 0 ) {
+				continue;
+			}
+			$advertisable_screenings[] = $screening;
 		}
-		$advertisable_screenings[] = $screening;
 	}
 
 	return $advertisable_screenings;
