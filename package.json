@@ -4,6 +4,7 @@
   "scripts": {
     "build:css": "sass --load-path=node_modules --quiet-deps assets/scss/style.scss style.css && minify style.css > style.min.css",
     "build:login-css": "sass --load-path=node_modules --quiet-deps assets/scss/login.scss assets/css/login.css && minify assets/css/login.css > assets/css/login.min.css",
+    "build:editor-css": "sass --load-path=node_modules --quiet-deps assets/scss/editor.scss editor.css",
     "watch:css": "sass --watch --load-path=node_modules assets/scss/style.scss style.css",
     "minify:css": "minify style.css > style.min.css",
     "i18n:update-template": "wp i18n make-pot ./ ./languages/gegenlicht.pot --domain=gegenlicht --merge=./languages/i18n.pot",

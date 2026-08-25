@@ -20,6 +20,7 @@ $is_break_period = defined("GGL_BREAK_PERIOD") && GGL_BREAK_PERIOD;
         <hr class="separator">
     </div>
 <?php else:
+    $upcoming = array_filter( $upcoming  );
     for ( $i = 0; $i < count( $upcoming ); $i ++ ):
         get_template_part( "src/partials/movie-advertisement", args: [
                 "post_id"  => $upcoming[ $i ]->ID,

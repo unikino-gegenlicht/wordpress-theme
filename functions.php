@@ -254,8 +254,8 @@ function ggl_send_image_link_headers(): void {
     $mobileOptimizedImage  = get_the_post_thumbnail_url( size: "mobile" );
     $desktopOptimizedImage = get_the_post_thumbnail_url( size: "desktop" );
 
-    header( 'Link: <' . $mobileOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', replace: false, response_code: 103 );
-    header( 'Link: <' . $desktopOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', replace: false, response_code: 103 );
+    header( 'Link: <' . $mobileOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', replace: false );
+    header( 'Link: <' . $desktopOptimizedImage . '>; rel=preload; as=image; fetchpriority="high;', replace: false );
 }
 
 
@@ -387,17 +387,16 @@ function ggl_send_link_headers( $_ ): void {
     }
 
     foreach ( FONT_REGISTRY as $font ) {
-        header( "Link: <{$font->public_path}?ver={$font->hash}>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;", false, 103 );
+        header( "Link: <{$font->public_path}?ver={$font->hash}>; rel=preload; as=font; crossorigin=anonymous; fetchpriority=high;", false );
     }
 
     foreach ( $relativeStylePaths as $relativeStylePath ) {
-        header( "Link: <{$relativeStylePath}>; rel=preload; as=style; fetchpriority=high;", false, 103 );
+        header( "Link: <{$relativeStylePath}>; rel=preload; as=style; fetchpriority=high;", false );
     }
 
     foreach ( $relativeScriptPaths as $relativeScriptPath ) {
-        header( "Link: <{$relativeScriptPath}>; rel=preload; as=script; fetchpriority=high;", false, 103 );
+        header( "Link: <{$relativeScriptPath}>; rel=preload; as=script; fetchpriority=high;", false );
     }
-    headers_send( 103 );
 }
 
 function ggl_enqueue_fonts(): void {
@@ -573,6 +572,7 @@ function ggl_disable_emoji_staticization(): void {
 function ggl_setup_theme_supports(): void {
     add_theme_support( "post-thumbnails" );
     add_theme_support( "automatic-feed-links" );
+    add_theme_support( 'editor-styles' );
 }
 
 
@@ -581,5 +581,7 @@ function ggl_add_image_sizes(): void {
     add_image_size( 'desktop', 800, 450, crop: true );
 
 }
+
+add_editor_style( 'editor.css' );
 
 require_once "src/inc/theme-functions.php";
