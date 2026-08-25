@@ -40,7 +40,7 @@
   hyphenate-limit-chars: 6 4 4;
 }
 
-body {
+body, .block-editor-iframe__body {
   background: #ffdd00;
   color: #000000;
   font-family: "Inter";

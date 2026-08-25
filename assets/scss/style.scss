@@ -125,11 +125,10 @@ code {
   margin-bottom: 5rem !important;
 }
 
-a {
-  &.button {
-    text-decoration: none;
+article {
+  a {
+    text-decoration: underline;
   }
-  text-decoration: underline;
 }
 
 
