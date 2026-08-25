@@ -42,6 +42,7 @@ jobs:
           npm install
           npm run build:css
           npm run build:login-css
+          npm run build:editor-css
           npm run i18n:make-mo
           rm LICENSE
           rm README.md
