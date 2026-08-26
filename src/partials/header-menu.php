@@ -4,7 +4,7 @@ for ( $i = 0; $i < count( $navItems ); $i ++ ) {
     $item = $navItems[ $i ];
 
     global $wp;
-    $isActivePage = $item->url === ( home_url( $wp->request ) . 'header-menu.php/' ) || $item->url === ( home_url( $wp->request ) );
+    $isActivePage = $item->url === ( home_url( $wp->request ) . '/' ) || $item->url === ( home_url( $wp->request ) );
     $page         = get_page_by_path( parse_url( $item->url, PHP_URL_PATH ) ?? "" );
 
     $title = $item->title;
@@ -35,8 +35,7 @@ for ( $i = 0; $i < count( $navItems ); $i ++ ) {
     ?>
     <a class="navbar-item is-size-5-touch px-2 <?= $isActivePage ? 'is-active' : '' ?>"
        href="<?= $item->url ?>">
-        <span><?= str_pad( $i + 1, 2, "0", STR_PAD_LEFT ) ?>&nbsp;</span>
-        <span class="font-ggl is-uppercase"><?= $title ?></span>
+        <span><?= str_pad( $i + 1, 2, "0", STR_PAD_LEFT ) ?>&nbsp;</span><span class="font-ggl is-uppercase"><?= $title ?></span>
     </a>
     <?php
 }
