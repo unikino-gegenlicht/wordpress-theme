@@ -3,7 +3,7 @@ Theme Name: GEGENLICHT
 Theme URI: https://github.com/unikino-gegenlicht/wordpress-theme
 Author: Unikino GEGENLICHT
 Author URI: https://github.com/unikino-gegenlicht/wordpress-theme/graphs/contributors
-Description: The default theme for our website (Design by Philip Kaufmann // Implementation by Jan Eike Suchard)
+Description: A website template for student cinemas, originally designed by Philip Kaufmann of the Unikino GEGENLICHT and implemented by Jan Eike Suchard of the Unikino GEGENLICHT
 Tags: entertainment,grid-layout,single-column,custom-logo,custom-menu,featured-images,footer-widgets,theme-options,translation-ready
 Version: GGL_THEME_VERSION
 Requires at least: 6.7
@@ -63,6 +63,7 @@ $contentPadding: 0.75rem;
   --bulma-body-color: black;
   --bulma-navbar-background-color: var(--bulma-body-background-color);
   --bulma-strong-color: var(--bulma-body-color);
+  --bulma-link-text: var(--bulma-body-color) !important;
   --button-border-width: var(--border-thickness);
   --max-content-width: #{$maxWidth};
   --content-padding: #{$contentPadding};
@@ -125,10 +126,9 @@ code {
   margin-bottom: 5rem !important;
 }
 
-article {
-  a {
-    text-decoration: underline;
-  }
+a:not(.button,.navbar-item,.marquee-content) {
+  color: var(--bulma-body-color);
+  text-decoration: underline;
 }
 
 
@@ -222,6 +222,10 @@ article {
   .coop-logo > img,
   .marquee-image > img {
     filter: invert(74%) sepia(89%) saturate(508%) hue-rotate(358deg) brightness(102%) contrast(105%);
+  }
+
+  .is-hidden-darkmode {
+    display: none !important;
   }
 }
 
@@ -427,6 +431,9 @@ hr.separator {
   hr.separator.is-only-darkmode {
     display: none !important;
   }
+  .is-hidden-lightmode {
+    display: none !important;
+  }
 }
 
 .screening-information {
@@ -592,6 +599,31 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+h1 {
+  --heading-size: 2rem;
+}
+
+h2 {
+  --heading-size: 1.75rem;
+}
+
+h3 {
+  --heading-size: 1.5rem;
+}
+
+h4 {
+  --heading-size: 1.25rem;
+}
+
+h5 {
+  --heading-size: 1.15 rem;
+}
+
+h6 {
+  --heading-size: 1rem;
+}
+
+
 .privacy-policy,
 .impress {
   h1, h2, h3, h4, h5, h6 {
@@ -625,10 +657,6 @@ h1, h2, h3, h4, h5, h6 {
   border: var(--bulma-body-color) solid var(--border-thickness);
 }
 
-img,
-figure {
-  pointer-events: none;
-}
 
 
 .content-notice {
