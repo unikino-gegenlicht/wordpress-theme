@@ -41,10 +41,10 @@
 }
 
 body, .block-editor-iframe__body {
-  background: #ffdd00;
-  color: #000000;
+  background: var(--bulma-body-background-color);
+  color: var(--bulma-body-color);
   font-family: "Inter";
-  font-feature-settings: "calt" on, "tnum" on, "ss01" on, "ss02" on, "zero" on;
+  font-feature-settings: "calt" on, "tnum" on, "ss01" on, "ss02" on, "zero" on, "ss07" on, "ss08" on, "dlig" on;
   hyphens: auto;
   hyphenate-limit-chars: 6 4 4;
 }
@@ -54,15 +54,12 @@ em {
   font-style: italic;
 }
 
-a {
+a:not(.button,.navbar-item) {
   color: black;
   text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5, h6 {
-
-  --heading-size: 2rem;
-
   font-family: 'GEGENLICHT', sans-serif;
   text-transform: uppercase;
   padding-top: 0.25rem;
@@ -91,4 +88,28 @@ h1, h2, h3, h4, h5, h6 {
   &.border-is-background-color {
     border-bottom: var(--border-thickness) solid var(--bulma-body-background-color) !important;
   }
+}
+
+h1 {
+  --heading-size: 2rem;
+}
+
+h2 {
+  --heading-size: 1.75rem;
+}
+
+h3 {
+  --heading-size: 1.5rem;
+}
+
+h4 {
+  --heading-size: 1.25rem;
+}
+
+h5 {
+  --heading-size: 1.15 rem;
+}
+
+h6 {
+  --heading-size: 1rem;
 }

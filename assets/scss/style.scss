@@ -126,7 +126,7 @@ code {
   margin-bottom: 5rem !important;
 }
 
-a:not(.button,.navbar-item,.marquee-content) {
+p > a:not(.button,.navbar-item,.marquee-content) {
   color: var(--bulma-body-color);
   text-decoration: underline;
 }
@@ -536,6 +536,7 @@ hr.separator {
     font-size: 1rem;
     vertical-align: center;
     pointer-events: none !important;
+    text-decoration: none !important;
   }
 
   a:last-child:after {
@@ -566,9 +567,6 @@ hr.separator {
 }
 
 h1, h2, h3, h4, h5, h6 {
-
-  --heading-size: 2rem;
-
   font-family: 'GEGENLICHT', sans-serif;
   text-transform: uppercase;
   padding-top: 0.25rem;
@@ -631,23 +629,6 @@ h6 {
     padding-bottom: unset;
     padding-top: unset;
     color: inherit !important;
-  }
-
-  h1 {
-    font-size: 1.75rem !important;
-  }
-
-  h2 {
-    font-size: 1.5rem !important;
-  }
-
-  h3 {
-    font-size: 1.25rem !important;
-  }
-
-  h4 {
-    font-size: var(--bulma-body-size) !important;
-    text-decoration: underline;
   }
 }
 
@@ -799,8 +780,13 @@ p:empty {
   }
 }
 
+a {
+  cursor: pointer;
+}
+
 * {
-  user-select: none;
+  user-select: text;
+  cursor: default;
 }
 
 address {
@@ -863,7 +849,7 @@ figure.coop-logo {
   img {
     padding: 0.5rem;
     max-width: 250px;
-    object-fit: fill;
+    object-fit: contain;
     height: 100%;
     width: 100%;
   }
@@ -981,7 +967,7 @@ html {
   display: inline-block;
 
   .red-backdrop {
-    background-color: rgba(255,0,0, 50%)
+    background-color: rgba(255, 0, 0, 50%)
   }
 
   .reason {
@@ -994,7 +980,7 @@ html {
     text-align: center;
     vertical-align: middle;
     color: var(--bulma-primary) !important;
-    backdrop-filter: saturate(0) blur(10px) ;
+    backdrop-filter: saturate(0) blur(10px);
     background-color: rgb(255 0 0 / 0.66);
     margin: auto;
     height: 100%;
@@ -1017,4 +1003,18 @@ html {
     height: 100%;
     object-fit: fill;
   }
+}
+
+.block-object-fit {
+  img {
+    object-fit: scale-down !important;
+  }
+}
+
+
+.member-picture-container {
+  height: min-content !important;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scrollbar-width: none;
 }
