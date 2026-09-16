@@ -141,11 +141,30 @@ define("GGL_BREAK_PERIOD", $is_break_period);
 <!DOCTYPE html>
 <html lang="<?= substr( get_user_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top <?= ggl_movie_is_special_feature() || ggl_special_program_apply_to_page() ? 'special-program' : '' ?> <?= join(' ', $additionalClasses) ?>">
 <head>
+    <!--
+    LICENSE DISCLAIMER
+
+    THIS THEME AND ALL FILES THEREOF ARE THE ORIGINAL WORK OF THE FOLLOWING PEOPLE:
+      - Philip Kaufmann (Design)
+      - Jan Eike Suchard (Implementation and Realization)
+
+    The theme is licensed under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE 3.0 OR LATER
+
+    For further details please check out the LICENSE file available at <?= get_theme_file_uri('LICENSE') ?>
+
+    -->
     <?php wp_head(); ?>
     <title><?= esc_html( GGL_PAGE_TITLE ) ?></title>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
+    <style>
+        :root {
+            --bulma-body-background-color: <?= get_theme_mod('primary_color', '#ffdd00') ?> !important;
+            --bulma-body-color: <?= get_theme_mod('text_color', "#000000") ?> !important;
+
+        }
+    </style>
 </head>
 <?php do_action( 'wp_body_open' ); ?>
 <body>
