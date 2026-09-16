@@ -15,8 +15,14 @@ get_header();
             <?php endif; ?>
             <h1 class="mt-2"><?= get_the_title() ?></h1>
             <div class="has-text-right my-3">
+                <?php if ($post->post_status === "publish"): ?>
                 <p class="m-0"><?= esc_html__('Published on', 'gegenlicht') ?>:&nbsp;<?= get_post_datetime(field: 'date')->format(str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_DATETIME_FORMAT : GGL_THEME__ENGLISH_DATETIME_FORMAT)?></p>
                 <p class="m-0"><?= esc_html__('Last edit', 'gegenlicht') ?>:&nbsp;<?= get_post_datetime(field: 'modified')->format(str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_DATETIME_FORMAT : GGL_THEME__ENGLISH_DATETIME_FORMAT)?></p>
+                <?php elseif ($post->post_status === "planned"): ?>
+                <p class="m-0"><?= esc_html__('Scheduled for publishing on', 'gegenlicht') ?>:&nbsp;<?= get_post_datetime(field: 'date')->format(str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_DATETIME_FORMAT : GGL_THEME__ENGLISH_DATETIME_FORMAT)?></p>
+                <?php elseif ($post->post_status === "draft"): ?>
+                <p class="m-0"><?= esc_html__('Drafted on', 'gegenlicht') ?>:&nbsp;<?= get_post_datetime(field: 'date')->format(str_starts_with( get_user_locale(), "de" ) ? GGL_THEME__GERMAN_DATETIME_FORMAT : GGL_THEME__ENGLISH_DATETIME_FORMAT)?></p>
+                <?php endif; ?>
             </div>
         </header>
         <?= apply_filters( 'the_content', get_the_content() ) ?>
