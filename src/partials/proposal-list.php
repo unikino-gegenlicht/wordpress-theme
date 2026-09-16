@@ -67,7 +67,7 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
     </header>
     <?php if ( count( $proposer_ids ) > 1 ) : ?>
     <div class="mt-3">
-        <div class="is-flex is-justify-content-space-around is-flex-grow-5 is-gap-3 <?= $proposal_by === "member" ? 'is-align-items-center' : 'is-align-items-center' ?>"
+        <div class="is-flex is-justify-content-space-around is-flex-grow-5 is-gap-3 member-picture-container <?= $proposal_by === "member" ? 'is-align-items-center' : 'is-align-items-center' ?>"
              style="height: min-content !important; overflow: scroll;">
             <?php foreach ( $proposer_ids as $proposer_id ) : ?>
                 <?php if ( $proposal_by === "member" ) : ?>
@@ -91,8 +91,8 @@ $proposer_name_str  = count( $proposer_names ) > 1 ? $proposer_name_list . " " .
                     <div class="movie-list-entries">
                         <?php foreach ( $proposals as $proposal ) : ?>
                             <div class="entry is-flex-direction-column is-align-items-flex-start">
-                                <p class="is-hidden-mobile"><?= esc_html__("screened in ", "ggl-post-types") ?><?= $proposal["year"] ?></p>
-                                <h2 class="is-size-5 is-size-6-mobile no-separator is-uppercase movie-title">
+                                <p><?= esc_html__("screened in ", "ggl-post-types") ?><?= $proposal["year"] ?></p>
+                                <h2 class="is-size-5 no-separator is-uppercase movie-title">
                                     <?=  $proposal["title"] ?>
                                 </h2>
                             </div>
