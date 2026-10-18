@@ -1,314 +1,58 @@
 <?php
-defined( 'ABSPATH' ) || exit;
-$platform = get_browser()->platform;
-
-
-$headerImage      = get_theme_mod( 'header_logo' );
-$smallHeaderImage = get_theme_mod( 'small_header_logo' );
-
-$fallbackImage = get_theme_mod( 'anonymous_image' );
-$semesterID    = get_theme_mod( 'displayed_semester' );
-
-$semester               = get_term( $semesterID, 'semester' );
-$semesterScreeningStart = get_term_meta( $semester->term_id, 'semester_start', true );
-
-$publicationDelay = get_theme_mod( 'program_reveal_delay' );
-
-$announce_new_program = false;
-$is_break_period = get_theme_mod("manual_semester_break");
-if ( time() < strtotime( "-{$publicationDelay} days", $semesterScreeningStart ) ) {
-    $announce_new_program = true;
-}
-
-if ( !$is_break_period ) {
-    $next_meta       = [];
-    $next_meta[]     = [
-            'key'     => 'screening_date',
-            'value'   => time(),
-            'compare' => '>=',
-    ];
-    $next_query_args = array(
-            'do_preload'     => false,
-            'post_type'      => [ 'movie', 'event' ],
-            'posts_per_page' => 1,
-            'meta_query'     => $next_meta,
-            'tax_query'      => array(
-                    array(
-                            'taxonomy' => 'semester',
-                            'terms'    => $semesterID,
-                    )
-            ),
-            'meta_key'       => 'screening_date',
-            'orderby'        => 'meta_value_num',
-            'order'          => 'ASC',
-    );
-
-    $next = new WP_Query( $next_query_args );
-    $is_break_period = !$next->have_posts();
-} else {
-    $next_meta       = [];
-    $next_meta[]     = [
-            'key'     => 'screening_date',
-            'value'   => time(),
-            'compare' => '>=',
-    ];
-    $next_query_args = array(
-            'do_preload'     => false,
-            'post_type'      => [ 'movie', 'event' ],
-            'posts_per_page' => 1,
-            'meta_query'     => $next_meta,
-            'tax_query'      => array(
-                    array(
-                            'taxonomy' => 'semester',
-                            'terms'    => "",
-                    )
-            ),
-            'meta_key'       => 'screening_date',
-            'orderby'        => 'meta_value_num',
-            'order'          => 'ASC',
-    );
-}
-
-$show_custom_banner = get_theme_mod( "show_custom_banner_message" );
-if ( $show_custom_banner ) {
-    $announce_new_program = false;
-    $is_break_period = false;
-}
-
-
-/**
- * Configure the page title used in the HTML <head> element
+/*
+ * Copyright (c) 2026. Unikino GEGENLICHT. Licensed under the EUPL v1.2 or later
  */
-$args               = $args ?? [ "hideBreakBanner" => false ];
-$hideBreakBanner    = ( $args['hideBreakBanner'] ?? false ) == true;
-$manualPartialTitle = trim( $args["title"] ?? "" );
-$additionalClasses  = $args["additionalClasses"] ?? [];
-$blogName           = get_bloginfo( "name" );
 
-
-if ( $manualPartialTitle ) {
-    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ $manualPartialTitle, $blogName ] ) );
-}
-
-if ( is_singular( [ "movie", "event" ] ) && ! defined( "GGL_PAGE_TITLE" ) ) {
-    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [ ggl_get_title(), $blogName ] ) );
-}
-
-if ( is_front_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
-    define( "GGL_PAGE_TITLE", get_bloginfo( "name" ) . " – " . get_bloginfo( "description" ) );
-}
-
-if ( is_archive() && ! defined( "GGL_PAGE_TITLE" ) ) {
-    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
-            post_type_archive_title( display: false ),
-            get_bloginfo( "name" )
-    ] ) );
-}
-
-if ( is_privacy_policy() && ! defined( "GGL_PAGE_TITLE" ) ) {
-    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
-            __( "Privacy Policy", "gegenlicht" ),
-            get_bloginfo( "name" )
-    ] ) );
-}
-
-if ( is_location_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
-    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
-            __( "Location", "gegenlicht" ),
-            get_bloginfo( "name" )
-    ] ) );
-}
-
-if ( is_impress_page() && ! defined( "GGL_PAGE_TITLE" ) ) {
-    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
-            __( "Impress", "gegenlicht" ),
-            get_bloginfo( "name" )
-    ] ) );
-}
-
-
-if ( ! defined( "GGL_PAGE_TITLE" ) ) {
-    define( "GGL_PAGE_TITLE", join( GGL_TITLE_SEPARATOR, [
-            get_the_title(),
-            get_bloginfo( "name" )
-    ] ) );
-
-}
-
-define("GGL_BREAK_PERIOD", $is_break_period);
-
+defined( 'ABSPATH' ) || exit;
 ?>
 <!DOCTYPE html>
-<html lang="<?= substr( get_user_locale(), 0, 2 ) ?>" class="has-navbar-fixed-top <?= ggl_movie_is_special_feature() || ggl_special_program_apply_to_page() ? 'special-program' : '' ?> <?= join(' ', $additionalClasses) ?>">
+<html lang="<?= get_user_locale() ?>">
 <head>
     <!--
     LICENSE DISCLAIMER
 
-    THIS THEME AND ALL FILES THEREOF ARE THE ORIGINAL WORK OF THE FOLLOWING PEOPLE:
-      - Philip Kaufmann (Design)
-      - Jan Eike Suchard (Implementation and Realization)
+    This theme and all files thereof are the original work of the following
+    people:
+      - Philip Kaufmann <philip@gegenlicht.net> (Design)
+      - Jan Eike Suchard <jan@gegenlicht.net> (Implementation)
 
-    The theme is licensed under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE 3.0 OR LATER
+     The theme's code is licensed under the terms of the EUPL v1.2 or later.
 
-    For further details please check out the LICENSE file available at <?= get_theme_file_uri('LICENSE') ?>
-
+     For further information please check out the LICENSE file that should be
+     available at the following address: <?= get_theme_file_uri( 'LICENSE' ) ?>
     -->
+    <title><?php bloginfo( 'name' ) ?></title>
     <?php wp_head(); ?>
-    <title><?= esc_html( GGL_PAGE_TITLE ) ?></title>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
+    <meta charset="<?php bloginfo( 'charset' ) ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <style>
-        :root {
-            --bulma-body-background-color: <?= get_theme_mod('primary_color', '#ffdd00') ?> !important;
-            --bulma-body-color: <?= get_theme_mod('text_color', "#000000") ?> !important;
-
-        }
-    </style>
 </head>
-<?php do_action( 'wp_body_open' ); ?>
 <body>
+<?php do_action( 'wp_body_open' ); ?>
 <header>
-    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand px-2">
+    <nav class="navbar is-fixed-top is-primary" role="navigation" aria-label="<?= __( 'Main Navigation', 'cine-press-theme' ) ?>">
+        <div class="navbar-brand px-1">
             <a class="navbar-item m-0 is-flex is-tab is-hidden-desktop-only"
-               href="<?= get_home_url( scheme: 'https' ) ?>"
-               style="border-bottom: none !important;" aria-label="Back To Start">
-                <div>
-                    <?php
-                    if ( $headerImage ):
-                        echo file_get_contents( get_attached_file( $headerImage, true ) );
-                    else: ?>
-                        <p class="title has-text-black">
-                            <?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
-                        </p>
-                    <?php endif; ?>
-                </div>
-            </a>
-            <a class="navbar-item m-0 is-tab is-hidden-mobile is-hidden-tablet-only is-hidden-widescreen"
-               href="<?= get_home_url( scheme: 'https' ) ?>"
-               style="border-bottom: none !important;" aria-label="Back To Start">
-                <div>
-                    <?php
-                    if ( $smallHeaderImage ):
-                        echo file_get_contents( get_attached_file( $smallHeaderImage, true ) );
-                    else: ?>
-                        <p class="title has-text-black">
-                            <?= str_replace( ' ', '<br/>', get_bloginfo( 'name' ) ) ?>
-                        </p>
-                    <?php endif; ?>
-                </div>
-            </a>
-
-            <a role="button" id="burger" class="navbar-burger" aria-label="menu" aria-expanded="false"
-               style="color: var(--bulma-body-color);"
-               onclick="toggleMenu()">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+               href="<?= get_home_url( scheme: 'https' ) ?>">
+                <?= get_bloginfo('name') ?>
             </a>
         </div>
-        <div class="navbar-menu is-shadowless" id="menu">
+        <div class="navbar-menu is-shadowless">
             <div class="navbar-end">
                 <?php
-                get_template_part( "src/partials/header-menu" ) ?>
-                <hr class="separator is-hidden-desktop">
-                <?php if ( is_user_logged_in() && current_user_can( 'manage_options' ) ): ?>
-                    <a class="navbar-item no-hover" href="<?= wp_customize_url() ?>">
-                        <span class="icon-text is-size-5">
-                            <span class="icon">
-                                <span class="dashicons dashicons-admin-appearance"></span>
-                            </span>
-                            <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop">
-                                <?= esc_html__( 'Open Customizer', "gegenlicht" ) ?>
-                            </span>
-                        </span>
+                $navigation_items = wp_get_nav_menu_items( wp_get_nav_menu_name( 'header-menu' ) ) ?: [];
+                for ( $i = 0; $i < count( $navigation_items ); $i ++ ) {
+                    $item         = $navigation_items[ $i ];
+                    $isActivePage = $item->url === ( home_url( $wp->request ) . '/' ) || $item->url === ( home_url( $wp->request ) );
+                    ?>
+                    <a class="navbar-item is-size-5-touch px-2 <?= $isActivePage ? 'is-active' : '' ?>">
+                        <span style="font-weight: bold"><?= str_pad( $i + 1, 2, "0", STR_PAD_LEFT ) ?></span><span
+                                class="is-uppercase"><?= $item->title ?></span>
                     </a>
-                <?php endif; ?>
-                <?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ): ?>
-                    <a class="navbar-item no-hover" href="<?= get_admin_url( scheme: 'https' ) ?>">
-                        <span class="icon-text is-size-5">
-                            <span class="icon">
-                                <span class="si is-size-5 si-wordpress"></span>
-                            </span>
-                            <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop">
-                                <?= esc_html__( 'To the backend', "gegenlicht" ) ?>
-                            </span>
-                        </span>
-                    </a>
-                <?php endif; ?>
-                <?php if ( is_singular() && $post != null && current_user_can( 'edit_post', $post->ID ) ): ?>
-                    <a class="navbar-item no-hover"
-                       href="<?= get_edit_post_link() ?>">
-                        <span class="icon-text">
-                        <span class="icon"><span class="material-symbols is-size-4">edit</span></span>
-                        <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Edit', 'gegenlicht' ) ?></span></span>
-                    </a>
-                <?php endif; ?>
-                <?php if ( is_user_logged_in() ): ?>
-                    <a class="navbar-item no-hover"
-                       href="<?= wp_logout_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
-                        <span class="icon-text">
-                        <span class="icon"><span class="material-symbols is-size-4">logout</span></span>
-                        <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Logout', 'gegenlicht' ) ?></span></span>
-                    </a>
-                <?php else: ?>
-                    <a class="navbar-item no-hover"
-                       href="<?= wp_login_url( is_home() ? home_url() : home_url( $wp->request ) ) ?>">
-                        <span class="icon-text">
-                        <span class="icon"><span class="material-symbols is-size-4">login</span></span>
-                        <span class="is-size-5 has-text-weight-semibold is-uppercase is-hidden-desktop"><?= esc_html__( 'Login', 'gegenlicht' ) ?></span></span>
-                    </a>
-                <?php endif ?>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </nav>
-    <?php if ( $show_custom_banner ): ?>
-        <div class="page-content semester-break mb-5">
-            <div class="marquee py-5">
-                <?php for ( $i = 0; $i < 2; $i ++ ): ?>
-                    <div class="marquee-content">
-                        <?php for ( $j = 0; $j < 2; $j ++ ) {
-                            echo get_theme_mod( "custom_banner_message" );
-                            echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
-                        } ?>
-                    </div>
-                <?php endfor; ?>
-            </div>
-        </div>
-    <?php else: ?>
-        <?php if ( $is_break_period && ! $hideBreakBanner && ! $announce_new_program ): ?>
-            <div class="page-content semester-break mb-5">
-                <div class="marquee py-5">
-                    <?php for ( $i = 0; $i < 2; $i ++ ): ?>
-                        <div class="marquee-content">
-                            <?php for ( $j = 0; $j < 4; $j ++ ) {
-                                echo "<p>" . esc_html__( "Semester Break", 'gegenlicht' ) . " </p>";
-                                echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
-                            } ?>
-                        </div>
-                    <?php endfor; ?>
-                </div>
-            </div>
-        <?php endif; ?>
-        <?php if ( $announce_new_program && ! $hideBreakBanner ):
-            $timeRemaining = strtotime( "-{$publicationDelay} days", $semesterScreeningStart ) - time();
-            $daysRemaining = floor( $timeRemaining / ( 60 * 60 * 24 ) );
-            $hoursRemaining = floor( ( $timeRemaining - ( $daysRemaining * 60 * 60 * 24 ) ) / ( 60 * 60 ) );
-            ?>
-            <div class="page-content semester-break mb-5">
-                <div class="marquee py-5">
-                    <?php for ( $i = 0; $i < 2; $i ++ ): ?>
-                        <div class="marquee-content">
-                            <?php for ( $j = 0; $j < 2; $j ++ ) {
-                                echo "<p>" . esc_html__( "New Program Releases In", 'gegenlicht' ) . "&nbsp;" . $daysRemaining . "&nbsp;" . ( $daysRemaining == 1 ? esc_html__( "Day", "gegenlicht" ) : esc_html__( "Days", "gegenlicht" ) ) . "&nbsp;" . $hoursRemaining . "&nbsp;" . ( $hoursRemaining == 1 ? esc_html__( "Hour", "gegenlicht" ) : esc_html__( "Hours", "gegenlicht" ) ) . "</p>";
-                                echo "<p>&#xE0A4;&ensp;&#xE0A4;&ensp;&#xE0A4;</p>";
-                            } ?>
-                        </div>
-                    <?php endfor; ?>
-                </div>
-            </div>
-        <?php endif; ?>
-    <?php endif; ?>
 </header>

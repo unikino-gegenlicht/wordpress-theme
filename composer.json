@@ -1,16 +1,21 @@
 {
-  "name": "gegenlicht/wordpress-theme",
-  "type": "wordpress-theme",
-  "license": "EUPL-1.2",
-  "authors": [
-    {
-      "name": "Jan Eike Suchard",
-      "email": "60288203+dr4hcu5-jan@users.noreply.github.com"
+    "name": "unikino-gegenlicht/cinema-press-theme",
+    "license": "EUPL-1.2",
+    "authors": [
+        {
+            "name": "Jan Eike Suchard",
+            "email": "60288203+dr4hcu5-jan@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "ext-intl": "*",
+        "sokil/php-isocodes-db-i18n": "^4.0",
+        "sokil/php-isocodes": "^4.4",
+        "ext-gettext": "*",
+        "spatie/schema-org": "^5.0",
+        "symfony/config": "^8.1"
+    },
+    "require-dev": {
+        "szepeviktor/phpstan-wordpress": "^2.0"
     }
-  ],
-  "require": {
-    "twig/twig": "^3.0",
-    "league/iso3166": "^4.4",
-    "arraypress/wp-accept-language-utils": "@dev"
-  }
 }

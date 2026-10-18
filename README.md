@@ -1,31 +1,15 @@
+![CinePress Logo](static/header.svg)
 <div align="center">
-<h3>wordpress-theme</h3>
-<p>🎨 the official wordpress theme for Unikino GEGENLICHT</p>
-<a href="LICENSE">
-<img alt="License" src="https://flat.badgen.net/github/license/unikino-gegenlicht/wordpress-theme?cache=300&label=License">
-</a>
-<img alt="Current Release Badge" src="https://flat.badgen.net/github/release/unikino-gegenlicht/wordpress-theme/stable?cache=300&label=Latest%20Version">
+<img alt="GitHub License" src="https://img.shields.io/github/license/unikino-gegenlicht/wordpress-theme?style=flat-square">
+<img alt="GitHub Downloads (all assets, latest release)" src="https://img.shields.io/github/downloads/unikino-gegenlicht/wordpress-theme/total?sort=semver&style=flat-square&label=downloads">
+<img alt="GitHub Issues" src="https://img.shields.io/github/issues/unikino-gegenlicht/wordpress-theme?style=flat-square">
 </div>
 
-This [WordPress] Theme powers our [official website].
-It enables custom post types to store movies and our team members in an
-efficient manner and automatically handles the display of some pages generated
-automatically by the theme.
+## Theme for the CinemaPress plugin
 
-[WordPress]: https://wordpress.org
+This theme compliments the 
+[CinemaPress plugin](https://github.com/unikino-gegenlicht/custom-post-types) 
+and offers a default theme for displaying the content entered in the plugin.
 
-[official website]: https://gegenlicht.net
-
-The theme utilizes [Bulma] as the main CSS framework and uses PHP on the
-server side as required by WordPress.
-
-[Bulma]: https://bulma.io/
-
-## Attributions
-
-The visual design of the theme has been done by [Philip Kaufmann] and the
-implementation has been realized by [Jan Eike Suchard] (@dr4hu5-jan).
-
-[Philip Kaufmann]: mailto:philip@gegenlicht.net
-
-[Jan Eike Suchard]: mailto:jan@gegenlicht.net
+The theme uses a single column layout with a configurable width restriction on 
+the main content.

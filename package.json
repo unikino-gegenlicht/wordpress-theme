@@ -1,29 +1,27 @@
 {
-  "name": "@unikino-gegenlicht/wordpress-theme",
-  "version": "1.0.0",
+  "name": "@unikino-gegenlicht/cinema-press",
+  "version": "5.0.0",
   "scripts": {
-    "build:css": "sass --load-path=node_modules --quiet-deps assets/scss/style.scss style.css && minify style.css > style.min.css",
-    "build:login-css": "sass --load-path=node_modules --quiet-deps assets/scss/login.scss assets/css/login.css && minify assets/css/login.css > assets/css/login.min.css",
-    "build:editor-css": "sass --load-path=node_modules --quiet-deps assets/scss/editor.scss editor.css",
+    "build:css": "sass --load-path=node_modules --quiet-deps style.scss style.css && minify style.css > style.min.css",
     "watch:css": "sass --watch --load-path=node_modules assets/scss/style.scss style.css",
     "minify:css": "minify style.css > style.min.css",
-    "i18n:update-template": "wp i18n make-pot ./ ./languages/gegenlicht.pot --domain=gegenlicht --merge=./languages/i18n.pot",
-    "i18n:update-translations": "wp i18n update-po ./languages/gegenlicht.pot ./languages/",
+    "i18n:update-template": "wp i18n make-pot ./",
+    "i18n:update-translations": "wp i18n update-po ./ ./languages/",
     "i18n:make-mo": "wp i18n make-mo ./languages/ ./languages/"
   },
   "author": "Unikino GEGENLICHT",
-  "license": "GPL-3.0",
-  "description": "",
+  "license": "EUPL-1.2",
+  "description": "The CinemaPress theme offers small student lead cinemas a possibility to easily integrate the contents provided by the CinemaPress plugin into their website. In addition, the theme also generates <a href=\"https://schema.org\">Schema.org</a> markup in case YoastSEO is not installed on the website.",
+  "maintainers": [],
+  "volta": {
+    "node": "26.12.0"
+  },
   "devDependencies": {
-    "@creativebulma/bulma-tooltip": "^1.2.0",
-    "minify": "^14.0.0",
-    "sass": "^1.83.4"
+    "minify": "^15.3.1",
+    "sass": "^1.105.2"
   },
   "dependencies": {
     "bulma": "^1.0.4",
     "bulma-v1-tooltip": "^1.0.2"
-  },
-  "volta": {
-    "node": "22.15.0"
   }
 }
