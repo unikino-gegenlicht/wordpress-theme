@@ -15,13 +15,17 @@ Text Domain: cinema-press-theme
 Domain Path: /i18n
  */
 
+$primaryColor: #2E2D2F;
+
 @use "bulma/sass/utilities" with (
 $family-primary: 'Inter',
+$primary: $primaryColor,
 );
 
 @use "bulma/sass/form" with (
   $input-shadow: none
 );
+
 
 @forward "bulma/sass/base";
 @forward "bulma/sass/themes";
@@ -46,17 +50,186 @@ $family-primary: 'Inter',
 @use "bulma/sass/utilities/mixins";
 @forward 'bulma-v1-tooltip/src/sass';
 
+@use "static/scss/_variables.scss" with (
+$font-path: "./static/webfonts/fontawesome"
+);
+@use 'static/scss/fontawesome';
+@use "static/scss/brands.scss";
+@use "static/scss/regular.scss";
+@use "static/scss/solid.scss";
+@use "static/scss/utility-fill-semibold.scss";
+@use "static/scss/utility-semibold.scss";
+
+@import "static/css/inter.css";
+
 :root {
   --border-thickness: 2px;
   --shared-border-thickness: calc(var(--border-thickness) / 2);
   --bulma-body-background-color: var(--bulma-primary);
-  --bulma-body-color: black;
+  --bulma-body-color: white;
+  --bulma-border: var(--bulma-body-color);
+  --bulma-text-strong: var(--bulma-body-color) !important;
   --bulma-navbar-background-color: var(--bulma-body-background-color);
   --bulma-strong-color: var(--bulma-body-color);
+  --bulma-link: var(--bulma-body-color) !important;
   --bulma-link-text: var(--bulma-body-color) !important;
   --bulma-hr-background-color: var(--bulma-body-color);
   --bulma-navbar-item-color: var(--bulma-body-color) !important;
-  --button-border-width: var(--border-thickness);
+  --bulma-button-border-width: var(--border-thickness);
+  --bulma-navbar-tab-hover-border-bottom-color: transparent !important;
+  --bulma-navbar-burger-color: var(--bulma-body-color) !important;
+  --bulma-control-border-width: var(--border-thickness);
+  --bulma-tag-color: var(--bulma-body-color) !important;
   --max-content-width: 800px;
-  --content-padding: 0.75rem;
+  --content-padding: 1.25rem;
+  --bulma-hr-margin: 0.75rem 0;
+  font-feature-settings: "calt", "tnum", "case", "ss02", "ss03";
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: "InterVariable", sans-serif;
+    font-optical-sizing: auto;
+  }
+}
+
+@font-face {
+  font-family: 'Readex Pro';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(static/webfonts/readex/readexpro.woff2)
+}
+
+h1, h2, h3, h4, h5, h6,
+.wp-block-heading,
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+  font-family: 'Readex Pro', sans-serif;
+  text-transform: uppercase !important;
+  font-size: var(--heading-size)
+}
+
+.font-readex {
+  font-family: 'Readex Pro', sans-serif;
+}
+
+.font-inter {
+  font-family: 'InterVariable', sans-serif;
+}
+
+.content-container {
+  max-width: var(--max-content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+}
+
+.screening-info {
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: var(--border-thickness) solid var(--bulma-body-color);
+    border-bottom: var(--shared-border-thickness) solid var(--bulma-body-color);
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+
+  .content {
+    .title {
+      font-family: 'Readex Pro', sans-serif;
+      text-transform: uppercase;
+      border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
+      border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+      padding: .5ex 0;
+    }
+  }
+}
+
+.wp-block-separator {
+  border: none !important;
+}
+
+.button {
+  white-space: unset;
+  border-radius: 0 !important;
+
+  &.is-outlined {
+    --bulma-button-border-width: var(--bulma-control-border-width);
+
+    border-color: var(--bulma-body-color);
+    color: var(--bulma-body-color);
+    background-color: var(--bulma-body-background-color);
+
+    &:hover {
+      border-color: var(--bulma-body-background-color);
+      color: var(--bulma-body-background-color);
+      background-color: var(--bulma-body-color);
+    }
+  }
+}
+
+.tag.is-primary {
+  border: var(--bulma-body-color) solid var(--bulma-control-border-width);
+}
+
+.footer {
+  --bulma-footer-padding: 1rem 1.5rem 3rem !important;
+}
+
+h1 {
+  --heading-size: 2rem;
+}
+
+h2 {
+  --heading-size: 1.75rem;
+}
+
+h3 {
+  --heading-size: 1.5rem;
+}
+
+h4 {
+  --heading-size: 1.25rem;
+}
+
+h5 {
+  --heading-size: 1.15rem;
+}
+
+h6 {
+  --heading-size: 1rem;
+}
+
+.movie-list {
+
+  .movie-list-title {
+    font-family: "Readex Pro", sans-serif;
+    text-transform: uppercase;
+    padding: 0.25rem;
+    font-size: 1.25rem;
+    background-color: var(--bulma-body-color);
+    color: var(--bulma-body-background-color);
+  }
+
+  .movie-list-entries {
+    .entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--bulma-body-color);
+
+      .movie-title {
+        line-height: 1.125;
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
+      }
+
+      border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
+      border-bottom: var(--shared-border-thickness) solid var(--bulma-body-color);
+
+    }
+  }
 }

@@ -19,6 +19,11 @@
  * These constants control the output format for the date and time.
  */
 
+require_once "vendor/autoload.php";
+
+use Sokil\IsoCodes\IsoCodesFactory;
+use Sokil\IsoCodes\TranslationDriver\SymfonyTranslationDriver;
+
 const CINEMA_PRESS__TITLE_SEPARATOR = " | ";
 add_action( 'init', function () {
 	/* translators: date in US notation */
@@ -31,12 +36,91 @@ add_action( 'init', function () {
 } );
 
 add_action( 'after_setup_theme', function () {
+	load_theme_textdomain( 'cinema-press-theme', get_template_directory() . '/i18n' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'widgets' );
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'widgets-block-editor' );
+
+	$header_args = array(
+		'default-image'      => get_template_directory_uri() . '/static/img/header.svg',
+		'default-text-color' => 'ffffff',
+		'width'              => 150,
+		'height'             => 30,
+		'flex-height'        => true,
+		'flex-width'         => true,
+	);
+	add_theme_support( 'custom-header', $header_args );
+	add_theme_support( 'menus' );
+	register_nav_menus( array(
+		'header'        => __( 'Header Menu', 'cinema-press-theme' ),
+		'footer'        => __( 'Footer Link Menu', 'cinema-press-theme' ),
+		'footer_bottom' => __( 'Footer Bottom Menu', 'cinema-press-theme' ),
+	) );
 } );
 
-add_action('wp_enqueue_scripts', function () {
-	wp_enqueue_style( 'cinema-press-theme', get_theme_file_uri('style.min.css'), ver: md5_file(get_theme_file_path('style.min.css')) );
-});
+add_action( 'init', function () {
+	add_image_size( 'desktop', 800, 450, true );
+	add_image_size( 'mobile', 300, 400, true );
+} );
 
+add_action( 'wp_enqueue_scripts', function () {
+	wp_enqueue_style( 'cinema-press-theme', get_theme_file_uri( 'style.min.css' ), ver: md5_file( get_theme_file_path( 'style.min.css' ) ) );
+	wp_enqueue_style( 'dashicons' );
+	wp_enqueue_style( 'wp-block-library' );
+} );
+
+add_filter( 'post_thumbnail_html', function ( $html ) {
+	if ( has_post_thumbnail() ):
+		$html = '<figure class="image">
+                            <picture>
+                                <source class="is-16by9" media="(min-width: 576px)"
+                                        srcset="' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'desktop' ) . '"/>
+                                <img src="' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'mobile' ) . '"/>
+                            </picture>
+                        </figure>';
+	else:
+		$html = '<figure class="image">
+                            <picture>
+                                <source class="is-16by9" media="(min-width: 576px)"
+                                        srcset="' . get_theme_file_uri( 'static/img/fallback.jpeg' ) . '"/>
+                                <img class="is-3by4" src="' . get_theme_file_uri( 'static/img/fallback-mobile.jpeg' ) . '"/>
+                            </picture>
+                        </figure>';
+	endif;
+
+	return $html;
+} );
+
+
+if ( ! function_exists( 'iso_codes' ) ) {
+	function iso_codes(): IsoCodesFactory {
+
+		$locale             = get_user_locale();
+		$translation_driver = new SymfonyTranslationDriver();
+		$translation_driver->setLocale( $locale );
+
+		return new IsoCodesFactory( null, $translation_driver );
+
+	}
+}
+
+add_action( 'widgets_init',
+	function () {
+		/* Register the 'primary' sidebar. */
+		register_sidebar(
+			array(
+				'id'            => 'footer',
+				'name'          => __( 'Footer Widgets' ),
+				'description'   => __( 'A short description of the sidebar.' ),
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="widget-title">',
+				'after_title'   => '</h3>',
+			)
+		);
+		/* Repeat register_sidebar() code for additional sidebars. */
+	}
+);

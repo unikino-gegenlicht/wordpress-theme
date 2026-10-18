@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-16T15:14:47+00:00\n"
+"POT-Creation-Date: 2026-10-18T22:18:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: cinema-press-theme\n"
@@ -39,12 +39,113 @@ msgstr ""
 msgid "https://gegenlicht.net/team/jan, https://gegenlicht.net/team/philip"
 msgstr ""
 
+#: front-page.php:32
+msgid "Next screening"
+msgstr ""
+
+#: front-page.php:58
+#: front-page.php:84
+msgid "Open movie"
+msgstr ""
+
+#: front-page.php:75
+msgid "and following at"
+msgstr ""
+
+#: front-page.php:103
+msgid "Sadly, there is no more program for this semester"
+msgstr ""
+
 #. translators: date in US notation
-#: functions.php:24
+#: functions.php:30
 msgid "m/d/Y"
 msgstr ""
 
 #. translators: time in 12hrs format
-#: functions.php:27
+#: functions.php:33
 msgid "g:i a"
+msgstr ""
+
+#: functions.php:57
+msgid "Header Menu"
+msgstr ""
+
+#: functions.php:58
+msgid "Footer Link Menu"
+msgstr ""
+
+#: functions.php:59
+msgid "Footer Bottom Menu"
+msgstr ""
+
+#: single-screening.php:11
+msgid "Screening starts"
+msgstr ""
+
+#. translators: the name of the actor in %s
+#: single-screening.php:32
+#, php-format
+msgid "by %s"
+msgstr ""
+
+#. translators: first element is a comma separated list, the second one is the last listed director
+#: single-screening.php:38
+#, php-format
+msgid "by %s and %s"
+msgstr ""
+
+#. translators: the name of the actor in %s
+#: single-screening.php:46
+#, php-format
+msgid "with %s"
+msgstr ""
+
+#. translators: first element is a comma separated list, the second one is the last listed director
+#: single-screening.php:52
+#, php-format
+msgid "with %s and %s"
+msgstr ""
+
+#: single-screening.php:60
+msgid "Audio in"
+msgstr ""
+
+#: single-screening.php:62
+msgid "Subtitles in"
+msgstr ""
+
+#: single-screening.php:64
+msgid "No Subtitles"
+msgstr ""
+
+#: single-screening.php:70
+msgid "What is the movie about?"
+msgstr ""
+
+#: single-screening.php:77
+msgid "Why is the movie worth seeing?"
+msgstr ""
+
+#. translators: %s is the name of the proposer
+#: single-screening.php:91
+#, php-format
+msgid "This movie was proposed by %s"
+msgstr ""
+
+#. translators: %s is the name of the proposer
+#: single-screening.php:97
+#, php-format
+msgid "This movie was proposed by %s and %s"
+msgstr ""
+
+#: single-screening.php:109
+#: single-screening.php:153
+msgid "Other proposals"
+msgstr ""
+
+#. translators: %s is the year the movie was screened in
+#: single-screening.php:133
+#: single-screening.php:177
+#, php-format
+msgid "Screened in %s"
 msgstr ""

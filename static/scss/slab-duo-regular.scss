@@ -1,0 +1,96 @@
+/*!
+ * Font Awesome Pro 7.3.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2026 Fonticons, Inc.
+ */
+@use "sass:string";
+@use 'variables' as v;
+@use 'mixins' as m;
+
+:root, :host {
+  --#{v.$css-prefix}-family-slab-duo: 'Font Awesome 7 Slab Duo';
+  --#{v.$css-prefix}-font-slab-duo-regular: normal 400 1em/1 var(--#{v.$css-prefix}-family-slab-duo);
+
+  /* deprecated: this older custom property will be removed next major release */
+  --#{v.$css-prefix}-style-family-slab-duo: var(--#{v.$css-prefix}-family-slab-duo);
+}
+
+@font-face {
+  font-family: 'Font Awesome 7 Slab Duo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: v.$font-display;
+  src: url('#{v.$font-path}/fa-slab-duo-regular-400.woff2');
+}
+
+
+.fasldr {
+  --#{v.$css-prefix}-family: var(--#{v.$css-prefix}-family-slab-duo);
+  --#{v.$css-prefix}-style: 400;
+  position: relative;
+  letter-spacing: normal;
+}
+
+.#{v.$css-prefix}-slab-duo {
+  --#{v.$css-prefix}-family: var(--#{v.$css-prefix}-family-slab-duo);
+  position: relative;
+  letter-spacing: normal;
+}
+
+.#{v.$css-prefix}-regular {
+  --#{v.$css-prefix}-style: 400;
+}
+
+.fasldr::before,
+.#{v.$css-prefix}-slab-duo::before {
+  position: absolute;
+  color: var(--#{v.$css-prefix}-primary-color, currentColor);
+  opacity: var(--#{v.$css-prefix}-primary-opacity, #{v.$primary-opacity});
+}
+
+.fasldr::after,
+.#{v.$css-prefix}-slab-duo::after {
+  color: var(--#{v.$css-prefix}-secondary-color, currentColor);
+  opacity: var(--#{v.$css-prefix}-secondary-opacity, #{v.$secondary-opacity});
+}
+
+.#{v.$css-prefix}-swap-opacity .fasldr::before,
+.#{v.$css-prefix}-swap-opacity .#{v.$css-prefix}-slab-duo::before,
+.#{v.$css-prefix}-swap-opacity.fasldr::before,
+.#{v.$css-prefix}-swap-opacity.#{v.$css-prefix}-slab-duo::before {
+  opacity: var(--#{v.$css-prefix}-secondary-opacity, #{v.$secondary-opacity});
+}
+
+.#{v.$css-prefix}-swap-opacity .fasldr::after,
+.#{v.$css-prefix}-swap-opacity .#{v.$css-prefix}-slab-duo::after,
+.#{v.$css-prefix}-swap-opacity.fasldr::after,
+.#{v.$css-prefix}-swap-opacity.#{v.$css-prefix}-slab-duo::after {
+  opacity: var(--#{v.$css-prefix}-primary-opacity, #{v.$primary-opacity});
+}
+
+.#{v.$css-prefix}-li.fasldr,
+.#{v.$css-prefix}-li.#{v.$css-prefix}-slab-duo,
+.#{v.$css-prefix}-stack-1x.fasldr,
+.#{v.$css-prefix}-stack-1x.#{v.$css-prefix}-slab-duo,
+.#{v.$css-prefix}-stack-2x.fasldr,
+.#{v.$css-prefix}-stack-2x.#{v.$css-prefix}-slab-duo {
+  position: absolute;
+}
+
+// convenience mixins for declaring pseudo-elements by CSS variable,
+// including all style-specific font properties, and both the ::before
+// and ::after elements in the duotone case.
+@mixin icon($var) {
+  @include m.fa-icon(Font Awesome 7 Slab Duo);
+  @extend .#{v.$css-prefix}-slab-duo;
+  @extend .#{v.$css-prefix}-regular;
+
+  &::before {
+    content: string.unquote("\"#{ $var }\"");
+  }
+
+  &::after {
+    content: string.unquote("\"#{ $var }\"");
+    font-feature-settings: "ss01";
+  }
+}

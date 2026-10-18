@@ -1,4 +1,4 @@
-![CinePress Logo](static/header.svg)
+![CinePress Logo](static/img/header.svg)
 <div align="center">
 <img alt="GitHub License" src="https://img.shields.io/github/license/unikino-gegenlicht/wordpress-theme?style=flat-square">
 <img alt="GitHub Downloads (all assets, latest release)" src="https://img.shields.io/github/downloads/unikino-gegenlicht/wordpress-theme/total?sort=semver&style=flat-square&label=downloads">

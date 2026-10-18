@@ -1,0 +1,96 @@
+/*!
+ * Font Awesome Pro 7.3.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2026 Fonticons, Inc.
+ */
+@use "sass:string";
+@use 'variables' as v;
+@use 'mixins' as m;
+
+:root, :host {
+  --#{v.$css-prefix}-family-vellum: 'Font Awesome 7 Vellum';
+  --#{v.$css-prefix}-font-vellum-solid: normal 900 1em/1 var(--#{v.$css-prefix}-family-vellum);
+
+  /* deprecated: this older custom property will be removed next major release */
+  --#{v.$css-prefix}-style-family-vellum: var(--#{v.$css-prefix}-family-vellum);
+}
+
+@font-face {
+  font-family: 'Font Awesome 7 Vellum';
+  font-style: normal;
+  font-weight: 900;
+  font-display: v.$font-display;
+  src: url('#{v.$font-path}/fa-vellum-solid-900.woff2');
+}
+
+
+.favs {
+  --#{v.$css-prefix}-family: var(--#{v.$css-prefix}-family-vellum);
+  --#{v.$css-prefix}-style: 900;
+  position: relative;
+  letter-spacing: normal;
+}
+
+.#{v.$css-prefix}-vellum {
+  --#{v.$css-prefix}-family: var(--#{v.$css-prefix}-family-vellum);
+  position: relative;
+  letter-spacing: normal;
+}
+
+.#{v.$css-prefix}-solid {
+  --#{v.$css-prefix}-style: 900;
+}
+
+.favs::before,
+.#{v.$css-prefix}-vellum::before {
+  position: absolute;
+  color: var(--#{v.$css-prefix}-primary-color, currentColor);
+  opacity: var(--#{v.$css-prefix}-primary-opacity, #{v.$primary-opacity});
+}
+
+.favs::after,
+.#{v.$css-prefix}-vellum::after {
+  color: var(--#{v.$css-prefix}-secondary-color, currentColor);
+  opacity: var(--#{v.$css-prefix}-secondary-opacity, #{v.$secondary-opacity});
+}
+
+.#{v.$css-prefix}-swap-opacity .favs::before,
+.#{v.$css-prefix}-swap-opacity .#{v.$css-prefix}-vellum::before,
+.#{v.$css-prefix}-swap-opacity.favs::before,
+.#{v.$css-prefix}-swap-opacity.#{v.$css-prefix}-vellum::before {
+  opacity: var(--#{v.$css-prefix}-secondary-opacity, #{v.$secondary-opacity});
+}
+
+.#{v.$css-prefix}-swap-opacity .favs::after,
+.#{v.$css-prefix}-swap-opacity .#{v.$css-prefix}-vellum::after,
+.#{v.$css-prefix}-swap-opacity.favs::after,
+.#{v.$css-prefix}-swap-opacity.#{v.$css-prefix}-vellum::after {
+  opacity: var(--#{v.$css-prefix}-primary-opacity, #{v.$primary-opacity});
+}
+
+.#{v.$css-prefix}-li.favs,
+.#{v.$css-prefix}-li.#{v.$css-prefix}-vellum,
+.#{v.$css-prefix}-stack-1x.favs,
+.#{v.$css-prefix}-stack-1x.#{v.$css-prefix}-vellum,
+.#{v.$css-prefix}-stack-2x.favs,
+.#{v.$css-prefix}-stack-2x.#{v.$css-prefix}-vellum {
+  position: absolute;
+}
+
+// convenience mixins for declaring pseudo-elements by CSS variable,
+// including all style-specific font properties, and both the ::before
+// and ::after elements in the duotone case.
+@mixin icon($var) {
+  @include m.fa-icon(Font Awesome 7 Vellum);
+  @extend .#{v.$css-prefix}-vellum;
+  @extend .#{v.$css-prefix}-solid;
+
+  &::before {
+    content: string.unquote("\"#{ $var }\"");
+  }
+
+  &::after {
+    content: string.unquote("\"#{ $var }\"");
+    font-feature-settings: "ss01";
+  }
+}

@@ -1,0 +1,155 @@
+# Copyright (C) 2026 Jan Eike Suchard, Philip Kaufmann
+# This file is distributed under the EUPL-1.2.
+msgid ""
+msgstr ""
+"Project-Id-Version: CinemaPress CINEMA_PRESS_THEME_VERSION\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/cinema-press-"
+"theme\n"
+"POT-Creation-Date: 2026-10-18T22:18:13+00:00\n"
+"PO-Revision-Date: 2026-10-19 00:24+0200\n"
+"Last-Translator: Jan Eike Suchard <jan@suchard.cloud>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+"X-Domain: cinema-press-theme\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "CinemaPress"
+msgstr "CinemaPress"
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://github.com/unikino-gegenlicht/wordpress-theme"
+msgstr "https://github.com/unikino-gegenlicht/custom-post-types"
+
+#. Description of the theme
+#: style.css
+msgid ""
+"The CinemaPress theme offers small student lead cinemas a possibility to "
+"easily integrate the contents provided by the CinemaPress plugin into their "
+"website. In addition, the theme also generates <a href=\"https://"
+"schema.org\">Schema.org</a> markup in case YoastSEO is not installed on the "
+"website."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Jan Eike Suchard, Philip Kaufmann"
+msgstr "Jan Eike Suchard, Philip Kaufmann"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://gegenlicht.net/team/jan, https://gegenlicht.net/team/philip"
+msgstr ""
+
+#: front-page.php:32
+msgid "Next screening"
+msgstr "Nächste Vorstellung"
+
+#: front-page.php:58 front-page.php:84
+msgid "Open movie"
+msgstr "Zum Film"
+
+#: front-page.php:75
+msgid "and following at"
+msgstr "und im Anschluss um"
+
+#: front-page.php:103
+msgid "Sadly, there is no more program for this semester"
+msgstr "Leider ist das Programm für das Semester vorbei"
+
+#. translators: date in US notation
+#: functions.php:30
+msgid "m/d/Y"
+msgstr "d.m.Y"
+
+#. translators: time in 12hrs format
+#: functions.php:33
+msgid "g:i a"
+msgstr "H:i"
+
+#: functions.php:57
+msgid "Header Menu"
+msgstr "Header Menü"
+
+#: functions.php:58
+msgid "Footer Link Menu"
+msgstr "Links im Footer"
+
+#: functions.php:59
+msgid "Footer Bottom Menu"
+msgstr "Abschliedendes Footer Menü"
+
+#: single-screening.php:11
+msgid "Screening starts"
+msgstr "Vorstellung startet um"
+
+#. translators: the name of the actor in %s
+#: single-screening.php:32
+#, php-format
+msgid "by %s"
+msgstr "von %s"
+
+#. translators: first element is a comma separated list, the second one is the last listed director
+#: single-screening.php:38
+#, php-format
+msgid "by %s and %s"
+msgstr "von %s und %s"
+
+#. translators: the name of the actor in %s
+#: single-screening.php:46
+#, php-format
+msgid "with %s"
+msgstr "mit %s"
+
+#. translators: first element is a comma separated list, the second one is the last listed director
+#: single-screening.php:52
+#, php-format
+msgid "with %s and %s"
+msgstr "mit %s und %s"
+
+#: single-screening.php:60
+msgid "Audio in"
+msgstr "Ton in"
+
+#: single-screening.php:62
+msgid "Subtitles in"
+msgstr "Untertitel in"
+
+#: single-screening.php:64
+msgid "No Subtitles"
+msgstr "Keine Untertitel"
+
+#: single-screening.php:70
+msgid "What is the movie about?"
+msgstr "Worum geht's?"
+
+#: single-screening.php:77
+msgid "Why is the movie worth seeing?"
+msgstr "Darum sehenswert!"
+
+#. translators: %s is the name of the proposer
+#: single-screening.php:91
+#, php-format
+msgid "This movie was proposed by %s"
+msgstr "Dieser Film wurde von %s vorgeschlagen"
+
+#. translators: %s is the name of the proposer
+#: single-screening.php:97
+#, php-format
+msgid "This movie was proposed by %s and %s"
+msgstr "Dieser Film wurde von %s und %s vorgeschlagen"
+
+#: single-screening.php:109 single-screening.php:153
+msgid "Other proposals"
+msgstr "Weitere Vorschläge"
+
+#. translators: %s is the year the movie was screened in
+#: single-screening.php:133 single-screening.php:177
+#, php-format
+msgid "Screened in %s"
+msgstr "%s gezeigt"

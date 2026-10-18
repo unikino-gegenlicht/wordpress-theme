@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "bulma": "^1.0.4",
-    "bulma-v1-tooltip": "^1.0.2"
+    "bulma-v1-tooltip": "^1.0.2",
+    "iconoir": "^7.12.1"
   }
 }
