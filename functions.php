@@ -76,15 +76,15 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_script( 'theme-navigation', get_theme_file_uri( 'static/js/navigation.min.js' ), ver: md5_file( get_theme_file_path( 'static/js/navigation.min.js' ) ) );
 } );
 
-add_filter( 'post_thumbnail_html', function ( $html, $post_id ) {
+add_filter( 'post_thumbnail_html', function ( $html, $post_id, $attr ) {
 	$post = get_post( $post_id );
-	switch ( get_post_type($post) ) {
+	switch ( get_post_type( $post ) ) {
 		case 'screening':
 			if ( has_post_thumbnail() ):
 				return '<figure class="image">
                             <picture>
                                 <source class="is-16by9" media="(min-width: 576px)"
-                                        srcset="' . wp_get_attachment_image_url( get_post_thumbnail_id($post), 'desktop' ) . '"/>
+                                        srcset="' . wp_get_attachment_image_url( get_post_thumbnail_id( $post ), 'desktop' ) . '"/>
                                 <img src="' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'mobile' ) . '"/>
                             </picture>
                         </figure>';
@@ -98,9 +98,17 @@ add_filter( 'post_thumbnail_html', function ( $html, $post_id ) {
                         </figure>';
 			endif;
 		case 'team_member':
+			if (is_post_type_archive('team_member')):
+				return '<figure class="image team-member">
+                            <picture class="image is-3by4 is-bordered team-member" style="width: 250px; height: unset;">
+                                 <source srcset="' . get_the_post_thumbnail_url( $post ) . '"/>
+                                <img src="' . get_theme_file_uri( 'static/img/user-solid-full.svg' ) . '"/>
+                            </picture>
+                        </figure>';
+			endif;
 			return '<figure class="image team-member">
                             <picture class="image is-3by4 is-bordered team-member">
-                                 <source srcset="'. get_the_post_thumbnail_url($post). '"/>
+                                 <source srcset="' . get_the_post_thumbnail_url( $post ) . '"/>
                                 <img src="' . get_theme_file_uri( 'static/img/user-solid-full.svg' ) . '"/>
                             </picture>
                         </figure>';
@@ -125,7 +133,7 @@ add_filter( 'post_thumbnail_html', function ( $html, $post_id ) {
 	endif;
 
 	return $html;
-}, 10, 2 );
+}, 10, 3 );
 
 
 if ( ! function_exists( 'iso_codes' ) ) {
