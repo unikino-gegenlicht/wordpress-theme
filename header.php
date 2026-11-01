@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) || exit;
      For further information please check out the LICENSE file that should be
      available at the following address: <?= get_theme_file_uri( 'LICENSE' ) ?>
     -->
-    <title><?php bloginfo( 'name' ) ?></title>
+    <title><?= wp_get_document_title() ?></title>
     <?php wp_head(); ?>
     <meta charset="<?php bloginfo( 'charset' ) ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,9 +31,9 @@ defined( 'ABSPATH' ) || exit;
 <?php do_action( 'wp_body_open' ); ?>
 <header>
     <nav class="navbar is-primary is-transparent" role="navigation"
-         aria-label="<?= __( 'Main Navigation', 'cine-press-theme' ) ?>">
+         aria-label="<?= __( 'Main Navigation', 'cinema-press-theme' ) ?>">
         <div class="navbar-brand px-1">
-            <a class="navbar-item m-0 is-flex is-tab is-hidden-desktop-only"
+            <a class="navbar-item m-0 is-flex is-tab"
                href="<?= get_home_url( scheme: 'https' ) ?>">
                 <?php if ( get_header_image() ): ?>
                     <img src="<?php header_image() ?>" width="<?= absint( get_custom_header()->width ) ?>"
