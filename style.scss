@@ -18,7 +18,7 @@ Domain Path: /i18n
 $primaryColor: #2E2D2F;
 
 @use "bulma/sass/utilities" with (
-$family-primary: 'Inter',
+$family-primary: 'var(--text-font)',
 $primary: $primaryColor,
 );
 
@@ -63,34 +63,41 @@ $font-path: "./static/webfonts/fontawesome"
 @import "static/css/inter.css";
 
 :root {
-  --border-thickness: 2px;
-  --shared-border-thickness: calc(var(--border-thickness) / 2);
-  --bulma-body-background-color: var(--bulma-primary);
-  --bulma-body-color: white;
-  --bulma-border: var(--bulma-body-color);
-  --bulma-text-strong: var(--bulma-body-color) !important;
-  --bulma-navbar-background-color: var(--bulma-body-background-color);
-  --bulma-strong-color: var(--bulma-body-color);
-  --bulma-link: var(--bulma-body-color) !important;
-  --bulma-link-text: var(--bulma-body-color) !important;
-  --bulma-hr-background-color: var(--bulma-body-color);
-  --bulma-navbar-item-color: var(--bulma-body-color) !important;
-  --bulma-button-border-width: var(--border-thickness);
-  --bulma-navbar-tab-hover-border-bottom-color: transparent !important;
-  --bulma-navbar-burger-color: var(--bulma-body-color) !important;
-  --bulma-control-border-width: var(--border-thickness);
-  --bulma-tag-color: var(--bulma-body-color) !important;
+  font-feature-settings: "calt", "tnum", "case", "ss02", "ss03";
+
   --max-content-width: 800px;
   --content-padding: 1.25rem;
   --bulma-hr-margin: 0.75rem 0;
-  font-feature-settings: "calt", "tnum", "case", "ss02", "ss03";
+  --border-thickness: 2px;
+  --shared-border-thickness: calc(var(--border-thickness) / 2);
+
+  --heading-font: "Readex Pro";
+  --text-font: "InterVariable";
+
+
+  --bulma-background: var(--bulma-primary) !important;
+  --bulma-body-background-color: var(--bulma-background) !important;
+  --bulma-body-color: white;
+  --bulma-hr-background-color: var(--bulma-body-color);
+  --bulma-text-strong: var(--bulma-body-color) !important;
+  --bulma-strong-color: var(--bulma-body-color);
+  --bulma-navbar-burger-color: var(--bulma-body-color) !important;
+  --bulma-link: var(--bulma-body-color) !important;
+  --bulma-link-text: var(--bulma-body-color) !important;
+  --bulma-button-border-width: var(--border-thickness);
+  --bulma-border: var(--bulma-body-color);
+  --bulma-navbar-item-color: var(--bulma-body-color) !important;
+  --bulma-navbar-tab-hover-border-bottom-color: transparent !important;
+  --bulma-control-border-width: var(--border-thickness);
 }
 
-@supports (font-variation-settings: normal) {
-  :root {
-    font-family: "InterVariable", sans-serif;
-    font-optical-sizing: auto;
-  }
+.nonesense {
+  --bulma-body-background-color: var(--bulma-primary);
+
+  --bulma-navbar-background-color: var(--bulma-body-background-color);
+
+  --bulma-tag-color: var(--bulma-body-color) !important;
+  --bulma-navbar-item-color-l: var(--bulma-body-color) !important;
 }
 
 @font-face {
@@ -104,17 +111,21 @@ $font-path: "./static/webfonts/fontawesome"
 h1, h2, h3, h4, h5, h6,
 .wp-block-heading,
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-  font-family: 'Readex Pro', sans-serif;
+  font-family: var(--heading-font), sans-serif;
   text-transform: uppercase !important;
-  font-size: var(--heading-size)
+  font-size: var(--heading-size);
+
+  &.has-border-bottom {
+    border-bottom: var(--border-thickness) solid var(--bulma-body-color) !important;
+  }
 }
 
-.font-readex {
-  font-family: 'Readex Pro', sans-serif;
+.font-heading,.font-readex {
+  font-family: var(--heading-font), sans-serif;
 }
 
-.font-inter {
-  font-family: 'InterVariable', sans-serif;
+.font-normal,.font-inter {
+  font-family: var(--text-font), sans-serif;
 }
 
 .content-container {
@@ -139,7 +150,7 @@ h1, h2, h3, h4, h5, h6,
 
   .content {
     .title {
-      font-family: 'Readex Pro', sans-serif;
+      font-family: var(--heading-font), sans-serif;
       text-transform: uppercase;
       border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
       border-bottom: var(--border-thickness) solid var(--bulma-body-color);
@@ -171,9 +182,12 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-.tag.is-primary {
+.tag {
+  background-color: var(--bulma-body-background-color);
   border: var(--bulma-body-color) solid var(--bulma-control-border-width);
+  color: var(--bulma-body-color);
 }
+
 
 .footer {
   --bulma-footer-padding: 1rem 1.5rem 3rem !important;
@@ -206,7 +220,7 @@ h6 {
 .movie-list {
 
   .movie-list-title {
-    font-family: "Readex Pro", sans-serif;
+    font-family: var(--heading-font), sans-serif;
     text-transform: uppercase;
     padding: 0.25rem;
     font-size: 1.25rem;
@@ -227,9 +241,98 @@ h6 {
         margin-bottom: 0.2rem;
       }
 
-      border-top: var(--shared-border-thickness) solid var(--bulma-body-color);
-      border-bottom: var(--shared-border-thickness) solid var(--bulma-body-color);
+      /*border-top: var(--shared-border-thickness) solid var(--bulma-body-color);*/
+      border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+
+      &:last-child {
+        border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+      }
 
     }
   }
+}
+
+a.navbar-item.is-active {
+  background-color: transparent !important;
+  color: var(--bulma-body-color) !important;
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-thickness) !important;
+}
+
+a.navbar-item {
+  background-color: transparent !important;
+  color: var(--bulma-body-color) !important;
+}
+
+.has-background-primary {
+  background-color: var(--bulma-primary) !important;
+}
+
+.marquee {
+  --height: 2rem;
+  --gap: 1rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+  height: var(--height);
+  margin: auto 0;
+}
+
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-evenly;
+  min-width: 100%;
+  gap: var(--gap);
+  animation: scroll 20s linear infinite;
+
+  &:first-child {
+    padding-left: var(--gap);
+    padding-top: var(--gap);
+    padding-bottom: var(--gap);
+  }
+
+  &:last-child {
+    padding-top: var(--gap);
+    padding-bottom: var(--gap);
+    padding-right: var(--gap);
+  }
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+
+/* Pause animation when reduced-motion is set */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-content {
+    animation-play-state: paused !important;
+  }
+}
+
+
+header > nav.navbar {
+  border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+}
+
+* {
+  scrollbar-color: var(--bulma-body-color) var(--bulma-body-background-color);
+  scrollbar-width: thin;
+}
+
+picture.team-member {
+  height: 250px;
+  filter: saturate(0);
+  mix-blend-mode: multiply;
+  object-fit: cover;
+  display: block;
+  align-content: center;
 }

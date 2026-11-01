@@ -20,6 +20,7 @@
  */
 
 require_once "vendor/autoload.php";
+require_once "customizer.php";
 
 use Sokil\IsoCodes\IsoCodesFactory;
 use Sokil\IsoCodes\TranslationDriver\SymfonyTranslationDriver;
@@ -43,6 +44,7 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'widgets' );
 	add_theme_support( 'wp-block-styles' );
 	add_theme_support( 'widgets-block-editor' );
+	add_theme_support( 'customize-selective-refresh-widgets' );
 
 	$header_args = array(
 		'default-image'      => get_template_directory_uri() . '/static/img/header.svg',
@@ -70,9 +72,38 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( 'cinema-press-theme', get_theme_file_uri( 'style.min.css' ), ver: md5_file( get_theme_file_path( 'style.min.css' ) ) );
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style( 'wp-block-library' );
+	wp_enqueue_script( 'theme-navigation', get_theme_file_uri( 'static/js/navigation.min.js' ), ver: md5_file( get_theme_file_path( 'static/js/navigation.min.js' ) ) );
 } );
 
 add_filter( 'post_thumbnail_html', function ( $html ) {
+	switch ( get_post_type() ) {
+		case 'screening':
+			if ( has_post_thumbnail() ):
+				return '<figure class="image">
+                            <picture>
+                                <source class="is-16by9" media="(min-width: 576px)"
+                                        srcset="' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'desktop' ) . '"/>
+                                <img src="' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'mobile' ) . '"/>
+                            </picture>
+                        </figure>';
+			else:
+				return '<figure class="image">
+                            <picture>
+                                <source class="is-16by9" media="(min-width: 576px)"
+                                        srcset="' . get_theme_file_uri( 'static/img/fallback.jpeg' ) . '"/>
+                                <img class="is-3by4" src="' . get_theme_file_uri( 'static/img/fallback-mobile.jpeg' ) . '"/>
+                            </picture>
+                        </figure>';
+			endif;
+		case 'team_member':
+			return '<figure class="image" style="background-color: var(--bulma-body-color);">
+                            <picture class="image is-3by4 is-bordered team-member">
+                                 <source srcset="<?= get_the_post_thumbnail_url( get_post( $proposer ) ) ?>"/>
+                                <img src="' . get_theme_file_uri( 'static/img/user-solid-full.svg' ) . '"/>
+                            </picture>
+                        </figure>';
+
+	}
 	if ( has_post_thumbnail() ):
 		$html = '<figure class="image">
                             <picture>
@@ -124,3 +155,11 @@ add_action( 'widgets_init',
 		/* Repeat register_sidebar() code for additional sidebars. */
 	}
 );
+
+add_action( "customize_register", "configure_customizer" );
+
+add_action( 'wp_head', function () {
+	echo '<style>:root{ --bulma-body-color: ' . get_theme_mod( 'text_color_light', "#ffffff" ) . '; --bulma-primary: ' . get_theme_mod( 'primary_color_light', "#2E2D2F" ) . ';}</style>';
+	echo '<style>@media(prefers-color-scheme: dark){:root{ --bulma-body-color: ' . get_theme_mod( 'text_color_dark', "#ffffff" ) . ' !important; --bulma-primary: ' . get_theme_mod( 'primary_color_dark', "#2E2D2F" ) . ' !important;}}</style>';
+	echo '<style>:root{--text-font: ' . get_theme_mod( 'text_font_family', "InterVariable" ).' !important; --heading-font: ' . get_theme_mod( 'heading_font_family' ) . ' !important;}</style>';
+} );
