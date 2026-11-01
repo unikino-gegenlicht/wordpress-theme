@@ -20,6 +20,7 @@
  */
 
 require_once "vendor/autoload.php";
+require_once 'inc/color-converter.php';
 require_once "customizer.php";
 
 use Sokil\IsoCodes\IsoCodesFactory;
@@ -160,7 +161,24 @@ add_action( 'widgets_init',
 add_action( "customize_register", "configure_customizer" );
 
 add_action( 'wp_head', function () {
-	echo '<style>:root{ --bulma-body-color: ' . get_theme_mod( 'text_color_light', "#ffffff" ) . '; --bulma-primary: ' . get_theme_mod( 'primary_color_light', "#2E2D2F" ) . ';}</style>';
-	echo '<style>@media(prefers-color-scheme: dark){:root{ --bulma-body-color: ' . get_theme_mod( 'text_color_dark', "#ffffff" ) . ' !important; --bulma-primary: ' . get_theme_mod( 'primary_color_dark', "#2E2D2F" ) . ' !important;}}</style>';
-	echo '<style>:root{--text-font: ' . get_theme_mod( 'text_font_family', "InterVariable" ).' !important; --heading-font: ' . get_theme_mod( 'heading_font_family' ) . ' !important;}</style>';
+	$light_text_color = get_theme_mod( 'text_color_light', "#000000" );
+	$primary_color    = get_theme_mod( 'primary_color_light', "#ffdd00" );
+
+	$dark_text_color    = get_theme_mod( 'text_color_dark', "#ffdd00" );
+	$dark_primary_color = get_theme_mod( 'primary_color_dark', "#000000" );
+
+	$primary_color_hsl = hex2hsl( $primary_color );
+	$text_color_hsl    = hex2hsl( $light_text_color );
+
+	$dark_primary_color_hsl = hex2hsl( $dark_primary_color );
+	$dark_text_color_hsl    = hex2hsl( $dark_text_color );
+
+	echo '<style>:root{ --bulma-primary-h: ' . round( $primary_color_hsl[0] * 360 ) . 'deg; --bulma-primary-s: ' . $primary_color_hsl[1] * 100 . '%; --bulma-primary-l: ' . $primary_color_hsl[2] * 100 . '%;}</style>';
+	echo '<style>:root{ --bulma-scheme-h: ' . round( $primary_color_hsl[0] * 360 ) . 'deg; --bulma-scheme-s: ' . $primary_color_hsl[1] * 100 . '%; --bulma-scheme-main-l: ' . $primary_color_hsl[2] * 100 . '%;}</style>';
+	echo '<style>:root{ --bulma-text-h: ' . round( $text_color_hsl[0] * 360 ) . 'deg ; --bulma-text-s: ' . $text_color_hsl[1] * 100 . '%; --bulma-text-l: ' . $text_color_hsl[2] * 100 . '%;--bulma-text-strong-l: var(--bulma-text-l);--bulma-title-l: var(--bulma-text-l);}</style>';
+	echo '<style>@media(prefers-color-scheme: dark){:root{ --bulma-dark-h: ' . $dark_primary_color_hsl[0] * 360 . 'deg; --bulma-dark-s: ' . $dark_primary_color_hsl[1] * 100 . '%; --bulma-dark-l: ' . $dark_primary_color_hsl[2] * 100 . '%;}}</style>';
+	echo '<style>@media(prefers-color-scheme: dark){:root{ --bulma-scheme-h: ' . $dark_primary_color_hsl[0] * 360 . 'deg; --bulma-scheme-s: ' . $dark_primary_color_hsl[1] * 100 . '%; --bulma-scheme-main-l: ' . $dark_primary_color_hsl[2] * 100 . '%;}}</style>';
+	echo '<style>@media(prefers-color-scheme: dark){:root{ --bulma-text-h: ' . $dark_text_color_hsl[0] * 360 . 'deg ; --bulma-text-s: ' . $dark_text_color_hsl[1] *100 . '%; --bulma-text-l: ' . $dark_text_color_hsl[2]*100 . '%;}}</style>';
+
+	echo '<style>:root{--text-font: ' . get_theme_mod( 'text_font_family', "InterVariable" ) . ' ; --heading-font: ' . get_theme_mod( 'heading_font_family' ) . ' ;}</style>';
 } );
