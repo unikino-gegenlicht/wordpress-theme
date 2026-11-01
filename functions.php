@@ -96,9 +96,9 @@ add_filter( 'post_thumbnail_html', function ( $html ) {
                         </figure>';
 			endif;
 		case 'team_member':
-			return '<figure class="image" style="background-color: var(--bulma-body-color);">
+			return '<figure class="image team-member">
                             <picture class="image is-3by4 is-bordered team-member">
-                                 <source srcset="<?= get_the_post_thumbnail_url( get_post( $proposer ) ) ?>"/>
+                                 <source srcset="'. get_the_post_thumbnail_url(). '"/>
                                 <img src="' . get_theme_file_uri( 'static/img/user-solid-full.svg' ) . '"/>
                             </picture>
                         </figure>';

@@ -64,6 +64,10 @@ $font-path: "./static/webfonts/fontawesome"
 
 :root {
   font-feature-settings: "calt", "tnum", "case", "ss02", "ss03";
+  text-align: justify;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  hyphenate-limit-chars: 6 4 4;
 
   --max-content-width: 800px;
   --content-padding: 1.25rem;
@@ -328,11 +332,19 @@ header > nav.navbar {
   scrollbar-width: thin;
 }
 
-picture.team-member {
-  height: 250px;
-  filter: saturate(0);
-  mix-blend-mode: multiply;
-  object-fit: cover;
-  display: block;
-  align-content: center;
+figure.team-member {
+  & > picture.team-member {
+    height: 250px;
+    filter: saturate(0);
+    mix-blend-mode: multiply;
+    object-fit: cover;
+    display: block;
+    align-content: center;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  figure.team-member {
+    background-color: var(--bulma-body-color);
+  }
 }
