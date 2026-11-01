@@ -30,14 +30,14 @@ defined( 'ABSPATH' ) || exit;
 <body>
 <?php do_action( 'wp_body_open' ); ?>
 <header>
-    <nav class="navbar is-primary is-transparent" role="navigation"
+    <nav class="navbar is-transparent" role="navigation"
          aria-label="<?= __( 'Main Navigation', 'cinema-press-theme' ) ?>">
         <div class="navbar-brand px-1">
             <a class="navbar-item m-0 is-flex is-tab"
                href="<?= get_home_url( scheme: 'https' ) ?>">
                 <?php if ( get_header_image() ): ?>
-                    <img src="<?php header_image() ?>" width="<?= absint( get_custom_header()->width ) ?>"
-                         height="<?= absint( get_custom_header()->height ) ?>"
+                    <img src="<?php header_image() ?>" width="150"
+                         height="30"
                          alt="<?= get_bloginfo( 'name', 'display' ) ?>">
                 <?php endif; ?>
             </a>
