@@ -104,7 +104,7 @@ get_header() ?>
 </main>
 <article class="content-container">
     <div class="movie-list is-flex-grow-2">
-        <p class="movie-list-title mb-0"><?= sprintf(esc_html__( 'Proposals by %s', 'cinema-press-theme' ), get_the_title()) ?></p>
+        <p class="movie-list-title mb-0"><?= sprintf(/* translators: %s is the name of the team member */esc_html__( 'Proposals by %s', 'cinema-press-theme' ), get_the_title()) ?></p>
         <div class="movie-list-entries"
              style="max-height: 100%; overflow-y: scroll; scrollbar-width: thin;">
             <?php
