@@ -7,7 +7,7 @@
     "watch:css": "sass --watch --load-path=node_modules assets/scss/style.scss style.css",
     "prei18n:update": "wp i18n make-pot ./",
     "i18n:update": "wp i18n update-po ./i18n/cinema-press-theme.pot",
-    "posti18n:update": "wp i18n make-mo ./i18n/"
+    "i18n:compile": "wp i18n make-mo ./i18n/"
   },
   "author": "Unikino GEGENLICHT",
   "license": "EUPL-1.2",
