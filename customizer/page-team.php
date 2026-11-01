@@ -17,53 +17,57 @@ class TeamPageCustomizer extends CPTheme_CustomizerBase {
 	}
 
 	private function add_settings(): void {
-		$this->add_theme_mod( "team_page_title[de]" );
-		$this->add_theme_mod( "team_page_title[en]" );
+		$this->add_theme_mod( "team_page_title", __( 'The Team', 'gegenlicht' ) );
 
-		$this->add_theme_mod( "team_page_text[de]" );
-		$this->add_theme_mod( "team_page_text[en]" );
+		$this->add_theme_mod( "team_page_text" );
 
-		$this->add_theme_mod( "team_former_members_text[de]" );
-		$this->add_theme_mod( "team_former_members_text[en]" );
+		$this->add_theme_mod( "team_page_active_members_heading", __( 'Active Members', 'gegenlicht' ) );
+
+		$this->add_theme_mod( "team_page_former_members_heading", __( 'Former Members', 'gegenlicht' ) );
+		$this->add_theme_mod( "team_page_former_members_text" );
+
+		$this->add_theme_mod( "team_page_honorary_members_heading", __( 'Honorary Members', 'gegenlicht' ) );
+		$this->add_theme_mod( "team_page_honorary_members_text" );
 
 	}
 
 	private function add_controls(): void {
-		$this->add_control( "team_page_title[de]", array(
+		$this->add_control( "team_page_title", array(
 			"section" => self::SECTION,
-			"label"   => __( 'Heading (German)', 'gegenlicht' ),
+			"label"   => __( 'Heading', 'gegenlicht' ),
 		) );
 
-		$this->add_control( "team_page_title[en]", array(
+		$this->add_control( "team_page_text", array(
 			"section" => self::SECTION,
-			"label"   => __( 'Heading (English)', 'gegenlicht' ),
-		) );
-
-		$this->add_control( "team_page_text[de]", array(
-			"section" => self::SECTION,
-			"label"   => __( 'Text (German)', 'gegenlicht' ),
+			"label"   => __( 'Opener Text for the members page', 'gegenlicht' ),
 			"type"    => "textarea"
 		) );
 
-		$this->add_control( "team_page_text[en]", array(
+		$this->add_control( "team_page_active_members_heading", array(
 			"section" => self::SECTION,
-			"label"   => __( 'Text (English)', 'gegenlicht' ),
+			"label"   => __( 'Heading for active member section', 'gegenlicht' ),
+		) );
+
+		$this->add_control( "team_page_former_members_heading", array(
+			"section" => self::SECTION,
+			"label"   => __( 'Heading for former member section', 'gegenlicht' ),
+		) );
+
+		$this->add_control( "team_page_former_members_text", array(
+			"section" => self::SECTION,
+			"label"   => __( 'Text about former members', 'gegenlicht' ),
 			"type"    => "textarea"
 		) );
 
-
-		$this->add_control( "team_former_members_text[de]", array(
+		$this->add_control( "team_page_honorary_members_heading", array(
 			"section" => self::SECTION,
-			"label"   => __( 'Text about former members (German)', 'gegenlicht' ),
-			"type"    => "textarea"
+			"label"   => __( 'Heading for honorary member section', 'gegenlicht' ),
 		) );
 
-		$this->add_control( "team_former_members_text[en]", array(
+		$this->add_control( "team_page_honorary_members_text", array(
 			"section" => self::SECTION,
-			"label"   => __( 'Text about former members (English)', 'gegenlicht' ),
+			"label"   => __( 'Text about former members', 'gegenlicht' ),
 			"type"    => "textarea"
 		) );
-
-
 	}
 }

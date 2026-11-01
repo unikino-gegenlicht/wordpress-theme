@@ -16,6 +16,7 @@ use inc\customizer\SemesterBreakCustomizer;
 use inc\customizer\SingleCoopCustomizer;
 use inc\customizer\SupporterPageCustomizer;
 use inc\customizer\TeamBlockCustomizer;
+use inc\customizer\TeamPageCustomizer;
 use inc\customizer\YouthProtectionCustomizer;
 use function inc\customizer\controls\custom_controls;
 
@@ -27,6 +28,7 @@ require_once 'customizer/block-coops.php';
 require_once 'customizer/block-team.php';
 require_once 'customizer/page-cooperations.php';
 require_once 'customizer/page-supporters.php';
+require_once 'customizer/page-team.php';
 require_once 'customizer/lightModeBranding.php';
 require_once 'customizer/DarkModeBrandingCustomizer.php';
 require_once 'customizer/FontCustomizer.php';
@@ -74,6 +76,7 @@ function configure_customizer( WP_Customize_Manager $wp_customize ): void {
 		'capability'  => 'edit_others_posts',
 		'description' => esc_html__( 'Edit the display of some content pages of this theme', 'cinema-press-theme' ),
 	) );
+	new TeamPageCustomizer( $wp_customize, priority: 1, additionalArgs: [ "panel" => "pages" ] );
 	new CooperationPageCustomizer( $wp_customize, priority: 1, additionalArgs: [ "panel" => "pages" ] );
 	new SupporterPageCustomizer( $wp_customize, priority: 2, additionalArgs: [ "panel" => "pages" ] );
 	new SingleCoopCustomizer( $wp_customize, priority: 6, additionalArgs: [ "panel" => "pages" ] );
