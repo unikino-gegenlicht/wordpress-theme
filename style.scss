@@ -15,17 +15,13 @@ Text Domain: cinema-press-theme
 Domain Path: /i18n
  */
 
-$primaryColor: #2E2D2F;
-
 @use "bulma/sass/utilities" with (
 $family-primary: 'var(--text-font)',
-$primary: $primaryColor,
 );
 
 @use "bulma/sass/form" with (
   $input-shadow: none
 );
-
 
 @forward "bulma/sass/base";
 @forward "bulma/sass/themes";
@@ -79,9 +75,6 @@ $font-path: "./static/webfonts/fontawesome"
   --text-font: "InterVariable";
 
 
-  --bulma-background: var(--bulma-primary) !important;
-  --bulma-body-background-color: var(--bulma-background) !important;
-  --bulma-body-color: white;
   --bulma-hr-background-color: var(--bulma-body-color);
   --bulma-text-strong: var(--bulma-body-color) !important;
   --bulma-strong-color: var(--bulma-body-color);
@@ -95,15 +88,6 @@ $font-path: "./static/webfonts/fontawesome"
   --bulma-control-border-width: var(--border-thickness);
 }
 
-.nonesense {
-  --bulma-body-background-color: var(--bulma-primary);
-
-  --bulma-navbar-background-color: var(--bulma-body-background-color);
-
-  --bulma-tag-color: var(--bulma-body-color) !important;
-  --bulma-navbar-item-color-l: var(--bulma-body-color) !important;
-}
-
 @font-face {
   font-family: 'Readex Pro';
   font-style: normal;
@@ -112,23 +96,28 @@ $font-path: "./static/webfonts/fontawesome"
   src: url(static/webfonts/readex/readexpro.woff2)
 }
 
+html {
+  background-color: var(--bulma-body-background-color);
+}
+
 h1, h2, h3, h4, h5, h6,
 .wp-block-heading,
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
   font-family: var(--heading-font), sans-serif;
   text-transform: uppercase !important;
   font-size: var(--heading-size);
+  font-weight: bold !important;
 
   &.has-border-bottom {
     border-bottom: var(--border-thickness) solid var(--bulma-body-color) !important;
   }
 }
 
-.font-heading,.font-readex {
+.font-heading, .font-readex {
   font-family: var(--heading-font), sans-serif;
 }
 
-.font-normal,.font-inter {
+.font-normal, .font-inter {
   font-family: var(--text-font), sans-serif;
 }
 
@@ -268,10 +257,6 @@ a.navbar-item {
   color: var(--bulma-body-color) !important;
 }
 
-.has-background-primary {
-  background-color: var(--bulma-primary) !important;
-}
-
 .marquee {
   --height: 2rem;
   --gap: 1rem;
@@ -346,5 +331,25 @@ figure.team-member {
 @media (prefers-color-scheme: dark) {
   figure.team-member {
     background-color: var(--bulma-body-color);
+  }
+}
+
+.footer {
+  --fg: var(--bulma-body-background-color);
+  --bg: var(--bulma-body-color);
+  --bulma-footer-background-color: var(--bg) !important;
+  --bulma-footer-color: var(--fg) !important;
+  --bulma-link-text: var(--bulma-footer-color) !important;
+  --bulma-content-heading-color: var(--bulma-footer-color) !important;
+  --bulma-hr-background-color: var(--fg) !important;
+  color: var(--bulma-footer-color) !important;
+
+  &>* {
+    --bulma-body-color: var(--bulma-footer-color) !important;
+
+    &>* {
+      --bulma-body-color: var(--bulma-footer-color) !important;
+
+    }
   }
 }
