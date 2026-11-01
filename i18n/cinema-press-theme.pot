@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-01T10:53:37+00:00\n"
+"POT-Creation-Date: 2026-11-01T22:26:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: cinema-press-theme\n"
@@ -39,43 +39,86 @@ msgstr ""
 msgid "https://gegenlicht.net/team/jan, https://gegenlicht.net/team/philip"
 msgstr ""
 
-#: archive-screening.php:16
+#. translators: %s is the email of the page administrator
+#: 404.php:11
+#, php-format
+msgid "Sadly, we couldn't find the page you were trying to access. If you are sure, that a page should exist here, please contact the page administrator (%s)"
+msgstr ""
+
+#. translators: %s is the email of the page administrator
+#: 404.php:12
+msgid "You now have the choice to either go back to the last page you opened"
+msgstr ""
+
+#: 404.php:14
+msgid "Go back"
+msgstr ""
+
+#: 404.php:16
+msgid "or go to the landing page which showcases our program"
+msgstr ""
+
+#: 404.php:18
+msgid "To the landing page"
+msgstr ""
+
+#: archive-screening.php:15
 msgid "Past"
 msgstr ""
 
-#: archive-screening.php:29
-msgid "For now the archive remains emtpy, as there have been no recorded screenings. Check back later"
+#: archive-screening.php:68
+msgid "For now the archive remains empty, as there have been no recorded screenings. Check back later"
 msgstr ""
 
-#: customizer.php:51
+#: archive-team_member.php:24
+msgid "Active Members"
+msgstr ""
+
+#: archive-team_member.php:31
+#, php-format
+msgid "active since %1$s"
+msgstr ""
+
+#: archive-team_member.php:50
+#: archive-team_member.php:69
+#, php-format
+msgid "active from %1$s until %2$s"
+msgstr ""
+
+#: archive-team_member.php:70
+#, php-format
+msgid "honorary member since %1$s"
+msgstr ""
+
+#: customizer.php:53
 msgid "Branding"
 msgstr ""
 
-#: customizer.php:54
+#: customizer.php:56
 msgid "Configure the branding options for the page"
 msgstr ""
 
-#: customizer.php:63
+#: customizer.php:65
 msgid "Blocks"
 msgstr ""
 
-#: customizer.php:66
+#: customizer.php:68
 msgid "Edit the blocks displayed on the frontpage"
 msgstr ""
 
-#: customizer.php:72
+#: customizer.php:74
 msgid "Pages"
 msgstr ""
 
-#: customizer.php:75
+#: customizer.php:77
 msgid "Edit the display of some content pages of this theme"
 msgstr ""
 
-#: customizer.php:82
+#: customizer.php:85
 msgid "Contact Options"
 msgstr ""
 
-#: customizer.php:85
+#: customizer.php:88
 msgid "Configure the contact options listed throughout the website"
 msgstr ""
 
@@ -262,49 +305,54 @@ msgstr ""
 msgid "Set the content of the text referring to the archive"
 msgstr ""
 
-#: front-page.php:28
+#: front-page.php:36
 msgid "Next screening"
 msgstr ""
 
-#: front-page.php:54
-#: front-page.php:80
+#: front-page.php:52
+#: front-page.php:78
 msgid "Open movie"
 msgstr ""
 
-#: front-page.php:71
+#: front-page.php:69
 msgid "and following at"
 msgstr ""
 
-#: front-page.php:99
+#: front-page.php:102
 msgid "Sadly, there is no more program for this semester"
 msgstr ""
 
-#: front-page.php:110
+#: front-page.php:107
+msgid "The Semester Programme"
+msgstr ""
+
+#: front-page.php:135
 msgid "Intermission"
 msgstr ""
 
 #. translators: date in US notation
-#: functions.php:31
+#: functions.php:32
 msgid "m/d/Y"
 msgstr ""
 
 #. translators: time in 12hrs format
-#: functions.php:34
+#: functions.php:35
 msgid "g:i a"
 msgstr ""
 
-#: functions.php:60
+#: functions.php:61
 msgid "Header Menu"
 msgstr ""
 
-#: functions.php:61
+#: functions.php:62
 msgid "Footer Link Menu"
 msgstr ""
 
-#: functions.php:62
+#: functions.php:63
 msgid "Footer Bottom Menu"
 msgstr ""
 
+#: header-not_found.php:34
 #: header-semester_break.php:34
 #: header.php:34
 msgid "Main Navigation"
@@ -319,81 +367,81 @@ msgid "Original Title"
 msgstr ""
 
 #. translators: the name of the actor in %s
-#: single-screening.php:33
+#: single-screening.php:34
 #, php-format
 msgid "by %s"
 msgstr ""
 
 #. translators: %1$s is a comma separated list, %2$s is the last listed director
-#: single-screening.php:39
+#: single-screening.php:40
 #, php-format
 msgid "by %1$s and %2$s"
 msgstr ""
 
 #. translators: the name of the actor in %s
-#: single-screening.php:47
+#: single-screening.php:48
 #, php-format
 msgid "with %s"
 msgstr ""
 
 #. translators: %1$s is a comma separated list, %2$s is the last listed actor
-#: single-screening.php:53
+#: single-screening.php:54
 #, php-format
 msgid "with %1$s and %2$s"
 msgstr ""
 
-#: single-screening.php:60
+#: single-screening.php:61
 msgid "Age Rating"
 msgstr ""
 
-#: single-screening.php:62
+#: single-screening.php:63
 msgid "Audio in"
 msgstr ""
 
-#: single-screening.php:64
+#: single-screening.php:65
 msgid "Silent Movie"
 msgstr ""
 
-#: single-screening.php:67
-msgid "Subtitles in"
-msgstr ""
-
-#: single-screening.php:70
-msgid "Without Intertitles"
-msgstr ""
-
-#: single-screening.php:72
+#: single-screening.php:68
 msgid "No Subtitles"
 msgstr ""
 
-#: single-screening.php:79
+#: single-screening.php:72
+msgid "Without Intertitles"
+msgstr ""
+
+#: single-screening.php:74
+msgid "Subtitles in"
+msgstr ""
+
+#: single-screening.php:81
 msgid "What is the movie about?"
 msgstr ""
 
-#: single-screening.php:86
+#: single-screening.php:88
 msgid "Why is the movie worth seeing?"
 msgstr ""
 
 #. translators: %s is the name of the proposer
-#: single-screening.php:100
+#: single-screening.php:104
 #, php-format
 msgid "This movie was proposed by %s"
 msgstr ""
 
 #. translators: %1$s is a comma separated list, %2$s is the last listed proposer
-#: single-screening.php:106
+#: single-screening.php:110
 #, php-format
 msgid "This movie was proposed by %1$s and %2$s"
 msgstr ""
 
-#: single-screening.php:115
-#: single-screening.php:156
+#: single-screening.php:121
+#: single-screening.php:165
 msgid "Other proposals"
 msgstr ""
 
 #. translators: %s is the year the movie was screened in
-#: single-screening.php:139
-#: single-screening.php:180
+#: single-screening.php:145
+#: single-screening.php:189
 #, php-format
 msgid "Screened in %s"
 msgstr ""
@@ -416,6 +464,7 @@ msgstr ""
 msgid "Honorary member since %1$s"
 msgstr ""
 
+#. translators: %s is the name of the team member
 #: single-team_member.php:107
 #, php-format
 msgid "Proposals by %s"
