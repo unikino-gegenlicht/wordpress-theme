@@ -1,19 +1,16 @@
-# Copyright (C) 2026 Jan Eike Suchard, Philip Kaufmann
-# This file is distributed under the EUPL-1.2.
 msgid ""
 msgstr ""
 "Project-Id-Version: CinemaPress CINEMA_PRESS_THEME_VERSION\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/cinema-press-"
-"theme\n"
-"POT-Creation-Date: 2026-10-18T22:18:13+00:00\n"
-"PO-Revision-Date: 2026-10-19 00:24+0200\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/cinema-press-theme\n"
 "Last-Translator: Jan Eike Suchard <jan@suchard.cloud>\n"
 "Language-Team: \n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.9\n"
+"POT-Creation-Date: 2026-10-18T22:18:13+00:00\n"
+"PO-Revision-Date: 2026-11-01 11:47+0100\n"
+"Language: de\n"
+"X-Generator: Poedit 3.10\n"
 "X-Domain: cinema-press-theme\n"
 
 #. Theme Name of the theme
@@ -28,13 +25,8 @@ msgstr "https://github.com/unikino-gegenlicht/custom-post-types"
 
 #. Description of the theme
 #: style.css
-msgid ""
-"The CinemaPress theme offers small student lead cinemas a possibility to "
-"easily integrate the contents provided by the CinemaPress plugin into their "
-"website. In addition, the theme also generates <a href=\"https://"
-"schema.org\">Schema.org</a> markup in case YoastSEO is not installed on the "
-"website."
-msgstr ""
+msgid "The CinemaPress theme offers small student lead cinemas a possibility to easily integrate the contents provided by the CinemaPress plugin into their website. In addition, the theme also generates <a href=\"https://schema.org\">Schema.org</a> markup in case YoastSEO is not installed on the website."
+msgstr "Das CinemaPress-Theme bietet kleinen, von Studenten geführten Kinos die Möglichkeit, die vom CinemaPress-Plugin bereitgestellten Inhalte problemlos in ihre Website zu integrieren. Darüber hinaus generiert das Theme auch <a href=\"https://schema.org\">Schema.org</a>-Markup, falls Yoast SEO nicht auf der Website installiert ist."
 
 #. Author of the theme
 #: style.css
@@ -44,112 +36,392 @@ msgstr "Jan Eike Suchard, Philip Kaufmann"
 #. Author URI of the theme
 #: style.css
 msgid "https://gegenlicht.net/team/jan, https://gegenlicht.net/team/philip"
-msgstr ""
+msgstr "https://gegenlicht.net/team/jan, https://gegenlicht.net/team/philip"
 
-#: front-page.php:32
+#: front-page.php:28
 msgid "Next screening"
 msgstr "Nächste Vorstellung"
 
-#: front-page.php:58 front-page.php:84
+#: front-page.php:54
+#: front-page.php:80
 msgid "Open movie"
 msgstr "Zum Film"
 
-#: front-page.php:75
+#: front-page.php:71
 msgid "and following at"
 msgstr "und im Anschluss um"
 
-#: front-page.php:103
+#: front-page.php:99
 msgid "Sadly, there is no more program for this semester"
 msgstr "Leider ist das Programm für das Semester vorbei"
 
 #. translators: date in US notation
-#: functions.php:30
+#: functions.php:31
 msgid "m/d/Y"
 msgstr "d.m.Y"
 
 #. translators: time in 12hrs format
-#: functions.php:33
+#: functions.php:34
 msgid "g:i a"
 msgstr "H:i"
 
-#: functions.php:57
+#: functions.php:60
 msgid "Header Menu"
 msgstr "Header Menü"
 
-#: functions.php:58
+#: functions.php:61
 msgid "Footer Link Menu"
 msgstr "Links im Footer"
 
-#: functions.php:59
+#: functions.php:62
 msgid "Footer Bottom Menu"
 msgstr "Abschliedendes Footer Menü"
 
-#: single-screening.php:11
+#: single-screening.php:12
 msgid "Screening starts"
 msgstr "Vorstellung startet um"
 
 #. translators: the name of the actor in %s
-#: single-screening.php:32
+#: single-screening.php:33
 #, php-format
 msgid "by %s"
 msgstr "von %s"
 
-#. translators: first element is a comma separated list, the second one is the last listed director
-#: single-screening.php:38
-#, php-format
-msgid "by %s and %s"
-msgstr "von %s und %s"
-
 #. translators: the name of the actor in %s
-#: single-screening.php:46
+#: single-screening.php:47
 #, php-format
 msgid "with %s"
 msgstr "mit %s"
 
-#. translators: first element is a comma separated list, the second one is the last listed director
-#: single-screening.php:52
-#, php-format
-msgid "with %s and %s"
-msgstr "mit %s und %s"
-
-#: single-screening.php:60
+#: single-screening.php:62
 msgid "Audio in"
 msgstr "Ton in"
 
-#: single-screening.php:62
+#: single-screening.php:67
 msgid "Subtitles in"
 msgstr "Untertitel in"
 
-#: single-screening.php:64
+#: single-screening.php:72
 msgid "No Subtitles"
 msgstr "Keine Untertitel"
 
-#: single-screening.php:70
+#: single-screening.php:79
 msgid "What is the movie about?"
 msgstr "Worum geht's?"
 
-#: single-screening.php:77
+#: single-screening.php:86
 msgid "Why is the movie worth seeing?"
 msgstr "Darum sehenswert!"
 
 #. translators: %s is the name of the proposer
-#: single-screening.php:91
+#: single-screening.php:100
 #, php-format
 msgid "This movie was proposed by %s"
 msgstr "Dieser Film wurde von %s vorgeschlagen"
 
-#. translators: %s is the name of the proposer
-#: single-screening.php:97
-#, php-format
-msgid "This movie was proposed by %s and %s"
-msgstr "Dieser Film wurde von %s und %s vorgeschlagen"
-
-#: single-screening.php:109 single-screening.php:153
+#: single-screening.php:115
+#: single-screening.php:156
 msgid "Other proposals"
 msgstr "Weitere Vorschläge"
 
 #. translators: %s is the year the movie was screened in
-#: single-screening.php:133 single-screening.php:177
+#: single-screening.php:139
+#: single-screening.php:180
 #, php-format
 msgid "Screened in %s"
 msgstr "%s gezeigt"
+
+#: customizer.php:63
+msgid "Blocks"
+msgstr "Blöcke"
+
+#: customizer.php:66
+msgid "Edit the blocks displayed on the frontpage"
+msgstr "Bearbeite die Blöcke auf der Startseite"
+
+#: customizer.php:72
+msgid "Pages"
+msgstr "Seiten"
+
+#: customizer.php:75
+msgid "Edit the display of some content pages of this theme"
+msgstr "Beabreite die Inhalte und Darstellung einiger Seiten des Themes"
+
+#: customizer.php:82
+msgid "Contact Options"
+msgstr "Kontaktmöglichkeiten"
+
+#: customizer.php:85
+msgid "Configure the contact options listed throughout the website"
+msgstr "Konfiguriere die Kontaktmöglichkeiten die auf der Website gelistet werden"
+
+#: customizer/archiv.php:15
+msgid "Archive"
+msgstr "Archiv"
+
+#: customizer/archiv.php:16
+msgid "Configure the display of the archive page"
+msgstr "Konfiguriere die Inhalte und Anzeige des Film- und Eventarchivs"
+
+#: customizer/block-coops.php:13
+#: customizer/front-page.php:62
+msgid "Cooperation Partners and Supporters"
+msgstr "Kooperationspartner:innen und Unterstützer:innen"
+
+#: customizer/block-coops.php:13
+msgid "Configure the content of the block showcasing our supporters and cooperation partners"
+msgstr "Stelle die Inhalte des Blocks ein in dem unsere Kooperationspartner*innen und Unterstützer*innen gezeigt werden"
+
+#: customizer/block-coops.php:35
+#: customizer/block-location.php:53
+#: customizer/block-team.php:55
+msgid "Block Text"
+msgstr "Text des Blocks"
+
+#: customizer/block-location.php:15
+#: customizer/front-page.php:61
+msgid "Location"
+msgstr "Ort"
+
+#: customizer/block-location.php:15
+msgid "Configure the content of the block showcasing our location"
+msgstr "Konfiguriere die Inhalte des Startseitenblocks über unseren Standort"
+
+#: customizer/block-location.php:40
+msgid "Block Header Image"
+msgstr "Bild im Header des Block"
+
+#: customizer/block-location.php:41
+msgid "Upload an image for the block header which will be displayed above the block title"
+msgstr "Lade ein Bild hoch (oder wähle ein vorhandenes aus) das auf dem Bock über dem Titel angezeigt wird"
+
+#: customizer/block-location.php:46
+#: customizer/block-team.php:46
+msgid "Block Title"
+msgstr "Überschrift des Blocks"
+
+#: customizer/block-location.php:60
+msgid "Page with Details"
+msgstr "Seite mit mehr Details"
+
+#: customizer/block-location.php:61
+msgid "This page contains detailed information about the location"
+msgstr "Die Seite mit den genaueren Informationen zum Ort"
+
+#: customizer/front-page.php:21
+msgid "Configure the content displayed on the front page"
+msgstr "Konfiguriere die Inhalte der Startseite"
+
+#: customizer/front-page.php:41
+msgid "Displayed Semester"
+msgstr "Angezeigtes Semester"
+
+#: customizer/front-page.php:42
+msgid "Only movies and events associated with this semester will be displayed on the front page and be accessible for non-logged in users"
+msgstr "Nur Filme und Events, die mit diesem Semester verknüpft sind werden auf der Startseite angezeigt"
+
+#: customizer/front-page.php:48
+msgid "Displayed Special Programs"
+msgstr "Angezeigte Sonderprogramme"
+
+#: customizer/front-page.php:56
+msgid "Displayed Blocks"
+msgstr "Angezeigte Blöcke"
+
+#: customizer/front-page.php:57
+msgid "The selected blocks will be displayed below the special programs. Only if a block is activated here, the customizer for that block will be accessible"
+msgstr "Die ausgewählten Blöcke werden unter den Sonderprogrammen angezeigt. Nur wenn ein Block hier aktiviert ist, kann dieser auch im Customizer bearbeitet werden"
+
+#: customizer/front-page.php:60
+msgid "Team"
+msgstr "Team"
+
+#: customizer/front-page.php:69
+msgid "Program Reveal"
+msgstr "Release des Semesterprogramm"
+
+#: customizer/front-page.php:70
+msgid "This value controls how many days before the start of the screenings the frontpage shows the semester program"
+msgstr "Dieser Wert kontrolliert in wie viele Tage vor dem Start des Semesterprogramms die Website dieses anzeigen soll"
+
+#: customizer/semester-break.php:13
+msgid "Semester Intermission"
+msgstr "Spielpause"
+
+#: customizer/semester-break.php:13
+msgid "Configure the content of the page showing our cooperation partners and how to to a cooperation with us"
+msgstr "Stelle die Inhalte der Seite für die Kooperationen und Kooperationspartner*innen ein"
+
+#: customizer/semester-break.php:37
+msgid "Enable Semester Intermission"
+msgstr "Spielpause aktivieren"
+
+#: customizer/semester-break.php:38
+msgid "Override the detection algorithm and manually enable a semester break"
+msgstr "Überschreibe die automatische Erkennung und aktiviere die Spielpause manuell"
+
+#: customizer/semester-break.php:46
+msgid "Intermission Image"
+msgstr "Bild für Spielpause"
+
+#: customizer/semester-break.php:47
+msgid "Upload an image which will be displayed during the program intermission between two semesters"
+msgstr "Lade ein Billd hoch (oder wähle eins aus) das während der Spielpause zwischen zwei Semestern angezeigt wird"
+
+#: customizer/semester-break.php:53
+msgid "Tagline"
+msgstr "Tagline"
+
+#: customizer/semester-break.php:54
+msgid "Set the tagline displayed below the intermission image if no events during the intermission are taking place"
+msgstr "Stelle die Tagline ein, die unter dem Spielpausenbild angezeigt wird, wenn keine weiteren Sondervorstellungen in der Spielpause stattfinden"
+
+#: customizer/semester-break.php:61
+msgid "Intermission Premonition Text"
+msgstr "Ankündigungstext der Spielpause"
+
+#: customizer/semester-break.php:62
+msgid "Set the text that will be displayed if the program is about to finish and doesn't have any entries left to display in the monthly lists"
+msgstr "Gebe den Text ein, der anstelle des Semesterprogramms angezeigt wird, wenn es noch Vorstellungen gibt, diese jedoch nicht mehr in den Montatslisten angezeigt werden"
+
+#: customizer/semester-break.php:69
+msgid "Intermission Text"
+msgstr "Text für Spielpause"
+
+#: customizer/semester-break.php:70
+msgid "Set the content of the intermission page"
+msgstr "Stelle den Inhalt der Spielpausenseite ein"
+
+#: customizer/semester-break.php:77
+msgid "Pre-Event List Text"
+msgstr "Einleitender Text zu Sondervorstellungen"
+
+#: customizer/semester-break.php:78
+#: customizer/semester-break.php:86
+msgid "Set the content of the intermission page. This text will be displayed if events are happening during the intermission"
+msgstr "Stelle den Inhalt der Spielpausenseite ein. Dieser Text wird angezeigt, wenn Sondertermine in der Spielpause stattfinden"
+
+#: customizer/semester-break.php:85
+msgid "Post-Event List Text"
+msgstr "Text nach den Sondervorstellungen"
+
+#: customizer/semester-break.php:93
+msgid "Archive Reference Text"
+msgstr "Überleitungstext zum Archiv"
+
+#: customizer/semester-break.php:94
+msgid "Set the content of the text referring to the archive"
+msgstr "Stelle den Text ein, der auf das Archiv verweist"
+
+#: front-page.php:110
+msgid "Intermission"
+msgstr "Spielpause"
+
+#: header-semester_break.php:34
+#: header.php:34
+msgid "Main Navigation"
+msgstr "Hauptnavigation"
+
+#: single-screening.php:64
+msgid "Silent Movie"
+msgstr "Stummfilm"
+
+#: single-screening.php:70
+msgid "Without Intertitles"
+msgstr "Ohne Zwischentitel"
+
+#: archive-screening.php:16
+msgid "Past"
+msgstr "Vergangene"
+
+#: archive-screening.php:29
+msgid "For now the archive remains emtpy, as there have been no recorded screenings. Check back later"
+msgstr "Das Archiv bleibt für das Erste leer, da es noch keine Vorführungen gab, die hier erfasst wurden. Komm später vielleicht nochmal vorbei"
+
+#: customizer/archiv.php:31
+#: customizer/FontCustomizer.php:46
+msgid "Text"
+msgstr "Text"
+
+#. translators: %1$s is a comma separated list, %2$s is the last listed director
+#: single-screening.php:39
+#, php-format
+msgid "by %1$s and %2$s"
+msgstr "von %1$s und %2$s"
+
+#. translators: %1$s is a comma separated list, %2$s is the last listed actor
+#: single-screening.php:53
+#, php-format
+msgid "with %1$s and %2$s"
+msgstr "mit %1$s und %2$s"
+
+#. translators: %1$s is a comma separated list, %2$s is the last listed proposer
+#: single-screening.php:106
+#, php-format
+msgid "This movie was proposed by %1$s and %2$s"
+msgstr "Dieser Film wurde von %1$s und %2$s vorgeschlagen"
+
+#. translators: %s is the year the member joined
+#: single-team_member.php:57
+#, php-format
+msgid "Active since %1$s"
+msgstr "Aktiv seit %1$s"
+
+#. translators: %1$s is the year the member joined and %2$s is the year the member lef3
+#: single-team_member.php:60
+#, php-format
+msgid "Active between %1$s and %2$s"
+msgstr "Von %1$s bis %2$s aktiv"
+
+#. translators: %1$s is the year the member was made an honorary member
+#: single-team_member.php:63
+#, php-format
+msgid "Honorary member since %1$s"
+msgstr "Ehrenmitglied seit %1$s"
+
+#. translators: %s is the date the movie was screened on
+#: single-team_member.php:133
+#, php-format
+msgid "Screened on %s"
+msgstr "Am %s gezeigt"
+
+#: customizer.php:51
+msgid "Branding"
+msgstr "Branding"
+
+#: customizer.php:54
+msgid "Configure the branding options for the page"
+msgstr "Stelle dein Branding für die Website ein"
+
+#: customizer/DarkModeBrandingCustomizer.php:15
+msgid "Dark Mode"
+msgstr "Dark Mode"
+
+#: customizer/FontCustomizer.php:16
+msgid "Fonts"
+msgstr "Schriftarten"
+
+#: customizer/FontCustomizer.php:16
+msgid "Configure the fonts used on your website. To change the available Fonts, open the font library in the admin dashboard"
+msgstr "Konfiguriere die Schriftarten, die auf der Website verwendet werden. Du kannst Schriftarten über die Font Library im WordPress Dashboard hinzufügen"
+
+#: customizer/FontCustomizer.php:41
+msgid "Headings"
+msgstr "Überschriften"
+
+#: customizer/lightModeBranding.php:16
+msgid "Light Mode"
+msgstr "Light Mode"
+
+#: single-team_member.php:107
+#, php-format
+msgid "Proposals by %s"
+msgstr "Vorschläge von %s"
+
+#: single-screening.php:60
+msgid "Age Rating"
+msgstr "Altersfreigabe"
+
+#: single-screening.php:20
+msgid "Original Title"
+msgstr "Originaltitel"
