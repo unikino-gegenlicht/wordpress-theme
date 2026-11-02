@@ -30,62 +30,7 @@ defined( 'ABSPATH' ) || exit;
 <body>
 <?php do_action( 'wp_body_open' ); ?>
 <header>
-    <nav class="navbar is-primary is-transparent" role="navigation"
-         aria-label="<?= __( 'Main Navigation', 'cinema-press-theme' ) ?>">
-        <div class="navbar-brand px-1">
-            <a class="navbar-item m-0 is-flex is-tab"
-               href="<?= get_home_url( scheme: 'https' ) ?>">
-                <?php if ( get_header_image() ): ?>
-                    <img src="<?php header_image() ?>" width="<?= absint( get_custom_header()->width ) ?>"
-                         height="<?= absint( get_custom_header()->height ) ?>"
-                         alt="<?= get_bloginfo( 'name', 'display' ) ?>">
-                <?php endif; ?>
-            </a>
-            <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div class="navbar-menu is-shadowless">
-            <div class="navbar-end">
-                <?php
-                $navigation_items = wp_get_nav_menu_items( wp_get_nav_menu_name( 'header' ) ) ?: [];
-                for ( $i = 0; $i < count( $navigation_items ); $i ++ ) {
-                    $item         = $navigation_items[ $i ];
-                    $isActivePage = $item->url === ( home_url( $wp->request ) . '/' ) || $item->url === ( home_url( $wp->request ) );
-                    ?>
-                    <a class="navbar-item is-size-5-touch px-2 <?= $isActivePage ? 'is-active' : '' ?>"
-                       href="<?= $item->url ?>">
-                        <span style="font-weight: 600"><?= str_pad( $i + 1, 2, "0", STR_PAD_LEFT ) ?></span><span
-                                class="is-uppercase font-readex"><?= $item->title ?></span>
-                    </a>
-                    <?php
-                }
-                ?>
-
-                <?php if ( current_user_can_for_site( 0, 'edit_posts' ) ): ?>
-                    <a class="navbar-item is-size-5-touch px-2" href="<?= admin_url() ?>">
-                        <i class="fa-brands fa-lg fa-wordpress-simple"></i>
-                    </a>
-                    <a class="navbar-item is-size-5-touch px-2"
-                       href="<?= wp_logout_url( home_url( $wp->request, 'https' ) ) ?>">
-                    <span class="icon is-medium">
-                        <i class="fa-solid fa-arrow-right-from-arc"></i>
-                    </span>
-                    </a>
-                <?php else: ?>
-                    <a class="navbar-item is-size-5-touch px-2"
-                       href="<?= wp_login_url( home_url( $wp->request, 'https' ) ) ?>">
-                    <span class="icon is-medium">
-                        <i class="fa-solid fa-arrow-right-to-arc"></i>
-                    </span>
-                    </a>
-                <?php endif; ?>
-            </div>
-        </div>
-    </nav>
+    <?php get_template_part('navigation') ?>
     <div class="content-container">
         <div class="marquee py-5">
             <?php for ( $i = 0; $i < 2; $i ++ ): ?>
