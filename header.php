@@ -41,14 +41,14 @@ defined( 'ABSPATH' ) || exit;
                          alt="<?= get_bloginfo( 'name', 'display' ) ?>">
                 <?php endif; ?>
             </a>
-            <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false">
+            <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navMenu">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
         </div>
-        <div class="navbar-menu is-shadowless">
+        <div class="navbar-menu is-shadowless" id="navMenu">
             <div class="navbar-end">
                 <?php
                 $navigation_items = wp_get_nav_menu_items( wp_get_nav_menu_name( 'header' ) ) ?: [];
