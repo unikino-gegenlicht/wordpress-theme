@@ -22,9 +22,9 @@ get_header();
         <?php if ( ! empty( $members['active'] ) ) : ?>
             <article id="aktiv">
                 <h2 class="has-border-bottom"><?= esc_html__( 'Active Members', 'cinema-press-theme' ) ?></h2>
-                <div class="grid is-col-min-7">
+                <div class="grid is-col-min-7 teamie-grid">
                     <?php foreach ( $members['active'] as $post ) : setup_postdata( $post ); ?>
-                        <a href="<?= get_permalink() ?>" class="cell pb-3" style="width: min-content">
+                        <a href="<?= get_permalink() ?>" class="cell pb-3">
                             <?php the_post_thumbnail(); ?>
                             <hr class="my-1">
                             <?php the_title( '<h3 class="my-0">', '</h3>' ) ?>
@@ -41,9 +41,9 @@ get_header();
                 <h2 class="has-border-bottom"><?= esc_html( get_theme_mod( "team_page_former_members_heading" ) ) ?></h2>
                 <?= apply_filters( 'the_content', get_theme_mod( 'team_page_former_members_text' ) ) ?>
 
-                <div class="grid is-col-min-7">
+                <div class="grid is-col-min-7 teamie-grid">
                     <?php foreach ( $members['former'] as $post ) : setup_postdata( $post ); ?>
-                        <a href="<?= get_permalink() ?>" class="cell pb-3" style="width: min-content">
+                        <a href="<?= get_permalink() ?>" class="cell pb-3">
                             <?php the_post_thumbnail(); ?>
                             <hr class="my-1">
                             <?php the_title( '<h3 class="my-0">', '</h3>' ) ?>
@@ -60,9 +60,9 @@ get_header();
                 <h2 class="has-border-bottom"><?= esc_html( get_theme_mod( "team_page_honorary_members_heading" ) ) ?></h2>
                 <?= apply_filters( 'the_content', get_theme_mod( 'team_page_honorary_members_text' ) ) ?>
 
-                <div class="grid is-col-min-9">
+                <div class="grid is-col-min-9 teamie-grid">
                     <?php foreach ( $members['honorary'] as $post ) : setup_postdata( $post ); ?>
-                        <a href="<?= get_permalink() ?>" class="cell pb-3" style="width: min-content">
+                        <a href="<?= get_permalink() ?>" class="cell pb-3">
                             <?php the_post_thumbnail( attr: [ "style" => "width: 250px;" ] ); ?>
                             <hr class="my-1">
                             <?php the_title( '<h3 class="my-0">', '</h3>' ) ?>

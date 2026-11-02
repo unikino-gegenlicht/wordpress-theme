@@ -97,7 +97,7 @@ $movie = get_post( rwmb_meta( 'movie' ) );
 <?php if ( ( get_option( 'cinema-press' )['enable_teamie_screening_assignment'] ?? 0 ) === 1 && ! empty( rwmb_meta( 'proposed_by' ) ) ): ?>
     <aside class="has-background-text pt-1 pb-3 mt-5"
            style="--bulma-body-background-color: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l), 1); --bulma-body-color: var(--bulma-scheme-main); ">
-        <div class="content mt-3 content-container" style="--bulma-content-heading-color: var(--bulma-body-color);">
+        <div class="content mt-3 content-container">
             <?php
             $proposers = rwmb_meta( 'proposed_by' );
             if ( count( $proposers ) === 1 ) {
@@ -114,11 +114,11 @@ $movie = get_post( rwmb_meta( 'movie' ) );
             <h3><?= $proposed_by_str ?></h3>
             <?php if ( count( $proposers ) === 1 ): ?>
                 <div class="is-flex is-align-items-top is-flex-wrap-nowrap is-gap-0.5">
-                    <div class="has-background-primary">
+                    <div class="proposing-teamie">
                         <?php echo get_the_post_thumbnail( $proposers[0] ); ?>
                     </div>
-                    <div class="movie-list is-flex-grow-2">
-                        <p class="movie-list-title mb-0"><?= esc_html__( 'Other proposals', 'cinema-press-theme' ) ?></p>
+                    <div class="proposal-list is-flex-grow-2">
+                        <p class="proposal-list-title mb-0"><?= esc_html__( 'Other proposals', 'cinema-press-theme' ) ?></p>
                         <div class="movie-list-entries"
                              style="max-height: 212px; overflow-y: scroll; scrollbar-width: thin;">
                             <?php
@@ -156,7 +156,7 @@ $movie = get_post( rwmb_meta( 'movie' ) );
                          style="overflow-x: auto; width: 100%;">
 
                         <?php foreach ( $proposers as $proposer ): ?>
-                            <div class="has-background-primary">
+                            <div class="proposing-teamie">
                                 <?php echo get_the_post_thumbnail( $proposers[0] ); ?>
                             </div>
                         <?php endforeach; ?>
