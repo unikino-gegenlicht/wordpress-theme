@@ -43,7 +43,7 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'widgets' );
-	add_theme_support( 'wp-block-styles' );
+	//  add_theme_support( 'wp-block-styles' );
 	add_theme_support( 'widgets-block-editor' );
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
@@ -67,13 +67,18 @@ add_action( 'after_setup_theme', function () {
 add_action( 'init', function () {
 	add_image_size( 'desktop', 800, 450, true );
 	add_image_size( 'mobile', 300, 400, true );
+	add_image_size( 'teamie', 250, 333, true );
 } );
 
 add_action( 'wp_enqueue_scripts', function () {
-	wp_enqueue_style( 'cinema-press-theme', get_theme_file_uri( 'style.min.css' ), ver: md5_file( get_theme_file_path( 'style.min.css' ) ) );
-	wp_enqueue_style( 'dashicons' );
-	wp_enqueue_style( 'wp-block-library' );
-	wp_enqueue_script( 'theme-navigation', get_theme_file_uri( 'static/js/navigation.min.js' ), ver: md5_file( get_theme_file_path( 'static/js/navigation.min.js' ) ) );
+	//wp_enqueue_style( 'bulma-root', get_theme_file_uri( 'static/css/root.min.css' ), ver: md5_file( get_theme_file_path( 'static/css/root.min.css' ) ) );
+	wp_enqueue_style( 'base-bulma', get_theme_file_uri( 'static/css/bulma.min.css' ), ver: md5_file( get_theme_file_path( 'static/css/bulma.min.css' ) ) );
+	wp_enqueue_style( 'base-fa', get_theme_file_uri( 'static/css/fa.min.css' ), ver: md5_file( get_theme_file_path( 'static/css/fa.min.css' ) ) );
+	wp_dequeue_style( 'dashicons' );
+	wp_enqueue_script( 'theme-navigation', get_theme_file_uri( 'static/js/navigation.min.js' ), ver: md5_file( get_theme_file_path( 'static/js/navigation.min.js' ) ), args: [
+		"strategy"  => "defer",
+		"in_footer" => true
+	] );
 } );
 
 add_filter( 'post_thumbnail_html', function ( $html, $post_id, $attr ) {
@@ -84,8 +89,8 @@ add_filter( 'post_thumbnail_html', function ( $html, $post_id, $attr ) {
 				return '<figure class="image">
                             <picture>
                                 <source class="is-16by9" media="(min-width: 576px)"
-                                        srcset="' . wp_get_attachment_image_url( get_post_thumbnail_id( $post ), 'desktop' ) . '"/>
-                                <img src="' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'mobile' ) . '"/>
+                                        srcset="' . wp_get_attachment_image_url( get_post_thumbnail_id( $post ), 'desktop' ) . '" />
+                                <img src="' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'mobile' ) . '" fetchpriority="high" decoding="async"/>
                             </picture>
                         </figure>';
 			else:
@@ -93,25 +98,32 @@ add_filter( 'post_thumbnail_html', function ( $html, $post_id, $attr ) {
                             <picture>
                                 <source class="is-16by9" media="(min-width: 576px)"
                                         srcset="' . get_theme_file_uri( 'static/img/fallback.jpeg' ) . '"/>
-                                <img class="is-3by4" src="' . get_theme_file_uri( 'static/img/fallback-mobile.jpeg' ) . '"/>
+                                <img class="is-3by4" src="' . get_theme_file_uri( 'static/img/fallback-mobile.jpeg' ) . '" fetchpriority="high" decoding="async"/>
                             </picture>
                         </figure>';
 			endif;
 		case 'team_member':
-			if (is_post_type_archive('team_member')):
+			if ( is_post_type_archive( 'team_member' ) ):
 				return '<figure class="image team-member">
                             <picture class="image is-3by4 is-bordered team-member" style="width: 250px; height: unset;">
-                                 <source srcset="' . get_the_post_thumbnail_url( $post ) . '"/>
-                                <img src="' . get_theme_file_uri( 'static/img/user-solid-full.svg' ) . '"/>
+                                 <source srcset="' . get_the_post_thumbnail_url( $post, 'teamie' ) . '"/>
+                                <img src="' . get_theme_file_uri( 'static/img/user-solid-full.svg' ) . '" fetchpriority="high" decoding="async"/>
                             </picture>
                         </figure>';
 			endif;
+
 			return '<figure class="image team-member">
                             <picture class="image is-3by4 is-bordered team-member">
-                                 <source srcset="' . get_the_post_thumbnail_url( $post ) . '"/>
-                                <img src="' . get_theme_file_uri( 'static/img/user-solid-full.svg' ) . '"/>
+                                 <source srcset="' . get_the_post_thumbnail_url( $post, 'teamie' ) . '"/>
+                                <img src="' . get_theme_file_uri( 'static/img/user-solid-full.svg' ) . '" fetchpriority="auto"/>
                             </picture>
                         </figure>';
+		case 'movie':
+			return '<figure class="image">
+						<picture style="aspect-ratio: 800/310;">
+							<img src="' . get_the_post_thumbnail_url( $post ) . '" fetchpriority="high" decoding="async"/>
+						</picture>
+					</figure>';
 
 	}
 	if ( has_post_thumbnail() ):
@@ -119,7 +131,7 @@ add_filter( 'post_thumbnail_html', function ( $html, $post_id, $attr ) {
                             <picture>
                                 <source class="is-16by9" media="(min-width: 576px)"
                                         srcset="' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'desktop' ) . '"/>
-                                <img src="' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'mobile' ) . '"/>
+                                <img src="' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'mobile' ) . '" fetchpriority="auto"/>
                             </picture>
                         </figure>';
 	else:
@@ -127,7 +139,7 @@ add_filter( 'post_thumbnail_html', function ( $html, $post_id, $attr ) {
                             <picture>
                                 <source class="is-16by9" media="(min-width: 576px)"
                                         srcset="' . get_theme_file_uri( 'static/img/fallback.jpeg' ) . '"/>
-                                <img class="is-3by4" src="' . get_theme_file_uri( 'static/img/fallback-mobile.jpeg' ) . '"/>
+                                <img class="is-3by4" src="' . get_theme_file_uri( 'static/img/fallback-mobile.jpeg' ) . '" fetchpriority="auto"/>
                             </picture>
                         </figure>';
 	endif;
@@ -181,12 +193,25 @@ add_action( 'wp_head', function () {
 	$dark_primary_color_hsl = hex2hsl( $dark_primary_color );
 	$dark_text_color_hsl    = hex2hsl( $dark_text_color );
 
+	echo '<style>' . file_get_contents( get_theme_file_path( 'static/css/root.min.css' ) ) . '</style>';
 	echo '<style>:root{ --bulma-primary-h: ' . round( $primary_color_hsl[0] * 360 ) . 'deg; --bulma-primary-s: ' . $primary_color_hsl[1] * 100 . '%; --bulma-primary-l: ' . $primary_color_hsl[2] * 100 . '%;}</style>';
 	echo '<style>:root{ --bulma-scheme-h: ' . round( $primary_color_hsl[0] * 360 ) . 'deg; --bulma-scheme-s: ' . $primary_color_hsl[1] * 100 . '%; --bulma-scheme-main-l: ' . $primary_color_hsl[2] * 100 . '%;}</style>';
 	echo '<style>:root{ --bulma-text-h: ' . round( $text_color_hsl[0] * 360 ) . 'deg ; --bulma-text-s: ' . $text_color_hsl[1] * 100 . '%; --bulma-text-l: ' . $text_color_hsl[2] * 100 . '%;--bulma-text-strong-l: var(--bulma-text-l);--bulma-title-l: var(--bulma-text-l);}</style>';
 	echo '<style>@media(prefers-color-scheme: dark){:root{ --bulma-dark-h: ' . $dark_primary_color_hsl[0] * 360 . 'deg; --bulma-dark-s: ' . $dark_primary_color_hsl[1] * 100 . '%; --bulma-dark-l: ' . $dark_primary_color_hsl[2] * 100 . '%;}}</style>';
 	echo '<style>@media(prefers-color-scheme: dark){:root{ --bulma-scheme-h: ' . $dark_primary_color_hsl[0] * 360 . 'deg; --bulma-scheme-s: ' . $dark_primary_color_hsl[1] * 100 . '%; --bulma-scheme-main-l: ' . $dark_primary_color_hsl[2] * 100 . '%;}}</style>';
-	echo '<style>@media(prefers-color-scheme: dark){:root{ --bulma-text-h: ' . $dark_text_color_hsl[0] * 360 . 'deg ; --bulma-text-s: ' . $dark_text_color_hsl[1] *100 . '%; --bulma-text-l: ' . $dark_text_color_hsl[2]*100 . '%;}}</style>';
+	echo '<style>@media(prefers-color-scheme: dark){:root{ --bulma-text-h: ' . $dark_text_color_hsl[0] * 360 . 'deg ; --bulma-text-s: ' . $dark_text_color_hsl[1] * 100 . '%; --bulma-text-l: ' . $dark_text_color_hsl[2] * 100 . '%;}}</style>';
+	echo '<style>' . file_get_contents( get_theme_file_path( 'style.min.css' ) ) . '</style>';
+	echo "<style>@font-face {
+  font-family: 'Readex Pro';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('" . get_theme_file_uri( "static/webfonts/readex/readexpro.woff2" ) . "')
+}</style>";
+	echo '<style>:root{--text-font: ' . get_theme_mod( 'text_font_family', "InterVariable" ) . " ; --heading-font: '" . get_theme_mod( 'heading_font_family' ) . "' ;}</style>";
+} );
 
-	echo '<style>:root{--text-font: ' . get_theme_mod( 'text_font_family', "InterVariable" ) . ' ; --heading-font: ' . get_theme_mod( 'heading_font_family' ) . ' ;}</style>';
+
+add_action( 'wp_footer', function () {
+
 } );

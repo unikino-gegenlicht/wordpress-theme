@@ -1,0 +1,13 @@
+/*!
+ * Copyright (c) 2026. Unikino GEGENLICHT. Licensed under the EUPL v1.2 or later
+ */
+
+@use "bulma/sass/utilities/initial-variables" as iv;
+@use "bulma/sass/utilities/css-variables" as cv;
+@use "bulma/sass/themes/setup";
+@use "bulma/sass/themes/light";
+
+#{iv.$variables-host} {
+  @include light.light-theme;
+  @include setup.setup-theme;
+}

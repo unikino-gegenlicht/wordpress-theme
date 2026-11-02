@@ -1,0 +1,42 @@
+/*!
+ * Copyright (c) 2026. Unikino GEGENLICHT. Licensed under the EUPL v1.2 or later
+ */
+
+@use "bulma/sass/utilities" with (
+$family-primary: 'var(--text-font)',
+);
+
+@forward "bulma/sass/base";
+
+@use "bulma/sass/utilities/initial-variables" as iv;
+@use "bulma/sass/utilities/css-variables" as cv;
+@use "bulma/sass/themes/setup";
+@use "bulma/sass/themes/light";
+
+@forward "bulma/sass/layout/footer";
+@use "bulma/sass/components/navbar" with (
+  $navbar-colors: none,
+);
+@forward "bulma/sass/elements/content";
+@use "bulma/sass/elements/button" with (
+  $button-colors: none,
+);
+@forward "bulma/sass/elements/icon";
+@use "bulma/sass/elements/tag" with (
+  $tag-colors: none,
+);
+@forward "bulma/sass/elements/image";
+@forward "bulma/sass/helpers/typography";
+@forward "bulma/sass/helpers/aspect-ratio";
+@forward "bulma/sass/helpers/spacing";
+@forward "bulma/sass/helpers/visibility";
+@forward "bulma/sass/helpers/flexbox";
+//@forward "bulma/sass/helpers/color";
+@forward "bulma/sass/helpers/gap";
+@forward "bulma/sass/grid";
+
+@use "sass:string";
+
+@use "bulma/sass/utilities/mixins";
+@forward 'bulma-v1-tooltip/src/sass';
+

@@ -1,0 +1,13 @@
+/*!
+ * Copyright (c) 2026. Unikino GEGENLICHT. Licensed under the EUPL v1.2 or later
+ */
+
+@use "_variables.scss" with (
+$font-path: "../webfonts/fontawesome"
+);
+@use 'fontawesome';
+@use "brands.scss";
+@use "regular.scss";
+@use "solid.scss";
+@use "utility-fill-semibold.scss";
+@use "utility-semibold.scss";

@@ -15,49 +15,6 @@ Text Domain: cinema-press-theme
 Domain Path: /i18n
  */
 
-@use "bulma/sass/utilities" with (
-$family-primary: 'var(--text-font)',
-);
-
-@use "bulma/sass/form" with (
-  $input-shadow: none
-);
-
-@forward "bulma/sass/base";
-@forward "bulma/sass/themes";
-@forward "bulma/sass/layout/footer";
-@forward "bulma/sass/components/navbar";
-@forward "bulma/sass/elements/content";
-@forward "bulma/sass/elements/button";
-@forward "bulma/sass/elements/icon";
-@forward "bulma/sass/elements/tag";
-@forward "bulma/sass/elements/image";
-@forward "bulma/sass/helpers/typography";
-@forward "bulma/sass/helpers/aspect-ratio";
-@forward "bulma/sass/helpers/spacing";
-@forward "bulma/sass/helpers/visibility";
-@forward "bulma/sass/helpers/flexbox";
-@forward "bulma/sass/helpers/color";
-@forward "bulma/sass/helpers/gap";
-@forward "bulma/sass/grid";
-
-@use "sass:string";
-
-@use "bulma/sass/utilities/mixins";
-@forward 'bulma-v1-tooltip/src/sass';
-
-@use "static/scss/_variables.scss" with (
-$font-path: "./static/webfonts/fontawesome"
-);
-@use 'static/scss/fontawesome';
-@use "static/scss/brands.scss";
-@use "static/scss/regular.scss";
-@use "static/scss/solid.scss";
-@use "static/scss/utility-fill-semibold.scss";
-@use "static/scss/utility-semibold.scss";
-
-@import "static/css/inter.css";
-
 :root {
   font-feature-settings: "calt", "tnum", "case", "ss02", "ss03";
   text-align: justify;
@@ -88,14 +45,6 @@ $font-path: "./static/webfonts/fontawesome"
   --bulma-control-border-width: var(--border-thickness);
 }
 
-@font-face {
-  font-family: 'Readex Pro';
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url(static/webfonts/readex/readexpro.woff2)
-}
-
 html {
   background-color: var(--bulma-body-background-color);
 }
@@ -107,6 +56,7 @@ h1, h2, h3, h4, h5, h6,
   text-transform: uppercase !important;
   font-size: var(--heading-size);
   font-weight: bold !important;
+  text-align: left !important;
 
   &.has-border-bottom {
     border-bottom: var(--border-thickness) solid var(--bulma-body-color) !important;
@@ -210,15 +160,20 @@ h6 {
   --heading-size: 1rem;
 }
 
-.movie-list {
+.movie-list,.proposal-list {
 
-  .movie-list-title {
+  .movie-list-title,.proposal-list-title {
     font-family: var(--heading-font), sans-serif;
     text-transform: uppercase;
     padding: 0.25rem;
     font-size: 1.25rem;
     background-color: var(--bulma-body-color);
     color: var(--bulma-body-background-color);
+  }
+
+  .proposal-list-title {
+    background-color: var(--bulma-body-background-color) !important;
+    color: var(--bulma-body-color) !important;
   }
 
   .movie-list-entries {
@@ -234,12 +189,7 @@ h6 {
         margin-bottom: 0.2rem;
       }
 
-      /*border-top: var(--shared-border-thickness) solid var(--bulma-body-color);*/
       border-bottom: var(--border-thickness) solid var(--bulma-body-color);
-
-      &:last-child {
-        border-bottom: var(--border-thickness) solid var(--bulma-body-color);
-      }
 
     }
   }
@@ -344,12 +294,28 @@ figure.team-member {
   --bulma-hr-background-color: var(--fg) !important;
   color: var(--bulma-footer-color) !important;
 
-  &>* {
+  & > * {
     --bulma-body-color: var(--bulma-footer-color) !important;
 
-    &>* {
+    & > * {
       --bulma-body-color: var(--bulma-footer-color) !important;
 
+    }
+  }
+}
+
+.teamie-grid {
+  .cell {
+    width: fit-content;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .proposing-teamie {
+    background-color: var(--bulma-body-background-color) !important;
+
+    figure.team-member {
+      background-color: var(--bulma-body-background-color) !important;
     }
   }
 }
