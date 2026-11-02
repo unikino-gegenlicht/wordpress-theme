@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: CinemaPress CINEMA_PRESS_THEME_VERSION\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/cinema-press-theme\n"
 "POT-Creation-Date: 2026-10-18T22:18:13+00:00\n"
-"PO-Revision-Date: 2026-11-01 23:28+0100\n"
+"PO-Revision-Date: 2026-11-02 20:56+0100\n"
 "Last-Translator: Jan Eike Suchard <jan@suchard.cloud>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -309,7 +309,7 @@ msgstr "Stelle den Text ein, der auf das Archiv verweist"
 msgid "Intermission"
 msgstr "Spielpause"
 
-#: header-not_found.php:34 header-semester_break.php:34 header.php:34
+#: navigation.php:8
 msgid "Main Navigation"
 msgstr "Hauptnavigation"
 
@@ -462,3 +462,51 @@ msgstr "oder zur Startseite zu gehen, auf der unser aktuelles Programm zu sehen 
 #: 404.php:18
 msgid "To the landing page"
 msgstr "Zur Startseite"
+
+#: archive-movie.php:20
+msgid "The following movies have been in the program at least once in our cinema. We are always trying to broaden our screening palette so stay tuned for new admissions to this list"
+msgstr "Die folgenden Filme liefen bereits bei uns im Kino. Wir versuchen unser Repertoire an gezeigten Filmen zu erweitern, also schau gerne vorbei um mitzubekommen, wenn neue Filme zu dieser Liste hinzukommen"
+
+#: single-movie.php:18
+msgid "Directors"
+msgstr "Regissuere"
+
+#: single-movie.php:26
+msgid "Actors"
+msgstr "Schauspielende"
+
+#: single-movie.php:36
+msgid "Technical Details"
+msgstr "Technische Details"
+
+#: single-movie.php:38
+msgid "Released in"
+msgstr "Veröffentlicht in"
+
+#: single-movie.php:44
+msgid "Aspect Ratio"
+msgstr "Seitenverhältnis"
+
+#: single-movie.php:51
+msgid "Running Time"
+msgstr "Laufzeit"
+
+#: single-movie.php:59
+msgid "Country of Origin"
+msgstr "Drehorte"
+
+#: single-movie.php:80
+msgid "See reviews on Letterboxd"
+msgstr "Lese Reviews auf Letterboxd"
+
+#: single-movie.php:84
+msgid "More details on TMDB"
+msgstr "Mehr Details auf TMDB"
+
+#: single-movie.php:93
+msgid "More details on IMDB"
+msgstr "Mehr Details auf IMDB"
+
+#: navigation.php:47
+msgid "Show Dashboard"
+msgstr "Dashboard anzeigen"

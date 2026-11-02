@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-01T22:26:33+00:00\n"
+"POT-Creation-Date: 2026-11-02T19:56:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: cinema-press-theme\n"
@@ -60,6 +60,10 @@ msgstr ""
 
 #: 404.php:18
 msgid "To the landing page"
+msgstr ""
+
+#: archive-movie.php:20
+msgid "The following movies have been in the program at least once in our cinema. We are always trying to broaden our screening palette so stay tuned for new admissions to this list"
 msgstr ""
 
 #: archive-screening.php:15
@@ -352,10 +356,52 @@ msgstr ""
 msgid "Footer Bottom Menu"
 msgstr ""
 
-#: header-not_found.php:34
-#: header-semester_break.php:34
-#: header.php:34
+#: navigation.php:8
 msgid "Main Navigation"
+msgstr ""
+
+#: navigation.php:47
+msgid "Show Dashboard"
+msgstr ""
+
+#: single-movie.php:18
+msgid "Directors"
+msgstr ""
+
+#: single-movie.php:26
+msgid "Actors"
+msgstr ""
+
+#: single-movie.php:36
+msgid "Technical Details"
+msgstr ""
+
+#: single-movie.php:38
+msgid "Released in"
+msgstr ""
+
+#: single-movie.php:44
+msgid "Aspect Ratio"
+msgstr ""
+
+#: single-movie.php:51
+msgid "Running Time"
+msgstr ""
+
+#: single-movie.php:59
+msgid "Country of Origin"
+msgstr ""
+
+#: single-movie.php:80
+msgid "See reviews on Letterboxd"
+msgstr ""
+
+#: single-movie.php:84
+msgid "More details on TMDB"
+msgstr ""
+
+#: single-movie.php:93
+msgid "More details on IMDB"
 msgstr ""
 
 #: single-screening.php:12
