@@ -134,14 +134,49 @@ if ( $post !== null ):
     <main class="mb-6 content-container content">
         <h1 class="title"><?= esc_html__( 'Intermission', 'cinema-press-theme' ) ?></h1>
         <figure class="image">
-            <picture>
+            <picture style="filter: saturate(0);">
                 <source class="is-16by9" media="(min-width: 576px)"
-                        srcset="<?= wp_get_attachment_image_srcset( get_theme_mod( 'semester_break_image' ), size: 'desktop' ) ?>"/>
-                <?= wp_get_attachment_image( get_theme_mod( 'semester_break_image' ), size: 'mobile', attr: [ 'class' => 'is-3by4' ] ) ?>
+                        srcset="<?= wp_get_attachment_image_srcset( get_theme_mod( 'semester_break_image' ), size: 'desktop' ) ?: get_theme_file_uri( 'static/img/semester-break.jpg' ) ?>"/>
+                <?= wp_get_attachment_image( get_theme_mod( 'semester_break_image' ), size: 'mobile', attr: [ 'class' => 'is-3by4' ] ) ?: '<img src=' . get_theme_file_uri( 'static/img/semester-break.jpg' ) . '/>' ?>
             </picture>
         </figure>
         <h2><?= esc_html( get_theme_mod( 'semester_break_tagline' ) ) ?></h2>
         <?= apply_filters( 'the_content', get_theme_mod( 'semester_break_text' ) ) ?>
     </main>
+<?php endif; ?>
+<?php if ( in_array( "team", get_theme_mod( 'displayed_blocks', [] ) ) ): ?>
+    <style>
+        #team-intro {
+            --bulma-body-color: <?= get_theme_mod('team_block_text_color', 'inherit') ?>;
+            --bulma-body-background-color: <?= get_theme_mod('team_block_background', 'inherit') ?>;
+            --bulma-content-heading-color: var(--bulma-body-color) !important;
+
+            background: var(--bulma-body-background-color);
+            color: var(--bulma-body-color);
+
+            .content {
+                --bulma-content-heading-color: var(--bulma-body-color) !important;
+
+            }
+
+        }
+
+        @media (prefers-color-scheme: dark) {
+            #team-intro {
+                --bulma-body-color: <?= get_theme_mod('team_block_text_color_dark', 'inherit') ?>;
+                --bulma-body-background-color: <?= get_theme_mod('team_block_background_dark', 'inherit') ?>;
+            }
+        }
+    </style>
+    <article id="team-intro" class="py-3">
+        <div class="content-container content">
+            <h2><?= get_theme_mod( 'team_block_title' ) ?></h2>
+            <?= apply_filters('the_content', get_theme_mod( 'team_block_text' ) ) ?>
+            <a class="button is-outlined is-fullwidth is-uppercase font-heading has-text-weight-extrabold py-2 is-size-5" href="<?= get_post_type_archive_link('team_member') ?>">
+                <?= esc_html__('To our team members', 'cinema-press-theme') ?>
+            </a>
+        </div>
+    </article>
+
 <?php endif; ?>
 <?php get_footer(); ?>
