@@ -4,7 +4,7 @@ Theme URI: https://github.com/unikino-gegenlicht/wordpress-theme
 Author: Jan Eike Suchard, Philip Kaufmann
 Author URI: https://gegenlicht.net/team/jan, https://gegenlicht.net/team/philip
 Description: The CinemaPress theme offers small student lead cinemas a possibility to easily integrate the contents provided by the CinemaPress plugin into their website. In addition, the theme also generates <a href="https://schema.org">Schema.org</a> markup in case YoastSEO is not installed on the website.
-Tags: entertainment,single-column,custom-logo,custom-menu,features-images,theme-options,translation-ready
+Tags: entertainment,one-column,custom-logo,custom-colors,custom-menu,featured-images,theme-options,translation-ready,footer-widgets,theme-options
 VERSION: CINEMA_PRESS_THEME_VERSION
 Requires at least: 6.7
 Tested up to: 7.1
@@ -23,7 +23,7 @@ Domain Path: /i18n
   hyphenate-limit-chars: 6 4 4;
 
   --max-content-width: 800px;
-  --content-padding: 1.25rem;
+  --content-padding: 0.75em;
   --bulma-hr-margin: 0.75rem 0;
   --border-thickness: 2px;
   --shared-border-thickness: calc(var(--border-thickness) / 2);
@@ -160,9 +160,9 @@ h6 {
   --heading-size: 1rem;
 }
 
-.movie-list,.proposal-list {
+.movie-list, .proposal-list {
 
-  .movie-list-title,.proposal-list-title {
+  .movie-list-title, .proposal-list-title {
     font-family: var(--heading-font), sans-serif;
     text-transform: uppercase;
     padding: 0.25rem;
@@ -181,7 +181,7 @@ h6 {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: var(--bulma-body-color);
+      color: var(--bulma-content-heading-color);
 
       .movie-title {
         line-height: 1.125;
@@ -189,7 +189,7 @@ h6 {
         margin-bottom: 0.2rem;
       }
 
-      border-bottom: var(--border-thickness) solid var(--bulma-body-color);
+      border-bottom: var(--border-thickness) solid var(--bulma-content-heading-color);
 
     }
   }
@@ -322,4 +322,27 @@ figure.team-member {
 
 .icon-text {
   align-items: center !important;
+}
+
+.rules {
+  ul {
+    margin-inline-start: unset !important;
+
+    & > li {
+      &::marker {
+        display: none;
+      }
+
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+
+      margin-top: 0.75rem;
+      margin-bottom: 0.75rem;
+
+      background-color: var(--bulma-body-color) !important;
+      color: var(--bulma-body-background-color) !important;
+
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    }
+  }
 }
