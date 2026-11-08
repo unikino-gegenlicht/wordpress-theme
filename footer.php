@@ -6,7 +6,6 @@
 defined( 'ABSPATH' ) || exit;
 
 ?>
-<hr>
 <footer class="footer m-0">
     <div class="content-container">
         <p class="is-size-2 mb-0 font-readex"><?php bloginfo( 'name' ); ?></p>
