@@ -103,25 +103,34 @@ add_filter( 'post_thumbnail_html', function ( $html, $post_id, $attr ) {
                         </figure>';
 			endif;
 		case 'team_member':
-			if ( is_post_type_archive( 'team_member' ) ):
-				return '<figure class="image team-member">
-                            <picture class="image is-3by4 is-bordered team-member" style="width: 250px; height: unset;">
-                                 <source srcset="' . get_the_post_thumbnail_url( $post, 'teamie' ) . '"/>
-                                <img src="' . get_theme_file_uri( 'static/img/user-solid-full.svg' ) . '" fetchpriority="high" decoding="async"/>
-                            </picture>
-                        </figure>';
-			endif;
-
 			return '<figure class="image team-member">
                             <picture class="image is-3by4 is-bordered team-member">
                                  <source srcset="' . get_the_post_thumbnail_url( $post, 'teamie' ) . '"/>
-                                <img src="' . get_theme_file_uri( 'static/img/user-solid-full.svg' ) . '" fetchpriority="auto"/>
+                                <img src="' . get_theme_file_uri( 'static/img/team-fallback.svg' ) . '" fetchpriority="auto"/>
                             </picture>
                         </figure>';
 		case 'movie':
 			return '<figure class="image">
 						<picture style="aspect-ratio: 800/310;">
-							<img src="' . get_the_post_thumbnail_url( $post ) . '" fetchpriority="high" decoding="async"/>
+							<source srcset="' . (rwmb_meta( 'logo_dark' )['full_url'] ?? "") . '" media="(prefers-color-scheme: dark)">
+							<source srcset="' . (rwmb_meta( 'logo' )['full_url'] ?? "") . '">
+							<img src="' . get_theme_file_uri( 'static/img/movie-fallback.png' ) . '" fetchpriority="high" decoding="async"/>
+						</picture>
+					</figure>';
+		case 'cooperation_partner':
+			return '<figure class="image">
+						<picture style="max-height: 10rem">
+							<source srcset="' . (rwmb_meta( 'logo_dark' )['full_url'] ?? "") . '" media="(prefers-color-scheme: dark)">
+							<source srcset="' . (rwmb_meta( 'logo' )['full_url'] ?? "") . '"/>
+							<img src="' . get_theme_file_uri( 'static/img/cooperation-fallback.svg' ) . '" fetchpriority="auto"  style="height: 10rem; object-fit: contain;"/>
+						</picture>
+					</figure>';
+		case 'sponsor':
+			return '<figure class="image">
+						<picture style="max-height: 10rem">
+							<source srcset="' . (rwmb_meta( 'logo_dark' )['full_url'] ?? "") . '" media="(prefers-color-scheme: dark)">
+							<source srcset="' . (rwmb_meta( 'logo' )['full_url'] ?? "") . '"/>
+							<img src="' . get_theme_file_uri( 'static/img/sponsor-fallback.svg' ) . '" fetchpriority="auto"  style="height: 10rem; object-fit: contain;"/>
 						</picture>
 					</figure>';
 
