@@ -64,9 +64,12 @@ $movie = get_post( rwmb_meta( 'movie' ) );
             <?php else: ?>
                 <span class="tag is-rounded is-primary"><?= esc_html__( 'Silent Movie', 'cinema-press-theme' ) ?></span>
             <?php endif; ?>
-            <?php if ( !rwmb_meta( 'has_subtitles' ) ): ?>
-                <span class="tag is-rounded is-danger"><?= esc_html__( 'No Subtitles', 'cinema-press-theme' ) ?></span>
-
+            <?php if ( ! rwmb_meta( 'has_subtitles' ) ): ?>
+                <?php if ( empty( rwmb_meta( 'audio_language' ) ) || rwmb_meta( 'audio_language' ) !== 'zxx' ) : ?>
+                    <span class="tag is-rounded is-danger"><?= esc_html__( 'Without Intertitles', 'cinema-press-theme' ) ?></span>
+                <?php else: ?>
+                    <span class="tag is-rounded is-danger"><?= esc_html__( 'No Subtitles', 'cinema-press-theme' ) ?></span>
+                <?php endif; ?>
             <?php else: ?>
                 <?php if ( empty( rwmb_meta( 'audio_language' ) ) || rwmb_meta( 'audio_language' ) !== 'zxx' ) : ?>
                     <span class="tag is-rounded is-danger"><?= esc_html__( 'Without Intertitles', 'cinema-press-theme' ) ?></span>
@@ -93,6 +96,7 @@ $movie = get_post( rwmb_meta( 'movie' ) );
         echo $value;
         ?>
         <?php do_action( 'cinema_press_theme_render_reservation_button' ) ?>
+    </div>
 </main>
 <?php if ( ( get_option( 'cinema-press' )['enable_teamie_screening_assignment'] ?? 0 ) === 1 && ! empty( rwmb_meta( 'proposed_by' ) ) ): ?>
     <aside class="has-background-text pt-1 pb-3 mt-5"
