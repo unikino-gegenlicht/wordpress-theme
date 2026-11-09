@@ -48,7 +48,7 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
 	$header_args = array(
-		'default-image'      => get_template_directory_uri() . '/static/img/header.svg',
+		'default-image'      => get_theme_file_uri('static/img/header.png'),
 		'default-text-color' => 'ffffff',
 		'width'              => 150,
 		'height'             => 30,
