@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-02T19:56:09+00:00\n"
+"POT-Creation-Date: 2026-11-08T21:15:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: cinema-press-theme\n"
@@ -62,6 +62,14 @@ msgstr ""
 msgid "To the landing page"
 msgstr ""
 
+#: archive-cooperation_partner.php:28
+msgid "Get Started"
+msgstr ""
+
+#: archive-cooperation_partner.php:31
+msgid "Our Cooperation Parnters"
+msgstr ""
+
 #: archive-movie.php:20
 msgid "The following movies have been in the program at least once in our cinema. We are always trying to broaden our screening palette so stay tuned for new admissions to this list"
 msgstr ""
@@ -74,22 +82,22 @@ msgstr ""
 msgid "For now the archive remains empty, as there have been no recorded screenings. Check back later"
 msgstr ""
 
+#: archive-sponsor.php:9
+msgid "Our"
+msgstr ""
+
 #: archive-team_member.php:24
 msgid "Active Members"
 msgstr ""
 
+#. translators: %1$s is the year the member joined us
 #: archive-team_member.php:31
 #, php-format
 msgid "active since %1$s"
 msgstr ""
 
-#: archive-team_member.php:50
-#: archive-team_member.php:69
-#, php-format
-msgid "active from %1$s until %2$s"
-msgstr ""
-
-#: archive-team_member.php:70
+#. translators: %1$s is the year the member was made an honorary member
+#: archive-team_member.php:68
 #, php-format
 msgid "honorary member since %1$s"
 msgstr ""
@@ -139,19 +147,49 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: customizer/block-coops.php:13
+#: customizer/block-coops.php:14
 #: customizer/front-page.php:62
 msgid "Cooperation Partners and Supporters"
 msgstr ""
 
-#: customizer/block-coops.php:13
+#: customizer/block-coops.php:14
 msgid "Configure the content of the block showcasing our supporters and cooperation partners"
 msgstr ""
 
-#: customizer/block-coops.php:35
+#: customizer/block-coops.php:39
 #: customizer/block-location.php:53
-#: customizer/block-team.php:55
+#: customizer/block-team.php:59
 msgid "Block Text"
+msgstr ""
+
+#: customizer/block-coops.php:44
+#: customizer/block-team.php:67
+msgid "Background Color (Light Mode)"
+msgstr ""
+
+#: customizer/block-coops.php:45
+#: customizer/block-coops.php:55
+msgid "Select a color for primary color."
+msgstr ""
+
+#: customizer/block-coops.php:49
+#: customizer/block-team.php:72
+msgid "Font Color (Light Mode)"
+msgstr ""
+
+#: customizer/block-coops.php:50
+#: customizer/block-coops.php:60
+msgid "Select a color for text color."
+msgstr ""
+
+#: customizer/block-coops.php:54
+#: customizer/block-team.php:77
+msgid "Background Color (Dark Mode)"
+msgstr ""
+
+#: customizer/block-coops.php:59
+#: customizer/block-team.php:82
+msgid "Font Color (Dark Mode)"
 msgstr ""
 
 #: customizer/block-location.php:15
@@ -172,7 +210,7 @@ msgid "Upload an image for the block header which will be displayed above the bl
 msgstr ""
 
 #: customizer/block-location.php:46
-#: customizer/block-team.php:46
+#: customizer/block-team.php:50
 msgid "Block Title"
 msgstr ""
 
@@ -182,6 +220,13 @@ msgstr ""
 
 #: customizer/block-location.php:61
 msgid "This page contains detailed information about the location"
+msgstr ""
+
+#: customizer/block-team.php:68
+#: customizer/block-team.php:73
+#: customizer/block-team.php:78
+#: customizer/block-team.php:83
+msgid "Select a color for primary color. Selecting no color will inherit the default theme colors"
 msgstr ""
 
 #: customizer/DarkModeBrandingCustomizer.php:15
@@ -313,25 +358,29 @@ msgstr ""
 msgid "Next screening"
 msgstr ""
 
-#: front-page.php:52
-#: front-page.php:78
+#: front-page.php:45
+#: front-page.php:71
 msgid "Open movie"
 msgstr ""
 
-#: front-page.php:69
+#: front-page.php:62
 msgid "and following at"
 msgstr ""
 
-#: front-page.php:102
+#: front-page.php:95
 msgid "Sadly, there is no more program for this semester"
 msgstr ""
 
-#: front-page.php:107
+#: front-page.php:100
 msgid "The Semester Programme"
 msgstr ""
 
-#: front-page.php:135
+#: front-page.php:128
 msgid "Intermission"
+msgstr ""
+
+#: front-page.php:170
+msgid "To our team members"
 msgstr ""
 
 #. translators: date in US notation
@@ -360,8 +409,24 @@ msgstr ""
 msgid "Main Navigation"
 msgstr ""
 
-#: navigation.php:47
+#: navigation.php:50
 msgid "Show Dashboard"
+msgstr ""
+
+#: single-cooperation_partner.php:74
+msgid "Links"
+msgstr ""
+
+#: single-cooperation_partner.php:124
+msgid "Past Cooperations"
+msgstr ""
+
+#. translators: %s is the date the movie was screened on
+#: single-cooperation_partner.php:152
+#: single-team_member.php:134
+#: single-team_member.php:181
+#, php-format
+msgid "Screened on %s"
 msgstr ""
 
 #: single-movie.php:18
@@ -448,46 +513,47 @@ msgstr ""
 msgid "Silent Movie"
 msgstr ""
 
-#: single-screening.php:68
-msgid "No Subtitles"
-msgstr ""
-
-#: single-screening.php:72
+#: single-screening.php:69
+#: single-screening.php:75
 msgid "Without Intertitles"
 msgstr ""
 
-#: single-screening.php:74
+#: single-screening.php:71
+msgid "No Subtitles"
+msgstr ""
+
+#: single-screening.php:77
 msgid "Subtitles in"
 msgstr ""
 
-#: single-screening.php:81
+#: single-screening.php:84
 msgid "What is the movie about?"
 msgstr ""
 
-#: single-screening.php:88
+#: single-screening.php:91
 msgid "Why is the movie worth seeing?"
 msgstr ""
 
 #. translators: %s is the name of the proposer
-#: single-screening.php:104
+#: single-screening.php:116
 #, php-format
 msgid "This movie was proposed by %s"
 msgstr ""
 
 #. translators: %1$s is a comma separated list, %2$s is the last listed proposer
-#: single-screening.php:110
+#: single-screening.php:122
 #, php-format
 msgid "This movie was proposed by %1$s and %2$s"
 msgstr ""
 
-#: single-screening.php:121
-#: single-screening.php:165
+#: single-screening.php:133
+#: single-screening.php:177
 msgid "Other proposals"
 msgstr ""
 
 #. translators: %s is the year the movie was screened in
-#: single-screening.php:145
-#: single-screening.php:189
+#: single-screening.php:157
+#: single-screening.php:201
 #, php-format
 msgid "Screened in %s"
 msgstr ""
@@ -513,11 +579,17 @@ msgstr ""
 #. translators: %s is the name of the team member
 #: single-team_member.php:107
 #, php-format
-msgid "Proposals by %s"
+msgid "Future screenings by %s"
 msgstr ""
 
-#. translators: %s is the date the movie was screened on
-#: single-team_member.php:133
+#. translators: %s is the name of the team member
+#: single-team_member.php:145
 #, php-format
-msgid "Screened on %s"
+msgid "Sadly, %s didn't propose screenings for the current semester. Please check back later"
+msgstr ""
+
+#. translators: %s is the name of the team member
+#: single-team_member.php:154
+#, php-format
+msgid "Past proposals by %s"
 msgstr ""

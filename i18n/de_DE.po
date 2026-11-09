@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: CinemaPress CINEMA_PRESS_THEME_VERSION\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/cinema-press-theme\n"
 "POT-Creation-Date: 2026-10-18T22:18:13+00:00\n"
-"PO-Revision-Date: 2026-11-02 20:56+0100\n"
+"PO-Revision-Date: 2026-11-08 22:16+0100\n"
 "Last-Translator: Jan Eike Suchard <jan@suchard.cloud>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -42,15 +42,15 @@ msgstr "https://gegenlicht.net/team/jan, https://gegenlicht.net/team/philip"
 msgid "Next screening"
 msgstr "Nächste Vorstellung"
 
-#: front-page.php:52 front-page.php:78
+#: front-page.php:45 front-page.php:71
 msgid "Open movie"
 msgstr "Zum Film"
 
-#: front-page.php:69
+#: front-page.php:62
 msgid "and following at"
 msgstr "und im Anschluss um"
 
-#: front-page.php:102
+#: front-page.php:95
 msgid "Sadly, there is no more program for this semester"
 msgstr "Leider ist das Programm für das Semester vorbei"
 
@@ -96,34 +96,34 @@ msgstr "mit %s"
 msgid "Audio in"
 msgstr "Ton in"
 
-#: single-screening.php:74
+#: single-screening.php:77
 msgid "Subtitles in"
 msgstr "Untertitel in"
 
-#: single-screening.php:68
+#: single-screening.php:71
 msgid "No Subtitles"
 msgstr "Keine Untertitel"
 
-#: single-screening.php:81
+#: single-screening.php:84
 msgid "What is the movie about?"
 msgstr "Worum geht's?"
 
-#: single-screening.php:88
+#: single-screening.php:91
 msgid "Why is the movie worth seeing?"
 msgstr "Darum sehenswert!"
 
 #. translators: %s is the name of the proposer
-#: single-screening.php:104
+#: single-screening.php:116
 #, php-format
 msgid "This movie was proposed by %s"
 msgstr "Dieser Film wurde von %s vorgeschlagen"
 
-#: single-screening.php:121 single-screening.php:165
+#: single-screening.php:133 single-screening.php:177
 msgid "Other proposals"
 msgstr "Weitere Vorschläge"
 
 #. translators: %s is the year the movie was screened in
-#: single-screening.php:145 single-screening.php:189
+#: single-screening.php:157 single-screening.php:201
 #, php-format
 msgid "Screened in %s"
 msgstr "%s gezeigt"
@@ -160,16 +160,16 @@ msgstr "Archiv"
 msgid "Configure the display of the archive page"
 msgstr "Konfiguriere die Inhalte und Anzeige des Film- und Eventarchivs"
 
-#: customizer/block-coops.php:13 customizer/front-page.php:62
+#: customizer/block-coops.php:14 customizer/front-page.php:62
 msgid "Cooperation Partners and Supporters"
 msgstr "Kooperationspartner:innen und Unterstützer:innen"
 
-#: customizer/block-coops.php:13
+#: customizer/block-coops.php:14
 msgid "Configure the content of the block showcasing our supporters and cooperation partners"
 msgstr "Stelle die Inhalte des Blocks ein in dem unsere Kooperationspartner*innen und Unterstützer*innen gezeigt werden"
 
-#: customizer/block-coops.php:35 customizer/block-location.php:53
-#: customizer/block-team.php:55
+#: customizer/block-coops.php:39 customizer/block-location.php:53
+#: customizer/block-team.php:59
 msgid "Block Text"
 msgstr "Text des Blocks"
 
@@ -189,7 +189,7 @@ msgstr "Bild im Header des Block"
 msgid "Upload an image for the block header which will be displayed above the block title"
 msgstr "Lade ein Bild hoch (oder wähle ein vorhandenes aus) das auf dem Bock über dem Titel angezeigt wird"
 
-#: customizer/block-location.php:46 customizer/block-team.php:46
+#: customizer/block-location.php:46 customizer/block-team.php:50
 msgid "Block Title"
 msgstr "Überschrift des Blocks"
 
@@ -305,7 +305,7 @@ msgstr "Überleitungstext zum Archiv"
 msgid "Set the content of the text referring to the archive"
 msgstr "Stelle den Text ein, der auf das Archiv verweist"
 
-#: front-page.php:135
+#: front-page.php:128
 msgid "Intermission"
 msgstr "Spielpause"
 
@@ -317,7 +317,7 @@ msgstr "Hauptnavigation"
 msgid "Silent Movie"
 msgstr "Stummfilm"
 
-#: single-screening.php:72
+#: single-screening.php:69 single-screening.php:75
 msgid "Without Intertitles"
 msgstr "Ohne Zwischentitel"
 
@@ -342,7 +342,7 @@ msgid "with %1$s and %2$s"
 msgstr "mit %1$s und %2$s"
 
 #. translators: %1$s is a comma separated list, %2$s is the last listed proposer
-#: single-screening.php:110
+#: single-screening.php:122
 #, php-format
 msgid "This movie was proposed by %1$s and %2$s"
 msgstr "Dieser Film wurde von %1$s und %2$s vorgeschlagen"
@@ -366,7 +366,8 @@ msgid "Honorary member since %1$s"
 msgstr "Ehrenmitglied seit %1$s"
 
 #. translators: %s is the date the movie was screened on
-#: single-team_member.php:133
+#: single-cooperation_partner.php:152 single-team_member.php:134
+#: single-team_member.php:181
 #, php-format
 msgid "Screened on %s"
 msgstr "Am %s gezeigt"
@@ -399,12 +400,6 @@ msgstr "Überschriften"
 msgid "Light Mode"
 msgstr "Light Mode"
 
-#. translators: %s is the name of the team member
-#: single-team_member.php:107
-#, php-format
-msgid "Proposals by %s"
-msgstr "Vorschläge von %s"
-
 #: single-screening.php:61
 msgid "Age Rating"
 msgstr "Altersfreigabe"
@@ -421,22 +416,19 @@ msgstr "Das Archiv ist bis auf weiteres leer, da es keine anzeigbaren Vorstellun
 msgid "Active Members"
 msgstr "Aktive Mitglieder"
 
+#. translators: %1$s is the year the member joined us
 #: archive-team_member.php:31
 #, php-format
 msgid "active since %1$s"
 msgstr "aktiv seit %1$s"
 
-#: archive-team_member.php:50 archive-team_member.php:69
-#, php-format
-msgid "active from %1$s until %2$s"
-msgstr "Von %1$s bis %2$s aktiv"
-
-#: archive-team_member.php:70
+#. translators: %1$s is the year the member was made an honorary member
+#: archive-team_member.php:68
 #, php-format
 msgid "honorary member since %1$s"
 msgstr "Ehrenmitglied seit %1$s"
 
-#: front-page.php:107
+#: front-page.php:100
 msgid "The Semester Programme"
 msgstr "Das Semesterprogramm"
 
@@ -507,6 +499,77 @@ msgstr "Mehr Details auf TMDB"
 msgid "More details on IMDB"
 msgstr "Mehr Details auf IMDB"
 
-#: navigation.php:47
+#: navigation.php:50
 msgid "Show Dashboard"
 msgstr "Dashboard anzeigen"
+
+#: archive-cooperation_partner.php:28
+msgid "Get Started"
+msgstr "Jetzt Anfragen"
+
+#: archive-cooperation_partner.php:31
+msgid "Our Cooperation Parnters"
+msgstr "Unsere Kooperationspartner:innnen"
+
+#: archive-sponsor.php:9
+msgid "Our"
+msgstr "Unsere"
+
+#: customizer/block-coops.php:44 customizer/block-team.php:67
+msgid "Background Color (Light Mode)"
+msgstr "Hintergrundfarbe (Heller Modus)"
+
+#: customizer/block-coops.php:45 customizer/block-coops.php:55
+msgid "Select a color for primary color."
+msgstr "Wähle eine Primärfarbe aus"
+
+#: customizer/block-coops.php:49 customizer/block-team.php:72
+msgid "Font Color (Light Mode)"
+msgstr "Textfarbe (Heller Modus)"
+
+#: customizer/block-coops.php:50 customizer/block-coops.php:60
+msgid "Select a color for text color."
+msgstr "Wähle eine Textfarbe aus"
+
+#: customizer/block-coops.php:54 customizer/block-team.php:77
+msgid "Background Color (Dark Mode)"
+msgstr "Hintergrundfarbe (Dark Mode)"
+
+#: customizer/block-coops.php:59 customizer/block-team.php:82
+msgid "Font Color (Dark Mode)"
+msgstr "Textfarbe (Dark Mode)"
+
+#: customizer/block-team.php:68 customizer/block-team.php:73
+#: customizer/block-team.php:78 customizer/block-team.php:83
+msgid "Select a color for primary color. Selecting no color will inherit the default theme colors"
+msgstr "Wähle eine Primärfarbe aus. Wird keine Farbe ausgewählt so werden die globalen Farben benutzt"
+
+#: front-page.php:170
+msgid "To our team members"
+msgstr "Zu unserem Team"
+
+#: single-cooperation_partner.php:74
+msgid "Links"
+msgstr "Links"
+
+#: single-cooperation_partner.php:124
+msgid "Past Cooperations"
+msgstr "Vergangene Kooperationen"
+
+#. translators: %s is the name of the team member
+#: single-team_member.php:145
+#, php-format
+msgid "Sadly, %s didn't propose screenings for the current semester. Please check back later"
+msgstr "Leider hat %s keine Vorstellungen für dieses Semester vorgeschlagen. Schau später nochmal vorbei"
+
+#. translators: %s is the name of the team member
+#: single-team_member.php:154
+#, php-format
+msgid "Past proposals by %s"
+msgstr "Vergangene Vorstellungen von %s"
+
+#. translators: %s is the name of the team member
+#: single-team_member.php:107
+#, php-format
+msgid "Future screenings by %s"
+msgstr "Kommende Vorstellungen von %s"
