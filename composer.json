@@ -13,7 +13,7 @@
         "sokil/php-isocodes": "^4.4",
         "ext-gettext": "*",
         "spatie/schema-org": "^5.0",
-        "symfony/config": "^8.1"
+        "symfony/config": "8.1.11.0"
     },
     "require-dev": {
         "szepeviktor/phpstan-wordpress": "^2.0"
