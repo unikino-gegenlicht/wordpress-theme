@@ -39,6 +39,12 @@
                 <?php
             }
             ?>
+            <?php if (is_single() && current_user_can('edit_post', $post->ID)): ?>
+                <a class="navbar-item is-size-5-touch px-2" href="<?= get_edit_post_link($post) ?>">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span class="is-hidden-desktop is-uppercase font-heading"><?= esc_html__( 'Edit' ) ?></span>
+                </a>
+            <?php endif; ?>
 
             <?php if ( current_user_can_for_site( 0, 'edit_posts' ) ): ?>
                 <a class="navbar-item is-size-5-touch px-2" href="<?= admin_url() ?>">
