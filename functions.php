@@ -103,12 +103,10 @@ add_filter( 'post_thumbnail_html', function ( $html, $post_id, $attr ) {
                         </figure>';
 			endif;
 		case 'team_member':
-			return '<figure class="image team-member">
-                            <picture class="image is-3by4 is-bordered team-member">
+			return '<picture class="image is-3by4 is-bordered team-member">
                                  <source srcset="' . get_the_post_thumbnail_url( $post, 'teamie' ) . '"/>
                                 <img src="' . get_theme_file_uri( 'static/img/team-fallback.svg' ) . '" fetchpriority="auto"/>
-                            </picture>
-                        </figure>';
+                            </picture>';
 		case 'movie':
 			return '<figure class="image">
 						<picture style="aspect-ratio: 800/310;">
