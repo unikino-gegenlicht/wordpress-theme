@@ -17,8 +17,8 @@ Domain Path: /i18n
 
 :root {
   font-feature-settings: "calt", "tnum", "case", "ss02", "ss03";
-  text-align: justify;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  word-break: auto-phrase;
   hyphens: auto;
   hyphenate-limit-chars: 6 4 4;
 
@@ -113,7 +113,7 @@ h1, h2, h3, h4, h5, h6,
   &.is-outlined {
     --bulma-button-border-width: var(--bulma-control-border-width);
 
-    border-color: var(--bulma-body-color);
+    border-color: var(--bulma-body-color) !important;
     color: var(--bulma-body-color);
     background-color: var(--bulma-body-background-color);
 
@@ -133,7 +133,7 @@ h1, h2, h3, h4, h5, h6,
 
 
 .footer {
-  --bulma-footer-padding: 1rem 1.5rem 3rem !important;
+  --bulma-footer-padding: 1rem 0 3rem !important;
 }
 
 h1 {
@@ -267,19 +267,21 @@ header > nav.navbar {
   scrollbar-width: thin;
 }
 
-figure.team-member {
-  & > picture.team-member {
-    height: 250px;
+picture.team-member {
+  max-height: 250px;
+  display: block;
+  align-content: center;
+
+  img {
     filter: saturate(0);
     mix-blend-mode: multiply;
     object-fit: cover;
-    display: block;
-    align-content: center;
   }
 }
 
+
 @media (prefers-color-scheme: dark) {
-  figure.team-member {
+  picture.team-member {
     background-color: var(--bulma-body-color);
   }
 }
@@ -305,7 +307,45 @@ figure.team-member {
 }
 
 .teamie-grid {
-  .cell {
+  --bulma-grid-gap: 0.75rem;
+  --bulma-grid-column-min: 20%;
+  --bulma-grid-cell-column-span: 1;
+  --bulma-grid-cell-row-span: 1;
+  gap: var(--bulma-grid-gap);
+  column-gap: var(--bulma-grid-column-gap, var(--bulma-grid-gap));
+  row-gap: var(--bulma-grid-row-gap, var(--bulma-grid-gap));
+  grid-template-columns: repeat(auto-fit, minmax(var(--bulma-grid-column-min), 1fr));
+  grid-template-rows: auto;
+  display: grid;
+
+  margin-bottom: 3rem;
+
+  .teamie, .cell {
+    grid-column-end: span var(--bulma-grid-cell-column-span);
+    grid-column-start: var(--bulma-grid-cell-column-start);
+    grid-row-end: span var(--bulma-grid-cell-row-span);
+    grid-row-start: var(--bulma-grid-cell-row-start);
+
+    picture.team-member {
+      max-width: 250px !important;
+      max-height: 332.5px;
+      height: fit-content;
+      aspect-ratio: 3 / 4 !important;
+    }
+  }
+}
+
+.proposing-teamie {
+  width: 187.5px;
+  align-content: center;
+}
+
+.multiple-proposers {
+  display: inline-flex;
+  gap: 0.5em;
+
+  .proposing-teamie {
+    min-width: 187.5px;
     width: fit-content;
   }
 }
