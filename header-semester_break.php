@@ -44,3 +44,6 @@ defined( 'ABSPATH' ) || exit;
         </div>
     </div>
 </header>
+<?php if ( function_exists( 'yoast_breadcrumb' ) && ! is_front_page() ): ?>
+    <?php yoast_breadcrumb( '<div class="content-container mt-3"><p id="breadcrumbs">', '</p></div>' ); ?>
+<?php endif ?>

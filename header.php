@@ -6,7 +6,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <!DOCTYPE html>
-<html lang="<?= get_user_locale() ?>">
+<html <?php language_attributes() ?>>
 <head>
     <!--
     LICENSE DISCLAIMER
@@ -30,5 +30,8 @@ defined( 'ABSPATH' ) || exit;
 <body>
 <?php do_action( 'wp_body_open' ); ?>
 <header>
-    <?php get_template_part('navigation') ?>
+    <?php get_template_part( 'navigation' ) ?>
 </header>
+<?php if ( function_exists( 'yoast_breadcrumb' ) && ! is_front_page() ): ?>
+    <?php yoast_breadcrumb( '<div class="content-container mt-3"><p id="breadcrumbs">', '</p></div>' ); ?>
+<?php endif ?>
