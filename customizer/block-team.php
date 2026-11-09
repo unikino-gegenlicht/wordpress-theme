@@ -30,6 +30,10 @@ class TeamBlockCustomizer extends CPTheme_CustomizerBase {
 		$this->add_theme_mod( "team_block_image" );
 		$this->add_theme_mod( "team_block_title" );
 		$this->add_theme_mod( "team_block_text" );
+		$this->add_theme_mod( "team_block_background" );
+		$this->add_theme_mod( "team_block_text_color" );
+		$this->add_theme_mod( "team_block_background_dark" );
+		$this->add_theme_mod( "team_block_text_color_dark" );
 	}
 
 	private function register_controls(): void {
@@ -57,6 +61,27 @@ class TeamBlockCustomizer extends CPTheme_CustomizerBase {
 			"panel"   => $this->panel,
 
 		) );
+
+		$this->manager->add_control( new WP_Customize_Color_Control( $this->manager, "team_block_background", array(
+			'section'     => self::SECTION,
+			'label'       => __( 'Background Color (Light Mode)', 'cinema-press-theme' ),
+			'description' => __( 'Select a color for primary color. Selecting no color will inherit the default theme colors', 'cinema-press-theme' ),
+		) ) );
+		$this->manager->add_control( new WP_Customize_Color_Control( $this->manager, "team_block_text_color", array(
+			'section'     => self::SECTION,
+			'label'       => __( 'Font Color (Light Mode)', 'cinema-press-theme' ),
+			'description' => __( 'Select a color for primary color. Selecting no color will inherit the default theme colors', 'cinema-press-theme' ),
+		) ) );
+		$this->manager->add_control( new WP_Customize_Color_Control( $this->manager, "team_block_background_dark", array(
+			'section'     => self::SECTION,
+			'label'       => __( 'Background Color (Dark Mode)', 'cinema-press-theme' ),
+			'description' => __( 'Select a color for primary color. Selecting no color will inherit the default theme colors', 'cinema-press-theme' ),
+		) ) );
+		$this->manager->add_control( new WP_Customize_Color_Control( $this->manager, "team_block_text_color_dark", array(
+			'section'     => self::SECTION,
+			'label'       => __( 'Font Color (Dark Mode)', 'cinema-press-theme' ),
+			'description' => __( 'Select a color for primary color. Selecting no color will inherit the default theme colors', 'cinema-press-theme' ),
+		) ) );
 	}
 
 }

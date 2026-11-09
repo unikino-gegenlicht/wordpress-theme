@@ -38,17 +38,10 @@ if ( $post !== null ):
             </header>
             <div class="content">
                 <h1 class="title"><?= rwmb_meta( 'original_title', post_id: rwmb_meta( 'movie' ) ) ?></h1>
-                <?php
-                if ( has_post_thumbnail() ):
-                    the_post_thumbnail();
-                elseif ( has_post_thumbnail( rwmb_meta( 'movie' ) ) ): $post = get_post( rwmb_meta( 'movie' ) );
-                    setup_postdata( $post );
-                    the_post_thumbnail();
-                    wp_reset_postdata();
-                endif; ?>
+                <?php the_post_thumbnail(); ?>
                 <hr>
-                <a class="button is-outlined is-uppercase font-readex is-fullwidth py-3 is-size-5"
-                   href="<?= get_permalink() ?>">
+                <a class="button is-outlined is-uppercase font-heading has-text-weight-extrabold is-fullwidth py-3 is-size-5"
+                   href="<?= get_permalink( $post ) ?>">
                     <?= esc_html__( 'Open movie', 'cinema-press-theme' ) ?>
                 </a>
             </div>
@@ -73,7 +66,7 @@ if ( $post !== null ):
                         <h1 class="title"><?= rwmb_meta( 'original_title', post_id: rwmb_meta( 'movie' ) ) ?></h1>
                         <?php the_post_thumbnail(); ?>
                         <hr>
-                        <a class="button is-outlined is-uppercase font-readex is-fullwidth py-3 is-size-5"
+                        <a class="button is-outlined is-uppercase font-heading has-text-weight-extrabold is-fullwidth py-3 is-size-5"
                            href="<?= get_permalink() ?>">
                             <?= esc_html__( 'Open movie', 'cinema-press-theme' ) ?>
                         </a>
@@ -116,8 +109,8 @@ if ( $post !== null ):
                                         <p class="m-0"><?php rwmb_the_value( 'screening_start', [ 'format' => CINEMA_PRESS__DATETIME_FORMAT ], $post->ID ) ?></p>
                                         <h2 class="movie-title is-size-5 mt-0"><?php rwmb_the_value( 'german_title', post_id: rwmb_meta( 'movie' ) ) ?></h2>
                                     </div>
-                                    <span class="icon">
-                                        <i class="fa-light fa-chevron-right"></i>
+                                    <span class="icon is-medium">
+                                        <i class="fa-light fa-lg fa-chevron-right"></i>
                                     </span>
                                 </a>
                             <?php endforeach;
@@ -171,9 +164,10 @@ if ( $post !== null ):
     <article id="team-intro" class="py-3">
         <div class="content-container content">
             <h2><?= get_theme_mod( 'team_block_title' ) ?></h2>
-            <?= apply_filters('the_content', get_theme_mod( 'team_block_text' ) ) ?>
-            <a class="button is-outlined is-fullwidth is-uppercase font-heading has-text-weight-extrabold py-2 is-size-5" href="<?= get_post_type_archive_link('team_member') ?>">
-                <?= esc_html__('To our team members', 'cinema-press-theme') ?>
+            <?= apply_filters( 'the_content', get_theme_mod( 'team_block_text' ) ) ?>
+            <a class="button is-outlined is-fullwidth is-uppercase font-heading has-text-weight-extrabold py-2 is-size-5"
+               href="<?= get_post_type_archive_link( 'team_member' ) ?>">
+                <?= esc_html__( 'To our team members', 'cinema-press-theme' ) ?>
             </a>
         </div>
     </article>
