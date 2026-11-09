@@ -23,8 +23,9 @@ get_header();
         <div class="grid">
             <?php foreach ( $movies as $title => $post ) : setup_postdata( $post ); ?>
                 <a href="<?= get_post_permalink() ?>" class="cell is-align-content-end">
-                    <img src="<?php the_post_thumbnail_url( 'original' ) ?>" height="95"/>
-                    <h2 class="is-size-4 mt-1"><?= $title ?></h2>
+                    <?php the_post_thumbnail(); ?>
+                    <hr class="my-1">
+                    <h2 class="is-size-4 mt-0"><?= $title ?></h2>
                 </a>
             <?php endforeach; ?>
         </div>
