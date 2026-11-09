@@ -9,33 +9,33 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-08T21:15:02+00:00\n"
+"POT-Creation-Date: 2026-11-09T13:44:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: cinema-press-theme\n"
 
 #. Theme Name of the theme
-#: style.css
+#: style.css:2
 msgid "CinemaPress"
 msgstr ""
 
 #. Theme URI of the theme
-#: style.css
+#: style.css:3
 msgid "https://github.com/unikino-gegenlicht/wordpress-theme"
 msgstr ""
 
 #. Description of the theme
-#: style.css
+#: style.css:6
 msgid "The CinemaPress theme offers small student lead cinemas a possibility to easily integrate the contents provided by the CinemaPress plugin into their website. In addition, the theme also generates <a href=\"https://schema.org\">Schema.org</a> markup in case YoastSEO is not installed on the website."
 msgstr ""
 
 #. Author of the theme
-#: style.css
+#: style.css:4
 msgid "Jan Eike Suchard, Philip Kaufmann"
 msgstr ""
 
 #. Author URI of the theme
-#: style.css
+#: style.css:5
 msgid "https://gegenlicht.net/team/jan, https://gegenlicht.net/team/philip"
 msgstr ""
 
@@ -417,16 +417,8 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-#: single-cooperation_partner.php:124
+#: single-cooperation_partner.php:146
 msgid "Past Cooperations"
-msgstr ""
-
-#. translators: %s is the date the movie was screened on
-#: single-cooperation_partner.php:152
-#: single-team_member.php:134
-#: single-team_member.php:181
-#, php-format
-msgid "Screened on %s"
 msgstr ""
 
 #: single-movie.php:18
@@ -546,16 +538,9 @@ msgstr ""
 msgid "This movie was proposed by %1$s and %2$s"
 msgstr ""
 
-#: single-screening.php:133
-#: single-screening.php:177
+#: single-screening.php:154
+#: single-screening.php:194
 msgid "Other proposals"
-msgstr ""
-
-#. translators: %s is the year the movie was screened in
-#: single-screening.php:157
-#: single-screening.php:201
-#, php-format
-msgid "Screened in %s"
 msgstr ""
 
 #. translators: %s is the year the member joined
@@ -577,19 +562,19 @@ msgid "Honorary member since %1$s"
 msgstr ""
 
 #. translators: %s is the name of the team member
-#: single-team_member.php:107
+#: single-team_member.php:131
 #, php-format
 msgid "Future screenings by %s"
 msgstr ""
 
 #. translators: %s is the name of the team member
-#: single-team_member.php:145
-#, php-format
-msgid "Sadly, %s didn't propose screenings for the current semester. Please check back later"
-msgstr ""
-
-#. translators: %s is the name of the team member
-#: single-team_member.php:154
+#: single-team_member.php:166
 #, php-format
 msgid "Past proposals by %s"
+msgstr ""
+
+#. translators: %s is the date the movie was screened on
+#: templates/screening-list.php:21
+#, php-format
+msgid "Screened on %s"
 msgstr ""

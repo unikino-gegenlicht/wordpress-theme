@@ -7,11 +7,9 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
     <main class="content content-container mt-4">
-        <?php if ( has_post_thumbnail() ): ?>
-            <?php the_post_thumbnail(); ?>
-        <?php else: ?>
-            <h1><?= str_starts_with( get_user_locale(), "de" ) ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ?></h1>
-        <?php endif; ?>
+        <?php the_post_thumbnail(); ?>
+        <hr>
+        <h1><?= str_starts_with( get_user_locale(), "de" ) ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ?></h1>
         <hr>
         <div class="is-flex is-justify-content-space-between is-flex-wrap-wrap is-row-gap-3">
             <div class="is-flex-grow-1">
