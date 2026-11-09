@@ -7,12 +7,12 @@
 <nav class="navbar is-transparent" role="navigation"
      aria-label="<?= __( 'Main Navigation', 'cinema-press-theme' ) ?>">
     <div class="navbar-brand px-1">
-        <a class="navbar-item m-0 is-flex is-tab"
+        <a class="navbar-item m-0 p-1"
            href="<?= get_home_url( scheme: 'https' ) ?>">
             <?php if ( get_header_image() ): ?>
                 <img src="<?php header_image() ?>" width="150"
                      height="30"
-                     alt="<?= get_bloginfo( 'name', 'display' ) ?>">
+                     alt="<?= get_bloginfo( 'name', 'display' ) ?>" style="object-fit: contain">
             <?php endif; ?>
         </a>
         <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navMenu">
