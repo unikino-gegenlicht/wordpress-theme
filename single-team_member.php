@@ -9,12 +9,12 @@ defined( 'ABSPATH' ) || exit;
 
 get_header() ?>
 <main class="content-container content mt-3">
-    <div class="is-flex is-flex-wrap-wrap is-gap-3">
+    <div class="is-flex is-flex-wrap-wrap is-gap-3 is-justify-content-center">
         <div style="flex-basis: 188px">
             <?php the_post_thumbnail() ?>
-            <div class="tags are-medium mt-3 is-hidden-mobile">
+            <div class="buttons mt-3 is-hidden-mobile">
                 <?php if ( ! empty( rwmb_get_value( 'letterboxd_username' ) ) ): ?>
-                    <a class="tag is-flex-grow-1 has-background-primary"
+                    <a rel="me" class="button is-flex-grow-1 is-outlined"
                        href="https://letterboxd.com/<?= trim( rwmb_get_value( 'letterboxd_username' ) ) ?>"
                        target="_blank">
                         <span class="icon-text">
@@ -26,7 +26,7 @@ get_header() ?>
                     </a>
                 <?php endif; ?>
                 <?php if ( ! empty( rwmb_get_value( 'instagram_username' ) ) ): ?>
-                    <a class="tag is-flex-grow-1 has-background-primary"
+                    <a rel="me" class="button is-flex-grow-1 is-outlined"
                        href="https://instagram.com/<?= trim( rwmb_get_value( 'instagram_username' ) ) ?>"
                        target="_blank">
                         <span class="icon-text">
@@ -38,7 +38,7 @@ get_header() ?>
                     </a>
                 <?php endif; ?>
                 <?php if ( ! empty( rwmb_get_value( 'trakt_tv_username' ) ) ): ?>
-                    <a class="tag is-flex-grow-1 has-background-primary"
+                    <a rel="me" class="button is-flex-grow-1 is-outlined"
                        href="https://app.trakt.tv/profile/<?= trim( rwmb_get_value( 'trakt_tv_username' ) ) ?>"
                        target="_blank">
                         <span class="icon-text" style="align-items: center !important;">
@@ -66,9 +66,9 @@ get_header() ?>
             <?php ?>
         </div>
     </div>
-    <div class="tags are-medium mt-3 is-hidden-tablet">
+    <div class="buttons mt-3 is-hidden-tablet">
         <?php if ( ! empty( rwmb_get_value( 'letterboxd_username' ) ) ): ?>
-            <a rel="me" class="tag is-flex-grow-1 has-background-primary"
+            <a rel="me" class="button is-flex-grow-1 is-outlined"
                href="https://letterboxd.com/<?= trim( rwmb_get_value( 'letterboxd_username' ) ) ?>" target="_blank">
                         <span class="icon-text">
                             <span class="icon">
@@ -79,7 +79,7 @@ get_header() ?>
             </a>
         <?php endif; ?>
         <?php if ( ! empty( rwmb_get_value( 'instagram_username' ) ) ): ?>
-            <a rel="me" class="tag is-flex-grow-1 has-background-primary"
+            <a rel="me" class="button is-flex-grow-1 is-outlined"
                href="https://instagram.com/<?= trim( rwmb_get_value( 'instagram_username' ) ) ?>" target="_blank">
                         <span class="icon-text">
                             <span class="icon">
@@ -90,7 +90,7 @@ get_header() ?>
             </a>
         <?php endif; ?>
         <?php if ( ! empty( rwmb_get_value( 'trakt_tv_username' ) ) ): ?>
-            <a rel="me" class="tag is-flex-grow-1 has-background-primary"
+            <a rel="me" class="button is-flex-grow-1 is-outlined"
                href="https://app.trakt.tv/profile/<?= trim( rwmb_get_value( 'trakt_tv_username' ) ) ?>" target="_blank">
                         <span class="icon-text" style="align-items: center !important;">
                             <span class="icon is-small" style="fill: var(--bulma-body-color)">
@@ -102,40 +102,71 @@ get_header() ?>
         <?php endif; ?>
     </div>
 </main>
-<article class="content-container">
-    <div class="movie-list is-flex-grow-2">
-        <p class="movie-list-title mb-0"><?= sprintf(/* translators: %s is the name of the team member */esc_html__( 'Proposals by %s', 'cinema-press-theme' ), get_the_title()) ?></p>
-        <div class="movie-list-entries"
-             style="max-height: 100%; overflow-y: scroll; scrollbar-width: thin;">
-            <?php
-            $query = new WP_Query( array(
-                    'post_type'      => 'screening',
-                    'posts_per_page' => 5,
-                    'meta_query'     => array(
-                            'relation' => 'AND',
-                            array(
-                                    'key'     => 'screening_start',
-                                    'value'   => date( 'Y-m-d H:i:s' ),
-                                    'compare' => '<='
-                            ),
-                            array(
-                                    'key'     => 'proposed_by',
-                                    'value'   => [ $post->ID ],
-                                    'compare' => 'IN'
-                            )
+<article class="content-container content mb-3">
+    <?php
+    $query = new WP_Query( array(
+            'post_type'      => 'screening',
+            'posts_per_page' => - 1,
+            'meta_query'     => array(
+                    'relation' => 'AND',
+                    array(
+                            'key'     => 'screening_start',
+                            'value'   => date( 'Y-m-d H:i:s' ),
+                            'compare' => '>='
                     ),
-                    'meta_key'       => 'screening_start',
-                    'orderby'        => 'meta_value',
-                    'order'          => 'DESC',
-            ) );
-            foreach ( $query->posts as $post ): setup_postdata( $post ); ?>
-                <div class="entry is-flex-direction-column is-align-items-flex-start">
-                    <p class="m-0"><?= sprintf( esc_html__( /* translators: %s is the date the movie was screened on */ 'Screened on %s', 'cinema-press-theme' ), rwmb_the_value( 'screening_start', [ 'format' => CINEMA_PRESS__DATE_FORMAT ], $post->ID, false ) ) ?></p>
-                    <h2 class="movie-title is-size-5 mt-0 has-text-weight-semibold"><?php rwmb_the_value( 'german_title', post_id: rwmb_meta( 'movie' ) ) ?></h2>
-                </div>
-            <?php endforeach;
-            wp_reset_postdata(); ?>
-        </div>
-    </div>
+                    array(
+                            'key'     => 'proposed_by',
+                            'value'   => [ get_the_ID() ],
+                            'compare' => 'IN'
+                    )
+            ),
+            'meta_key'       => 'screening_start',
+            'orderby'        => 'meta_value',
+            'order'          => 'ASC',
+    ) );
+    ?>
+    <?php
+    if ( $query->have_posts() ):
+        get_template_part( 'templates/screening-list', args: [
+                'title'             => sprintf(/* translators: %s is the name of the team member */ esc_html__( 'Future screenings by %s', 'cinema-press-theme' ), get_the_title() ),
+                'screenings'        => $query->posts,
+                "future_screenings" => true,
+
+        ] );
+    endif;
+    ?>
+</article>
+
+<article class="content-container content mb-3">
+    <?php
+    $query = new WP_Query( array(
+            'post_type'      => 'screening',
+            'posts_per_page' => - 1,
+            'meta_query'     => array(
+                    'relation' => 'AND',
+                    array(
+                            'key'     => 'screening_start',
+                            'value'   => date( 'Y-m-d H:i:s' ),
+                            'compare' => '<='
+                    ),
+                    array(
+                            'key'     => 'proposed_by',
+                            'value'   => [ get_the_ID() ],
+                            'compare' => 'IN'
+                    )
+            ),
+            'meta_key'       => 'screening_start',
+            'orderby'        => 'meta_value',
+            'order'          => 'DESC',
+    ) );
+    ?>
+    <?php
+    if ( $query->have_posts() ):
+        get_template_part( 'templates/screening-list', args: [
+                "title"             => sprintf(/* translators: %s is the name of the team member */ esc_html__( 'Past proposals by %s', 'cinema-press-theme' ), get_the_title() ),
+                "screenings"        => $query->posts,
+                "future_screenings" => false,
+        ] );
+    endif; ?>
 </article>
 <?php get_footer() ?>
