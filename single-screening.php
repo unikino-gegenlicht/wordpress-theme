@@ -98,9 +98,17 @@ $movie = get_post( rwmb_meta( 'movie' ) );
         <?php do_action( 'cinema_press_theme_render_reservation_button' ) ?>
     </div>
 </main>
-<?php if ( ( get_option( 'cinema-press' )['enable_teamie_screening_assignment'] ?? 0 ) === 1 && ! empty( rwmb_meta( 'proposed_by' ) ) ): ?>
-    <aside class="has-background-text pt-1 pb-3 mt-5"
-           style="--bulma-body-background-color: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l), 1); --bulma-body-color: var(--bulma-scheme-main); ">
+<?php
+$available_proposer_types = [
+        ( get_option( 'cinema-press' )["enable_teamie_screening_assignment"] ?? 0 ) === 1 ? 'team_member' : null,
+        ( get_option( 'cinema-press' )["enable_cooperation_screening_assignment"] ?? 0 ) === 1 ? 'cooperation_partner' : null
+];
+$available_proposer_types = array_filter( $available_proposer_types, function ( $type ) {
+    return $type !== null;
+} );
+?>
+<?php if ( ! empty( $available_proposer_types ) && ! empty( rwmb_meta( 'proposed_by' ) ) ): ?>
+    <aside class="has-background-text pt-1 pb-3 mt-5">
         <div class="content mt-3 content-container">
             <?php
             $proposers = rwmb_meta( 'proposed_by' );
@@ -117,89 +125,81 @@ $movie = get_post( rwmb_meta( 'movie' ) );
             ?>
             <h3><?= $proposed_by_str ?></h3>
             <?php if ( count( $proposers ) === 1 ): ?>
-                <div class="is-flex is-align-items-top is-flex-wrap-nowrap is-gap-0.5">
+                <div class="is-flex is-align-items-top is-flex-wrap-wrap is-justify-content-center is-gap-0.5">
                     <div class="proposing-teamie">
                         <?php echo get_the_post_thumbnail( $proposers[0] ); ?>
                     </div>
-                    <div class="proposal-list is-flex-grow-2">
-                        <p class="proposal-list-title mb-0"><?= esc_html__( 'Other proposals', 'cinema-press-theme' ) ?></p>
-                        <div class="movie-list-entries"
-                             style="max-height: 212px; overflow-y: scroll; scrollbar-width: thin;">
-                            <?php
-                            $query = new WP_Query( array(
-                                    'post_type'      => 'screening',
-                                    'posts_per_page' => 5,
-                                    'meta_query'     => array(
-                                            'relation' => 'AND',
-                                            array(
-                                                    'key'     => 'screening_start',
-                                                    'value'   => date( 'Y-m-d H:i:s' ),
-                                                    'compare' => '<='
-                                            ),
-                                            array(
-                                                    'key'     => 'proposed_by',
-                                                    'value'   => [ $proposers[0] ],
-                                                    'compare' => 'IN'
-                                            )
+                    <?php
+                    $query = new WP_Query( array(
+                            'post_type'      => 'screening',
+                            'posts_per_page' => 5,
+                            'meta_query'     => array(
+                                    'relation' => 'AND',
+                                    array(
+                                            'key'     => 'screening_start',
+                                            'value'   => date( 'Y-m-d H:i:s' ),
+                                            'compare' => '<='
                                     ),
-                                    'orderby'        => 'rand',
-                            ) );
-                            foreach ( $query->posts as $post ): setup_postdata( $post ); ?>
-                                <div class="entry is-flex-direction-column is-align-items-flex-start">
-                                    <p class="m-0"><?= sprintf( esc_html__( /* translators: %s is the year the movie was screened in */ 'Screened in %s', 'cinema-press-theme' ), rwmb_the_value( 'screening_start', [ 'format' => 'Y' ], $post->ID, false ) ) ?></p>
-                                    <h2 class="movie-title is-size-5 mt-0"><?php rwmb_the_value( 'german_title', post_id: rwmb_meta( 'movie' ) ) ?></h2>
-                                </div>
-                            <?php endforeach;
-                            wp_reset_postdata(); ?>
-                        </div>
-                    </div>
+                                    array(
+                                            'key'     => 'proposed_by',
+                                            'value'   => [ $proposers[0] ],
+                                            'compare' => 'IN'
+                                    )
+                            ),
+                            'orderby'        => 'rand',
+                    ) );
+
+                    if ( $query->have_posts() ):
+                    get_template_part( 'templates/screening-list', args: [
+                            "title"             => esc_html__( 'Other proposals', 'cinema-press-theme' ),
+                            "screenings"        => $query->posts,
+                            "future_screenings" => false,
+                    ] );
+                    endif;
+                    ?>
                 </div>
             <?php else: ?>
-                <div class="is-flex is-align-items-top is-flex-wrap-wrap is-gap-0.5">
-                    <div class="is-flex is-flex-wrap-nowrap is-flex-grow-6 is-justify-content-space-around"
+                <div class="">
+                    <div class="multiple-proposers"
                          style="overflow-x: auto; width: 100%;">
 
                         <?php foreach ( $proposers as $proposer ): ?>
-                            <div class="proposing-teamie">
-                                <?php echo get_the_post_thumbnail( $proposers[0] ); ?>
+                            <div class="proposing-teamie is-align-content-center">
+                                <?php echo get_the_post_thumbnail( $proposer ); ?>
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <div class="movie-list is-flex-grow-2">
-                        <p class="movie-list-title mb-0"><?= esc_html__( 'Other proposals', 'cinema-press-theme' ) ?></p>
-                        <div class="movie-list-entries"
-                             style="max-height: 212px; overflow-y: scroll; scrollbar-width: thin;">
-                            <?php
-                            $query = new WP_Query( array(
-                                    'post_type'      => 'screening',
-                                    'posts_per_page' => 10,
-                                    'meta_query'     => array(
-                                            'relation' => 'AND',
-                                            array(
-                                                    'key'     => 'screening_start',
-                                                    'value'   => date( 'Y-m-d H:i:s' ),
-                                                    'compare' => '<='
-                                            ),
-                                            array(
-                                                    'key'     => 'proposed_by',
-                                                    'value'   => $proposers,
-                                                    'compare' => 'IN'
-                                            )
+                    <?php
+                    $query = new WP_Query( array(
+                            'post_type'      => 'screening',
+                            'posts_per_page' => 10,
+                            'meta_query'     => array(
+                                    'relation' => 'AND',
+                                    array(
+                                            'key'     => 'screening_start',
+                                            'value'   => date( 'Y-m-d H:i:s' ),
+                                            'compare' => '<='
                                     ),
-                                    'orderby'        => 'rand',
-                            ) );
-                            foreach ( $query->posts as $post ): setup_postdata( $post ); ?>
-                                <div class="entry is-flex-direction-column is-align-items-flex-start">
-                                    <p class="m-0"><?= sprintf( esc_html__( 'Screened in %s', 'cinema-press-theme' ), rwmb_the_value( 'screening_start', [ 'format' => 'Y' ], $post->ID, false ) ) ?></p>
-                                    <h2 class="movie-title is-size-5 mt-0"><?php rwmb_the_value( 'german_title', post_id: rwmb_meta( 'movie' ) ) ?></h2>
-                                </div>
-                            <?php endforeach;
-                            wp_reset_postdata(); ?>
-                        </div>
-                    </div>
+                                    array(
+                                            'key'     => 'proposed_by',
+                                            'value'   => $proposers,
+                                            'compare' => 'IN'
+                                    )
+                            ),
+                            'orderby'        => 'rand',
+                    ) );
+
+                    if ( $query->have_posts() ):
+                        get_template_part( 'templates/screening-list', args: [
+                                "title"             => esc_html__( 'Other proposals', 'cinema-press-theme' ),
+                                "screenings"        => $query->posts,
+                                "future_screenings" => false,
+                        ] );
+                    endif;
+                    ?>
                 </div>
             <?php endif ?>
         </div>
     </aside>
-<?php endif ?>
-<?php get_footer(); ?>
+<?php endif; ?>
+<?php get_footer( args: ( ! empty( $available_proposer_types ) && ! empty( rwmb_meta( 'proposed_by' ) ) ) ? [] : [ "classes" => [ "mt-6" ] ] ); ?>
