@@ -32,9 +32,7 @@
                 ?>
                 <a class="navbar-item is-size-5-touch px-2 <?= $isActivePage ? 'is-active' : '' ?>"
                    href="<?= $item->url ?>">
-                    <span style="font-weight: 600"><?= str_pad( $i + 1, 2, "0", STR_PAD_LEFT ) ?></span>
-                    <span class="is-hidden-tablet">&nbsp;</span>
-                    <span class="is-uppercase font-heading"><?= $item->title ?></span>
+                    <span style="font-weight: 600"><?= str_pad( $i + 1, 2, "0", STR_PAD_LEFT ) ?></span><span class="is-hidden-desktop">&ensp;</span><span class="is-uppercase font-heading"><?= $item->title ?></span>
                 </a>
                 <?php
             }
@@ -48,7 +46,6 @@
 
             <?php if ( current_user_can_for_site( 0, 'edit_posts' ) ): ?>
                 <a class="navbar-item is-size-5-touch px-2" href="<?= admin_url() ?>">
-
                     <i class="fa-brands fa-lg fa-wordpress-simple"></i>
                     <span class="is-hidden-desktop is-uppercase font-heading"><?= esc_html__( 'Show Dashboard', 'cinema-press-theme' ) ?></span>
                 </a>
