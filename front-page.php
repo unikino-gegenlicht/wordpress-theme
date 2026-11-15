@@ -24,13 +24,7 @@ $query = new WP_Query( array(
         'orderby'        => 'meta_value',
         'order'          => 'ASC',
 ) );
-if (defined("WP_DEBUG") && WP_DEBUG) {
-    echo "<!--";
-    var_dump( date( 'Y-m-d H:i:s' ) );
-    var_dump( $query );
-    var_dump( $query->posts);
-    echo "-->";
-}
+
 $post  = array_shift( $query->posts );
 if ( $post !== null ):
     get_header();
@@ -179,4 +173,12 @@ if ( $post !== null ):
     </article>
 
 <?php endif; ?>
+
+<?php
+echo "<!--";
+var_dump( date( 'Y-m-d H:i:s' ) );
+var_dump( $query );
+var_dump( $query->posts);
+echo "-->";
+?>
 <?php get_footer(); ?>
