@@ -83,7 +83,7 @@ class FrontPageCustomizerOverrides extends CPTheme_CustomizerBase {
 		$output = array();
 
 		foreach ( $terms as $term ) {
-			$output[ $term->term_id ] = $term->name;
+			$output[ $term->slug ] = $term->name;
 		}
 
 		return $output;
