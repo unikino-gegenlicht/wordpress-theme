@@ -6,7 +6,6 @@ defined( 'ABSPATH' ) || exit;
 define( "DONOTCACHEPAGE", true );
 
 $semester_id = get_theme_mod( 'displayed_semester' );
-
 $query = new WP_Query( array(
         'post_type'      => 'screening',
         'posts_per_page' => - 1,
@@ -18,13 +17,20 @@ $query = new WP_Query( array(
         'tax_query'      => array(
                 array(
                         'taxonomy' => 'semester',
-                        'terms'    => $semester_id,
+                        'terms'    => intval($semester_id),
                 )
         ),
         'meta_key'       => 'screening_start',
         'orderby'        => 'meta_value',
         'order'          => 'ASC',
 ) );
+if (defined("WP_DEBUG") && WP_DEBUG) {
+    echo "<!--";
+    var_dump( date( 'Y-m-d H:i:s' ) );
+    var_dump( $query );
+    var_dump( $query->posts);
+    echo "-->";
+}
 $post  = array_shift( $query->posts );
 if ( $post !== null ):
     get_header();
