@@ -220,3 +220,7 @@ add_action( 'wp_head', function () {
 
 
 add_filter( 'show_admin_bar', '__return_false' );
+
+add_action('send_headers', function () {
+	header('X-CinemaPress-Theme-Version: ' . wp_get_theme()->get('Version'));
+});
