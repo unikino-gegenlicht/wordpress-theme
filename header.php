@@ -21,7 +21,6 @@ defined( 'ABSPATH' ) || exit;
      For further information please check out the LICENSE file that should be
      available at the following address: <?= get_theme_file_uri( 'LICENSE' ) ?>
     -->
-    <title><?= wp_get_document_title() ?></title>
     <?php wp_head(); ?>
     <meta charset="<?php bloginfo( 'charset' ) ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
