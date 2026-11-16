@@ -3,19 +3,23 @@
  * Copyright (c) 2026. Unikino GEGENLICHT. Licensed under the EUPL v1.2 or later
  */
 
+use CinemaPress\post_types\Movie;
+
 defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
     <main class="content content-container mt-4">
         <?php the_post_thumbnail(); ?>
         <hr>
-        <h1><?= str_starts_with( get_user_locale(), "de" ) ? rwmb_meta( 'german_title' ) : rwmb_meta( 'english_title' ) ?></h1>
+        <h1 class="mt-0"><?= Movie::title() ?></h1>
         <hr>
         <div class="is-flex is-justify-content-space-between is-flex-wrap-wrap is-row-gap-3">
             <div class="is-flex-grow-1">
+                <h2><?= __( 'Original Title', 'cinema-press-theme' ) ?></h2>
+                <p><?= Movie::original_title() ?></p>
                 <h2><?= __( 'Directors', 'cinema-press-theme' ) ?></h2>
                 <div class="tags are-medium">
-                    <?php foreach ( rwmb_meta( 'directors' ) as $director ): ?>
+                    <?php foreach ( Movie::directors(as_term: true) as $director ): ?>
                         <a class="tag is-rounded" href="<?= get_term_link( $director, 'director' ) ?>">
                             <?= $director->name ?>
                         </a>
@@ -23,7 +27,7 @@ get_header();
                 </div>
                 <h2><?= __( 'Actors', 'cinema-press-theme' ) ?></h2>
                 <div class="tags are-medium">
-                    <?php foreach ( rwmb_meta( 'actors' ) as $actor ): ?>
+                    <?php foreach ( Movie::actors(as_term: true) as $actor ): ?>
                         <a class="tag is-rounded" href="<?= get_term_link( $actor, 'director' ) ?>">
                             <?= $actor->name ?>
                         </a>
@@ -35,7 +39,13 @@ get_header();
                 <div class="mb-4">
                     <h3 class="is-size-5 mb-2"><?= esc_html__( "Released in", "cinema-press-theme" ) ?></h3>
                     <p>
-                        <?= rwmb_meta( 'release_year' ) ?>
+                        <?= Movie::release_year() ?>
+                    </p>
+                </div>
+                <div class="mb-4">
+                    <h3 class="is-size-5 mb-2"><?= esc_html__( "Age Rating", "cinema-press-theme" ) ?></h3>
+                    <p>
+                        <?= Movie::age_rating() ?>
                     </p>
                 </div>
                 <div class="mb-4">

@@ -4,6 +4,10 @@
  */
 defined( 'ABSPATH' ) || exit;
 
+use CinemaPress\post_types\Movie;
+use CinemaPress\post_types\Screening;
+
+
 get_header();
 $movie = get_post( rwmb_meta( 'movie' ) );
 ?>
@@ -15,86 +19,70 @@ $movie = get_post( rwmb_meta( 'movie' ) );
     <hr>
     <div class="content">
         <div>
-            <h1 class="mb-1 font-heading is-uppercase"><?= rwmb_meta( 'german_title', post_id: $movie->ID ) ?></h1>
+            <h1 class="mb-1 font-heading is-uppercase"><?= Movie::title( $movie ) ?></h1>
             <p class="font-heading is-uppercase is-size-5">
-                <abbr title="<?= esc_attr__( 'Original Title', 'cinema-press-theme' ) ?>">OT</abbr>&colon;&ensp;<?= rwmb_meta( 'original_title', post_id: $movie->ID ) ?>
+                <abbr title="<?= esc_attr__( 'Original Title', 'cinema-press-theme' ) ?>">OT</abbr>&colon;&ensp;<?= Movie::original_title( $movie ) ?>
             </p>
         </div>
         <hr>
         <p class="mb-0">
-            <?= join( "/", array_map( function ( $country ) {
-                return iso_codes()->getCountries()->getByNumericCode( $country )->getAlpha2();
-            }, rwmb_meta( 'country_of_origin', post_id: $movie->ID ) ) ) ?>
-            <?= rwmb_meta( 'release_year', post_id: $movie->ID ) ?>
+            <?= join( "/", iterator_to_array( Movie::countries( $movie ) ) ) ?>
+            <?= Movie::release_year( $movie ) ?>
         </p>
         <p class="mb-0">
             <?php
-            $directors = rwmb_meta( 'directors', post_id: $movie->ID );
+            $directors = iterator_to_array( Movie::directors( $movie ) );
             if ( count( $directors ) === 1 ) {
-                echo sprintf( __(/* translators: the name of the actor in %s */ "by %s", 'cinema-press-theme' ), $directors[0]->name );
+                echo sprintf( __(/* translators: the name of the actor in %s */ "by %s", 'cinema-press-theme' ), $directors[0] );
             } else {
                 $last_director = array_pop( $directors );
-                $str1          = join( "/", array_map( function ( $director ) {
-                    return $director->name;
-                }, $directors ) );
-                echo sprintf( __( /* translators: %1$s is a comma separated list, %2$s is the last listed director */ 'by %1$s and %2$s', 'cinema-press-theme' ), $str1, $last_director->name );
+                $str1          = join( "/", $directors );
+                echo sprintf( __( /* translators: %1$s is a comma separated list, %2$s is the last listed director */ 'by %1$s and %2$s', 'cinema-press-theme' ), $str1, $last_director );
             }
             ?>
         </p>
         <p class="mb-0">
             <?php
-            $actors = rwmb_meta( 'actors', post_id: $movie->ID );
+            $actors = iterator_to_array( Movie::actors( $movie ) );
             if ( count( $actors ) === 1 ) {
-                echo sprintf( __(/* translators: the name of the actor in %s */ "with %s", 'cinema-press-theme' ), $actors[0]->name );
+                echo sprintf( __(/* translators: the name of the actor in %s */ "with %s", 'cinema-press-theme' ), $actors[0] );
             } else {
                 $last_actor = array_pop( $actors );
-                $str1       = join( "/", array_map( function ( $actor ) {
-                    return $actor->name;
-                }, $actors ) );
-                echo sprintf( __( /* translators: %1$s is a comma separated list, %2$s is the last listed actor */ 'with %1$s and %2$s', 'cinema-press-theme' ), $str1, $last_actor->name );
+                $str1       = join( "/", $actors );
+                echo sprintf( __( /* translators: %1$s is a comma separated list, %2$s is the last listed actor */ 'with %1$s and %2$s', 'cinema-press-theme' ), $str1, $last_actor );
             }
 
             ?>
         </p>
         <hr>
         <div class="tags are-medium is-flex-grow-1 mb-3">
-            <span class="tag is-rounded is-primary"><?= esc_html__( 'Age Rating', 'cinema-press-theme' ) ?>&colon;&nbsp;<?php rwmb_the_value( 'age_rating', post_id: $movie->ID ) ?></span>
-            <?php if ( ! empty( rwmb_meta( 'audio_language' ) ) && rwmb_meta( 'audio_language' ) !== 'zxx' ) : ?>
-                <span class="tag is-rounded is-primary"><?= esc_html__( 'Audio in', 'cinema-press-theme' ) ?>&nbsp;<?php rwmb_the_value( 'audio_language' ) ?></span>
-            <?php else: ?>
+            <span class="tag is-rounded is-primary"><?= esc_html__( 'Age Rating', 'cinema-press-theme' ) ?>&colon;&nbsp;<?= Movie::age_rating( $movie ) ?></span>
+            <?php if ( empty( Screening::audio_language( $post ) ) || Screening::audio_language( $post ) === null ): ?>
                 <span class="tag is-rounded is-primary"><?= esc_html__( 'Silent Movie', 'cinema-press-theme' ) ?></span>
+            <?php else: ?>
+                <span class="tag is-rounded is-primary"><?= esc_html__( 'Audio in', 'cinema-press-theme' ) ?>&nbsp;<?= Screening::audio_language( $post, as_code: false ) ?></span>
             <?php endif; ?>
-            <?php if ( ! rwmb_meta( 'has_subtitles' ) ): ?>
-                <?php if ( empty( rwmb_meta( 'audio_language' ) ) || rwmb_meta( 'audio_language' ) !== 'zxx' ) : ?>
+
+            <?php if ( empty( Screening::subtitle_language( $post ) ) || Screening::subtitle_language( $post ) === null ): ?>
+                <?php if ( empty( Screening::audio_language( $post ) ) || Screening::audio_language( $post ) === null ): ?>
                     <span class="tag is-rounded is-danger"><?= esc_html__( 'Without Intertitles', 'cinema-press-theme' ) ?></span>
                 <?php else: ?>
                     <span class="tag is-rounded is-danger"><?= esc_html__( 'No Subtitles', 'cinema-press-theme' ) ?></span>
                 <?php endif; ?>
             <?php else: ?>
-                <?php if ( empty( rwmb_meta( 'audio_language' ) ) || rwmb_meta( 'audio_language' ) !== 'zxx' ) : ?>
-                    <span class="tag is-rounded is-danger"><?= esc_html__( 'Without Intertitles', 'cinema-press-theme' ) ?></span>
-                <?php else: ?>
-                    <span class="tag is-rounded is-primary"><?= esc_html__( 'Subtitles in', 'cinema-press-theme' ) ?>&nbsp;<?php rwmb_the_value( 'subtitle_language' ) ?></span>
-                <?php endif; ?>
+                <span class="tag is-rounded is-primary"><?= esc_html__( 'Subtitles in', 'cinema-press-theme' ) ?>&nbsp;<?php rwmb_the_value( 'subtitle_language' ) ?></span>
             <?php endif; ?>
+
         </div>
         <?php the_post_thumbnail() ?>
         <hr>
         <?php do_action( 'cinema_press_theme_render_reservation_button' ) ?>
         <h2 class="mt-0 is-uppercase"> <?= esc_html__( 'What is the movie about?', 'cinema-press-theme' ) ?></h2>
-        <?php
-        global $wp_embed;
-        $value = rwmb_meta( 'summary' );
-        $value = do_shortcode( wpautop( $wp_embed->autoembed( $value ) ) );
-        echo $value;
-        ?>
-        <h2 class="mt-0 is-uppercase"> <?= esc_html__( 'Why is the movie worth seeing?', 'cinema-press-theme' ) ?></h2>
-        <?php
-        global $wp_embed;
-        $value = rwmb_meta( 'worth_to_be_seen' );
-        $value = do_shortcode( wpautop( $wp_embed->autoembed( $value ) ) );
-        echo $value;
-        ?>
+        <?php Screening::summary( $post, display: true ) ?>
+        <?php if ( Screening::worth_to_see( $post ) ): ?>
+            <h2 class="mt-0 is-uppercase"> <?= esc_html__( 'Why is the movie worth seeing?', 'cinema-press-theme' ) ?></h2>
+            <?php Screening::summary( $post, display: true ) ?>
+        <?php endif; ?>
         <?php do_action( 'cinema_press_theme_render_reservation_button' ) ?>
     </div>
 </main>
@@ -133,6 +121,7 @@ $available_proposer_types = array_filter( $available_proposer_types, function ( 
                     $query = new WP_Query( array(
                             'post_type'      => 'screening',
                             'posts_per_page' => 5,
+                            'post__not_in'   => array( $post->ID ),
                             'meta_query'     => array(
                                     'relation' => 'AND',
                                     array(
@@ -150,11 +139,11 @@ $available_proposer_types = array_filter( $available_proposer_types, function ( 
                     ) );
 
                     if ( $query->have_posts() ):
-                    get_template_part( 'templates/screening-list', args: [
-                            "title"             => esc_html__( 'Other proposals', 'cinema-press-theme' ),
-                            "screenings"        => $query->posts,
-                            "future_screenings" => false,
-                    ] );
+                        get_template_part( 'templates/screening-list', args: [
+                                "title"             => esc_html__( 'Other proposals', 'cinema-press-theme' ),
+                                "screenings"        => $query->posts,
+                                "future_screenings" => false,
+                        ] );
                     endif;
                     ?>
                 </div>
@@ -173,6 +162,7 @@ $available_proposer_types = array_filter( $available_proposer_types, function ( 
                     $query = new WP_Query( array(
                             'post_type'      => 'screening',
                             'posts_per_page' => 10,
+                            'post__not_in'   => array( $post->ID ),
                             'meta_query'     => array(
                                     'relation' => 'AND',
                                     array(
